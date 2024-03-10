@@ -50,7 +50,7 @@
 
 ### 프로젝트 예시
 
-![대체 텍스트]([https://raw.githubusercontent.com/계정명/저장소명/브랜치/이미지경로/이미지파일.jpg](https://github.com/6s-hwan/SoT/blob/main/%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8.PNG))
+![대체 텍스트](https://github.com/6s-hwan/Image/blob/ce323a67faaaa95f2cc9af1559d54eecc9f912f4/%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8.PNG)
 <br>
 
 ### 프로젝트 구현

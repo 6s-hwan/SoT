@@ -20,7 +20,7 @@
 
 ### 프로젝트 소개
 <p align="justify">
-여행이나 놀거리를 찾아 다니는 사람들을 위한 힙한 여행 웹페이지로, 트렌디하고 아름다운 분위기의 장소들을 한눈에 제공합니다.
+여행이나 놀거리를 찾아 다니는 사람들을 위한 "Story of Travel (SoT)" 웹페이지로, 트렌디하고 아름다운 분위기의 장소들을 한눈에 제공합니다.
 </p>
 
 ### 프로젝트 기획
@@ -35,7 +35,7 @@
 
 ### 프로젝트 기간
 <p align="justify">
-3~4개월
+2024년 03월 12일 ~ 2024년 7월 1일
 </p>
 
 ### 프로젝트 구성
@@ -48,13 +48,16 @@
 6. 리뷰 및 평가 작성, 방문한 여행지의 사진 업로드와 공유
 </p>
 
+### 프로젝트 예시
+
+
 <br>
 
 ### 프로젝트 구현
 
 #### 기술 스택 
 
-| JavaScript | HTML | CSS | (API,DB,S3) | Discord | Figma | Notion | Github | Jira | 
+| JavaScript | HTML | CSS | (배포,DB,S3) | Discord | Figma | Notion | Github | Jira | 
 
 <br>
 

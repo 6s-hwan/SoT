@@ -31,7 +31,7 @@
 ## 프로젝트 목적
 <p align="justify">
 사용자들에게 새로운 여행 경험과 트렌디한 여행지에 대한 정보를 효과적으로 전달하고자 합니다.
-<br><br>//웹 개발 포트폴리오용으로 상용화가 가능한 여행용 웹 서비스를 개발합니다.
+<br><br>(웹 개발 포트폴리오용으로 상용화가 가능한 여행용 웹 서비스를 개발합니다.)
 </p>
 
 ## 프로젝트 기간
@@ -85,7 +85,7 @@
 
 #### 기술 스택 
 
-| JavaScript | HTML | CSS | (배포,DB,API) | Discord | Figma | Notion | Github |
+| JavaScript | HTML | CSS | (배포,DB,API) | Discord | Figma | Notion | Github | Jira |
 
 <br>
 
@@ -97,5 +97,5 @@
 
 기능 3. 포스팅
 
-기능 4. CRUD 
+기능 4. DB CRUD 
 

@@ -13,9 +13,9 @@
 3. 프로젝트 목적
 4. 프로젝트 기간
 5. 프로젝트 구성
-6. 프로젝트 구현
-  6.1 기술 스택
-  6.2 구현 기능
+6. 프로젝트 구현<br>
+  &ensp;6.1 기술 스택<br>
+  &ensp;6.2 구현 기능
    
 
 ### 프로젝트 소개
@@ -40,12 +40,24 @@
 
 ### 프로젝트 구성
 <p align="justify">
-1. 주요 여행지의 이미지 갤러리
-2. 실시간으로 업데이트되는 유행하는 여행 스팟 리스트
-3. 각 여행지에 대한 상세 페이지
-4. 설명, 해시태그, 소셜 미디어 공유 기능, 주변 맛집, 카페, 쇼핑 등의 정보 제공
-5. 편리한 검색을 위한 지역,테마,계절 등 다양한 기준으로 여행지를 검색하고 필터링할 수 있는 기능
-6. 리뷰 및 평가 작성, 방문한 여행지의 사진 업로드와 공유
+  1. 메인 페이지 <br>
+    &ensp;1.1 다양한 도시와 주요 여행지의 이미지 갤러리 <br>
+    &ensp;1.2 실시간으로 업데이트되는 유행하는 여행 스팟 리스트<br>
+<br>
+  2. 여행지 상세 페이지<br>
+    &ensp;2.1 각 여행지에 대한 사진 및 설명<br>
+    &ensp;2.2 관련된 해시태그 및 소셜 미디어 공유 기능<br>
+    &ensp;2.3 주변의 맛집, 카페, 쇼핑 등의 정보 제공
+  <br>
+<br>
+  3. 검색 및 필터 기능<br>
+    &ensp;3.1 지역, 테마, 계절 등 다양한 기준으로 여행지 검색 및 필터링 기능<br>
+    &ensp;3.2 사용자 관심사에 맞게 맞춤형 여행지 추천 기능<br>
+<br>
+  4. 사용자 참여 기능<br>
+    &ensp;4.1 사용자들의 반응, 댓글, 리뷰 및 평가 작성 기능<br>
+    &ensp;4.2 사용자가 방문한 여행지의 사진 업로드 및 공유 기능<br>
+     <br>
 </p>
 
 ### 프로젝트 예시
@@ -57,22 +69,32 @@
 ![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/Behance.PNG)
 <br>
 
-2. Dribbble - https://dribbble.com/
+3. Dribbble - https://dribbble.com/
 ![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/Dribbble.PNG)
+<br>
+
+4. notefolio - https://notefolio.net/
+![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/notefoilo.PNG)
+<br>
+
+5. OGQ GRAFOLIO - https://grafolio.ogq.me/
+![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/OGQ%20GRAFOLIO.PNG)
 <br>
 
 ### 프로젝트 구현
 
 #### 기술 스택 
 
-| JavaScript | HTML | CSS | (배포,DB,S3) | Discord | Figma | Notion | Github | Jira | 
+| JavaScript | HTML | CSS | (배포,DB,API) | Discord | Figma | Notion | Github |
 
 <br>
 
 #### 구현 기능 
 
-기능 1
+기능 1. 좋아요, 댓글, 공유, 저장, 팔로우, 계정의 다른 사진, 관련 계정
 
-기능 2
+기능 2. 로그인, 회원가입
 
-기능 3
+기능 3. 포스팅
+
+기능 4. CRUD 

@@ -85,7 +85,7 @@
 
 #### 기술 스택 
 
-| JavaScript | HTML | CSS | (배포,DB,API) | Discord | Figma | Notion | Github | Jira |
+| JavaScript | HTML | CSS | (배포,DB) | Discord | Figma | Notion | Github | Jira |
 
 <br>
 

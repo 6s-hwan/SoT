@@ -53,8 +53,12 @@
 ![대체 텍스트](https://github.com/6s-hwan/Image/blob/ce323a67faaaa95f2cc9af1559d54eecc9f912f4/%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8.PNG)
 <br>
 
-2. BeHance - https://www.behance.net/
-![대체 텍스트](https://github.com/6s-hwan/Image/blob/ce323a67faaaa95f2cc9af1559d54eecc9f912f4/%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8.PNG)
+2. Behance - https://www.behance.net/
+![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/Behance.PNG)
+<br>
+
+2. Dribbble - https://dribbble.com/
+![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/Dribbble.PNG)
 <br>
 
 ### 프로젝트 구현

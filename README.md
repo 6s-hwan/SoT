@@ -85,17 +85,21 @@
 ![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/OGQ%20GRAFOLIO.PNG)
 <br>
 
+6. Tripadvisor - https://www.tripadvisor.co.kr/<br><br>
+![대체 텍스트](https://github.com/6s-hwan/Image/blob/main/Tripadvisor.PNG)
+<br>
+
 ### 프로젝트 구현
 
 #### 기술 스택 
 
-| JavaScript | HTML | CSS | (배포,DB) | Discord | Figma | Notion | Github | Jira |
+| JavaScript | HTML | CSS | AWS | H2 | Discord | Figma | Notion | Github |
 
 <br>
 
 #### 기능 구현
 
-기능 1. 좋아요, 댓글, 공유, 저장, 팔로우, 계정의 다른 사진, 관련 계정
+기능 1. 좋아요, 댓글, 공유, 저장 (팔로우, 계정의 다른 사진, 관련 계정)
 
 기능 2. 로그인, 회원가입
 

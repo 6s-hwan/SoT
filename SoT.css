@@ -4,19 +4,23 @@
     height:68px;
     border: none;
     position: absolute;
-    top: 33px;
+    top: 50px;
     left: 360px;
 
 }
 
 .homebtn{
     font-family: 'Montserrat';
-    border: none;
     background-color: white;
     font-size: 28px;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 720px;
+    flex-shrink: 0;
+    border-left-width:0; 
+    border-right-width:0; 
+    border-top-width:0; 
+    border-bottom-width:1
 }
 
 .regionbtn{
@@ -25,7 +29,7 @@
     background-color: white;
     font-size: 28px;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 770px;
 }
 
@@ -35,7 +39,7 @@
     background-color: white;
     font-size: 28px;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 840px;
 }
 
@@ -45,7 +49,7 @@
     background-color: white;
     font-size: 28px;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 910px;
 }
 
@@ -67,7 +71,7 @@
     height:38px;
     border: none;
     position: absolute;
-    top: 43px;
+    top: 60px;
     left: 1230px;
 }
 
@@ -77,7 +81,7 @@
     height:38px;
     border: none;
     position: absolute;
-    top: 43px;
+    top: 60px;
     left: 1295px;
 }
 
@@ -87,7 +91,7 @@
     height:38px;
     border: none;
     position: absolute;
-    top: 43px;
+    top: 60px;
     left: 1360px;
 }
 
@@ -99,10 +103,126 @@
     font-size: 18px;
     border: solid 2px #939393;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 1460px;
 }
 
 .mainpageimg{
     width: 100%;
+    position: absolute;
+    top:163px;
+}
+
+.mainimgex1{
+    position: absolute;
+    top: 290px;
+    left: 365px;
+    color: #FFF;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.mainimgex1-1{
+    position: absolute;
+    top: 396px;
+    left: 367px;
+    color: #F3F3F3;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.mainimgbtn{
+    position: absolute;
+    top: 503px;
+    left: 365px;
+    width: 119px;
+    height: 48px;
+    background-color : rgb(0,0,0,0.5);
+    color: #FFF;
+    font-size: 17px;
+    border: none;
+    border-radius: 35px;
+}
+
+.themeimg{
+    position: absolute;
+    top: 879px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.theme{
+    position: absolute;
+    top: 845px;
+    left: 436px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+}
+
+.theme1btn{
+    background: url("./image/theme1.png");
+    width: 380px;
+    height:210px;
+    border: none;
+    position: absolute;
+    top: 963px;
+    left: 360px;
+    border-radius: 8px;
+}
+
+.theme2btn{
+    background: url("./image/theme2.png");
+    width: 380px;
+    height:210px;
+    border: none;
+    position: absolute;
+    top: 963px;
+    left: 770px;
+    border-radius: 8px;
+}
+
+.theme3btn{
+    background: url("./image/theme3.png");
+    width: 380px;
+    height:210px;
+    border: none;
+    position: absolute;
+    top: 963px;
+    left: 1180px;
+    border-radius: 8px;
+}
+
+.nextthemebtn{
+    background: url("./image/next.png");
+    width: 45px;
+    height:45px;
+    border: none;
+    position: absolute;
+    top: 1048px;
+    left: 1505px;
+}
+
+.seasonimg{
+    position: absolute;
+    top: 1313px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.season{
+    position: absolute;
+    top: 1279px;
+    left: 436px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
 }

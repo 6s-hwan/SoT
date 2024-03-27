@@ -312,7 +312,7 @@ input::placeholder {
   letter-spacing: -0.4px;
 }
 
-#btnActive {
+/* #btnActive {
   margin-left: 36px;
   width: 400px;
   height: 56px;
@@ -325,10 +325,10 @@ input::placeholder {
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 140%; /* 28px */
+  line-height: 140%;
   letter-spacing: -0.4px;
   cursor: pointer;
-}
+} */
 
 /* 계정을 잊으셨나요? 이메일 또는 비밀번호 찾기 구역 */
 #bg_gray > #login_pop_up > #text23 {
@@ -1031,4 +1031,189 @@ input:focus {
   line-height: normal;
 }
 
+/* 지역 카테고리 */
+
+#area {
+  width: 472px;
+  height: 32px;
+}
+#area > #text9 {
+  padding-left: 40px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info_area {
+  width: 472px;
+  height: 56px;
+}
+
+#info_area > #area1 {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 36px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info_area > #area2 {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info_area > #area3 {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  /* margin-right: 36px; */
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#blank2 {
+  width: 472px;
+  height: 60px;
+}
+
+/* 이용약관 카테고리 */
+.orgin2 {
+  display: none;
+}
+.orgin3 {
+  display: none;
+}
+
+.orgin3 > a {
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* text-decoration-line: underline; */
+}
+
+#checkbtn2 + label {
+  display: flex;
+  cursor: pointer;
+  /* line-height: 18px; */
+  padding-left: 31px;
+  /* padding-bottom: 24px; */
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-bottom: ; */
+  background: url("../images/checkbtn3.png") left/18px no-repeat;
+}
+
+#checkbtn2:checked + label {
+  background-image: url("../images/checkbtn4.png");
+}
+
+#checkbtn3 + label {
+  display: flex;
+  cursor: pointer;
+  /* line-height: 18px; */
+  padding-left: 31px;
+  /* padding-bottom: 24px; */
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-bottom: ; */
+  background: url("../images/checkbtn3.png") left/18px no-repeat;
+}
+
+#checkbtn3:checked + label {
+  background-image: url("../images/checkbtn4.png");
+}
+
+#container1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  padding-left: 36px;
+}
+#container2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  padding-left: 36px;
+}
+
+#blank3 {
+  width: 472px;
+  height: 21px;
+}
+
+#join_btn {
+  margin-left: 36px;
+  width: 400px;
+  height: 59px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #949494;
+  background: #fff;
+  cursor: pointer;
+  color: #1b1b1b;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+}
+
+#blank4 {
+  width: 472px;
+  height: 36px;
+}
 /* 회원가입 팝업창 css 코드 */

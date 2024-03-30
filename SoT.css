@@ -1,0 +1,779 @@
+.logobtn{
+    background: url("./image/logo.png");
+    width: 295px;
+    height:68px;
+    border: none;
+    position: absolute;
+    top: 50px;
+    left: 360px;
+
+}
+
+.homebtn{
+    font-family: 'Montserrat';
+    background-color: white;
+    font-size: 28px;
+    position: absolute;
+    top: 60px;
+    left: 720px;
+    flex-shrink: 0;
+    border-left-width:0; 
+    border-right-width:0; 
+    border-top-width:0; 
+    border-bottom-width:1
+}
+
+.regionbtn{
+    font-family: 'Montserrat';
+    border: none;
+    background-color: white;
+    font-size: 28px;
+    position: absolute;
+    top: 60px;
+    left: 770px;
+}
+
+.mapbtn{
+    font-family: 'Montserrat';
+    border: none;
+    background-color: white;
+    font-size: 28px;
+    position: absolute;
+    top: 60px;
+    left: 840px;
+}
+
+.bookmarkbtn{
+    font-family: 'Montserrat';
+    border: none;
+    background-color: white;
+    font-size: 28px;
+    position: absolute;
+    top: 60px;
+    left: 910px;
+}
+
+.search{
+    background-color:white; 
+    font-size: 1.5em;
+    width: 179px;
+    height: 36px;
+    flex-shrink: 0;
+    border-left-width:0; 
+    border-right-width:0; 
+    border-top-width:0; 
+    border-bottom-width:1
+}
+
+.searchbtn{
+    background: url("./image/searchbtn.png");
+    width: 38px;
+    height:38px;
+    border: none;
+    position: absolute;
+    top: 60px;
+    left: 1230px;
+}
+
+.imagebtn{
+    background: url("./image/imagebtn.png");
+    width: 38px;
+    height:38px;
+    border: none;
+    position: absolute;
+    top: 60px;
+    left: 1295px;
+}
+
+.uploadbtn{
+    background: url("./image/uploadbtn.png");
+    width: 38px;
+    height:38px;
+    border: none;
+    position: absolute;
+    top: 60px;
+    left: 1360px;
+}
+
+.loginbtn{
+    width: 109px;
+    height: 48px;
+    background-color:white;
+    border-radius: 35px;
+    font-size: 18px;
+    border: solid 2px #939393;
+    position: absolute;
+    top: 60px;
+    left: 1460px;
+}
+
+.mainpageimg{
+    width: 100%;
+    position: absolute;
+    top:163px;
+}
+
+.mainimgex1{
+    position: absolute;
+    top: 290px;
+    left: 365px;
+    color: #FFF;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.mainimgex1-1{
+    position: absolute;
+    top: 396px;
+    left: 367px;
+    color: #F3F3F3;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.mainimgbtn{
+    position: absolute;
+    top: 503px;
+    left: 365px;
+    width: 119px;
+    height: 48px;
+    background-color : rgb(0,0,0,0.5);
+    color: #FFF;
+    font-size: 17px;
+    border: none;
+    border-radius: 35px;
+}
+
+.themeimg{
+    position: absolute;
+    top: 879px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.theme{
+    position: absolute;
+    top: 845px;
+    left: 436px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+}
+
+.theme1btn{
+    background: url("./image/theme1.png");
+    width: 380px;
+    height:210px;
+    border: none;
+    position: absolute;
+    top: 963px;
+    left: 360px;
+    border-radius: 8px;
+}
+
+.theme2btn{
+    background: url("./image/theme2.png");
+    width: 380px;
+    height:210px;
+    border: none;
+    position: absolute;
+    top: 963px;
+    left: 770px;
+    border-radius: 8px;
+}
+
+.theme3btn{
+    background: url("./image/theme3.png");
+    width: 380px;
+    height:210px;
+    border: none;
+    position: absolute;
+    top: 963px;
+    left: 1180px;
+    border-radius: 8px;
+}
+
+.nextthemebtn{
+    background: url("./image/next.png");
+    width: 45px;
+    height:45px;
+    border: none;
+    position: absolute;
+    top: 1048px;
+    left: 1505px;
+}
+
+.seasonimg{
+    position: absolute;
+    top: 1313px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.season{
+    position: absolute;
+    top: 1279px;
+    left: 436px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+}
+
+.springbtn{
+    font-family: 'Montserrat';
+    background-color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 1327px;
+    left: 693px;
+    flex-shrink: 0;
+    border-left-width:0; 
+    border-right-width:0; 
+    border-top-width:0; 
+    border-bottom-width:1
+}
+
+.summerbtn{
+    font-family: 'Montserrat';
+    border: none;
+    background-color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 1327px;
+    left: 736px;
+}
+
+.fallbtn{
+    font-family: 'Montserrat';
+    border: none;
+    background-color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 1327px;
+    left: 801px;
+}
+
+.winterbtn{
+    font-family: 'Montserrat';
+    border: none;
+    background-color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 1327px;
+    left: 866px;
+}
+
+.refreshbtn{
+    background: url("./image/refreshbtn.png");
+    width: 30px;
+    height:30px;
+    border: none;
+    position: absolute;
+    top: 1315px;
+    left: 1508px;
+}
+
+.season1btn{
+    background: url("./image/season1.png");
+    width: 380px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 1398px;
+    left: 360px;
+}
+
+.seaon2btn{
+    background: url("./image/season2.png");
+    width: 380px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 1398px;
+    left: 770px;
+}
+
+.season3btn{
+    background: url("./image/season3.png");
+    width: 380px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 1398px;
+    left: 1180px;
+}
+
+.season4btn{
+    background: url("./image/season4.png");
+    width: 585px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 1707px;
+    left: 360px;
+}
+
+.season5btn{
+    background: url("./image/season5.png");
+    width: 585px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 1707px;
+    left: 975px;
+}
+
+.morebtn_season{
+    background: url("./image/morebtn.png");
+    width: 128px;
+    height:48px;
+    border: none;
+    position: absolute;
+    top: 2016px;
+    left: 896px;
+}
+
+.bestimg{
+    position: absolute;
+    top: 2222px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.best{
+    position: absolute;
+    top: 2170px;
+    left: 437px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+}
+
+.best_1{
+    position: absolute;
+    top: 2235px;
+    left: 439px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+    color: #4F4F4F;
+}
+
+.best1btn{
+    background: url("./image/best1.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2326px;
+    left: 360px;
+}
+
+.best2btn{
+    background: url("./image/best2.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2326px;
+    left: 668px;
+}
+
+.best3btn{
+    background: url("./image/best3.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2326px;
+    left: 975px;
+}
+
+.best4btn{
+    background: url("./image/best4.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2326px;
+    left: 1282px;
+}
+
+.best5btn{
+    background: url("./image/best5.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2598px;
+    left: 360px;
+}
+
+.best6btn{
+    background: url("./image/best6.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2598px;
+    left: 668px;
+}
+
+.best7btn{
+    background: url("./image/best7.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2598px;
+    left: 975px;
+}
+
+.best8btn{
+    background: url("./image/best8.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2598px;
+    left: 1282px;
+}
+
+.best9btn{
+    background: url("./image/best5.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2870px;
+    left: 360px;
+}
+
+.best10btn{
+    background: url("./image/best6.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2870px;
+    left: 667px;
+}
+
+.best11btn{
+    background: url("./image/best7.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2870px;
+    left: 975px;
+}
+
+.best12btn{
+    background: url("./image/best8.png");
+    width: 278px;
+    height:200px;
+    border: none;
+    position: absolute;
+    top: 2870px;
+    left: 1282px;
+}
+
+.best1_see{
+    position: absolute; 
+    top: 2542px; 
+    left: 545px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best1_like{
+    position: absolute; 
+    top: 2542px; 
+    left: 594px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best2_see{
+    position: absolute; 
+    top: 2542px; 
+    left: 852px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best2_like{
+    position: absolute; 
+    top: 2542px; 
+    left: 901px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best3_see{
+    position: absolute; 
+    top: 2542px; 
+    left: 1160px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best3_like{
+    position: absolute; 
+    top: 2542px; 
+    left: 1209px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best4_see{
+    position: absolute; 
+    top: 2542px; 
+    left: 1467px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best4_like{
+    position: absolute; 
+    top: 2542px; 
+    left: 1516px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best5_see{
+    position: absolute; 
+    top: 2814px; 
+    left: 545px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best5_like{
+    position: absolute; 
+    top: 2814px;  
+    left: 594px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best6_see{
+    position: absolute; 
+    top: 2814px;  
+    left: 852px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best6_like{
+    position: absolute; 
+    top: 2814px; 
+    left: 901px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best7_see{
+    position: absolute; 
+    top: 2814px; 
+    left: 1160px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best7_like{
+    position: absolute; 
+    top: 2814px; 
+    left: 1209px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best8_see{
+    position: absolute; 
+    top: 2814px; 
+    left: 1467px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best8_like{
+    position: absolute; 
+    top: 2814px; 
+    left: 1516px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best9_see{
+    position: absolute; 
+    top: 3085px; 
+    left: 545px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best9_like{
+    position: absolute; 
+    top: 3085px; 
+    left: 594px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best10_see{
+    position: absolute; 
+    top: 3085px; 
+    left: 852px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best10_like{
+    position: absolute; 
+    top: 3085px; 
+    left: 901px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best11_see{
+    position: absolute; 
+    top: 3085px; 
+    left: 1160px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best11_like{
+    position: absolute; 
+    top: 3085px; 
+    left: 1209px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best12_see{
+    position: absolute; 
+    top: 3085px;  
+    left: 1467px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.best12_like{
+    position: absolute; 
+    top: 3085px; 
+    left: 1516px; 
+    width: 16px; 
+    height: 16px;
+}
+
+.morebtn_best{
+    background: url("./image/morebtn.png");
+    width: 128px;
+    height:48px;
+    border: none;
+    position: absolute;
+    top: 3156px;
+    left: 896px;
+}
+
+.riseimg{
+    position: absolute;
+    top: 3350px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.rise{
+    position: absolute;
+    top: 3315px;
+    left: 436px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+}
+
+.rise1btn{
+    background: url("./image/rise1.png");
+    width: 278px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 3447px;
+    left: 360px;
+}
+
+.rise2btn{
+    background: url("./image/rise2.png");
+    width: 278px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 3447px;
+    left: 667px;
+}
+
+.rise3btn{
+    background: url("./image/rise3.png");
+    width: 278px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 3447px;
+    left: 975px;
+}
+
+.rise4btn{
+    background: url("./image/rise4.png");
+    width: 278px;
+    height:278px;
+    border: none;
+    position: absolute;
+    top: 3447px;
+    left: 1282px;
+}
+
+.nextrisebtn{
+    background: url("./image/next.png");
+    width: 45px;
+    height:45px;
+    border: none;
+    position: absolute;
+    top: 3565px;
+    left: 1500px;
+}
+
+.popularimg{
+    position: absolute;
+    top: 3900px;
+    left: 360px;
+    width: 60px;
+    height: 60px;
+}
+
+.popular{
+    position: absolute;
+    top: 3865px;
+    left: 436px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 60px;
+}

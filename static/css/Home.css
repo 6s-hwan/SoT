@@ -1577,29 +1577,24 @@ input:focus {
   line-height: 60px;
 }
 
-.themebackimg{
-  position: absolute;
-  left: 340px;
-  top: 976px;
-  width: 1240px;
-  height: 620px;
-}
-
-.theme1{
-  position: absolute;
-  left: 360px;
-  top: 996px;
-  width: 387px;
-  height:180px;
-}
-
 .theme1btn{
-  background: url("../static/images/rectangle.png");
+  background: url("../static/images/theme1.png");
   width: 387px;
   height:180px;
   border: none;
   position: absolute;
   left: 360px;
+  top: 996px;
+  border-radius: 8px;
+}
+
+.theme2btn{
+  background: url("../static/images/theme2.png");
+  width: 488px;
+  height:180px;
+  border: none;
+  position: absolute;
+  left: 766px;
   top: 996px;
   border-radius: 8px;
 }

@@ -1577,8 +1577,8 @@ input:focus {
   line-height: 60px;
 }
 
-.theme1btn{
-  background: url("../static/images/theme1btn.png");
+.theme1{
+  background: url("../static/images/theme1.png");
   position: absolute;
   top: 996px;
   left: 360px;

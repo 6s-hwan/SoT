@@ -1577,8 +1577,17 @@ input:focus {
   line-height: 60px;
 }
 
+.themebtn{
+  position: absolute;
+    width: 1240px;
+    height: 620px;
+    background-color: #F8F8F8;
+    left: 340px;
+    top: 976px;
+    border-radius: 12px;
+}
+
 .theme1btn{
-  background: url("../static/images/theme1.png");
   width: 387px;
   height:180px;
   border: none;

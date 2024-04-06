@@ -1573,8 +1573,8 @@ input:focus {
   left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 60px;
+  font-weight: 700;
+  line-height: 56px;
 }
 .themeback{
   position: absolute;
@@ -1700,8 +1700,8 @@ input:focus {
   left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 60px;
+  font-weight: 700;
+  line-height: 56px;
 }
 
 .seasonback{
@@ -1795,8 +1795,8 @@ input:focus {
   left: 438px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 60px;
+  font-weight: 700;
+  line-height: 56px;
 }
 
 .best2{
@@ -2504,8 +2504,8 @@ input:focus {
   left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 60px;
+  font-weight: 700;
+  line-height: 56px;
 }
 
 .risebtn1{
@@ -2580,8 +2580,8 @@ input:focus {
   left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 60px;
+  font-weight: 700;
+  line-height: 56px;
 }
 
 .popularbtn1{
@@ -2962,3 +2962,122 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 /* 인기 작가 스토리 끝 */
+
+/* 추천 여행지 시작 */
+.recommendimg{
+  position: absolute;
+  left: 367px;
+  top: 5867px;
+  width: 59px;
+  height: 59px;
+  flex-shrink: 0;
+}
+
+.recommend{
+  position: absolute;
+  top: 5862px;
+  left: 438px;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 56px;
+  font-family: "Noto Sans KR";
+}
+
+.recommendbtn1{
+  background: url("../images/recommned1.png");
+  position: absolute;
+  top: 5961px;
+  left: 360px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.recommendbtn2{
+  background: url("../images/recommned2.png");
+  position: absolute;
+  top: 5961px;
+  left: 667px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.recommendbtn3{
+  background: url("../images/recommned3.png");
+  position: absolute;
+  top: 5961px;
+  left: 975px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.recommendbtn4{
+  background: url("../images/recommned4.png");
+  position: absolute;
+  top: 5961px;
+  left: 1282px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.recommendbtn5{
+  background: url("../images/recommend5.png");
+  position: absolute;
+  top: 6312px;
+  left: 360px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.recommendbtn6{
+  background: url("../images/recommned6.png");
+  position: absolute;
+  top: 6312px;
+  left: 668px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.recommendbtn7{
+  background: url("../images/recommned7.png");
+  position: absolute;
+  top: 6312px;
+  left: 975px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.recommendbtn8{
+  background: url("../images/recommned8.png");
+  position: absolute;
+  top: 6312px;
+  left: 1283px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+/* 추천 여행지 끝 */

@@ -1682,3 +1682,282 @@ input:focus {
   height: 180px;
   border: none;
 }
+/* 테마별 여행지 끝 */
+
+/* 시즌별 스토리 시작 */
+
+.seasonimg{
+  position: absolute;
+  left: 360px;
+  top: 1716px;
+  width: 60px;
+  height: 60px;
+}
+
+.season{
+  position: absolute;
+  top: 1716px;
+  left: 436px;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+}
+
+.seasonback{
+  position: absolute;
+  left: 340px;
+  top: 1792px;
+  width: 1240px;
+  height: 617px;
+}
+
+.season1{
+  background: url("../images/season1.png");
+  position: absolute;
+  top: 1813px;
+  left: 360px;
+  font-style: normal;
+  width: 387px;
+  height: 278px;
+  border: none;
+}
+
+.season2{
+  background: url("../images/season2.png");
+  position: absolute;
+  top: 1813px;
+  left: 767px;
+  font-style: normal;
+  width: 386px;
+  height: 278px;
+  border: none;
+  border-radius: 8px;
+}
+
+.season3{
+  background: url("../images/season3.png");
+  position: absolute;
+  top: 1813px;
+  left: 1173px;
+  font-style: normal;
+  width: 387px;
+  height: 278px;
+  border: none;
+}
+
+.season4{
+  background: url("../images/season4.png");
+  position: absolute;
+  top: 2111px;
+  left: 360px;
+  font-style: normal;
+  width: 590px;
+  height: 278px;
+  border: none;
+}
+
+.season5{
+  background: url("../images/season5.png");
+  position: absolute;
+  top: 2111px;
+  left: 970px;
+  font-style: normal;
+  width: 590px;
+  height: 278px;
+  border: none;
+}
+
+.seasonmorebtn{
+  background: url("../images/morebtn.png");
+  position: absolute;
+  top: 2450px;
+  left: 896px;
+  font-style: normal;
+  width: 128px;
+  height: 48px;
+  border: none;
+}
+/* 시즌별 스토리 끝 */
+
+/* 베스트 스토리 시작 */
+.bestimg{
+  position: absolute;
+  left: 360px;
+  top: 2628px;
+  width: 60px;
+  height: 60px;
+}
+
+.best1{
+  position: absolute;
+  top: 2618px;
+  left: 438px;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+}
+
+.best2{
+  position: absolute;
+  top: 2662px;
+  left: 439px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #4F4F4F;
+}
+
+.bestback{
+  position: absolute;
+  left: 340px;
+  top: 2714px;
+  width: 1240px;
+  height: 798px;
+}
+
+.best1btn{
+  background: url("../images/best1.png");
+  position: absolute;
+  top: 2732px;
+  left: 360px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best2btn{
+  background: url("../images/best2.png");
+  position: absolute;
+  top: 2732px;
+  left: 665px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best3btn{
+  background: url("../images/best3.png");
+  position: absolute;
+  top: 2732px;
+  left: 970px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best4btn{
+  background: url("../images/best4.png");
+  position: absolute;
+  top: 2732px;
+  left: 1275px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best5btn{
+  background: url("../images/best5.png");
+  position: absolute;
+  top: 2994px;
+  left: 360px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best6btn{
+  background: url("../images/best6.png");
+  position: absolute;
+  top: 2994px;
+  left: 665px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best7btn{
+  background: url("../images/best7.png");
+  position: absolute;
+  top: 2994px;
+  left: 970px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best8btn{
+  background: url("../images/best8.png");
+  position: absolute;
+  top: 2994px;
+  left: 1275px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best9btn{
+  background: url("../images/best5.png");
+  position: absolute;
+  top: 3256px;
+  left: 360px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best10btn{
+  background: url("../images/best6.png");
+  position: absolute;
+  top: 3256px;
+  left: 665px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best11btn{
+  background: url("../images/best7.png");
+  position: absolute;
+  top: 3256px;
+  left: 970px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.best12btn{
+  background: url("../images/best8.png");
+  position: absolute;
+  top: 3256px;
+  left: 1275px;
+  font-style: normal;
+  width: 285px;
+  height: 200px;
+  border: none;
+}
+
+.bestmorebtn{
+  background: url("../images/morebtn.png");
+  position: absolute;
+  top: 3542px;
+  left: 896px;
+  font-style: normal;
+  width: 128px;
+  height: 48px;
+  border: none;
+}
+/* 베스트 스토리 끝 */

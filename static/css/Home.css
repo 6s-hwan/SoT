@@ -1829,6 +1829,44 @@ input:focus {
   border: none;
 }
 
+.best1_see{
+  position: absolute;
+  left: 544px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see1{
+  position: absolute;
+  top: 2922px;
+  left: 562px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best1_like{
+  position: absolute;
+  left: 596px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like1{
+  position: absolute;
+  top: 2922px;
+  left: 613px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
 .best2btn{
   background: url("../images/best2.png");
   position: absolute;
@@ -1838,6 +1876,43 @@ input:focus {
   width: 285px;
   height: 200px;
   border: none;
+}
+.best2_see{
+  position: absolute;
+  left: 849px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see2{
+  position: absolute;
+  top: 2922px;
+  left: 867px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best2_like{
+  position: absolute;
+  left: 901px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like2{
+  position: absolute;
+  top: 2922px;
+  left: 918px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
 }
 
 .best3btn{
@@ -1851,6 +1926,44 @@ input:focus {
   border: none;
 }
 
+.best3_see{
+  position: absolute;
+  left: 1154px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see3{
+  position: absolute;
+  top: 2922px;
+  left: 1172px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best3_like{
+  position: absolute;
+  left: 1206px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like3{
+  position: absolute;
+  top: 2922px;
+  left: 1223px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
 .best4btn{
   background: url("../images/best4.png");
   position: absolute;
@@ -1860,6 +1973,44 @@ input:focus {
   width: 285px;
   height: 200px;
   border: none;
+}
+
+.best4_see{
+  position: absolute;
+  left: 1459px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see4{
+  position: absolute;
+  top: 2922px;
+  left: 1477px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best4_like{
+  position: absolute;
+  left: 1511px;
+  top: 2944px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like4{
+  position: absolute;
+  top: 2922px;
+  left: 1528px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
 }
 
 .best5btn{
@@ -1873,6 +2024,44 @@ input:focus {
   border: none;
 }
 
+.best5_see{
+  position: absolute;
+  left: 544px;
+  top: 3208px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see5{
+  position: absolute;
+  top: 3186px;
+  left: 562px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best5_like{
+  position: absolute;
+  left: 596px;
+  top: 3209px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like5{
+  position: absolute;
+  top: 3186px;
+  left: 613px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
 .best6btn{
   background: url("../images/best6.png");
   position: absolute;
@@ -1882,6 +2071,44 @@ input:focus {
   width: 285px;
   height: 200px;
   border: none;
+}
+
+.best6_see{
+  position: absolute;
+  left: 849px;
+  top: 3208px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see6{
+  position: absolute;
+  top: 3186px;
+  left: 867px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best6_like{
+  position: absolute;
+  left: 901px;
+  top: 3209px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like6{
+  position: absolute;
+  top: 3186px;
+  left: 918px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
 }
 
 .best7btn{
@@ -1895,6 +2122,44 @@ input:focus {
   border: none;
 }
 
+.best7_see{
+  position: absolute;
+  left: 1154px;
+  top: 3208px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see7{
+  position: absolute;
+  top: 3186px;
+  left: 1172px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best7_like{
+  position: absolute;
+  left: 1206px;
+  top: 3209px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like7{
+  position: absolute;
+  top: 3186px;
+  left: 1223px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
 .best8btn{
   background: url("../images/best8.png");
   position: absolute;
@@ -1904,6 +2169,44 @@ input:focus {
   width: 285px;
   height: 200px;
   border: none;
+}
+
+.best8_see{
+  position: absolute;
+  left: 1459px;
+  top: 3208px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see8{
+  position: absolute;
+  top: 3186px;
+  left: 1477px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best8_like{
+  position: absolute;
+  left: 1511px;
+  top: 3209px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like8{
+  position: absolute;
+  top: 3186px;
+  left: 1528px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
 }
 
 .best9btn{
@@ -1917,6 +2220,44 @@ input:focus {
   border: none;
 }
 
+.best9_see{
+  position: absolute;
+  left: 544px;
+  top: 3470px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see9{
+  position: absolute;
+  top: 3448px;
+  left: 562px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best9_like{
+  position: absolute;
+  left: 596px;
+  top: 3471px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like9{
+  position: absolute;
+  top: 3448px;
+  left: 613px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
 .best10btn{
   background: url("../images/best6.png");
   position: absolute;
@@ -1926,6 +2267,44 @@ input:focus {
   width: 285px;
   height: 200px;
   border: none;
+}
+
+.best10_see{
+  position: absolute;
+  left: 849px;
+  top: 3470px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see10{
+  position: absolute;
+  top: 3448px;
+  left: 867px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best10_like{
+  position: absolute;
+  left: 901px;
+  top: 3471px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like10{
+  position: absolute;
+  top: 3448px;
+  left: 918px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
 }
 
 .best11btn{
@@ -1939,6 +2318,44 @@ input:focus {
   border: none;
 }
 
+.best11_see{
+  position: absolute;
+  left: 1154px;
+  top: 3470px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see11{
+  position: absolute;
+  top: 3448px;
+  left: 1172px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best11_like{
+  position: absolute;
+  left: 1206px;
+  top: 3471px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like11{
+  position: absolute;
+  top: 3448px;
+  left: 1223px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
 .best12btn{
   background: url("../images/best8.png");
   position: absolute;
@@ -1948,6 +2365,44 @@ input:focus {
   width: 285px;
   height: 200px;
   border: none;
+}
+
+.best12_see{
+  position: absolute;
+  left: 1459px;
+  top: 3470px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_see12{
+  position: absolute;
+  top: 3448px;
+  left: 1477px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
+}
+
+.best12_like{
+  position: absolute;
+  left: 1511px;
+  top: 3471px;
+  width: 16px;
+  height: 16px;
+}
+
+.best_like12{
+  position: absolute;
+  top: 3448px;
+  left: 1528px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #666666;
 }
 
 .bestmorebtn{

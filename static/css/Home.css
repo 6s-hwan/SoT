@@ -2416,3 +2416,165 @@ input:focus {
   border: none;
 }
 /* 베스트 스토리 끝 */
+
+/* 급상승 여행지 시작 */
+.riseimg{
+  position: absolute;
+  left: 360px;
+  top: 3710px;
+  width: 60px;
+  height: 60px;
+}
+
+.rise{
+  position: absolute;
+  top: 3710px;
+  left: 436px;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+}
+
+.risebtn1{
+  background: url("../images/rise1.png");
+  position: absolute;
+  top: 3818px;
+  left: 360px;
+  font-style: normal;
+  width: 278px;
+  height: 278px;
+  border: none;
+}
+
+.risebtn2{
+  background: url("../images/rise2.png");
+  position: absolute;
+  top: 3818px;
+  left: 667px;
+  font-style: normal;
+  width: 278px;
+  height: 278px;
+  border: none;
+}
+
+.risebtn3{
+  background: url("../images/rise3.png");
+  position: absolute;
+  top: 3818px;
+  left: 975px;
+  font-style: normal;
+  width: 278px;
+  height: 278px;
+  border: none;
+}
+
+.risebtn4{
+  background: url("../images/rise4.png");
+  position: absolute;
+  top: 3818px;
+  left: 1282px;
+  font-style: normal;
+  width: 278px;
+  height: 278px;
+  border: none;
+}
+
+.nextrisebtn{
+  background: url("../images/nextbtn.png");
+  position: absolute;
+  top: 3936px;
+  left: 1503px;
+  font-style: normal;
+  width: 45px;
+  height: 45px;
+  border: none;
+}
+
+/* 급상승 여행지 끝 */
+
+/* 인기 작가 스토리 시작 */
+.popularimg{
+  position: absolute;
+  left: 360px;
+  top: 4301px;
+  width: 60px;
+  height: 60px;
+}
+
+.popular{
+  position: absolute;
+  top: 4301px;
+  left: 436px;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+}
+
+.popularbtn1{
+  background: url("../images/popular1.png");
+  position: absolute;
+  top: 4421px;
+  left: 360px;
+  font-style: normal;
+  width: 183px;
+  height: 183px;
+  border: none;
+}
+
+.popularbtn2{
+  background: url("../images/popular2.png");
+  position: absolute;
+  top: 4421px;
+  left: 563px;
+  font-style: normal;
+  width: 183px;
+  height: 183px;
+  border: none;
+}
+
+.popularbtn3{
+  background: url("../images/popular3.png");
+  position: absolute;
+  top: 4421px;
+  left: 768px;
+  font-style: normal;
+  width: 183px;
+  height: 183px;
+  border: none;
+}
+
+.popularbtn4{
+  background: url("../images/popular4.png");
+  position: absolute;
+  top: 4421px;
+  left: 970px;
+  font-style: normal;
+  width: 183px;
+  height: 183px;
+  border: none;
+}
+
+.popularbtn5{
+  background: url("../images/popular5.png");
+  position: absolute;
+  top: 4421px;
+  left: 1173px;
+  font-style: normal;
+  width: 183px;
+  height: 183px;
+  border: none;
+}
+
+.popularbtn6{
+  background: url("../images/popular6.png");
+  position: absolute;
+  top: 4421px;
+  left: 1377px;
+  font-style: normal;
+  width: 183px;
+  height: 183px;
+  border: none;
+}
+/* 인기 작가 스토리 끝 */

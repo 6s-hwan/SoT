@@ -3229,3 +3229,68 @@ input:focus {
   flex-shrink: 0;
 }
 /* 추천 여행지 끝 */
+
+/* 나머지들 시작 */
+.terms_of_use{
+  position: absolute;
+  top: 6785px;
+  left: 446px;
+  font-size: 12px;
+  font-style: normal;
+  width: 42px;
+  height: 14px;
+  border: none;
+  flex-shrink: 0;
+  color: #7A7A7A;
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #FFF;
+}
+
+.personal_inf{
+  position: absolute;
+  top: 6784px;
+  left: 544px;
+  font-style: normal;
+  width: 83px;
+  height: 14px;
+  border: none;
+  flex-shrink: 0;
+  color: #7A7A7A;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #FFF;
+}
+
+.contact{
+  position: absolute;
+  top: 6785px;
+  left: 1003px;
+  font-style: normal;
+  width: 36px;
+  height: 12px;
+  border: none;
+  flex-shrink: 0;
+  color: #8F8F8F;
+  font-family: Pretendard;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #FFF;
+}
+
+.c_SoT{
+  position: absolute;
+  top: 6786px;
+  left: 1378px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #575757;
+  font-family: Pretendard;
+}
+/* 나머지들 끝 */

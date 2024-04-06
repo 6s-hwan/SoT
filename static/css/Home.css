@@ -1576,13 +1576,109 @@ input:focus {
   font-weight: 500;
   line-height: 60px;
 }
+.themeback{
+  position: absolute;
+  left: 340px;
+  top: 976px;
+  width: 1240px;
+  height: 620px;
+}
 
 .theme1{
-  background: url("../static/images/theme1.png");
+  background: url("../images/theme1.png");
   position: absolute;
   top: 996px;
   left: 360px;
   font-style: normal;
   width: 387px;
   height: 180px;
+  border: none;
+}
+
+.theme2{
+  background: url("../images/theme2.png");
+  position: absolute;
+  top: 996px;
+  left: 767px;
+  font-style: normal;
+  width: 488px;
+  height: 180px;
+  border: none;
+}
+
+.theme3{
+  background: url("../images/theme3.png");
+  position: absolute;
+  top: 996px;
+  left: 1275px;
+  font-style: normal;
+  width: 285px;
+  height: 180px;
+  border: none;
+}
+
+.theme4{
+  background: url("../images/theme4.png");
+  position: absolute;
+  top: 1196px;
+  left: 360px;
+  font-style: normal;
+  width: 285px;
+  height: 180px;
+  border: none;
+}
+
+.theme5{
+  background: url("../images/theme5.png");
+  position: absolute;
+  top: 1196px;
+  left: 665px;
+  font-style: normal;
+  width: 387px;
+  height: 180px;
+  border: none;
+}
+
+.theme6{
+  background: url("../images/theme6.png");
+  position: absolute;
+  top: 1196px;
+  left: 1072px;
+  font-style: normal;
+  width: 488px;
+  height: 180px;
+  border: none;
+}
+
+.theme7{
+  background: url("../images/theme7.png");
+  position: absolute;
+  top: 1396px;
+  left: 360px;
+  font-style: normal;
+  width: 387px;
+  height: 180px;
+  border: none;
+}
+
+.theme8{
+  background: url("../images/theme8.png");
+  position: absolute;
+  top: 1396px;
+  left: 767px;
+  font-style: normal;
+  width: 386px;
+  height: 180px;
+  border: none;
+}
+
+.theme9{
+  background: url("../images/theme9.png");
+  position: absolute;
+  top: 1396px;
+  left: 1173px;
+  font-style: normal;
+  width: 387px;
+  height: 180px;
+  border: none;
 }

@@ -2577,4 +2577,316 @@ input:focus {
   height: 183px;
   border: none;
 }
+
+.popular1_name{
+  position: absolute;
+  top: 4632px;
+  left: 401px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  font-family: "Noto Sans KR";
+}
+
+.popular1_img{
+  position: absolute;
+  left: 378px;
+  top: 4671px;
+  width: 22px;
+  height: 22px;
+}
+
+.popular_img1{
+  position: absolute;
+  top: 4672px;
+  left: 404px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular1_like{
+  position: absolute;
+  left: 457px;
+  top: 4673px;
+  width: 20px;
+  height: 20px;
+}
+
+.popular_like1{
+  position: absolute;
+  top: 4672px;
+  left: 481px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular2_name{
+  position: absolute;
+  top: 4632px;
+  left: 604px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  font-family: "Noto Sans KR";
+}
+
+.popular2_img{
+  position: absolute;
+  left: 581px;
+  top: 4671px;
+  width: 22px;
+  height: 22px;
+}
+
+.popular_img2{
+  position: absolute;
+  top: 4672px;
+  left: 607px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular2_like{
+  position: absolute;
+  left: 660px;
+  top: 4673px;
+  width: 20px;
+  height: 20px;
+}
+
+.popular_like2{
+  position: absolute;
+  top: 4672px;
+  left: 684px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular3_name{
+  position: absolute;
+  top: 4632px;
+  left: 808px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  font-family: "Noto Sans KR";
+}
+
+.popular3_img{
+  position: absolute;
+  left: 785px;
+  top: 4671px;
+  width: 22px;
+  height: 22px;
+}
+
+.popular_img3{
+  position: absolute;
+  top: 4672px;
+  left: 811px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular3_like{
+  position: absolute;
+  left: 864px;
+  top: 4673px;
+  width: 20px;
+  height: 20px;
+}
+
+.popular_like3{
+  position: absolute;
+  top: 4672px;
+  left: 888px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular4_name{
+  position: absolute;
+  top: 4632px;
+  left: 1014px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  font-family: "Noto Sans KR";
+}
+
+.popular4_img{
+  position: absolute;
+  left: 991px;
+  top: 4671px;
+  width: 22px;
+  height: 22px;
+}
+
+.popular_img4{
+  position: absolute;
+  top: 4672px;
+  left: 1017px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular4_like{
+  position: absolute;
+  left: 1070px;
+  top: 4673px;
+  width: 20px;
+  height: 20px;
+}
+
+.popular_like4{
+  position: absolute;
+  top: 4672px;
+  left: 1094px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular5_name{
+  position: absolute;
+  top: 4632px;
+  left: 1219px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  font-family: "Noto Sans KR";
+}
+
+.popular5_img{
+  position: absolute;
+  left: 1196px;
+  top: 4671px;
+  width: 22px;
+  height: 22px;
+}
+
+.popular_img5{
+  position: absolute;
+  top: 4672px;
+  left: 1222px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular5_like{
+  position: absolute;
+  left: 1275px;
+  top: 4673px;
+  width: 20px;
+  height: 20px;
+}
+
+.popular_like5{
+  position: absolute;
+  top: 4672px;
+  left: 1299px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular6_name{
+  position: absolute;
+  top: 4632px;
+  left: 1424px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  font-family: "Noto Sans KR";
+}
+
+.popular6_img{
+  position: absolute;
+  left: 1401px;
+  top: 4671px;
+  width: 22px;
+  height: 22px;
+}
+
+.popular_img6{
+  position: absolute;
+  top: 4672px;
+  left: 1427px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
+
+.popular6_like{
+  position: absolute;
+  left: 1480px;
+  top: 4673px;
+  width: 20px;
+  height: 20px;
+}
+
+.popular_like6{
+  position: absolute;
+  top: 4672px;
+  left: 1504px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #727272;
+  font-family: "Noto Sans KR";
+}
 /* 인기 작가 스토리 끝 */

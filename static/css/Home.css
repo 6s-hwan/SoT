@@ -1806,8 +1806,9 @@ input:focus {
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: 26px;
   color: #4F4F4F;
+  font-family: "Noto Sans KR";
 }
 
 .bestback{
@@ -2963,6 +2964,105 @@ input:focus {
 }
 /* 인기 작가 스토리 끝 */
 
+/* 기타 사진들 시작 */
+.etc1{
+  background: url("../images/recommend5.png");
+  position: absolute;
+  top: 5257px;
+  left: 360px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc2{
+  background: url("../images/recommend6.png");
+  position: absolute;
+  top: 5257px;
+  left: 668px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc3{
+  background: url("../images/recommend7.png");
+  position: absolute;
+  top: 5257px;
+  left: 975px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc4{
+  background: url("../images/recommend8.png");
+  position: absolute;
+  top: 5257px;
+  left: 1283px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc5{
+  background: url("../images/recommend1.png");
+  position: absolute;
+  top: 5563px;
+  left: 360px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc6{
+  background: url("../images/recommend2.png");
+  position: absolute;
+  top: 5563px;
+  left: 667px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc7{
+  background: url("../images/recommend3.png");
+  position: absolute;
+  top: 5563px;
+  left: 975px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+.etc8{
+  background: url("../images/recommend4.png");
+  position: absolute;
+  top: 5563px;
+  left: 1282px;
+  font-style: normal;
+  width: 278px;
+  height: 200px;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* 기타 사진들 끝 */
+
 /* 추천 여행지 시작 */
 .recommendimg{
   position: absolute;
@@ -2985,7 +3085,7 @@ input:focus {
 }
 
 .recommendbtn1{
-  background: url("../images/recommned1.png");
+  background: url("../images/recommend1.png");
   position: absolute;
   top: 5961px;
   left: 360px;
@@ -2996,8 +3096,32 @@ input:focus {
   flex-shrink: 0;
 }
 
+.recom1_name{
+  position: absolute;
+  top: 6167px;
+  left: 368px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  font-family: "Noto Sans KR";
+}
+
+.recom1_address{
+  position: absolute;
+  top: 6196px;
+  left: 368px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #575757;
+  font-family: "Noto Sans KR";
+}
+
 .recommendbtn2{
-  background: url("../images/recommned2.png");
+  background: url("../images/recommend2.png");
   position: absolute;
   top: 5961px;
   left: 667px;
@@ -3009,8 +3133,32 @@ input:focus {
   border-radius: 6px;
 }
 
+.recom2_name{
+  position: absolute;
+  top: 6167px;
+  left: 667px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  font-family: "Noto Sans KR";
+}
+
+.recom2_address{
+  position: absolute;
+  top: 6196px;
+  left: 667px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #575757;
+  font-family: "Noto Sans KR";
+}
+
 .recommendbtn3{
-  background: url("../images/recommned3.png");
+  background: url("../images/recommend3.png");
   position: absolute;
   top: 5961px;
   left: 975px;
@@ -3022,7 +3170,7 @@ input:focus {
 }
 
 .recommendbtn4{
-  background: url("../images/recommned4.png");
+  background: url("../images/recommend4.png");
   position: absolute;
   top: 5961px;
   left: 1282px;
@@ -3046,7 +3194,7 @@ input:focus {
 }
 
 .recommendbtn6{
-  background: url("../images/recommned6.png");
+  background: url("../images/recommend6.png");
   position: absolute;
   top: 6312px;
   left: 668px;
@@ -3058,7 +3206,7 @@ input:focus {
 }
 
 .recommendbtn7{
-  background: url("../images/recommned7.png");
+  background: url("../images/recommend7.png");
   position: absolute;
   top: 6312px;
   left: 975px;
@@ -3070,7 +3218,7 @@ input:focus {
 }
 
 .recommendbtn8{
-  background: url("../images/recommned8.png");
+  background: url("../images/recommend8.png");
   position: absolute;
   top: 6312px;
   left: 1283px;

@@ -1835,36 +1835,42 @@ input:focus {
   top: 2944px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see1{
   position: absolute;
-  top: 2922px;
+  top: 2942px;
   left: 562px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best1_like{
   position: absolute;
   left: 596px;
   top: 2944px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like1{
   position: absolute;
-  top: 2922px;
-  left: 613px;
+  top: 2942px;
+  left: 611px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best2btn{
@@ -1883,17 +1889,20 @@ input:focus {
   top: 2944px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see2{
   position: absolute;
-  top: 2922px;
+  top: 2942px;
   left: 867px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
+  letter-spacing: -0.24px;
   color: #666666;
+  font-family: "Noto Sans KR";
 }
 
 .best2_like{
@@ -1902,17 +1911,20 @@ input:focus {
   top: 2944px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_like2{
   position: absolute;
-  top: 2922px;
-  left: 918px;
+  top: 2942px;
+  left: 916px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best3btn{
@@ -1932,36 +1944,42 @@ input:focus {
   top: 2944px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see3{
   position: absolute;
-  top: 2922px;
+  top: 2942px;
   left: 1172px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best3_like{
   position: absolute;
   left: 1206px;
   top: 2944px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like3{
   position: absolute;
-  top: 2922px;
-  left: 1223px;
+  top: 2942px;
+  left: 1221px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best4btn{
@@ -1981,36 +1999,42 @@ input:focus {
   top: 2944px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see4{
   position: absolute;
-  top: 2922px;
+  top: 2942px;
   left: 1477px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best4_like{
   position: absolute;
   left: 1511px;
   top: 2944px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like4{
   position: absolute;
-  top: 2922px;
-  left: 1528px;
+  top: 2942px;
+  left: 1526px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best5btn{
@@ -2030,17 +2054,20 @@ input:focus {
   top: 3208px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see5{
   position: absolute;
-  top: 3186px;
+  top: 3206px;
   left: 562px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best5_like{
@@ -2049,17 +2076,20 @@ input:focus {
   top: 3209px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_like5{
   position: absolute;
-  top: 3186px;
-  left: 613px;
+  top: 3206px;
+  left: 611px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best6btn{
@@ -2079,36 +2109,42 @@ input:focus {
   top: 3208px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see6{
   position: absolute;
-  top: 3186px;
+  top: 3206px;
   left: 867px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best6_like{
   position: absolute;
   left: 901px;
   top: 3209px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like6{
   position: absolute;
-  top: 3186px;
-  left: 918px;
+  top: 3206px;
+  left: 916px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best7btn{
@@ -2128,36 +2164,42 @@ input:focus {
   top: 3208px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see7{
   position: absolute;
-  top: 3186px;
+  top: 3206px;
   left: 1172px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best7_like{
   position: absolute;
   left: 1206px;
   top: 3209px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like7{
   position: absolute;
-  top: 3186px;
-  left: 1223px;
+  top: 3206px;
+  left: 1221px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  font-family: "Noto Sans KR";
+  letter-spacing: -0.24px;
 }
 
 .best8btn{
@@ -2177,36 +2219,42 @@ input:focus {
   top: 3208px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see8{
   position: absolute;
-  top: 3186px;
+  top: 3206px;
   left: 1477px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best8_like{
   position: absolute;
   left: 1511px;
   top: 3209px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like8{
   position: absolute;
-  top: 3186px;
-  left: 1528px;
+  top: 3206px;
+  left: 1526px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best9btn{
@@ -2226,36 +2274,42 @@ input:focus {
   top: 3470px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see9{
   position: absolute;
-  top: 3448px;
+  top: 3468px;
   left: 562px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best9_like{
   position: absolute;
   left: 596px;
   top: 3471px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like9{
   position: absolute;
-  top: 3448px;
-  left: 613px;
+  top: 3468px;
+  left: 611px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best10btn{
@@ -2275,36 +2329,42 @@ input:focus {
   top: 3470px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see10{
   position: absolute;
-  top: 3448px;
+  top: 3468px;
   left: 867px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best10_like{
   position: absolute;
   left: 901px;
   top: 3471px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like10{
   position: absolute;
-  top: 3448px;
-  left: 918px;
+  top: 3468px;
+  left: 916px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best11btn{
@@ -2324,36 +2384,42 @@ input:focus {
   top: 3470px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see11{
   position: absolute;
-  top: 3448px;
+  top: 3468px;
   left: 1172px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best11_like{
   position: absolute;
   left: 1206px;
   top: 3471px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like11{
   position: absolute;
-  top: 3448px;
-  left: 1223px;
+  top: 3468px;
+  left: 1221px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best12btn{
@@ -2373,36 +2439,42 @@ input:focus {
   top: 3470px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .best_see12{
   position: absolute;
-  top: 3448px;
+  top: 3468px;
   left: 1477px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .best12_like{
   position: absolute;
   left: 1511px;
   top: 3471px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .best_like12{
   position: absolute;
-  top: 3448px;
-  left: 1528px;
+  top: 3468px;
+  left: 1526px;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px;
+  line-height: normal;
   color: #666666;
+  letter-spacing: -0.24px;
+  font-family: "Noto Sans KR";
 }
 
 .bestmorebtn{

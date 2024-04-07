@@ -524,178 +524,626 @@
     <!-- 내 스토리 등록하기 끝 -->
 
     <!--  테마별 여행지 시작 -->
-    <div id="theme">
-      <img src="../static/images/themeimg.png" class="themeimg">
-      <p class="theme">테마별 여행지</p>
-      <img src="../static/images/Rectangle.png" class="themeback">
-      <input type="button" class="theme1" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1128px; left: 380px; font-size: 22px; color: #FFFFFF;">자연 속 여행</p>
-      <input type="button" class="theme2" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1128px; left: 787px; font-size: 22px; color: #FFFFFF;">역사와 문화</p>
-      <input type="button" class="theme3" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1128px; left: 1295px; font-size: 22px; color: #FFFFFF;">식도락 여행</p>
-      <input type="button" class="theme4" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1328px; left: 380px; font-size: 22px; color: #FFFFFF;">축제</p>
-      <input type="button" class="theme5" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1328px; left: 687px; font-size: 22px; color: #FFFFFF;">예술 및 체험</p>
-      <input type="button" class="theme6" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1328px; left: 1092px; font-size: 22px; color: #FFFFFF;">산악 여행</p>
-      <input type="button" class="theme7" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1528px; left: 380px; font-size: 22px; color: #FFFFFF;">도심 속 여행</p>
-      <input type="button" class="theme8" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1528px; left: 787px; font-size: 22px; color: #FFFFFF;">바다와 해변</p>
-      <input type="button" class="theme9" onclick="location.href='./themepage.html';">
-      <p style="position: absolute; top: 1528px; left: 1193px; font-size: 22px; color: #FFFFFF;">테마파크</p>
+    <div id="theme_full">
+      <div id="theme">
+        <div id="theme_title">
+          <img src="../static/images/themeimg.png" class="themeimg" />
+          <p class="theme">테마별 여행지</p>
+        </div>
+
+        <div class="themeback">
+          <label for="theme1">
+            <button
+              type="button"
+              id="theme1"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme1">자연 속 여행</p>
+            </button>
+          </label>
+
+          <label for="theme2">
+            <button
+              type="button"
+              id="theme2"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme2">역사와 문화</p>
+            </button>
+          </label>
+
+          <label for="theme3">
+            <button
+              type="button"
+              id="theme3"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme3">식도락 여행</p>
+            </button>
+          </label>
+
+          <label for="theme4">
+            <button
+              type="button"
+              id="theme4"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme4">축제</p>
+            </button>
+          </label>
+
+          <label for="theme5">
+            <button
+              type="button"
+              id="theme5"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme5">예술 및 체험</p>
+            </button>
+          </label>
+
+          <label for="theme6">
+            <button
+              type="button"
+              id="theme6"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme6">산악 여행</p>
+            </button>
+          </label>
+
+          <label for="theme7">
+            <button
+              type="button"
+              id="theme7"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme7">도심속 여행</p>
+            </button>
+          </label>
+
+          <label for="theme8">
+            <button
+              type="button"
+              id="theme8"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme8">바다와 해변</p>
+            </button>
+          </label>
+
+          <label for="theme9">
+            <button
+              type="button"
+              id="theme9"
+              onclick="location.href='./themepage.html';"
+            >
+              <p id="text_theme9">테마파크</p>
+            </button>
+          </label>
+        </div>
+      </div>
     </div>
     <!--  테마별 여행지 끝 -->
     <!--  시즌별 스토리 시작 -->
     <div id="season">
-      <img src="../static/images/seasonimg.png" class="seasonimg">
+      <img src="../static/images/seasonimg.png" class="seasonimg" />
       <p class="season">시즌별 스토리</p>
-      <img src="../static/images/Rectangle.png" class="seasonback">
-      <input type="button" class="season1" onclick="location.href='./seasonpage.html';">
-      <input type="button" class="season2" onclick="location.href='./seasonpage.html';">
-      <input type="button" class="season3" onclick="location.href='./seasonpage.html';">
-      <input type="button" class="season4" onclick="location.href='./seasonpage.html';">
-      <input type="button" class="season5" onclick="location.href='./seasonpage.html';">
-      <input type="button" class="seasonmorebtn">
+      <img src="../static/images/Rectangle.png" class="seasonback" />
+      <input
+        type="button"
+        class="season1"
+        onclick="location.href='./seasonpage.html';"
+      />
+      <input
+        type="button"
+        class="season2"
+        onclick="location.href='./seasonpage.html';"
+      />
+      <input
+        type="button"
+        class="season3"
+        onclick="location.href='./seasonpage.html';"
+      />
+      <input
+        type="button"
+        class="season4"
+        onclick="location.href='./seasonpage.html';"
+      />
+      <input
+        type="button"
+        class="season5"
+        onclick="location.href='./seasonpage.html';"
+      />
+      <input type="button" class="seasonmorebtn" />
     </div>
     <!--  시즌별 스토리 끝 -->
     <!--  베스트 스토리 시작 -->
     <div id="best">
-      <img src="../static/images/bestimg.png" class="bestimg">
+      <img src="../static/images/bestimg.png" class="bestimg" />
       <p class="best1">Best Story</p>
       <p class="best2">다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요</p>
-      <img src="../static/images/Rectangle.png" class="bestback">
-      <input type="button" class="best1btn" onclick="location.href='./bestpage.html';">
-      <p class="best_1" style="position: absolute; top: 2940px; left: 362px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best1_see"> <p class="best_see1">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best1_like"> <p class="best_like1">1.8k</p>
-      <input type="button" class="best2btn" onclick="location.href='./bestpage.html';">
-      <p class="best_2" style="position: absolute; top: 2940px; left: 667px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best2_see"> <p class="best_see2">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best2_like"> <p class="best_like2">1.8k</p>
-      <input type="button" class="best3btn" onclick="location.href='./bestpage.html';">
-      <p class="best_3" style="position: absolute; top: 2940px; left: 972px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best3_see"> <p class="best_see3">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best3_like"> <p class="best_like3">1.8k</p>
-      <input type="button" class="best4btn" onclick="location.href='./bestpage.html';">
-      <p class="best_4" style="position: absolute; top: 2940px; left: 1277px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best4_see"> <p class="best_see4">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best4_like"> <p class="best_like4">1.8k</p>
-      <input type="button" class="best5btn" onclick="location.href='./bestpage.html';">
-      <p class="best_5" style="position: absolute; top: 3202px; left: 362px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best5_see"> <p class="best_see5">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best5_like"> <p class="best_like5">1.8k</p>
-      <input type="button" class="best6btn" onclick="location.href='./bestpage.html';">
-      <p class="best_6" style="position: absolute; top: 3202px; left: 667px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best6_see"> <p class="best_see6">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best6_like"> <p class="best_like6">1.8k</p>
-      <input type="button" class="best7btn" onclick="location.href='./bestpage.html';">
-      <p class="best_7" style="position: absolute; top: 3202px; left: 972px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best7_see"> <p class="best_see7">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best7_like"> <p class="best_like7">1.8k</p>
-      <input type="button" class="best8btn" onclick="location.href='./bestpage.html';">
-      <p class="best_8" style="position: absolute; top: 3202px; left: 1277px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best8_see"> <p class="best_see8">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best8_like"> <p class="best_like8">1.8k</p>
-      <input type="button" class="best9btn" onclick="location.href='./bestpage.html';">
-      <p class="best_9" style="position: absolute; top: 3464px; left: 362px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best9_see"> <p class="best_see9">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best9_like"> <p class="best_like9">1.8k</p>
-      <input type="button" class="best10btn" onclick="location.href='./bestpage.html';">
-      <p class="best_10" style="position: absolute; top: 3464px; left: 667px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best10_see"> <p class="best_see10">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best10_like"> <p class="best_like10">1.8k</p>
-      <input type="button" class="best11btn" onclick="location.href='./bestpage.html';">
-      <p class="best_11" style="position: absolute; top: 3464px; left: 972px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best11_see"> <p class="best_see11">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best11_like"> <p class="best_like11">1.8k</p>
-      <input type="button" class="best12btn" onclick="location.href='./bestpage.html';">
-      <p class="best_12" style="position: absolute; top: 3464px; left: 1277px; font-size: 18px; color: #1D1D1D;">담양 죽녹원</p>
-      <img src="../static/images/seeimg.png" class="best12_see"> <p class="best_see12">3.7k</p>
-      <img src="../static/images/likeimg.png" class="best12_like"> <p class="best_like12">1.8k</p>
-      <input type="button" class="bestmorebtn">
+      <img src="../static/images/Rectangle.png" class="bestback" />
+      <input
+        type="button"
+        class="best1btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_1"
+        style="
+          position: absolute;
+          top: 2940px;
+          left: 362px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best1_see" />
+      <p class="best_see1">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best1_like" />
+      <p class="best_like1">1.8k</p>
+      <input
+        type="button"
+        class="best2btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_2"
+        style="
+          position: absolute;
+          top: 2940px;
+          left: 667px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best2_see" />
+      <p class="best_see2">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best2_like" />
+      <p class="best_like2">1.8k</p>
+      <input
+        type="button"
+        class="best3btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_3"
+        style="
+          position: absolute;
+          top: 2940px;
+          left: 972px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best3_see" />
+      <p class="best_see3">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best3_like" />
+      <p class="best_like3">1.8k</p>
+      <input
+        type="button"
+        class="best4btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_4"
+        style="
+          position: absolute;
+          top: 2940px;
+          left: 1277px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best4_see" />
+      <p class="best_see4">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best4_like" />
+      <p class="best_like4">1.8k</p>
+      <input
+        type="button"
+        class="best5btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_5"
+        style="
+          position: absolute;
+          top: 3202px;
+          left: 362px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best5_see" />
+      <p class="best_see5">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best5_like" />
+      <p class="best_like5">1.8k</p>
+      <input
+        type="button"
+        class="best6btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_6"
+        style="
+          position: absolute;
+          top: 3202px;
+          left: 667px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best6_see" />
+      <p class="best_see6">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best6_like" />
+      <p class="best_like6">1.8k</p>
+      <input
+        type="button"
+        class="best7btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_7"
+        style="
+          position: absolute;
+          top: 3202px;
+          left: 972px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best7_see" />
+      <p class="best_see7">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best7_like" />
+      <p class="best_like7">1.8k</p>
+      <input
+        type="button"
+        class="best8btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_8"
+        style="
+          position: absolute;
+          top: 3202px;
+          left: 1277px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best8_see" />
+      <p class="best_see8">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best8_like" />
+      <p class="best_like8">1.8k</p>
+      <input
+        type="button"
+        class="best9btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_9"
+        style="
+          position: absolute;
+          top: 3464px;
+          left: 362px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best9_see" />
+      <p class="best_see9">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best9_like" />
+      <p class="best_like9">1.8k</p>
+      <input
+        type="button"
+        class="best10btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_10"
+        style="
+          position: absolute;
+          top: 3464px;
+          left: 667px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best10_see" />
+      <p class="best_see10">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best10_like" />
+      <p class="best_like10">1.8k</p>
+      <input
+        type="button"
+        class="best11btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_11"
+        style="
+          position: absolute;
+          top: 3464px;
+          left: 972px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best11_see" />
+      <p class="best_see11">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best11_like" />
+      <p class="best_like11">1.8k</p>
+      <input
+        type="button"
+        class="best12btn"
+        onclick="location.href='./bestpage.html';"
+      />
+      <p
+        class="best_12"
+        style="
+          position: absolute;
+          top: 3464px;
+          left: 1277px;
+          font-size: 18px;
+          color: #1d1d1d;
+        "
+      >
+        담양 죽녹원
+      </p>
+      <img src="../static/images/seeimg.png" class="best12_see" />
+      <p class="best_see12">3.7k</p>
+      <img src="../static/images/likeimg.png" class="best12_like" />
+      <p class="best_like12">1.8k</p>
+      <input type="button" class="bestmorebtn" />
     </div>
     <!--  베스트 스토리 끝 -->
     <!--  급상승 여행지 시작 -->
     <div id="rise">
-      <img src="../static/images/riseimg.png" class="riseimg">
+      <img src="../static/images/riseimg.png" class="riseimg" />
       <p class="rise">급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요</p>
-      <input type="button" class="risebtn1" onclick="location.href='./risepage.html';">
-      <p class="rise1" style="position: absolute; top: 4112px; left: 360px; font-size: 20px; color: #000000;"><b>서울 청계천</b></p>
-      <input type="button" class="risebtn2" onclick="location.href='./risepage.html';">
-      <p class="rise2" style="position: absolute; top: 4112px; left: 667px; font-size: 20px; color: #000000;"><b>동대문 DDP</b></p>
-      <input type="button" class="risebtn3" onclick="location.href='./risepage.html';">
-      <p class="rise3" style="position: absolute; top: 4112px; left: 975px; font-size: 20px; color: #000000;"><b>춘천 남이섬</b></p>
-      <input type="button" class="risebtn4" onclick="location.href='./risepage.html';">
-      <p class="rise4" style="position: absolute; top: 4112px; left: 1282px; font-size: 20px; color: #000000;"><b>서귀포 표선</b></p>
-      <input type="button" class="nextrisebtn" onclick="location.href='./risepage.html';">
+      <input
+        type="button"
+        class="risebtn1"
+        onclick="location.href='./risepage.html';"
+      />
+      <p
+        class="rise1"
+        style="
+          position: absolute;
+          top: 4112px;
+          left: 360px;
+          font-size: 20px;
+          color: #000000;
+        "
+      >
+        <b>서울 청계천</b>
+      </p>
+      <input
+        type="button"
+        class="risebtn2"
+        onclick="location.href='./risepage.html';"
+      />
+      <p
+        class="rise2"
+        style="
+          position: absolute;
+          top: 4112px;
+          left: 667px;
+          font-size: 20px;
+          color: #000000;
+        "
+      >
+        <b>동대문 DDP</b>
+      </p>
+      <input
+        type="button"
+        class="risebtn3"
+        onclick="location.href='./risepage.html';"
+      />
+      <p
+        class="rise3"
+        style="
+          position: absolute;
+          top: 4112px;
+          left: 975px;
+          font-size: 20px;
+          color: #000000;
+        "
+      >
+        <b>춘천 남이섬</b>
+      </p>
+      <input
+        type="button"
+        class="risebtn4"
+        onclick="location.href='./risepage.html';"
+      />
+      <p
+        class="rise4"
+        style="
+          position: absolute;
+          top: 4112px;
+          left: 1282px;
+          font-size: 20px;
+          color: #000000;
+        "
+      >
+        <b>서귀포 표선</b>
+      </p>
+      <input
+        type="button"
+        class="nextrisebtn"
+        onclick="location.href='./risepage.html';"
+      />
     </div>
     <!--  급상승 여행지 끝 -->
     <!-- 인기 작가 스토리 시작 -->
     <div id="popular">
-      <img src="../static/images/popularimg.png" class="popularimg">
+      <img src="../static/images/popularimg.png" class="popularimg" />
       <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
-      <input type="button" class="popularbtn1" onclick="location.href='./popularpage.html';">
+      <input
+        type="button"
+        class="popularbtn1"
+        onclick="location.href='./popularpage.html';"
+      />
       <p class="popular1_name"><b>Cosmos1</b></p>
-      <img src="../static/images/imageimg.png" class="popular1_img"> <p class="popular_img1">451</p>
-      <img src="../static/images/likeimg.png" class="popular1_like"> <p class="popular_like1">36.2k</p>
-      <input type="button" class="popularbtn2" onclick="location.href='./popularpage.html';">
+      <img src="../static/images/imageimg.png" class="popular1_img" />
+      <p class="popular_img1">451</p>
+      <img src="../static/images/likeimg.png" class="popular1_like" />
+      <p class="popular_like1">36.2k</p>
+      <input
+        type="button"
+        class="popularbtn2"
+        onclick="location.href='./popularpage.html';"
+      />
       <p class="popular2_name"><b>Cosmos2</b></p>
-      <img src="../static/images/imageimg.png" class="popular2_img"> <p class="popular_img2">451</p>
-      <img src="../static/images/likeimg.png" class="popular2_like"> <p class="popular_like2">36.2k</p>
-      <input type="button" class="popularbtn3" onclick="location.href='./popularpage.html';">
+      <img src="../static/images/imageimg.png" class="popular2_img" />
+      <p class="popular_img2">451</p>
+      <img src="../static/images/likeimg.png" class="popular2_like" />
+      <p class="popular_like2">36.2k</p>
+      <input
+        type="button"
+        class="popularbtn3"
+        onclick="location.href='./popularpage.html';"
+      />
       <p class="popular3_name"><b>Cosmos3</b></p>
-      <img src="../static/images/imageimg.png" class="popular3_img"> <p class="popular_img3">451</p>
-      <img src="../static/images/likeimg.png" class="popular3_like"> <p class="popular_like3">36.2k</p>
-      <input type="button" class="popularbtn4" onclick="location.href='./popularpage.html';">
+      <img src="../static/images/imageimg.png" class="popular3_img" />
+      <p class="popular_img3">451</p>
+      <img src="../static/images/likeimg.png" class="popular3_like" />
+      <p class="popular_like3">36.2k</p>
+      <input
+        type="button"
+        class="popularbtn4"
+        onclick="location.href='./popularpage.html';"
+      />
       <p class="popular4_name"><b>Cosmos4</b></p>
-      <img src="../static/images/imageimg.png" class="popular4_img"> <p class="popular_img4">451</p>
-      <img src="../static/images/likeimg.png" class="popular4_like"> <p class="popular_like4">36.2k</p>
-      <input type="button" class="popularbtn5" onclick="location.href='./popularpage.html';">
+      <img src="../static/images/imageimg.png" class="popular4_img" />
+      <p class="popular_img4">451</p>
+      <img src="../static/images/likeimg.png" class="popular4_like" />
+      <p class="popular_like4">36.2k</p>
+      <input
+        type="button"
+        class="popularbtn5"
+        onclick="location.href='./popularpage.html';"
+      />
       <p class="popular5_name"><b>Cosmos5</b></p>
-      <img src="../static/images/imageimg.png" class="popular5_img"> <p class="popular_img5">451</p>
-      <img src="../static/images/likeimg.png" class="popular5_like"> <p class="popular_like5">36.2k</p>
-      <input type="button" class="popularbtn6" onclick="location.href='./popularpage.html';">
+      <img src="../static/images/imageimg.png" class="popular5_img" />
+      <p class="popular_img5">451</p>
+      <img src="../static/images/likeimg.png" class="popular5_like" />
+      <p class="popular_like5">36.2k</p>
+      <input
+        type="button"
+        class="popularbtn6"
+        onclick="location.href='./popularpage.html';"
+      />
       <p class="popular6_name"><b>Cosmos6</b></p>
-      <img src="../static/images/imageimg.png" class="popular6_img"> <p class="popular_img6">451</p>
-      <img src="../static/images/likeimg.png" class="popular6_like"> <p class="popular_like6">36.2k</p>
+      <img src="../static/images/imageimg.png" class="popular6_img" />
+      <p class="popular_img6">451</p>
+      <img src="../static/images/likeimg.png" class="popular6_like" />
+      <p class="popular_like6">36.2k</p>
     </div>
     <!-- 인기 작가 스토리 끝 -->
     <!-- 기타 사진들 시작 -->
-    <input type="button" class="etc1" onclick="location.href='./etc.html';">
-    <input type="button" class="etc2" onclick="location.href='./etc.html';">
-    <input type="button" class="etc3" onclick="location.href='./etc.html';">
-    <input type="button" class="etc4" onclick="location.href='./etc.html';">
-    <input type="button" class="etc5" onclick="location.href='./etc.html';">
-    <input type="button" class="etc6" onclick="location.href='./etc.html';">
-    <input type="button" class="etc7" onclick="location.href='./etc.html';">
-    <input type="button" class="etc8" onclick="location.href='./etc.html';">
+    <input type="button" class="etc1" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc2" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc3" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc4" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc5" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc6" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc7" onclick="location.href='./etc.html';" />
+    <input type="button" class="etc8" onclick="location.href='./etc.html';" />
     <!-- 기타 사진들 시작 -->
     <!-- 추천 여행지 시작 -->
     <div id="recommend">
-      <img src="../static/images/recommendimg.png" class="recommendimg">
+      <img src="../static/images/recommendimg.png" class="recommendimg" />
       <p class="recommend">이런 여행지는 어떠신가요?</p>
-      <input type="button" class="recommendbtn1" onclick="location.href='./recommendpage.html';">
+      <input
+        type="button"
+        class="recommendbtn1"
+        onclick="location.href='./recommendpage.html';"
+      />
       <p class="recom1_name">제주도 우도</p>
       <p class="recom1_address">제주도 제주시 우도면 조일길 44-1</p>
-      <input type="button" class="recommendbtn2" onclick="location.href='./recommendpage.html';">
+      <input
+        type="button"
+        class="recommendbtn2"
+        onclick="location.href='./recommendpage.html';"
+      />
       <p class="recom2_name">창화당 대학로점</p>
       <p class="recom2_address">서울 종로구 창경궁로</p>
-      <input type="button" class="recommendbtn3" onclick="location.href='./recommendpage.html';">
-      <input type="button" class="recommendbtn4" onclick="location.href='./recommendpage.html';">
-      <input type="button" class="recommendbtn5" onclick="location.href='./recommendpage.html';">
-      <input type="button" class="recommendbtn6" onclick="location.href='./recommendpage.html';">
-      <input type="button" class="recommendbtn7" onclick="location.href='./recommendpage.html';">
-      <input type="button" class="recommendbtn8" onclick="location.href='./recommendpage.html';">
+      <input
+        type="button"
+        class="recommendbtn3"
+        onclick="location.href='./recommendpage.html';"
+      />
+      <input
+        type="button"
+        class="recommendbtn4"
+        onclick="location.href='./recommendpage.html';"
+      />
+      <input
+        type="button"
+        class="recommendbtn5"
+        onclick="location.href='./recommendpage.html';"
+      />
+      <input
+        type="button"
+        class="recommendbtn6"
+        onclick="location.href='./recommendpage.html';"
+      />
+      <input
+        type="button"
+        class="recommendbtn7"
+        onclick="location.href='./recommendpage.html';"
+      />
+      <input
+        type="button"
+        class="recommendbtn8"
+        onclick="location.href='./recommendpage.html';"
+      />
     </div>
     <!-- 추천 여행지 끝 -->
     <!-- 나머지들 -->
     <div>
-      <input type="button" value="이용약관" class="terms_of_use" onclick="location.href='./terms_of_use.html';">
-      <input type="button" value="개인정보처리방침" class="personal_inf" onclick="location.href='./personal_inf.html';">
-      <input type="button" value="Contact" class="contact" onclick="location.href='./contact.html';">
+      <input
+        type="button"
+        value="이용약관"
+        class="terms_of_use"
+        onclick="location.href='./terms_of_use.html';"
+      />
+      <input
+        type="button"
+        value="개인정보처리방침"
+        class="personal_inf"
+        onclick="location.href='./personal_inf.html';"
+      />
+      <input
+        type="button"
+        value="Contact"
+        class="contact"
+        onclick="location.href='./contact.html';"
+      />
       <p class="c_SoT">ⓒ 2024 SoT</p>
     </div>
   </body>

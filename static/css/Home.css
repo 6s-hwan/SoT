@@ -266,13 +266,23 @@ input::placeholder {
 #bg_gray > #login_pop_up > #first > #middle {
   width: 136px;
 }
-#bg_gray > #login_pop_up > #first > #close {
+#close {
   padding-top: 12px;
   padding-bottom: 16px;
   width: 28px;
   height: 28px;
   cursor: pointer;
 }
+#close1 {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+/* #close {
+  cursor: pointer;
+} */
 
 /* 로그인 후 당신의 스토리를 포스팅해보세요! */
 #bg_gray > #login_pop_up > #text21 {
@@ -550,13 +560,13 @@ input::placeholder {
 #bg_gray > #join_pop_up > #first > #middle1 {
   width: 136px;
 }
-#bg_gray > #join_pop_up > #first > #close1 {
+/* #bg_gray > #join_pop_up > #first > #close1 {
   padding-top: 12px;
   padding-bottom: 16px;
   width: 28px;
   height: 28px;
   cursor: pointer;
-}
+} */
 
 /* 가로선 */
 hr {
@@ -1557,136 +1567,242 @@ input:focus {
 }
 /* 내스토리 등록하기 끝 */
 
-
 /* 테마별 여행지 시작 */
-.themeimg{
-  position: absolute;
-  left: 360px;
-  top: 900px;
+#theme_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 100px;
+}
+
+#theme_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 16px;
+}
+.themeimg {
   width: 60px;
   height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
 }
 
-.theme{
-  position: absolute;
-  top: 900px;
-  left: 436px;
+.theme {
   font-size: 36px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 56px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 36px;
+  font-style: normal;
+  /* font-weight: 500;
+  line-height: 60px; */
 }
-.themeback{
-  position: absolute;
-  left: 340px;
-  top: 976px;
+.themeback {
   width: 1240px;
   height: 620px;
+  border-radius: 12px;
+  background: #f8f8f8;
 }
 
-.theme1{
+#theme1 {
   background: url("../images/theme1.png");
-  position: absolute;
-  top: 996px;
-  left: 360px;
-  font-style: normal;
   width: 387px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme2{
+#text_theme1 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 235px;
+}
+
+#theme2 {
   background: url("../images/theme2.png");
-  position: absolute;
-  top: 996px;
-  left: 767px;
-  font-style: normal;
-  width: 488px;
+  width: 487.002px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme3{
+#text_theme2 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 340px;
+}
+
+#theme3 {
   background: url("../images/theme3.png");
-  position: absolute;
-  top: 996px;
-  left: 1275px;
-  font-style: normal;
   width: 285px;
   height: 180px;
   border: none;
+  margin-left: 21px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme4{
+#text_theme3 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 138px;
+}
+
+#theme4 {
   background: url("../images/theme4.png");
-  position: absolute;
-  top: 1196px;
-  left: 360px;
-  font-style: normal;
   width: 285px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme5{
-  background: url("../images/theme5.png");
-  position: absolute;
-  top: 1196px;
-  left: 665px;
+#text_theme4 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 204px;
+}
+
+#theme5 {
+  background: url("../images/theme5.png");
   width: 387px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme6{
-  background: url("../images/theme6.png");
-  position: absolute;
-  top: 1196px;
-  left: 1072px;
+#text_theme5 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 233px;
+}
+
+#theme6 {
+  background: url("../images/theme6.png");
   width: 488px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme7{
-  background: url("../images/theme7.png");
-  position: absolute;
-  top: 1396px;
-  left: 360px;
+#text_theme6 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 362px;
+}
+
+#theme7 {
+  background: url("../images/theme7.png");
   width: 387px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme8{
-  background: url("../images/theme8.png");
-  position: absolute;
-  top: 1396px;
-  left: 767px;
+#text_theme7 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 239px;
+}
+
+#theme8 {
+  background: url("../images/theme8.png");
   width: 386px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.theme9{
-  background: url("../images/theme9.png");
-  position: absolute;
-  top: 1396px;
-  left: 1173px;
+#text_theme8 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 239px;
+}
+
+#theme9 {
+  background: url("../images/theme9.png");
   width: 387px;
   height: 180px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme9 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 266px;
 }
 /* 테마별 여행지 끝 */
 
 /* 시즌별 스토리 시작 */
 
-.seasonimg{
+.seasonimg {
   position: absolute;
   left: 360px;
   top: 1716px;
@@ -1694,7 +1810,7 @@ input:focus {
   height: 60px;
 }
 
-.season{
+.season {
   position: absolute;
   top: 1716px;
   left: 436px;
@@ -1704,7 +1820,7 @@ input:focus {
   line-height: 56px;
 }
 
-.seasonback{
+.seasonback {
   position: absolute;
   left: 340px;
   top: 1792px;
@@ -1712,7 +1828,7 @@ input:focus {
   height: 617px;
 }
 
-.season1{
+.season1 {
   background: url("../images/season1.png");
   position: absolute;
   top: 1813px;
@@ -1723,7 +1839,7 @@ input:focus {
   border: none;
 }
 
-.season2{
+.season2 {
   background: url("../images/season2.png");
   position: absolute;
   top: 1813px;
@@ -1735,7 +1851,7 @@ input:focus {
   border-radius: 8px;
 }
 
-.season3{
+.season3 {
   background: url("../images/season3.png");
   position: absolute;
   top: 1813px;
@@ -1746,7 +1862,7 @@ input:focus {
   border: none;
 }
 
-.season4{
+.season4 {
   background: url("../images/season4.png");
   position: absolute;
   top: 2111px;
@@ -1757,7 +1873,7 @@ input:focus {
   border: none;
 }
 
-.season5{
+.season5 {
   background: url("../images/season5.png");
   position: absolute;
   top: 2111px;
@@ -1768,7 +1884,7 @@ input:focus {
   border: none;
 }
 
-.seasonmorebtn{
+.seasonmorebtn {
   background: url("../images/morebtn.png");
   position: absolute;
   top: 2450px;
@@ -1781,7 +1897,7 @@ input:focus {
 /* 시즌별 스토리 끝 */
 
 /* 베스트 스토리 시작 */
-.bestimg{
+.bestimg {
   position: absolute;
   left: 360px;
   top: 2628px;
@@ -1789,7 +1905,7 @@ input:focus {
   height: 60px;
 }
 
-.best1{
+.best1 {
   position: absolute;
   top: 2618px;
   left: 438px;
@@ -1799,7 +1915,7 @@ input:focus {
   line-height: 56px;
 }
 
-.best2{
+.best2 {
   position: absolute;
   top: 2662px;
   left: 439px;
@@ -1807,11 +1923,11 @@ input:focus {
   font-style: normal;
   font-weight: 500;
   line-height: 26px;
-  color: #4F4F4F;
+  color: #4f4f4f;
   font-family: "Noto Sans KR";
 }
 
-.bestback{
+.bestback {
   position: absolute;
   left: 340px;
   top: 2714px;
@@ -1819,7 +1935,7 @@ input:focus {
   height: 798px;
 }
 
-.best1btn{
+.best1btn {
   background: url("../images/best1.png");
   position: absolute;
   top: 2732px;
@@ -1830,7 +1946,7 @@ input:focus {
   border: none;
 }
 
-.best1_see{
+.best1_see {
   position: absolute;
   left: 544px;
   top: 2944px;
@@ -1839,7 +1955,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see1{
+.best_see1 {
   position: absolute;
   top: 2942px;
   left: 562px;
@@ -1852,7 +1968,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best1_like{
+.best1_like {
   position: absolute;
   left: 596px;
   top: 2944px;
@@ -1861,7 +1977,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like1{
+.best_like1 {
   position: absolute;
   top: 2942px;
   left: 611px;
@@ -1874,7 +1990,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best2btn{
+.best2btn {
   background: url("../images/best2.png");
   position: absolute;
   top: 2732px;
@@ -1884,7 +2000,7 @@ input:focus {
   height: 200px;
   border: none;
 }
-.best2_see{
+.best2_see {
   position: absolute;
   left: 849px;
   top: 2944px;
@@ -1893,7 +2009,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see2{
+.best_see2 {
   position: absolute;
   top: 2942px;
   left: 867px;
@@ -1906,7 +2022,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best2_like{
+.best2_like {
   position: absolute;
   left: 901px;
   top: 2944px;
@@ -1915,7 +2031,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like2{
+.best_like2 {
   position: absolute;
   top: 2942px;
   left: 916px;
@@ -1928,7 +2044,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best3btn{
+.best3btn {
   background: url("../images/best3.png");
   position: absolute;
   top: 2732px;
@@ -1939,7 +2055,7 @@ input:focus {
   border: none;
 }
 
-.best3_see{
+.best3_see {
   position: absolute;
   left: 1154px;
   top: 2944px;
@@ -1948,7 +2064,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see3{
+.best_see3 {
   position: absolute;
   top: 2942px;
   left: 1172px;
@@ -1961,7 +2077,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best3_like{
+.best3_like {
   position: absolute;
   left: 1206px;
   top: 2944px;
@@ -1970,7 +2086,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like3{
+.best_like3 {
   position: absolute;
   top: 2942px;
   left: 1221px;
@@ -1983,7 +2099,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best4btn{
+.best4btn {
   background: url("../images/best4.png");
   position: absolute;
   top: 2732px;
@@ -1994,7 +2110,7 @@ input:focus {
   border: none;
 }
 
-.best4_see{
+.best4_see {
   position: absolute;
   left: 1459px;
   top: 2944px;
@@ -2003,7 +2119,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see4{
+.best_see4 {
   position: absolute;
   top: 2942px;
   left: 1477px;
@@ -2016,7 +2132,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best4_like{
+.best4_like {
   position: absolute;
   left: 1511px;
   top: 2944px;
@@ -2025,7 +2141,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like4{
+.best_like4 {
   position: absolute;
   top: 2942px;
   left: 1526px;
@@ -2038,7 +2154,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best5btn{
+.best5btn {
   background: url("../images/best5.png");
   position: absolute;
   top: 2994px;
@@ -2049,7 +2165,7 @@ input:focus {
   border: none;
 }
 
-.best5_see{
+.best5_see {
   position: absolute;
   left: 544px;
   top: 3208px;
@@ -2058,7 +2174,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see5{
+.best_see5 {
   position: absolute;
   top: 3206px;
   left: 562px;
@@ -2071,7 +2187,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best5_like{
+.best5_like {
   position: absolute;
   left: 596px;
   top: 3209px;
@@ -2080,7 +2196,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like5{
+.best_like5 {
   position: absolute;
   top: 3206px;
   left: 611px;
@@ -2093,7 +2209,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best6btn{
+.best6btn {
   background: url("../images/best6.png");
   position: absolute;
   top: 2994px;
@@ -2104,7 +2220,7 @@ input:focus {
   border: none;
 }
 
-.best6_see{
+.best6_see {
   position: absolute;
   left: 849px;
   top: 3208px;
@@ -2113,7 +2229,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see6{
+.best_see6 {
   position: absolute;
   top: 3206px;
   left: 867px;
@@ -2126,7 +2242,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best6_like{
+.best6_like {
   position: absolute;
   left: 901px;
   top: 3209px;
@@ -2135,7 +2251,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like6{
+.best_like6 {
   position: absolute;
   top: 3206px;
   left: 916px;
@@ -2148,7 +2264,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best7btn{
+.best7btn {
   background: url("../images/best7.png");
   position: absolute;
   top: 2994px;
@@ -2159,7 +2275,7 @@ input:focus {
   border: none;
 }
 
-.best7_see{
+.best7_see {
   position: absolute;
   left: 1154px;
   top: 3208px;
@@ -2168,7 +2284,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see7{
+.best_see7 {
   position: absolute;
   top: 3206px;
   left: 1172px;
@@ -2181,7 +2297,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best7_like{
+.best7_like {
   position: absolute;
   left: 1206px;
   top: 3209px;
@@ -2190,7 +2306,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like7{
+.best_like7 {
   position: absolute;
   top: 3206px;
   left: 1221px;
@@ -2203,7 +2319,7 @@ input:focus {
   letter-spacing: -0.24px;
 }
 
-.best8btn{
+.best8btn {
   background: url("../images/best8.png");
   position: absolute;
   top: 2994px;
@@ -2214,7 +2330,7 @@ input:focus {
   border: none;
 }
 
-.best8_see{
+.best8_see {
   position: absolute;
   left: 1459px;
   top: 3208px;
@@ -2223,7 +2339,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see8{
+.best_see8 {
   position: absolute;
   top: 3206px;
   left: 1477px;
@@ -2236,7 +2352,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best8_like{
+.best8_like {
   position: absolute;
   left: 1511px;
   top: 3209px;
@@ -2245,7 +2361,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like8{
+.best_like8 {
   position: absolute;
   top: 3206px;
   left: 1526px;
@@ -2258,7 +2374,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best9btn{
+.best9btn {
   background: url("../images/best5.png");
   position: absolute;
   top: 3256px;
@@ -2269,7 +2385,7 @@ input:focus {
   border: none;
 }
 
-.best9_see{
+.best9_see {
   position: absolute;
   left: 544px;
   top: 3470px;
@@ -2278,7 +2394,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see9{
+.best_see9 {
   position: absolute;
   top: 3468px;
   left: 562px;
@@ -2291,7 +2407,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best9_like{
+.best9_like {
   position: absolute;
   left: 596px;
   top: 3471px;
@@ -2300,7 +2416,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like9{
+.best_like9 {
   position: absolute;
   top: 3468px;
   left: 611px;
@@ -2313,7 +2429,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best10btn{
+.best10btn {
   background: url("../images/best6.png");
   position: absolute;
   top: 3256px;
@@ -2324,7 +2440,7 @@ input:focus {
   border: none;
 }
 
-.best10_see{
+.best10_see {
   position: absolute;
   left: 849px;
   top: 3470px;
@@ -2333,7 +2449,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see10{
+.best_see10 {
   position: absolute;
   top: 3468px;
   left: 867px;
@@ -2346,7 +2462,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best10_like{
+.best10_like {
   position: absolute;
   left: 901px;
   top: 3471px;
@@ -2355,7 +2471,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like10{
+.best_like10 {
   position: absolute;
   top: 3468px;
   left: 916px;
@@ -2368,7 +2484,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best11btn{
+.best11btn {
   background: url("../images/best7.png");
   position: absolute;
   top: 3256px;
@@ -2379,7 +2495,7 @@ input:focus {
   border: none;
 }
 
-.best11_see{
+.best11_see {
   position: absolute;
   left: 1154px;
   top: 3470px;
@@ -2388,7 +2504,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see11{
+.best_see11 {
   position: absolute;
   top: 3468px;
   left: 1172px;
@@ -2401,7 +2517,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best11_like{
+.best11_like {
   position: absolute;
   left: 1206px;
   top: 3471px;
@@ -2410,7 +2526,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like11{
+.best_like11 {
   position: absolute;
   top: 3468px;
   left: 1221px;
@@ -2423,7 +2539,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best12btn{
+.best12btn {
   background: url("../images/best8.png");
   position: absolute;
   top: 3256px;
@@ -2434,7 +2550,7 @@ input:focus {
   border: none;
 }
 
-.best12_see{
+.best12_see {
   position: absolute;
   left: 1459px;
   top: 3470px;
@@ -2443,7 +2559,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_see12{
+.best_see12 {
   position: absolute;
   top: 3468px;
   left: 1477px;
@@ -2456,7 +2572,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.best12_like{
+.best12_like {
   position: absolute;
   left: 1511px;
   top: 3471px;
@@ -2465,7 +2581,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.best_like12{
+.best_like12 {
   position: absolute;
   top: 3468px;
   left: 1526px;
@@ -2478,7 +2594,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.bestmorebtn{
+.bestmorebtn {
   background: url("../images/morebtn.png");
   position: absolute;
   top: 3542px;
@@ -2491,7 +2607,7 @@ input:focus {
 /* 베스트 스토리 끝 */
 
 /* 급상승 여행지 시작 */
-.riseimg{
+.riseimg {
   position: absolute;
   left: 360px;
   top: 3710px;
@@ -2499,7 +2615,7 @@ input:focus {
   height: 60px;
 }
 
-.rise{
+.rise {
   position: absolute;
   top: 3710px;
   left: 436px;
@@ -2509,7 +2625,7 @@ input:focus {
   line-height: 56px;
 }
 
-.risebtn1{
+.risebtn1 {
   background: url("../images/rise1.png");
   position: absolute;
   top: 3818px;
@@ -2520,7 +2636,7 @@ input:focus {
   border: none;
 }
 
-.risebtn2{
+.risebtn2 {
   background: url("../images/rise2.png");
   position: absolute;
   top: 3818px;
@@ -2531,7 +2647,7 @@ input:focus {
   border: none;
 }
 
-.risebtn3{
+.risebtn3 {
   background: url("../images/rise3.png");
   position: absolute;
   top: 3818px;
@@ -2542,7 +2658,7 @@ input:focus {
   border: none;
 }
 
-.risebtn4{
+.risebtn4 {
   background: url("../images/rise4.png");
   position: absolute;
   top: 3818px;
@@ -2553,7 +2669,7 @@ input:focus {
   border: none;
 }
 
-.nextrisebtn{
+.nextrisebtn {
   background: url("../images/nextbtn.png");
   position: absolute;
   top: 3936px;
@@ -2567,7 +2683,7 @@ input:focus {
 /* 급상승 여행지 끝 */
 
 /* 인기 작가 스토리 시작 */
-.popularimg{
+.popularimg {
   position: absolute;
   left: 360px;
   top: 4301px;
@@ -2575,7 +2691,7 @@ input:focus {
   height: 60px;
 }
 
-.popular{
+.popular {
   position: absolute;
   top: 4301px;
   left: 436px;
@@ -2585,7 +2701,7 @@ input:focus {
   line-height: 56px;
 }
 
-.popularbtn1{
+.popularbtn1 {
   background: url("../images/popular1.png");
   position: absolute;
   top: 4421px;
@@ -2596,7 +2712,7 @@ input:focus {
   border: none;
 }
 
-.popularbtn2{
+.popularbtn2 {
   background: url("../images/popular2.png");
   position: absolute;
   top: 4421px;
@@ -2607,7 +2723,7 @@ input:focus {
   border: none;
 }
 
-.popularbtn3{
+.popularbtn3 {
   background: url("../images/popular3.png");
   position: absolute;
   top: 4421px;
@@ -2618,7 +2734,7 @@ input:focus {
   border: none;
 }
 
-.popularbtn4{
+.popularbtn4 {
   background: url("../images/popular4.png");
   position: absolute;
   top: 4421px;
@@ -2629,7 +2745,7 @@ input:focus {
   border: none;
 }
 
-.popularbtn5{
+.popularbtn5 {
   background: url("../images/popular5.png");
   position: absolute;
   top: 4421px;
@@ -2640,7 +2756,7 @@ input:focus {
   border: none;
 }
 
-.popularbtn6{
+.popularbtn6 {
   background: url("../images/popular6.png");
   position: absolute;
   top: 4421px;
@@ -2651,7 +2767,7 @@ input:focus {
   border: none;
 }
 
-.popular1_name{
+.popular1_name {
   position: absolute;
   top: 4632px;
   left: 401px;
@@ -2663,7 +2779,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular1_img{
+.popular1_img {
   position: absolute;
   left: 378px;
   top: 4671px;
@@ -2671,7 +2787,7 @@ input:focus {
   height: 22px;
 }
 
-.popular_img1{
+.popular_img1 {
   position: absolute;
   top: 4672px;
   left: 404px;
@@ -2683,7 +2799,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular1_like{
+.popular1_like {
   position: absolute;
   left: 457px;
   top: 4673px;
@@ -2691,7 +2807,7 @@ input:focus {
   height: 20px;
 }
 
-.popular_like1{
+.popular_like1 {
   position: absolute;
   top: 4672px;
   left: 481px;
@@ -2703,7 +2819,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular2_name{
+.popular2_name {
   position: absolute;
   top: 4632px;
   left: 604px;
@@ -2715,7 +2831,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular2_img{
+.popular2_img {
   position: absolute;
   left: 581px;
   top: 4671px;
@@ -2723,7 +2839,7 @@ input:focus {
   height: 22px;
 }
 
-.popular_img2{
+.popular_img2 {
   position: absolute;
   top: 4672px;
   left: 607px;
@@ -2735,7 +2851,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular2_like{
+.popular2_like {
   position: absolute;
   left: 660px;
   top: 4673px;
@@ -2743,7 +2859,7 @@ input:focus {
   height: 20px;
 }
 
-.popular_like2{
+.popular_like2 {
   position: absolute;
   top: 4672px;
   left: 684px;
@@ -2755,7 +2871,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular3_name{
+.popular3_name {
   position: absolute;
   top: 4632px;
   left: 808px;
@@ -2767,7 +2883,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular3_img{
+.popular3_img {
   position: absolute;
   left: 785px;
   top: 4671px;
@@ -2775,7 +2891,7 @@ input:focus {
   height: 22px;
 }
 
-.popular_img3{
+.popular_img3 {
   position: absolute;
   top: 4672px;
   left: 811px;
@@ -2787,7 +2903,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular3_like{
+.popular3_like {
   position: absolute;
   left: 864px;
   top: 4673px;
@@ -2795,7 +2911,7 @@ input:focus {
   height: 20px;
 }
 
-.popular_like3{
+.popular_like3 {
   position: absolute;
   top: 4672px;
   left: 888px;
@@ -2807,7 +2923,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular4_name{
+.popular4_name {
   position: absolute;
   top: 4632px;
   left: 1014px;
@@ -2819,7 +2935,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular4_img{
+.popular4_img {
   position: absolute;
   left: 991px;
   top: 4671px;
@@ -2827,7 +2943,7 @@ input:focus {
   height: 22px;
 }
 
-.popular_img4{
+.popular_img4 {
   position: absolute;
   top: 4672px;
   left: 1017px;
@@ -2839,7 +2955,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular4_like{
+.popular4_like {
   position: absolute;
   left: 1070px;
   top: 4673px;
@@ -2847,7 +2963,7 @@ input:focus {
   height: 20px;
 }
 
-.popular_like4{
+.popular_like4 {
   position: absolute;
   top: 4672px;
   left: 1094px;
@@ -2859,7 +2975,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular5_name{
+.popular5_name {
   position: absolute;
   top: 4632px;
   left: 1219px;
@@ -2871,7 +2987,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular5_img{
+.popular5_img {
   position: absolute;
   left: 1196px;
   top: 4671px;
@@ -2879,7 +2995,7 @@ input:focus {
   height: 22px;
 }
 
-.popular_img5{
+.popular_img5 {
   position: absolute;
   top: 4672px;
   left: 1222px;
@@ -2891,7 +3007,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular5_like{
+.popular5_like {
   position: absolute;
   left: 1275px;
   top: 4673px;
@@ -2899,7 +3015,7 @@ input:focus {
   height: 20px;
 }
 
-.popular_like5{
+.popular_like5 {
   position: absolute;
   top: 4672px;
   left: 1299px;
@@ -2911,7 +3027,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular6_name{
+.popular6_name {
   position: absolute;
   top: 4632px;
   left: 1424px;
@@ -2923,7 +3039,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular6_img{
+.popular6_img {
   position: absolute;
   left: 1401px;
   top: 4671px;
@@ -2931,7 +3047,7 @@ input:focus {
   height: 22px;
 }
 
-.popular_img6{
+.popular_img6 {
   position: absolute;
   top: 4672px;
   left: 1427px;
@@ -2943,7 +3059,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.popular6_like{
+.popular6_like {
   position: absolute;
   left: 1480px;
   top: 4673px;
@@ -2951,7 +3067,7 @@ input:focus {
   height: 20px;
 }
 
-.popular_like6{
+.popular_like6 {
   position: absolute;
   top: 4672px;
   left: 1504px;
@@ -2965,7 +3081,7 @@ input:focus {
 /* 인기 작가 스토리 끝 */
 
 /* 기타 사진들 시작 */
-.etc1{
+.etc1 {
   background: url("../images/recommend5.png");
   position: absolute;
   top: 5257px;
@@ -2977,7 +3093,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc2{
+.etc2 {
   background: url("../images/recommend6.png");
   position: absolute;
   top: 5257px;
@@ -2989,7 +3105,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc3{
+.etc3 {
   background: url("../images/recommend7.png");
   position: absolute;
   top: 5257px;
@@ -3001,7 +3117,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc4{
+.etc4 {
   background: url("../images/recommend8.png");
   position: absolute;
   top: 5257px;
@@ -3013,7 +3129,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc5{
+.etc5 {
   background: url("../images/recommend1.png");
   position: absolute;
   top: 5563px;
@@ -3025,7 +3141,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc6{
+.etc6 {
   background: url("../images/recommend2.png");
   position: absolute;
   top: 5563px;
@@ -3037,7 +3153,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc7{
+.etc7 {
   background: url("../images/recommend3.png");
   position: absolute;
   top: 5563px;
@@ -3049,7 +3165,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.etc8{
+.etc8 {
   background: url("../images/recommend4.png");
   position: absolute;
   top: 5563px;
@@ -3064,7 +3180,7 @@ input:focus {
 /* 기타 사진들 끝 */
 
 /* 추천 여행지 시작 */
-.recommendimg{
+.recommendimg {
   position: absolute;
   left: 367px;
   top: 5867px;
@@ -3073,7 +3189,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recommend{
+.recommend {
   position: absolute;
   top: 5862px;
   left: 438px;
@@ -3084,7 +3200,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.recommendbtn1{
+.recommendbtn1 {
   background: url("../images/recommend1.png");
   position: absolute;
   top: 5961px;
@@ -3096,7 +3212,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recom1_name{
+.recom1_name {
   position: absolute;
   top: 6167px;
   left: 368px;
@@ -3108,7 +3224,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.recom1_address{
+.recom1_address {
   position: absolute;
   top: 6196px;
   left: 368px;
@@ -3120,7 +3236,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.recommendbtn2{
+.recommendbtn2 {
   background: url("../images/recommend2.png");
   position: absolute;
   top: 5961px;
@@ -3133,7 +3249,7 @@ input:focus {
   border-radius: 6px;
 }
 
-.recom2_name{
+.recom2_name {
   position: absolute;
   top: 6167px;
   left: 667px;
@@ -3145,7 +3261,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.recom2_address{
+.recom2_address {
   position: absolute;
   top: 6196px;
   left: 667px;
@@ -3157,7 +3273,7 @@ input:focus {
   font-family: "Noto Sans KR";
 }
 
-.recommendbtn3{
+.recommendbtn3 {
   background: url("../images/recommend3.png");
   position: absolute;
   top: 5961px;
@@ -3169,7 +3285,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recommendbtn4{
+.recommendbtn4 {
   background: url("../images/recommend4.png");
   position: absolute;
   top: 5961px;
@@ -3181,7 +3297,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recommendbtn5{
+.recommendbtn5 {
   background: url("../images/recommend5.png");
   position: absolute;
   top: 6312px;
@@ -3193,7 +3309,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recommendbtn6{
+.recommendbtn6 {
   background: url("../images/recommend6.png");
   position: absolute;
   top: 6312px;
@@ -3205,7 +3321,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recommendbtn7{
+.recommendbtn7 {
   background: url("../images/recommend7.png");
   position: absolute;
   top: 6312px;
@@ -3217,7 +3333,7 @@ input:focus {
   flex-shrink: 0;
 }
 
-.recommendbtn8{
+.recommendbtn8 {
   background: url("../images/recommend8.png");
   position: absolute;
   top: 6312px;
@@ -3231,7 +3347,7 @@ input:focus {
 /* 추천 여행지 끝 */
 
 /* 나머지들 시작 */
-.terms_of_use{
+.terms_of_use {
   position: absolute;
   top: 6785px;
   left: 446px;
@@ -3241,14 +3357,14 @@ input:focus {
   height: 14px;
   border: none;
   flex-shrink: 0;
-  color: #7A7A7A;
+  color: #7a7a7a;
   font-family: Pretendard;
   font-weight: 400;
   line-height: normal;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
-.personal_inf{
+.personal_inf {
   position: absolute;
   top: 6784px;
   left: 544px;
@@ -3257,15 +3373,15 @@ input:focus {
   height: 14px;
   border: none;
   flex-shrink: 0;
-  color: #7A7A7A;
+  color: #7a7a7a;
   font-family: Pretendard;
   font-size: 12px;
   font-weight: 400;
   line-height: normal;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
-.contact{
+.contact {
   position: absolute;
   top: 6785px;
   left: 1003px;
@@ -3274,15 +3390,15 @@ input:focus {
   height: 12px;
   border: none;
   flex-shrink: 0;
-  color: #8F8F8F;
+  color: #8f8f8f;
   font-family: Pretendard;
   font-size: 10px;
   font-weight: 400;
   line-height: normal;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
-.c_SoT{
+.c_SoT {
   position: absolute;
   top: 6786px;
   left: 1378px;
@@ -3290,7 +3406,7 @@ input:focus {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: #8F8F8F;
+  color: #8f8f8f;
   font-family: Pretendard;
 }
 /* 나머지들 끝 */

@@ -1802,882 +1802,369 @@ input:focus {
 
 /* 시즌별 스토리 시작 */
 
+#season_full{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+}
+
+#season_title{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 16px;
+}
+
 .seasonimg {
-  position: absolute;
-  left: 360px;
-  top: 1716px;
   width: 60px;
   height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
 }
 
 .season {
-  position: absolute;
   top: 1716px;
   left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 56px;
+  font-family: "Noto Sans KR";
+  color: #000;
   line-height: 56px;
 }
 
 .seasonback {
-  position: absolute;
-  left: 340px;
-  top: 1792px;
   width: 1240px;
   height: 617px;
+  border-radius: 12px;
+  background:#F8F8F8;
 }
 
-.season1 {
+#season1 {
   background: url("../images/season1.png");
-  position: absolute;
-  top: 1813px;
-  left: 360px;
-  font-style: normal;
   width: 387px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.season2 {
+#season2 {
   background: url("../images/season2.png");
-  position: absolute;
-  top: 1813px;
-  left: 767px;
-  font-style: normal;
   width: 386px;
   height: 278px;
   border: none;
-  border-radius: 8px;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.season3 {
+#season3 {
   background: url("../images/season3.png");
-  position: absolute;
-  top: 1813px;
-  left: 1173px;
-  font-style: normal;
   width: 387px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.season4 {
+#season4 {
   background: url("../images/season4.png");
-  position: absolute;
-  top: 2111px;
-  left: 360px;
-  font-style: normal;
   width: 590px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.season5 {
+#season5 {
   background: url("../images/season5.png");
-  position: absolute;
-  top: 2111px;
-  left: 970px;
-  font-style: normal;
   width: 590px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.seasonmorebtn {
+#seasonmorebtn {
   background: url("../images/morebtn.png");
-  position: absolute;
-  top: 2450px;
-  left: 896px;
-  font-style: normal;
   width: 128px;
   height: 48px;
   border: none;
+  margin-left: 556px;
+  margin-top: 61px;
+  cursor: pointer;
 }
 /* 시즌별 스토리 끝 */
 
 /* 베스트 스토리 시작 */
+#best_full{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 130px;
+}
+
+#best_title{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 26px;
+}
+
 .bestimg {
-  position: absolute;
-  left: 360px;
-  top: 2628px;
   width: 60px;
   height: 60px;
+  padding-right: 18px;
+  padding-left: 20px;
 }
 
-.best1 {
-  position: absolute;
-  top: 2618px;
-  left: 438px;
+.best {
   font-size: 36px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 56px;
-}
-
-.best2 {
-  position: absolute;
-  top: 2662px;
-  left: 439px;
-  font-size: 15px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 26px;
-  color: #4f4f4f;
+  line-height: 56px;
+  color: #000;
   font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
 }
 
-.bestback {
-  position: absolute;
-  left: 340px;
-  top: 2714px;
+.bestback{
   width: 1240px;
   height: 798px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  flex-shrink: 0;
 }
 
-.best1btn {
+#best1 {
   background: url("../images/best1.png");
-  position: absolute;
-  top: 2732px;
-  left: 360px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
-.best1_see {
-  position: absolute;
-  left: 544px;
-  top: 2944px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see1 {
-  position: absolute;
-  top: 2942px;
-  left: 562px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best1_like {
-  position: absolute;
-  left: 596px;
-  top: 2944px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like1 {
-  position: absolute;
-  top: 2942px;
-  left: 611px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best2btn {
+#best2 {
   background: url("../images/best2.png");
-  position: absolute;
-  top: 2732px;
-  left: 665px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
-}
-.best2_see {
-  position: absolute;
-  left: 849px;
-  top: 2944px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+  margin-left: 18px;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
-.best_see2 {
-  position: absolute;
-  top: 2942px;
-  left: 867px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  color: #666666;
-  font-family: "Noto Sans KR";
-}
-
-.best2_like {
-  position: absolute;
-  left: 901px;
-  top: 2944px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_like2 {
-  position: absolute;
-  top: 2942px;
-  left: 916px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best3btn {
+#best3 {
   background: url("../images/best3.png");
-  position: absolute;
-  top: 2732px;
-  left: 970px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
-.best3_see {
-  position: absolute;
-  left: 1154px;
-  top: 2944px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see3 {
-  position: absolute;
-  top: 2942px;
-  left: 1172px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best3_like {
-  position: absolute;
-  left: 1206px;
-  top: 2944px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like3 {
-  position: absolute;
-  top: 2942px;
-  left: 1221px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best4btn {
+#best4 {
   background: url("../images/best4.png");
-  position: absolute;
-  top: 2732px;
-  left: 1275px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
-.best4_see {
-  position: absolute;
-  left: 1459px;
-  top: 2944px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see4 {
-  position: absolute;
-  top: 2942px;
-  left: 1477px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best4_like {
-  position: absolute;
-  left: 1511px;
-  top: 2944px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like4 {
-  position: absolute;
-  top: 2942px;
-  left: 1526px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best5btn {
+#best5 {
   background: url("../images/best5.png");
-  position: absolute;
-  top: 2994px;
-  left: 360px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best5_see {
-  position: absolute;
-  left: 544px;
-  top: 3208px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see5 {
-  position: absolute;
-  top: 3206px;
-  left: 562px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best5_like {
-  position: absolute;
-  left: 596px;
-  top: 3209px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_like5 {
-  position: absolute;
-  top: 3206px;
-  left: 611px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best6btn {
+#best6 {
   background: url("../images/best6.png");
-  position: absolute;
-  top: 2994px;
-  left: 665px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best6_see {
-  position: absolute;
-  left: 849px;
-  top: 3208px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see6 {
-  position: absolute;
-  top: 3206px;
-  left: 867px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best6_like {
-  position: absolute;
-  left: 901px;
-  top: 3209px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like6 {
-  position: absolute;
-  top: 3206px;
-  left: 916px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best7btn {
+#best7 {
   background: url("../images/best7.png");
-  position: absolute;
-  top: 2994px;
-  left: 970px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best7_see {
-  position: absolute;
-  left: 1154px;
-  top: 3208px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see7 {
-  position: absolute;
-  top: 3206px;
-  left: 1172px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best7_like {
-  position: absolute;
-  left: 1206px;
-  top: 3209px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like7 {
-  position: absolute;
-  top: 3206px;
-  left: 1221px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  font-family: "Noto Sans KR";
-  letter-spacing: -0.24px;
-}
-
-.best8btn {
+#best8 {
   background: url("../images/best8.png");
-  position: absolute;
-  top: 2994px;
-  left: 1275px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best8_see {
-  position: absolute;
-  left: 1459px;
-  top: 3208px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
 
-.best_see8 {
-  position: absolute;
-  top: 3206px;
-  left: 1477px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best8_like {
-  position: absolute;
-  left: 1511px;
-  top: 3209px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like8 {
-  position: absolute;
-  top: 3206px;
-  left: 1526px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best9btn {
+#best9 {
   background: url("../images/best5.png");
-  position: absolute;
-  top: 3256px;
-  left: 360px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best9_see {
-  position: absolute;
-  left: 544px;
-  top: 3470px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see9 {
-  position: absolute;
-  top: 3468px;
-  left: 562px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best9_like {
-  position: absolute;
-  left: 596px;
-  top: 3471px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like9 {
-  position: absolute;
-  top: 3468px;
-  left: 611px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best10btn {
+#best10 {
   background: url("../images/best6.png");
-  position: absolute;
-  top: 3256px;
-  left: 665px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best10_see {
-  position: absolute;
-  left: 849px;
-  top: 3470px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see10 {
-  position: absolute;
-  top: 3468px;
-  left: 867px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best10_like {
-  position: absolute;
-  left: 901px;
-  top: 3471px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like10 {
-  position: absolute;
-  top: 3468px;
-  left: 916px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best11btn {
+#best11 {
   background: url("../images/best7.png");
-  position: absolute;
-  top: 3256px;
-  left: 970px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best11_see {
-  position: absolute;
-  left: 1154px;
-  top: 3470px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.best_see11 {
-  position: absolute;
-  top: 3468px;
-  left: 1172px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best11_like {
-  position: absolute;
-  left: 1206px;
-  top: 3471px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like11 {
-  position: absolute;
-  top: 3468px;
-  left: 1221px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.best12btn {
+#best12 {
   background: url("../images/best8.png");
-  position: absolute;
-  top: 3256px;
-  left: 1275px;
-  font-style: normal;
   width: 285px;
   height: 200px;
   border: none;
+  margin-left: 18px;
+  margin-top: 62px;
+  cursor: pointer;
 }
 
-.best12_see {
-  position: absolute;
-  left: 1459px;
-  top: 3470px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
 
-.best_see12 {
-  position: absolute;
-  top: 3468px;
-  left: 1477px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
 
-.best12_like {
-  position: absolute;
-  left: 1511px;
-  top: 3471px;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.best_like12 {
-  position: absolute;
-  top: 3468px;
-  left: 1526px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: #666666;
-  letter-spacing: -0.24px;
-  font-family: "Noto Sans KR";
-}
-
-.bestmorebtn {
+#bestmorebtn {
   background: url("../images/morebtn.png");
-  position: absolute;
-  top: 3542px;
-  left: 896px;
-  font-style: normal;
   width: 128px;
   height: 48px;
   border: none;
+  margin-left: 556px;
+  margin-top: 86px;
+  cursor: pointer;
 }
 /* 베스트 스토리 끝 */
 
 /* 급상승 여행지 시작 */
+
+#rise_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 220px;
+}
+
+#rise_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 28px;
+}
+
 .riseimg {
-  position: absolute;
-  left: 360px;
-  top: 3710px;
   width: 60px;
   height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
+  flex-shrink: 0;
 }
 
 .rise {
-  position: absolute;
-  top: 3710px;
-  left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 56px;
+  font-weight: 500;
+  line-height: 60px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
 }
 
-.risebtn1 {
+.riseback {
+  width: 1240px;
+  height: 343px;
+}
+
+#rise1{
   background: url("../images/rise1.png");
-  position: absolute;
-  top: 3818px;
-  left: 360px;
-  font-style: normal;
   width: 278px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.risebtn2 {
+#rise2{
   background: url("../images/rise2.png");
-  position: absolute;
-  top: 3818px;
-  left: 667px;
-  font-style: normal;
   width: 278px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.risebtn3 {
+#rise3{
   background: url("../images/rise3.png");
-  position: absolute;
-  top: 3818px;
-  left: 975px;
-  font-style: normal;
   width: 278px;
   height: 278px;
   border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.risebtn4 {
+#rise4{
   background: url("../images/rise4.png");
-  position: absolute;
-  top: 3818px;
-  left: 1282px;
-  font-style: normal;
   width: 278px;
   height: 278px;
   border: none;
-}
-
-.nextrisebtn {
-  background: url("../images/nextbtn.png");
-  position: absolute;
-  top: 3936px;
-  left: 1503px;
-  font-style: normal;
-  width: 45px;
-  height: 45px;
-  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 /* 급상승 여행지 끝 */

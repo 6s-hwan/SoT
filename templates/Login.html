@@ -72,6 +72,7 @@
           <input type="checkbox" class="orgin" id="checkbtn" />
           <label for="checkbtn">자동로그인</label>
 
+          <div id="blank"></div>
           <!-- <div id="checkbtn">
             <img
               src="../static/images/checkbtn1.png"
@@ -82,7 +83,7 @@
           </div> -->
           <!-- <div id="autologin">자동로그인</div> -->
           <div id="join_membership">
-            <a href="#"> 회원가입 </a>
+            <a href="#" onclick="openSignUpPopup()"> 회원가입 </a>
           </div>
         </div>
 
@@ -114,20 +115,19 @@
         });
       });
 
-      // 입력값이 있어야 로그인 버튼이 작동될 수 있는 js코드
-      function checkInputs() {
-        // 각각의 input 요소에서 값 가져오기
-        var input1Value = document.getElementById("email_input").value;
-        var input2Value = document.getElementById("pw_input").value;
-        var myButton = document.getElementsByClassName("confirm")[0];
+      function submitForm() {
+        // 입력값 가져오기
+        var emailInput = document.getElementById("email_input");
+        var pwInput = document.getElementById("pw_input");
 
-        // 두 input 중 하나라도 값이 있으면 버튼 활성화, 아니면 비활성화
-        if (input1Value.trim() !== "" && input2Value.trim() !== "") {
-          myButton.id = "btnActive";
-          myButton.disabled = false;
-        } else {
-          myButton.id = "login_btn";
-          myButton.disabled = true;
+        // 입력값이 모두 채워져 있는지 확인
+        if (emailInput.value.trim() !== "" && pwInput.value.trim() !== "") {
+          // 로그인 처리 등의 작업 수행 후, 창 닫기
+          document.getElementById("bg_gray").style.display = "none";
+
+          // 입력 필드 초기화
+          emailInput.value = "";
+          pwInput.value = "";
         }
       }
     </script>

@@ -78,7 +78,7 @@
   /* 이 코드가 있어야 나란히 정렬 가능 */
   width: 474px;
   height: 94px;
-  padding-left: 34px;
+  padding-left: 36px;
   padding-top: 27px;
 }
 #bg_gray > #join_pop_up > #first > #logo {
@@ -140,7 +140,6 @@ hr {
 .input1 > label {
   width: 400px;
   padding-top: 18px;
-
   border-radius: 8px;
   background: #f9f9f9;
 }
@@ -221,7 +220,7 @@ hr {
 
 #checkbtn + label {
   display: flex;
-  /* cursor: pointer; */
+  cursor: pointer;
   /* line-height: 18px; */
   padding-left: 24px;
   /* padding-bottom: 24px; */
@@ -256,6 +255,10 @@ hr {
   /* padding-right: 246px; */
 }
 
+.text2 > #blank {
+  width: 245px;
+}
+
 .text2 > #join_membership > a {
   text-decoration: none;
   color: #448fff;
@@ -265,7 +268,7 @@ hr {
   font-weight: 500;
   line-height: normal;
   padding-right: 40px;
-  padding-left: 243px;
+  /* padding-left: 243px; */
 }
 
 /* 로그인 버튼 */
@@ -287,7 +290,7 @@ hr {
   border-radius: 8px;
   border: 1px solid #adadad;
   background: #fff;
-  /* cursor: pointer; */
+  cursor: pointer;
   color: #464646;
   font-family: Pretendard;
   font-size: 20px;
@@ -305,7 +308,6 @@ hr {
   border-radius: 8px;
   border: 1px solid #adadad;
   background: #fff;
-  /* cursor: pointer; */
   color: #464646;
   font-family: Pretendard;
   font-size: 20px;

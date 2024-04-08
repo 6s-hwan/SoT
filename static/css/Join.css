@@ -1,18 +1,8 @@
-/* 공통적인 부분 */
 * {
   /* All */
   margin: 0;
   padding: 0;
-  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
-}
-
-/* 가로선 */
-hr {
-  margin-left: 36px;
-  width: 400px;
-  height: 0px;
-  stroke-width: 1px;
-  stroke: #d2d2d2;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans CJK KR";
 }
 
 .scrollLock {
@@ -23,23 +13,6 @@ input::placeholder {
   color: #8e8e8e;
 }
 
-#join_pop_up::-webkit-scrollbar {
-  width: 6px;
-}
-
-#join_pop_up::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: #e8e8e8;
-}
-#join_pop_up::-webkit-scrollbar-button {
-  display: none;
-}
-.box {
-  padding-left: 30px;
-}
-/* 공통적인 부분 */
-
-/* 임시 로그인 버튼 */
 #join {
   display: none;
   width: 109px;
@@ -53,7 +26,7 @@ input::placeholder {
   /* 이 코드가 있어야 나란히 정렬 가능 */
   /* display: inline-block; */
   color: #000;
-  font-family: "Noto Sans KR";
+  font-family: "Noto Sans CJK KR";
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -72,306 +45,24 @@ input::placeholder {
   /* 동작 천천히 보여주기 */
   transition: all 500ms ease-in;
 }
+/* 임시버튼 */
 
 /* 회원가입 창이 떴을 때 뒷배경 회색처리 */
 #bg_gray {
   position: absolute;
   display: none;
-  /* 버튼이 안눌러지면 display:none */
+  /* 버튼이 안눌러지면 display:none 이지만 일단은 block으로 해두기 */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  overflow-y: scroll; /* 세로 스크롤 사용 */
 }
+
 #join:checked + label + #bg_gray {
   display: block;
 }
 
-/* 로그인 팝업창 css 코드 */
-/* 전체 페이지 사이즈 */
-#bg_gray > #login_pop_up {
-  position: absolute;
-  /* position: fixed; */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 474px;
-  height: 470px;
-  border-radius: 8px;
-  border: 1px solid #e6e6e6;
-  background: #fff;
-  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-}
-
-/* 로고와 창 닫기 버튼 */
-#bg_gray > #login_pop_up > #first {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  width: 474px;
-  height: 94px;
-  padding-left: 36px;
-  padding-top: 27px;
-}
-#bg_gray > #login_pop_up > #first > #logo {
-  width: "238px";
-  height: "55px";
-}
-#bg_gray > #login_pop_up > #first > #middle {
-  width: 136px;
-}
-#bg_gray > #login_pop_up > #first > #close {
-  padding-top: 12px;
-  padding-bottom: 16px;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-}
-
-/* 로그인 후 당신의 스토리를 포스팅해보세요! */
-#bg_gray > #login_pop_up > #text21 {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  padding-top: 8px;
-  padding-left: 34px;
-  width: 474px;
-  height: 75px;
-  color: #8e8e8e;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 23.8px */
-  letter-spacing: -0.34px;
-}
-
-/* 이메일 입력칸 */
-#bg_gray > #login_pop_up > .input1 {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  width: 472px;
-  height: 75px;
-  padding-left: 36px;
-  padding-right: 36px;
-  padding-bottom: 19px;
-  /* background: #f9f9f9; */
-}
-#bg_gray > #login_pop_up > .input1 > label {
-  width: 400px;
-  padding-top: 18px;
-  border-radius: 8px;
-  background: #f9f9f9;
-}
-#bg_gray > #login_pop_up > .input1 > label > input {
-  border: none;
-  padding-left: 20px;
-  background-color: #f9f9f9;
-  color: #373737;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 117.647% */
-  letter-spacing: -0.34px;
-}
-
-/* 비밀번호 입력칸 */
-#bg_gray > #login_pop_up > .input2 {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  width: 472px;
-  height: 56px;
-  padding-left: 36px;
-  padding-right: 36px;
-}
-#bg_gray > #login_pop_up > .input2 > label {
-  width: 400px;
-  padding-top: 18px;
-  border-radius: 8px;
-  background: #f9f9f9;
-}
-#bg_gray > #login_pop_up > .input2 > label > input {
-  border: none;
-  padding-left: 20px;
-  background-color: #f9f9f9;
-  color: #373737;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 117.647% */
-  letter-spacing: -0.34px;
-}
-
-#bg_gray > #login_pop_up > .input1 > label > input:focus {
-  outline: none;
-}
-
-#bg_gray > #login_pop_up > .input1 > label > select {
-  border: none;
-}
-#bg_gray > #login_pop_up > .input2 > label > input:focus {
-  outline: none;
-}
-
-#bg_gray > #login_pop_up > .input2 > label > select {
-  border: none;
-}
-
-/* 로그인 버튼 구역 */
-#bg_gray > #login_pop_up > .text22 {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  width: 472px;
-  height: 55px;
-  padding-left: 38px;
-  padding-top: 12px;
-  padding-bottom: 22.5px;
-}
-
-#bg_gray > #login_pop_up > .text22 > .orgin {
-  display: none;
-}
-
-#checkbtn + label {
-  display: flex;
-  cursor: pointer;
-  /* line-height: 18px; */
-  padding-left: 24px;
-  /* padding-bottom: 24px; */
-  color: #818181;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  /* padding-bottom: ; */
-  background: url("../images/checkbtn1.png") left/18px no-repeat;
-}
-
-#checkbtn:checked + label {
-  background-image: url("../images/checkbtn2.png");
-}
-
-/* #bg_gray > #login_pop_up > .text2 > #checkbtn {
-  width: 18px;
-  height: 18px;
-  padding-top: 1px;
-  padding-right: 5px;
-}
-
-.text2 > #autologin {
-  color: #818181;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-right: 246px;
-} */
-
-#bg_gray > #login_pop_up > .text22 > #blank1 {
-  width: 245px;
-}
-
-#bg_gray > #login_pop_up > .text22 > #join_membership > a {
-  text-decoration: none;
-  color: #448fff;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-right: 40px;
-  /* padding-left: 243px; */
-}
-
-/* 로그인 버튼 */
-/* button {
-  margin-left: 36px;
-  width: 400px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #adadad;
-  background: #fff;
-  /* cursor: pointer; */
-
-#login_btn {
-  margin-left: 36px;
-  width: 400px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #adadad;
-  background: #fff;
-  cursor: pointer;
-  color: #464646;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 28px */
-  letter-spacing: -0.4px;
-}
-
-/* #btnActive {
-  margin-left: 36px;
-  width: 400px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #adadad;
-  background: #fff;
-  color: #464646;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%;
-  letter-spacing: -0.4px;
-  cursor: pointer;
-} */
-
-/* 계정을 잊으셨나요? 이메일 또는 비밀번호 찾기 구역 */
-#bg_gray > #login_pop_up > #text23 {
-  color: #bfbfbf;
-  text-align: right;
-  font-family: Pretendard;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-top: 8px;
-  padding-left: 159px;
-  padding-right: 40px;
-}
-
-#bg_gray > #login_pop_up > #text23 > a {
-  text-decoration: none;
-  color: #448fff;
-  font-family: Pretendard;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-/* 로그인 팝업창 css 코드 !@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
-/* 회원가입 팝업창 css 코드 */
 /* 전체 페이지 사이즈 */
 #bg_gray > #join_pop_up {
   position: absolute;
@@ -402,14 +93,14 @@ input::placeholder {
   padding-left: 34px;
   padding-top: 27px;
 }
-#bg_gray > #join_pop_up > #first > #logo1 {
+#bg_gray > #join_pop_up > #first > #logo {
   width: "238px";
   height: "55px";
 }
-#bg_gray > #join_pop_up > #first > #middle1 {
+#bg_gray > #join_pop_up > #first > #middle {
   width: 136px;
 }
-#bg_gray > #join_pop_up > #first > #close1 {
+#bg_gray > #join_pop_up > #first > #close {
   padding-top: 12px;
   padding-bottom: 16px;
   width: 28px;
@@ -465,7 +156,7 @@ hr {
 }
 
 /* 이메일 입력칸 */
-.join_input1 {
+.input1 {
   box-sizing: border-box;
   /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
   display: flex;
@@ -477,7 +168,7 @@ hr {
   padding-right: 36px;
 }
 
-.join_input1 > #text2 {
+.input1 > #text2 {
   padding-left: 4px;
   padding-bottom: 8px;
   color: #616161;
@@ -489,7 +180,7 @@ hr {
   letter-spacing: -0.34px;
 }
 
-.join_input1 > label {
+.input1 > label {
   width: 380px;
   height: 56px;
   padding-top: 18px;
@@ -498,7 +189,7 @@ hr {
   border-radius: 8px;
   background: #f9f9f9;
 }
-.join_input1 > label > input {
+.input1 > label > input {
   border: none;
   background-color: #f9f9f9;
   color: #373737;
@@ -516,17 +207,13 @@ input:focus {
 
 #email_text {
   box-sizing: border-box;
-  /* display: flex; */
-  /* width: 472px;
-  height: 32px; */
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
   padding-top: 13px;
   padding-left: 44px;
-  color: #448fff;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 
 /* #check_pw > #middle3 {
@@ -556,7 +243,7 @@ input:focus {
 }
 
 /* 비밀번호 입력칸 */
-.join_input2 {
+.input2 {
   box-sizing: border-box;
   /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
   display: flex;
@@ -568,7 +255,7 @@ input:focus {
   padding-right: 36px;
 }
 
-.join_input2 > #text3 {
+.input2 > #text3 {
   padding-left: 4px;
   padding-bottom: 8px;
   color: #616161;
@@ -580,7 +267,7 @@ input:focus {
   letter-spacing: -0.34px;
 }
 
-.join_input2 > label {
+.input2 > label {
   width: 380px;
   height: 56px;
   padding-top: 18px;
@@ -589,7 +276,7 @@ input:focus {
   border-radius: 8px;
   background: #f9f9f9;
 }
-.join_input2 > label > input {
+.input2 > label > input {
   border: none;
   background-color: #f9f9f9;
   color: #373737;
@@ -1050,190 +737,3 @@ input:focus {
   font-weight: 500;
   line-height: normal;
 }
-
-/* 지역 카테고리 */
-
-#area {
-  width: 472px;
-  height: 32px;
-}
-#area > #text9 {
-  padding-left: 40px;
-  padding-bottom: 8px;
-  color: #616161;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 23.8px */
-  letter-spacing: -0.34px;
-}
-
-#info_area {
-  width: 472px;
-  height: 56px;
-}
-
-#info_area > #area1 {
-  border-style: none;
-  outline: none;
-  width: 117px;
-  height: 54px;
-  margin-left: 36px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  text-align: left;
-  color: #8e8e8e;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 23.8px */
-  letter-spacing: -0.34px;
-}
-
-#info_area > #area2 {
-  border-style: none;
-  outline: none;
-  width: 117px;
-  height: 54px;
-  margin-left: 20px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  text-align: left;
-  color: #8e8e8e;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 23.8px */
-  letter-spacing: -0.34px;
-}
-
-#info_area > #area3 {
-  border-style: none;
-  outline: none;
-  width: 117px;
-  height: 54px;
-  margin-left: 20px;
-  /* margin-right: 36px; */
-  border-radius: 8px;
-  background: #f9f9f9;
-  text-align: left;
-  color: #8e8e8e;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 23.8px */
-  letter-spacing: -0.34px;
-}
-
-#blank2 {
-  width: 472px;
-  height: 60px;
-}
-
-/* 이용약관 카테고리 */
-.orgin2 {
-  display: none;
-}
-.orgin3 {
-  display: none;
-}
-
-.orgin3 > a {
-  color: #448fff;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  /* text-decoration-line: underline; */
-}
-
-#checkbtn2 + label {
-  display: flex;
-  cursor: pointer;
-  /* line-height: 18px; */
-  padding-left: 31px;
-  /* padding-bottom: 24px; */
-  color: #818181;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  /* padding-bottom: ; */
-  background: url("../images/checkbtn3.png") left/18px no-repeat;
-}
-
-#checkbtn2:checked + label {
-  background-image: url("../images/checkbtn4.png");
-}
-
-#checkbtn3 + label {
-  display: flex;
-  cursor: pointer;
-  /* line-height: 18px; */
-  padding-left: 31px;
-  /* padding-bottom: 24px; */
-  color: #818181;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  /* padding-bottom: ; */
-  background: url("../images/checkbtn3.png") left/18px no-repeat;
-}
-
-#checkbtn3:checked + label {
-  background-image: url("../images/checkbtn4.png");
-}
-
-#container1 {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  width: 472px;
-  padding-left: 36px;
-}
-#container2 {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  width: 472px;
-  padding-left: 36px;
-}
-
-#blank3 {
-  width: 472px;
-  height: 21px;
-}
-
-#join_btn {
-  margin-left: 36px;
-  width: 400px;
-  height: 59px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #949494;
-  background: #fff;
-  cursor: pointer;
-  color: #1b1b1b;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 28px */
-  letter-spacing: -0.4px;
-}
-
-#blank4 {
-  width: 472px;
-  height: 36px;
-}
-/* 회원가입 팝업창 css 코드 */

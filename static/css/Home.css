@@ -3592,7 +3592,7 @@ input:focus {
   display: flex;
   /* 이 코드가 있어야 나란히 정렬 가능 */
   height: 60px;
-  margin-bottom: 28px;
+  margin-bottom: 48px;
 }
 
 .riseimg {
@@ -3615,8 +3615,25 @@ input:focus {
 }
 
 .riseback {
-  width: 1240px;
-  height: 343px;
+  width: 1200px;
+  height: 323px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 20px;
+  border-radius: 8px;
+}
+
+#rise_1{
+  width: 278px;
+  height: 323px;
+}
+
+#rise1_img{
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
 }
 
 #rise1{
@@ -3624,9 +3641,37 @@ input:focus {
   width: 278px;
   height: 278px;
   border: none;
-  margin-left: 20px;
-  margin-top: 20px;
   cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise1_text{
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise1_name{
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_2{
+  width: 278px;
+  height: 323px;
+  padding-left: 29px;
+}
+
+#rise2_img{
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
 }
 
 #rise2{
@@ -3634,9 +3679,37 @@ input:focus {
   width: 278px;
   height: 278px;
   border: none;
-  margin-left: 20px;
-  margin-top: 20px;
   cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise2_text{
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise2_name{
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_3{
+  width: 278px;
+  height: 323px;
+  padding-left: 29px;
+}
+
+#rise3_img{
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
 }
 
 #rise3{
@@ -3644,9 +3717,37 @@ input:focus {
   width: 278px;
   height: 278px;
   border: none;
-  margin-left: 20px;
-  margin-top: 20px;
   cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise3_text{
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise3_name{
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_4{
+  width: 278px;
+  height: 323px;
+  padding-left: 29px;
+}
+
+#rise4_img{
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
 }
 
 #rise4{
@@ -3654,509 +3755,803 @@ input:focus {
   width: 278px;
   height: 278px;
   border: none;
-  margin-left: 20px;
-  margin-top: 20px;
   cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise4_text{
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise4_name{
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
 }
 
 /* 급상승 여행지 끝 */
 
 /* 인기 작가 스토리 시작 */
+#popular_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 160px;
+}
+
+#popular_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 57.9px;
+}
+
 .popularimg {
-  position: absolute;
-  left: 360px;
-  top: 4301px;
   width: 60px;
   height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
 }
 
 .popular {
-  position: absolute;
-  top: 4301px;
-  left: 436px;
   font-size: 36px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 56px;
+  font-weight: 600;
+  line-height: 60px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
 }
 
-.popularbtn1 {
+#popularback {
+  width: 1200px;
+  height: 272px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#popular_1{
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+}
+
+#popular1_img{
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular1{
   background: url("../images/popular1.png");
-  position: absolute;
-  top: 4421px;
-  left: 360px;
-  font-style: normal;
   width: 183px;
   height: 183px;
   border: none;
+  cursor: pointer;
 }
 
-.popularbtn2 {
+#popular1_text{
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular1_name{
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} 
+
+#popular1_etc{
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular1_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular1_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img1{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular1_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular1_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img1{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular1_like{
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular1_like{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like1{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_2{
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular2_img{
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular2{
   background: url("../images/popular2.png");
-  position: absolute;
-  top: 4421px;
-  left: 563px;
-  font-style: normal;
   width: 183px;
   height: 183px;
   border: none;
+  cursor: pointer;
 }
 
-.popularbtn3 {
+#popular2_text{
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular2_name{
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} 
+
+#popular2_etc{
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular2_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular2_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img2{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular2_like{
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular2_like{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like2{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_3{
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular3_img{
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular3{
   background: url("../images/popular3.png");
-  position: absolute;
-  top: 4421px;
-  left: 768px;
-  font-style: normal;
   width: 183px;
   height: 183px;
   border: none;
+  cursor: pointer;
 }
 
-.popularbtn4 {
+#popular3_text{
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular3_name{
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} 
+
+#popular3_etc{
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular3_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular3_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img3{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular3_like{
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular3_like{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like3{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_4{
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular4_img{
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular4{
   background: url("../images/popular4.png");
-  position: absolute;
-  top: 4421px;
-  left: 970px;
-  font-style: normal;
   width: 183px;
   height: 183px;
   border: none;
+  cursor: pointer;
 }
 
-.popularbtn5 {
+#popular4_text{
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular4_name{
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} 
+
+#popular4_etc{
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular4_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular4_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img4{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular4_like{
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular4_like{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like4{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_5{
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular5_img{
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular5{
   background: url("../images/popular5.png");
-  position: absolute;
-  top: 4421px;
-  left: 1173px;
-  font-style: normal;
   width: 183px;
   height: 183px;
   border: none;
+  cursor: pointer;
 }
 
-.popularbtn6 {
+#popular5_text{
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular5_name{
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} 
+
+#popular5_etc{
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular5_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular5_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img5{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular5_like{
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular5_like{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like5{
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 6 시작 */
+#popular_6{
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular6_img{
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular6{
   background: url("../images/popular6.png");
-  position: absolute;
-  top: 4421px;
-  left: 1377px;
-  font-style: normal;
   width: 183px;
   height: 183px;
   border: none;
+  cursor: pointer;
 }
 
-.popular1_name {
-  position: absolute;
-  top: 4632px;
-  left: 401px;
+#popular6_text{
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular6_name{
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  text-align: center;
-  font-family: "Noto Sans KR";
+} 
+
+#popular6_etc{
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
 }
 
-.popular1_img {
-  position: absolute;
-  left: 378px;
-  top: 4671px;
+#popular6_story{
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular6_img{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
   width: 22px;
   height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
 }
 
-.popular_img1 {
-  position: absolute;
-  top: 4672px;
-  left: 404px;
+.popular_img6{
+  color: #727272;
+  font-family: "Noto Sans KR";
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
+  padding-left: 4px;
+  padding-top: 1px;
 }
 
-.popular1_like {
-  position: absolute;
-  left: 457px;
-  top: 4673px;
+#popular6_like{
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular6_like{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
 }
 
-.popular_like1 {
-  position: absolute;
-  top: 4672px;
-  left: 481px;
+.popular_like6{
+  color: #727272;
+  font-family: "Noto Sans KR";
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
+  padding-left: 4px;
+  padding-bottom: 3px;
 }
 
-.popular2_name {
-  position: absolute;
-  top: 4632px;
-  left: 604px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  font-family: "Noto Sans KR";
-}
 
-.popular2_img {
-  position: absolute;
-  left: 581px;
-  top: 4671px;
-  width: 22px;
-  height: 22px;
-}
-
-.popular_img2 {
-  position: absolute;
-  top: 4672px;
-  left: 607px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular2_like {
-  position: absolute;
-  left: 660px;
-  top: 4673px;
-  width: 20px;
-  height: 20px;
-}
-
-.popular_like2 {
-  position: absolute;
-  top: 4672px;
-  left: 684px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular3_name {
-  position: absolute;
-  top: 4632px;
-  left: 808px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  font-family: "Noto Sans KR";
-}
-
-.popular3_img {
-  position: absolute;
-  left: 785px;
-  top: 4671px;
-  width: 22px;
-  height: 22px;
-}
-
-.popular_img3 {
-  position: absolute;
-  top: 4672px;
-  left: 811px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular3_like {
-  position: absolute;
-  left: 864px;
-  top: 4673px;
-  width: 20px;
-  height: 20px;
-}
-
-.popular_like3 {
-  position: absolute;
-  top: 4672px;
-  left: 888px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular4_name {
-  position: absolute;
-  top: 4632px;
-  left: 1014px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  font-family: "Noto Sans KR";
-}
-
-.popular4_img {
-  position: absolute;
-  left: 991px;
-  top: 4671px;
-  width: 22px;
-  height: 22px;
-}
-
-.popular_img4 {
-  position: absolute;
-  top: 4672px;
-  left: 1017px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular4_like {
-  position: absolute;
-  left: 1070px;
-  top: 4673px;
-  width: 20px;
-  height: 20px;
-}
-
-.popular_like4 {
-  position: absolute;
-  top: 4672px;
-  left: 1094px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular5_name {
-  position: absolute;
-  top: 4632px;
-  left: 1219px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  font-family: "Noto Sans KR";
-}
-
-.popular5_img {
-  position: absolute;
-  left: 1196px;
-  top: 4671px;
-  width: 22px;
-  height: 22px;
-}
-
-.popular_img5 {
-  position: absolute;
-  top: 4672px;
-  left: 1222px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular5_like {
-  position: absolute;
-  left: 1275px;
-  top: 4673px;
-  width: 20px;
-  height: 20px;
-}
-
-.popular_like5 {
-  position: absolute;
-  top: 4672px;
-  left: 1299px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular6_name {
-  position: absolute;
-  top: 4632px;
-  left: 1424px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  font-family: "Noto Sans KR";
-}
-
-.popular6_img {
-  position: absolute;
-  left: 1401px;
-  top: 4671px;
-  width: 22px;
-  height: 22px;
-}
-
-.popular_img6 {
-  position: absolute;
-  top: 4672px;
-  left: 1427px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
-
-.popular6_like {
-  position: absolute;
-  left: 1480px;
-  top: 4673px;
-  width: 20px;
-  height: 20px;
-}
-
-.popular_like6 {
-  position: absolute;
-  top: 4672px;
-  left: 1504px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-  color: #727272;
-  font-family: "Noto Sans KR";
-}
 /* 인기 작가 스토리 끝 */
-
-/* 기타 사진들 시작 */
-.etc1 {
-  background: url("../images/recommend5.png");
-  position: absolute;
-  top: 5257px;
-  left: 360px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc2 {
-  background: url("../images/recommend6.png");
-  position: absolute;
-  top: 5257px;
-  left: 668px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc3 {
-  background: url("../images/recommend7.png");
-  position: absolute;
-  top: 5257px;
-  left: 975px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc4 {
-  background: url("../images/recommend8.png");
-  position: absolute;
-  top: 5257px;
-  left: 1283px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc5 {
-  background: url("../images/recommend1.png");
-  position: absolute;
-  top: 5563px;
-  left: 360px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc6 {
-  background: url("../images/recommend2.png");
-  position: absolute;
-  top: 5563px;
-  left: 667px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc7 {
-  background: url("../images/recommend3.png");
-  position: absolute;
-  top: 5563px;
-  left: 975px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-.etc8 {
-  background: url("../images/recommend4.png");
-  position: absolute;
-  top: 5563px;
-  left: 1282px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
-  border: none;
-  flex-shrink: 0;
-}
-
-/* 기타 사진들 끝 */
 
 /* 추천 여행지 시작 */
 .recommendimg {

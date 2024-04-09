@@ -5189,10 +5189,23 @@ input:focus {
 /* 추천 여행지 끝 */
 
 /* 나머지들 시작 */
+
+#etc_thing{
+  width: 1240px;
+  height: 20px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-top: 240px;
+  padding-left: 340px;
+}
+
+
+
+
 .terms_of_use {
-  position: absolute;
-  top: 6785px;
-  left: 446px;
   font-size: 12px;
   font-style: normal;
   width: 42px;
@@ -5204,12 +5217,18 @@ input:focus {
   font-weight: 400;
   line-height: normal;
   background-color: #fff;
+  padding-top: 20px;
+}
+
+#personal_inf{
+  width: 45px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 200px;
+  padding-top: 10px;
 }
 
 .personal_inf {
-  position: absolute;
-  top: 6784px;
-  left: 544px;
   font-style: normal;
   width: 83px;
   height: 14px;
@@ -5223,10 +5242,15 @@ input:focus {
   background-color: #fff;
 }
 
+#contact{
+  width: 45px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 270px;
+  padding-top: 10px;
+}
+
 .contact {
-  position: absolute;
-  top: 6785px;
-  left: 1003px;
   font-style: normal;
   width: 36px;
   height: 12px;
@@ -5240,10 +5264,15 @@ input:focus {
   background-color: #fff;
 }
 
+#c_SoT{
+  width: 60px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 240px;
+  padding-top: 10px;
+}
+
 .c_SoT {
-  position: absolute;
-  top: 6786px;
-  left: 1378px;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;

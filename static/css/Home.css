@@ -4554,170 +4554,638 @@ input:focus {
 /* 인기 작가 스토리 끝 */
 
 /* 추천 여행지 시작 */
-.recommendimg {
-  position: absolute;
-  left: 367px;
-  top: 5867px;
-  width: 59px;
-  height: 59px;
-  flex-shrink: 0;
+#recom_full{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 1174px;
 }
 
-.recommend {
-  position: absolute;
-  top: 5862px;
-  left: 438px;
+#recom_title{
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 35px;
+}
+
+.recomimg{
+  width: 60px;
+  height: 60px;
+  padding-right: 12px;
+  padding-left: 27px;
+}
+
+.recom{
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
   line-height: 56px;
+  color: #000;
   font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
 }
 
-.recommendbtn1 {
+#recomback{
+  width: 1240px;
+  height: 608px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#recom1-4{
+  width: 1240px;
+  height: 257px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+
+}
+
+#recom_1{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#recom1_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom1{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend1.png");
-  position: absolute;
-  top: 5961px;
-  left: 360px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
 }
 
-.recom1_name {
-  position: absolute;
-  top: 6167px;
-  left: 368px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+#recom1_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom1_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom1_name{
   color: #000;
   font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
 }
 
-.recom1_address {
-  position: absolute;
-  top: 6196px;
-  left: 368px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+#recom1_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address1{
   color: #575757;
   font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
 }
 
-.recommendbtn2 {
+/* 추천 여행지 2 시작 */
+#recom_2{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom2_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom2{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend2.png");
-  position: absolute;
-  top: 5961px;
-  left: 667px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
-  border-radius: 6px;
 }
 
-.recom2_name {
-  position: absolute;
-  top: 6167px;
-  left: 667px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+#recom2_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom2_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom2_name{
   color: #000;
   font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
 }
 
-.recom2_address {
-  position: absolute;
-  top: 6196px;
-  left: 667px;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+#recom2_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address2{
   color: #575757;
   font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
 }
 
-.recommendbtn3 {
+/* 추천 여행지 3 시작 */
+#recom_3{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom3_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom3{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend3.png");
-  position: absolute;
-  top: 5961px;
-  left: 975px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
 }
 
-.recommendbtn4 {
+#recom3_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom3_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom3_name{
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom3_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address3{
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 4 시작 */
+#recom_4{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom4_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom4{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend4.png");
-  position: absolute;
-  top: 5961px;
-  left: 1282px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
 }
 
-.recommendbtn5 {
+#recom4_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom4_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom4_name{
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom4_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address4{
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom5-8{
+  width: 1240px;
+  height: 257px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  position: relative;
+  top: 371px;
+  right: 1221px;
+
+}
+
+#recom_5{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#recom5_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom5{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend5.png");
-  position: absolute;
-  top: 6312px;
-  left: 360px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
 }
 
-.recommendbtn6 {
+#recom5_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom5_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom5_name{
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom5_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address5{
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 6 시작 */
+#recom_6{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom6_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom6{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend6.png");
-  position: absolute;
-  top: 6312px;
-  left: 668px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
 }
 
-.recommendbtn7 {
+#recom6_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom6_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom6_name{
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom6_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address6{
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 7 시작 */
+#recom_7{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom7_img{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom7{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background: url("../images/recommend7.png");
-  position: absolute;
-  top: 6312px;
-  left: 975px;
-  font-style: normal;
-  width: 278px;
-  height: 200px;
   border: none;
-  flex-shrink: 0;
 }
 
-.recommendbtn8 {
-  background: url("../images/recommend8.png");
-  position: absolute;
-  top: 6312px;
-  left: 1283px;
+#recom7_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom7_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom7_name{
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
   font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom7_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address7{
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 8 시작 */
+#recom_8{
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom8_img{
   width: 278px;
   height: 200px;
-  border: none;
   flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
 }
+
+#recom8{
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend8.png");
+  border: none;
+}
+
+#recom8_text{
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom8_name{
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom8_name{
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom8_address{
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address8{
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;  
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+
 /* 추천 여행지 끝 */
 
 /* 나머지들 시작 */

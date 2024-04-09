@@ -5199,7 +5199,7 @@ input:focus {
   display: flex;
   /* 이 코드가 있어야 나란히 정렬 가능 */
   padding-top: 240px;
-  padding-left: 340px;
+  padding-left: 700px;
 }
 
 
@@ -5217,7 +5217,7 @@ input:focus {
   font-weight: 400;
   line-height: normal;
   background-color: #fff;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 #personal_inf{

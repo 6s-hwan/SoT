@@ -1,0 +1,66 @@
+{{>layouts/header}}
+<!--id, email, password, name, birthYear, birthMonth, birthDay, gender, region1, region2, region3-->
+{{#member}}
+    <form class="container" action="/members/update" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+        <div class="mb-3">
+            <label class="form-label">이메일</label>
+            <input type="email" class="form-control" name="email"
+                   value="{{email}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">비밀번호</label>
+            <input type="password" class="form-control" name="password"
+                   value="{{password}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">닉네임</label>
+            <input type="name" class="form-control" name="name"
+                   value="{{name}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">연도</label>
+            <input type="birthYear" class="form-control" name="birthYear"
+                   value="{{birthYear}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">월</label>
+            <input type="birthMonth" class="form-control" name="birthMonth"
+                   value="{{birthMonth}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">일</label>
+            <input type="birthDay" class="form-control" name="birthDay"
+                   value="{{birthDay}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">전화번호</label>
+            <input type="phone" class="form-control" name="phone"
+                   value="{{phone}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">성별</label>
+            <input type="gender" class="form-control" name="gender"
+                   value="{{gender}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">시/도</label>
+            <input type="region1" class="form-control" name="region1"
+                   value="{{region1}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">시/구/군</label>
+            <input type="region2" class="form-control" name="region2"
+                   value="{{region2}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">동/읍/면</label>
+            <input type="region3" class="form-control" name="region3"
+                   value="{{region3}}">
+        </div>
+        <button type="submit" class="btn btn-primary">수정완료</button>
+        <a href="/members">Back</a>
+    </form>
+{{/member}}
+
+{{>layouts/footer}}

@@ -549,3 +549,46 @@ input.uploadbtn {
   left: 12px;
 }
 /* 테마별 여행지 끝 */
+
+/* 테마별 상세페이지 스토리 시작 */
+#themeStoryfull {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 100px;
+}
+
+.themestoryimg {
+  width: 90px;
+  height: 90px;
+  padding-left: 20px;
+  padding-right: 16px;
+}
+
+.themetitle1 {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 90px;
+}
+
+#themeStoryTitle {
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+}
+
+#themeStoryBack {
+  width: 1240px;
+  height: 1593px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  margin-top: 20px;
+  margin-bottom: 402px;
+}
+/* 테마별 상세페이지 스토리 끝 */

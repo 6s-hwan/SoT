@@ -1,6 +1,4 @@
 // 뒷화면 고정
-// const body = document.getElementsByTagName("body")[0];
-// body.classList.add("scrollLock");
 
 // 초기에는 로그인 창을 보여주고 회원가입 창을 숨깁니다.
 document.addEventListener("DOMContentLoaded", function () {

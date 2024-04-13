@@ -3,7 +3,7 @@
   /* All */
   margin: 0;
   padding: 0;
-  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans CJK KR";
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
 }
 
 /* 가로선 */
@@ -53,7 +53,7 @@ input::placeholder {
   /* 이 코드가 있어야 나란히 정렬 가능 */
   /* display: inline-block; */
   color: #000;
-  font-family: "Noto Sans CJK KR";
+  font-family: "Noto Sans KR";
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

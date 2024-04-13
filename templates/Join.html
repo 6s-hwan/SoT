@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/Join.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <!-- 임시버튼 -->
+    <input type="checkbox" id="join" />
+    <label for="join">로그인</label>
+
+    <div id="bg_gray">
+      <div id="join_pop_up">
+        <div id="first">
+          <div id="logo">
+            <img
+              src="../static/images/Logo.png"
+              alt="Logo"
+              width="238px"
+              height="55px"
+            />
+          </div>
+
+          <div id="middle"></div>
+
+          <div id="close">
+            <img
+              src="../static/images/X.png"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="loginPopup.style.display='none'"
+            />
+          </div>
+        </div>
+
+        <hr />
+
+        <div id="second">
+          <div id="text">회원가입</div>
+
+          <div id="middle2"></div>
+
+          <div id="back">
+            <a href="#" onclick="openLoginPopup()">로그인 페이지로 돌아가기</a>
+          </div>
+        </div>
+
+        <div class="input1">
+          <div id="text2">이메일</div>
+          <label for="email_input">
+            <input
+              type="text"
+              id="email_input"
+              placeholder="이메일 입력"
+              oninput="checkInputs()"
+            />
+          </label>
+        </div>
+
+        <div id="email_text">
+          <div id="possible_email"></div>
+          <div id="a"></div>
+        </div>
+
+        <div id="blank"></div>
+
+        <div class="input2">
+          <div id="text3">비밀번호</div>
+          <label for="pw_input">
+            <input
+              type="password"
+              id="pw_input"
+              placeholder="비밀번호 입력"
+              oninput="checkInputs()"
+              onchange="check_pw()"
+            />
+          </label>
+        </div>
+
+        <div id="check_pw">
+          <span id="text4" class="pw1">특수문자 포함</span>
+          <div id="imageContainer1" style="display: none">
+            <img
+              id="check_img1"
+              src="../static/images/check.png"
+              alt="check"
+              width="8px"
+              height="5px"
+            />
+          </div>
+          <div id="middle3"></div>
+          <span id="check" class="pw2">8자 이상</span>
+          <div id="imageContainer2" style="display: none">
+            <img
+              id="check_img2"
+              src="../static/images/check.png"
+              alt="check"
+              width="8px"
+              height="5px"
+            />
+          </div>
+        </div>
+
+        <div id="blank"></div>
+
+        <div class="input3">
+          <div id="text4">닉네임</div>
+          <label for="name_input">
+            <input
+              type="text"
+              id="name_input"
+              placeholder="다른 사용자들에게 공개할 닉네임을 입력해주세요."
+              size="32"
+              oninput="checkInputs()"
+            />
+          </label>
+        </div>
+
+        <div id="blank"></div>
+
+        <div id="birth">
+          <div id="text5">생년월일</div>
+        </div>
+
+        <div class="info" id="info__birth">
+          <select class="box" id="birth-year">
+            <option disabled selected>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년
+            </option>
+          </select>
+          <select class="box" id="birth-month">
+            <option disabled selected>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월
+            </option>
+          </select>
+          <select class="box" id="birth-day">
+            <option disabled selected>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일
+            </option>
+          </select>
+        </div>
+        <div id="blank"></div>
+        <div id="gender">
+          <div id="text6">성별</div>
+        </div>
+        <div id="gender_choose">
+          <button
+            id="button1"
+            class="button"
+            onclick="selectButton(1)"
+            type="button"
+          >
+            남성
+          </button>
+          <button
+            id="button2"
+            class="button"
+            onclick="selectButton(2)"
+            type="button"
+          >
+            여성
+          </button>
+        </div>
+        <div id="blank"></div>
+        <div id="phone">전화번호</div>
+        <div class="input4">
+          <label for="phone_input1">
+            <input
+              type="text"
+              class="phone_input"
+              id="phone_input1"
+              placeholder="010"
+              oninput="checkInputs()"
+            />
+          </label>
+          <div id="text7">-</div>
+          <label for="phone_input2">
+            <input
+              type="text"
+              class="phone_input"
+              id="phone_input2"
+              placeholder="1234"
+              oninput="checkInputs()"
+            />
+          </label>
+          <div id="text7">-</div>
+          <label for="phone_input3">
+            <input
+              type="text"
+              class="phone_input"
+              id="phone_input3"
+              placeholder="5678"
+              oninput="checkInputs()"
+            />
+          </label>
+        </div>
+        <div class="input5">
+          <label for="CertificationNumber_input">
+            <input
+              type="text"
+              id="CertificationNumber_input"
+              placeholder="인증번호를 입력해주세요"
+              oninput="checkInputs()"
+            />
+          </label>
+          <button>전송</button>
+        </div>
+        <div id="text8">실명인증을 완료해주세요</div>
+        <div id="blank"></div>
+        <!-- 여기가 끝 부분 -->
+      </div>
+    </div>
+    <script>
+      // 이메일 파트
+      // var re = /^[a-zA-Z0-9]{4,12}$/; // a~z,A~Z,0~9까지 사용가능하며 4~12자리 입력
+      // var re2 =
+      //   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      // var mailFlag = 0; //mail 주소 확인의 카운트를 세주는 변수
+
+      // //데이터 받아오기
+      // function valiData() {
+      //   var mail = document.getElementById("email_input").value;
+      // }
+
+      // //메일 형식 확인
+      // function checkMail() {
+      //   valiData();
+      //   if (re2.test(mail) != true) {
+      //     //re에 만족하고
+      //     //찾는 문자열이, 들어있는지 아닌지 확인, 찾으려는 문자가 들어있으면, 결과는 "true"
+      //     document.getElementById("check").innerHTML =
+      //       "사용 가능한 이메일 입니다.";
+      //   } else {
+      //     document.getElementById("check").innerHTML =
+      //       "사용 가능한 이메일 입니다.";
+      //     mailFlag = 1;
+      //     mail.value = "";
+      //     //pw.focus();
+      //   }
+      // }
+
+      function checkInputs() {
+        var emailInput = document.getElementById("email_input");
+        var email = emailInput.value;
+        var emailRegex =
+          /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        // var emailText = document.getElementById("email_text");
+        var possibleEmail = document.getElementById("possible_email");
+
+        if (emailRegex.test(email)) {
+          possibleEmail.innerHTML = "사용 가능한 이메일입니다.";
+          possibleEmail.style.color = "#448FFF";
+        }
+        // } else {
+        //   possibleEmail.innerHTML = "유효하지 않은 이메일 주소입니다.";
+        //   possibleEmail.style.color = "red";
+        // }
+      }
+
+      // 비밀번호 파트
+      document
+        .getElementById("pw_input")
+        .addEventListener("keyup", checkInputs);
+      function checkInputs() {
+        var pw = document.getElementById("pw_input").value;
+        var specialCharacters = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
+        var checkText = document.getElementById("text4"); // 특수문자 포함 문구의 span 요소
+        var checkNumber = document.getElementById("check");
+        var imageContainer1 = document.getElementById("imageContainer1");
+        var imageContainer2 = document.getElementById("imageContainer2");
+        // 첫 번째 이미지 요소 가져오기
+        var checkImage1 = document.getElementById("check_img1");
+
+        // 첫 번째 이미지에 패딩 추가
+        checkImage1.style.paddingLeft = "5px";
+        checkImage1.style.paddingTop = "7px";
+        checkImage1.style.paddingBottom = "7px";
+
+        // 두 번째 이미지 요소 가져오기
+        var checkImage2 = document.getElementById("check_img2");
+
+        // 두 번째 이미지에 패딩 추가
+        checkImage2.style.paddingLeft = "5px";
+        checkImage2.style.paddingTop = "7px";
+        checkImage2.style.paddingBottom = "7px";
+
+        if (specialCharacters.test(pw)) {
+          checkText.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
+          imageContainer1.style.display = "block"; // 이미지 표시
+        } else {
+          checkText.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
+          imageContainer1.style.display = "none"; // 이미지 숨기기
+        }
+
+        if (pw.length >= 8) {
+          checkNumber.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
+          imageContainer2.style.display = "block"; // 이미지 표시
+        } else {
+          checkNumber.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
+          imageContainer2.style.display = "none"; // 이미지 숨기기
+        }
+      }
+
+      //생년월일
+      // '년' 셀렉트 박스 option 목록 동적 생성
+      const birthYearEl = document.querySelector("#birth-year");
+      // option 목록 생성 여부 확인
+      isYearOptionExisted = false;
+      birthYearEl.addEventListener("focus", function () {
+        // year 목록 생성되지 않았을 때 (최초 클릭 시)
+        if (!isYearOptionExisted) {
+          isYearOptionExisted = true;
+          for (var i = 1920; i <= 2024; i++) {
+            // option element 생성
+            const YearOption = document.createElement("option");
+            YearOption.setAttribute("value", i);
+            YearOption.innerText = i;
+            // birthYearEl의 자식 요소로 추가
+            this.appendChild(YearOption);
+          }
+        }
+      });
+
+      // '월' 셀렉트 박스 option 목록 동적 생성
+      const birthMonthEl = document.querySelector("#birth-month");
+      // option 목록 생성 여부 확인
+      isMonthOptionExisted = false;
+      birthMonthEl.addEventListener("focus", function () {
+        // Month 목록 생성되지 않았을 때 (최초 클릭 시)
+        if (!isMonthOptionExisted) {
+          isMonthOptionExisted = true;
+          for (var i = 1; i <= 12; i++) {
+            // option element 생성
+            const MonthOption = document.createElement("option");
+            MonthOption.setAttribute("value", i);
+            MonthOption.innerText = i;
+            // birthMonthEl의 자식 요소로 추가
+            this.appendChild(MonthOption);
+          }
+        }
+      });
+
+      // '일' 셀렉트 박스 option 목록 동적 생성
+      const birthDayEl = document.querySelector("#birth-day");
+      // option 목록 생성 여부 확인
+      isDayOptionExisted = false;
+      birthDayEl.addEventListener("focus", function () {
+        // Day 목록 생성되지 않았을 때 (최초 클릭 시)
+        if (!isDayOptionExisted) {
+          isDayOptionExisted = true;
+          for (var i = 1; i <= 31; i++) {
+            // option element 생성
+            const DayOption = document.createElement("option");
+            DayOption.setAttribute("value", i);
+            DayOption.innerText = i;
+            // birthDayEl의 자식 요소로 추가
+            this.appendChild(DayOption);
+          }
+        }
+      });
+      // 남녀 확인 버튼
+      function selectButton(selectedButton) {
+        // 모든 버튼에서 'selected' 클래스 제거
+        document.getElementById("button1").classList.remove("selected");
+        document.getElementById("button2").classList.remove("selected");
+
+        // 선택된 버튼에 'selected' 클래스 추가
+        document
+          .getElementById(`button${selectedButton}`)
+          .classList.add("selected");
+      }
+    </script>
+  </body>
+</html>

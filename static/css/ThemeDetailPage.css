@@ -215,10 +215,6 @@ input.uploadbtn {
   display: inline-block;
 }
 
-#themecheck {
-  /* display: none; */
-  padding-left: 4px;
-}
 #theme1 {
   background: url("../images/theme1.png");
   width: 387px;
@@ -233,16 +229,6 @@ input.uploadbtn {
   /* position: relative;
   display: inline-block; */
 }
-
-#theme1.clicked {
-  color: #fff;
-  font-family: "Noto Sans KR";
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
 #text_theme1 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -251,10 +237,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 207px;
-  z-index: 10;
+  padding-right: 203px; /* check이미지가 텍스트 옆에 들어와서 32px뺐음*/
 }
-
+#themecheck1 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage1 {
   border: none;
   position: absolute;
@@ -278,7 +268,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme2 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -287,9 +276,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 340px;
+  padding-right: 308px;
 }
-
+#themecheck2 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage2 {
   border: none;
   position: absolute;
@@ -313,7 +307,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme3 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -322,9 +315,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 138px;
+  padding-right: 106px;
 }
-
+#themecheck3 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage3 {
   border: none;
   position: absolute;
@@ -348,7 +346,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme4 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -357,9 +354,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 204px;
+  padding-right: 172px;
 }
-
+#themecheck4 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage4 {
   border: none;
   position: absolute;
@@ -383,7 +385,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme5 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -392,9 +393,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 233px;
+  padding-right: 201px;
 }
-
+#themecheck5 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage5 {
   border: none;
   position: absolute;
@@ -418,7 +424,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme6 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -427,9 +432,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 362px;
+  padding-right: 330px;
 }
-
+#themecheck6 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage6 {
   border: none;
   position: absolute;
@@ -453,7 +463,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme7 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -462,9 +471,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 239px;
+  padding-right: 207px;
 }
-
+#themecheck7 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage7 {
   border: none;
   position: absolute;
@@ -488,7 +502,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme8 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -497,9 +510,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 239px;
+  padding-right: 207px;
 }
-
+#themecheck8 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage8 {
   border: none;
   position: absolute;
@@ -523,7 +541,6 @@ input.uploadbtn {
   margin-top: 20px;
   cursor: pointer;
 }
-
 #text_theme9 {
   color: #fff;
   font-family: "Noto Sans KR";
@@ -532,9 +549,14 @@ input.uploadbtn {
   font-weight: 500;
   line-height: normal;
   padding-top: 120px;
-  padding-right: 266px;
+  padding-right: 234px;
 }
-
+#themecheck9 {
+  /* display: none; */
+  padding-left: 4px;
+  position: relative;
+  top: 3px; /* 아래로 6px 이동 */
+}
 #overlayImage9 {
   border: none;
   position: absolute;
@@ -559,7 +581,7 @@ input.uploadbtn {
   padding-top: 100px;
 }
 
-#themeStoryTitle{
+#themeStoryTitle {
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -567,7 +589,7 @@ input.uploadbtn {
   /* 요소가 여러 개일때 가운데 정렬 */
 }
 
-#themestorytitle_1{
+#themestorytitle_1 {
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -593,12 +615,12 @@ input.uploadbtn {
   line-height: 90px;
 }
 
-#themestory_select{
+#themestory_select {
   padding-left: 810px;
   padding-top: 52px;
 }
 
-#story_select{
+#story_select {
   display: flex;
   width: 145px;
   height: 30px;
@@ -608,11 +630,11 @@ input.uploadbtn {
   gap: 8px;
   flex-shrink: 0;
   border-radius: 8px;
-  border: 1px solid #ECECEC;
-  background: #FFF;
+  border: 1px solid #ececec;
+  background: #fff;
 }
 
-.recom_select{
+.recom_select {
   color: #606060;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -622,7 +644,7 @@ input.uploadbtn {
   line-height: 26px;
 }
 
-.newest_select{
+.newest_select {
   color: #606060;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -632,7 +654,7 @@ input.uploadbtn {
   line-height: 26px;
 }
 
-.inquiry_select{
+.inquiry_select {
   color: #606060;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -642,7 +664,7 @@ input.uploadbtn {
   line-height: 26px;
 }
 
-.month_select{
+.month_select {
   color: #606060;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -652,7 +674,7 @@ input.uploadbtn {
   line-height: 26px;
 }
 
-.today_select{
+.today_select {
   color: #606060;
   text-align: center;
   font-family: "Noto Sans KR";

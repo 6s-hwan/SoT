@@ -1,5 +1,3 @@
-// 뒷화면 고정
-
 // 초기에는 로그인 창을 보여주고 회원가입 창을 숨깁니다.
 document.addEventListener("DOMContentLoaded", function () {
   var loginPopup = document.getElementById("login_pop_up");
@@ -361,6 +359,7 @@ function prevSlide() {
 
 showSlide(currentSlide);
 
+// 테마별 여행지에서 각 버튼을 누르면 누른 상태로 상세페이지로 넘어가기
 // 각 버튼의 오버레이 이미지 상태를 저장할 배열
 var isOverlayVisible = [
   false,

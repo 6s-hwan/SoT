@@ -361,6 +361,32 @@ function prevSlide() {
 
 showSlide(currentSlide);
 
+// 각 버튼의 오버레이 이미지 상태를 저장할 배열
+var isOverlayVisible = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
+// 각 버튼의 체크 이미지 상태를 저장할 배열
+var isCheckVisible = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
 // 넘어갈 때 파라미터 전달하고 페이지 이동하는 함수
 function passParamsAndNavigate(number) {
   // 오버레이 이미지와 체크 이미지의 상태를 전달하는 부분

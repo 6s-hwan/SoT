@@ -29,10 +29,10 @@
         </div>
         <div class="nav_menu">
           <ul class="navigation">
-            <li><a href="" class="b">홈</a></li>
-            <li><a href="" class="c">지역</a></li>
-            <li><a href="" class="c">지도</a></li>
-            <li><a href="" class="c">북마크</a></li>
+            <li><a href="../templates/Home.html" class="b">홈</a></li>
+            <li><a href="#" class="c">지역</a></li>
+            <li><a href="#" class="c">지도</a></li>
+            <li><a href="#" class="c">북마크</a></li>
           </ul>
         </div>
 
@@ -66,13 +66,13 @@
               <button
                 type="button"
                 id="theme1"
-                onclick="toggleImage('overlayImage1')"
+                onclick="toggleImageAndCheck(1)"
               >
                 <p id="text_theme1">
                   자연 속 여행
                   <img
-                    src="../static/images/theme_check.png"
-                    id="themecheck"
+                    src="../static/images/theme_checked.png"
+                    id="themecheck1"
                     alt="체크"
                     width="24px"
                     height="24px"
@@ -93,9 +93,18 @@
               <button
                 type="button"
                 id="theme2"
-                onclick="toggleImage('overlayImage2')"
+                onclick="toggleImageAndCheck(2)"
               >
-                <p id="text_theme2">역사와 문화</p>
+                <p id="text_theme2">
+                  역사와 문화
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck2"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage2"
                   src="../static/images/theme_overlay2.png"
@@ -110,9 +119,18 @@
               <button
                 type="button"
                 id="theme3"
-                onclick="toggleImage('overlayImage3')"
+                onclick="toggleImageAndCheck(3)"
               >
-                <p id="text_theme3">식도락 여행</p>
+                <p id="text_theme3">
+                  식도락 여행
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck3"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage3"
                   src="../static/images/theme_overlay.png"
@@ -127,9 +145,18 @@
               <button
                 type="button"
                 id="theme4"
-                onclick="toggleImage('overlayImage4')"
+                onclick="toggleImageAndCheck(4)"
               >
-                <p id="text_theme4">축제</p>
+                <p id="text_theme4">
+                  축제
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck4"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage4"
                   src="../static/images/theme_overlay.png"
@@ -144,9 +171,18 @@
               <button
                 type="button"
                 id="theme5"
-                onclick="toggleImage('overlayImage5')"
+                onclick="toggleImageAndCheck(5)"
               >
-                <p id="text_theme5">예술 및 체험</p>
+                <p id="text_theme5">
+                  예술 및 체험
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck5"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage5"
                   src="../static/images/theme_overlay.png"
@@ -161,9 +197,18 @@
               <button
                 type="button"
                 id="theme6"
-                onclick="toggleImage('overlayImage6')"
+                onclick="toggleImageAndCheck(6)"
               >
-                <p id="text_theme6">산악 여행</p>
+                <p id="text_theme6">
+                  산악 여행
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck6"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage6"
                   src="../static/images/theme_overlay.png"
@@ -178,9 +223,18 @@
               <button
                 type="button"
                 id="theme7"
-                onclick="toggleImage('overlayImage7')"
+                onclick="toggleImageAndCheck(7)"
               >
-                <p id="text_theme7">도심속 여행</p>
+                <p id="text_theme7">
+                  도심속 여행
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck7"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage7"
                   src="../static/images/theme_overlay.png"
@@ -195,9 +249,18 @@
               <button
                 type="button"
                 id="theme8"
-                onclick="toggleImage('overlayImage8')"
+                onclick="toggleImageAndCheck(8)"
               >
-                <p id="text_theme8">바다와 해변</p>
+                <p id="text_theme8">
+                  바다와 해변
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck8"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage8"
                   src="../static/images/theme_overlay.png"
@@ -212,9 +275,18 @@
               <button
                 type="button"
                 id="theme9"
-                onclick="toggleImage('overlayImage9')"
+                onclick="toggleImageAndCheck(9)"
               >
-                <p id="text_theme9">테마파크</p>
+                <p id="text_theme9">
+                  테마파크
+                  <img
+                    src="../static/images/theme_checked.png"
+                    id="themecheck9"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
                 <img
                   id="overlayImage9"
                   src="../static/images/theme_overlay.png"
@@ -227,31 +299,41 @@
       </div>
     </div>
     <!--  테마별 여행지 끝 -->
+
+    <!-- 테마별 상세페이지 스토리 시작 -->
+    <div id="themeStoryfull">
+      <div id="themeStory">
+        <div id="themeStoryTitle">
+          <div id="themestorytitle_1">
+            <img
+              src="../static/images/theme_story.png"
+              class="themestoryimg"
+              width="90px"
+              height="90px"
+            />
+            <p class="themetitle1">스토리</p>
+          </div>
+          <div id="themestory_select">
+            <form action="#">
+              <select name="story_select" id="story_select">
+                <option value="recom" class="recom_select">추천순</option>
+                <option value="newest" class="newest_select">최신순</option>
+                <option value="inquiry" class="inquiry_select">조회순</option>
+                <option value="month" class="month_select">
+                  이번 달 조회순
+                </option>
+                <option value="today" class="today_select">오늘 조회순</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        <div id="themeStoryBack"></div>
+      </div>
+    </div>
+    <!-- 테마별 상세페이지 스토리 끝 -->
   </body>
 
-  <!-- <script src="../static/js/Home.js"></script> -->
+  <script src="../static/js/ThemeDetailPage.js"></script>
 
-  <script>
-    // // 이미지를 토글하는 함수입니다.
-    // function toggleImage(imageId) {
-    //   var image = document.getElementById(imageId);
-
-    //   // 이미지를 토글하여 보이거나 숨깁니다.
-    //   if (image.style.display === "none") {
-    //     image.style.display = "block";
-    //   } else {
-    //     image.style.display = "none";
-    //   }
-    // }
-    function toggleImage(imageId) {
-      var image = document.getElementById(imageId);
-
-      // 이미지를 토글하여 보이거나 숨깁니다.
-      if (image.style.display === "block") {
-        image.style.display = "none";
-      } else {
-        image.style.display = "block";
-      }
-    }
-  </script>
+  <script></script>
 </html>

@@ -559,6 +559,24 @@ input.uploadbtn {
   padding-top: 100px;
 }
 
+#themeStoryTitle{
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+}
+
+#themestorytitle_1{
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+  width: 280px;
+  height: 90px;
+}
+
 .themestoryimg {
   width: 90px;
   height: 90px;
@@ -575,12 +593,73 @@ input.uploadbtn {
   line-height: 90px;
 }
 
-#themeStoryTitle {
+#themestory_select{
+  padding-left: 810px;
+  padding-top: 52px;
+}
+
+#story_select{
   display: flex;
-  /* 수직적으로 가운데 정렬 */
-  /* align-items: center; */
-  box-sizing: border-box;
-  /* 요소가 여러 개일때 가운데 정렬 */
+  width: 145px;
+  height: 30px;
+  padding: 4px 4px 4px 8px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #ECECEC;
+  background: #FFF;
+}
+
+.recom_select{
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.newest_select{
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.inquiry_select{
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.month_select{
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.today_select{
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 #themeStoryBack {

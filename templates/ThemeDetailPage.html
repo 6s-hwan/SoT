@@ -232,13 +232,26 @@
     <div id="themeStoryfull">
       <div id="themeStory">
         <div id="themeStoryTitle">
-          <img
-            src="../static/images/theme_story.png"
-            class="themestoryimg"
-            width="90px"
-            height="90px"
-          />
-          <p class="themetitle1">스토리</p>
+          <div id="themestorytitle_1">
+            <img
+              src="../static/images/theme_story.png"
+              class="themestoryimg"
+              width="90px"
+              height="90px"
+            />
+            <p class="themetitle1">스토리</p>
+          </div>
+          <div id="themestory_select">
+            <form action="#">
+              <select name="story_select" id="story_select">
+                <option value="recom" class="recom_select">추천순</option>
+                <option value="newest" class="newest_select">최신순</option>
+                <option value="inquiry" class="inquiry_select">조회순</option>
+                <option value="month" class="month_select">이번 달 조회순</option>
+                <option value="today" class="today_select">오늘 조회순</option>
+              </select>
+            </form>
+          </div>
         </div>
         <div id="themeStoryBack"></div>
       </div>

@@ -359,7 +359,10 @@ function prevSlide() {
 
 showSlide(currentSlide);
 
+<<<<<<< HEAD
 // 테마별 여행지에서 각 버튼을 누르면 누른 상태로 상세페이지로 넘어가기
+=======
+>>>>>>> main
 // 각 버튼의 오버레이 이미지 상태를 저장할 배열
 var isOverlayVisible = [
   false,
@@ -385,6 +388,10 @@ var isCheckVisible = [
   false,
   false,
 ];
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 // 넘어갈 때 파라미터 전달하고 페이지 이동하는 함수
 function passParamsAndNavigate(number) {
   // 오버레이 이미지와 체크 이미지의 상태를 전달하는 부분

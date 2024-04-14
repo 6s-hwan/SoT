@@ -360,3 +360,19 @@ function prevSlide() {
 }
 
 showSlide(currentSlide);
+
+// 넘어갈 때 파라미터 전달하고 페이지 이동하는 함수
+function passParamsAndNavigate(number) {
+  // 오버레이 이미지와 체크 이미지의 상태를 전달하는 부분
+  var overlayVisible = isOverlayVisible[number - 1];
+  var checkVisible = isCheckVisible[number - 1];
+
+  // 파라미터를 전달하고 페이지 이동
+  window.location.href =
+    "ThemeDetailPage.html?overlay=" +
+    overlayVisible +
+    "&check=" +
+    checkVisible +
+    "&index=" +
+    number;
+}

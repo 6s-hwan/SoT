@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/ThemeDetailPage.css" />
+    <link rel="stylesheet" href="../static/css/SeasonDetailPage.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -52,6 +52,39 @@
       </div>
     </nav>
 
-    
+    <!--  시즌별 시작 -->
+
+    <div id="SeasonStoryfull">
+        <div id="SeasonStory">
+          <div id="SeasonStoryTitle">
+            <div id="seasonstorytitle_1">
+              <img
+                src="../static/images/seasonimg.png"
+                class="seasonstoryimg"
+                width="90px"
+                height="90px"
+              />
+              <p class="themetitle1">시즌별 스토리</p>
+            </div>
+            <div id="seasonstory_select">
+              <form action="#">
+                <select name="story_select" id="story_select">
+                  <option value="recom" class="recom_select">추천순</option>
+                  <option value="newest" class="newest_select">최신순</option>
+                  <option value="inquiry" class="inquiry_select">조회순</option>
+                  <option value="month" class="month_select">
+                    이번 달 조회순
+                  </option>
+                  <option value="today" class="today_select">오늘 조회순</option>
+                </select>
+              </form>
+            </div>
+          </div>
+          <div id="SeasonStoryBack"></div>
+        </div>
+      </div>
+      <!-- 시즌별 상세페이지 스토리 끝 -->
+
+
   </body>
 </html>

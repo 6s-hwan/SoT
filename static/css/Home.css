@@ -1389,6 +1389,213 @@ input:focus {
 }
 /* 회원가입 팝업창 css 코드 */
 
+/* 개인정보 취급방침 팝업창 css 시작 */
+#Use_backscreen::-webkit-scrollbar {
+  width: 6px;
+}
+#Use_backscreen::-webkit-scrollbar-corner {
+  width: 6px;
+}
+#Use_backscreen::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+#Use_backscreen::-webkit-scrollbar-button {
+  display: none;
+}
+#bg_gray > #TermsOfUse_pop_up {
+  position: absolute;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 472px;
+  height: 740px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+}
+
+#Use_Title {
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 28px;
+  padding-left: 40px;
+}
+#Usebackarrow {
+  cursor: pointer;
+  padding-top: 4px;
+  padding-right: 2px;
+}
+#Use_text {
+  color: #444;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
+
+/* 개인정보 취급방침 내용 */
+#Use_backscreen {
+  box-sizing: border-box;
+  padding: 0px;
+  margin-left: 36px;
+  margin-top: 20px;
+  overflow: scroll;
+  width: 400px;
+  height: 548px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 6px 0px rgba(193, 193, 193, 0.25) inset;
+}
+
+#Use_backscreen_text {
+  width: 360px;
+  margin-top: 20px;
+  margin-left: 18px;
+}
+
+#number1 {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 19.6px */
+  letter-spacing: -0.28px;
+}
+#number2 {
+  color: #252525;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.28px;
+}
+#UseAgree_btn {
+  margin-top: 19px;
+  margin-left: 36px;
+  width: 400px;
+  height: 58px;
+  border-radius: 8px;
+  border: 1px solid #949494;
+  background: #fff;
+  cursor: pointer;
+  color: #1b1b1b;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.4px;
+}
+/* 개인정보 취급방침 팝업창 css 끝 */
+
+/* 이용약관 팝업창 css 시작 */
+#Privacy_backscreen::-webkit-scrollbar {
+  width: 6px;
+}
+#Privacy_backscreen::-webkit-scrollbar-corner {
+  width: 6px;
+}
+#Privacy_backscreen::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+#Privacy_backscreen::-webkit-scrollbar-button {
+  display: none;
+}
+#bg_gray > #Privacy_pop_up {
+  position: absolute;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 472px;
+  height: 740px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+}
+
+#Privacy_Title {
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 28px;
+  padding-left: 40px;
+}
+#Privacybackarrow {
+  cursor: pointer;
+  padding-top: 4px;
+  padding-right: 2px;
+}
+#Privacy_text {
+  color: #444;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
+
+/* 이용약관 내용 */
+#Privacy_backscreen {
+  box-sizing: border-box;
+  padding: 0px;
+  margin-left: 36px;
+  margin-top: 20px;
+  overflow: scroll;
+  width: 400px;
+  height: 548px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 6px 0px rgba(193, 193, 193, 0.25) inset;
+}
+#Privacy_backscreen_text {
+  width: 360px;
+  color: #252525;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.28px;
+  margin-top: 20px;
+  margin-left: 18px;
+}
+#PrivacyAgree_btn {
+  margin-top: 19px;
+  margin-left: 36px;
+  width: 400px;
+  height: 58px;
+  border-radius: 8px;
+  border: 1px solid #949494;
+  background: #fff;
+  cursor: pointer;
+  color: #1b1b1b;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.4px;
+}
+
+/* 이용약관 팝업창 css 끝 */
 /* 로그인 팝업창 끝*/
 
 /* 슬라이드 광고 시작 */
@@ -1838,7 +2045,7 @@ input:focus {
   line-height: 56px;
 }
 
-#spring{
+#spring {
   padding-left: 50px;
   border: none;
   font-family: "Noto Sans KR";
@@ -1849,7 +2056,7 @@ input:focus {
   background-color: #fff;
 }
 
-#summer{
+#summer {
   padding-left: 20px;
   border: none;
   font-family: "Noto Sans KR";
@@ -1861,7 +2068,7 @@ input:focus {
   color: #909090;
 }
 
-#fall{
+#fall {
   padding-left: 20px;
   border: none;
   font-family: "Noto Sans KR";
@@ -1873,7 +2080,7 @@ input:focus {
   color: #909090;
 }
 
-#winter{
+#winter {
   padding-left: 20px;
   border: none;
   font-family: "Noto Sans KR";
@@ -1979,7 +2186,7 @@ input:focus {
   padding-left: 20px;
 }
 
-#best_text{
+#best_text {
   padding-left: 18px;
   height: 70px;
   width: 360px;
@@ -1997,8 +2204,8 @@ input:focus {
   line-height: 60px; */
 }
 
-.best_1{
-  color: #4F4F4F;
+.best_1 {
+  color: #4f4f4f;
   font-family: "Noto Sans KR";
   font-size: 15px;
   font-style: normal;

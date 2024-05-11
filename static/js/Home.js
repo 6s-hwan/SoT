@@ -1,10 +1,14 @@
-// 초기에는 로그인 창을 보여주고 회원가입 창을 숨깁니다.
+// 초기에는 로그인 창을 보여주고 나머지 창을 숨깁니다.
 document.addEventListener("DOMContentLoaded", function () {
   var loginPopup = document.getElementById("login_pop_up");
   var joinPopup = document.getElementById("join_pop_up");
+  var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
+  var PrivacyPopup = document.getElementById("Privacy_pop_up");
 
   loginPopup.style.display = "block"; // 로그인 팝업 보이기
   joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
+  TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+  PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
 });
 
 // 창 닫는 js 코드
@@ -35,27 +39,112 @@ function submitForm() {
   }
 }
 
-// 로그인 팝업 창에서 회원가입 페이지로 이동하는 링크 클릭 시 이벤트 처리
+//창 여는 이벤트
 document.addEventListener("DOMContentLoaded", function () {
+  var Joinbtn = document.querySelector("#join");
   var signupLink = document.querySelector("#join_membership a");
+  var loginLink = document.querySelector("#back a");
+  var TermsOfUseOpenLink = document.querySelector("#container2 a");
+  var TermsOfUseCloseLink = document.querySelector("#Usebackarrow");
+  var TermsOfUseAgreeCloseLink = document.querySelector("#UseAgree_btn");
+  var PrivacyOpenLink = document.querySelector("#container1 a");
+  var PrivacyCloseLink = document.querySelector("#Privacybackarrow");
+  var PrivacyAgreeCloseLink = document.querySelector("#PrivacyAgree_btn");
+
   var loginPopup = document.getElementById("login_pop_up");
   var joinPopup = document.getElementById("join_pop_up");
+  var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
+  var PrivacyPopup = document.getElementById("Privacy_pop_up");
+  // 로그인 버튼 누르면 회원가입창 열기
+  Joinbtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 로그인 팝업 창에서 회원가입 페이지로 이동하는 링크 클릭 시 이벤트 처리
   signupLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
     loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     joinPopup.style.display = "block"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 회원가입 창에서 로그인 페이지로 돌아가기 링크를 누르면 로그인 팝업 창 열기
+  loginLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 개인정보 취급방침창 열기
+  TermsOfUseOpenLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    joinPopup.style.display = "none"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "block"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 개인정보 취급방침창 닫기
+  TermsOfUseCloseLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    joinPopup.style.display = "block"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 개인정보 취급방침 동의 버튼 눌러서 창 닫기
+  TermsOfUseAgreeCloseLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    joinPopup.style.display = "block"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 이용약관 창 열기
+  PrivacyOpenLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    joinPopup.style.display = "none"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "block"; // 이용약관 팝업 숨기기
+  });
+  // 이용약관 창 닫기
+  PrivacyCloseLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    joinPopup.style.display = "block"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  });
+  // 이용약관 동의버튼 눌러서 창 닫기
+  PrivacyAgreeCloseLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    joinPopup.style.display = "block"; // 회원가입 팝업 보이기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
 });
 
-// 회원가입 창에서 로그인 페이지로 돌아가기 링크를 누르면 로그인 팝업 창 열기
+// 개인정보 취급방침, 이용약관 창을 닫으면 check박스 선택되기
 document.addEventListener("DOMContentLoaded", function () {
-  var loginLink = document.querySelector("#back a");
-  var loginPopup = document.getElementById("login_pop_up");
-  var joinPopup = document.getElementById("join_pop_up");
-  loginLink.addEventListener("click", function (event) {
-    event.preventDefault(); // 링크의 기본 동작 방지
-    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
-    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+  // 버튼 요소를 가져옴
+  var checkButton1 = document.getElementById("PrivacyAgree_btn"); //이용약관
+  var checkButton2 = document.getElementById("UseAgree_btn"); //개인정보
+
+  // 체크박스 요소를 가져옴
+  var checkBox1 = document.getElementById("checkbtn2"); //이용약관
+  var checkBox2 = document.getElementById("checkbtn3"); //개인정보
+
+  // 버튼을 클릭했을 때 체크박스가 체크되도록 이벤트 리스너 등록
+  checkButton1.addEventListener("click", function () {
+    checkBox1.checked = true;
+  });
+  checkButton2.addEventListener("click", function () {
+    checkBox2.checked = true;
   });
 });
 
@@ -232,18 +321,23 @@ function selectButton(selectedButton) {
 // 회원가입 버튼 누르면 로그인창으로 넘어가는 함수
 document.addEventListener("DOMContentLoaded", function () {
   var joinBtn = document.getElementById("join_btn");
+  var joincloseBtn = document.getElementById("close");
   var loginPopup = document.getElementById("login_pop_up");
   var joinPopup = document.getElementById("join_pop_up");
+  var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
+  var PrivacyPopup = document.getElementById("Privacy_pop_up");
 
   joinBtn.addEventListener("click", function () {
-    // 회원가입 버튼 클릭 시 로그인 팝업 창 숨기기
-    loginPopup.style.display = "none";
+    // loginPopup.style.display = "none"; // 회원가입 버튼 클릭 시 로그인 팝업 창 숨기기
+    loginPopup.style.display = "block"; // 로그인 팝업 창 표시
+    joinPopup.style.display = "none"; // 회원가입 팝업 창 숨기기
+    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
 
-    // 로그인 팝업 창 표시
-    loginPopup.style.display = "block";
-    // 회원가입 팝업 창 숨기기
-    joinPopup.style.display = "none";
-
+    // 회원가입 입력값 초기화
+    resetJoinForm();
+  });
+  joincloseBtn.addEventListener("click", function () {
     // 회원가입 입력값 초기화
     resetJoinForm();
   });

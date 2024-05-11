@@ -1838,6 +1838,53 @@ input:focus {
   line-height: 56px;
 }
 
+#spring{
+  padding-left: 50px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+}
+
+#summer{
+  padding-left: 20px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+  color: #909090;
+}
+
+#fall{
+  padding-left: 20px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+  color: #909090;
+}
+
+#winter{
+  padding-left: 20px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+  color: #909090;
+}
+
 .seasonback {
   width: 1240px;
   height: 617px;
@@ -1920,15 +1967,23 @@ input:focus {
   /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
   display: flex;
   /* 이 코드가 있어야 나란히 정렬 가능 */
-  height: 60px;
+  height: 70px;
   margin-bottom: 26px;
 }
 
 .bestimg {
+  padding-top: 10px;
   width: 60px;
   height: 60px;
   padding-right: 18px;
   padding-left: 20px;
+}
+
+#best_text{
+  padding-left: 18px;
+  height: 70px;
+  width: 360px;
+  padding-bottom: 10px;
 }
 
 .best {
@@ -1940,6 +1995,17 @@ input:focus {
   font-family: "Noto Sans KR";
   /* font-weight: 500;
   line-height: 60px; */
+}
+
+.best_1{
+  color: #4F4F4F;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  padding-bottom: 4px;
+  padding-left: 1px;
 }
 
 #bestback {

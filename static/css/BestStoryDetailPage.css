@@ -187,7 +187,6 @@ input.uploadbtn {
   /* align-items: center; */
   box-sizing: border-box;
   /* 요소가 여러 개일때 가운데 정렬 */
-  margin-bottom: 26px;
 }
 #best_title {
   box-sizing: border-box;
@@ -195,6 +194,7 @@ input.uploadbtn {
   display: flex;
   /* 이 코드가 있어야 나란히 정렬 가능 */
   height: 70px;
+  margin-bottom: 26px;
 }
 #beststory_select {
   padding-left: 609px;

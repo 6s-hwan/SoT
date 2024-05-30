@@ -1,0 +1,261 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/SeasonDetailPage.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav_logo">
+        <div id="nav_logo1">
+          <img
+            src="../static/images/MainLogo.png"
+            alt="로고"
+            width="225px"
+            height="60px"
+          />
+        </div>
+        <div class="nav_menu">
+          <ul class="navigation">
+            <li><a href="../templates/Home.html" class="b">홈</a></li>
+            <li><a href="#" class="c">지역</a></li>
+            <li><a href="#" class="c">지도</a></li>
+            <li><a href="#" class="c">북마크</a></li>
+          </ul>
+        </div>
+
+        <div id="search">
+          <input type="text" class="search" />
+          <img
+            src="../static/images/search.png"
+            alt="돋보기"
+            width="30px"
+            height="30px"
+          />
+        </div>
+        <input type="button" class="imagebtn" />
+        <input type="button" class="uploadbtn" />
+        <input type="checkbox" id="join" />
+        <label for="join">로그인</label>
+      </div>
+    </nav>
+
+    <!--  시즌별 시작 -->
+
+    <div id="SeasonStoryfull">
+        <div id="SeasonStory">
+          <div id="SeasonStoryTitle">
+            <div id="seasonstorytitle_1">
+              <img
+                src="../static/images/seasonimg.png"
+                class="seasonstoryimg"
+                width="90px"
+                height="90px"
+              />
+              <p class="seasontitle1">시즌별 스토리</p>
+
+              <button
+              type="button"
+              id="spring"
+              >봄</button>
+
+              <button
+                type="button"
+                id="summer"
+              >여름</button>
+
+              <button
+                type="button"
+                id="fall"
+              >가을</button>
+
+              <button
+                type="button"
+                id="winter"
+              >겨울</button>
+            </div>
+            <div id="seasonstory_select">
+              <form action="#">
+                <select name="story_select" id="story_select">
+                  <option value="recom" class="recom_select">추천순</option>
+                  <option value="newest" class="newest_select">최신순</option>
+                  <option value="inquiry" class="inquiry_select">조회순</option>
+                  <option value="month" class="month_select">
+                    이번 달 조회순
+                  </option>
+                  <option value="today" class="today_select">오늘 조회순</option>
+                </select>
+              </form>
+            </div>
+          </div>
+          <div id="SeasonStoryBack">
+            <div id="season1-4">
+              <div id="season1">
+                <!--  베스트 1 시작 -->
+                <div id="season1_img">
+                  <button
+                    type="button"
+                    class="season_img1"
+                    onclick="location.href='./seasonpage.html';"
+                  ></button>
+                </div>
+  
+                <div id="season1_text">
+                  <div id="season1_name">
+                    <p class="season1_name">담양 죽녹원</p>
+                  </div>
+                  <div id="season1_see">
+                    <img src="../static/images/seeimg.png" class="season1_see" />
+                    <p class="season_see1">3.7k</p>
+                  </div>
+                  <div id="season1_like">
+                    <img src="../static/images/likeimg.png" class="season1_like" />
+                    <p class="season_like1">1.8k</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div id="season2">
+                <!--  베스트 2 시작 -->
+                <div id="season2_img">
+                  <button
+                    type="button"
+                    class="season_img2"
+                    onclick="location.href='./seasonpage.html';"
+                  ></button>
+                </div>
+  
+                <div id="season2_text">
+                  <div id="season2_name">
+                    <p class="season2_name">담양 죽녹원</p>
+                  </div>
+                  <div id="season2_see">
+                    <img src="../static/images/seeimg.png" class="season2_see" />
+                    <p class="season_see2">3.7k</p>
+                  </div>
+                  <div id="season2_like">
+                    <img src="../static/images/likeimg.png" class="season2_like" />
+                    <p class="season_like2">1.8k</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div id="season3">
+                <!--  베스트 3 시작 -->
+                <div id="season3_img">
+                  <button
+                    type="button"
+                    class="season_img3"
+                    onclick="location.href='./seasonpage.html';"
+                  ></button>
+                </div>
+  
+                <div id="season3_text">
+                  <div id="season3_name">
+                    <p class="season3_name">담양 죽녹원</p>
+                  </div>
+                  <div id="season3_see">
+                    <img src="../static/images/seeimg.png" class="season3_see" />
+                    <p class="season_see3">3.7k</p>
+                  </div>
+                  <!--
+                  <div id="best3_like">
+                    <img src="../static/images/likeimg.png" class="seasont3_like" />
+                    <p class="season_like3">1.8k</p>
+                  </div>
+                  -->
+                </div>
+              </div>
+  
+              <div id="season4">
+                <!--  베스트 4 시작 -->
+                <div id="seasont4_img">
+                  <button
+                    type="button"
+                    class="season_img4"
+                    onclick="location.href='./bestpage.html';"
+                  ></button>
+                </div>
+  
+                <div id="season4_text">
+                  <div id="season4_name">
+                    <p class="season4_name">담양 죽녹원</p>
+                  </div>
+                  <div id="season4_see">
+                    <img src="../static/images/seeimg.png" class="season4_see" />
+                    <p class="season_see4">3.7k</p>
+                  </div>
+                  <!--
+                  <div id="best4_like">
+                    <img src="../static/images/likeimg.png" class="season4_like" />
+                    <p class="season_like4">1.8k</p>
+                  </div>
+                  -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="seasonmorebtn">
+              <button
+                type="button"
+                id="seasonmorebtn"
+                onclick="location.href='';"
+              ></button>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- 시즌별 상세페이지 스토리 끝 -->
+  <!-- 나머지들 -->
+    <div id="etc_thing">
+      <div id="etc_full">
+        <div id="terms_of_use">
+          <button
+            type="button"
+            value="이용약관"
+            class="terms_of_use"
+            onclick="location.href='./terms_of_use.html';"
+          >
+            이용약관
+          </button>
+        </div>
+        <div id="personal_inf">
+          <button
+            type="button"
+            value="개인정보처리방침"
+            class="personal_inf"
+            onclick="location.href='./personal_inf.html';"
+          >
+            개인정보처리방침
+          </button>
+        </div>
+        <div id="contact">
+          <button
+            type="button"
+            value="Contact"
+            class="contact"
+            onclick="location.href='./contact.html';"
+          >
+            Contact
+          </button>
+        </div>
+        <div id="c_SoT">
+          <p class="c_SoT">ⓒ 2024 SoT</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

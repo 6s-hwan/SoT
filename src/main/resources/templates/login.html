@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/Login.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>SoT</title>
+</head>
+<body>
+<!-- 로그인화면 간단하게 구현 -->
+<input type="checkbox" id="join" />
+<label for="join">로그인</label>
+
+
+<div id="bg_gray">
+
+  <div id="join_pop_up">
+    <div id="first">
+      <div id="logo">
+        <img
+                th:src="@{/images/Logo.png}"
+                alt="Logo"
+                width="238px"
+                height="55px"
+        />
+      </div>
+
+      <div id="middle"></div>
+
+      <div id="close">
+        <img
+                th:src="@{/images/X.png}"
+                alt="X"
+                width="28px"
+                height="28px"
+                onclick="loginPopup.style.display='none'"
+        />
+      </div>
+    </div>
+    <hr />
+
+    <div id="text">로그인 후 당신의 스토리를 포스팅해보세요!</div>
+
+    <form id="loginForm" action="/login" method="POST">
+      <div class="input1">
+        <label for="email_input">
+          <input type="text" name="username" id="email_input" placeholder="이메일" />
+        </label>
+      </div>
+
+      <div class="input2">
+        <label for="pw_input">
+          <input type="password" name="password" id="pw_input" placeholder="비밀번호" />
+        </label>
+      </div>
+
+      <!-- 로그인 버튼 -->
+      <button type="submit" class="confirm" id="login_btn">로그인</button>
+    </form>
+
+    <!-- 자동로그인과 회원가입구역 -->
+    <div class="text2">
+      <input type="checkbox" class="orgin" id="checkbtn" />
+      <label for="checkbtn">자동로그인</label>
+
+      <div id="blank"></div>
+
+
+      <div id="join_membership">
+        <a th:href="@{/join}" href="#">회원가입</a>
+      </div>
+    </div>
+
+    <!-- 로그인 버튼 -->
+
+    <!-- 계정을 잊으셨나요? 이메일 또는 비밀번호 찾기 구역 -->
+    <div id="text3">
+      계정을 잊으셨나요? <a href="#">이메일</a> 또는
+      <a href="#">비밀번호</a> 찾기
+    </div>
+  </div>
+</div>
+<script th:src="@{/js/Home.js}"></script>
+</body>
+</html>

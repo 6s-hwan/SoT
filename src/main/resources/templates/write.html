@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>스토리 업로드</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .popup-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        .form-field {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-field input[type="text"],
+        .form-field input[type="file"],
+        .form-field textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-field input[type="file"] {
+            display: none;
+        }
+        .upload-placeholder {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .upload-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        .upload-placeholder.active img {
+            display: block;
+        }
+        .upload-placeholder p {
+            margin: 0;
+            color: #aaa;
+        }
+        textarea {
+            font-family: 'Roboto', sans-serif;
+            resize: vertical;
+        }
+        .upload-button {
+            background-color: white;
+            color: black;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .upload-button:hover {
+            background-color: #f0f0f0;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .tag-list span {
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+        .tag-list span::before {
+            content: "#";
+        }
+        .tag-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .tag-input-wrapper input {
+            flex: 1;
+        }
+        .tag-input-wrapper button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .tag-input-wrapper button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<div class="popup-container">
+    <button class="close-button" onclick="closePopup()">×</button>
+    <form action="/upload" method="POST" onsubmit="return uploadPost(event)">
+        <div class="upload-placeholder" onclick="document.getElementById('image').click()">
+            <p>이미지 불러오기</p>
+            <img id="uploadedImage" src="" alt="Uploaded Image">
+        </div>
+        <input type="file" id="image" onchange="getURL(this)">
+        <input type="hidden" id="imageUrl" name="image_url">
+        <div class="form-field">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div class="form-field">
+            <label for="location">위치</label>
+            <input type="text" id="location" name="location">
+        </div>
+        <div class="form-field">
+            <label for="tags">태그</label>
+            <div class="tag-input-wrapper">
+                <input type="text" id="tagInput">
+                <button type="button" onclick="addTag()">추가</button>
+            </div>
+            <div class="tag-list" id="tagList"></div>
+            <input type="hidden" id="tags" name="tags">
+        </div>
+        <div class="form-field">
+            <label for="description">상세 설명</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+        </div>
+        <button type="submit" class="upload-button">업로드</button>
+    </form>
+</div>
+<script>
+    function closePopup() {
+        document.querySelector('.popup-container').style.display = 'none';
+    }
+
+    function getURL(e) {
+        if (e.files && e.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                let imgElement = document.getElementById('uploadedImage');
+                imgElement.src = event.target.result;
+                document.querySelector('.upload-placeholder').classList.add('active');
+                document.querySelector('.upload-placeholder p').style.display = 'none';
+            }
+            reader.readAsDataURL(e.files[0]);
+
+            const fileName = encodeURIComponent(e.files[0].name);
+            fetch(`/presigned-url?filename=${fileName}`)
+                .then(response => response.text())
+                .then(url => {
+                    return fetch(url, {
+                        method: 'PUT',
+                        body: e.files[0]
+                    });
+                })
+                .then(response => {
+                    if (response.ok) {
+                        const imageUrl = response.url.split('?')[0];
+                        document.getElementById('imageUrl').value = imageUrl;
+                    } else {
+                        alert("이미지 업로드에 실패했습니다.");
+                    }
+                });
+        }
+    }
+
+    function addTag() {
+        let tagInput = document.getElementById('tagInput');
+        let tagList = document.getElementById('tagList');
+        let tagValue = tagInput.value.trim();
+        if (tagValue) {
+            let newTag = document.createElement('span');
+            newTag.textContent = tagValue;
+            tagList.appendChild(newTag);
+            tagInput.value = '';
+            updateTagsInput();
+        }
+    }
+
+    function updateTagsInput() {
+        let tagList = document.getElementById('tagList');
+        let tags = Array.from(tagList.children).map(tag => tag.textContent);
+        document.getElementById('tags').value = tags.join(',');
+    }
+
+    function uploadPost(event) {
+        event.preventDefault();
+
+        let form = event.target;
+        let title = form.title.value;
+        let location = form.location.value;
+        let tags = form.tags.value;
+        let description = form.description.value;
+        let imageUrl = form.image_url.value;
+
+        if (!title || !location || !description || !imageUrl) {
+            alert("모든 필드를 채워주세요!");
+            return false;
+        }
+
+        form.submit();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,994 @@
+* {
+    /* All */
+    margin: 0;
+    padding: 0;
+    font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* 네비게이션바 시작 */
+  .navbar {
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    align-items: center;
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    justify-content: center;
+    /* text-align: center; */
+    /* position: fixed; */
+    /* width: 1920px; */
+    height: 173px;
+    padding-top: 27px;
+    padding-bottom: 40px;
+    /* padding-left: 360px; */
+    /* padding-right: 360px; */
+  }
+  .nav_logo {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    height: 106px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #f8f8f8;
+  }
+  #nav_logo1 {
+    padding-left: 44px;
+    padding-top: 21px;
+    /* padding-bottom: 23px; */
+    padding-right: 68px;
+  }
+  .nav_menu {
+    display: flex;
+    box-sizing: border-box;
+    /* display: inline-flex; */
+    width: 263px;
+    height: 46px;
+    padding: 10px 28px;
+    /* align-items: flex-start; */
+    border-radius: 33px;
+    background: #fff;
+    list-style: none;
+    margin-right: 30px;
+  }
+  
+  .navigation {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    color: #bbb;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  /* .navigation a {
+      text-decoration: none;
+      color: #bbb;
+      font-family: "Noto Sans KR";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    } */
+  
+  .b {
+    text-decoration: none;
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+  }
+  .c {
+    text-decoration: none;
+    color: #bbb;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 24px;
+  }
+  #search {
+    display: flex;
+    width: 242px;
+    height: 46px;
+    border-radius: 23px;
+    background: #fff;
+    margin-right: 13px;
+    border: none;
+  }
+  input.search {
+    background: url("../images/search.png") no-repeat center;
+    background-size: 30px;
+    width: 212px;
+    height: 46px;
+    border-radius: 23px;
+    background: #fff;
+    border: none;
+  }
+  #search > img {
+    padding-top: 10px;
+    padding-right: 14px;
+  }
+  input.imagebtn {
+    background: url("../images/pic.png") no-repeat center;
+    background-size: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    background-color: #fff;
+    border: none;
+    margin-right: 9px;
+  }
+  input.uploadbtn {
+    background: url("../images/upload.png") no-repeat center;
+    background-size: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    background-color: #fff;
+    border: none;
+    margin-right: 72px;
+  }
+  
+  /* 임시 로그인 버튼 */
+  #join {
+    display: none;
+    width: 109px;
+    height: 46px;
+  }
+  
+  #join + label {
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    /* display: inline-block; */
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 109px;
+    height: 46px;
+    background: #fff;
+    padding: 10px 29px 10px 28px;
+    /* line-height: 36px; */
+    cursor: pointer;
+    border-radius: 35px;
+    /* 동작 천천히 보여주기 */
+    transition: all 500ms ease-in;
+  }
+  /* 네비게이션바 끝 */
+
+
+
+
+  /* 시즌별 시작 */
+
+  #SeasonStoryfull {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 140px;
+  }
+  
+  #SeasonStoryTitle {
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    /* align-items: center; */
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    width:1220px;
+    height: 90px;
+  }
+  
+  #seasonstorytitle_1 {
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    /* align-items: center; */
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    width: 1220px;
+    height: 90px;
+  }
+  
+  .seasonstoryimg {
+    width: 90px;
+    height: 90px;
+    padding-left: 20px;
+    padding-right: 16px;
+  }
+  
+  .seasontitle1 {
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90px;
+    padding-left: 16px;
+    color: #000;
+    letter-spacing: -0.96px;
+  }
+
+  #spring{
+    padding-left: 50px;
+    border: none;
+    font-family: "Noto Sans KR";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #fff;
+  }
+  
+  #summer{
+    padding-left: 20px;
+    border: none;
+    font-family: "Noto Sans KR";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #fff;
+    color: #909090;
+  }
+  
+  #fall{
+    padding-left: 20px;
+    border: none;
+    font-family: "Noto Sans KR";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #fff;
+    color: #909090;
+  }
+  
+  #winter{
+    padding-left: 20px;
+    border: none;
+    font-family: "Noto Sans KR";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #fff;
+    color: #909090;
+  }  
+  
+  #seasonstory_select {
+    padding-left: 389px;
+    padding-top: 31px;
+  }
+  
+  #story_select {
+    display: flex;
+    width: 145px;
+    height: 30px;
+    padding: 4px 4px 4px 8px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #ececec;
+    background: #fff;
+  }
+  
+  .recom_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  
+  .newest_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  
+  .inquiry_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  
+  .month_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  
+  .today_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  
+  #SeasonStoryBack {
+    width: 1240px;
+    height: 1639px;
+    border-radius: 12px;
+    background: #f8f8f8;
+    margin-top: 20px;
+  }
+
+  #season1-4 {
+    width: 1240px;
+    height: 251px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  #season1 {
+    width: 285px;
+    height: 229px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-left: 19px;
+    margin-top: 19px;
+  }
+  
+  #season1_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .season_img1 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best1.png");
+    border: none;
+  }
+  
+  #season1_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+  }
+  
+  #season1_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+  }
+  
+  .season1_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  #season1_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season1_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_see1 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  #season1_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season1_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_like1 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  /*season 2 시작*/
+  
+  #season2 {
+    width: 285px;
+    height: 229px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-left: 19px;
+    margin-top: 19px;
+  }
+  
+  #season2_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .season_img2 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best2.png");
+    border: none;
+  }
+  
+  #season2_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+  }
+  
+  #season2_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+  }
+  
+  .season2_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  #season2_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season2_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_see2 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  #season2_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season2_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_like2 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  /*season 3 시작*/
+  
+  #season3 {
+    width: 285px;
+    height: 229px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-left: 19px;
+    margin-top: 19px;
+  }
+  
+  #season3_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .season_img3 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best3.png");
+    border: none;
+  }
+  
+  #season3_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+  }
+  
+  #season3_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+  }
+  
+  .season3_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  #season3_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season3_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_see3 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  #season3_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season3_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_like3 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  /*season 4 시작*/
+  
+  #season4 {
+    width: 285px;
+    height: 229px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-left: 19px;
+    margin-top: 19px;
+  }
+  
+  #season4_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .season_img4 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best4.png");
+    border: none;
+  }
+  
+  #season4_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+  }
+  
+  #season4_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+  }
+  
+  .season4_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  #season4_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_see4 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+  
+  #season4_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+  }
+  
+  .season4_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+  }
+  
+  .season_like4 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+  }
+
+  #seasonmorebtn {
+    background: url("../images/morebtn.png");
+    width: 128px;
+    height: 48px;
+    border: none;
+    margin-left: 556px;
+    margin-top: 64px;
+    cursor: pointer;
+  }
+  
+  /* 시즌별 끝 */
+
+  /* 나머지들 시작 */
+
+  #etc_thing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  #etc_full {
+    /* width: 1240px; */
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    padding-top: 240px;
+    padding-bottom: 43px;
+  }
+
+  .terms_of_use {
+    font-size: 12px;
+    font-style: normal;
+    width: 42px;
+    height: 14px;
+    border: none;
+    flex-shrink: 0;
+    color: #7a7a7a;
+    font-family: Pretendard;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+    /* padding-top: 10px; */
+    margin-left: 79px;
+  }
+
+  #personal_inf {
+    width: 83px;
+    height: 15px;
+    flex-shrink: 0;
+    padding-left: 56px;
+    /* padding-top: 10px; */
+  }
+
+  .personal_inf {
+    font-style: normal;
+    height: 14px;
+    border: none;
+    flex-shrink: 0;
+    color: #7a7a7a;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+  }
+
+  #contact {
+    width: 36px;
+    height: 15px;
+    flex-shrink: 0;
+    padding-left: 648px;
+    /* padding-top: 10px; */
+  }
+
+  .contact {
+    font-style: normal;
+    width: 36px;
+    height: 12px;
+    border: none;
+    flex-shrink: 0;
+    color: #8f8f8f;
+    font-family: Pretendard;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+  }
+
+  #c_SoT {
+    width: 60px;
+    height: 15px;
+    flex-shrink: 0;
+    padding-left: 67px;
+    /* padding-top: 10px; */
+  }
+
+  .c_SoT {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #8f8f8f;
+    font-family: Pretendard;
+  }
+  /* 나머지들 끝 */

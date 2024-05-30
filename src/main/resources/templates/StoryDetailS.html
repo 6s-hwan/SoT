@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Details</title>
+</head>
+<body>
+<h1>Story Details</h1>
+<div>
+    <h2></h2>
+    <img th:src="${story.image_url}" alt="Story Image">
+</div>
+<div>
+    <h2>제목</h2><p th:text="${story.title}"></p>
+</div>
+<div>
+    <h2>위치</h2>
+    <p th:text="${story.location}"></p>
+</div>
+<div>
+    <h2>상세설명</h2>
+    <p th:text="${story.description}"></p>
+</div>
+<div>
+    <h2>태그</h2>
+    <p th:each="tag : ${story.tags.split(',')}" th:text="'#' + ${tag}"></p>
+</div>
+<div>
+    <h2>Author</h2>
+    <p th:text="${story.username}"></p>
+</div>
+</body>
+</html>

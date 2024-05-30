@@ -1,0 +1,6428 @@
+* {
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 네비게이션바 시작 */
+.navbar {
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  align-items: center;
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+  justify-content: center;
+  /* text-align: center; */
+  /* position: fixed; */
+  /* width: 1920px; */
+  height: 173px;
+  padding-top: 27px;
+  padding-bottom: 40px;
+  /* padding-left: 360px; */
+  /* padding-right: 360px; */
+}
+.nav_logo {
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  height: 106px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #f8f8f8;
+}
+#nav_logo1 {
+  padding-left: 44px;
+  padding-top: 21px;
+  /* padding-bottom: 23px; */
+  padding-right: 68px;
+}
+.nav_menu {
+  display: flex;
+  box-sizing: border-box;
+  /* display: inline-flex; */
+  width: 263px;
+  height: 46px;
+  padding: 10px 28px;
+  /* align-items: flex-start; */
+  border-radius: 33px;
+  background: #fff;
+  list-style: none;
+  margin-right: 30px;
+}
+
+.navigation {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+/* .navigation a {
+  text-decoration: none;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} */
+
+.b {
+  text-decoration: none;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+.c {
+  text-decoration: none;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 24px;
+}
+#search {
+  display: flex;
+  width: 242px;
+  height: 46px;
+  border-radius: 23px;
+  background: #fff;
+  margin-right: 13px;
+  border: none;
+}
+input.search {
+  background: url("../images/search.png") no-repeat center;
+  background-size: 30px;
+  width: 212px;
+  height: 46px;
+  border-radius: 23px;
+  background: #fff;
+  border: none;
+}
+#search > img {
+  padding-top: 10px;
+  padding-right: 14px;
+}
+input.imagebtn {
+  background: url("../images/pic.png") no-repeat center;
+  background-size: 30px;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: #fff;
+  border: none;
+  margin-right: 9px;
+}
+input.uploadbtn {
+  background: url("../images/upload.png") no-repeat center;
+  background-size: 30px;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: #fff;
+  border: none;
+  margin-right: 72px;
+}
+
+/* 임시 로그인 버튼 */
+#join {
+  display: none;
+  width: 109px;
+  height: 46px;
+}
+
+#join + label {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  /* display: inline-block; */
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  width: 109px;
+  height: 46px;
+  background: #fff;
+
+  padding: 10px 29px 10px 28px;
+  /* line-height: 36px; */
+  cursor: pointer;
+  border-radius: 35px;
+  /* 동작 천천히 보여주기 */
+  transition: all 500ms ease-in;
+}
+/* 네비게이션바 끝 */
+
+/* 로그인 팝업창 시작 */
+/* 공통적인 부분 */
+* {
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+}
+
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
+
+.scrollLock {
+  overflow: hidden;
+}
+
+input::placeholder {
+  color: #8e8e8e;
+}
+
+#join_pop_up::-webkit-scrollbar {
+  width: 6px;
+}
+
+#join_pop_up::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+#join_pop_up::-webkit-scrollbar-button {
+  display: none;
+}
+.box {
+  padding-left: 30px;
+}
+/* 공통적인 부분 */
+
+/* 회원가입 창이 떴을 때 뒷배경 회색처리 */
+#bg_gray {
+  position: absolute;
+  display: none;
+  /* 버튼이 안눌러지면 display:none */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow-y: scroll; /* 세로 스크롤 사용 */
+  z-index: 100;
+}
+#join:checked + label + #bg_gray {
+  display: block;
+}
+
+/* 로그인 팝업창 css 코드 */
+/* 전체 페이지 사이즈 */
+#bg_gray > #login_pop_up {
+  position: absolute;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 474px;
+  height: 470px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+}
+
+/* 로고와 창 닫기 버튼 */
+#bg_gray > #login_pop_up > #first {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 474px;
+  height: 94px;
+  padding-left: 36px;
+  padding-top: 27px;
+}
+
+#bg_gray > #login_pop_up > #first > #logo {
+  width: "238px";
+  height: "55px";
+}
+#bg_gray > #login_pop_up > #first > #middle {
+  width: 136px;
+}
+#bg_gray > #join_pop_up > #first > #close {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+#close {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+#close1 {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+/* #close {
+  cursor: pointer;
+} */
+
+/* 로그인 후 당신의 스토리를 포스팅해보세요! */
+#bg_gray > #login_pop_up > #text {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-top: 8px;
+  padding-left: 34px;
+  width: 474px;
+  height: 75px;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+/* 이메일 입력칸 */
+#bg_gray > #login_pop_up > .input1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 75px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-bottom: 19px;
+  /* background: #f9f9f9; */
+}
+#bg_gray > #login_pop_up > .input1 > label {
+  width: 400px;
+  padding-top: 18px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+#bg_gray > #login_pop_up > .input1 > label > input {
+  border: none;
+  padding-left: 20px;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+/* 비밀번호 입력칸 */
+#bg_gray > #login_pop_up > .input2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 56px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+#bg_gray > #login_pop_up > .input2 > label {
+  width: 400px;
+  padding-top: 18px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+#bg_gray > #login_pop_up > .input2 > label > input {
+  border: none;
+  padding-left: 20px;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+#bg_gray > #login_pop_up > .input1 > label > input:focus {
+  outline: none;
+}
+
+#bg_gray > #login_pop_up > .input1 > label > select {
+  border: none;
+}
+#bg_gray > #login_pop_up > .input2 > label > input:focus {
+  outline: none;
+}
+
+#bg_gray > #login_pop_up > .input2 > label > select {
+  border: none;
+}
+
+/* 로그인 버튼 구역 */
+#bg_gray > #login_pop_up > .text2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 55px;
+  padding-left: 38px;
+  padding-top: 12px;
+  padding-bottom: 22.5px;
+}
+
+#bg_gray > #login_pop_up > .text22 > .orgin {
+  display: none;
+}
+
+#checkbtn + label {
+  display: flex;
+  cursor: pointer;
+  /* line-height: 18px; */
+  padding-left: 24px;
+  /* padding-bottom: 24px; */
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-bottom: ; */
+  background: url("../images/checkbtn1.png") left/18px no-repeat;
+}
+
+#checkbtn:checked + label {
+  background-image: url("../images/checkbtn2.png");
+}
+
+#bg_gray > #login_pop_up > .text2 > #checkbtn {
+  width: 18px;
+  height: 18px;
+  padding-top: 1px;
+  padding-right: 5px;
+}
+
+.text2 > #autologin {
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#bg_gray > #login_pop_up > .text22 > #blank1 {
+  width: 245px;
+}
+
+#bg_gray > #login_pop_up > .text22 > #join_membership > a {
+  text-decoration: none;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-right: 40px;
+  /* padding-left: 243px; */
+}
+
+/* 로그인 버튼 */
+/* button {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  /* cursor: pointer; */
+#login_btn {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  cursor: pointer;
+  color: #464646;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+}
+#btnActive {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  color: #464646;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+
+}
+
+
+
+/* 계정을 잊으셨나요? 이메일 또는 비밀번호 찾기 구역 */
+#bg_gray > #login_pop_up > #text3 {
+  color: #bfbfbf;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 8px;
+  padding-left: 159px;
+  padding-right: 40px;
+}
+
+#bg_gray > #login_pop_up > #text3 > a {
+  text-decoration: none;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+/* 로그인 팝업창 css 코드 !@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/* 회원가입 팝업창 css 코드 */
+/* 전체 페이지 사이즈 */
+#bg_gray > #join_pop_up {
+  position: absolute;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 492px;
+  height: 100%;
+  overflow-y: auto;
+  /* height: 1446px; */
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+}
+
+/* 로고와 창 닫기 버튼 */
+#bg_gray > #join_pop_up > #first {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 94px;
+  padding-left: 34px;
+  padding-top: 27px;
+}
+#bg_gray > #join_pop_up > #first > #logo {
+  width: "238px";
+  height: "55px";
+}
+#bg_gray > #join_pop_up > #first > #middle {
+  width: 136px;
+}
+#bg_gray > #join_pop_up > #quit_join:hover {
+  color: gray;
+  transform: scale(1.1);
+}
+
+#bg_gray > #join_pop_up > #first > #close {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
+
+/* 회원가입 글과 로그인화면으로 돌아가기 */
+#bg_gray > #join_pop_up > #second {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 80px;
+  padding-left: 36px;
+  padding-top: 12px;
+}
+
+#second > #text1 {
+  color: #444;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
+
+#second > #middle2 {
+  width: 160px;
+}
+#second > #back > a {
+  text-decoration: none;
+  color: #8e8e8e;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+  text-decoration-line: underline;
+}
+
+/* 이메일 입력칸 */
+.join_input1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  flex-direction: column;
+  width: 472px;
+  height: 83px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.join_input1 > #text2 {
+  padding-left: 4px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+.join_input1 > label {
+  width: 380px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.join_input1 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+input:focus {
+  outline: none;
+} /* outline 테두리 없애기 */
+
+#email_text {
+  box-sizing: border-box;
+  /* display: flex; */
+  /* width: 472px;
+  height: 32px; */
+  padding-top: 13px;
+  padding-left: 44px;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* #check_pw > #middle3 {
+  width: 259px;
+} */
+
+/* #possible_email {
+  box-sizing: border-box;
+
+  display: flex;
+
+  width: 472px;
+  height: 32px;
+  padding-top: 13px;
+  padding-left: 44px;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} */
+
+#blank {
+  width: 472px;
+  height: 40px;
+}
+
+/* 비밀번호 입력칸 */
+.join_input2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  flex-direction: column;
+  width: 472px;
+  height: 84px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.join_input2 > #text3 {
+  padding-left: 4px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+.join_input2 > label {
+  width: 380px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.join_input2 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+#check_pw {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
+  padding-top: 13px;
+  padding-left: 44px;
+}
+
+#check_pw > #middle3 {
+  width: 22px;
+}
+
+/* #imageContainer1 {
+  width: 8px;
+  height: 5px;
+  padding-left: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#imageContainer2 {
+  width: 8px;
+  height: 5px;
+  margin-left: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+} */
+
+#check_pw span {
+  color: #c1c1c1; /* 기본 색상 */
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+/* 닉네임 입력칸 */
+.input3 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  flex-direction: column;
+  width: 472px;
+  height: 88px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.input3 > #text4 {
+  padding-left: 4px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+.input3 > label {
+  width: 380px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input3 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+/* 생년월일 입력칸 */
+#birth {
+  width: 472px;
+  height: 32px;
+}
+#birth > #text5 {
+  padding-left: 40px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info__birth {
+  width: 472px;
+  height: 56px;
+}
+
+#info__birth > #birth-year {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 36px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info__birth > #birth-month {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info__birth > #birth-day {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  /* margin-right: 36px; */
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+/* 성별 버튼 고르기칸 */
+#gender {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
+  padding-left: 40px;
+  padding-bottom: 8px;
+}
+#gender > #text6 {
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+#gender_choose {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 56px;
+  padding-left: 36px;
+}
+
+#button1 {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+  cursor: pointer;
+}
+#button1.selected {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #0055fa;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+#button2 {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+  margin-left: 16px;
+  cursor: pointer;
+}
+#button2.selected {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #0055fa;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#phone {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
+  padding-left: 40px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+/* 전화번호 입력칸 */
+.input4 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 400px;
+  height: 56px;
+  margin-left: 36px;
+  margin-right: 36px;
+}
+.input4 > label > #phone_input1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 120px;
+  height: 56px;
+  padding: 18px 46px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.input4 > label > #phone_input2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 120px;
+  height: 56px;
+  padding: 18px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.input4 > label > #phone_input3 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 120px;
+  height: 56px;
+  padding: 18px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input4 > label > input {
+  width: 40px;
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+#text7 {
+  width: 6px;
+  height: 1px;
+  /* background: #8f8f8f; */
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 20px;
+}
+
+/* 인증번호 입력칸 */
+.input5 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  position: relative;
+  width: 472px;
+  height: 59px;
+  padding-left: 36px;
+  padding-right: 36px;
+  margin-top: 14px;
+}
+
+.input5 > label {
+  width: 380px;
+  /* height: 56px; */
+  padding-top: 18px;
+  padding-bottom: 17px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input5 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+  letter-spacing: -0.34px;
+}
+
+.input5 > button {
+  position: absolute;
+  border-radius: 6px;
+  background: #fff;
+  border: none;
+  width: 68px;
+  height: 39px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+  letter-spacing: -0.34px;
+  top: 0;
+  bottom: 0;
+  right: 46px;
+  margin: auto 0;
+  cursor: pointer;
+}
+
+#text8 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 27px;
+  padding-left: 44px;
+  padding-top: 8px;
+  color: #c1c1c1;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* 지역 카테고리 */
+
+#area {
+  width: 472px;
+  height: 32px;
+}
+#area > #text9 {
+  padding-left: 40px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info_area {
+  width: 472px;
+  height: 56px;
+}
+
+#info_area > #area1 {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 36px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info_area > #area2 {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info_area > #area3 {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  /* margin-right: 36px; */
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#blank2 {
+  width: 472px;
+  height: 60px;
+}
+
+/* 이용약관 카테고리 */
+.orgin2 {
+  display: none;
+}
+.orgin3 {
+  display: none;
+}
+
+.orgin3 > a {
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* text-decoration-line: underline; */
+}
+
+#checkbtn2 + label {
+  display: flex;
+  cursor: pointer;
+  /* line-height: 18px; */
+  padding-left: 31px;
+  /* padding-bottom: 24px; */
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-bottom: ; */
+  background: url("../images/checkbtn3.png") left/18px no-repeat;
+}
+
+#checkbtn2:checked + label {
+  background-image: url("../images/checkbtn4.png");
+}
+
+#checkbtn3 + label {
+  display: flex;
+  cursor: pointer;
+  /* line-height: 18px; */
+  padding-left: 31px;
+  /* padding-bottom: 24px; */
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-bottom: ; */
+  background: url("../images/checkbtn3.png") left/18px no-repeat;
+}
+
+#checkbtn3:checked + label {
+  background-image: url("../images/checkbtn4.png");
+}
+
+#container1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  padding-left: 36px;
+}
+#container2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  padding-left: 36px;
+}
+
+#blank3 {
+  width: 472px;
+  height: 21px;
+}
+
+
+#join_btn {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  cursor: pointer;
+  color: #464646;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+}
+.inputs > .join_btn:hover {
+  background: #9c9c9c;
+  color: white;
+}
+
+#blank4 {
+  width: 472px;
+  height: 36px;
+}
+/* 회원가입 팝업창 css 코드 */
+
+/* 개인정보 취급방침 팝업창 css 시작 */
+#Use_backscreen::-webkit-scrollbar {
+  width: 6px;
+}
+#Use_backscreen::-webkit-scrollbar-corner {
+  width: 6px;
+}
+#Use_backscreen::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+#Use_backscreen::-webkit-scrollbar-button {
+  display: none;
+}
+#bg_gray > #TermsOfUse_pop_up {
+  position: absolute;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 472px;
+  height: 740px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+}
+
+#Use_Title {
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 28px;
+  padding-left: 40px;
+}
+#Usebackarrow {
+  cursor: pointer;
+  padding-top: 4px;
+  padding-right: 2px;
+}
+#Use_text {
+  color: #444;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
+
+/* 개인정보 취급방침 내용 */
+#Use_backscreen {
+  box-sizing: border-box;
+  padding: 0px;
+  margin-left: 36px;
+  margin-top: 20px;
+  overflow: scroll;
+  width: 400px;
+  height: 548px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 6px 0px rgba(193, 193, 193, 0.25) inset;
+}
+
+#Use_backscreen_text {
+  width: 360px;
+  margin-top: 20px;
+  margin-left: 18px;
+}
+
+#number1 {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 19.6px */
+  letter-spacing: -0.28px;
+}
+#number2 {
+  color: #252525;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.28px;
+}
+#UseAgree_btn {
+  margin-top: 19px;
+  margin-left: 36px;
+  width: 400px;
+  height: 58px;
+  border-radius: 8px;
+  border: 1px solid #949494;
+  background: #fff;
+  cursor: pointer;
+  color: #1b1b1b;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.4px;
+}
+/* 개인정보 취급방침 팝업창 css 끝 */
+
+/* 이용약관 팝업창 css 시작 */
+#Privacy_backscreen::-webkit-scrollbar {
+  width: 6px;
+}
+#Privacy_backscreen::-webkit-scrollbar-corner {
+  width: 6px;
+}
+#Privacy_backscreen::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+#Privacy_backscreen::-webkit-scrollbar-button {
+  display: none;
+}
+#bg_gray > #Privacy_pop_up {
+  position: absolute;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 472px;
+  height: 740px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+}
+
+#Privacy_Title {
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 28px;
+  padding-left: 40px;
+}
+#Privacybackarrow {
+  cursor: pointer;
+  padding-top: 4px;
+  padding-right: 2px;
+}
+#Privacy_text {
+  color: #444;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
+
+/* 이용약관 내용 */
+#Privacy_backscreen {
+  box-sizing: border-box;
+  padding: 0px;
+  margin-left: 36px;
+  margin-top: 20px;
+  overflow: scroll;
+  width: 400px;
+  height: 548px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 6px 0px rgba(193, 193, 193, 0.25) inset;
+}
+#Privacy_backscreen_text {
+  width: 360px;
+  color: #252525;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.28px;
+  margin-top: 20px;
+  margin-left: 18px;
+}
+#PrivacyAgree_btn {
+  margin-top: 19px;
+  margin-left: 36px;
+  width: 400px;
+  height: 58px;
+  border-radius: 8px;
+  border: 1px solid #949494;
+  background: #fff;
+  cursor: pointer;
+  color: #1b1b1b;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.4px;
+}
+
+/* 이용약관 팝업창 css 끝 */
+/* 로그인 팝업창 끝*/
+
+/* 슬라이드 광고 시작 */
+.slide-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+}
+.slide {
+  position: relative;
+}
+.image-container {
+  position: relative;
+}
+.slide img {
+  width: 1200px;
+  height: 480px;
+}
+
+.slide-btn1 {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  background-image: url("../images/slidebtn1.png");
+  background-size: 48px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  border: none;
+  transform: translate(-50%, -50%);
+  margin-left: 56px;
+  border-radius: 50px;
+  background-color: transparent; /* 배경색을 투명으로 설정 */
+}
+
+.slide-btn2 {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  background-image: url("../images/slidebtn2.png");
+  background-size: 48px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  border: none;
+  transform: translate(-50%, -50%);
+  margin-right: 8px;
+  border-radius: 50px;
+  background-color: transparent; /* 배경색을 투명으로 설정 */
+}
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 33%;
+  transform: translate(-50%, -50%);
+  padding-left: 54px;
+}
+
+#slide_text1 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.92px;
+}
+#slide_text2 {
+  padding-top: 7px;
+  color: #f3f3f3;
+  font-family: "Noto Sans KR";
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+#slide_text3 {
+  padding-top: 34px;
+}
+
+#slide_text3 > a {
+  color: #dcdcdc;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.index-container {
+  width: 52px;
+  height: 26px;
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  color: white;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.current-index {
+  color: #dadada;
+  font-family: "Noto Sans KR";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0px 16px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  height: 26px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 슬라이드 광고 끝 */
+
+/* 내스토리 등록하기 시작 */
+#myStoryUpload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 47px;
+}
+
+#mystory {
+  width: 1202px;
+  height: 100px;
+  border-radius: 14px;
+  background: #fff8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#text31 {
+  color: #414141;
+  font-family: "Noto Sans KR";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 107.143% */
+  padding-left: 64px;
+  padding-right: 35px;
+}
+#text31 > span {
+  color: #ff4f4f;
+  font-family: "Noto Sans KR";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.text32design {
+  color: #626262;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 150% */
+  padding-top: 39px;
+}
+
+.storyimg {
+  width: 221px;
+  height: 100px;
+  padding-left: 73px;
+}
+/* 내스토리 등록하기 끝 */
+
+/* 테마별 여행지 시작 */
+#theme_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 100px;
+}
+
+#theme_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 16px;
+}
+.themeimg {
+  width: 60px;
+  height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
+}
+
+.theme {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 56px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 36px;
+  font-style: normal;
+  /* font-weight: 500;
+  line-height: 60px; */
+}
+.themeback {
+  width: 1240px;
+  height: 620px;
+  border-radius: 12px;
+  background: #f8f8f8;
+}
+
+#theme1 {
+  background: url("../images/theme1.png");
+  width: 387px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme1 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 235px;
+}
+
+#theme2 {
+  background: url("../images/theme2.png");
+  width: 487.002px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme2 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 340px;
+}
+
+#theme3 {
+  background: url("../images/theme3.png");
+  width: 285px;
+  height: 180px;
+  border: none;
+  margin-left: 21px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme3 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 138px;
+}
+
+#theme4 {
+  background: url("../images/theme4.png");
+  width: 285px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme4 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 204px;
+}
+
+#theme5 {
+  background: url("../images/theme5.png");
+  width: 387px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme5 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 233px;
+}
+
+#theme6 {
+  background: url("../images/theme6.png");
+  width: 488px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme6 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 362px;
+}
+
+#theme7 {
+  background: url("../images/theme7.png");
+  width: 387px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme7 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 239px;
+}
+
+#theme8 {
+  background: url("../images/theme8.png");
+  width: 386px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme8 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 239px;
+}
+
+#theme9 {
+  background: url("../images/theme9.png");
+  width: 387px;
+  height: 180px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#text_theme9 {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 120px;
+  padding-right: 266px;
+}
+/* 테마별 여행지 끝 */
+
+/* 시즌별 스토리 시작 */
+
+#season_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+}
+
+#season_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 16px;
+}
+
+.seasonimg {
+  width: 60px;
+  height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
+}
+
+.season {
+  top: 1716px;
+  left: 436px;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 56px;
+  font-family: "Noto Sans KR";
+  color: #000;
+  line-height: 56px;
+}
+
+#spring {
+  padding-left: 50px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+}
+
+#summer {
+  padding-left: 20px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+  color: #909090;
+}
+
+#fall {
+  padding-left: 20px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+  color: #909090;
+}
+
+#winter {
+  padding-left: 20px;
+  border: none;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fff;
+  color: #909090;
+}
+
+.seasonback {
+  width: 1240px;
+  height: 617px;
+  border-radius: 12px;
+  background: #f8f8f8;
+}
+
+#season1 {
+  background: url("../images/season1.png");
+  width: 387px;
+  height: 278px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#season2 {
+  background: url("../images/season2.png");
+  width: 386px;
+  height: 278px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#season3 {
+  background: url("../images/season3.png");
+  width: 387px;
+  height: 278px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#season4 {
+  background: url("../images/season4.png");
+  width: 590px;
+  height: 278px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#season5 {
+  background: url("../images/season5.png");
+  width: 590px;
+  height: 278px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#seasonmorebtn {
+  background: url("../images/morebtn.png");
+  width: 128px;
+  height: 48px;
+  border: none;
+  margin-left: 556px;
+  margin-top: 61px;
+  cursor: pointer;
+}
+/* 시즌별 스토리 끝 */
+
+/* 베스트 스토리 시작 */
+#best_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 130px;
+}
+
+#best_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 70px;
+  margin-bottom: 26px;
+}
+
+.bestimg {
+  padding-top: 10px;
+  width: 60px;
+  height: 60px;
+  padding-right: 18px;
+  padding-left: 20px;
+}
+
+#best_text {
+  padding-left: 18px;
+  height: 70px;
+  width: 360px;
+  padding-bottom: 10px;
+}
+
+.best {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 56px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
+}
+
+.best_1 {
+  color: #4f4f4f;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  padding-bottom: 4px;
+  padding-left: 1px;
+}
+
+#bestback {
+  width: 1240px;
+  height: 798px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#best1-4 {
+  width: 1240px;
+  height: 251px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#best1 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#best1_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img1 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best1.png");
+  border: none;
+}
+
+#best1_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best1_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best1_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best1_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best1_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see1 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best1_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best1_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like1 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*best 2 시작*/
+
+#best2 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#best2_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img2 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best2.png");
+  border: none;
+}
+
+#best2_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best2_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best2_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best2_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best2_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see2 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best2_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best2_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like2 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*best 3 시작*/
+
+#best3 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#best3_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img3 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best3.png");
+  border: none;
+}
+
+#best3_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best3_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best3_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best3_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best3_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see3 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best3_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best3_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like3 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*best 4 시작*/
+
+#best4 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#best4_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img4 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best4.png");
+  border: none;
+}
+
+#best4_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best4_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best4_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best4_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best4_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see4 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best4_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best4_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like4 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/* 베스트 5 시작 */
+
+#best5-8 {
+  width: 935px;
+  height: 232px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  position: relative;
+  right: 1221px;
+  top: 251px;
+}
+
+#best5 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best5_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img5 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best5.png");
+  border: none;
+}
+
+#best5_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best5_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best5_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best5_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best5_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see5 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best5_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best5_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like5 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 6 시작*/
+#best6 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best6_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img6 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best6.png");
+  border: none;
+}
+
+#best6_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best6_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best6_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best6_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best6_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see6 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best6_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best6_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like6 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 7 시작*/
+#best7 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best7_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img7 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best7.png");
+  border: none;
+}
+
+#best7_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best7_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best7_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best7_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best7_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see7 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best7_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best7_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like7 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 8 시작*/
+#best8 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best8_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img8 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best8.png");
+  border: none;
+}
+
+#best8_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best8_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best8_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best8_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best8_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see8 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best8_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best8_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like8 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 9 시작*/
+
+#best9-12 {
+  width: 935px;
+  height: 212px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  position: relative;
+  right: 2155px;
+  top: 512px;
+}
+
+#best9 {
+  width: 285px;
+  height: 120px;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best9_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img9 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best5.png");
+  border: none;
+}
+
+#best9_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best9_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best9_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best9_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best9_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see9 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best9_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best9_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like9 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 10 시작*/
+
+#best10 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best10_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img10 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best6.png");
+  border: none;
+}
+
+#best10_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best10_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best10_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best10_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best10_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see10 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best10_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best10_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like10 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 11 시작*/
+
+#best11 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best11_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img11 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best7.png");
+  border: none;
+}
+
+#best11_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best11_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best11_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best11_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best11_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see11 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best11_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best11_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like11 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+/*베스트 10 시작*/
+
+#best12 {
+  width: 285px;
+  height: 229px;
+  background: #f8f8f8;
+  flex-shrink: 0;
+  margin-right: 19px;
+  margin-top: 30px;
+}
+
+#best12_img {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: none;
+}
+
+.best_img12 {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border-radius: 8px;
+  background: url("../images/best8.png");
+  border: none;
+}
+
+#best12_text {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  border: none;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+#best12_name {
+  width: 90px;
+  height: 24px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+}
+
+.best12_name {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+#best12_see {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 92px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best12_see {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/seeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_see12 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#best12_like {
+  width: 42px;
+  height: 17px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  border: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.best12_like {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  background: url("../images/likeimg.png");
+  border: none;
+  margin-top: 4px;
+}
+
+.best_like12 {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#bestmorebtn {
+  background: url("../images/morebtn.png");
+  width: 128px;
+  height: 48px;
+  border: none;
+  margin-left: 556px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+/* 베스트 스토리 끝 */
+
+/* 급상승 여행지 시작 */
+
+#rise_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+}
+
+#rise_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 48px;
+}
+
+.riseimg {
+  width: 60px;
+  height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
+  flex-shrink: 0;
+}
+
+.rise {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
+}
+
+.riseback {
+  width: 1200px;
+  height: 323px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 20px;
+  border-radius: 8px;
+}
+
+#rise_1 {
+  width: 278px;
+  height: 323px;
+}
+
+#rise1_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise1 {
+  background: url("../images/rise1.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise1_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise1_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_2 {
+  width: 278px;
+  height: 323px;
+  padding-left: 29px;
+}
+
+#rise2_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise2 {
+  background: url("../images/rise2.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise2_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise2_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_3 {
+  width: 278px;
+  height: 323px;
+  padding-left: 29px;
+}
+
+#rise3_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise3 {
+  background: url("../images/rise3.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise3_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise3_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_4 {
+  width: 278px;
+  height: 323px;
+  padding-left: 29px;
+}
+
+#rise4_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise4 {
+  background: url("../images/rise4.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise4_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise4_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+/* 급상승 여행지 끝 */
+
+/* 인기 작가 스토리 시작 */
+#popular_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 160px;
+}
+
+#popular_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 57.9px;
+}
+
+.popularimg {
+  width: 60px;
+  height: 60px;
+  padding-right: 16px;
+  padding-left: 20px;
+}
+
+.popular {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 60px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
+}
+
+#popularback {
+  width: 1200px;
+  height: 272px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#popular_1 {
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+}
+
+#popular1_img {
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular1 {
+  background: url("../images/popular1.png");
+  width: 183px;
+  height: 183px;
+  border: none;
+  cursor: pointer;
+}
+
+#popular1_text {
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular1_name {
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#popular1_etc {
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular1_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular1_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img1 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular1_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular1_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img1 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular1_like {
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular1_like {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like1 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_2 {
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular2_img {
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular2 {
+  background: url("../images/popular2.png");
+  width: 183px;
+  height: 183px;
+  border: none;
+  cursor: pointer;
+}
+
+#popular2_text {
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular2_name {
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#popular2_etc {
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular2_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular2_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img2 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular2_like {
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular2_like {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like2 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_3 {
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular3_img {
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular3 {
+  background: url("../images/popular3.png");
+  width: 183px;
+  height: 183px;
+  border: none;
+  cursor: pointer;
+}
+
+#popular3_text {
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular3_name {
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#popular3_etc {
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular3_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular3_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img3 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular3_like {
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular3_like {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like3 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_4 {
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular4_img {
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular4 {
+  background: url("../images/popular4.png");
+  width: 183px;
+  height: 183px;
+  border: none;
+  cursor: pointer;
+}
+
+#popular4_text {
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular4_name {
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#popular4_etc {
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular4_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular4_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img4 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular4_like {
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular4_like {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like4 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 2 시작 */
+#popular_5 {
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular5_img {
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular5 {
+  background: url("../images/popular5.png");
+  width: 183px;
+  height: 183px;
+  border: none;
+  cursor: pointer;
+}
+
+#popular5_text {
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular5_name {
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#popular5_etc {
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular5_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular5_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img5 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular5_like {
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular5_like {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like5 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 6 시작 */
+#popular_6 {
+  width: 183px;
+  height: 272px;
+  border-radius: 12px;
+  padding-left: 19px;
+}
+
+#popular6_img {
+  width: 183px;
+  height: 183px;
+  border-radius: 12px;
+}
+
+#popular6 {
+  background: url("../images/popular6.png");
+  width: 183px;
+  height: 183px;
+  border: none;
+  cursor: pointer;
+}
+
+#popular6_text {
+  width: 87px;
+  height: 29px;
+  padding-left: 43px;
+  padding-top: 28px;
+}
+
+.popular6_name {
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#popular6_etc {
+  width: 142px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 23px;
+  padding-top: 12.75px;
+}
+
+#popular6_story {
+  width: 52px;
+  height: 22px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.popular6_img {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: url("../images/imageimg.png");
+  border: none;
+}
+
+.popular_img6 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-top: 1px;
+}
+
+#popular6_like {
+  width: 63px;
+  height: 21px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-left: 27px;
+  padding-top: 1px;
+}
+
+.popular6_like {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: url("../images/favorite.png");
+  border: none;
+}
+
+.popular_like6 {
+  color: #727272;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 4px;
+  padding-bottom: 3px;
+}
+
+/* 인기 작가 스토리 끝 */
+
+/* 추천 여행지 시작 */
+#recom_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 1174px;
+}
+
+#recom_title {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  height: 60px;
+  margin-bottom: 35px;
+}
+
+.recomimg {
+  width: 60px;
+  height: 60px;
+  padding-right: 12px;
+  padding-left: 27px;
+}
+
+.recom {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 56px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  /* font-weight: 500;
+  line-height: 60px; */
+}
+
+#recomback {
+  width: 1240px;
+  height: 608px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#recom1-4 {
+  width: 1240px;
+  height: 257px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+#recom_1 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#recom1_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom1 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend1.png");
+  border: none;
+}
+
+#recom1_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom1_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom1_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom1_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address1 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 2 시작 */
+#recom_2 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom2_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom2 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend2.png");
+  border: none;
+}
+
+#recom2_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom2_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom2_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom2_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address2 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 3 시작 */
+#recom_3 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom3_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom3 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend3.png");
+  border: none;
+}
+
+#recom3_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom3_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom3_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom3_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address3 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 4 시작 */
+#recom_4 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom4_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom4 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend4.png");
+  border: none;
+}
+
+#recom4_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom4_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom4_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom4_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address4 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom5-8 {
+  width: 1240px;
+  height: 257px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  position: relative;
+  top: 371px;
+  right: 1221px;
+}
+
+#recom_5 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+#recom5_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom5 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend5.png");
+  border: none;
+}
+
+#recom5_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom5_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom5_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom5_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address5 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 6 시작 */
+#recom_6 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom6_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom6 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend6.png");
+  border: none;
+}
+
+#recom6_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom6_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom6_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom6_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address6 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 7 시작 */
+#recom_7 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom7_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom7 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend7.png");
+  border: none;
+}
+
+#recom7_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom7_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom7_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom7_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address7 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 8 시작 */
+#recom_8 {
+  width: 278px;
+  height: 257px;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-top: 19px;
+}
+
+#recom8_img {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+}
+
+#recom8 {
+  width: 278px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: url("../images/recommend8.png");
+  border: none;
+}
+
+#recom8_text {
+  width: 220px;
+  height: 51px;
+  flex-shrink: 0;
+  padding-top: 6px;
+  padding-left: 7px;
+}
+
+#recom8_name {
+  width: 150px;
+  height: 29px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom8_name {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+#recom8_address {
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.recom_address8 {
+  color: #575757;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  line-height: normal;
+}
+
+/* 추천 여행지 끝 */
+
+/* 나머지들 시작 */
+
+#etc_thing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+#etc_full {
+  /* width: 1240px; */
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  padding-top: 240px;
+  padding-bottom: 43px;
+}
+
+.terms_of_use {
+  font-size: 12px;
+  font-style: normal;
+  width: 42px;
+  height: 14px;
+  border: none;
+  flex-shrink: 0;
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #fff;
+  /* padding-top: 10px; */
+  margin-left: 79px;
+}
+
+#personal_inf {
+  width: 83px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 56px;
+  /* padding-top: 10px; */
+}
+
+.personal_inf {
+  font-style: normal;
+  height: 14px;
+  border: none;
+  flex-shrink: 0;
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #fff;
+}
+
+#contact {
+  width: 36px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 648px;
+  /* padding-top: 10px; */
+}
+
+.contact {
+  font-style: normal;
+  width: 36px;
+  height: 12px;
+  border: none;
+  flex-shrink: 0;
+  color: #8f8f8f;
+  font-family: Pretendard;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #fff;
+}
+
+#c_SoT {
+  width: 60px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 67px;
+  /* padding-top: 10px; */
+}
+
+.c_SoT {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #8f8f8f;
+  font-family: Pretendard;
+}
+* {
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans CJK KR";
+}
+
+#join {
+  display: none;
+  width: 109px;
+  height: 48px;
+}
+
+
+
+/* 회원가입 창이 떴을 때 뒷배경 회색처리 */
+#bg_gray {
+  position: absolute;
+  display: none;
+  /* 버튼이 안눌러지면 display:none */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+#join:checked + label + #bg_gray {
+  display: block;
+}
+
+
+
+
+
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
+
+
+
+
+.input1 > label > input:focus {
+  outline: none;
+}
+
+.input1 > label > select {
+  border: none;
+}
+.input2 > label > input:focus {
+  outline: none;
+}
+
+.input2 > label > select {
+  border: none;
+}
+
+/* 로그인 버튼 구역 */
+.text2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 55px;
+  padding-left: 38px;
+  padding-top: 12px;
+  padding-bottom: 22.5px;
+}
+
+.text2 > .orgin {
+  display: none;
+}
+
+#checkbtn + label {
+  display: flex;
+  cursor: pointer;
+  /* line-height: 18px; */
+  padding-left: 24px;
+  /* padding-bottom: 24px; */
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-bottom: ; */
+  background: url("../images/checkbtn1.png") left/18px no-repeat;
+}
+
+#checkbtn:checked + label {
+  background-image: url("../images/checkbtn2.png");
+}
+
+.text2 > #checkbtn {
+  width: 18px;
+  height: 18px;
+  padding-top: 1px;
+  padding-right: 5px;
+}
+
+.text2 > #autologin {
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* padding-right: 246px; */
+}
+
+.text2 > #blank {
+  width: 245px;
+}
+
+.text2 > #join_membership > a {
+  text-decoration: none;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-right: 40px;
+  /* padding-left: 243px; */
+}
+
+/* 로그인 버튼 */
+/* button {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  /* cursor: pointer; */
+
+#login_btn {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  cursor: pointer;
+  color: #464646;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+}
+
+#btnActive {
+  margin-left: 36px;
+  width: 400px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  color: #464646;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+}
+
+
+
+#text3 > a {
+  text-decoration: none;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* 여기까지 내가 작성한 css코드 */
+
+#bg_gray {
+  /* 버튼이 안눌러지면 display:none */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 버튼 눌러지면 display: block */
+#join:checked + label + #bg_gray {
+  display: block;
+}
+
+
+
+.inputs > .join_btn:hover {
+  background: #9c9c9c;
+  color: white;
+}
+
+/* 나머지들 끝 */
+
+* {
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans CJK KR";
+}
+
+.scrollLock {
+  overflow: hidden;
+}
+
+input::placeholder {
+  color: #8e8e8e;
+}
+
+#join {
+  display: none;
+  width: 109px;
+  height: 48px;
+}
+
+
+/* 임시버튼 */
+
+/* 회원가입 창이 떴을 때 뒷배경 회색처리 */
+#bg_gray {
+  position: absolute;
+  display: none;
+  /* 버튼이 안눌러지면 display:none 이지만 일단은 block으로 해두기 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
+
+
+
+#second > #text {
+  color: #444;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
+
+#second > #middle2 {
+  width: 160px;
+}
+#second > #back > a {
+  text-decoration: none;
+  color: #8e8e8e;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+  text-decoration-line: underline;
+}
+
+/* 이메일 입력칸 */
+.input1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  flex-direction: column;
+  width: 472px;
+  height: 83px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.input1 > #text2 {
+  padding-left: 4px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+.input1 > label {
+  width: 380px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input1 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+input:focus {
+  outline: none;
+} /* outline 테두리 없애기 */
+
+
+
+/* #check_pw > #middle3 {
+  width: 259px;
+} */
+
+/* #possible_email {
+  box-sizing: border-box;
+
+  display: flex;
+
+  width: 472px;
+  height: 32px;
+  padding-top: 13px;
+  padding-left: 44px;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} */
+
+/* 비밀번호 입력칸 */
+.input2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 56px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+.input2 > label {
+  width: 400px;
+  padding-top: 18px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input2 > label > input {
+  border: none;
+  padding-left: 20px;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+.input1 > label > input:focus {
+  outline: none;
+}
+
+.input1 > label > select {
+  border: none;
+}
+.input2 > label > input:focus {
+  outline: none;
+}
+
+.input2 > label > select {
+  border: none;
+}
+
+#check_pw {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
+  padding-top: 13px;
+  padding-left: 44px;
+}
+
+#check_pw > #middle3 {
+  width: 22px;
+}
+
+/* #imageContainer1 {
+  width: 8px;
+  height: 5px;
+  padding-left: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#imageContainer2 {
+  width: 8px;
+  height: 5px;
+  margin-left: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+} */
+
+#check_pw span {
+  color: #c1c1c1; /* 기본 색상 */
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+/* 닉네임 입력칸 */
+.input3 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  flex-direction: column;
+  width: 472px;
+  height: 88px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.input3 > #text4 {
+  padding-left: 4px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+.input3 > label {
+  width: 380px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input3 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+/* 생년월일 입력칸 */
+#birth {
+  width: 472px;
+  height: 32px;
+}
+#birth > #text5 {
+  padding-left: 40px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info__birth {
+  width: 472px;
+  height: 56px;
+}
+
+#info__birth > #birth-year {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 36px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info__birth > #birth-month {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#info__birth > #birth-day {
+  border-style: none;
+  outline: none;
+  width: 117px;
+  height: 54px;
+  margin-left: 20px;
+  /* margin-right: 36px; */
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  color: #8e8e8e;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+/* 성별 버튼 고르기칸 */
+#gender {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
+  padding-left: 40px;
+  padding-bottom: 8px;
+}
+#gender > #text6 {
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+#gender_choose {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 56px;
+  padding-left: 36px;
+}
+
+#button1 {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+  cursor: pointer;
+}
+#button1.selected {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #0055fa;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+#button2 {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+  margin-left: 16px;
+  cursor: pointer;
+}
+#button2.selected {
+  width: 192px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #0055fa;
+  background: #fff;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+#phone {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 32px;
+  padding-left: 40px;
+  padding-bottom: 8px;
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+
+/* 전화번호 입력칸 */
+.input4 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 400px;
+  height: 56px;
+  margin-left: 36px;
+  margin-right: 36px;
+}
+.input4 > label > #phone_input1 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 120px;
+  height: 56px;
+  padding: 18px 46px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.input4 > label > #phone_input2 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 120px;
+  height: 56px;
+  padding: 18px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.input4 > label > #phone_input3 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 120px;
+  height: 56px;
+  padding: 18px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input4 > label > input {
+  width: 40px;
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+
+#text7 {
+  width: 6px;
+  height: 1px;
+  /* background: #8f8f8f; */
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 20px;
+}
+
+/* 인증번호 입력칸 */
+.input5 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  position: relative;
+  width: 472px;
+  height: 59px;
+  padding-left: 36px;
+  padding-right: 36px;
+  margin-top: 14px;
+}
+
+.input5 > label {
+  width: 380px;
+  /* height: 56px; */
+  padding-top: 18px;
+  padding-bottom: 17px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input5 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+  letter-spacing: -0.34px;
+}
+
+.input5 > button {
+  position: absolute;
+  border-radius: 6px;
+  background: #fff;
+  border: none;
+  width: 68px;
+  height: 39px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+  letter-spacing: -0.34px;
+  top: 0;
+  bottom: 0;
+  right: 46px;
+  margin: auto 0;
+  cursor: pointer;
+}
+
+#text8 {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  width: 472px;
+  height: 27px;
+  padding-left: 44px;
+  padding-top: 8px;
+  color: #c1c1c1;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

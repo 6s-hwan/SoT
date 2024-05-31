@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/Login.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <!-- 로그인화면 간단하게 구현 -->
+    <input type="checkbox" id="join" />
+    <label for="join">로그인</label>
+
+    <!-- 회원가입 창이 떴을 때 뒷배경 회색처리 -->
+    <div id="bg_gray">
+      <!-- 회원가입창 -->
+      <div id="join_pop_up">
+        <div id="first">
+          <div id="logo">
+            <img
+              src="../static/images/Logo.png"
+              alt="Logo"
+              width="238px"
+              height="55px"
+            />
+          </div>
+
+          <div id="middle"></div>
+
+          <div id="close">
+            <img
+              src="../static/images/X.png"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="loginPopup.style.display='none'"
+            />
+          </div>
+        </div>
+        <hr />
+
+        <div id="text">로그인 후 당신의 스토리를 포스팅해보세요!</div>
+
+        <div class="input1">
+          <label for="email_input">
+            <input
+              type="text"
+              id="email_input"
+              placeholder="이메일"
+              oninput="checkInputs()"
+            />
+          </label>
+        </div>
+
+        <div class="input2">
+          <label for="pw_input">
+            <input
+              type="password"
+              id="pw_input"
+              placeholder="비밀번호"
+              oninput="checkInputs()"
+            />
+          </label>
+        </div>
+        <!-- 자동로그인과 회원가입구역 -->
+        <div class="text2">
+          <input type="checkbox" class="orgin" id="checkbtn" />
+          <label for="checkbtn">자동로그인</label>
+
+          <div id="blank"></div>
+          <!-- <div id="checkbtn">
+            <img
+              src="../static/images/checkbtn1.png"
+              alt="자동로그인 버튼"
+              width="18px"
+              height="18px"
+            />
+          </div> -->
+          <!-- <div id="autologin">자동로그인</div> -->
+          <div id="join_membership">
+            <a href="#" onclick="openSignUpPopup()"> 회원가입 </a>
+          </div>
+        </div>
+
+        <!-- 로그인 버튼 -->
+        <label for="login_btn">
+          <button
+            type="submit"
+            class="confirm"
+            id="login_btn"
+            onclick="submitForm()"
+          >
+            로그인
+          </button>
+        </label>
+        <!-- 계정을 잊으셨나요? 이메일 또는 비밀번호 찾기 구역 -->
+        <div id="text3">
+          계정을 잊으셨나요? <a href="#">이메일</a> 또는
+          <a href="#">비밀번호</a> 찾기
+        </div>
+      </div>
+    </div>
+    <script>
+      // 창 닫는 js 코드
+      var loginBtn = document.getElementById("join");
+      var loginPopup = document.getElementById("bg_gray");
+      document.addEventListener("DOMContentLoaded", function () {
+        loginBtn.addEventListener("click", function () {
+          loginPopup.style.display = "block";
+        });
+      });
+
+      function submitForm() {
+        // 입력값 가져오기
+        var emailInput = document.getElementById("email_input");
+        var pwInput = document.getElementById("pw_input");
+
+        // 입력값이 모두 채워져 있는지 확인
+        if (emailInput.value.trim() !== "" && pwInput.value.trim() !== "") {
+          // 로그인 처리 등의 작업 수행 후, 창 닫기
+          document.getElementById("bg_gray").style.display = "none";
+
+          // 입력 필드 초기화
+          emailInput.value = "";
+          pwInput.value = "";
+        }
+      }
+    </script>
+  </body>
+</html>

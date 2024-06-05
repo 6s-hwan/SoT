@@ -1,6 +1,8 @@
 package com.SoT.JIN.member;
 
 import com.sun.security.auth.UserPrincipal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.security.Principal;
 
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class StoryController {
+    private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
     private final StoryRepository storyRepository;
     private final S3Service s3Service;
 
@@ -24,13 +27,22 @@ public class StoryController {
         return "write";
     }
 
+    @GetMapping({"/upload"})
+    String upload() {
+        return "upload";
+    }
+
     @GetMapping({"/test"})
     String test() {
         return "test";
     }
 
     @PostMapping({"/upload"})
-    String addUser(@RequestParam("image_url") String image_url, @RequestParam("title") String title, @RequestParam("location") String location, @RequestParam("tags") String tags, @RequestParam("description") String description, Principal principal) {
+    String addUser(@RequestParam("image_url") String image_url, @RequestParam("title") String title,
+                   @RequestParam("date_year") String dateYear, @RequestParam("date_month") String dateMonth,
+                   @RequestParam("date_day") String dateDay , @RequestParam("location") String location,
+                   @RequestParam("tags") String tags, @RequestParam("description") String description,
+                   Principal principal) {
         // 현재 인증된 사용자의 정보를 가져오기
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -41,6 +53,8 @@ public class StoryController {
             Story story = new Story();
             story.setImage_url(image_url);
             story.setTitle(title);
+            String date = dateYear + "-" + dateMonth + "-" + dateDay;
+            story.setDate(date);
             story.setLocation(location);
             story.setTags(tags);
             story.setDescription(description);

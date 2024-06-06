@@ -20,7 +20,9 @@ public class Story {
     private String username;
     private String image_url;
     private String title;
+    private String date;
     private String location;
     private String tags;
     private String description;
+
 }

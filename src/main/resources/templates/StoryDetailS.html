@@ -4,31 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .story-details {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+        }
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tags p {
+            background-color: #e0e0e0;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            .story-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Story Details</h1>
-<div>
-    <h2></h2>
-    <img th:src="${story.image_url}" alt="Story Image">
-</div>
-<div>
-    <h2>제목</h2><p th:text="${story.title}"></p>
-</div>
-<div>
-    <h2>위치</h2>
-    <p th:text="${story.location}"></p>
-</div>
-<div>
-    <h2>상세설명</h2>
-    <p th:text="${story.description}"></p>
-</div>
-<div>
-    <h2>태그</h2>
-    <p th:each="tag : ${story.tags.split(',')}" th:text="'#' + ${tag}"></p>
-</div>
-<div>
-    <h2>Author</h2>
-    <p th:text="${story.username}"></p>
+<header>
+    <h1>Story Details</h1>
+</header>
+<div class="container">
+    <div class="story-details">
+        <div class="story-image">
+            <img th:src="${story.image_url}" alt="Story Image">
+        </div>
+        <div class="story-text">
+            <h2>제목</h2>
+            <p th:text="${story.title}"></p>
+            <h2>위치</h2>
+            <p th:text="${story.location}"></p>
+            <h2>상세설명</h2>
+            <p th:text="${story.description}"></p>
+            <h2>Author</h2>
+            <p th:text="${story.username}"></p>
+            <h2>Date</h2>
+            <p th:text="${story.date}"></p>
+        </div>
+    </div>
+    <div class="tags">
+        <h2>태그</h2>
+        <p th:each="tag : ${story.tags.split(',')}" th:text="'#' + ${tag}"></p>
+    </div>
 </div>
 </body>
 </html>

@@ -37,6 +37,11 @@ public class StoryController {
         return "test";
     }
 
+    @GetMapping({"/best"})
+    String best() {
+        return "BestStoryDetailPage";
+    }
+
     @PostMapping({"/upload"})
     String addUser(@RequestParam("image_url") String image_url, @RequestParam("title") String title,
                    @RequestParam("date_year") String dateYear, @RequestParam("date_month") String dateMonth,

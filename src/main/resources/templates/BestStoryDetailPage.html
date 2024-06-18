@@ -2,11 +2,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/BestStoryDetailPage.css" />
+    <link rel="stylesheet" th:href="@{/css/BestStoryDetailPage.css}"/>
     <link
             rel="stylesheet"
             type="text/css"
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+            th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +22,7 @@
         <div id="nav_logo1">
             <a href="Home.html">
                 <img
-                        src="../static/images/MainLogo.png"
+                        th:src="@{/images/MainLogo.png}"
                         alt="로고"
                         width="225px"
                         height="60px"
@@ -40,7 +40,7 @@
         <div id="search">
             <input type="text" class="search" />
             <img
-                    src="../static/images/search.png"
+                    th:src="@{/images/search.png}"
                     alt="돋보기"
                     width="30px"
                     height="30px"
@@ -58,7 +58,7 @@
     <div id="bestStory">
         <div id="bestStoryTitle">
             <div id="best_title">
-                <img src="../static/images/bestimg.png" class="bestimg" />
+                <img th:src="@{images/bestimg.png}" class="bestimg" />
                 <div id="best_text">
                     <p class="best">Best Story</p>
                     <p class="best_1">
@@ -98,11 +98,11 @@
                             <p class="best1_name">담양 죽녹원</p>
                         </div>
                         <div id="best1_see">
-                            <img src="../static/images/seeimg.png" class="best1_see" />
+                            <img th:src="@{/images/seeimg.png}" class="best1_see" />
                             <p class="best_see1">3.7k</p>
                         </div>
                         <div id="best1_like">
-                            <img src="../static/images/likeimg.png" class="best1_like" />
+                            <img th:src="@{/images/likeimg.png}" class="best1_like" />
                             <p class="best_like1">1.8k</p>
                         </div>
                     </div>
@@ -123,11 +123,11 @@
                             <p class="best2_name">담양 죽녹원</p>
                         </div>
                         <div id="best2_see">
-                            <img src="../static/images/seeimg.png" class="best2_see" />
+                            <img th:src="@{/images/seeimg.png}" class="best2_see" />
                             <p class="best_see2">3.7k</p>
                         </div>
                         <div id="best2_like">
-                            <img src="../static/images/likeimg.png" class="best2_like" />
+                            <img th:src="@{/images/likeimg.png}" class="best2_like" />
                             <p class="best_like2">1.8k</p>
                         </div>
                     </div>
@@ -148,11 +148,11 @@
                             <p class="best3_name">담양 죽녹원</p>
                         </div>
                         <div id="best3_see">
-                            <img src="../static/images/seeimg.png" class="best3_see" />
+                            <img th:src="@{/images/seeimg.png}" class="best3_see" />
                             <p class="best_see3">3.7k</p>
                         </div>
                         <div id="best3_like">
-                            <img src="../static/images/likeimg.png" class="best3_like" />
+                            <img th:src="@{/images/likeimg.png}" class="best3_like" />
                             <p class="best_like3">1.8k</p>
                         </div>
                     </div>
@@ -173,11 +173,11 @@
                             <p class="best4_name">담양 죽녹원</p>
                         </div>
                         <div id="best4_see">
-                            <img src="../static/images/seeimg.png" class="best4_see" />
+                            <img th:src="@{/images/seeimg.png}" class="best4_see" />
                             <p class="best_see4">3.7k</p>
                         </div>
                         <div id="best4_like">
-                            <img src="../static/images/likeimg.png" class="best4_like" />
+                            <img th:src="@{/images/likeimg.png}" class="best4_like" />
                             <p class="best_like4">1.8k</p>
                         </div>
                     </div>
@@ -238,5 +238,5 @@
 </div>
 </body>
 
-<script src="../static/js/ThemeDetailPage.js"></script>
+<script th:src="@{/js/ThemeDetailPage.js}"></script>
 </html>

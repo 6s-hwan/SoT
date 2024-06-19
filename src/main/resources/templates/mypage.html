@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Page</title>
+</head>
+<body>
+<h1>Welcome, <span th:text="${user.username}"></span>!</h1>
+<p>Total Stories: <span th:text="${totalStories}"></span></p>
+
+<h2>My Stories:</h2>
+<div th:each="story : ${stories}">
+  <h3 th:text="${story.title}"></h3>
+  <img th:src="${story.image_url}" alt="Story Image">
+  <p th:text="${story.description}"></p>
+</div>
+</body>
+</html>

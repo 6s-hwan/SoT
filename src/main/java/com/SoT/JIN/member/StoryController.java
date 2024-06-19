@@ -41,6 +41,10 @@ public class StoryController {
     String best() {
         return "BestStoryDetailPage";
     }
+    @GetMapping({"/popular"})
+    String popular() {
+        return "PopularWriter";
+    }
 
     @PostMapping({"/upload"})
     String addUser(@RequestParam("image_url") String image_url, @RequestParam("title") String title,

@@ -1,8 +1,10 @@
 package com.SoT.JIN.member;
 
-
+import java.util.List; // 리스트 사용을 위해 임포트
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model; // 모델 사용을 위해 임포트
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MemberController {
     private final UserRepository userRepository;
-    private final S3Service s3Service;
+    private final StoryRepository storyRepository; // StoryRepository 추가
 
     @GetMapping({"/join"})
     String register() {
@@ -40,16 +42,34 @@ public class MemberController {
         this.userRepository.save(user);
         return "redirect:/test";
     }
-    /*
-    @GetMapping({"/login"})
-    public String login() {
-        return "login.html";
+
+    public MemberController(final UserRepository userRepository, final StoryRepository storyRepository) {
+        this.userRepository = userRepository;
+        this.storyRepository = storyRepository; // StoryRepository 주입
     }
 
-     */
+    @GetMapping("/my-page")
+    public String mypage(Authentication authentication, Model model) {
+        String username = authentication.getName(); // 현재 인증된 사용자의 이름 (이메일)
 
-    public MemberController(final UserRepository userRepository, final S3Service s3Service) {
-        this.userRepository = userRepository;
-        this.s3Service = s3Service;
+        // 사용자 이메일로 사용자 정보 찾기
+        User user = userRepository.findByEmail(username).orElse(null);
+
+        if (user != null) {
+            // 사용자 이메일로 해당 사용자가 작성한 모든 스토리 찾기
+            List<Story> userStories = storyRepository.findByUsername(username);
+
+            // 전체 스토리 수 계산
+            int totalStories = userStories.size();
+
+            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수 추가
+            model.addAttribute("user", user);
+            model.addAttribute("stories", userStories);
+            model.addAttribute("totalStories", totalStories);
+
+            return "mypage"; // mypage.html로 이동
+        }
+
+        return "redirect:/home"; // 사용자를 찾을 수 없으면 홈페이지로 리다이렉트
     }
 }

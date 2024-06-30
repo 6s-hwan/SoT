@@ -73,6 +73,17 @@
   </style>
 </head>
 <body>
+<div class="header">
+  <h1>My Page</h1>
+
+</div>
+<div class="header">
+  <h2>Username: </h2>
+  <div class="username">
+    <h2 th:text="${user.username}"> Username</h2>
+  </div>
+</div>
+
 <div class="stats">
   <div>
     <h2>스토리</h2>
@@ -80,12 +91,16 @@
   </div>
 </div>
 
+
+
 <h2>My Stories:</h2>
 <div class="stories">
   <div th:each="story, iterStat : ${stories}">
     <div class="story">
-      <img th:src="${story.image_url}" alt="Story Image">
-      <h3 th:text="${story.title}">Story Title</h3>
+      <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+        <img th:src="${story.image_url}" alt="Story Image">
+        <h3 th:text="${story.title}">Story Title</h3>
+      </a>
     </div>
     <!-- Add a line break after every 4th story -->
     <div th:if="${iterStat.index % 4 == 3}" style="grid-column: 1 / -1;"></div>

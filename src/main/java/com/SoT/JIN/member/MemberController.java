@@ -14,11 +14,6 @@ public class MemberController {
     private final UserRepository userRepository;
     private final StoryRepository storyRepository; // StoryRepository 추가
 
-    @GetMapping({"/join"})
-    String register() {
-        return "Join";
-    }
-
     @GetMapping({"/home"})
     String list() {
         return "home";

@@ -1,12 +1,12 @@
 package com.SoT.JIN.member;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,5 +24,8 @@ public class Story {
     private String location;
     private String tags;
     private String description;
+    private int viewCount;
+    @OneToMany(mappedBy = "story", cascade = CascadeType.ALL)
+    private Set<LikeEntity> likes = new HashSet<>();
 
 }

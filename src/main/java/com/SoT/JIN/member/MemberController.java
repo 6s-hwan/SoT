@@ -68,8 +68,12 @@ public class MemberController {
             List<Story> userStories;
 
             // 정렬 기준에 따라 스토리를 가져옴
-            if (sortCriteria != null && sortCriteria.equals("likes")) {
+            if ("likes".equals(sortCriteria)) {
                 userStories = storyRepository.findByUsernameOrderByLikesDesc(username);
+            } else if ("views".equals(sortCriteria)) {
+                userStories = storyRepository.findByUsernameOrderByViewCountDesc(username);
+            } else if ("recent".equals(sortCriteria)) {
+                userStories = storyRepository.findByUsernameOrderByUploadTimeDesc(username);
             } else {
                 userStories = storyRepository.findByUsername(username);
             }

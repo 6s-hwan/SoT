@@ -156,7 +156,7 @@ birthYearEl.addEventListener("focus", function () {
   // year 목록 생성되지 않았을 때 (최초 클릭 시)
   if (!isYearOptionExisted) {
     isYearOptionExisted = true;
-    for (var i = 1920; i <= 2024; i++) {
+    for (var i = 2024; i >= 2000; i--) {
       // option element 생성
       const YearOption = document.createElement("option");
       YearOption.setAttribute("value", i);

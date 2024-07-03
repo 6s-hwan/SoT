@@ -32,12 +32,14 @@ public class StoryService {
             existingLike.get().setStory(null);
             existingLike.get().setUser(null);
             likeRepository.delete(existingLike.get());
+            story.setViewCount(story.getViewCount() - 1);
         } else {
             LikeEntity newLike = new LikeEntity();
             newLike.setStory(story);
             newLike.setUser(user);
             story.getLikes().add(newLike);
             likeRepository.save(newLike);
+            story.setViewCount(story.getViewCount() - 1);
         }
         storyRepository.save(story);
     }

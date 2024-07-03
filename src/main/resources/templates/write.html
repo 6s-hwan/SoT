@@ -101,14 +101,16 @@
         .tag-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 5px;
+            margin-top: 10px;
+            gap: 5px; /* 태그 사이의 간격 설정 */
         }
         .tag-list span {
             background-color: #e0e0e0;
             border-radius: 3px;
             padding: 5px;
-            margin-right: 5px;
+            margin-top: 5px;
+            display: flex; /* 아이템 가로 정렬을 위해 추가 */
+            align-items: center; /* 아이템 가로 정렬을 위해 추가 */
         }
         .tag-list span::before {
             content: "#";
@@ -116,12 +118,12 @@
         .tag-input-wrapper {
             display: flex;
             align-items: center;
-            gap: 5px;
         }
         .tag-input-wrapper input {
             flex: 1;
         }
         .tag-input-wrapper button {
+            margin-left: 5px;
             padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -152,7 +154,7 @@
             <input type="text" id="location" name="location">
         </div>
         <div class="form-field">
-            <label for="tags">태그</label>
+            <label for="tagInput">태그</label>
             <div class="tag-input-wrapper">
                 <input type="text" id="tagInput">
                 <button type="button" onclick="addTag()">추가</button>
@@ -179,10 +181,11 @@
                 let imgElement = document.getElementById('uploadedImage');
                 imgElement.src = event.target.result;
                 document.querySelector('.upload-placeholder').classList.add('active');
-                document.querySelector('.upload-placeholder p').style.display = 'none';
+                document.querySelector('.upload-placeholder p').style.display = 'none'; // 이미지 선택시 텍스트를 숨김
             }
             reader.readAsDataURL(e.files[0]);
 
+            // Get presigned URL for S3
             const fileName = encodeURIComponent(e.files[0].name);
             fetch(`/presigned-url?filename=${fileName}`)
                 .then(response => response.text())
@@ -209,8 +212,9 @@
         let tagValue = tagInput.value.trim();
         if (tagValue) {
             let newTag = document.createElement('span');
-            newTag.textContent = tagValue;
-            tagList.appendChild(newTag);
+            newTag.textContent = '#' + tagValue;
+            let label = document.querySelector('label[for="tagInput"]');
+            label.parentNode.insertBefore(newTag, label.nextSibling);
             tagInput.value = '';
             updateTagsInput();
         }
@@ -218,9 +222,10 @@
 
     function updateTagsInput() {
         let tagList = document.getElementById('tagList');
-        let tags = Array.from(tagList.children).map(tag => tag.textContent);
+        let tags = Array.from(tagList.children).map(tag => tag.textContent.replace('#', ''));
         document.getElementById('tags').value = tags.join(',');
     }
+
 
     function uploadPost(event) {
         event.preventDefault();

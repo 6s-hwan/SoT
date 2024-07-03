@@ -103,8 +103,8 @@
             </div>
             <div id="mypagedetail_4">
               <p id="newestupload">최근 업로드</p>
-              <p id="newestuploaddate">0</p>
-              <p id="newestuploaddate1">일전</p>
+              <p id="newestuploaddate" th:text="${daysSinceLastUpload} + '일전'">-</p>
+
             </div>
           </div>
         </div>

@@ -44,7 +44,7 @@ public class MemberController {
     }
 
     @GetMapping("/my-page")
-    public String mypage(Authentication authentication, Model model) {
+    public String mypage(Authentication authentication, Model model, @RequestParam(name = "sort", required = false) String sortCriteria) {
         String username = authentication.getName(); // 현재 인증된 사용자의 이름 (이메일)
 
         // 사용자 이메일로 사용자 정보 찾기
@@ -52,15 +52,31 @@ public class MemberController {
 
         if (user != null) {
             // 사용자 이메일로 해당 사용자가 작성한 모든 스토리 찾기
-            List<Story> userStories = storyRepository.findByUsername(username);
+            List<Story> userStories;
+
+            if (sortCriteria != null && sortCriteria.equals("likes")) {
+                userStories = storyRepository.findByUsernameOrderByLikesDesc(username);
+            } else {
+                userStories = storyRepository.findByUsername(username);
+            }
 
             // 전체 스토리 수 계산
             int totalStories = userStories.size();
 
-            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수 추가
+            // 전체 조회수와 좋아요 수 계산
+            int totalViews = 0;
+            int totalLikes = 0;
+            for (Story story : userStories) {
+                totalViews += story.getViewCount();
+                totalLikes += story.getLikesCount();
+            }
+
+            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수, 조회수, 좋아요 수 추가
             model.addAttribute("user", user);
             model.addAttribute("stories", userStories);
             model.addAttribute("totalStories", totalStories);
+            model.addAttribute("totalViews", totalViews);
+            model.addAttribute("totalLikes", totalLikes);
 
             return "mypage"; // mypage.html로 이동
         }

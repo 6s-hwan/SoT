@@ -14,19 +14,22 @@ import org.springframework.stereotype.Service;
 public class MyUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> result = this.userRepository.findByEmail(email);
-        if (result.isEmpty()) {
-            throw new UsernameNotFoundException("오류");
-        } else {
-            User user = (User)result.get();
-            List<GrantedAuthority> authorities = new ArrayList();
-            authorities.add(new SimpleGrantedAuthority("일반유저"));
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
-        }
+    public MyUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public MyUserDetailsService(final UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER")); // 권한 추가 필요
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword(),
+                authorities
+        );
     }
 }

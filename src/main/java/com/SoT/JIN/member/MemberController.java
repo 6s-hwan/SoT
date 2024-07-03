@@ -1,5 +1,8 @@
 package com.SoT.JIN.member;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import org.springframework.security.core.Authentication;
@@ -65,8 +68,12 @@ public class MemberController {
             List<Story> userStories;
 
             // 정렬 기준에 따라 스토리를 가져옴
-            if (sortCriteria != null && sortCriteria.equals("likes")) {
+            if ("likes".equals(sortCriteria)) {
                 userStories = storyRepository.findByUsernameOrderByLikesDesc(username);
+            } else if ("views".equals(sortCriteria)) {
+                userStories = storyRepository.findByUsernameOrderByViewCountDesc(username);
+            } else if ("recent".equals(sortCriteria)) {
+                userStories = storyRepository.findByUsernameOrderByUploadTimeDesc(username);
             } else {
                 userStories = storyRepository.findByUsername(username);
             }
@@ -81,6 +88,9 @@ public class MemberController {
                 totalViews += story.getViewCount();
                 totalLikes += story.getLikes().size(); // 좋아요 수는 List의 크기로 계산
             }
+
+            // 최근 업로드 일수 계산
+            long daysSinceLastUpload = calculateDaysSinceLastUpload(userStories);
 
             // 테마 카운트 맵 초기화
             Map<String, Integer> themeCountMap = new HashMap<>();
@@ -112,7 +122,7 @@ public class MemberController {
                 }
             }
 
-            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수, 조회수, 좋아요 수, 가장 많은 테마 정보 추가
+            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수, 조회수, 좋아요 수, 최근 업로드 일수, 가장 많은 테마 정보 추가
             model.addAttribute("user", user);
             model.addAttribute("stories", userStories);
             model.addAttribute("totalStories", totalStories);
@@ -120,10 +130,36 @@ public class MemberController {
             model.addAttribute("totalLikes", totalLikes);
             model.addAttribute("topTheme", topTheme);
             model.addAttribute("secondTheme", secondTheme);
+            model.addAttribute("daysSinceLastUpload", daysSinceLastUpload);
 
             return "mypage"; // mypage.html로 이동
         }
 
         return "redirect:/home"; // 사용자를 찾을 수 없으면 홈페이지로 리다이렉트
+    }
+
+    // 최근 업로드 일수 계산 메서드
+    private int calculateDaysSinceLastUpload(List<Story> userStories) {
+        // 만약 userStories가 비어 있다면
+        if (userStories.isEmpty()) {
+            return 0; // 혹은 다른 의미있는 값을 리턴
+        }
+
+        // 최근 업로드 시간을 가져오기 위해 리스트에서 마지막 요소를 선택
+        LocalDateTime mostRecentUploadTime = userStories.get(userStories.size() - 1).getUploadTime();
+
+        // 만약 mostRecentUploadTime이 null이라면
+        if (mostRecentUploadTime == null) {
+            return 0; // 혹은 다른 의미있는 값을 리턴
+        }
+
+        // 현재 날짜
+        LocalDate currentDate = LocalDate.now();
+
+        // 최근 업로드 일자를 LocalDate로 변환
+        LocalDate uploadDate = mostRecentUploadTime.toLocalDate();
+
+        // 일자 차이 계산
+        return (int) ChronoUnit.DAYS.between(uploadDate, currentDate);
     }
 }

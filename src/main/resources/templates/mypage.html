@@ -86,6 +86,18 @@
       height: 20px; /* Adjust height of the icon */
       margin-right: 5px; /* Add margin between icon and text */
     }
+    .sort-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .sort-buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -104,6 +116,10 @@
     <h2>스토리</h2>
     <h2 th:text="${totalStories}">0</h2>
   </div>
+</div>
+<div class="sort-buttons">
+  <button onclick="sortStories('viewCount')">조회수로 정렬</button>
+  <button onclick="sortStories('likes')">좋아요 수로 정렬</button>
 </div>
 
 <h2>My Stories:</h2>
@@ -127,5 +143,10 @@
     <div th:if="${iterStat.index % 4 == 3}" style="grid-column: 1 / -1;"></div>
   </div>
 </div>
+<script>
+  function sortStories(criteria) {
+    window.location.href = `/my-page?sort=${criteria}`;
+  }
+</script>
 </body>
 </html>

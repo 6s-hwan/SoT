@@ -27,5 +27,7 @@ public class Story {
     private int viewCount;
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL)
     private Set<LikeEntity> likes = new HashSet<>();
-
+    public int getLikesCount() {
+        return this.likes.size();
+    }
 }

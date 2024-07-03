@@ -276,7 +276,7 @@ input.mypageedit {
   height: 36px;
   border: none;
   margin-top: 3px;
-  margin-left: 540px;
+  margin-left: 640px;
   margin-right: 12px;
   cursor: pointer;
 }
@@ -456,15 +456,17 @@ input.mypageedit {
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
-  padding: 20px;
+  padding: 20px 0px 30px 20px;
+  margin-bottom: 500px;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px; /* Increased gap for better spacing */
+  display: flex;
+  flex-wrap: wrap; /* Flexbox로 여러 줄로 나열 */
+  justify-content: flex-start; /* 요소들을 시작 부분에 정렬(가로) */
+  align-content: flex-start; /* 요소들을 시작 부분에 정렬(세로) */
 }
 
 #storyimage {
-  width: 285px;
+  width: 275px;
   height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -483,17 +485,35 @@ input.mypageedit {
   font-weight: 500;
   line-height: 24px; /* 133.333% */
   padding-left: 2px;
-  padding-right: 95px;
+  /* padding-right: 95px; */
+  margin-right: auto; /* 다음 요소들을 오른쪽으로 밀기 위해 설정 */
 }
 .story {
   position: relative; /* Relative positioning for title placement */
+  width: 275px;
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 20px;
+  margin-bottom: 30px;
 }
-
+.stories {
+  position: relative; /* Relative positioning for title placement */
+  width: 275px;
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+.story > a {
+  width: 275px;
+  height: 235px;
+}
 .seeimage {
   width: 16px;
   height: 16px;
@@ -516,7 +536,7 @@ input.mypageedit {
   letter-spacing: -0.24px;
   padding-top: 2px;
   padding-right: 10px;
-  width: 24px;
+  /* width: 24px; */
 }
 .likeimagetext {
   color: #666;
@@ -527,5 +547,6 @@ input.mypageedit {
   line-height: normal;
   letter-spacing: -0.24px;
   padding-top: 2px;
-  width: 24px;
+  padding-right: 10px;
+  /* width: 24px; */
 }

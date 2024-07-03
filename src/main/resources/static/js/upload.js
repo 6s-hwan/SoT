@@ -188,7 +188,7 @@ birthYearEl.addEventListener("focus", function () {
       this.appendChild(YearOption);
 
     }
-  });
+  }
 
   // '월' 셀렉트 박스 option 목록 동적 생성
   const birthMonthEl = document.querySelector("#upload-month");
@@ -219,4 +219,6 @@ birthYearEl.addEventListener("focus", function () {
       }
     }
   });
+});
 }
+

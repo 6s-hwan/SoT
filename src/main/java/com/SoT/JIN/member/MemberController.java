@@ -63,10 +63,20 @@ public class MemberController {
             // 전체 스토리 수 계산
             int totalStories = userStories.size();
 
-            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수 추가
+            // 전체 조회수와 좋아요 수 계산
+            int totalViews = 0;
+            int totalLikes = 0;
+            for (Story story : userStories) {
+                totalViews += story.getViewCount();
+                totalLikes += story.getLikesCount();
+            }
+
+            // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수, 조회수, 좋아요 수 추가
             model.addAttribute("user", user);
             model.addAttribute("stories", userStories);
             model.addAttribute("totalStories", totalStories);
+            model.addAttribute("totalViews", totalViews);
+            model.addAttribute("totalLikes", totalLikes);
 
             return "mypage"; // mypage.html로 이동
         }

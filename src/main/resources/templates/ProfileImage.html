@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/upload.css">
+    <title>프로필 이미지 업로드</title>
+</head>
+<body>
+<div id="profileUploadContainer">
+    <h1>프로필 이미지 업로드</h1>
+    <form id="profileUploadForm" onsubmit="return uploadProfileImage(event)">
+        <div id="imageUploadSection">
+            <div id="imageUploadPlaceholder" onclick="document.getElementById('imageInput').click()">
+                <img id="currentProfileImage" src="/images/default-profile.png" alt="프로필 이미지" width="152" height="152">
+                <p>프로필 이미지를 선택해주세요</p>
+                <label for="imageInput" class="input-file-button">불러오기</label>
+                <input type="file" id="imageInput" name="image" style="display: none" onchange="previewImage(event)">
+            </div>
+            <img id="uploadedProfileImage" src="" style="display: none; width: 152px; height: 152px;">
+        </div>
+        <button type="submit" class="upload-button">업로드</button>
+    </form>
+</div>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const reader = new FileReader();
+        reader.onload = function() {
+            const dataURL = reader.result;
+            const uploadedImage = document.getElementById('uploadedProfileImage');
+            uploadedImage.src = dataURL;
+            uploadedImage.style.display = 'block';
+            document.getElementById('currentProfileImage').style.display = 'none';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    async function uploadProfileImage(event) {
+        event.preventDefault();
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+        const fileName = encodeURIComponent(file.name);
+
+        try {
+            // 사전 서명된 URL 요청
+            const response = await fetch(`/member/generate-presigned-url?path=profile-images/${fileName}`);
+            const data = await response.json();
+            const presignedUrl = data.url;
+
+            // S3에 파일 업로드
+            const uploadResponse = await fetch(presignedUrl, {
+                method: 'PUT',
+                body: file,
+                headers: {
+                    'Content-Type': file.type
+                }
+            });
+
+            if (uploadResponse.ok) {
+                alert('프로필 이미지 업로드 성공!');
+                // 여기서 업로드된 이미지 URL을 서버에 저장하는 로직을 추가할 수 있습니다.
+                const imageUrl = presignedUrl.split('?')[0];
+                // 데이터베이스에 이미지 URL 저장 API 호출
+                const saveResponse = await fetch('/member/save-profile-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ imageUrl })
+                });
+
+                if (saveResponse.ok) {
+                    alert('프로필 이미지가 성공적으로 저장되었습니다.');
+                } else {
+                    alert('프로필 이미지 저장 실패!');
+                }
+            } else {
+                alert('프로필 이미지 업로드 실패!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('프로필 이미지 업로드 중 오류가 발생했습니다.');
+        }
+    }
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f7f7f7;
+        margin: 0;
+    }
+
+    #profileUploadContainer {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    #imageUploadSection {
+        margin-bottom: 20px;
+    }
+
+    #imageUploadPlaceholder {
+        cursor: pointer;
+        border: 2px dashed #ccc;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    #imageUploadPlaceholder img {
+        margin-bottom: 10px;
+    }
+
+    .input-file-button {
+        display: inline-block;
+        padding: 8px 15px;
+        cursor: pointer;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .input-file-button:hover {
+        background: #0056b3;
+    }
+
+    .upload-button {
+        display: inline-block;
+        padding: 10px 20px;
+        cursor: pointer;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .upload-button:hover {
+        background: #218838;
+    }
+</style>
+</body>
+</html>

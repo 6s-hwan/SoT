@@ -23,4 +23,5 @@ public class User {
     private String birth;
     private String gender;
     private String phonenumber;
+    private String profileImageUrl;
 }

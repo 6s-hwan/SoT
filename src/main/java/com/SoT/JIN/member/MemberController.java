@@ -135,7 +135,7 @@ public class MemberController {
             return "mypage"; // mypage.html로 이동
         }
 
-        return "redirect:/home"; // 사용자를 찾을 수 없으면 홈페이지로 리다이렉트
+        return "redirect:/test"; // 사용자를 찾을 수 없으면 홈페이지로 리다이렉트
     }
 
     // 최근 업로드 일수 계산 메서드

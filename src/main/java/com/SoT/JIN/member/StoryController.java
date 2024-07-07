@@ -59,6 +59,11 @@ public class StoryController {
         return "write";
     }
 
+    @GetMapping("/rise")
+    public String rise() {
+        return "RiseDetailPage";
+    }
+
     @GetMapping("/upload")
     public String upload() {
         return "upload";

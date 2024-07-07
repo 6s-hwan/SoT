@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 창 닫는 js 코드
   var loginBtn = document.getElementById("join");
-  var StoryUploadPopup = document.getElementById("bg_gray1");
+
   loginBtn.addEventListener("click", function () {
     StoryUploadPopup.style.display = "block";
     document.body.style.overflow = ""; // 스크롤 허용
@@ -167,7 +167,7 @@ function selectDate() {
 }
 
 
-      
+
 function setupDateSelectors() {
   // '년' 셀렉트 박스 option 목록 동적 생성
   //날짜

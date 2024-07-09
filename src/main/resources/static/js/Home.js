@@ -755,3 +755,29 @@ function setupUploadDateSelectors() {
     });
   });
 }
+
+function sendVerification() {
+  var phone1 = document.getElementById("phone_input1").value.trim(); // 첫 번째 입력 필드 값 (예: '010')
+  var phone2 = document.getElementById("phone_input2").value.trim(); // 두 번째 입력 필드 값 (예: '1234')
+  var phone3 = document.getElementById("phone_input3").value.trim(); // 세 번째 입력 필드 값 (예: '5678')
+
+  // 앞의 0을 제거하고 +82를 추가하여 Twilio가 요구하는 형식으로 조합
+  var phoneNumber = `+82${phone1.substring(1)}${phone2}${phone3}`;
+
+  // 서버에 전화번호를 전송하여 인증번호 요청
+  fetch('/api/sendVerification', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ phoneNumber: phoneNumber }),
+  })
+      .then(response => response.text())
+      .then(data => {
+        alert(data); // 서버로부터 받은 응답 메시지를 출력
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('인증번호 전송 중 오류가 발생했습니다.');
+      });
+}

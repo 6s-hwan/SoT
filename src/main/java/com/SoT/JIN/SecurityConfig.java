@@ -30,7 +30,7 @@ public class SecurityConfig {
             ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl)authorize.requestMatchers(new String[]{"/**"})).permitAll();
         });
         http.formLogin((formLogin) -> {
-            ((FormLoginConfigurer)formLogin.loginPage("/login").defaultSuccessUrl("/home")).failureUrl("/error");
+            ((FormLoginConfigurer)formLogin.loginPage("/login").defaultSuccessUrl("/test")).failureUrl("/error");
         });
         return (SecurityFilterChain)http.build();
     }

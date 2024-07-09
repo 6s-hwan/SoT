@@ -22,5 +22,6 @@ public class User {
     private String username;
     private String birth;
     private String gender;
-    private String phonenumber;
+    private String phoneNumber;
+    private String verificationCode; // 추가: 난수 저장 필드
 }

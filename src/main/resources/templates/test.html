@@ -50,7 +50,7 @@
     <input
             type="button"
             class="imagebtn"
-            onclick="location.href='mypage.html' "
+            onclick="location.href='my-page' "
     />
     <input type="checkbox" id="join" />
     <label for="join">로그인</label>
@@ -460,11 +460,13 @@
         <label for="CertificationNumber_input">
           <input
                   type="text"
+                  class="CertificationNumber_input"
                   id="CertificationNumber_input"
+                  name="verificationCode"
                   placeholder="인증번호를 입력해 주세요"
           />
         </label>
-        <button>전송</button>
+        <button type="button" onclick="sendVerification()">전송</button>
       </div>
 
       <div id="text8">실명인증을 완료해 주세요</div>
@@ -515,7 +517,7 @@
 
       <!-- 회원가입 버튼 -->
 
-      <button type="submit" class="confirm" id="join_btn">회원가입</button>
+      <button type="submit" class="confirm" id="join_btn" onclick="checkAgreements()">회원가입</button>
     </form>
     <div id="blank4"></div>
   </div>
@@ -716,7 +718,7 @@
 
     <!-- 동의 버튼 -->
     <label for="UseAgree_btn">
-      <button type="submit" class="confirm" id="UseAgree_btn">동의</button>
+      <button type="button" class="confirm" id="UseAgree_btn">동의</button>
     </label>
   </div>
   <!-- 개인정보 취급방침 팝업창 끝 -->
@@ -1077,7 +1079,7 @@
     <!-- 동의 버튼 -->
     <label for="PrivacyAgree_btn">
       <button
-              type="submit"
+              type="button"
               class="confirm"
               id="PrivacyAgree_btn"
               onclick="submitForm()"

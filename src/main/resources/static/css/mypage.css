@@ -456,12 +456,8 @@ input.mypageedit {
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
-<<<<<<< Updated upstream
-  padding: 20px;
-=======
   padding: 20px 0px 30px 20px;
   margin-bottom: 300px;
->>>>>>> Stashed changes
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -492,8 +488,6 @@ input.mypageedit {
 }
 .story {
   position: relative; /* Relative positioning for title placement */
-<<<<<<< Updated upstream
-=======
   width: 285px;
   height: 235px;
   box-sizing: border-box;
@@ -506,21 +500,17 @@ input.mypageedit {
 .stories {
   position: relative; /* Relative positioning for title placement */
   width: 285px;
->>>>>>> Stashed changes
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-<<<<<<< Updated upstream
-=======
   margin-right: 20px;
   margin-bottom: 30px;
 }
 .story > a {
   width: 28 5px;
   height: 235px;
->>>>>>> Stashed changes
 }
 
 .seeimage {

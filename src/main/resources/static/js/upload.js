@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 창 닫는 js 코드
   var loginBtn = document.getElementById("join");
-  var StoryUploadPopup = document.getElementById("bg_gray1");
+
   loginBtn.addEventListener("click", function () {
     StoryUploadPopup.style.display = "block";
     document.body.style.overflow = ""; // 스크롤 허용
@@ -166,21 +166,29 @@ function selectDate() {
   document.getElementById("date_input").value = date;
 }
 
+
+
 function setupDateSelectors() {
   // '년' 셀렉트 박스 option 목록 동적 생성
-  const birthYearEl = document.querySelector("#upload-year");
-  let isYearOptionExisted = false;
-  birthYearEl.addEventListener("focus", function () {
-    if (!isYearOptionExisted) {
-      isYearOptionExisted = true;
-      for (let i = 1920; i <= new Date().getFullYear(); i++) {
-        const YearOption = document.createElement("option");
-        YearOption.setAttribute("value", i);
-        YearOption.innerText = i;
-        this.appendChild(YearOption);
-      }
+  //날짜
+// '년' 셀렉트 박스 option 목록 동적 생성
+const birthYearEl = document.querySelector("#upload-year");
+// option 목록 생성 여부 확인
+isYearOptionExisted = false;
+birthYearEl.addEventListener("focus", function () {
+  // year 목록 생성되지 않았을 때 (최초 클릭 시)
+  if (!isYearOptionExisted) {
+    isYearOptionExisted = true;
+    for (var i = 2024; i >= 2000; i--) {
+      // option element 생성
+      const YearOption = document.createElement("option");
+      YearOption.setAttribute("value", i);
+      YearOption.innerText = i;
+      // birthYearEl의 자식 요소로 추가
+      this.appendChild(YearOption);
+
     }
-  });
+  }
 
   // '월' 셀렉트 박스 option 목록 동적 생성
   const birthMonthEl = document.querySelector("#upload-month");
@@ -211,4 +219,6 @@ function setupDateSelectors() {
       }
     }
   });
+});
 }
+

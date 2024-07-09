@@ -202,7 +202,7 @@ input.imagebtn {
 #mypageprofilefull {
   display: flex;
   box-sizing: border-box;
-  width: 1200px;
+  width: 1240px;
   height: 248px;
   flex-shrink: 0;
   border-radius: 20px;
@@ -257,7 +257,7 @@ input.imagebtn {
   line-height: 20px; /* 125% */
   letter-spacing: -0.32px;
 }
-input.mypageadd {
+/* input.mypageadd {
   display: flex;
   background: url("../images/mypageadd.png") no-repeat center;
   background-size: 36px;
@@ -279,7 +279,7 @@ input.mypageedit {
   margin-left: 540px;
   margin-right: 12px;
   cursor: pointer;
-}
+} */
 
 #mypagedetail_2 {
   box-sizing: border-box;
@@ -381,7 +381,7 @@ input.mypageedit {
 }
 
 #mypage_select {
-  padding-left: 1055px;
+  padding-left: 1075px;
   padding-top: 60px;
   padding-bottom: 30px;
 }
@@ -451,12 +451,17 @@ input.mypageedit {
 }
 
 #back {
-  width: 1200px;
-  height: 1684px;
+  width: 1240px;
+  /* height: 1684px; */ /* 이 코드를 없애면 스토리 사이즈 맞게 조절된다*/
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
+<<<<<<< Updated upstream
   padding: 20px;
+=======
+  padding: 20px 0px 30px 20px;
+  margin-bottom: 300px;
+>>>>>>> Stashed changes
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -487,11 +492,35 @@ input.mypageedit {
 }
 .story {
   position: relative; /* Relative positioning for title placement */
+<<<<<<< Updated upstream
+=======
+  width: 285px;
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+.stories {
+  position: relative; /* Relative positioning for title placement */
+  width: 285px;
+>>>>>>> Stashed changes
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+<<<<<<< Updated upstream
+=======
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+.story > a {
+  width: 28 5px;
+  height: 235px;
+>>>>>>> Stashed changes
 }
 
 .seeimage {

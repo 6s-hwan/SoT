@@ -110,7 +110,6 @@ public class WriterController {
     public String getPopularWriters(Model model) {
         List<WriterInfo> writerInfos = userRepository.findAll().stream()
                 .map(user -> {
-
                     List<Story> userStories = storyRepository.findByUsername(user.getEmail());
                     int totalLikes = userStories.stream().mapToInt(Story::getLikesCount).sum();
                     int totalStories = userStories.size();
@@ -120,13 +119,13 @@ public class WriterController {
                     for (Story story : userStories) {
                         String[] themes = story.getTags().split(",\\s*");
                         for (String theme : themes) {
-                            if (!theme.trim().isEmpty()) { // 공백이 아닌 경우에만 처리
+                            if (!theme.trim().isEmpty()) {
                                 themeCountMap.put(theme, themeCountMap.getOrDefault(theme, 0) + 1);
                             }
                         }
                     }
 
-// 가장 많이 나온 테마와 두 번째로 많이 나온 테마 구하기
+                    // 가장 많이 나온 테마와 두 번째로 많이 나온 테마 구하기
                     String topTheme = "";
                     String secondTheme = "";
                     int maxCount = 0;
@@ -144,30 +143,37 @@ public class WriterController {
                         }
                     }
 
-                    return new WriterInfo(user.getUsername(), totalStories, totalLikes, topTheme, secondTheme);
+                    return new WriterInfo(user.getUsername(), totalStories, totalLikes, topTheme, secondTheme, 0);
                 })
                 .sorted(Comparator.comparingInt(WriterInfo::getTotalLikes)
-                        .thenComparingInt(WriterInfo::getTotalStories).reversed()) // 좋아요 수로 내림차순, 좋아요 수가 같으면 스토리 수로 내림차순 정렬
-                .limit(72) // 상위 72명 선택
+                        .thenComparingInt(WriterInfo::getTotalStories).reversed())
+                .limit(72)
                 .collect(Collectors.toList());
+
+        // 등수 설정
+        for (int i = 0; i < writerInfos.size(); i++) {
+            writerInfos.get(i).setRank(i + 1);
+        }
 
         model.addAttribute("popularWriters", writerInfos);
         return "PopularWriter";
     }
 
-    public static class WriterInfo {
-        private final String username;
-        private final int totalStories;
-        private final int totalLikes;
-        private final String topTheme;
-        private final String secondTheme;
+    public class WriterInfo {
+        private String username;
+        private int totalStories;
+        private int totalLikes;
+        private String topTheme;
+        private String secondTheme;
+        private int rank; // 등수 필드 추가
 
-        public WriterInfo(String username, int totalStories, int totalLikes, String topTheme, String secondTheme) {
+        public WriterInfo(String username, int totalStories, int totalLikes, String topTheme, String secondTheme, int rank) {
             this.username = username;
             this.totalStories = totalStories;
             this.totalLikes = totalLikes;
             this.topTheme = topTheme;
             this.secondTheme = secondTheme;
+            this.rank = rank; // 생성자에 등수 추가
         }
 
         public String getUsername() {
@@ -189,7 +195,15 @@ public class WriterController {
         public String getSecondTheme() {
             return secondTheme;
         }
+
+        public int getRank() {
+            return rank;
+        }
+        public void setRank(int rank) {
+            this.rank = rank;
+        }
     }
+
     private int calculateDaysSinceLastUpload(List<Story> userStories) {
         // 만약 userStories가 비어 있다면
         if (userStories.isEmpty()) {

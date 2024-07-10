@@ -54,11 +54,6 @@ public class StoryController {
         return "StoryDetails";
     }
 
-    @GetMapping("/write")
-    public String write() {
-        return "write";
-    }
-
     @GetMapping("/rise")
     public String rise() {
         return "RiseDetailPage";
@@ -73,14 +68,9 @@ public class StoryController {
     public String test() {
         return "test";
     }
-
     @GetMapping("/best")
     public String best() {
         return "BestStoryDetailPage";
-    }
-    @GetMapping("/popular")
-    public String popular() {
-        return "PopularWriter";
     }
 
     @PostMapping("/upload")

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/mypage.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>My Page</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- 내비게이션 바 -->
+      <div class="nav_logo">
+        <div id="nav_logo1">
+          <a href="./test">
+            <img
+              th:src="@{/images/MainLogo.png}"
+              alt="로고"
+              width="225px"
+              height="60px"
+          /></a>
+        </div>
+        <div class="nav_menu">
+          <ul class="navigation">
+            <li><a href="./test" class="b">홈</a></li>
+            <li><a href="" class="c">지역</a></li>
+            <li><a href="" class="c">북마크</a></li>
+          </ul>
+        </div>
+        <div id="search">
+          <input type="search" class="search" />
+          <img
+            th:src="@{/images/search.png}"
+            alt="돋보기"
+            width="30px"
+            height="30px"
+          />
+        </div>
+        <input type="button" class="uploadbtn" />
+        <input
+          type="button"
+          class="imagebtn"
+          onclick="location.href='mypage.html' "
+        />
+        <input type="checkbox" id="join" />
+        <label for="join">로그인</label>
+      </div>
+    </nav>
+    <!-- 마이페이지 시작 -->
+    <div id="mypagefull">
+      <div id="mypage">
+        <div id="mypageTitle">
+          <p id="mypage_title">마이페이지</p>
+        </div>
+
+        <div id="mypageprofilefull">
+          <div id="mypageprofile">
+            <img
+              th:src="@{/images/mypageprofile.png}"
+              alt="프로필"
+              width="200px"
+              height="200px"
+              style="border: 0px"
+            />
+          </div>
+          <div id="mypagedetail">
+            <div id="mypagedetail_1">
+              <div id="mypageusername">
+                <p id="username" th:text="${user.username}">Username</p>
+              </div>
+              <div id="mypagefollower">
+                <p id="mypagefollowertext">0</p>
+                <p id="mypagefollowertext1">명의 팔로워</p>
+              </div>
+              <!-- <input type="button" class="mypageedit" />
+          <input type="button" class="mypageadd" /> -->
+            </div>
+            <div id="mypagedetail_2">
+              <!-- 스토리 수 -->
+              <p id="mypagedetail_2name">스토리&nbsp</p>
+              <p id="mypagedetail_2number" th:text="${totalStories}">0</p>
+              <!-- 좋아요 수 -->
+              <p id="mypagedetail_2name">좋아요&nbsp</p>
+              <p id="mypagedetail_2number" th:text="${totalLikes}">0</p>
+              <!-- 조회수 수 -->
+              <p id="mypagedetail_2name">조회수&nbsp</p>
+              <p id="mypagedetail_2number" th:text="${totalViews}">0</p>
+            </div>
+            <div id="mypagedetail_3">
+              <div id="majortheme"><p id="mypagethemename">주요 테마</p></div>
+              <div id="mypagetag">
+                <p id="mypagetagname" th:text="'#'+${topTheme}">#자연</p>
+              </div>
+              <div id="mypagetag">
+                <p id="mypagetagname" th:text="'#'+${secondTheme}">#자연</p>
+              </div>
+            </div>
+            <div id="mypagedetail_4">
+              <p id="newestupload">최근 업로드</p>
+              <p
+                id="newestuploaddate"
+                th:text="${daysSinceLastUpload} + '일전'"
+              >
+                -
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="mypage_select">
+          <form>
+            <select
+              name="story_select"
+              id="story_select"
+              onchange="sortStories()"
+            >
+              <option value="likes" class="recom_select">추천순</option>
+              <option value="recent" class="newest_select">최신순</option>
+              <option value="views" class="inquiry_select">조회순</option>
+            </select>
+          </form>
+        </div>
+
+        <div id="back">
+          <div class="stories" th:each="story, iterStat : ${stories}">
+            <div class="story">
+              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                <img
+                  id="storyimage"
+                  th:src="${story.image_url}"
+                  alt="Story Image"
+                />
+                <div id="storyTitlefull">
+                  <p id="storyTitle" th:text="${story.title}">Story Title</p>
+                  <img
+                    th:src="@{images/seeimg.png}"
+                    class="seeimage"
+                    width="16px"
+                    height="16px"
+                  />
+                  <p class="seeimagetext" th:text="${story.viewCount}">0</p>
+                  <img
+                    th:src="@{/images/likeimg.png}"
+                    class="likeimage"
+                    width="14px"
+                    height="14px"
+                  />
+                  <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function sortStories() {
+        var select = document.getElementById("story_select");
+        var sort = select.value;
+        window.location.href = "/my-page?sort=" + sort;
+      }
+
+      // 페이지 로드 시 현재 선택된 정렬 기준을 유지
+      document.addEventListener("DOMContentLoaded", function () {
+        var params = new URLSearchParams(window.location.search);
+        var sort = params.get("sort");
+        if (sort) {
+          document.getElementById("story_select").value = sort;
+        }
+      });
+    </script>
+  </body>
+</html>

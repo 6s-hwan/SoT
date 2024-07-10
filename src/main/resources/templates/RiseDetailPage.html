@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/RiseDetailPage.css}" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+            rel="stylesheet"
+    />
+    <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav_logo">
+        <div id="nav_logo1">
+            <a href="./test">
+                <img
+                        th:src="@{/images/MainLogo.png}"
+                        alt="로고"
+                        width="225px"
+                        height="60px"
+                /></a>
+        </div>
+        <div class="nav_menu">
+            <ul class="navigation">
+                <li><a href="./test" class="b">홈</a></li>
+                <li><a href="" class="c">지역</a></li>
+                <li><a href="" class="c">지도</a></li>
+                <li><a href="" class="c">북마크</a></li>
+            </ul>
+        </div>
+
+        <div id="search">
+            <input type="text" class="search" />
+            <img
+                    th:src="@{/images/search.png}"
+                    alt="돋보기"
+                    width="30px"
+                    height="30px"
+            />
+        </div>
+        <input type="button" class="imagebtn" />
+
+        <input type="button" class="uploadbtn" />
+
+        <input type="checkbox" id="join" />
+        <label for="join">로그인</label>
+    </div>
+</nav>
+
+<!--  급상승 시작 -->
+
+<div id="Risefull">
+    <div id="RiseStory">
+        <div id="RiseTitle">
+            <div id="RiseTitle_1">
+                <img
+                        th:src="@{/images/riseimg.png}"
+                        class="risestoryimg"
+                        width="90px"
+                        height="90px"
+                />
+                <p class="RiseTitle1">급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요</p>
+            </div>
+        </div>
+        <div id="RiseStoryBack">
+            <div id="RiseMainIMG">
+                <img
+                        th:src="@{/images/RiseMain.png}"
+                        class="risemainimg"
+                        width="1200px"
+                        height="352px"
+                />
+            </div>
+            <div id="RiseStorySet">
+                <p class="RiseStoryNum">1,223개의 스토리</p>
+                <div id="RiseStoryList">
+                    <form action="#">
+                        <select name="story_select" id="story_select">
+                            <option value="recom" class="recom_select">추천순</option>
+                            <option value="newest" class="newest_select">최신순</option>
+                            <option value="inquiry" class="inquiry_select">조회순</option>
+                            <option value="month" class="month_select">
+                                이번 달 조회순
+                            </option>
+                            <option value="today" class="today_select">오늘 조회순</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+            <div id="rise1-4">
+                <div id="rise1">
+                    <!--  베스트 1 시작 -->
+                    <div id="rise1_img">
+                        <button
+                                type="button"
+                                class="rise_img1"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise1_text">
+                        <div id="rise1_name">
+                            <p class="rise1_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise1_see">
+                            <img th:src="@{/images/seeimg.png}" class="rise1_see" />
+                            <p class="rise_see1">3.7k</p>
+                        </div>
+                        <div id="rise1_like">
+                            <img th:src="@{/images/likeimg.png}" class="rise1_like" />
+                            <p class="rise_like1">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise2">
+                    <!--  베스트 2 시작 -->
+                    <div id="rise2_img">
+                        <button
+                                type="button"
+                                class="rise_img2"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise2_text">
+                        <div id="rise2_name">
+                            <p class="rise2_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise2_see">
+                            <img src="../static/images/seeimg.png" class="rise2_see" />
+                            <p class="rise_see2">3.7k</p>
+                        </div>
+                        <div id="rise2_like">
+                            <img src="../static/images/likeimg.png" class="rise2_like" />
+                            <p class="rise_like2">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise3">
+                    <!--  베스트 3 시작 -->
+                    <div id="rise3_img">
+                        <button
+                                type="button"
+                                class="rise_img3"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise3_text">
+                        <div id="rise3_name">
+                            <p class="rise3_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise3_see">
+                            <img src="../static/images/seeimg.png" class="rise3_see" />
+                            <p class="rise_see3">3.7k</p>
+                        </div>
+                        <div id="rise3_like">
+                            <img src="../static/images/likeimg.png" class="rise3_like" />
+                            <p class="rise_like3">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise4">
+                    <!--  베스트 4 시작 -->
+                    <div id="rise4_img">
+                        <button
+                                type="button"
+                                class="rise_img4"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise4_text">
+                        <div id="rise4_name">
+                            <p class="rise4_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise4_see">
+                            <img src="../static/images/seeimg.png" class="rise4_see" />
+                            <p class="rise_see4">3.7k</p>
+                        </div>
+                        <div id="rise4_like">
+                            <img src="../static/images/likeimg.png" class="rise4_like" />
+                            <p class="rise_like4">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rise5-8">
+                <div id="rise1">
+                    <!--  베스트 1 시작 -->
+                    <div id="rise1_img">
+                        <button
+                                type="button"
+                                class="rise_img1"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise1_text">
+                        <div id="rise1_name">
+                            <p class="rise1_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise1_see">
+                            <img src="../static/images/seeimg.png" class="rise1_see" />
+                            <p class="rise_see1">3.7k</p>
+                        </div>
+                        <div id="rise1_like">
+                            <img src="../static/images/likeimg.png" class="rise1_like" />
+                            <p class="rise_like1">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise2">
+                    <!--  베스트 2 시작 -->
+                    <div id="rise2_img">
+                        <button
+                                type="button"
+                                class="rise_img2"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise2_text">
+                        <div id="rise2_name">
+                            <p class="rise2_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise2_see">
+                            <img src="../static/images/seeimg.png" class="rise2_see" />
+                            <p class="rise_see2">3.7k</p>
+                        </div>
+                        <div id="rise2_like">
+                            <img src="../static/images/likeimg.png" class="rise2_like" />
+                            <p class="rise_like2">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise3">
+                    <!--  베스트 3 시작 -->
+                    <div id="rise3_img">
+                        <button
+                                type="button"
+                                class="rise_img3"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise3_text">
+                        <div id="rise3_name">
+                            <p class="rise3_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise3_see">
+                            <img src="../static/images/seeimg.png" class="rise3_see" />
+                            <p class="rise_see3">3.7k</p>
+                        </div>
+                        <div id="rise3_like">
+                            <img src="../static/images/likeimg.png" class="rise3_like" />
+                            <p class="rise_like3">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise4">
+                    <!--  베스트 4 시작 -->
+                    <div id="rise4_img">
+                        <button
+                                type="button"
+                                class="rise_img4"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise4_text">
+                        <div id="rise4_name">
+                            <p class="rise4_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise4_see">
+                            <img src="../static/images/seeimg.png" class="rise4_see" />
+                            <p class="rise_see4">3.7k</p>
+                        </div>
+                        <div id="rise4_like">
+                            <img src="../static/images/likeimg.png" class="rise4_like" />
+                            <p class="rise_like4">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rise9-12">
+                <div id="rise1">
+                    <!--  베스트 1 시작 -->
+                    <div id="rise1_img">
+                        <button
+                                type="button"
+                                class="rise_img1"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise1_text">
+                        <div id="rise1_name">
+                            <p class="rise1_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise1_see">
+                            <img src="../static/images/seeimg.png" class="rise1_see" />
+                            <p class="rise_see1">3.7k</p>
+                        </div>
+                        <div id="rise1_like">
+                            <img src="../static/images/likeimg.png" class="rise1_like" />
+                            <p class="rise_like1">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise2">
+                    <!--  베스트 2 시작 -->
+                    <div id="rise2_img">
+                        <button
+                                type="button"
+                                class="rise_img2"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise2_text">
+                        <div id="rise2_name">
+                            <p class="rise2_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise2_see">
+                            <img src="../static/images/seeimg.png" class="rise2_see" />
+                            <p class="rise_see2">3.7k</p>
+                        </div>
+                        <div id="rise2_like">
+                            <img src="../static/images/likeimg.png" class="rise2_like" />
+                            <p class="rise_like2">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise3">
+                    <!--  베스트 3 시작 -->
+                    <div id="rise3_img">
+                        <button
+                                type="button"
+                                class="rise_img3"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise3_text">
+                        <div id="rise3_name">
+                            <p class="rise3_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise3_see">
+                            <img src="../static/images/seeimg.png" class="rise3_see" />
+                            <p class="rise_see3">3.7k</p>
+                        </div>
+                        <div id="rise3_like">
+                            <img src="../static/images/likeimg.png" class="rise3_like" />
+                            <p class="rise_like3">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise4">
+                    <!--  베스트 4 시작 -->
+                    <div id="rise4_img">
+                        <button
+                                type="button"
+                                class="rise_img4"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise4_text">
+                        <div id="rise4_name">
+                            <p class="rise4_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise4_see">
+                            <img src="../static/images/seeimg.png" class="rise4_see" />
+                            <p class="rise_see4">3.7k</p>
+                        </div>
+                        <div id="rise4_like">
+                            <img src="../static/images/likeimg.png" class="rise4_like" />
+                            <p class="rise_like4">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rise13-16">
+                <div id="rise1">
+                    <!--  베스트 1 시작 -->
+                    <div id="rise1_img">
+                        <button
+                                type="button"
+                                class="rise_img1"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise1_text">
+                        <div id="rise1_name">
+                            <p class="rise1_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise1_see">
+                            <img src="../static/images/seeimg.png" class="rise1_see" />
+                            <p class="rise_see1">3.7k</p>
+                        </div>
+                        <div id="rise1_like">
+                            <img src="../static/images/likeimg.png" class="rise1_like" />
+                            <p class="rise_like1">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise2">
+                    <!--  베스트 2 시작 -->
+                    <div id="rise2_img">
+                        <button
+                                type="button"
+                                class="rise_img2"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise2_text">
+                        <div id="rise2_name">
+                            <p class="rise2_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise2_see">
+                            <img src="../static/images/seeimg.png" class="rise2_see" />
+                            <p class="rise_see2">3.7k</p>
+                        </div>
+                        <div id="rise2_like">
+                            <img src="../static/images/likeimg.png" class="rise2_like" />
+                            <p class="rise_like2">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise3">
+                    <!--  베스트 3 시작 -->
+                    <div id="rise3_img">
+                        <button
+                                type="button"
+                                class="rise_img3"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise3_text">
+                        <div id="rise3_name">
+                            <p class="rise3_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise3_see">
+                            <img src="../static/images/seeimg.png" class="rise3_see" />
+                            <p class="rise_see3">3.7k</p>
+                        </div>
+                        <div id="rise3_like">
+                            <img src="../static/images/likeimg.png" class="rise3_like" />
+                            <p class="rise_like3">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise4">
+                    <!--  베스트 4 시작 -->
+                    <div id="rise4_img">
+                        <button
+                                type="button"
+                                class="rise_img4"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise4_text">
+                        <div id="rise4_name">
+                            <p class="rise4_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise4_see">
+                            <img src="../static/images/seeimg.png" class="rise4_see" />
+                            <p class="rise_see4">3.7k</p>
+                        </div>
+                        <div id="rise4_like">
+                            <img src="../static/images/likeimg.png" class="rise4_like" />
+                            <p class="rise_like4">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="rise17-20">
+                <div id="rise1">
+                    <!--  베스트 1 시작 -->
+                    <div id="rise1_img">
+                        <button
+                                type="button"
+                                class="rise_img1"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise1_text">
+                        <div id="rise1_name">
+                            <p class="rise1_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise1_see">
+                            <img src="../static/images/seeimg.png" class="rise1_see" />
+                            <p class="rise_see1">3.7k</p>
+                        </div>
+                        <div id="rise1_like">
+                            <img src="../static/images/likeimg.png" class="rise1_like" />
+                            <p class="rise_like1">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise2">
+                    <!--  베스트 2 시작 -->
+                    <div id="rise2_img">
+                        <button
+                                type="button"
+                                class="rise_img2"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise2_text">
+                        <div id="rise2_name">
+                            <p class="rise2_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise2_see">
+                            <img src="../static/images/seeimg.png" class="rise2_see" />
+                            <p class="rise_see2">3.7k</p>
+                        </div>
+                        <div id="rise2_like">
+                            <img src="../static/images/likeimg.png" class="rise2_like" />
+                            <p class="rise_like2">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise3">
+                    <!--  베스트 3 시작 -->
+                    <div id="rise3_img">
+                        <button
+                                type="button"
+                                class="rise_img3"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise3_text">
+                        <div id="rise3_name">
+                            <p class="rise3_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise3_see">
+                            <img src="../static/images/seeimg.png" class="rise3_see" />
+                            <p class="rise_see3">3.7k</p>
+                        </div>
+                        <div id="rise3_like">
+                            <img src="../static/images/likeimg.png" class="rise3_like" />
+                            <p class="rise_like3">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise4">
+                    <!--  베스트 4 시작 -->
+                    <div id="rise4_img">
+                        <button
+                                type="button"
+                                class="rise_img4"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise4_text">
+                        <div id="rise4_name">
+                            <p class="rise4_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise4_see">
+                            <img src="../static/images/seeimg.png" class="rise4_see" />
+                            <p class="rise_see4">3.7k</p>
+                        </div>
+                        <div id="rise4_like">
+                            <img src="../static/images/likeimg.png" class="rise4_like" />
+                            <p class="rise_like4">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="rise21-24">
+                <div id="rise1">
+                    <!--  베스트 1 시작 -->
+                    <div id="rise1_img">
+                        <button
+                                type="button"
+                                class="rise_img1"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise1_text">
+                        <div id="rise1_name">
+                            <p class="rise1_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise1_see">
+                            <img src="../static/images/seeimg.png" class="rise1_see" />
+                            <p class="rise_see1">3.7k</p>
+                        </div>
+                        <div id="rise1_like">
+                            <img src="../static/images/likeimg.png" class="rise1_like" />
+                            <p class="rise_like1">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise2">
+                    <!--  베스트 2 시작 -->
+                    <div id="rise2_img">
+                        <button
+                                type="button"
+                                class="rise_img2"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise2_text">
+                        <div id="rise2_name">
+                            <p class="rise2_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise2_see">
+                            <img src="../static/images/seeimg.png" class="rise2_see" />
+                            <p class="rise_see2">3.7k</p>
+                        </div>
+                        <div id="rise2_like">
+                            <img src="../static/images/likeimg.png" class="rise2_like" />
+                            <p class="rise_like2">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise3">
+                    <!--  베스트 3 시작 -->
+                    <div id="rise3_img">
+                        <button
+                                type="button"
+                                class="rise_img3"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise3_text">
+                        <div id="rise3_name">
+                            <p class="rise3_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise3_see">
+                            <img src="../static/images/seeimg.png" class="rise3_see" />
+                            <p class="rise_see3">3.7k</p>
+                        </div>
+                        <div id="rise3_like">
+                            <img src="../static/images/likeimg.png" class="rise3_like" />
+                            <p class="rise_like3">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rise4">
+                    <!--  베스트 4 시작 -->
+                    <div id="rise4_img">
+                        <button
+                                type="button"
+                                class="rise_img4"
+                                onclick="location.href='./risepage.html';"
+                        ></button>
+                    </div>
+
+                    <div id="rise4_text">
+                        <div id="rise4_name">
+                            <p class="rise4_name">담양 죽녹원</p>
+                        </div>
+                        <div id="rise4_see">
+                            <img src="../static/images/seeimg.png" class="rise4_see" />
+                            <p class="rise_see4">3.7k</p>
+                        </div>
+                        <div id="rise4_like">
+                            <img src="../static/images/likeimg.png" class="rise4_like" />
+                            <p class="rise_like4">1.8k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="risemorebtn">
+                    <button
+                            type="button"
+                            id="risemorebtn"
+                            onclick="location.href='';"
+                    ></button>
+                </label>
+            </div>
+
+            <img src="../static/images/riseline.png" class="riseline" />
+            <p class="otherrise">다른 급상승 여행지 둘러보기</p>
+            <div id="otherStory">
+                <button
+                        type="button"
+                        id="otherrisebtn1"
+                        onclick="location.href='';"
+                ></button>
+
+                <button
+                        type="button"
+                        id="otherrisebtn2"
+                        onclick="location.href='';"
+                ></button>
+
+                <button
+                        type="button"
+                        id="otherrisebtn3"
+                        onclick="location.href='';"
+                ></button>
+
+                <button
+                        type="button"
+                        id="otherrisebtn4"
+                        onclick="location.href='';"
+                ></button>
+
+                <button
+                        type="button"
+                        id="otherrisebtn5"
+                        onclick="location.href='';"
+                ></button>
+
+                <button
+                        type="button"
+                        id="otherrisebtn6"
+                        onclick="location.href='';"
+                ></button>
+            </div>
+
+
+        </div>
+    </div>
+

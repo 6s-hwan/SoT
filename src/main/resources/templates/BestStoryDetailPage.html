@@ -1,242 +1,132 @@
 <html lang="ko">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/BestStoryDetailPage.css" />
+    <link rel="stylesheet" th:href="@{/css/BestStoryDetailPage.css}" />
     <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-            rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
     />
     <title>SoT</title>
-</head>
-<body>
-<nav class="navbar">
-    <div class="nav_logo">
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- 내비게이션 바 -->
+      <div class="nav_logo">
         <div id="nav_logo1">
-            <a href="Home.html">
-                <img
-                        src="../static/images/MainLogo.png"
-                        alt="로고"
-                        width="225px"
-                        height="60px"
-                /></a>
+          <a href="./test">
+            <img
+              th:src="@{/images/MainLogo.png}"
+              alt="로고"
+              width="225px"
+              height="60px"
+          /></a>
         </div>
         <div class="nav_menu">
-            <ul class="navigation">
-                <li><a href="Home.html" class="b">홈</a></li>
-                <li><a href="#" class="c">지역</a></li>
-                <li><a href="#" class="c">지도</a></li>
-                <li><a href="#" class="c">북마크</a></li>
-            </ul>
+          <ul class="navigation">
+            <li><a href="./test" class="b">홈</a></li>
+            <li><a href="" class="c">지역</a></li>
+            <li><a href="" class="c">북마크</a></li>
+          </ul>
         </div>
-
         <div id="search">
-            <input type="text" class="search" />
-            <img
-                    src="../static/images/search.png"
-                    alt="돋보기"
-                    width="30px"
-                    height="30px"
-            />
+          <input type="search" class="search" />
+          <img
+            th:src="@{/images/search.png}"
+            alt="돋보기"
+            width="30px"
+            height="30px"
+          />
         </div>
-        <input type="button" class="imagebtn" />
         <input type="button" class="uploadbtn" />
+        <input
+          type="button"
+          class="imagebtn"
+          onclick="location.href='mypage.html' "
+        />
         <input type="checkbox" id="join" />
         <label for="join">로그인</label>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<!-- 베스트 상세페이지 스토리 시작 -->
-<div id="bestStoryfull">
-    <div id="bestStory">
+    <!-- 베스트 상세페이지 스토리 시작 -->
+    <div id="bestStoryfull">
+      <div id="bestStory">
         <div id="bestStoryTitle">
-            <div id="best_title">
-                <img src="../static/images/bestimg.png" class="bestimg" />
-                <div id="best_text">
-                    <p class="best">Best Story</p>
-                    <p class="best_1">
-                        다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요
-                    </p>
-                </div>
+          <div id="best_title">
+            <img th:src="@{images/bestimg.png}" class="bestimg" />
+            <div id="best_text">
+              <p class="best">Best Story</p>
+              <p class="best_1">
+                다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요
+              </p>
             </div>
+          </div>
 
-            <div id="beststory_select">
-                <form action="#">
-                    <select name="story_select" id="story_select">
-                        <option value="recom" class="recom_select">추천순</option>
-                        <option value="newest" class="newest_select">최신순</option>
-                        <option value="inquiry" class="inquiry_select">조회순</option>
-                        <option value="month" class="month_select">
-                            이번 달 조회순
-                        </option>
-                        <option value="today" class="today_select">오늘 조회순</option>
-                    </select>
-                </form>
-            </div>
+          <div id="beststory_select">
+            <form action="#">
+              <select name="story_select" id="story_select">
+                <option value="recom" class="recom_select">추천순</option>
+                <option value="newest" class="newest_select">최신순</option>
+                <option value="inquiry" class="inquiry_select">조회순</option>
+                <option value="month" class="month_select">
+                  이번 달 조회순
+                </option>
+                <option value="today" class="today_select">오늘 조회순</option>
+              </select>
+            </form>
+          </div>
         </div>
-        <div id="bestStoryBack">
-            <div id="best1-4">
-                <div id="best1">
-                    <!--  베스트 1 시작 -->
-                    <div id="best1_img">
-                        <button
-                                type="button"
-                                class="best_img1"
-                                onclick="location.href='./bestpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="best1_text">
-                        <div id="best1_name">
-                            <p class="best1_name">담양 죽녹원</p>
-                        </div>
-                        <div id="best1_see">
-                            <img src="../static/images/seeimg.png" class="best1_see" />
-                            <p class="best_see1">3.7k</p>
-                        </div>
-                        <div id="best1_like">
-                            <img src="../static/images/likeimg.png" class="best1_like" />
-                            <p class="best_like1">1.8k</p>
-                        </div>
-                    </div>
+        <div id="back">
+          <div class="stories" th:each="story, iterStat : ${stories}">
+            <div class="story">
+              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                <img
+                  id="storyimage"
+                  th:src="${story.image_url}"
+                  alt="Story Image"
+                />
+                <div id="storyTitlefull">
+                  <p id="storyTitle" th:text="${story.title}">Story Title</p>
+                  <img
+                    th:src="@{images/seeimg.png}"
+                    class="seeimage"
+                    width="16px"
+                    height="16px"
+                  />
+                  <p class="seeimagetext" th:text="${story.viewCount}">0</p>
+                  <img
+                    th:src="@{/images/likeimg.png}"
+                    class="likeimage"
+                    width="14px"
+                    height="14px"
+                  />
+                  <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
                 </div>
-
-                <div id="best2">
-                    <!--  베스트 2 시작 -->
-                    <div id="best2_img">
-                        <button
-                                type="button"
-                                class="best_img2"
-                                onclick="location.href='./bestpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="best2_text">
-                        <div id="best2_name">
-                            <p class="best2_name">담양 죽녹원</p>
-                        </div>
-                        <div id="best2_see">
-                            <img src="../static/images/seeimg.png" class="best2_see" />
-                            <p class="best_see2">3.7k</p>
-                        </div>
-                        <div id="best2_like">
-                            <img src="../static/images/likeimg.png" class="best2_like" />
-                            <p class="best_like2">1.8k</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="best3">
-                    <!--  베스트 3 시작 -->
-                    <div id="best3_img">
-                        <button
-                                type="button"
-                                class="best_img3"
-                                onclick="location.href='./bestpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="best3_text">
-                        <div id="best3_name">
-                            <p class="best3_name">담양 죽녹원</p>
-                        </div>
-                        <div id="best3_see">
-                            <img src="../static/images/seeimg.png" class="best3_see" />
-                            <p class="best_see3">3.7k</p>
-                        </div>
-                        <div id="best3_like">
-                            <img src="../static/images/likeimg.png" class="best3_like" />
-                            <p class="best_like3">1.8k</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="best4">
-                    <!--  베스트 4 시작 -->
-                    <div id="best4_img">
-                        <button
-                                type="button"
-                                class="best_img4"
-                                onclick="location.href='./bestpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="best4_text">
-                        <div id="best4_name">
-                            <p class="best4_name">담양 죽녹원</p>
-                        </div>
-                        <div id="best4_see">
-                            <img src="../static/images/seeimg.png" class="best4_see" />
-                            <p class="best_see4">3.7k</p>
-                        </div>
-                        <div id="best4_like">
-                            <img src="../static/images/likeimg.png" class="best4_like" />
-                            <p class="best_like4">1.8k</p>
-                        </div>
-                    </div>
-                </div>
+              </a>
             </div>
+          </div>
         </div>
         <div>
-            <label for="bestmorebtn">
-                <button
-                        type="button"
-                        id="bestmorebtn"
-                        onclick="location.href='./bestpage.html';"
-                ></button>
-            </label>
+          <label for="bestmorebtn">
+            <button
+              type="button"
+              id="bestmorebtn"
+              onclick="location.href='./bestpage.html';"
+            ></button>
+          </label>
         </div>
+      </div>
     </div>
-</div>
+    <!-- 테마별 상세페이지 스토리 끝 -->
+  </body>
 
-<!-- 테마별 상세페이지 스토리 끝 -->
-
-<!-- 나머지들 -->
-<div id="etc_thing">
-    <div id="etc_full">
-        <div id="terms_of_use">
-            <button
-                    type="button"
-                    value="이용약관"
-                    class="terms_of_use"
-                    onclick="location.href='./terms_of_use.html';"
-            >
-                이용약관
-            </button>
-        </div>
-        <div id="personal_inf">
-            <button
-                    type="button"
-                    value="개인정보처리방침"
-                    class="personal_inf"
-                    onclick="location.href='./personal_inf.html';"
-            >
-                개인정보처리방침
-            </button>
-        </div>
-        <div id="contact">
-            <button
-                    type="button"
-                    value="Contact"
-                    class="contact"
-                    onclick="location.href='./contact.html';"
-            >
-                Contact
-            </button>
-        </div>
-        <div id="c_SoT">
-            <p class="c_SoT">ⓒ 2024 SoT</p>
-        </div>
-    </div>
-</div>
-</body>
-
-<script src="../static/js/ThemeDetailPage.js"></script>
+  <script th:src="@{/js/ThemeDetailPage.js}"></script>
 </html>

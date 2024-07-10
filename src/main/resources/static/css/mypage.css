@@ -345,7 +345,6 @@ input.mypageedit {
   line-height: 140%; /* 21px */
   letter-spacing: -0.3px;
 }
-
 #mypagedetail_4 {
   box-sizing: border-box;
   display: flex;
@@ -385,7 +384,6 @@ input.mypageedit {
   padding-top: 60px;
   padding-bottom: 30px;
 }
-
 #story_select {
   display: flex;
   width: 145px;
@@ -399,7 +397,6 @@ input.mypageedit {
   border: 1.6px solid #ececec;
   background: #fff;
 }
-
 .recom_select {
   color: #606060;
   text-align: center;
@@ -409,7 +406,6 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
-
 .newest_select {
   color: #606060;
   text-align: center;
@@ -419,7 +415,6 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
-
 .inquiry_select {
   color: #606060;
   text-align: center;
@@ -429,7 +424,6 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
-
 .month_select {
   color: #606060;
   text-align: center;
@@ -439,7 +433,6 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
-
 .today_select {
   color: #606060;
   text-align: center;
@@ -456,18 +449,13 @@ input.mypageedit {
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
-<<<<<<< Updated upstream
   padding: 20px;
-=======
-  padding: 20px 0px 30px 20px;
-  margin-bottom: 300px;
->>>>>>> Stashed changes
+  margin-bottom: 150px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px; /* Increased gap for better spacing */
 }
-
 #storyimage {
   width: 285px;
   height: 200px;
@@ -478,7 +466,8 @@ input.mypageedit {
 }
 #storyTitlefull {
   display: flex; /* 수직적으로 가운데 정렬 */
-  box-sizing: border-box; /* 요소가 여러 개일때 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
 }
 #storyTitle {
   color: #1d1d1d;
@@ -488,41 +477,35 @@ input.mypageedit {
   font-weight: 500;
   line-height: 24px; /* 133.333% */
   padding-left: 2px;
-  padding-right: 95px;
+  flex: 1;
 }
 .story {
   position: relative; /* Relative positioning for title placement */
-<<<<<<< Updated upstream
-=======
   width: 285px;
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 20px;
-  margin-bottom: 30px;
 }
 .stories {
   position: relative; /* Relative positioning for title placement */
   width: 285px;
->>>>>>> Stashed changes
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-<<<<<<< Updated upstream
-=======
-  margin-right: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .story > a {
   width: 28 5px;
   height: 235px;
->>>>>>> Stashed changes
 }
-
+.right-side {
+  display: flex;
+  align-items: center;
+}
 .seeimage {
   width: 16px;
   height: 16px;
@@ -535,7 +518,7 @@ input.mypageedit {
   padding-top: 5px;
   padding-right: 2px;
 }
-.seeimagetext {
+.imagetext {
   color: #666;
   font-family: "Noto Sans KR";
   font-size: 12px;
@@ -545,16 +528,4 @@ input.mypageedit {
   letter-spacing: -0.24px;
   padding-top: 2px;
   padding-right: 10px;
-  width: 24px;
-}
-.likeimagetext {
-  color: #666;
-  font-family: "Noto Sans KR";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  padding-top: 2px;
-  width: 24px;
 }

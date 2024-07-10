@@ -1,0 +1,1094 @@
+* {
+    /* All */
+    margin: 0;
+    padding: 0;
+    font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 네비게이션바 시작 */
+.navbar {
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    align-items: center;
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    justify-content: center;
+    /* text-align: center; */
+    /* position: fixed; */
+    /* width: 1920px; */
+    height: 173px;
+    padding-top: 27px;
+    padding-bottom: 40px;
+    /* padding-left: 360px; */
+    /* padding-right: 360px; */
+}
+.nav_logo {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    height: 106px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #f8f8f8;
+}
+#nav_logo1 {
+    padding-left: 44px;
+    padding-top: 21px;
+    /* padding-bottom: 23px; */
+    padding-right: 68px;
+}
+.nav_menu {
+    display: flex;
+    box-sizing: border-box;
+    /* display: inline-flex; */
+    width: 263px;
+    height: 46px;
+    padding: 10px 28px;
+    /* align-items: flex-start; */
+    border-radius: 33px;
+    background: #fff;
+    list-style: none;
+    margin-right: 30px;
+}
+
+.navigation {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    color: #bbb;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+/* .navigation a {
+  text-decoration: none;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+} */
+
+.b {
+    text-decoration: none;
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+}
+.c {
+    text-decoration: none;
+    color: #bbb;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 24px;
+}
+#search {
+    display: flex;
+    width: 242px;
+    height: 46px;
+    border-radius: 23px;
+    background: #fff;
+    margin-right: 13px;
+    border: none;
+}
+input.search {
+    background: url("../images/search.png") no-repeat center;
+    background-size: 30px;
+    width: 212px;
+    height: 46px;
+    border-radius: 23px;
+    background: #fff;
+    border: none;
+}
+#search > img {
+    padding-top: 10px;
+    padding-right: 14px;
+}
+input.imagebtn {
+    background: url("../images/pic.png") no-repeat center;
+    background-size: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    background-color: #fff;
+    border: none;
+    margin-right: 9px;
+}
+input.uploadbtn {
+    background: url("../images/upload.png") no-repeat center;
+    background-size: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    background-color: #fff;
+    border: none;
+    margin-right: 72px;
+}
+
+/* 임시 로그인 버튼 */
+#join {
+    display: none;
+    width: 109px;
+    height: 46px;
+}
+
+#join + label {
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    /* display: inline-block; */
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 109px;
+    height: 46px;
+    background: #fff;
+
+    padding: 10px 29px 10px 28px;
+    /* line-height: 36px; */
+    cursor: pointer;
+    border-radius: 35px;
+    /* 동작 천천히 보여주기 */
+    transition: all 500ms ease-in;
+}
+/* 네비게이션바 끝 */
+
+
+/* 급상승 시작 */
+
+#Risefull {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 130px;
+}
+
+#RiseTitle {
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    /* align-items: center; */
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    width:1240px;
+    height: 90px;
+    padding-bottom: 24px;
+}
+
+#RiseTitle_1 {
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    /* align-items: center; */
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    width: 1220px;
+    height: 90px;
+}
+
+.risestoryimg {
+    width: 90px;
+    height: 90px;
+    padding-left: 20px;
+    padding-right: 12px;
+}
+
+.RiseTitle1 {
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90px;
+    padding-left: 16px;
+    color: #000;
+    letter-spacing: -0.92px;
+}
+
+#RiseStoryBack{
+    width: 1240px;
+    height: 2120px;
+    border-radius: 12px;
+    background: #f8f8f8;
+    margin-top: 24px;
+    padding-top: 20px;
+}
+
+#RiseMainIMG{
+    width: 1200px;
+    height: 352px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    padding-left: 20px;
+}
+
+#RiseStorySet{
+    display: flex;
+    /* 수직적으로 가운데 정렬 */
+    /* align-items: center; */
+    box-sizing: border-box;
+    /* 요소가 여러 개일때 가운데 정렬 */
+    padding-top: 40px;
+    padding-left: 24px;
+    width: 1234px;
+    height: 30px;
+}
+
+.RiseStoryNum{
+    color: #1E1E1E;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    padding-top: 4px;
+}
+
+#RiseStoryList{
+    margin-left: 915px;
+}
+
+#story_select {
+    display: flex;
+    width: 145px;
+    height: 30px;
+    padding: 4px 4px 4px 8px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #ececec;
+    background: #fff;
+    color: #606060;
+}
+
+.recom_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.newest_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.inquiry_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.month_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.today_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+
+#rise1-4 {
+    width: 1200px;
+    height: 232px;
+    background-color:transparent;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+#rise1 {
+    width: 285px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-right: 20px;
+    background-color: transparent;
+}
+
+#rise1_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+}
+
+.rise_img1 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best1.png");
+    border: none;
+}
+
+#rise1_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+}
+
+#rise1_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+}
+
+.rise1_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+#rise1_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise1_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_see1 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+#rise1_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise1_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_like1 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.rise_like1 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+
+#rise2 {
+    width: 285px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-right: 20px;
+    background: none;
+}
+
+#rise2_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+}
+
+.rise_img2 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best2.png");
+    border: none;
+}
+
+#rise2_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+}
+
+#rise2_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+}
+
+.rise2_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+#rise2_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise2_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_see2 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+#rise2_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise2_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_like2 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.rise_like2 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+
+#rise3 {
+    width: 285px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    margin-right: 20px;
+    background: none;
+}
+
+#rise3_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+}
+
+.rise_img3 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best3.png");
+    border: none;
+}
+
+#rise3_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+}
+
+#rise3_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+}
+
+.rise3_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+#rise3_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise3_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_see3 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+#rise3_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise3_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_like3 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.rise_like3 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+
+#rise4 {
+    width: 285px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    background: none;
+}
+
+#rise4_img {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border: none;
+}
+
+.rise_img4 {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border-radius: 8px;
+    background: url("../images/best4.png");
+    border: none;
+}
+
+#rise4_text {
+    width: 285px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    margin-left: 2px;
+    margin-top: 8px;
+}
+
+#rise4_name {
+    width: 90px;
+    height: 24px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+}
+
+.rise4_name {
+    color: #1d1d1d;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+#rise4_see {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 92px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise4_see {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/seeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_see4 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+#rise4_like {
+    width: 42px;
+    height: 17px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    border: none;
+    margin-left: 10px;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+}
+
+.rise4_like {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: #f8f8f8;
+    background: url("../images/likeimg.png");
+    border: none;
+    margin-top: 4px;
+}
+
+.rise_like4 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.rise_like4 {
+    color: #666;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+#rise5-8 {
+    width: 1200px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    position: relative;
+    left: 20px;
+    top: 85px;
+}
+
+#rise9-12 {
+    width: 1200px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    position: relative;
+    left: 20px;
+    top: 120px;
+}
+
+#rise13-16 {
+    width: 1200px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    position: relative;
+    left: 20px;
+    top: 155px;
+}
+
+#rise17-20 {
+    width: 1200px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    position: relative;
+    left: 20px;
+    top: 190px;
+}
+
+#rise21-24 {
+    width: 1200px;
+    height: 232px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    position: relative;
+    left: 20px;
+    top: 225px;
+}
+
+
+#risemorebtn {
+    background: url("../images/morebtn.png");
+    width: 128px;
+    height: 48px;
+    border: none;
+    margin-left: 576px;
+    margin-top: 34px;
+    cursor: pointer;
+    position: relative;
+    top: 220px;
+    right: 20px;
+}
+
+
+.riseline{
+    width: 1685px;
+    height: 7px;
+    flex-shrink: 0;
+    position: relative;
+    top: 400px;
+    right: 230px;
+}
+
+.otherrise{
+    color: #050505;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.36px;
+    position: relative;
+    top: 540px;
+    left: 15px;
+}
+
+#otherStory{
+    width: 1200px;
+    height: 184px;
+    background: #f8f8f8;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    position: relative;
+    left: 10px;
+    top: 560px;
+}
+
+#otherrisebtn1{
+    background: url("../images/otherrise1.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#otherrisebtn2{
+    background: url("../images/otherrise2.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#otherrisebtn3{
+    background: url("../images/otherrise3.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#otherrisebtn4{
+    background: url("../images/otherrise1.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#otherrisebtn5{
+    background: url("../images/otherrise2.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#otherrisebtn6{
+    background: url("../images/otherrise3.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+}
+

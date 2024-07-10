@@ -51,6 +51,11 @@
             padding: 0.5rem;
             border-radius: 5px;
         }
+        .like-button img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
         @media (max-width: 600px) {
             .story-details {
                 grid-template-columns: 1fr;
@@ -78,6 +83,12 @@
             <p th:text="${story.username}"></p>
             <h2>Date</h2>
             <p th:text="${story.date}"></p>
+            <form th:action="@{/story/{storyId}/like(storyId=${story.storyId})}" method="post">
+                <button type="submit" class="like-button">
+                    <img src="/images/favorite.png" alt="Heart Icon" class="icon">
+                </button>
+            </form>
+            <p><span th:text="${story.likes.size()}">0</span></p>
         </div>
     </div>
     <div class="tags">

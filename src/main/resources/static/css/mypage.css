@@ -345,6 +345,7 @@ input.mypageedit {
   line-height: 140%; /* 21px */
   letter-spacing: -0.3px;
 }
+
 #mypagedetail_4 {
   box-sizing: border-box;
   display: flex;
@@ -378,7 +379,6 @@ input.mypageedit {
   line-height: 26px; /* 185.714% */
   letter-spacing: -0.28px;
 }
-
 #mypage_select {
   padding-left: 1075px;
   padding-top: 60px;
@@ -499,7 +499,7 @@ input.mypageedit {
   margin-bottom: 10px;
 }
 .story > a {
-  width: 28 5px;
+  width: 285px;
   height: 235px;
 }
 .right-side {

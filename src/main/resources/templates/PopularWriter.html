@@ -1,12 +1,13 @@
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/PopularWriter.css" />
+    <link rel="stylesheet" th:href="@{/css/PopularWriter.css}" />
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,48 +19,51 @@
   </head>
   <body>
     <nav class="navbar">
+      <!-- 내비게이션 바 -->
       <div class="nav_logo">
         <div id="nav_logo1">
-          <img
-            src="../static/images/MainLogo.png"
-            alt="로고"
-            width="225px"
-            height="60px"
-          />
+          <a href="./test">
+            <img
+              th:src="@{/images/MainLogo.png}"
+              alt="로고"
+              width="225px"
+              height="60px"
+          /></a>
         </div>
         <div class="nav_menu">
           <ul class="navigation">
-            <li><a href="Home.html" class="b">홈</a></li>
-            <li><a href="#" class="c">지역</a></li>
-            <li><a href="#" class="c">지도</a></li>
-            <li><a href="#" class="c">북마크</a></li>
+            <li><a href="./test" class="b">홈</a></li>
+            <li><a href="" class="c">지역</a></li>
+            <li><a href="" class="c">북마크</a></li>
           </ul>
         </div>
-
         <div id="search">
-          <input type="text" class="search" />
+          <input type="search" class="search" />
           <img
-            src="../static/images/search.png"
+            th:src="@{/images/search.png}"
             alt="돋보기"
             width="30px"
             height="30px"
           />
         </div>
-        <input type="button" class="imagebtn" />
         <input type="button" class="uploadbtn" />
+        <input
+          type="button"
+          class="imagebtn"
+          onclick="location.href='mypage.html' "
+        />
         <input type="checkbox" id="join" />
         <label for="join">로그인</label>
       </div>
     </nav>
 
-    <!--  시즌별 시작 -->
-
+    <!-- 인기작가 목록 시작 -->
     <div id="PopularWriterfull">
       <div id="PopularWriter">
         <div id="PopularWriterTitle">
           <div id="PopularWritertitle_1">
             <img
-              src="../static/images/popularimg.png"
+              th:src="@{/images/popularimg.png}"
               class="PopularWriterimg"
               width="90px"
               height="90px"
@@ -67,59 +71,58 @@
             <p class="populartitle1">인기 작가들의 스토리를 구경해보세요!</p>
           </div>
         </div>
-        <div id="PopularWriter_select">
-          <form action="#">
-            <select name="story_select" id="story_select">
-              <option value="recom" class="recom_select">추천순</option>
-              <option value="newest" class="newest_select">최신순</option>
-              <option value="inquiry" class="inquiry_select">조회순</option>
-              <option value="month" class="month_select">이번 달 조회순</option>
-              <option value="today" class="today_select">오늘 조회순</option>
-            </select>
-          </form>
-        </div>
-        <!-- 인기작가 프로필 -->
-        <div id="writerbox1-4">
-          <div id="writerbox">
+
+        <!-- 인기작가 프로필 목록 -->
+        <div id="writerboxback">
+          <div th:each="writer : ${popularWriters}" id="writerbox">
             <div id="profile_A">
-              <button type="button" id="writerimg">
+              <a th:href="@{'/writer/' + ${writer.username}}">
                 <img
-                  src="../static/images/writerprofile.png"
+                  th:src="@{/images/writerprofile.png}"
                   alt="profile"
                   id="profileimg"
                 />
-              </button>
+              </a>
+              <div class="overlay">0</div>
             </div>
             <div id="profile_B">
-              <div><p id="writerName">Cosmos7</p></div>
+              <div>
+                <p id="writerName" th:text="${writer.username}">Cosmos7</p>
+              </div>
               <div id="writerPostLike">
                 <img
-                  src="../static/images/writerpost.png"
+                  th:src="@{/images/writerpost.png}"
                   alt="post"
                   id="writerpostimg"
                   width="18px"
                   height="18px"
                 />
-                <p id="writerpost">451</p>
+                <p id="writerpost" th:text="${writer.totalStories}">451</p>
                 <img
-                  src="../static/images/likeimg.png"
+                  th:src="@{/images/likeimg.png}"
                   alt="like"
                   id="writerlikeimg"
                   width="16px"
                   height="16px"
                 />
-                <p id="writerlike">36.2k</p>
+                <p id="writerlike" th:text="${writer.totalLikes}">36.2k</p>
               </div>
               <div id="writerTags">
-                <div id="writertag"><p id="writertagname">#자연</p></div>
-                <div id="writertag"><p id="writertagname">#자연</p></div>
+                <div id="writertag">
+                  <p id="writertagname" th:text="'#' + ${writer.topTheme}">
+                    #자연
+                  </p>
+                </div>
+                <div id="writertag">
+                  <p id="writertagname" th:text="'#' + ${writer.secondTheme}">
+                    #자연
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div id="writerbox"></div>
-          <div id="writerbox"></div>
-          <div id="writerbox"></div>
         </div>
+        <!-- 인기작가 더보기 버튼 -->
         <div>
           <label for="seasonmorebtn">
             <button
@@ -131,44 +134,6 @@
         </div>
       </div>
     </div>
-    <!-- 인기작가 상세페이지 스토리 끝 -->
-    <!-- 나머지들 -->
-    <div id="etc_thing">
-      <div id="etc_full">
-        <div id="terms_of_use">
-          <button
-            type="button"
-            value="이용약관"
-            class="terms_of_use"
-            onclick="location.href='./terms_of_use.html';"
-          >
-            이용약관
-          </button>
-        </div>
-        <div id="personal_inf">
-          <button
-            type="button"
-            value="개인정보처리방침"
-            class="personal_inf"
-            onclick="location.href='./personal_inf.html';"
-          >
-            개인정보처리방침
-          </button>
-        </div>
-        <div id="contact">
-          <button
-            type="button"
-            value="Contact"
-            class="contact"
-            onclick="location.href='./contact.html';"
-          >
-            Contact
-          </button>
-        </div>
-        <div id="c_SoT">
-          <p class="c_SoT">ⓒ 2024 SoT</p>
-        </div>
-      </div>
-    </div>
+    <!-- 인기작가 프로필 목록 끝 -->
   </body>
 </html>

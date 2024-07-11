@@ -12,7 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class StoryController {
@@ -20,14 +24,14 @@ public class StoryController {
     private final StoryRepository storyRepository;
     private final S3Service s3Service;
     private final StoryService storyService;
-    private final UserRepository userRepository; // UserRepository 추가
+    private final UserRepository userRepository;
 
     @Autowired
     public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
         this.storyService = storyService;
-        this.userRepository = userRepository; // UserRepository 주입
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -57,6 +61,70 @@ public class StoryController {
     @GetMapping("/rise")
     public String rise() {
         return "RiseDetailPage";
+    }
+
+    @GetMapping("/season")
+    public String season(@RequestParam(value = "season", required = false) String season,
+                         @RequestParam(value = "sort", required = false) String sortCriteria,
+                         Model model) {
+        List<Story> stories = storyRepository.findAll();
+        List<Story> seasonStories;
+
+        if (season != null) {
+            seasonStories = stories.stream()
+                    .filter(story -> {
+                        String dateStr = story.getDate();
+                        if (dateStr == null || dateStr.isEmpty()) {
+                            return false;
+                        }
+
+                        int month;
+                        try {
+                            month = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-M-d")).getMonthValue();
+                        } catch (Exception e) {
+                            return false;
+                        }
+
+                        switch (season) {
+                            case "spring":
+                                return month >= 3 && month <= 5;
+                            case "summer":
+                                return month >= 6 && month <= 8;
+                            case "fall":
+                                return month >= 9 && month <= 11;
+                            case "winter":
+                                return month == 12 || month <= 2;
+                            default:
+                                return false;
+                        }
+                    })
+                    .collect(Collectors.toList());
+        } else {
+            seasonStories = stories;
+        }
+
+        // 정렬 기준에 따른 정렬
+        if (sortCriteria != null) {
+            switch (sortCriteria) {
+                case "likes":
+                    seasonStories.sort((s1, s2) -> Integer.compare(s2.getLikesCount(), s1.getLikesCount()));
+                    break;
+                case "views":
+                    seasonStories.sort((s1, s2) -> Integer.compare(s2.getViewCount(), s1.getViewCount()));
+                    break;
+                case "recent":
+                    seasonStories = seasonStories.stream()
+                            .filter(story -> story.getUploadTime() != null) // UploadTime이 있는 스토리만 필터링
+                            .sorted((s1, s2) -> s2.getUploadTime().compareTo(s1.getUploadTime()))
+                            .collect(Collectors.toList());
+                    break;
+            }
+        }
+
+        model.addAttribute("seasonStories", seasonStories);
+        model.addAttribute("selectedSeason", season);
+        model.addAttribute("sortCriteria", sortCriteria);
+        return "SeasonDetailPage";
     }
 
     @GetMapping("/upload")

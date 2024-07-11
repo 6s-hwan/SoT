@@ -1,6 +1,8 @@
 package com.SoT.JIN.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -90,6 +92,12 @@ public class WriterController {
                 }
             }
 
+            // 현재 로그인한 사용자가 이 작가를 팔로우하고 있는지 확인
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentUserEmail = authentication.getName();
+            User currentUser = userRepository.findByEmail(currentUserEmail).orElse(null);
+            boolean isFollowing = currentUser != null && currentUser.getFollowing().contains(user);
+
             // 모델에 사용자 정보, 스토리 리스트, 전체 스토리 수, 조회수, 좋아요 수, 최근 업로드 일수, 가장 많은 테마 정보 추가
             model.addAttribute("user", user);
             model.addAttribute("stories", userStories);
@@ -99,6 +107,8 @@ public class WriterController {
             model.addAttribute("topTheme", topTheme);
             model.addAttribute("secondTheme", secondTheme);
             model.addAttribute("daysSinceLastUpload", daysSinceLastUpload);
+            model.addAttribute("followCount", user.getFollowers().size());
+            model.addAttribute("isFollowing", isFollowing);
 
             return "writerpage"; // writer-profile.html로 이동
         }

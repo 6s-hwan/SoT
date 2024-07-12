@@ -1,132 +1,121 @@
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/BestStoryDetailPage.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/BestStoryDetailPage.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+  <!-- 내비게이션 바 -->
+  <div class="nav_logo">
+    <div id="nav_logo1">
+      <a href="./test">
+        <img
+                th:src="@{/images/MainLogo.png}"
+                alt="로고"
+                width="225px"
+                height="60px"
+        /></a>
+    </div>
+    <div class="nav_menu">
+      <ul class="navigation">
+        <li><a href="./test" class="b">홈</a></li>
+        <li><a href="" class="c">지역</a></li>
+        <li><a href="" class="c">북마크</a></li>
+      </ul>
+    </div>
+    <div id="search">
+      <input type="search" class="search" />
+      <img
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+      />
+    </div>
+    <input type="button" class="uploadbtn" />
+    <input
+            type="button"
+            class="imagebtn"
+            onclick="location.href='mypage.html' "
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <!-- 내비게이션 바 -->
-      <div class="nav_logo">
-        <div id="nav_logo1">
-          <a href="./test">
-            <img
-              th:src="@{/images/MainLogo.png}"
-              alt="로고"
-              width="225px"
-              height="60px"
-          /></a>
+    <input type="checkbox" id="join" />
+    <label for="join">로그인</label>
+  </div>
+</nav>
+
+<!-- 베스트 상세페이지 스토리 시작 -->
+<div id="bestStoryfull">
+  <div id="bestStory">
+    <div id="bestStoryTitle">
+      <div id="best_title">
+        <img th:src="@{images/bestimg.png}" class="bestimg" />
+        <div id="best_text">
+          <p class="best">Best Story</p>
+          <p class="best_1">
+            다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요
+          </p>
         </div>
-        <div class="nav_menu">
-          <ul class="navigation">
-            <li><a href="./test" class="b">홈</a></li>
-            <li><a href="" class="c">지역</a></li>
-            <li><a href="" class="c">북마크</a></li>
-          </ul>
-        </div>
-        <div id="search">
-          <input type="search" class="search" />
-          <img
-            th:src="@{/images/search.png}"
-            alt="돋보기"
-            width="30px"
-            height="30px"
-          />
-        </div>
-        <input type="button" class="uploadbtn" />
-        <input
-          type="button"
-          class="imagebtn"
-          onclick="location.href='mypage.html' "
-        />
-        <input type="checkbox" id="join" />
-        <label for="join">로그인</label>
       </div>
-    </nav>
 
-    <!-- 베스트 상세페이지 스토리 시작 -->
-    <div id="bestStoryfull">
-      <div id="bestStory">
-        <div id="bestStoryTitle">
-          <div id="best_title">
-            <img th:src="@{images/bestimg.png}" class="bestimg" />
-            <div id="best_text">
-              <p class="best">Best Story</p>
-              <p class="best_1">
-                다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요
-              </p>
-            </div>
-          </div>
 
-          <div id="beststory_select">
-            <form action="#">
-              <select name="story_select" id="story_select">
-                <option value="recom" class="recom_select">추천순</option>
-                <option value="newest" class="newest_select">최신순</option>
-                <option value="inquiry" class="inquiry_select">조회순</option>
-                <option value="month" class="month_select">
-                  이번 달 조회순
-                </option>
-                <option value="today" class="today_select">오늘 조회순</option>
-              </select>
-            </form>
-          </div>
-        </div>
-        <div id="back">
-          <div class="stories" th:each="story, iterStat : ${stories}">
-            <div class="story">
-              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                <img
-                  id="storyimage"
-                  th:src="${story.image_url}"
-                  alt="Story Image"
-                />
-                <div id="storyTitlefull">
-                  <p id="storyTitle" th:text="${story.title}">Story Title</p>
-                  <img
-                    th:src="@{images/seeimg.png}"
-                    class="seeimage"
-                    width="16px"
-                    height="16px"
-                  />
-                  <p class="seeimagetext" th:text="${story.viewCount}">0</p>
-                  <img
-                    th:src="@{/images/likeimg.png}"
-                    class="likeimage"
-                    width="14px"
-                    height="14px"
-                  />
-                  <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
-                </div>
-              </a>
+    </div>
+    <div id="back">
+      <div class="stories" th:each="story, iterStat : ${stories}">
+        <div class="story">
+          <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+            <img
+                    id="storyimage"
+                    th:src="${story.image_url}"
+                    alt="Story Image"
+            />
+            <div id="storyTitlefull">
+              <p id="storyTitle" th:text="${story.title}">Story Title</p>
+              <img
+                      th:src="@{images/seeimg.png}"
+                      class="seeimage"
+                      width="16px"
+                      height="16px"
+              />
+              <p class="seeimagetext" th:text="${story.viewCount}">0</p>
+              <img
+                      th:src="@{/images/likeimg.png}"
+                      class="likeimage"
+                      width="14px"
+                      height="14px"
+              />
+              <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
             </div>
-          </div>
-        </div>
-        <div>
-          <label for="bestmorebtn">
-            <button
-              type="button"
-              id="bestmorebtn"
-              onclick="location.href='./bestpage.html';"
-            ></button>
-          </label>
+          </a>
         </div>
       </div>
     </div>
-    <!-- 테마별 상세페이지 스토리 끝 -->
-  </body>
-
-  <script th:src="@{/js/ThemeDetailPage.js}"></script>
+    <div>
+      <label for="bestmorebtn">
+        <button
+                type="button"
+                id="bestmorebtn"
+                th:if="${limit < 72}"
+                th:onclick="|location.href='@{/best(limit=${limit + 24})}';|"
+        ></button>
+      </label>
+    </div>
+  </div>
+</div>
+<!-- 테마별 상세페이지 스토리 끝 -->
+</body>
+<script th:src="@{/js/ThemeDetailPage.js}"></script>
 </html>

@@ -27,10 +27,10 @@ public class StoryController {
     private final UserRepository userRepository;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService StoryService, UserRepository userRepository) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
-        this.storyService = storyService;
+        this.storyService = StoryService;
         this.userRepository = userRepository;
     }
 
@@ -127,6 +127,13 @@ public class StoryController {
         return "SeasonDetailPage";
     }
 
+    @GetMapping("/best")
+    public String best(Model model, @RequestParam(defaultValue = "24") int limit) {
+        List<Story> topStories = storyService.getTopStories(limit);
+        model.addAttribute("stories", topStories);
+        model.addAttribute("limit", limit);
+        return "BestStoryDetailPage";
+    }
     @GetMapping("/upload")
     public String upload() {
         return "upload";
@@ -135,10 +142,6 @@ public class StoryController {
     @GetMapping("/test")
     public String test() {
         return "test";
-    }
-    @GetMapping("/best")
-    public String best() {
-        return "BestStoryDetailPage";
     }
 
     @PostMapping("/upload")

@@ -32,6 +32,10 @@ public class MemberController {
     public String home() {
         return "home";
     }
+    @GetMapping("/bookmark")
+    public String bookmark() {
+        return "BookmarkPage";
+    }
 
     @PostMapping("/user")
     public String addUser(@RequestParam("email") String email,

@@ -170,25 +170,25 @@ input.imagebtn {
 /* 네비게이션바 끝 */
 
 /* 마이페이지 시작 */
-#mypagefull {
+#writerpagefull {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   padding-top: 50px;
 }
-#mypage {
+#writerpage {
 }
-#mypageTitle {
+#writerpageTitle {
   display: flex; /* 수직적으로 가운데 정렬 */
   box-sizing: border-box; /* 요소가 여러 개일때 가운데 정렬 */
 }
-#mypage_title {
+#writerpage_title {
   box-sizing: border-box;
   display: flex;
   margin-bottom: 20px;
   margin-left: 28px;
-  width: 136px;
+  width: 143px;
   height: 43px;
   color: #2f2f2f;
   font-family: "Noto Sans KR";
@@ -198,8 +198,26 @@ input.imagebtn {
   line-height: normal;
   letter-spacing: -0.6px;
 }
-
-#mypageprofilefull {
+#listicon {
+  margin-left: 972px;
+  margin-bottom: 21px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  padding-top: 24px;
+}
+#writerlist {
+  color: #5f6368;
+  font-family: "Noto Sans KR";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  padding-top: 23px;
+  padding-left: 4px;
+}
+#writerpageprofilefull {
   display: flex;
   box-sizing: border-box;
   width: 1240px;
@@ -209,12 +227,12 @@ input.imagebtn {
   background: #f6f6f6;
   padding: 24px;
 }
-#mypageprofile {
+#writerpageprofile {
   width: 200px;
   height: 200px;
   padding-right: 32px;
 }
-#mypagedetail_1 {
+#writerpagedetail_1 {
   box-sizing: border-box;
   display: flex;
 }
@@ -227,20 +245,23 @@ input.imagebtn {
   line-height: normal;
   padding-right: 16px;
 }
-#mypagefollower {
-  display: flex;
-  width: 97px;
-  height: 20px;
-  padding: 6px 17px;
-  align-items: center;
-  gap: 4px;
-  border-radius: 32px;
-  background: #fff;
+#followBtn {
+  width: 131px;
+  height: 32px;
   margin-top: 9px;
   margin-bottom: 2px;
+  display: inline-flex;
+  padding: 6px 17px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 32px;
+  background: #161616;
+  cursor: pointer;
 }
-#mypagefollowertext {
-  color: #444;
+#writerpagefollowertext {
+  height: 20px;
+  color: #fff;
   font-family: "Noto Sans KR";
   font-size: 16px;
   font-style: normal;
@@ -248,45 +269,57 @@ input.imagebtn {
   line-height: 20px; /* 125% */
   letter-spacing: -0.32px;
 }
-#mypagefollowertext1 {
-  color: #444;
+#followText {
+  height: 20px;
+  color: #fff;
   font-family: "Noto Sans KR";
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 125% */
   letter-spacing: -0.32px;
-}
-/* input.mypageadd {
-  display: flex;
-  background: url("../images/mypageadd.png") no-repeat center;
-  background-size: 36px;
-  width: 36px;
-  height: 36px;
   border: none;
-  margin-top: 3px;
-  cursor: pointer;
 }
+#centerbar {
+  width: 1px;
+  height: 8px;
+  background: #b3b3b3;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* input.writerpageadd {
+    display: flex;
+    background: url("../images/writerpage
+add.png") no-repeat center;
+    background-size: 36px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  
+  input.writerpage
+edit {
+    display: flex;
+    background: url("../images/writerpage
+dit.png") no-repeat center;
+    background-size: 36px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    margin-top: 3px;
+    margin-left: 540px;
+    margin-right: 12px;
+    cursor: pointer;
+  } */
 
-input.mypageedit {
-  display: flex;
-  background: url("../images/mypagedit.png") no-repeat center;
-  background-size: 36px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  margin-top: 3px;
-  margin-left: 540px;
-  margin-right: 12px;
-  cursor: pointer;
-} */
-
-#mypagedetail_2 {
+#writerpagedetail_2 {
   box-sizing: border-box;
   display: flex;
   padding-top: 18px;
 }
-#mypagedetail_2name {
+#writerpagedetail_2name {
   color: #8d8d8d;
   font-family: "Noto Sans KR";
   font-size: 16px;
@@ -294,7 +327,7 @@ input.mypageedit {
   font-weight: 500;
   line-height: 16px; /* 100% */
 }
-#mypagedetail_2number {
+#writerpagedetail_2number {
   color: #8d8d8d;
   font-family: "Noto Sans KR";
   font-size: 16px;
@@ -304,7 +337,7 @@ input.mypageedit {
   padding-right: 20px;
 }
 
-#mypagedetail_3 {
+#writerpagedetail_3 {
   box-sizing: border-box;
   display: flex;
 }
@@ -312,7 +345,7 @@ input.mypageedit {
   margin-top: 45px;
   margin-right: 8px;
 }
-#mypagethemename {
+#writerpagethemename {
   color: #656565;
   font-family: "Noto Sans KR";
   font-size: 16px;
@@ -320,12 +353,12 @@ input.mypageedit {
   font-weight: 500;
   line-height: 16px; /* 100% */
 }
-#mypagetag {
+#writerpagetag {
   margin-top: 41px;
   display: flex;
   box-sizing: border-box;
-  width: 54px;
-  height: 27px;
+  width: auto;
+  height: auto;
   padding: 3px 8px;
   justify-content: center;
   align-items: center;
@@ -336,7 +369,7 @@ input.mypageedit {
   background: #fff;
   margin-right: 6px;
 }
-#mypagetagname {
+#writerpagetagname {
   color: #767676;
   font-family: Pretendard;
   font-size: 15px;
@@ -346,7 +379,7 @@ input.mypageedit {
   letter-spacing: -0.3px;
 }
 
-#mypagedetail_4 {
+#writerpagedetail_4 {
   box-sizing: border-box;
   display: flex;
   padding-top: 20px;
@@ -379,11 +412,13 @@ input.mypageedit {
   line-height: 26px; /* 185.714% */
   letter-spacing: -0.28px;
 }
-#mypage_select {
+
+#writerpage_select {
   padding-left: 1075px;
   padding-top: 60px;
   padding-bottom: 30px;
 }
+
 #story_select {
   display: flex;
   width: 145px;
@@ -397,6 +432,7 @@ input.mypageedit {
   border: 1.6px solid #ececec;
   background: #fff;
 }
+
 .recom_select {
   color: #606060;
   text-align: center;
@@ -406,6 +442,7 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
+
 .newest_select {
   color: #606060;
   text-align: center;
@@ -415,6 +452,7 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
+
 .inquiry_select {
   color: #606060;
   text-align: center;
@@ -424,6 +462,7 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
+
 .month_select {
   color: #606060;
   text-align: center;
@@ -433,6 +472,7 @@ input.mypageedit {
   font-weight: 500;
   line-height: 26px;
 }
+
 .today_select {
   color: #606060;
   text-align: center;

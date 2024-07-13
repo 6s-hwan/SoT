@@ -1,0 +1,330 @@
+* {
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+}
+a {
+  text-decoration: none;
+}
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
+
+.scrollLock {
+  overflow: hidden;
+}
+/* 네비게이션바 시작 */
+.navbar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  height: 173px;
+  padding-top: 27px;
+  padding-bottom: 40px;
+}
+.nav_logo {
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  height: 106px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #f8f8f8;
+}
+#nav_logo1 {
+  padding-left: 44px;
+  padding-top: 23px;
+  padding-right: 68px;
+}
+.nav_menu {
+  display: flex;
+  box-sizing: border-box;
+  /* display: inline-flex; */
+  width: 205px;
+  height: 46px;
+  padding: 10px 28px;
+  /* align-items: flex-start; */
+  border-radius: 33px;
+  background: #fff;
+  list-style: none;
+  margin-right: 68px;
+}
+.navigation {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.b {
+  text-decoration: none;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
+}
+.c {
+  text-decoration: none;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 24px;
+  cursor: pointer;
+}
+#search {
+  display: flex;
+  width: 242px;
+  height: 46px;
+  border-radius: 23px;
+  background: #fff;
+  margin-right: 75px;
+  border: none;
+}
+input.search {
+  background: url("../images/search.png") no-repeat center;
+  background-size: 30px;
+  width: 174px;
+  height: 30px;
+  border-radius: 23px;
+  background: #fff;
+  border: none;
+  padding-left: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #3d3d3d;
+  font-family: "Noto Sans CJK KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 25.2px */
+}
+#search > img {
+  padding-top: 10px;
+  padding-right: 14px;
+}
+/* 업로드 버튼 */
+input.uploadbtn {
+  background: url("../images/upload.png") no-repeat center;
+  background-size: 30px;
+  width: 46px;
+  height: 46px;
+  padding: 8px;
+  border-radius: 46px;
+  background-color: #fff;
+  border: none;
+  margin-right: 16px;
+  cursor: pointer;
+}
+/* 마이페이지 버튼 */
+input.imagebtn {
+  background: url("../images/pic.png") no-repeat center;
+  background-size: 24px;
+  width: 46px;
+  height: 46px;
+  padding: 11px;
+  border-radius: 46px;
+  background-color: #fff;
+  border: none;
+  margin-right: 20px;
+  cursor: pointer;
+}
+/* 로그인 버튼 */
+#join {
+  display: none;
+  width: 109px;
+  height: 46px;
+}
+
+#join + label {
+  box-sizing: border-box;
+  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+  display: flex;
+  /* 이 코드가 있어야 나란히 정렬 가능 */
+  /* display: inline-block; */
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  width: 109px;
+  height: 46px;
+  background: #fff;
+  padding: 10px 29px 10px 29px;
+  /* line-height: 36px; */
+  cursor: pointer;
+  border-radius: 50px;
+  /* 동작 천천히 보여주기 */
+  transition: all 500ms ease-in;
+}
+/* 네비게이션바 끝 */
+
+/* 베스트 스토리 시작 */
+#searchresultfull {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 94px;
+  margin-bottom: 150px;
+}
+#searchresultTitle {
+  display: flex;
+  box-sizing: border-box;
+}
+#searchresult_title {
+  box-sizing: border-box;
+  display: flex;
+  height: 90px;
+  margin-bottom: 60px;
+}
+#searchresult_select {
+  padding-left: 565px;
+  padding-top: 52px;
+}
+#searchresult_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 130px;
+}
+.searchresultimg {
+  width: 90px;
+  height: 90px;
+  padding-right: 16px;
+  padding-left: 20px;
+}
+#searchresult_text {
+  height: 70px;
+  width: 360px;
+}
+.searchresult {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px; /* 125% */
+}
+.searchresult_1 {
+  padding-left: 14px;
+  color: #333;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 25.2px */
+}
+#back {
+  width: 1240px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* Increased gap for better spacing */
+}
+#storyimage {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #d9d9d9;
+  margin-bottom: 8px;
+}
+#storyTitlefull {
+  display: flex; /* 수직적으로 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
+}
+#storyTitle {
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+  padding-left: 2px;
+  flex: 1;
+}
+.story {
+  position: relative; /* Relative positioning for title placement */
+  width: 285px;
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stories {
+  position: relative; /* Relative positioning for title placement */
+  width: 285px;
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.story > a {
+  width: 285px;
+  height: 235px;
+}
+.right-side {
+  display: flex;
+  align-items: center;
+}
+.seeimage {
+  width: 16px;
+  height: 16px;
+  padding-top: 4px;
+  padding-right: 2px;
+}
+.likeimage {
+  width: 14px;
+  height: 14px;
+  padding-top: 5px;
+  padding-right: 2px;
+}
+.imagetext {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  padding-top: 2px;
+  padding-right: 10px;
+}
+#searchresultmorebtn {
+  background: url("../images/morebtn.png");
+  width: 128px;
+  height: 48px;
+  border: none;
+  margin-left: 556px;
+  margin-top: 62px;
+  cursor: pointer;
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/BookmarkPage.css}" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+            rel="stylesheet"
+    />
+    <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav_logo">
+        <div id="nav_logo1">
+            <img
+                    th:src="@{/images/MainLogo.png}"
+                    alt="로고"
+                    width="225px"
+                    height="60px"
+            />
+        </div>
+        <div class="nav_menu">
+            <ul class="navigation">
+                <li><a th:href="@{/home}" class="b">홈</a></li>
+                <li><a href="#" class="c">지역</a></li>
+                <li><a href="#" class="c">지도</a></li>
+                <li><a href="#" class="c">북마크</a></li>
+            </ul>
+        </div>
+
+        <div id="search">
+            <input type="text" class="search" />
+            <img
+                    th:src="@{/images/search.png}"
+                    alt="돋보기"
+                    width="30px"
+                    height="30px"
+            />
+        </div>
+        <input type="button" class="imagebtn" />
+        <input type="button" class="uploadbtn" />
+        <input type="checkbox" id="join" />
+        <label for="join">로그인</label>
+    </div>
+</nav>
+
+<!-- 시즌별 시작 -->
+
+<div id="Bookmarkfull">
+    <div id="BookmarkStory">
+        <div id="BookmarkTitle">
+            <div id="Bookmarktitle_1">
+                <img
+                        th:src="@{/images/Bookmarkimg.png}"
+                        class="Bookmarkimg"
+                        width="90px"
+                        height="90px"
+                />
+                <p class="Bookmarktitle1">북마크</p>
+            </div>
+        </div>
+        <div id="BookmarkBack">
+            <div th:each="story, iterStat : ${bookmarkStories}">
+                <label th:for="'Bookmark' + ${iterStat.index + 1}" th:if="${iterStat.index < 17}">
+                    <button type="button"
+                            th:id="'Bookmark' + ${iterStat.index + 1}"
+                            th:onclick="'location.href=' + '\'' + '/story/' + ${story.storyId} + '\''">
+                        <div th:switch="${iterStat.index}">
+                            <div th:case="0" class="story-card" id="Bookmark1">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="1" class="story-card" id="Bookmark2">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 나머지 15개의 케이스 -->
+                            <div th:case="2" class="story-card" id="Bookmark3">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="3" class="story-card" id="Bookmark4">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="4" class="story-card" id="Bookmark5">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="5" class="story-card" id="Bookmark6">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="6" class="story-card" id="Bookmark7">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="7" class="story-card" id="Bookmark8">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="8" class="story-card" id="Bookmark9">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="9" class="story-card" id="Bookmark10">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="10" class="story-card" id="Bookmark11">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="11" class="story-card" id="Bookmark12">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="12" class="story-card" id="Bookmark13">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="13" class="story-card" id="Bookmark14">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="14" class="story-card" id="Bookmark15">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="15" class="story-card" id="Bookmark16">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:case="16" class="story-card" id="Bookmark17">
+                                <div class="story-img">
+                                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </label>
+            </div>
+        </div>
+        <div>
+            <label for="Bookmarkmorebtn">
+                <button
+                        type="button"
+                        id="Bookmarkmorebtn"
+                        onclick="location.href='';"
+                ></button>
+            </label>
+        </div>
+    </div>
+</div>
+<!-- 북마크 페이지 끝 -->
+<!-- 나머지들 -->
+<div id="etc_thing">
+    <div id="etc_full">
+        <div id="terms_of_use">
+            <button
+                    type="button"
+                    value="이용약관"
+                    class="terms_of_use"
+                    th:onclick="|location.href='@{/terms_of_use}';|"
+            >
+                이용약관
+            </button>
+        </div>
+        <div id="personal_inf">
+            <button
+                    type="button"
+                    value="개인정보처리방침"
+                    class="personal_inf"
+                    th:onclick="|location.href='@{/personal_inf}';|"
+            >
+                개인정보처리방침
+            </button>
+        </div>
+        <div id="contact">
+            <button
+                    type="button"
+                    value="Contact"
+                    class="contact"
+                    th:onclick="|location.href='@{/contact}';|"
+            >
+                Contact
+            </button>
+        </div>
+        <div id="c_SoT">
+            <p class="c_SoT">ⓒ 2024 SoT</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

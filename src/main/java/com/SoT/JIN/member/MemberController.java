@@ -169,6 +169,7 @@ public class MemberController {
             model.addAttribute("topTheme", topTheme);
             model.addAttribute("secondTheme", secondTheme);
             model.addAttribute("daysSinceLastUpload", daysSinceLastUpload);
+            model.addAttribute("followCount", user.getFollowers().size());
 
             return "mypage"; // mypage.html로 이동
         }

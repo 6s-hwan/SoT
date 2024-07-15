@@ -16,4 +16,5 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
     List<Story> findByUsernameOrderByUploadTimeDesc(String username);
     // 페이징 및 정렬을 위한 메서드
     Page<Story> findAll(Pageable pageable);
+    List<Story> findByTitleContainingIgnoreCase(String query);
 }

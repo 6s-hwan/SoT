@@ -1,5 +1,8 @@
 package com.SoT.JIN.story;
 
+import com.SoT.JIN.search.Search;
+import com.SoT.JIN.search.SearchRepository;
+import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
 import org.slf4j.Logger;
@@ -27,13 +30,15 @@ public class StoryController {
     private final S3Service s3Service;
     private final StoryService storyService;
     private final UserRepository userRepository;
+    private SearchService searchService;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
         this.storyService = storyService;
         this.userRepository = userRepository;
+        this.searchService = searchService;
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -142,10 +147,18 @@ public class StoryController {
     }
 
     @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
+    public String test(Model model) {
+        List<Search> topSearches = searchService.getTopSearchKeywords(8);
 
+        List<Story> topStories = topSearches.stream()
+                .map(search -> searchService.getStoryWithSmallestId(search.getKeyword()))
+                .collect(Collectors.toList());
+
+        model.addAttribute("topSearches", topSearches);
+        model.addAttribute("topStories", topStories);
+
+        return "test"; // test.html 뷰를 반환
+    }
     @PostMapping("/upload")
     public String addStory(@RequestParam("image_url") String imageUrl,
                            @RequestParam("title") String title,

@@ -37,4 +37,17 @@ public class SearchController {
 
         return "Searchresultpage";
     }
+    @GetMapping("/rise/top-searches")
+    public String showTopSearches(Model model) {
+        List<Search> topSearches = searchService.getTopSearchKeywords(8);
+
+        List<Story> topStories = topSearches.stream()
+                .map(search -> searchService.getStoryWithSmallestId(search.getKeyword()))
+                .collect(Collectors.toList());
+
+        model.addAttribute("topSearches", topSearches);
+        model.addAttribute("topStories", topStories);
+
+        return "Home";
+    }
 }

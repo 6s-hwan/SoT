@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,4 +42,19 @@ public class SearchService {
         searchRepository.deleteAll();
     }
 
+    public List<Search> getTopSearchKeywords(int limit) {
+        return searchRepository.findAll().stream()
+                .sorted(Comparator.comparingLong(Search::getCount).reversed())
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+
+    public Story getStoryWithSmallestId(String keyword) {
+        List<Long> storyIds = storyRepository.findIdsByKeyword(keyword);
+        if (storyIds.isEmpty()) {
+            return null;
+        }
+        Long smallestId = storyIds.stream().min(Long::compare).orElse(null);
+        return storyRepository.findById(smallestId).orElse(null);
+    }
 }

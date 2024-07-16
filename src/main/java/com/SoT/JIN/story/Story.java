@@ -1,5 +1,6 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.story;
 
+import com.SoT.JIN.like.LikeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

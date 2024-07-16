@@ -1,4 +1,4 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.verification;
 
 public class VerificationRequest {
     private String phoneNumber;

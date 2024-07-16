@@ -1603,65 +1603,17 @@
             </p>
         </div>
 
-        <div class="riseback">
-            <div id="rise_1">
-                <div id="rise1_img">
-                    <label for="rise1">
-                        <button
-                                type="button"
-                                id="rise1"
-                                onclick="location.href='./risepage.html';"
-                        ></button>
-                    </label>
+        <div id="TopSearchesList" th:each="search, iterStat : ${topSearches}">
+            <div class="searchItem" th:attr="id='search' + ${iterStat.index + 1}">
+                <h2>
+                    <a th:href="@{/rise/{keyword}(keyword=${search.keyword})}" th:text="${search.keyword}"></a>
+                </h2>
+                <div class="storyImage" th:if="${topStories[iterStat.index]} != null">
+                    <a th:href="@{/rise/{keyword}(keyword=${search.keyword})}">
+                        <img th:src="${topStories[iterStat.index].image_url}" alt="Story Image" class="search_img"/>
+                    </a>
                 </div>
-                <div id="rise1_text">
-                    <p class="rise1_name">서울 청계천</p>
-                </div>
-            </div>
-
-            <div id="rise_2">
-                <div id="rise2_img">
-                    <label for="rise2">
-                        <button
-                                type="button"
-                                id="rise2"
-                                onclick="location.href='./risepage.html';"
-                        ></button>
-                    </label>
-                </div>
-                <div id="rise2_text">
-                    <p class="rise2_name">동대문 DDP</p>
-                </div>
-            </div>
-
-            <div id="rise_3">
-                <div id="rise3_img">
-                    <label for="rise3">
-                        <button
-                                type="button"
-                                id="rise3"
-                                onclick="location.href='./risepage.html';"
-                        ></button>
-                    </label>
-                </div>
-                <div id="rise3_text">
-                    <p class="rise3_name">춘천 남이섬</p>
-                </div>
-            </div>
-
-            <div id="rise_4">
-                <div id="rise4_img">
-                    <label for="rise4">
-                        <button
-                                type="button"
-                                id="rise4"
-                                onclick="location.href='./risepage.html';"
-                        ></button>
-                    </label>
-                </div>
-                <div id="rise4_text">
-                    <p class="rise4_name">서귀포 표선</p>
-                </div>
+                <p th:if="${topStories[iterStat.index]} == null">스토리를 찾을 수 없습니다</p>
             </div>
         </div>
     </div>

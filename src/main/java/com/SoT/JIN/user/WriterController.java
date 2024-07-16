@@ -1,5 +1,7 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.user;
 
+import com.SoT.JIN.story.Story;
+import com.SoT.JIN.story.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

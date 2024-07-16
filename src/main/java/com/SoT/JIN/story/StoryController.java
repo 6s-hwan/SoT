@@ -1,5 +1,7 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.story;
 
+import com.SoT.JIN.user.User;
+import com.SoT.JIN.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +29,10 @@ public class StoryController {
     private final UserRepository userRepository;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService StoryService, UserRepository userRepository) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
-        this.storyService = StoryService;
+        this.storyService = storyService;
         this.userRepository = userRepository;
     }
 
@@ -145,15 +147,15 @@ public class StoryController {
     }
 
     @PostMapping("/upload")
-    public String addUser(@RequestParam("image_url") String imageUrl,
-                          @RequestParam("title") String title,
-                          @RequestParam("date_year") String dateYear,
-                          @RequestParam("date_month") String dateMonth,
-                          @RequestParam("date_day") String dateDay,
-                          @RequestParam("location") String location,
-                          @RequestParam("tags") String tags,
-                          @RequestParam("description") String description,
-                          Principal principal) {
+    public String addStory(@RequestParam("image_url") String imageUrl,
+                           @RequestParam("title") String title,
+                           @RequestParam("date_year") String dateYear,
+                           @RequestParam("date_month") String dateMonth,
+                           @RequestParam("date_day") String dateDay,
+                           @RequestParam("location") String location,
+                           @RequestParam("tags") String tags,
+                           @RequestParam("description") String description,
+                           Principal principal) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {

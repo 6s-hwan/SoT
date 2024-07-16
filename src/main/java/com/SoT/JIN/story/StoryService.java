@@ -1,5 +1,9 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.story;
 
+import com.SoT.JIN.like.LikeEntity;
+import com.SoT.JIN.like.LikeRepository;
+import com.SoT.JIN.user.User;
+import com.SoT.JIN.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,10 +17,12 @@ import java.util.stream.Collectors;
 public class StoryService {
     private final StoryRepository storyRepository;
     private final LikeRepository likeRepository;
+    private final SearchService searchService;
     @Autowired
-    public StoryService(StoryRepository storyRepository, LikeRepository likeRepository) {
+    public StoryService(StoryRepository storyRepository, LikeRepository likeRepository, SearchService searchService) {
         this.storyRepository = storyRepository;
         this.likeRepository = likeRepository;
+        this.searchService = searchService;
     }
     @Transactional
     public Story getStoryAndIncrementViewCount(Long id) {

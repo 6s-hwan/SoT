@@ -1101,7 +1101,47 @@
       </div>
       <!-- 이용약관 팝업창 끝 -->
     </div>
+
+    <!-- 급상승 여행지 시작 -->
+    <div id="rise_full">
+      <div id="rise">
+        <div id="rise_title">
+          <img th:src="@{/images/riseimg.png}" class="riseimg" />
+          <p class="rise">
+            급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요
+          </p>
+        </div>
+
+        <div class="riseback">
+          <div id="TopSearchesList" th:each="search, iterStat : ${topSearches}">
+            <div class="searchItem" th:attr="id='rise_' + ${iterStat.index + 1}">
+              <div id="rise1_img">
+                <label th:for="'rise' + ${iterStat.index + 1}">
+                  <button
+                          type="button"
+                          th:id="'rise' + ${iterStat.index + 1}"
+                          th:data-keyword="${search.keyword}"
+                          th:style="'background-image:url(' + ${topStories[iterStat.index].image_url} + ');'"
+                          onclick="goToRisePage(this)"
+                  ></button>
+                </label>
+              </div>
+              <div id="rise1_text">
+                <p class="rise1_name" th:text="${search.keyword}"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 급상승 여행지 끝 -->
     <script th:src="@{/js/Home.js}"></script>
+    <script>
+      function goToRisePage(button) {
+        const keyword = button.getAttribute('data-keyword');
+        window.location.href = '/rise/' + keyword;
+      }
+    </script>
   </body>
 </html>
 

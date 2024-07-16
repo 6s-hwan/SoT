@@ -4419,6 +4419,155 @@ input:focus {
   text-align: left;
 }
 
+#rise_5 {
+  width: 278px;
+  height: 323px;
+}
+
+#rise5_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise5 {
+  background: url("../images/rise1.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise5_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise5_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_6 {
+  width: 278px;
+  height: 323px;
+}
+
+#rise6_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise6 {
+  background: url("../images/rise1.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise6_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise6_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_7 {
+  width: 278px;
+  height: 323px;
+}
+
+#rise7_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise7 {
+  background: url("../images/rise1.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise7_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise7_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+#rise_8 {
+  width: 278px;
+  height: 323px;
+}
+
+#rise8_img {
+  width: 278px;
+  height: 278px;
+  flex-shrink: 0;
+}
+
+#rise8 {
+  background: url("../images/rise1.png");
+  width: 278px;
+  height: 278px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#rise8_text {
+  width: 107px;
+  height: 29px;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+.rise8_name {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+
 /* 급상승 여행지 끝 */
 
 /* 인기 작가 스토리 시작 */

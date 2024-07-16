@@ -186,4 +186,10 @@ public class StoryController {
         logger.info("Presigned URL generated: {}", result);
         return result;
     }
+    @GetMapping("/rise/{keyword}")
+    public String getStoriesByKeyword(@PathVariable String keyword, Model model) {
+        List<Story> stories = storyService.findStoriesByKeyword(keyword);
+        model.addAttribute("stories", stories);
+        return "RiseDetailPage"; // 관련 스토리를 보여줄 페이지
+    }
 }

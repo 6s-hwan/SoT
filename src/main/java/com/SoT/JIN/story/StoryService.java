@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,5 +61,9 @@ public class StoryService {
                         .thenComparingInt(Story::getViewCount).reversed())
                 .limit(limit)
                 .collect(Collectors.toList());
+    }
+    public List<Story> findStoriesByKeyword(String keyword) {
+        Set<Long> storyIds = storyRepository.findIdsByKeyword(keyword).stream().collect(Collectors.toSet());
+        return storyRepository.findAllById(storyIds);
     }
 }

@@ -1,5 +1,7 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.like;
 
+import com.SoT.JIN.story.Story;
+import com.SoT.JIN.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

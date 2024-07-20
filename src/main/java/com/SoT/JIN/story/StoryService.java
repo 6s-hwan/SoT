@@ -1,19 +1,30 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.story;
 
+import com.SoT.JIN.like.LikeEntity;
+import com.SoT.JIN.like.LikeRepository;
+import com.SoT.JIN.user.User;
+import com.SoT.JIN.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class StoryService {
     private final StoryRepository storyRepository;
     private final LikeRepository likeRepository;
+    private final SearchService searchService;
     @Autowired
-    public StoryService(StoryRepository storyRepository, LikeRepository likeRepository) {
+    public StoryService(StoryRepository storyRepository, LikeRepository likeRepository, SearchService searchService) {
         this.storyRepository = storyRepository;
         this.likeRepository = likeRepository;
+        this.searchService = searchService;
     }
     @Transactional
     public Story getStoryAndIncrementViewCount(Long id) {
@@ -44,4 +55,15 @@ public class StoryService {
         storyRepository.save(story);
     }
 
+    public List<Story> getTopStories(int limit) {
+        return storyRepository.findAll().stream()
+                .sorted(Comparator.comparingInt((Story s) -> s.getLikes().size())
+                        .thenComparingInt(Story::getViewCount).reversed())
+                .limit(limit)
+                .collect(Collectors.toList());
     }
+    public List<Story> findStoriesByKeyword(String keyword) {
+        Set<Long> storyIds = storyRepository.findIdsByKeyword(keyword).stream().collect(Collectors.toSet());
+        return storyRepository.findAllById(storyIds);
+    }
+}

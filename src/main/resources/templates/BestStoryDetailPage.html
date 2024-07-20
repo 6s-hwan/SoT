@@ -1,4 +1,5 @@
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,20 +70,6 @@
               </p>
             </div>
           </div>
-
-          <div id="beststory_select">
-            <form action="#">
-              <select name="story_select" id="story_select">
-                <option value="recom" class="recom_select">추천순</option>
-                <option value="newest" class="newest_select">최신순</option>
-                <option value="inquiry" class="inquiry_select">조회순</option>
-                <option value="month" class="month_select">
-                  이번 달 조회순
-                </option>
-                <option value="today" class="today_select">오늘 조회순</option>
-              </select>
-            </form>
-          </div>
         </div>
         <div id="back">
           <div class="stories" th:each="story, iterStat : ${stories}">
@@ -95,20 +82,22 @@
                 />
                 <div id="storyTitlefull">
                   <p id="storyTitle" th:text="${story.title}">Story Title</p>
-                  <img
-                    th:src="@{images/seeimg.png}"
-                    class="seeimage"
-                    width="16px"
-                    height="16px"
-                  />
-                  <p class="seeimagetext" th:text="${story.viewCount}">0</p>
-                  <img
-                    th:src="@{/images/likeimg.png}"
-                    class="likeimage"
-                    width="14px"
-                    height="14px"
-                  />
-                  <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
+                  <div class="right-side">
+                    <img
+                      th:src="@{/images/seeimg.png}"
+                      class="seeimage"
+                      width="16px"
+                      height="16px"
+                    />
+                    <p class="imagetext" th:text="${story.viewCount}">0</p>
+                    <img
+                      th:src="@{/images/likeimg.png}"
+                      class="likeimage"
+                      width="14px"
+                      height="14px"
+                    />
+                    <p class="imagetext" th:text="${story.likes.size()}">0</p>
+                  </div>
                 </div>
               </a>
             </div>
@@ -119,7 +108,8 @@
             <button
               type="button"
               id="bestmorebtn"
-              onclick="location.href='./bestpage.html';"
+              th:if="${limit < 72}"
+              th:onclick="|location.href='@{/best(limit=${limit + 24})}';|"
             ></button>
           </label>
         </div>
@@ -127,6 +117,5 @@
     </div>
     <!-- 테마별 상세페이지 스토리 끝 -->
   </body>
-
   <script th:src="@{/js/ThemeDetailPage.js}"></script>
 </html>

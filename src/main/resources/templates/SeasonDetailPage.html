@@ -1,8 +1,9 @@
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/SeasonDetailPage.css" />
+    <link rel="stylesheet" th:href="@{/css/SeasonDetailPage.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -21,7 +22,7 @@
     <div class="nav_logo">
         <div id="nav_logo1">
             <img
-                    src="../static/images/MainLogo.png"
+                    th:src="@{/images/MainLogo.png}"
                     alt="로고"
                     width="225px"
                     height="60px"
@@ -29,7 +30,7 @@
         </div>
         <div class="nav_menu">
             <ul class="navigation">
-                <li><a href="Home.html" class="b">홈</a></li>
+                <li><a th:href="@{/home}" class="b">홈</a></li>
                 <li><a href="#" class="c">지역</a></li>
                 <li><a href="#" class="c">지도</a></li>
                 <li><a href="#" class="c">북마크</a></li>
@@ -39,7 +40,7 @@
         <div id="search">
             <input type="text" class="search" />
             <img
-                    src="../static/images/search.png"
+                    th:src="@{/images/search.png}"
                     alt="돋보기"
                     width="30px"
                     height="30px"
@@ -59,7 +60,7 @@
         <div id="SeasonStoryTitle">
             <div id="seasonstorytitle_1">
                 <img
-                        src="../static/images/seasonimg.png"
+                        th:src="@{/images/seasonimg.png}"
                         class="seasonstoryimg"
                         width="90px"
                         height="90px"
@@ -69,142 +70,62 @@
                 <button
                         type="button"
                         id="spring"
+                        onclick="changeSeason('spring')"
+                        th:classappend="${selectedSeason == 'spring'} ? 'selected' : ''"
                 >봄</button>
 
                 <button
                         type="button"
                         id="summer"
+                        onclick="changeSeason('summer')"
+                        th:classappend="${selectedSeason == 'summer'} ? 'selected' : ''"
                 >여름</button>
 
                 <button
                         type="button"
                         id="fall"
+                        onclick="changeSeason('fall')"
+                        th:classappend="${selectedSeason == 'fall'} ? 'selected' : ''"
                 >가을</button>
 
                 <button
                         type="button"
                         id="winter"
+                        onclick="changeSeason('winter')"
+                        th:classappend="${selectedSeason == 'winter'} ? 'selected' : ''"
                 >겨울</button>
             </div>
             <div id="seasonstory_select">
-                <form action="#">
-                    <select name="story_select" id="story_select">
-                        <option value="recom" class="recom_select">추천순</option>
-                        <option value="newest" class="newest_select">최신순</option>
-                        <option value="inquiry" class="inquiry_select">조회순</option>
-                        <option value="month" class="month_select">
-                            이번 달 조회순
-                        </option>
-                        <option value="today" class="today_select">오늘 조회순</option>
+                <form>
+                    <select
+                            name="story_select"
+                            id="story_select"
+                            onchange="sortStories()"
+                    >
+                        <option value="likes" th:selected="${sortCriteria == 'likes'}">추천순</option>
+                        <option value="recent" th:selected="${sortCriteria == 'recent'}">최신순</option>
+                        <option value="views" th:selected="${sortCriteria == 'views'}">조회순</option>
                     </select>
                 </form>
             </div>
         </div>
         <div id="SeasonStoryBack">
-            <div id="season1-4">
-                <div id="season1">
-                    <!--  베스트 1 시작 -->
-                    <div id="season1_img">
-                        <button
-                                type="button"
-                                class="season_img1"
-                                onclick="location.href='./seasonpage.html';"
-                        ></button>
+            <div id="season1-4" th:each="story : ${seasonStories}">
+                <div class="story-card">
+                    <!--  스토리 시작 -->
+                    <div class="story-img">
+                        <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                            <img
+                                    id="storyimage"
+                                    th:src="${story.image_url}"
+                                    alt="Story Image"
+                            />
+                        </a>
                     </div>
+                    <!-- 스토리 제목, 조회수, 좋아요 등의 정보를 표시 -->
 
-                    <div id="season1_text">
-                        <div id="season1_name">
-                            <p class="season1_name">담양 죽녹원</p>
-                        </div>
-                        <div id="season1_see">
-                            <img src="../static/images/seeimg.png" class="season1_see" />
-                            <p class="season_see1">3.7k</p>
-                        </div>
-                        <div id="season1_like">
-                            <img src="../static/images/likeimg.png" class="season1_like" />
-                            <p class="season_like1">1.8k</p>
-                        </div>
-                    </div>
                 </div>
-
-                <div id="season2">
-                    <!--  베스트 2 시작 -->
-                    <div id="season2_img">
-                        <button
-                                type="button"
-                                class="season_img2"
-                                onclick="location.href='./seasonpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="season2_text">
-                        <div id="season2_name">
-                            <p class="season2_name">담양 죽녹원</p>
-                        </div>
-                        <div id="season2_see">
-                            <img src="../static/images/seeimg.png" class="season2_see" />
-                            <p class="season_see2">3.7k</p>
-                        </div>
-                        <div id="season2_like">
-                            <img src="../static/images/likeimg.png" class="season2_like" />
-                            <p class="season_like2">1.8k</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="season3">
-                    <!--  베스트 3 시작 -->
-                    <div id="season3_img">
-                        <button
-                                type="button"
-                                class="season_img3"
-                                onclick="location.href='./seasonpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="season3_text">
-                        <div id="season3_name">
-                            <p class="season3_name">담양 죽녹원</p>
-                        </div>
-                        <div id="season3_see">
-                            <img src="../static/images/seeimg.png" class="season3_see" />
-                            <p class="season_see3">3.7k</p>
-                        </div>
-                        <!--
-                        <div id="best3_like">
-                          <img src="../static/images/likeimg.png" class="seasont3_like" />
-                          <p class="season_like3">1.8k</p>
-                        </div>
-                        -->
-                    </div>
-                </div>
-
-                <div id="season4">
-                    <!--  베스트 4 시작 -->
-                    <div id="seasont4_img">
-                        <button
-                                type="button"
-                                class="season_img4"
-                                onclick="location.href='./bestpage.html';"
-                        ></button>
-                    </div>
-
-                    <div id="season4_text">
-                        <div id="season4_name">
-                            <p class="season4_name">담양 죽녹원</p>
-                        </div>
-                        <div id="season4_see">
-                            <img src="../static/images/seeimg.png" class="season4_see" />
-                            <p class="season_see4">3.7k</p>
-                        </div>
-                        <!--
-                        <div id="best4_like">
-                          <img src="../static/images/likeimg.png" class="season4_like" />
-                          <p class="season_like4">1.8k</p>
-                        </div>
-                        -->
-                    </div>
-                </div>
+                <!-- 다른 시즌 스토리도 동일한 형식으로 표시 -->
             </div>
         </div>
         <div>
@@ -227,7 +148,7 @@
                     type="button"
                     value="이용약관"
                     class="terms_of_use"
-                    onclick="location.href='./terms_of_use.html';"
+                    th:onclick="|location.href='@{/terms_of_use}';|"
             >
                 이용약관
             </button>
@@ -237,7 +158,7 @@
                     type="button"
                     value="개인정보처리방침"
                     class="personal_inf"
-                    onclick="location.href='./personal_inf.html';"
+                    th:onclick="|location.href='@{/personal_inf}';|"
             >
                 개인정보처리방침
             </button>
@@ -247,7 +168,7 @@
                     type="button"
                     value="Contact"
                     class="contact"
-                    onclick="location.href='./contact.html';"
+                    th:onclick="|location.href='@{/contact}';|"
             >
                 Contact
             </button>
@@ -258,4 +179,34 @@
     </div>
 </div>
 </body>
+<script>
+    function sortStories() {
+        var select = document.getElementById("story_select");
+        var sort = select.value;
+        var season = new URLSearchParams(window.location.search).get('season');
+        if (season) {
+            window.location.href = "/season?season=" + season + "&sort=" + sort;
+        } else {
+            window.location.href = "/season?sort=" + sort;
+        }
+    }
+
+    function changeSeason(season) {
+        var sort = new URLSearchParams(window.location.search).get('sort');
+        if (sort) {
+            window.location.href = "/season?season=" + season + "&sort=" + sort;
+        } else {
+            window.location.href = "/season?season=" + season;
+        }
+    }
+
+    // 페이지 로드 시 현재 선택된 정렬 기준을 유지
+    document.addEventListener("DOMContentLoaded", function () {
+        var params = new URLSearchParams(window.location.search);
+        var sort = params.get("sort");
+        if (sort) {
+            document.getElementById("story_select").value = sort;
+        }
+    });
+</script>
 </html>

@@ -4,11 +4,21 @@
   padding: 0;
   font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
 }
-
 a {
   text-decoration: none;
 }
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
 
+.scrollLock {
+  overflow: hidden;
+}
 /* 네비게이션바 시작 */
 .navbar {
   display: flex;
@@ -46,7 +56,6 @@ a {
   list-style: none;
   margin-right: 68px;
 }
-
 .navigation {
   display: flex;
   list-style: none;
@@ -58,7 +67,6 @@ a {
   font-weight: 500;
   line-height: normal;
 }
-
 .b {
   text-decoration: none;
   color: #000;
@@ -112,6 +120,7 @@ input.search {
   padding-top: 10px;
   padding-right: 14px;
 }
+/* 업로드 버튼 */
 input.uploadbtn {
   background: url("../images/upload.png") no-repeat center;
   background-size: 30px;
@@ -124,6 +133,7 @@ input.uploadbtn {
   margin-right: 16px;
   cursor: pointer;
 }
+/* 마이페이지 버튼 */
 input.imagebtn {
   background: url("../images/pic.png") no-repeat center;
   background-size: 24px;
@@ -136,8 +146,7 @@ input.imagebtn {
   margin-right: 20px;
   cursor: pointer;
 }
-
-/* 임시 로그인 버튼 */
+/* 로그인 버튼 */
 #join {
   display: none;
   width: 109px;
@@ -169,166 +178,153 @@ input.imagebtn {
 }
 /* 네비게이션바 끝 */
 
-/* 인기작가 상세페이지 시작 */
-#PopularWriterfull {
+/* 베스트 스토리 시작 */
+#searchresultfull {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding-top: 120px;
+  padding-top: 94px;
+  margin-bottom: 150px;
 }
-
-#PopularWriterTitle {
+#searchresultTitle {
   display: flex;
-  box-sizing: border-box; /* 요소가 여러 개일때 가운데 정렬 */
-  width: 1200px;
-  height: 90px;
+  box-sizing: border-box;
 }
-
-#PopularWritertitle_1 {
+#searchresult_title {
+  box-sizing: border-box;
   display: flex;
-  box-sizing: border-box; /* 요소가 여러 개일때 가운데 정렬 */
-  width: 1200px;
   height: 90px;
+  margin-bottom: 60px;
 }
-
-.PopularWriterimg {
+#searchresult_select {
+  padding-left: 565px;
+  padding-top: 52px;
+}
+#searchresult_full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 130px;
+}
+.searchresultimg {
   width: 90px;
   height: 90px;
-  padding-right: 30px;
+  padding-right: 16px;
+  padding-left: 20px;
 }
-
-.populartitle1 {
+#searchresult_text {
+  height: 70px;
+  width: 360px;
+}
+.searchresult {
   color: #000;
   font-family: "Noto Sans KR";
   font-size: 48px;
   font-style: normal;
   font-weight: 500;
-  line-height: 90px;
-  color: #000;
-  letter-spacing: -0.96px;
+  line-height: 60px; /* 125% */
 }
-
-/* 인기작가 프로필 모음집 시작*/
-#writerboxback {
-  width: 1242px;
+.searchresult_1 {
+  padding-left: 14px;
+  color: #333;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 25.2px */
+}
+#back {
+  width: 1240px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  margin-top: 10px;
-  margin-bottom: 42px;
+  gap: 20px; /* Increased gap for better spacing */
 }
-#writerbox {
-  display: flex;
-  width: 287px;
-  height: 160px;
-  border-radius: 12px;
-  background: #f6f6f6;
-  margin-top: 20px;
-  border: none;
-  box-sizing: border-box;
-}
-#profile_A {
-  width: 160px;
-  height: 160px;
-  position: relative;
-  display: inline-block;
-}
-#profile_A .overlay {
-  display: inline-flex;
-  padding: 1px 7px 2px 7px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  z-index: 2;
-}
-#profileimg {
-  width: 140px;
-  height: 140px;
-  z-index: 1;
-  border: none;
-  padding: 10px;
+#storyimage {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
   border-radius: 8px;
+  background: #d9d9d9;
+  margin-bottom: 8px;
 }
-#profile_B {
-  width: 127px;
+#storyTitlefull {
+  display: flex; /* 수직적으로 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
 }
-#writerName {
-  color: #000;
+#storyTitle {
+  color: #1d1d1d;
   font-family: "Noto Sans KR";
-  font-size: 16px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+  padding-left: 2px;
+  flex: 1;
+}
+.story {
+  position: relative; /* Relative positioning for title placement */
+  width: 285px;
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stories {
+  position: relative; /* Relative positioning for title placement */
+  width: 285px;
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.story > a {
+  width: 285px;
+  height: 235px;
+}
+.right-side {
+  display: flex;
+  align-items: center;
+}
+.seeimage {
+  width: 16px;
+  height: 16px;
+  padding-top: 4px;
+  padding-right: 2px;
+}
+.likeimage {
+  width: 14px;
+  height: 14px;
+  padding-top: 5px;
+  padding-right: 2px;
+}
+.imagetext {
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding-top: 22px;
-}
-#writerPostLike {
-  display: flex;
-  padding-top: 10px;
-  height: 18px;
-}
-#writerpost {
-  color: #727272;
-  font-family: "Noto Sans KR";
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  padding-left: 2px;
-  padding-bottom: 2px;
+  letter-spacing: -0.24px;
+  padding-top: 2px;
   padding-right: 10px;
 }
-#writerlikeimg {
-  padding-top: 2px;
-}
-#writerlike {
-  color: #727272;
-  font-family: "Noto Sans KR";
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  padding-left: 2px;
-  padding-bottom: 2px;
-}
-#writerTags {
-  display: flex;
-  padding-top: 36px;
-  box-sizing: border-box;
-}
-#writertag {
-  display: inline-flex;
-  height: 24px;
-  padding: 3px 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  border-radius: 5px;
-  border: 1px solid #f4f4f4;
-  background: #fff;
-  z-index: 1;
-  margin-right: 7px;
-}
-#writertagname {
-  color: #767676;
-  font-family: Pretendard;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.26px;
-}
-#seasonmorebtn {
+#searchresultmorebtn {
   background: url("../images/morebtn.png");
   width: 128px;
   height: 48px;
   border: none;
   margin-left: 556px;
+  margin-top: 62px;
   cursor: pointer;
-  margin-bottom: 208px;
 }

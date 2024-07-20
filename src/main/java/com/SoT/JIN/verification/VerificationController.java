@@ -1,5 +1,7 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.verification;
 
+import com.SoT.JIN.user.User;
+import com.SoT.JIN.user.UserRepository;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;

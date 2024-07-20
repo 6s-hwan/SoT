@@ -19,41 +19,45 @@
   </head>
   <body>
     <nav class="navbar">
-      <!-- 내비게이션 바 -->
       <div class="nav_logo">
-        <div id="nav_logo1">
-          <a href="./test">
+        <div id="nav_left">
+          <div id="nav_logo1">
+            <a href="./test">
+              <img
+                th:src="@{/images/MainLogo.png}"
+                alt="로고"
+                width="200px"
+                height="46px"
+            /></a>
+          </div>
+          <div class="nav_menu">
+            <ul class="navigation">
+              <li><a href="./test" class="b">홈</a></li>
+              <li><a href="" class="c">지역</a></li>
+              <li><a href="" class="c">북마크</a></li>
+            </ul>
+          </div>
+
+          <form action="/search" method="get" id="search">
+            <input type="text" name="query" class="search" />
             <img
-              th:src="@{/images/MainLogo.png}"
-              alt="로고"
-              width="225px"
-              height="60px"
-          /></a>
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+            />
+          </form>
         </div>
-        <div class="nav_menu">
-          <ul class="navigation">
-            <li><a href="./test" class="b">홈</a></li>
-            <li><a href="" class="c">지역</a></li>
-            <li><a href="" class="c">북마크</a></li>
-          </ul>
-        </div>
-        <div id="search">
-          <input type="search" class="search" />
-          <img
-            th:src="@{/images/search.png}"
-            alt="돋보기"
-            width="30px"
-            height="30px"
+        <div id="nav_right">
+          <input type="button" id="uploadbtn" />
+          <input
+            type="button"
+            class="imagebtn"
+            onclick="location.href='my-page' "
           />
+          <input type="checkbox" id="join" />
+          <label for="join">로그인</label>
         </div>
-        <input type="button" class="uploadbtn" />
-        <input
-          type="button"
-          class="imagebtn"
-          onclick="location.href='mypage.html' "
-        />
-        <input type="checkbox" id="join" />
-        <label for="join">로그인</label>
       </div>
     </nav>
 

@@ -79,11 +79,9 @@
                 <p id="username" th:text="${user.username}">Username</p>
               </div>
               <div id="mypagefollower">
-                <p id="mypagefollowertext">0</p>
+                <p id="mypagefollowertext" th:text="${followCount}">0</p>
                 <p id="mypagefollowertext1">명의 팔로워</p>
               </div>
-              <!-- <input type="button" class="mypageedit" />
-          <input type="button" class="mypageadd" /> -->
             </div>
             <div id="mypagedetail_2">
               <!-- 스토리 수 -->
@@ -141,20 +139,22 @@
                 />
                 <div id="storyTitlefull">
                   <p id="storyTitle" th:text="${story.title}">Story Title</p>
-                  <img
-                    th:src="@{images/seeimg.png}"
-                    class="seeimage"
-                    width="16px"
-                    height="16px"
-                  />
-                  <p class="seeimagetext" th:text="${story.viewCount}">0</p>
-                  <img
-                    th:src="@{/images/likeimg.png}"
-                    class="likeimage"
-                    width="14px"
-                    height="14px"
-                  />
-                  <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
+                  <div class="right-side">
+                    <img
+                      th:src="@{images/seeimg.png}"
+                      class="seeimage"
+                      width="16px"
+                      height="16px"
+                    />
+                    <p class="imagetext" th:text="${story.viewCount}">0</p>
+                    <img
+                      th:src="@{/images/likeimg.png}"
+                      class="likeimage"
+                      width="14px"
+                      height="14px"
+                    />
+                    <p class="imagetext" th:text="${story.likes.size()}">0</p>
+                  </div>
                 </div>
               </a>
             </div>

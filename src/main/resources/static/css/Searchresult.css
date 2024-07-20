@@ -179,122 +179,62 @@ input.imagebtn {
 /* 네비게이션바 끝 */
 
 /* 베스트 스토리 시작 */
-#bestStoryfull {
+#searchresultfull {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding-top: 100px;
+  padding-top: 94px;
   margin-bottom: 150px;
 }
-#bestStoryTitle {
+#searchresultTitle {
   display: flex;
   box-sizing: border-box;
 }
-#best_title {
+#searchresult_title {
   box-sizing: border-box;
   display: flex;
-  height: 70px;
-  margin-bottom: 45px;
+  height: 90px;
+  margin-bottom: 60px;
 }
-#beststory_select {
+#searchresult_select {
   padding-left: 565px;
   padding-top: 52px;
 }
-#best_full {
+#searchresult_full {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   padding-top: 130px;
 }
-.bestimg {
+.searchresultimg {
   width: 90px;
   height: 90px;
   padding-right: 16px;
   padding-left: 20px;
 }
-#best_text {
+#searchresult_text {
   height: 70px;
   width: 360px;
 }
-.best {
+.searchresult {
   color: #000;
   font-family: "Noto Sans KR";
-  font-size: 40px;
+  font-size: 48px;
   font-style: normal;
   font-weight: 500;
-  line-height: 60px; /* 150% */
+  line-height: 60px; /* 125% */
 }
-.best_1 {
-  line-height: 26px;
-  padding-bottom: 6px;
-  color: #4f4f4f;
+.searchresult_1 {
+  padding-left: 14px;
+  color: #333;
   font-family: "Noto Sans KR";
-  font-size: 15px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 160% */
+  line-height: 140%; /* 25.2px */
 }
-#story_select {
-  display: flex;
-  width: 145px;
-  height: 30px;
-  padding: 4px 4px 4px 8px;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #ececec;
-  background: #fff;
-}
-.recom_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-.newest_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-.inquiry_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-.month_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-.today_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-
 #back {
   width: 1240px;
   flex-shrink: 0;
@@ -379,12 +319,12 @@ input.imagebtn {
   padding-top: 2px;
   padding-right: 10px;
 }
-#bestmorebtn {
+#searchresultmorebtn {
   background: url("../images/morebtn.png");
   width: 128px;
   height: 48px;
   border: none;
   margin-left: 556px;
-  margin-top: 64px;
+  margin-top: 62px;
   cursor: pointer;
 }

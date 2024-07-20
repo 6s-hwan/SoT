@@ -214,7 +214,7 @@ input.imagebtn {
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.26px;
-  padding-top: 24px;
+  padding-top: 23px;
   padding-left: 4px;
 }
 #writerpageprofilefull {
@@ -357,8 +357,8 @@ dit.png") no-repeat center;
   margin-top: 41px;
   display: flex;
   box-sizing: border-box;
-  width: 54px;
-  height: 27px;
+  width: auto;
+  height: auto;
   padding: 3px 8px;
   justify-content: center;
   align-items: center;
@@ -489,14 +489,13 @@ dit.png") no-repeat center;
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
-  padding: 20px 0px 30px 20px;
-  margin-bottom: 300px;
+  padding: 20px;
+  margin-bottom: 150px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px; /* Increased gap for better spacing */
 }
-
 #storyimage {
   width: 285px;
   height: 200px;
@@ -507,7 +506,8 @@ dit.png") no-repeat center;
 }
 #storyTitlefull {
   display: flex; /* 수직적으로 가운데 정렬 */
-  box-sizing: border-box; /* 요소가 여러 개일때 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
 }
 #storyTitle {
   color: #1d1d1d;
@@ -517,7 +517,7 @@ dit.png") no-repeat center;
   font-weight: 500;
   line-height: 24px; /* 133.333% */
   padding-left: 2px;
-  padding-right: 95px;
+  flex: 1;
 }
 .story {
   position: relative; /* Relative positioning for title placement */
@@ -527,8 +527,6 @@ dit.png") no-repeat center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 20px;
-  margin-bottom: 30px;
 }
 .stories {
   position: relative; /* Relative positioning for title placement */
@@ -538,14 +536,16 @@ dit.png") no-repeat center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .story > a {
-  width: 28 5px;
+  width: 285px;
   height: 235px;
 }
-
+.right-side {
+  display: flex;
+  align-items: center;
+}
 .seeimage {
   width: 16px;
   height: 16px;
@@ -558,7 +558,7 @@ dit.png") no-repeat center;
   padding-top: 5px;
   padding-right: 2px;
 }
-.seeimagetext {
+.imagetext {
   color: #666;
   font-family: "Noto Sans KR";
   font-size: 12px;
@@ -568,16 +568,4 @@ dit.png") no-repeat center;
   letter-spacing: -0.24px;
   padding-top: 2px;
   padding-right: 10px;
-  width: 24px;
-}
-.likeimagetext {
-  color: #666;
-  font-family: "Noto Sans KR";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  padding-top: 2px;
-  width: 24px;
 }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/Searchresult.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
+  <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav_logo">
+    <div id="nav_logo1">
+      <a th:href="@{/test}">
+        <img th:src="@{/images/MainLogo.png}" alt="로고" width="225px" height="60px" />
+      </a>
+    </div>
+    <div class="nav_menu">
+      <ul class="navigation">
+        <li><a th:href="@{/test}" class="b">홈</a></li>
+        <li><a href="#" class="c">지역</a></li>
+        <li><a href="#" class="c">북마크</a></li>
+      </ul>
+    </div>
+    <form action="/search" method="get" id="search">
+      <input type="text" name="query" class="search" />
+
+        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px" />
+
+    </form>
+    <input type="button" class="uploadbtn" />
+    <input type="button" class="imagebtn" onclick="location.href='mypage.html'" />
+    <input type="checkbox" id="join" />
+    <label for="join">로그인</label>
+  </div>
+</nav>
+
+<!-- 검색 결과 페이지 시작 -->
+<div id="searchresultfull">
+  <div id="searchresult">
+    <div id="searchresultTitle">
+      <div id="searchresult_title">
+        <img th:src="@{/images/searchresult.png}" class="searchresult" />
+        <div id="searchresult_text">
+          <p class="searchresult" th:text="'‘' + ${query} + '’ 검색결과'">‘검색어’ 검색결과</p>
+          <p class="searchresult_1" th:text="${resultCount} + '개의 검색결과'">0개의 검색결과</p>
+        </div>
+      </div>
+    </div>
+    <div id="back">
+      <div class="stories" th:each="story : ${stories}">
+        <div class="story">
+          <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+            <img id="storyimage" th:src="${story.image_url}" alt="Story Image" />
+            <div id="storyTitlefull">
+              <p id="storyTitle" th:text="${story.title}">Story Title</p>
+              <div class="right-side">
+                <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px" />
+                <p class="imagetext" th:text="${story.viewCount}">0</p>
+                <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px" />
+                <p class="imagetext" th:text="${story.likes.size()}">0</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="searchresultmorebtn">
+        <button type="button" id="searchresultmorebtn"
+                th:if="${limit < resultCount}"
+                th:onclick="|location.href='@{/search(query=${query}, limit=${limit + 24})}';|"></button>
+      </label>
+    </div>
+  </div>
+</div>
+<!-- 검색 결과 페이지 끝 -->
+</body>
+<script th:src="@{/js/ThemeDetailPage.js}"></script>
+</html>

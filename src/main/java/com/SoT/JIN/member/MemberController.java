@@ -1,30 +1,40 @@
 package com.SoT.JIN.member;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class MemberController {
+
     private final UserRepository userRepository;
     private final StoryRepository storyRepository;
 
+    @Autowired
     public MemberController(UserRepository userRepository, StoryRepository storyRepository) {
         this.userRepository = userRepository;
         this.storyRepository = storyRepository;
     }
+
     @GetMapping("/home")
     public String home() {
         return "home";
+    }
+    @GetMapping("/bookmark")
+    public String bookmark() {
+        return "BookmarkPage";
     }
 
     @PostMapping("/user")
@@ -37,20 +47,48 @@ public class MemberController {
                           @RequestParam("birth_day") String birthDay,
                           @RequestParam("phone1") String phone1,
                           @RequestParam("phone2") String phone2,
-                          @RequestParam("phone3") String phone3) {
+                          @RequestParam("phone3") String phone3,
+                          @RequestParam("verificationCode") String verificationCode,
+                          RedirectAttributes redirectAttributes) {
 
+        // 전화번호 조합
         String phone = phone1 + phone2 + phone3;
+
+// 국가 코드를 포함한 전화번호 문자열 생성
+        String phoneNumber = "+82" + phone1.substring(1) + phone2 + phone3;
+        // 생일 조합
         String birth = birthYear + "-" + birthMonth + "-" + birthDay;
 
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(new BCryptPasswordEncoder().encode(password));
-        user.setUsername(username);
-        user.setGender(gender);
-        user.setBirth(birth);
-        user.setPhonenumber(phone);
+        // 이메일, 비밀번호, 사용자명, 성별 등의 유효성 검사를 수행합니다.
+        // 예를 들어, 이메일 형식 체크, 비밀번호 강도 확인 등이 필요합니다.
 
-        userRepository.save(user);
+        // 사용자 조회
+        Optional<User> userOptional = userRepository.findByPhoneNumberAndVerificationCode(phoneNumber, verificationCode);
+        User user = userOptional.orElse(null);
+
+
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "전화번호 또는 인증번호가 올바르지 않습니다.");
+            return "redirect:/error";
+        }
+
+        try {
+            // 사용자 정보 업데이트
+            user.setEmail(email);
+            user.setPassword(new BCryptPasswordEncoder().encode(password));
+            user.setUsername(username);
+            user.setGender(gender);
+            user.setBirth(birth);
+
+            // 사용자 정보 저장
+            userRepository.save(user);
+        } catch (Exception e) {
+            // 비밀번호 인코딩 등에서 예외가 발생할 경우 처리합니다.
+            redirectAttributes.addFlashAttribute("errorMessage", "회원 가입 중 오류가 발생했습니다.");
+            return "redirect:/error";
+        }
+
+        // 회원 가입 성공 시, 테스트 페이지로 리다이렉트합니다.
         return "redirect:/test";
     }
 
@@ -135,7 +173,7 @@ public class MemberController {
             return "mypage"; // mypage.html로 이동
         }
 
-        return "redirect:/home"; // 사용자를 찾을 수 없으면 홈페이지로 리다이렉트
+        return "redirect:/test"; // 사용자를 찾을 수 없으면 홈페이지로 리다이렉트
     }
 
     // 최근 업로드 일수 계산 메서드

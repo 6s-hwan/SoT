@@ -1,3 +1,34 @@
+//로그인 성공시 로그인 버튼이 프로필 사진으로 바뀌기
+document.addEventListener("DOMContentLoaded", function () {
+  const checkbox = document.getElementById("join");
+  const loginlabel = checkbox.nextElementSibling;
+
+  // 로그인 로직 예시: 로그인 성공 시 checkbox 체크
+  function login() {
+    checkbox.checked = true;
+    // 크기 변경
+    loginlabel.style.width = "36px";
+    loginlabel.style.height = "36px";
+  }
+
+  // 예시로 로그인 함수를 호출 (실제 로그인 로직에 따라 호출)
+  login();
+
+  // checkbox 상태 변경 시 스타일 업데이트
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      loginlabel.style.width = "36px";
+      loginlabel.style.height = "36px";
+      loginlabel.style.padding = "0";
+      loginlabel.style.fontSize = "0";
+    } else {
+      loginlabel.style.width = "109px";
+      loginlabel.style.height = "45px";
+      loginlabel.style.padding = "10px 29px";
+      loginlabel.style.fontSize = "18px";
+    }
+  });
+});
 // 초기에는 로그인 창을 보여주고 나머지 창을 숨깁니다.
 document.addEventListener("DOMContentLoaded", function () {
   var loginPopup = document.getElementById("login_pop_up");
@@ -754,4 +785,30 @@ function setupUploadDateSelectors() {
       }
     });
   });
+}
+
+function sendVerification() {
+  var phone1 = document.getElementById("phone_input1").value.trim(); // 첫 번째 입력 필드 값 (예: '010')
+  var phone2 = document.getElementById("phone_input2").value.trim(); // 두 번째 입력 필드 값 (예: '1234')
+  var phone3 = document.getElementById("phone_input3").value.trim(); // 세 번째 입력 필드 값 (예: '5678')
+
+  // 앞의 0을 제거하고 +82를 추가하여 Twilio가 요구하는 형식으로 조합
+  var phoneNumber = `+82${phone1.substring(1)}${phone2}${phone3}`;
+
+  // 서버에 전화번호를 전송하여 인증번호 요청
+  fetch("/api/sendVerification", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ phoneNumber: phoneNumber }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      alert(data); // 서버로부터 받은 응답 메시지를 출력
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("인증번호 전송 중 오류가 발생했습니다.");
+    });
 }

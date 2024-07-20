@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StoryService {
@@ -44,4 +47,11 @@ public class StoryService {
         storyRepository.save(story);
     }
 
+    public List<Story> getTopStories(int limit) {
+        return storyRepository.findAll().stream()
+                .sorted(Comparator.comparingInt((Story s) -> s.getLikes().size())
+                        .thenComparingInt(Story::getViewCount).reversed())
+                .limit(limit)
+                .collect(Collectors.toList());
     }
+}

@@ -1,5 +1,10 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.story;
 
+import com.SoT.JIN.search.Search;
+import com.SoT.JIN.search.SearchRepository;
+import com.SoT.JIN.search.SearchService;
+import com.SoT.JIN.user.User;
+import com.SoT.JIN.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +30,15 @@ public class StoryController {
     private final S3Service s3Service;
     private final StoryService storyService;
     private final UserRepository userRepository;
+    private SearchService searchService;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService StoryService, UserRepository userRepository) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
-        this.storyService = StoryService;
+        this.storyService = storyService;
         this.userRepository = userRepository;
+        this.searchService = searchService;
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -140,20 +147,28 @@ public class StoryController {
     }
 
     @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
+    public String test(Model model) {
+        List<Search> topSearches = searchService.getTopSearchKeywords(8);
 
+        List<Story> topStories = topSearches.stream()
+                .map(search -> searchService.getStoryWithSmallestId(search.getKeyword()))
+                .collect(Collectors.toList());
+
+        model.addAttribute("topSearches", topSearches);
+        model.addAttribute("topStories", topStories);
+
+        return "test"; // test.html 뷰를 반환
+    }
     @PostMapping("/upload")
-    public String addUser(@RequestParam("image_url") String imageUrl,
-                          @RequestParam("title") String title,
-                          @RequestParam("date_year") String dateYear,
-                          @RequestParam("date_month") String dateMonth,
-                          @RequestParam("date_day") String dateDay,
-                          @RequestParam("location") String location,
-                          @RequestParam("tags") String tags,
-                          @RequestParam("description") String description,
-                          Principal principal) {
+    public String addStory(@RequestParam("image_url") String imageUrl,
+                           @RequestParam("title") String title,
+                           @RequestParam("date_year") String dateYear,
+                           @RequestParam("date_month") String dateMonth,
+                           @RequestParam("date_day") String dateDay,
+                           @RequestParam("location") String location,
+                           @RequestParam("tags") String tags,
+                           @RequestParam("description") String description,
+                           Principal principal) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -183,5 +198,11 @@ public class StoryController {
         String result = s3Service.createPresignedUrl("test/" + filename);
         logger.info("Presigned URL generated: {}", result);
         return result;
+    }
+    @GetMapping("/rise/{keyword}")
+    public String getStoriesByKeyword(@PathVariable String keyword, Model model) {
+        List<Story> stories = storyService.findStoriesByKeyword(keyword);
+        model.addAttribute("stories", stories);
+        return "RiseDetailPage"; // 관련 스토리를 보여줄 페이지
     }
 }

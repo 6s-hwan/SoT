@@ -1091,4 +1091,13 @@ input.uploadbtn {
     border: none;
     cursor: pointer;
 }
+#otherrisebtn7{
+    background: url("../images/otherrise2.png");
+    width: 183px;
+    height: 184px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
 

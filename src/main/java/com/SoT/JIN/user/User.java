@@ -1,4 +1,4 @@
-package com.SoT.JIN.member;
+package com.SoT.JIN.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

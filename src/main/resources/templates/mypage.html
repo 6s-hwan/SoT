@@ -15,47 +15,52 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <title>My Page</title>
+    <title>SoT</title>
   </head>
   <body>
     <nav class="navbar">
-      <!-- 내비게이션 바 -->
       <div class="nav_logo">
-        <div id="nav_logo1">
-          <a href="./test">
+        <div id="nav_left">
+          <div id="nav_logo1">
+            <a href="./test">
+              <img
+                th:src="@{/images/MainLogo.png}"
+                alt="로고"
+                width="200px"
+                height="46px"
+            /></a>
+          </div>
+          <div class="nav_menu">
+            <ul class="navigation">
+              <li><a href="./test" class="b">홈</a></li>
+              <li><a href="" class="c">지역</a></li>
+              <li><a href="" class="c">북마크</a></li>
+            </ul>
+          </div>
+
+          <form action="/search" method="get" id="search">
+            <input type="text" name="query" class="search" />
             <img
-              th:src="@{/images/MainLogo.png}"
-              alt="로고"
-              width="225px"
-              height="60px"
-          /></a>
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+            />
+          </form>
         </div>
-        <div class="nav_menu">
-          <ul class="navigation">
-            <li><a href="./test" class="b">홈</a></li>
-            <li><a href="" class="c">지역</a></li>
-            <li><a href="" class="c">북마크</a></li>
-          </ul>
-        </div>
-        <div id="search">
-          <input type="search" class="search" />
-          <img
-            th:src="@{/images/search.png}"
-            alt="돋보기"
-            width="30px"
-            height="30px"
+        <div id="nav_right">
+          <input type="button" id="uploadbtn" />
+          <input
+            type="button"
+            class="imagebtn"
+            onclick="location.href='my-page' "
           />
+          <input type="checkbox" id="join" />
+          <label for="join">로그인</label>
         </div>
-        <input type="button" class="uploadbtn" />
-        <input
-          type="button"
-          class="imagebtn"
-          onclick="location.href='mypage.html' "
-        />
-        <input type="checkbox" id="join" />
-        <label for="join">로그인</label>
       </div>
     </nav>
+
     <!-- 마이페이지 시작 -->
     <div id="mypagefull">
       <div id="mypage">
@@ -66,11 +71,36 @@
         <div id="mypageprofilefull">
           <div id="mypageprofile">
             <img
+              id="profileImage"
               th:src="@{/images/mypageprofile.png}"
               alt="프로필"
               width="200px"
               height="200px"
-              style="border: 0px"
+              style="border: 0px; display: block"
+            />
+            <label for="changeprofile"
+              ><img
+                src="../static/images/changeprofile.png"
+                id="changeprofileimg"
+                alt="프로필 편집버튼"
+                width="38px"
+                height="38px"
+                style="cursor: pointer"
+            /></label>
+            <input
+              type="file"
+              class="changeprofile"
+              id="changeprofile"
+              width="200px"
+              height="200px"
+              style="
+                border: 0px;
+                display: none;
+                border-radius: 14px;
+                border: 3px solid #fff;
+              "
+              accept="image/*"
+              onchange="changeProfileImage(this)"
             />
           </div>
           <div id="mypagedetail">
@@ -178,6 +208,24 @@
           document.getElementById("story_select").value = sort;
         }
       });
+
+      // 프로필 편집 버튼
+      function changeProfileImage(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            var profileImage = document.getElementById("profileImage");
+            profileImage.src = e.target.result;
+            profileImage.style.background = `url(${e.target.result}) lightgray 50% / cover no-repeat`;
+          };
+
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      document.getElementById("changeprofileimg").onclick = function () {
+        document.getElementById("changeprofile").click();
+      };
     </script>
   </body>
 </html>

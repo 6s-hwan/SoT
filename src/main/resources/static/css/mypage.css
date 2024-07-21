@@ -4,12 +4,21 @@
   padding: 0;
   font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
 }
-
 a {
   text-decoration: none;
 }
-
-/* 네비게이션바 시작 */
+/* 가로선 */
+hr {
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
+.scrollLock {
+  overflow: hidden;
+}
+/* 내비게이션바 시작 */
 .navbar {
   display: flex;
   align-items: center;
@@ -21,32 +30,38 @@ a {
 }
 .nav_logo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  width: 1200px;
+  width: 1240px;
   height: 106px;
   flex-shrink: 0;
   border-radius: 14px;
   background: #f8f8f8;
 }
+#nav_left {
+  display: flex;
+  align-items: center;
+}
+#nav_right {
+  display: flex;
+  align-items: center;
+}
 #nav_logo1 {
-  padding-left: 44px;
-  padding-top: 23px;
-  padding-right: 68px;
+  padding-left: 45px;
+  padding-top: 10px;
+  padding-right: 66px;
 }
 .nav_menu {
   display: flex;
   box-sizing: border-box;
-  /* display: inline-flex; */
   width: 205px;
   height: 46px;
   padding: 10px 28px;
-  /* align-items: flex-start; */
   border-radius: 33px;
   background: #fff;
   list-style: none;
-  margin-right: 68px;
+  margin-right: 74px;
 }
-
 .navigation {
   display: flex;
   list-style: none;
@@ -58,7 +73,6 @@ a {
   font-weight: 500;
   line-height: normal;
 }
-
 .b {
   text-decoration: none;
   color: #000;
@@ -83,36 +97,35 @@ a {
 }
 #search {
   display: flex;
-  width: 242px;
+  width: 264px;
   height: 46px;
-  border-radius: 23px;
+  box-sizing: border-box;
+  background: url("../images/search.png") no-repeat;
+  background-position: center;
+  background-size: 30px;
   background: #fff;
-  margin-right: 75px;
   border: none;
+  padding: 8px 16px 8px 30px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 46px;
+  border-radius: 46px;
+  background: #fff;
+  cursor: pointer;
 }
 input.search {
-  background: url("../images/search.png") no-repeat center;
-  background-size: 30px;
-  width: 174px;
+  -webkit-appearance: none;
+  width: 188px;
   height: 30px;
-  border-radius: 23px;
-  background: #fff;
-  border: none;
-  padding-left: 24px;
-  padding-top: 8px;
-  padding-bottom: 8px;
   color: #3d3d3d;
   font-family: "Noto Sans CJK KR";
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 140%; /* 25.2px */
+  line-height: 140%;
+  border: none;
 }
-#search > img {
-  padding-top: 10px;
-  padding-right: 14px;
-}
-input.uploadbtn {
+#uploadbtn {
   background: url("../images/upload.png") no-repeat center;
   background-size: 30px;
   width: 46px;
@@ -121,7 +134,7 @@ input.uploadbtn {
   border-radius: 46px;
   background-color: #fff;
   border: none;
-  margin-right: 16px;
+  margin-right: 20px;
   cursor: pointer;
 }
 input.imagebtn {
@@ -136,20 +149,15 @@ input.imagebtn {
   margin-right: 20px;
   cursor: pointer;
 }
-
-/* 임시 로그인 버튼 */
 #join {
   display: none;
   width: 109px;
   height: 46px;
 }
-
 #join + label {
+  margin-right: 36px;
   box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
   display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  /* display: inline-block; */
   color: #000;
   font-family: "Noto Sans KR";
   font-size: 18px;
@@ -158,16 +166,24 @@ input.imagebtn {
   line-height: normal;
   text-align: center;
   width: 109px;
-  height: 46px;
+  height: 45px;
   background: #fff;
   padding: 10px 29px 10px 29px;
-  /* line-height: 36px; */
   cursor: pointer;
   border-radius: 50px;
-  /* 동작 천천히 보여주기 */
-  transition: all 500ms ease-in;
+  transition: all 500ms ease-in; /* 동작 천천히 보여주기 */
 }
-/* 네비게이션바 끝 */
+#join:checked + label {
+  width: 36px;
+  height: 36px;
+  padding: 0; /* 내부 여백 제거 */
+  font-size: 0; /* 텍스트 숨기기 */
+  border-radius: 49px;
+  border: 2px solid #fff;
+  background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.15);
+}
+/* 내비게이션바 끝 */
 
 /* 마이페이지 시작 */
 #mypagefull {
@@ -213,6 +229,24 @@ input.imagebtn {
   width: 200px;
   height: 200px;
   padding-right: 32px;
+  position: relative;
+}
+#changeprofileimg {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  z-index: 1;
+  top: 147px;
+  left: 145px;
+}
+#changeprofile {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 3px solid #fff;
+  background: lightgray 50% / cover no-repeat;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
 #mypagedetail_1 {
   box-sizing: border-box;

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,5 +40,19 @@ public class Story {
     @PrePersist
     protected void onCreate() {
         this.uploadTime = LocalDateTime.now();
+    }
+
+    // 위치 정보를 파싱하여 도 또는 시와 구를 반환하는 메서드
+    public String[] parseLocation() {
+        if (this.location == null || this.location.isEmpty()) {
+            return new String[]{"", ""};
+        }
+        String[] parts = this.location.split(" ");
+        if (parts.length >= 2) {
+            String mainLocation = parts[0];
+            String subLocation = String.join(" ", Arrays.copyOfRange(parts, 1, parts.length));
+            return new String[]{mainLocation, subLocation};
+        }
+        return new String[]{this.location, ""};
     }
 }

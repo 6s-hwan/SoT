@@ -27,11 +27,14 @@ public class SecurityConfig {
             csrf.disable();
         });
         http.authorizeHttpRequests((authorize) -> {
-            ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl)authorize.requestMatchers(new String[]{"/**"})).permitAll();
+            authorize.requestMatchers("/**").permitAll();
         });
         http.formLogin((formLogin) -> {
-            ((FormLoginConfigurer)formLogin.loginPage("/login").defaultSuccessUrl("/test")).failureUrl("/error");
+            formLogin.loginPage("/login").defaultSuccessUrl("/test").failureUrl("/error");
         });
-        return (SecurityFilterChain)http.build();
+        http.logout((logout) -> {
+            logout.logoutUrl("/logout").logoutSuccessUrl("/my-page").invalidateHttpSession(true).deleteCookies("JSESSIONID");
+        });
+        return http.build();
     }
 }

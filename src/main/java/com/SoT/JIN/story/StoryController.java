@@ -20,6 +20,7 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -204,5 +205,12 @@ public class StoryController {
         List<Story> stories = storyService.findStoriesByKeyword(keyword);
         model.addAttribute("stories", stories);
         return "RiseDetailPage"; // 관련 스토리를 보여줄 페이지
+    }
+
+    @GetMapping("/local")
+    public String getStories(Model model) {
+        Map<String, List<Story>> groupedStories = storyService.getGroupedStories();
+        model.addAttribute("groupedStories", groupedStories);
+        return "localList";
     }
 }

@@ -2,14 +2,17 @@ package com.SoT.JIN.user;
 
 import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryRepository;
+import com.SoT.JIN.story.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -23,16 +26,15 @@ public class MemberController {
 
     private final UserRepository userRepository;
     private final StoryRepository storyRepository;
+    private final S3Service s3Service;
+
+    private static final String DEFAULT_PROFILE_IMAGE_URL = "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/mypageprofile.png";
 
     @Autowired
-    public MemberController(UserRepository userRepository, StoryRepository storyRepository) {
+    public MemberController(UserRepository userRepository, StoryRepository storyRepository, S3Service s3Service) {
         this.userRepository = userRepository;
         this.storyRepository = storyRepository;
-    }
-
-    @GetMapping("/bookmark")
-    public String bookmark() {
-        return "BookmarkPage";
+        this.s3Service = s3Service;
     }
 
     @PostMapping("/user")
@@ -49,21 +51,12 @@ public class MemberController {
                           @RequestParam("verificationCode") String verificationCode,
                           RedirectAttributes redirectAttributes) {
 
-        // 전화번호 조합
         String phone = phone1 + phone2 + phone3;
-
-// 국가 코드를 포함한 전화번호 문자열 생성
         String phoneNumber = "+82" + phone1.substring(1) + phone2 + phone3;
-        // 생일 조합
         String birth = birthYear + "-" + birthMonth + "-" + birthDay;
 
-        // 이메일, 비밀번호, 사용자명, 성별 등의 유효성 검사를 수행합니다.
-        // 예를 들어, 이메일 형식 체크, 비밀번호 강도 확인 등이 필요합니다.
-
-        // 사용자 조회
         Optional<User> userOptional = userRepository.findByPhoneNumberAndVerificationCode(phoneNumber, verificationCode);
         User user = userOptional.orElse(null);
-
 
         if (user == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "전화번호 또는 인증번호가 올바르지 않습니다.");
@@ -71,33 +64,49 @@ public class MemberController {
         }
 
         try {
-            // 사용자 정보 업데이트
             user.setEmail(email);
             user.setPassword(new BCryptPasswordEncoder().encode(password));
             user.setUsername(username);
             user.setGender(gender);
             user.setBirth(birth);
 
-            // 사용자 정보 저장
+            // 기본 프로필 이미지 설정
+            user.setProfileImageUrl(DEFAULT_PROFILE_IMAGE_URL);
+
             userRepository.save(user);
         } catch (Exception e) {
-            // 비밀번호 인코딩 등에서 예외가 발생할 경우 처리합니다.
             redirectAttributes.addFlashAttribute("errorMessage", "회원 가입 중 오류가 발생했습니다.");
             return "redirect:/error";
         }
 
-        // 회원 가입 성공 시, 테스트 페이지로 리다이렉트합니다.
         return "redirect:/test";
     }
 
+    @PostMapping("/update-profile-image")
+    public String updateProfileImage(@RequestParam("file") MultipartFile file, Authentication authentication, RedirectAttributes redirectAttributes) {
+        String username = authentication.getName();
+        User user = userRepository.findByEmail(username).orElse(null);
+
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "사용자를 찾을 수 없습니다.");
+            return "redirect:/error";
+        }
+
+        try {
+            String imageUrl = s3Service.uploadFile(file);
+            user.setProfileImageUrl(imageUrl);
+            userRepository.save(user);
+        } catch (IOException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "이미지 업로드 중 오류가 발생했습니다.");
+            return "redirect:/error";
+        }
+
+        return "redirect:/my-page";
+    }
+
     @GetMapping("/my-page")
-    public String myPage(Authentication authentication,
-                         Model model,
-                         @RequestParam(name = "sort", required = false) String sortCriteria) {
-
-        String username = authentication.getName(); // 현재 인증된 사용자의 이메일을 가져옴
-
-        // 사용자 정보 조회
+    public String myPage(Authentication authentication, Model model, @RequestParam(name = "sort", required = false) String sortCriteria) {
+        String username = authentication.getName();
         User user = userRepository.findByEmail(username).orElse(null);
 
         if (user != null) {
@@ -179,7 +188,7 @@ public class MemberController {
     private int calculateDaysSinceLastUpload(List<Story> userStories) {
         // 만약 userStories가 비어 있다면
         if (userStories.isEmpty()) {
-            return 0; // 혹은 다른 의미있는 값을 리턴
+            return 0;
         }
 
         // 최근 업로드 시간을 가져오기 위해 리스트에서 마지막 요소를 선택
@@ -187,7 +196,7 @@ public class MemberController {
 
         // 만약 mostRecentUploadTime이 null이라면
         if (mostRecentUploadTime == null) {
-            return 0; // 혹은 다른 의미있는 값을 리턴
+            return 0;
         }
 
         // 현재 날짜

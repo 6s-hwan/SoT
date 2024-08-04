@@ -1,231 +1,242 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/mypage.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav_logo">
-        <div id="nav_left">
-          <div id="nav_logo1">
-            <a href="./test">
-              <img
-                th:src="@{/images/MainLogo.png}"
-                alt="로고"
-                width="200px"
-                height="46px"
-            /></a>
-          </div>
-          <div class="nav_menu">
-            <ul class="navigation">
-              <li><a href="./test" class="b">홈</a></li>
-              <li><a href="" class="c">지역</a></li>
-              <li><a href="" class="c">북마크</a></li>
-            </ul>
-          </div>
-
-          <form action="/search" method="get" id="search">
-            <input type="text" name="query" class="search" />
-            <img
-              th:src="@{/images/search.png}"
-              alt="돋보기"
-              width="30px"
-              height="30px"
-            />
-          </form>
-        </div>
-        <div id="nav_right">
-          <input type="button" id="uploadbtn" />
-          <input
-            type="button"
-            class="imagebtn"
-            onclick="location.href='my-page' "
-          />
-          <input type="checkbox" id="join" />
-          <label for="join">로그인</label>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/mypage.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav_logo">
+    <div id="nav_left">
+      <div id="nav_logo1">
+        <a href="./test">
+          <img
+                  th:src="@{/images/MainLogo.png}"
+                  alt="로고"
+                  width="200px"
+                  height="46px"
+          /></a>
       </div>
-    </nav>
+      <div class="nav_menu">
+        <ul class="navigation">
+          <li><a href="./test" class="b">홈</a></li>
+          <li><a href="" class="c">지역</a></li>
+          <li><a href="" class="c">북마크</a></li>
+        </ul>
+      </div>
 
-    <!-- 마이페이지 시작 -->
-    <div id="mypagefull">
-      <div id="mypage">
-        <div id="mypageTitle">
-          <p id="mypage_title">마이페이지</p>
-        </div>
+      <form action="/search" method="get" id="search">
+        <input type="text" name="query" class="search" />
+        <img
+                th:src="@{/images/search.png}"
+                alt="돋보기"
+                width="30px"
+                height="30px"
+        />
+      </form>
+    </div>
+    <div id="nav_right">
+      <input type="button" id="uploadbtn" />
+      <input
+              type="button"
+              class="imagebtn"
+              onclick="location.href='my-page' "
+      />
+      <input type="checkbox" id="join" />
+      <label for="join">로그인</label>
+    </div>
+  </div>
+</nav>
 
-        <div id="mypageprofilefull">
-          <div id="mypageprofile">
-            <img
-              id="profileImage"
-              th:src="@{/images/mypageprofile.png}"
-              alt="프로필"
-              width="200px"
-              height="200px"
-              style="border: 0px; display: block"
-            />
-            <label for="changeprofile"
-              ><img
-                src="../static/images/changeprofile.png"
+<!-- 마이페이지 시작 -->
+<div id="mypagefull">
+  <div id="mypage">
+    <div id="mypageTitle">
+      <p id="mypage_title">마이페이지</p>
+    </div>
+
+    <div id="mypageprofilefull">
+      <div id="mypageprofile">
+        <img
+                id="profileImage"
+                th:src="${user.profileImageUrl}"
+                alt="프로필"
+                width="200px"
+                height="200px"
+                style="border: 0px; display: block"
+        />
+        <label for="changeprofile"
+        ><img
+                th:src="@{/images/changeprofile.png}"
                 id="changeprofileimg"
                 alt="프로필 편집버튼"
                 width="38px"
                 height="38px"
                 style="cursor: pointer"
-            /></label>
-            <input
-              type="file"
-              class="changeprofile"
-              id="changeprofile"
-              width="200px"
-              height="200px"
-              style="
+        /></label>
+        <input
+                type="file"
+                class="changeprofile"
+                id="changeprofile"
+                width="200px"
+                height="200px"
+                style="
                 border: 0px;
                 display: none;
                 border-radius: 14px;
                 border: 3px solid #fff;
               "
-              accept="image/*"
-              onchange="changeProfileImage(this)"
-            />
+                accept="image/*"
+                onchange="uploadProfileImage(this)"
+        />
+      </div>
+      <div id="mypagedetail">
+        <div id="mypagedetail_1">
+          <div id="mypageusername">
+            <p id="username" th:text="${user.username}">Username</p>
           </div>
-          <div id="mypagedetail">
-            <div id="mypagedetail_1">
-              <div id="mypageusername">
-                <p id="username" th:text="${user.username}">Username</p>
-              </div>
-              <div id="mypagefollower">
-                <p id="mypagefollowertext" th:text="${followCount}">0</p>
-                <p id="mypagefollowertext1">명의 팔로워</p>
-              </div>
-            </div>
-            <div id="mypagedetail_2">
-              <!-- 스토리 수 -->
-              <p id="mypagedetail_2name">스토리&nbsp</p>
-              <p id="mypagedetail_2number" th:text="${totalStories}">0</p>
-              <!-- 좋아요 수 -->
-              <p id="mypagedetail_2name">좋아요&nbsp</p>
-              <p id="mypagedetail_2number" th:text="${totalLikes}">0</p>
-              <!-- 조회수 수 -->
-              <p id="mypagedetail_2name">조회수&nbsp</p>
-              <p id="mypagedetail_2number" th:text="${totalViews}">0</p>
-            </div>
-            <div id="mypagedetail_3">
-              <div id="majortheme"><p id="mypagethemename">주요 테마</p></div>
-              <div id="mypagetag">
-                <p id="mypagetagname" th:text="'#'+${topTheme}">#자연</p>
-              </div>
-              <div id="mypagetag">
-                <p id="mypagetagname" th:text="'#'+${secondTheme}">#자연</p>
-              </div>
-            </div>
-            <div id="mypagedetail_4">
-              <p id="newestupload">최근 업로드</p>
-              <p
-                id="newestuploaddate"
-                th:text="${daysSinceLastUpload} + '일전'"
-              >
-                -
-              </p>
-            </div>
+          <div id="mypagefollower">
+            <p id="mypagefollowertext" th:text="${followCount}">0</p>
+            <p id="mypagefollowertext1">명의 팔로워</p>
           </div>
         </div>
-        <div id="mypage_select">
-          <form>
-            <select
-              name="story_select"
-              id="story_select"
-              onchange="sortStories()"
-            >
-              <option value="likes" class="recom_select">추천순</option>
-              <option value="recent" class="newest_select">최신순</option>
-              <option value="views" class="inquiry_select">조회순</option>
-            </select>
-          </form>
+        <div id="mypagedetail_2">
+          <!-- 스토리 수 -->
+          <p id="mypagedetail_2name">스토리&nbsp</p>
+          <p id="mypagedetail_2number" th:text="${totalStories}">0</p>
+          <!-- 좋아요 수 -->
+          <p id="mypagedetail_2name">좋아요&nbsp</p>
+          <p id="mypagedetail_2number" th:text="${totalLikes}">0</p>
+          <!-- 조회수 수 -->
+          <p id="mypagedetail_2name">조회수&nbsp</p>
+          <p id="mypagedetail_2number" th:text="${totalViews}">0</p>
         </div>
-
-        <div id="back">
-          <div class="stories" th:each="story, iterStat : ${stories}">
-            <div class="story">
-              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                <img
-                  id="storyimage"
-                  th:src="${story.image_url}"
-                  alt="Story Image"
-                />
-                <div id="storyTitlefull">
-                  <p id="storyTitle" th:text="${story.title}">Story Title</p>
-                  <div class="right-side">
-                    <img
-                      th:src="@{images/seeimg.png}"
-                      class="seeimage"
-                      width="16px"
-                      height="16px"
-                    />
-                    <p class="imagetext" th:text="${story.viewCount}">0</p>
-                    <img
-                      th:src="@{/images/likeimg.png}"
-                      class="likeimage"
-                      width="14px"
-                      height="14px"
-                    />
-                    <p class="imagetext" th:text="${story.likes.size()}">0</p>
-                  </div>
-                </div>
-              </a>
-            </div>
+        <div id="mypagedetail_3">
+          <div id="majortheme"><p id="mypagethemename">주요 테마</p></div>
+          <div id="mypagetag">
+            <p id="mypagetagname" th:text="'#'+${topTheme}">#자연</p>
           </div>
+          <div id="mypagetag">
+            <p id="mypagetagname" th:text="'#'+${secondTheme}">#자연</p>
+          </div>
+        </div>
+        <div id="mypagedetail_4">
+          <p id="newestupload">최근 업로드</p>
+          <p
+                  id="newestuploaddate"
+                  th:text="${daysSinceLastUpload} + '일전'"
+          >
+            -
+          </p>
         </div>
       </div>
     </div>
+    <div id="mypage_select">
+      <form>
+        <select
+                name="story_select"
+                id="story_select"
+                onchange="sortStories()"
+        >
+          <option value="likes" class="recom_select">추천순</option>
+          <option value="recent" class="newest_select">최신순</option>
+          <option value="views" class="inquiry_select">조회순</option>
+        </select>
+      </form>
+    </div>
 
-    <script>
-      function sortStories() {
-        var select = document.getElementById("story_select");
-        var sort = select.value;
-        window.location.href = "/my-page?sort=" + sort;
-      }
+    <div id="back">
+      <div class="stories" th:each="story, iterStat : ${stories}">
+        <div class="story">
+          <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+            <img
+                    id="storyimage"
+                    th:src="${story.image_url}"
+                    alt="Story Image"
+            />
+            <div id="storyTitlefull">
+              <p id="storyTitle" th:text="${story.title}">Story Title</p>
+              <div class="right-side">
+                <img
+                        th:src="@{images/seeimg.png}"
+                        class="seeimage"
+                        width="16px"
+                        height="16px"
+                />
+                <p class="imagetext" th:text="${story.viewCount}">0</p>
+                <img
+                        th:src="@{/images/likeimg.png}"
+                        class="likeimage"
+                        width="14px"
+                        height="14px"
+                />
+                <p class="imagetext" th:text="${story.likes.size()}">0</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-      // 페이지 로드 시 현재 선택된 정렬 기준을 유지
-      document.addEventListener("DOMContentLoaded", function () {
-        var params = new URLSearchParams(window.location.search);
-        var sort = params.get("sort");
-        if (sort) {
-          document.getElementById("story_select").value = sort;
-        }
-      });
+<script>
+  function sortStories() {
+    var select = document.getElementById("story_select");
+    var sort = select.value;
+    window.location.href = "/my-page?sort=" + sort;
+  }
 
-      // 프로필 편집 버튼
-      function changeProfileImage(input) {
-        if (input.files && input.files[0]) {
-          var reader = new FileReader();
+  // 페이지 로드 시 현재 선택된 정렬 기준을 유지
+  document.addEventListener("DOMContentLoaded", function () {
+    var params = new URLSearchParams(window.location.search);
+    var sort = params.get("sort");
+    if (sort) {
+      document.getElementById("story_select").value = sort;
+    }
+  });
 
-          reader.onload = function (e) {
-            var profileImage = document.getElementById("profileImage");
-            profileImage.src = e.target.result;
-            profileImage.style.background = `url(${e.target.result}) lightgray 50% / cover no-repeat`;
-          };
+  // 프로필 편집 버튼
+  function uploadProfileImage(input) {
+    if (input.files && input.files[0]) {
+      var formData = new FormData();
+      formData.append("file", input.files[0]);
 
-          reader.readAsDataURL(input.files[0]);
-        }
-      }
-      document.getElementById("changeprofileimg").onclick = function () {
-        document.getElementById("changeprofile").click();
-      };
-    </script>
-  </body>
+      fetch("/update-profile-image", {
+        method: "POST",
+        body: formData
+      })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error("프로필 이미지 업로드 중 오류가 발생했습니다.");
+                }
+                return response.text();
+              })
+              .then(data => {
+                window.location.reload();
+              })
+              .catch(error => {
+                console.error("Error:", error);
+              });
+    }
+  }
+
+  document.getElementById("changeprofileimg").onclick = function () {
+    document.getElementById("changeprofile").click();
+  };
+</script>
+</body>
 </html>

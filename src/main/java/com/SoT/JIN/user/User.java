@@ -21,6 +21,7 @@ public class User {
     private String gender;
     private String phoneNumber;
     private String verificationCode;
+    private String profileImageUrl; // 추가: 프로필 이미지 URL
 
     @ManyToMany
     @JoinTable(

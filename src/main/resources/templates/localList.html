@@ -1,61 +1,99 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" th:href="@{/css/localList.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
-  <title>SoT</title>
-</head>
-<body>
-<nav class="navbar">
-  <div class="nav_logo">
-    <div id="nav_left">
-      <div id="nav_logo1">
-        <a th:href="@{/test}">
-          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px" />
-        </a>
-      </div>
-      <div class="nav_menu">
-        <ul class="navigation">
-          <li><a th:href="@{/test}" class="b">홈</a></li>
-          <li><a href="" class="c">지역</a></li>
-          <li><a href="" class="c">북마크</a></li>
-        </ul>
-      </div>
-      <form action="/search" method="get" id="search">
-        <input type="text" name="query" class="search" />
-        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px" />
-      </form>
-    </div>
-    <div id="nav_right">
-      <input type="button" id="uploadbtn" />
-      <input type="button" class="imagebtn" onclick="location.href='my-page' " />
-      <input type="checkbox" id="join" />
-      <label for="join">로그인</label>
-    </div>
-  </div>
-</nav>
-
-<!-- 지역 리스트 시작 -->
-<div id="localListfull">
-  <div id="localList">
-    <div id="localListTitle">
-      <img th:src="@{/images/localicon.png}" alt="지역 아이콘" class="localListicon" width="53px" height="51px" />
-      <p class="localListTitle1">지역별 스토리</p>
-    </div>
-
-    <div id="localback" th:each="entry : ${groupedStories.entrySet()}">
-      <div id="localbox">
-        <div id="localText">
-          <div id="localTitlegroup">
-            <p id="localTitle" th:text="${#strings.substringAfter(entry.key, ' ')}">지역 이름</p>
-            <p id="localSubTitle" th:text="${#strings.substringBefore(entry.key, ' ')}">서울특별시</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/localList.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav_logo">
+        <div id="nav_left">
+          <div id="nav_logo1">
+            <a th:href="@{/test}">
+              <img
+                th:src="@{/images/MainLogo.png}"
+                alt="로고"
+                width="200px"
+                height="46px"
+              />
+            </a>
           </div>
+          <div class="nav_menu">
+            <ul class="navigation">
+              <li><a th:href="@{/test}" class="b">홈</a></li>
+              <li><a href="" class="c">지역</a></li>
+              <li><a href="" class="c">북마크</a></li>
+            </ul>
+          </div>
+          <form action="/search" method="get" id="search">
+            <input type="text" name="query" class="search" />
+            <img
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+            />
+          </form>
+        </div>
+        <div id="nav_right">
+          <input type="button" id="uploadbtn" />
+          <input
+            type="button"
+            class="imagebtn"
+            onclick="location.href='my-page' "
+          />
+          <input type="checkbox" id="join" />
+          <label for="join">로그인</label>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 지역 리스트 시작 -->
+    <div id="localListfull">
+      <div id="localList">
+        <div id="localListTitle">
           <img
+            th:src="@{/images/localicon.png}"
+            alt="지역 아이콘"
+            class="localListicon"
+            width="53px"
+            height="51px"
+          />
+          <p class="localListTitle1">지역별 스토리</p>
+        </div>
+
+        <div id="back">
+          <div id="localback" th:each="entry : ${groupedStories.entrySet()}">
+            <div id="localbox">
+              <div id="localText">
+                <div id="localTitlegroup">
+                  <p
+                    id="localTitle"
+                    th:text="${#strings.substringAfter(entry.key, ' ')}"
+                  >
+                    지역 이름
+                  </p>
+                  <p
+                    id="localSubTitle"
+                    th:text="${#strings.substringBefore(entry.key, ' ')}"
+                  >
+                    서울특별시
+                  </p>
+                </div>
+                <img
                   th:src="@{/images/localarrow.png}"
                   alt="더보기 화살표"
                   id="localarrow"
@@ -63,16 +101,22 @@
                   height="24px"
                   style="cursor: pointer"
                   onclick="location.href='a.html'"
-          />
-        </div>
-        <div id="localImagegroup">
-          <div th:each="story : ${entry.value}" class="localImage">
-            <img th:src="@{${story.image_url}}" alt="지역이미지" width="175px" height="128px" />
+                />
+              </div>
+              <div id="localImagegroup">
+                <div th:each="story : ${entry.value}" class="localImage">
+                  <img
+                    th:src="@{${story.image_url}}"
+                    alt="지역이미지"
+                    width="175px"
+                    height="128px"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

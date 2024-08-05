@@ -1,74 +1,115 @@
-//로그인 성공시 로그인 버튼이 프로필 사진으로 바뀌기
 document.addEventListener("DOMContentLoaded", function () {
   const checkbox = document.getElementById("join");
-  const loginlabel = checkbox.nextElementSibling;
+  const loginLabel = document.getElementById("loginLabel");
+  const uploadbtn = document.getElementById("uploadbtn");
+  const profilebtn = document.querySelector(".imagebtn");
+  const logoutButton = document.querySelector("form[action='/logout'] button");
+  const loginPopup = document.getElementById("bg_gray");
 
-  // 로그인 로직 예시: 로그인 성공 시 checkbox 체크
-  function login() {
+  // 디버깅 메시지 추가
+  console.log("DOM fully loaded and parsed");
+
+  // 로그인 버튼 클릭 시 팝업 표시
+  loginLabel.addEventListener("click", function () {
+    console.log("Login label clicked");
+    loginPopup.style.display = "block";
+    document.body.style.overflow = "hidden"; // 스크롤 비활성화
+  });
+
+  // 로그인 성공 시 호출할 함수
+  function login(profileImageUrl) {
+    console.log("Login function called with profileImageUrl:", profileImageUrl);
     checkbox.checked = true;
-    // 크기 변경
-    loginlabel.style.width = "36px";
-    loginlabel.style.height = "36px";
+    loginLabel.style.width = "36px";
+    loginLabel.style.height = "36px";
+    loginLabel.style.padding = "0";
+    loginLabel.style.fontSize = "0";
+    loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
+    loginLabel.style.backgroundSize = "cover";
+    loginLabel.style.backgroundPosition = "center";
+
+    uploadbtn.style.display = "block";
+    profilebtn.style.display = "block";
   }
 
-  // 예시로 로그인 함수를 호출 (실제 로그인 로직에 따라 호출)
-  login();
+  // 로그인 상태를 확인하고 프로필 이미지를 가져오는 함수 (예시)
+  function checkLoginStatus() {
+    fetch("/api/user/profile") // 서버에서 로그인 상태와 프로필 이미지를 가져오는 API 엔드포인트
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("checkLoginStatus data:", data);
+          if (data.isLoggedIn) {
+            login(data.profileImageUrl);
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+  }
+
+  // 페이지 로드 시 로그인 상태 확인
+  checkLoginStatus();
 
   // checkbox 상태 변경 시 스타일 업데이트
   checkbox.addEventListener("change", function () {
     if (checkbox.checked) {
-      loginlabel.style.width = "36px";
-      loginlabel.style.height = "36px";
-      loginlabel.style.padding = "0";
-      loginlabel.style.fontSize = "0";
+      loginLabel.style.width = "36px";
+      loginLabel.style.height = "36px";
+      loginLabel.style.padding = "0";
+      loginLabel.style.fontSize = "0";
     } else {
-      loginlabel.style.width = "109px";
-      loginlabel.style.height = "45px";
-      loginlabel.style.padding = "10px 29px";
-      loginlabel.style.fontSize = "18px";
+      loginLabel.style.width = "109px";
+      loginLabel.style.height = "45px";
+      loginLabel.style.padding = "10px 29px";
+      loginLabel.style.fontSize = "18px";
     }
   });
-});
-// 초기에는 로그인 창을 보여주고 나머지 창을 숨깁니다.
-document.addEventListener("DOMContentLoaded", function () {
-  var loginPopup = document.getElementById("login_pop_up");
-  var joinPopup = document.getElementById("join_pop_up");
-  var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
-  var PrivacyPopup = document.getElementById("Privacy_pop_up");
 
-  loginPopup.style.display = "block"; // 로그인 팝업 보이기
-  joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
-  TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-  PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
-});
-
-// 로그인 창 닫는 js 코드
-var loginBtn = document.getElementById("join");
-var loginPopup = document.getElementById("bg_gray");
-document.addEventListener("DOMContentLoaded", function () {
-  loginBtn.addEventListener("click", function () {
-    loginPopup.style.display = "block";
-    document.body.style.overflow = ""; // 스크롤 허용
+  // 로그아웃 버튼 클릭 시 로그아웃 처리
+  logoutButton.addEventListener("click", function (event) {
+    event.preventDefault(); // 기본 제출 동작 방지
+    fetch("/logout", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }).then((response) => {
+      if (response.ok) {
+        // 로그아웃 성공 시 동작
+        location.href = "/my-page"; // 로그아웃 성공 후 이동할 페이지
+      } else {
+        alert("로그아웃 완료!");
+        location.href = "/test";
+      }
+    });
   });
 });
 
 // 로그인 창 입력값 확인 후 로그인 버튼 활성화
-function submitForm() {
+function submitForm(event) {
+  event.preventDefault(); // 폼 기본 제출 동작 방지
   // 입력값 가져오기
   var emailInput = document.getElementById("email_input");
   var pwInput = document.getElementById("pw_input");
+
+  // 디버깅 메시지 추가
+  console.log("submitForm called");
 
   // 입력값이 모두 채워져 있는지 확인
   if (emailInput.value.trim() !== "" && pwInput.value.trim() !== "") {
     // 로그인 처리 등의 작업 수행 후, 창 닫기
     document.getElementById("bg_gray").style.display = "none";
+    document.body.style.overflow = ""; // 스크롤 활성화
 
     // 입력 필드 초기화
     emailInput.value = "";
     pwInput.value = "";
-    document.getElementById("checkbtn").checked = false;
+    document.getElementById("join").checked = false;
+
+    // 로그인 성공 시 프로필 이미지로 대체
+    checkLoginStatus();
   }
 }
+
 
 //창 여는 이벤트
 document.addEventListener("DOMContentLoaded", function () {

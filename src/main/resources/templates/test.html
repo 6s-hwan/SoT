@@ -1,235 +1,232 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/Home.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav_logo">
-        <div id="nav_left">
-          <div id="nav_logo1">
-            <a href="./test">
-              <img
-                th:src="@{/images/MainLogo.png}"
-                alt="로고"
-                width="200px"
-                height="46px"
-            /></a>
-          </div>
-          <div class="nav_menu">
-            <ul class="navigation">
-              <li><a href="./test" class="b">홈</a></li>
-              <li><a href="" class="c">지역</a></li>
-              <li><a href="" class="c">북마크</a></li>
-            </ul>
-          </div>
-
-          <form action="/search" method="get" id="search">
-            <input type="text" name="query" class="search" />
-            <img
-              th:src="@{/images/search.png}"
-              alt="돋보기"
-              width="30px"
-              height="30px"
-            />
-          </form>
-        </div>
-        <div id="nav_right">
-          <input type="button" id="uploadbtn" />
-          <input
-            type="button"
-            class="imagebtn"
-            onclick="location.href='my-page' "
-          />
-          <input type="checkbox" id="join" />
-          <label for="join">로그인</label>
-          <form action="/logout" method="post" style="display:inline;">
-            <button type="submit">로그아웃</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <!-- 업로드 팝업창 시작 -->
-    <div id="bg_gray1">
-      <div id="Upload_pop_up">
-        <div id="StoryUploadTitle">
-          <div id="Upload_text">스토리 업로드</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/Home.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav_logo">
+    <div id="nav_left">
+      <div id="nav_logo1">
+        <a href="./test">
           <img
-            id="uploadclose"
-            th:src="@{/images/X.png}"
-            alt="X"
-            width="28px"
-            height="28px"
-            onclick="StoryUploadPopup.style.display='none'"
-          />
-        </div>
-        <form
-          id="uploadForm"
-          action="/upload"
-          method="POST"
-          onsubmit="return uploadPost(event)"
-        >
-          <!-- 사진 업로드 -->
-          <div id="photoTitle">사진</div>
-          <div
-            id="upload-placeholder"
-            class="upload-placeholder"
-            style="display: block"
-            onclick="document.getElementById('image').click()"
-          >
-            <div class="UploadBlank" style="display: block"></div>
-            <img
-              id="uploadimg"
-              th:src="@{/images/uploadimg.png}"
-              alt="이미지 업로드"
-              style="display: block"
-              width="152px"
-              height="152px"
-            />
-            <p style="display: block">당신만의 스토리를 업로드 해보세요!</p>
-            <label className="input-file-button" for="input-file"
-              >불러오기</label
-            >
-            <input
-              type="file"
-              class="input-file"
-              id="input-file"
-              style="display: none"
-              onchange="getURL(this)"
-            />
-            <input type="hidden" id="imageUrl" name="image_url" />
-            <!-- // 기존의 input file 태그 숨김 -->
-            <img id="uploadedImage" src="" />
-          </div>
-          <!-- 제목 -->
-          <div class="form-field">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title" />
-          </div>
-          <!-- 날짜 -->
-          <div class="form-field">
-            <div id="upload-calender">날짜</div>
-            <div class="info__upload" id="info__upload">
-              <select class="box" id="upload-year" name="date_year">
-                <option disabled selected>년</option>
-              </select>
-              <select class="box" id="upload-month" name="date_month">
-                <option disabled selected>월</option>
-              </select>
-              <select class="box" id="upload-day" name="date_day">
-                <option disabled selected>일</option>
-              </select>
-            </div>
-            <input type="hidden" id="date_input" name="date" value="" />
-          </div>
-          <!-- 위치 -->
-          <div class="form-field">
-            <label for="location">위치</label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              placeholder="예) 서울 청계천, 부산 해운대, 설악산 신선대 "
-            />
-          </div>
-          <!-- 태그 -->
-          <div class="form-field">
-            <div id="tagInputTitle_span">
-              <label for="tagInput" id="tagInputTitle">태그</label>
-            </div>
-            <div class="tag-input-wrapper">
-              <input type="text" id="tagInput" />
-              <button type="button" onclick="addTag()">추가</button>
-            </div>
-            <div class="tag-list" id="tagList"></div>
-            <!-- 추가: 각 태그를 DB에 저장할 hidden input -->
-            <input type="hidden" id="tags" name="tags" />
-          </div>
-          <!-- 상세설명 -->
-          <div class="form-field">
-            <label for="description">상세설명</label>
-            <textarea
-              id="description"
-              name="description"
-              rows="4"
-              placeholder="사진에 대해 다른 이용자들에게 간단한 설명을 해주세요!"
-            ></textarea>
-          </div>
-          <button type="submit" class="upload-button">업로드</button>
-        </form>
+                  th:src="@{/images/MainLogo.png}"
+                  alt="로고"
+                  width="200px"
+                  height="46px"
+          /></a>
       </div>
+      <div class="nav_menu">
+        <ul class="navigation">
+          <li><a href="./test" class="b">홈</a></li>
+          <li><a href="" class="c">지역</a></li>
+          <li><a href="" class="c">북마크</a></li>
+        </ul>
+      </div>
+
+      <form action="/search" method="get" id="search">
+        <input type="text" name="query" class="search" />
+        <img
+                th:src="@{/images/search.png}"
+                alt="돋보기"
+                width="30px"
+                height="30px"
+        />
+      </form>
     </div>
-    <!-- 업로드 팝업창 끝 -->
-
-    <!-- 로그인, 회원가입 팝업창 시작-->
-    <div id="bg_gray">
-      <!--로그인 팝업창 -->
-      <div id="login_pop_up">
-        <div id="first">
-          <div id="logo">
-            <img
-              th:src="@{/images/Logo.png}"
-              alt="Logo"
-              width="238px"
-              height="55px"
-            />
-          </div>
-
-          <div id="middle"></div>
-
-          <div id="close">
-            <img
+    <div id="nav_right">
+      <input type="button" id="uploadbtn" />
+      <input
+              type="button"
+              class="imagebtn"
+              onclick="location.href='my-page' "
+      />
+      <input type="checkbox" id="join" style="display: none;" />
+      <label for="join" id="loginLabel">로그인</label>
+      <form action="/logout" method="post" style="display:inline;">
+        <button type="submit">로그아웃</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- 업로드 팝업창 시작 -->
+<div id="bg_gray1" style="display: none;">
+  <div id="Upload_pop_up">
+    <div id="StoryUploadTitle">
+      <div id="Upload_text">스토리 업로드</div>
+      <img
+              id="uploadclose"
               th:src="@{/images/X.png}"
               alt="X"
               width="28px"
               height="28px"
-              onclick="loginPopup.style.display='none'"
-            />
-          </div>
+              onclick="document.getElementById('bg_gray1').style.display='none'"
+      />
+    </div>
+    <form
+            id="uploadForm"
+            action="/upload"
+            method="POST"
+            onsubmit="return uploadPost(event)"
+    >
+      <!-- 사진 업로드 -->
+      <div id="photoTitle">사진</div>
+      <div
+              id="upload-placeholder"
+              class="upload-placeholder"
+              style="display: block"
+              onclick="document.getElementById('input-file').click()"
+      >
+        <div class="UploadBlank" style="display: block"></div>
+        <img
+                id="uploadimg"
+                th:src="@{/images/uploadimg.png}"
+                alt="이미지 업로드"
+                style="display: block"
+                width="152px"
+                height="152px"
+        />
+        <p style="display: block">당신만의 스토리를 업로드 해보세요!</p>
+        <label class="input-file-button" for="input-file">불러오기</label>
+        <input
+                type="file"
+                class="input-file"
+                id="input-file"
+                style="display: none"
+                onchange="getURL(this)"
+        />
+        <input type="hidden" id="imageUrl" name="image_url" />
+        <!-- // 기존의 input file 태그 숨김 -->
+        <img id="uploadedImage" src="" />
+      </div>
+      <!-- 제목 -->
+      <div class="form-field">
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title" />
+      </div>
+      <!-- 날짜 -->
+      <div class="form-field">
+        <div id="upload-calender">날짜</div>
+        <div class="info__upload" id="info__upload">
+          <select class="box" id="upload-year" name="date_year">
+            <option disabled selected>년</option>
+          </select>
+          <select class="box" id="upload-month" name="date_month">
+            <option disabled selected>월</option>
+          </select>
+          <select class="box" id="upload-day" name="date_day">
+            <option disabled selected>일</option>
+          </select>
         </div>
-        <hr />
-
-        <div id="text">로그인 후 당신의 스토리를 포스팅해보세요!</div>
-
-        <form id="loginForm" action="/login" method="POST">
-          <div class="input1">
-            <label for="email_input">
-              <input
+        <input type="hidden" id="date_input" name="date" value="" />
+      </div>
+      <!-- 위치 -->
+      <div class="form-field">
+        <label for="location">위치</label>
+        <input
                 type="text"
-                name="username"
-                id="email_input"
-                placeholder="이메일"
-              />
-            </label>
-          </div>
+                id="location"
+                name="location"
+                placeholder="예) 서울 청계천, 부산 해운대, 설악산 신선대 "
+        />
+      </div>
+      <!-- 태그 -->
+      <div class="form-field">
+        <div id="tagInputTitle_span">
+          <label for="tagInput" id="tagInputTitle">태그</label>
+        </div>
+        <div class="tag-input-wrapper">
+          <input type="text" id="tagInput" />
+          <button type="button" onclick="addTag()">추가</button>
+        </div>
+        <div class="tag-list" id="tagList"></div>
+        <!-- 추가: 각 태그를 DB에 저장할 hidden input -->
+        <input type="hidden" id="tags" name="tags" />
+      </div>
+      <!-- 상세설명 -->
+      <div class="form-field">
+        <label for="description">상세설명</label>
+        <textarea
+                id="description"
+                name="description"
+                rows="4"
+                placeholder="사진에 대해 다른 이용자들에게 간단한 설명을 해주세요!"
+        ></textarea>
+      </div>
+      <button type="submit" class="upload-button">업로드</button>
+    </form>
+  </div>
+</div>
+<!-- 업로드 팝업창 끝 -->
 
-          <div class="input2">
-            <label for="pw_input">
-              <input
-                type="password"
-                name="password"
-                id="pw_input"
-                placeholder="비밀번호"
-              />
-            </label>
-          </div>
+<!-- 로그인, 회원가입 팝업창 시작-->
+<div id="bg_gray" style="display: none;">
+  <!--로그인 팝업창 -->
+  <div id="login_pop_up">
+    <div id="first">
+      <div id="logo">
+        <img
+                th:src="@{/images/Logo.png}"
+                alt="Logo"
+                width="238px"
+                height="55px"
+        />
+      </div>
 
-          <!-- 로그인 버튼 -->
+      <div id="middle"></div>
 
+      <div id="close">
+        <img
+                th:src="@{/images/X.png}"
+                alt="X"
+                width="28px"
+                height="28px"
+                onclick="document.getElementById('bg_gray').style.display='none'"
+        />
+      </div>
+    </div>
+    <hr />
+
+    <div id="text">로그인 후 당신의 스토리를 포스팅해보세요!</div>
+
+    <form id="loginForm" action="/login" method="POST">
+      <div class="input1">
+        <label for="email_input">
+          <input
+                  type="text"
+                  name="username"
+                  id="email_input"
+                  placeholder="이메일"
+          />
+        </label>
+      </div>
+
+      <div class="input2">
+        <label for="pw_input">
+          <input
+                  type="password"
+                  name="password"
+                  id="pw_input"
+                  placeholder="비밀번호"
+          />
+        </label>
+      </div>
+
+      <!-- 로그인 버튼 -->
           <!-- 자동로그인과 회원가입구역 -->
           <div class="text2">
             <input type="checkbox" class="orgin" id="checkbtn" />

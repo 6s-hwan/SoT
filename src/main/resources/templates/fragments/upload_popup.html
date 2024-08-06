@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="bg_gray1" style="display: none;" th:fragment="uploadPopup">
+    <div id="Upload_pop_up">
+        <div id="StoryUploadTitle">
+            <div id="Upload_text">스토리 업로드</div>
+            <img id="uploadclose" th:src="@{/images/X.png}" alt="X" width="28px" height="28px"
+                 onclick="document.getElementById('bg_gray1').style.display='none'"/>
+        </div>
+        <form id="uploadForm" action="/upload" method="POST" onsubmit="return uploadPost(event)">
+            <!-- 사진 업로드 -->
+            <div id="photoTitle">사진</div>
+            <div id="upload-placeholder" class="upload-placeholder" style="display: block"
+                 onclick="document.getElementById('input-file').click()">
+                <div class="UploadBlank" style="display: block"></div>
+                <img id="uploadimg" th:src="@{/images/uploadimg.png}" alt="이미지 업로드" style="display: block"
+                     width="152px" height="152px"/>
+                <p style="display: block">당신만의 스토리를 업로드 해보세요!</p>
+                <label class="input-file-button" for="input-file">불러오기</label>
+                <input type="file" class="input-file" id="input-file" style="display: none" onchange="getURL(this)"/>
+                <input type="hidden" id="imageUrl" name="image_url"/>
+                <img id="uploadedImage" src=""/>
+            </div>
+            <!-- 제목 -->
+            <div class="form-field">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title"/>
+            </div>
+            <!-- 날짜 -->
+            <div class="form-field">
+                <div id="upload-calender">날짜</div>
+                <div class="info__upload" id="info__upload">
+                    <select class="box" id="upload-year" name="date_year">
+                        <option disabled selected>년</option>
+                    </select>
+                    <select class="box" id="upload-month" name="date_month">
+                        <option disabled selected>월</option>
+                    </select>
+                    <select class="box" id="upload-day" name="date_day">
+                        <option disabled selected>일</option>
+                    </select>
+                </div>
+                <input type="hidden" id="date_input" name="date" value=""/>
+            </div>
+            <!-- 위치 -->
+            <div class="form-field">
+                <label for="location">위치</label>
+                <input type="text" id="location" name="location" placeholder="예) 서울 청계천, 부산 해운대, 설악산 신선대 "/>
+            </div>
+            <!-- 태그 -->
+            <div class="form-field">
+                <div id="tagInputTitle_span">
+                    <label for="tagInput" id="tagInputTitle">태그</label>
+                </div>
+                <div class="tag-input-wrapper">
+                    <input type="text" id="tagInput"/>
+                    <button type="button" onclick="addTag()">추가</button>
+                </div>
+                <div class="tag-list" id="tagList"></div>
+                <input type="hidden" id="tags" name="tags"/>
+            </div>
+            <!-- 상세설명 -->
+            <div class="form-field">
+                <label for="description">상세설명</label>
+                <textarea id="description" name="description" rows="4"
+                          placeholder="사진에 대해 다른 이용자들에게 간단한 설명을 해주세요!"></textarea>
+            </div>
+            <button type="submit" class="upload-button">업로드</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

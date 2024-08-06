@@ -31,6 +31,7 @@ public class WriterController {
         this.userRepository = userRepository;
         this.storyRepository = storyRepository;
     }
+
     @GetMapping("/writer/{username}")
     public String writerProfile(@PathVariable("username") String username, Model model,
                                 @RequestParam(name = "sort", required = false) String sortCriteria) {
@@ -41,7 +42,13 @@ public class WriterController {
             List<Story> userStories = storyRepository.findByUsername(user.getEmail());
 
             if ("likes".equals(sortCriteria)) {
-                userStories = storyRepository.findByUsernameOrderByLikesDesc(user.getEmail());
+                userStories.sort((s1, s2) -> {
+                    int cmp = Integer.compare(s2.getLikesCount(), s1.getLikesCount());
+                    if (cmp == 0) {
+                        return Integer.compare(s2.getViewCount(), s1.getViewCount());
+                    }
+                    return cmp;
+                });
             } else if ("views".equals(sortCriteria)) {
                 userStories = storyRepository.findByUsernameOrderByViewCountDesc(user.getEmail());
             } else if ("recent".equals(sortCriteria)) {
@@ -124,6 +131,7 @@ public class WriterController {
                 .map(user -> {
                     List<Story> userStories = storyRepository.findByUsername(user.getEmail());
                     int totalLikes = userStories.stream().mapToInt(Story::getLikesCount).sum();
+                    int totalViews = userStories.stream().mapToInt(Story::getViewCount).sum();
                     int totalStories = userStories.size();
 
                     // 테마 카운트 계산
@@ -155,10 +163,11 @@ public class WriterController {
                         }
                     }
 
-                    return new WriterInfo(user.getUsername(), totalStories, totalLikes, topTheme, secondTheme, 0);
+                    return new WriterInfo(user.getUsername(), user.getProfileImageUrl(), totalStories, totalLikes, totalViews, topTheme, secondTheme, 0);
                 })
                 .sorted(Comparator.comparingInt(WriterInfo::getTotalLikes)
-                        .thenComparingInt(WriterInfo::getTotalStories).reversed())
+                        .thenComparingInt(WriterInfo::getTotalViews).reversed()
+                        .thenComparingInt(WriterInfo::getTotalStories))
                 .limit(72)
                 .collect(Collectors.toList());
 
@@ -173,16 +182,20 @@ public class WriterController {
 
     public class WriterInfo {
         private String username;
+        private String profileImageUrl;
         private int totalStories;
         private int totalLikes;
+        private int totalViews; // 조회수 필드 추가
         private String topTheme;
         private String secondTheme;
         private int rank; // 등수 필드 추가
 
-        public WriterInfo(String username, int totalStories, int totalLikes, String topTheme, String secondTheme, int rank) {
+        public WriterInfo(String username, String profileImageUrl, int totalStories, int totalLikes, int totalViews, String topTheme, String secondTheme, int rank) {
             this.username = username;
+            this.profileImageUrl = profileImageUrl;
             this.totalStories = totalStories;
             this.totalLikes = totalLikes;
+            this.totalViews = totalViews; // 생성자에 조회수 추가
             this.topTheme = topTheme;
             this.secondTheme = secondTheme;
             this.rank = rank; // 생성자에 등수 추가
@@ -192,12 +205,20 @@ public class WriterController {
             return username;
         }
 
+        public String getProfileImageUrl() {
+            return profileImageUrl;
+        }
+
         public int getTotalStories() {
             return totalStories;
         }
 
         public int getTotalLikes() {
             return totalLikes;
+        }
+
+        public int getTotalViews() {
+            return totalViews; // 조회수 getter 추가
         }
 
         public String getTopTheme() {
@@ -211,6 +232,7 @@ public class WriterController {
         public int getRank() {
             return rank;
         }
+
         public void setRank(int rank) {
             this.rank = rank;
         }
@@ -226,17 +248,6 @@ public class WriterController {
         LocalDateTime mostRecentUploadTime = userStories.get(userStories.size() - 1).getUploadTime();
 
         // 만약 mostRecentUploadTime이 null이라면
-        if (mostRecentUploadTime == null) {
-            return 0; // 혹은 다른 의미있는 값을 리턴
-        }
-
-        // 현재 날짜
-        LocalDate currentDate = LocalDate.now();
-
-        // 최근 업로드 일자를 LocalDate로 변환
-        LocalDate uploadDate = mostRecentUploadTime.toLocalDate();
-
-        // 일자 차이 계산
-        return (int) ChronoUnit.DAYS.between(uploadDate, currentDate);
+        return mostRecentUploadTime == null ? 0 : (int) ChronoUnit.DAYS.between(mostRecentUploadTime.toLocalDate(), LocalDate.now());
     }
 }

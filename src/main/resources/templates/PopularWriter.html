@@ -1,143 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/PopularWriter.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav_logo">
-        <div id="nav_left">
-          <div id="nav_logo1">
-            <a href="./test">
-              <img
-                th:src="@{/images/MainLogo.png}"
-                alt="로고"
-                width="200px"
-                height="46px"
-            /></a>
-          </div>
-          <div class="nav_menu">
-            <ul class="navigation">
-              <li><a href="./test" class="b">홈</a></li>
-              <li><a href="" class="c">지역</a></li>
-              <li><a href="" class="c">북마크</a></li>
-            </ul>
-          </div>
-
-          <form action="/search" method="get" id="search">
-            <input type="text" name="query" class="search" />
-            <img
-              th:src="@{/images/search.png}"
-              alt="돋보기"
-              width="30px"
-              height="30px"
-            />
-          </form>
-        </div>
-        <div id="nav_right">
-          <input type="button" id="uploadbtn" />
-          <input
-            type="button"
-            class="imagebtn"
-            onclick="location.href='my-page' "
-          />
-          <input type="checkbox" id="join" />
-          <label for="join">로그인</label>
-        </div>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" th:href="@{/css/PopularWriter.css}"/>
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"/>
+  <title>SoT</title>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav_logo">
+    <div id="nav_left">
+      <div id="nav_logo1">
+        <a href="./test">
+          <img
+                  th:src="@{/images/MainLogo.png}"
+                  alt="로고"
+                  width="200px"
+                  height="46px"
+          /></a>
       </div>
-    </nav>
+      <div class="nav_menu">
+        <ul class="navigation">
+          <li><a href="./test" class="b">홈</a></li>
+          <li><a href="" class="c">지역</a></li>
+          <li><a href="" class="c">북마크</a></li>
+        </ul>
+      </div>
 
-    <!-- 인기작가 목록 시작 -->
-    <div id="PopularWriterfull">
-      <div id="PopularWriter">
-        <div id="PopularWriterTitle">
-          <div id="PopularWritertitle_1">
-            <img
-              th:src="@{/images/popularimg.png}"
-              class="PopularWriterimg"
-              width="90px"
-              height="90px"
-            />
-            <p class="populartitle1">인기 작가들의 스토리를 구경해보세요!</p>
-          </div>
-        </div>
-
-        <!-- 인기작가 프로필 목록 -->
-        <div id="writerboxback">
-          <div th:each="writer : ${popularWriters}" id="writerbox">
-            <div id="profile_A">
-              <a th:href="@{'/writer/' + ${writer.username}}">
-                <img
-                  th:src="@{/images/writerprofile.png}"
-                  alt="profile"
-                  id="profileimg"
-                />
-              </a>
-              <div class="overlay">0</div>
-            </div>
-            <div id="profile_B">
-              <div>
-                <p id="writerName" th:text="${writer.username}">Cosmos7</p>
-              </div>
-              <div id="writerPostLike">
-                <img
-                  th:src="@{/images/writerpost.png}"
-                  alt="post"
-                  id="writerpostimg"
-                  width="18px"
-                  height="18px"
-                />
-                <p id="writerpost" th:text="${writer.totalStories}">451</p>
-                <img
-                  th:src="@{/images/likeimg.png}"
-                  alt="like"
-                  id="writerlikeimg"
-                  width="16px"
-                  height="16px"
-                />
-                <p id="writerlike" th:text="${writer.totalLikes}">36.2k</p>
-              </div>
-              <div id="writerTags">
-                <div id="writertag">
-                  <p id="writertagname" th:text="'#' + ${writer.topTheme}">
-                    #자연
-                  </p>
-                </div>
-                <div id="writertag">
-                  <p id="writertagname" th:text="'#' + ${writer.secondTheme}">
-                    #자연
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 인기작가 더보기 버튼 -->
-        <div>
-          <label for="seasonmorebtn">
-            <button
+      <form action="/search" method="get" id="search">
+        <input type="text" name="query" class="search"/>
+        <img
+                th:src="@{/images/search.png}"
+                alt="돋보기"
+                width="30px"
+                height="30px"
+        />
+      </form>
+    </div>
+    <div id="nav_right">
+      <input type="button" id="uploadbtn"/>
+      <input
               type="button"
-              id="seasonmorebtn"
-              onclick="location.href='';"
-            ></button>
-          </label>
+              class="imagebtn"
+              onclick="location.href='my-page' "
+      />
+      <input type="checkbox" id="join"/>
+      <label for="join">로그인</label>
+    </div>
+  </div>
+</nav>
+
+<!-- 인기작가 목록 시작 -->
+<div id="PopularWriterfull">
+  <div id="PopularWriter">
+    <div id="PopularWriterTitle">
+      <div id="PopularWritertitle_1">
+        <img
+                th:src="@{/images/popularimg.png}"
+                class="PopularWriterimg"
+                width="90px"
+                height="90px"
+        />
+        <p class="populartitle1">인기 작가들의 스토리를 구경해보세요!</p>
+      </div>
+    </div>
+
+    <!-- 인기작가 프로필 목록 -->
+    <div id="writerboxback">
+      <div th:each="writer : ${popularWriters}" id="writerbox">
+        <div id="profile_A">
+          <a th:href="@{'/writer/' + ${writer.username}}">
+            <img
+                    th:src="${writer.profileImageUrl != null ? writer.profileImageUrl : '/images/default-profile.png'}"
+                    alt="profile"
+                    id="profileimg"
+            />
+          </a>
+          <div class="overlay" th:text="${writer.rank}"></div> <!-- 등수 표시 -->
+        </div>
+        <div id="profile_B">
+          <div>
+            <p id="writerName" th:text="${writer.username}">Cosmos7</p>
+          </div>
+          <div id="writerPostLike">
+            <img
+                    th:src="@{/images/writerpost.png}"
+                    alt="post"
+                    id="writerpostimg"
+                    width="18px"
+                    height="18px"
+            />
+            <p id="writerpost" th:text="${writer.totalStories}">451</p>
+            <img
+                    th:src="@{/images/likeimg.png}"
+                    alt="like"
+                    id="writerlikeimg"
+                    width="16px"
+                    height="16px"
+            />
+            <p id="writerlike" th:text="${writer.totalLikes}">36.2k</p>
+          </div>
+          <div id="writerTags">
+            <div id="writertag">
+              <p id="writertagname" th:text="'#' + ${writer.topTheme}">
+                #자연
+              </p>
+            </div>
+            <div id="writertag">
+              <p id="writertagname" th:text="'#' + ${writer.secondTheme}">
+                #자연
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- 인기작가 프로필 목록 끝 -->
-  </body>
+    <!-- 인기작가 더보기 버튼 -->
+    <div>
+      <label for="seasonmorebtn">
+        <button
+                type="button"
+                id="seasonmorebtn"
+                onclick="location.href='';"
+        ></button>
+      </label>
+    </div>
+  </div>
+</div>
+<!-- 인기작가 프로필 목록 끝 -->
+</body>
 </html>

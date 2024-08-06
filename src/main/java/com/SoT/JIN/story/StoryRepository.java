@@ -20,4 +20,5 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
     // 특정 키워드가 포함된 스토리 ID 조회
     @Query("SELECT s.storyId FROM Story s WHERE s.tags LIKE %:keyword% OR s.description LIKE %:keyword% OR s.location LIKE %:keyword% OR s.title LIKE %:keyword%")
     List<Long> findIdsByKeyword(String keyword);
+    List<Story> findByUsernameOrderByLikesDescViewCountDesc(String username); // 새로운 메서드 추가
 }

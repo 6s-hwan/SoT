@@ -15,12 +15,12 @@
     <div id="nav_left">
       <div id="nav_logo1">
         <a th:href="@{/test}">
-          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px"/>
+          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
         </a>
       </div>
       <div class="nav_menu">
         <ul class="navigation">
-          <li><a href="./test" class="b">홈</a></li>
+          <li><a th:href="@{/test}" class="b">홈</a></li>
           <li><a href="" class="c">지역</a></li>
           <li><a href="" class="c">북마크</a></li>
         </ul>
@@ -32,9 +32,7 @@
     </div>
     <div id="nav_right">
       <input type="button" id="uploadbtn">
-      <a th:href="@{/my-page}" class="imagebtn">
-        <input type="button" class="imagebtn" />
-      </a>
+      <a th:href="@{/my-page}" class="imagebtn">My Page</a>
       <input type="checkbox" id="join" style="display: none;">
       <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
       <form action="/logout" method="post" style="display:inline;">
@@ -69,7 +67,7 @@
             <p id="username" th:text="${user.username}">Username</p>
           </div>
           <button id="followBtn" class="follow" onclick="toggleFollow()">
-            <p id="writerpagefollowertext" th:text="${user.followers.size()}">0</p>
+            <p id="writerpagefollowertext" th:text="${user.followers != null ? user.followers.size() : 0}">0</p>
             <p id="centerbar"></p>
             <span id="followText" th:text="${isFollowing ? '팔로잉' : '팔로우'}">팔로우</span>
           </button>
@@ -77,28 +75,28 @@
         <div id="writerpagedetail_2">
           <!-- 스토리 수 -->
           <p id="writerpagedetail_2name">스토리&nbsp</p>
-          <p id="writerpagedetail_2number" th:text="${totalStories}">0</p>
+          <p id="writerpagedetail_2number" th:text="${totalStories != null ? totalStories : 0}">0</p>
           <!-- 좋아요 수 -->
           <p id="writerpagedetail_2name">좋아요&nbsp</p>
-          <p id="writerpagedetail_2number" th:text="${totalLikes}">0</p>
+          <p id="writerpagedetail_2number" th:text="${totalLikes != null ? totalLikes : 0}">0</p>
           <!-- 조회수 수 -->
           <p id="writerpagedetail_2name">조회수&nbsp</p>
-          <p id="writerpagedetail_2number" th:text="${totalViews}">0</p>
+          <p id="writerpagedetail_2number" th:text="${totalViews != null ? totalViews : 0}">0</p>
         </div>
         <div id="writerpagedetail_3">
           <div id="majortheme">
             <p id="writerpagethemename">주요 테마</p>
           </div>
           <div id="writerpagetag">
-            <p id="writerpagetagname" th:text="'#' + ${topTheme}">주요 테마</p>
+            <p id="writerpagetagname" th:text="'#' + (${topTheme != null ? topTheme : '없음'})">주요 테마</p>
           </div>
           <div id="writerpagetag">
-            <p id="writerpagetagname" th:text="'#' + ${secondTheme}">주요 테마</p>
+            <p id="writerpagetagname" th:text="'#' + (${secondTheme != null ? secondTheme : '없음'})">주요 테마</p>
           </div>
         </div>
         <div id="writerpagedetail_4">
           <p id="newestupload">최근 업로드</p>
-          <p id="newestuploaddate" th:text="${daysSinceLastUpload} + '일전'">최근 업로드</p>
+          <p id="newestuploaddate" th:text="${daysSinceLastUpload != null ? daysSinceLastUpload + '일전' : '정보 없음'}">최근 업로드</p>
         </div>
       </div>
     </div>
@@ -122,9 +120,9 @@
               <p id="storyTitle" th:text="${story.title}">Story Title</p>
               <div class="right-side">
                 <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px"/>
-                <p class="imagetext" th:text="${story.viewCount}">0</p>
+                <p class="imagetext" th:text="${story.viewCount != null ? story.viewCount : 0}">0</p>
                 <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px"/>
-                <p class="imagetext" th:text="${story.likes.size()}">0</p>
+                <p class="imagetext" th:text="${story.likes != null ? story.likes.size() : 0}">0</p>
               </div>
             </div>
           </a>

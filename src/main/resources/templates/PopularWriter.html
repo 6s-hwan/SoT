@@ -129,9 +129,11 @@
       <button
               type="button"
               id="Popularmorebtn"
-              th:if="${limit < 72}"
-              th:onclick="|location.href='@{/popular(limit=${limit + 24})}';|"
-      >더보기</button>
+              th:if="${elements != null and elements.size() >= limit and limit < 72}"
+              th:onclick="|location.href='@{/popular(limit=${limit != null ? limit + 24 : 24})}';|"
+      >
+        더 보기
+      </button>
     </div>
   </div>
 </div>

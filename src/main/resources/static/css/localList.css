@@ -215,13 +215,14 @@ input.imagebtn {
   font-weight: 500;
   line-height: 90px; /* 187.5% */
 }
-#loaclback {
-  width: 1240px;
+#back {
+  width: 590px;
+  flex-shrink: 0;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
 }
 #localbox {
   box-sizing: border-box;

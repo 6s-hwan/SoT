@@ -66,10 +66,10 @@
       <div id="searchresult">
         <div id="searchresultTitle">
           <div id="searchresult_title">
-            <img src="../static/images/searchresult.png" class="searchresult" />
+            <img th:src="@{/images/searchresult.png}" class="searchresult" />
             <div id="searchresult_text">
-              <p class="searchresult">‘설악산’ 검색결과</p>
-              <p class="searchresult_1">0개의 검색결과</p>
+              <p class="searchresult" th:text="'‘' + ${query} + '’ 검색결과'">‘검색어’ 검색결과</p>
+              <p class="searchresult_1" th:text="${resultCount} + '개의 검색결과'">0개의 검색결과</p>
             </div>
           </div>
         </div>
@@ -107,17 +107,14 @@
         </div>
         <div>
           <label for="searchresultmorebtn">
-            <button
-              type="button"
-              id="searchresultmorebtn"
-              th:if="${limit < 72}"
-              th:onclick="|location.href='@{/searchresult(limit=${limit + 24})}';|"
-            ></button>
+            <button type="button" id="searchresultmorebtn"
+                    th:if="${limit < resultCount}"
+                    th:onclick="|location.href='@{/search(query=${query}, limit=${limit + 24})}';|"></button>
           </label>
         </div>
       </div>
     </div>
-    <!-- 테마별 상세페이지 스토리 끝 -->
+    <!-- 검색 결과 페이지 끝 -->
   </body>
   <script th:src="@{/js/ThemeDetailPage.js}"></script>
 </html>

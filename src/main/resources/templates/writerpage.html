@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" th:href="@{/css/writerpage.css}"/>
+  <link rel="stylesheet" th:href="@{/css/Home.css}"/>
   <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"/>
   <title>writerpage Page</title>
@@ -24,20 +25,31 @@
           <li><a href="" class="c">북마크</a></li>
         </ul>
       </div>
-
       <form action="/search" method="get" id="search">
-        <input type="text" name="query" class="search"/>
-        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px"/>
+        <input type="text" name="query" class="search">
+        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">
       </form>
     </div>
     <div id="nav_right">
-      <input type="button" id="uploadbtn"/>
-      <input type="button" class="imagebtn" onclick="location.href='my-page' "/>
-      <input type="checkbox" id="join"/>
-      <label for="join">로그인</label>
+      <input type="button" id="uploadbtn">
+      <a th:href="@{/my-page}" class="imagebtn">
+        <input type="button" class="imagebtn" />
+      </a>
+      <input type="checkbox" id="join" style="display: none;">
+      <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
+      <form action="/logout" method="post" style="display:inline;">
+        <button type="submit">로그아웃</button>
+      </form>
     </div>
   </div>
 </nav>
+
+<!-- 팝업창들 -->
+<div th:replace="fragments/upload_popup :: uploadPopup"></div>
+<div th:replace="fragments/login_popup :: loginPopup"></div>
+<div th:replace="fragments/join_popup :: joinPopup"></div>
+<div th:replace="fragments/terms_popup :: termsPopup"></div>
+<div th:replace="fragments/privacy_popup :: privacyPopup"></div>
 
 <div id="writerpagefull">
   <div id="writerpage">
@@ -171,6 +183,37 @@
             })
             .catch((error) => console.error("Error:", error));
   }
+</script>
+
+<script th:src="@{/js/Home.js}"></script>
+<script>
+  function goToRisePage(button) {
+    const keyword = button.getAttribute('data-keyword');
+    window.location.href = '/rise/' + keyword;
+  }
+
+  function togglePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function showJoinPopup() {
+    togglePopup('loginPopup'); // 기존 로그인 팝업 닫기
+    togglePopup('joinPopup'); // 회원가입 팝업 열기
+  }
+
+  function showLoginPopup() {
+    togglePopup('joinPopup'); // 기존 회원가입 팝업 닫기
+    togglePopup('loginPopup'); // 로그인 팝업 열기
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // 초기 팝업들 숨기기
+    document.getElementById('loginPopup').style.display = 'none';
+    document.getElementById('joinPopup').style.display = 'none';
+    document.getElementById('termsPopup').style.display = 'none';
+    document.getElementById('privacyPopup').style.display = 'none';
+  });
 </script>
 </body>
 </html>

@@ -147,6 +147,14 @@ public class StoryController {
         return "upload";
     }
 
+    @GetMapping("/home")
+    public String home(Model model, @RequestParam(defaultValue = "12") int limit) {
+        List<Story> topStories = storyService.getTopStories(limit);
+        model.addAttribute("stories", topStories);
+        model.addAttribute("limit", limit);
+        return "home";
+    }
+
     @GetMapping("/test")
     public String test(Model model) {
         List<Search> topSearches = searchService.getTopSearchKeywords(8);

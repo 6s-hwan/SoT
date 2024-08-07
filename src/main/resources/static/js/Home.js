@@ -17,7 +17,14 @@ function showLoginPopup() {
   togglePopup('joinPopup'); // 기존 회원가입 팝업 닫기
   togglePopup('loginPopup'); // 로그인 팝업 열기
 }
-
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".profile-img-btn").forEach(function(button) {
+    button.addEventListener("click", function() {
+      const url = button.getAttribute("data-url");
+      window.location.href = url;
+    });
+  });
+});
 document.addEventListener('DOMContentLoaded', function () {
   // 초기 팝업들 숨기기
   document.getElementById('loginPopup').style.display = 'none';

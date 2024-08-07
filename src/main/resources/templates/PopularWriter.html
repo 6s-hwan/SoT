@@ -126,13 +126,14 @@
     </div>
     <!-- 인기작가 더보기 버튼 -->
     <div>
-      <label for="seasonmorebtn">
-        <button
-                type="button"
-                id="seasonmorebtn"
-                onclick="location.href='';"
-        ></button>
-      </label>
+      <button
+              type="button"
+              id="Popularmorebtn"
+              th:if="${elements != null and elements.size() >= limit and limit < 72}"
+              th:onclick="|location.href='@{/popular(limit=${limit != null ? limit + 24 : 24})}';|"
+      >
+        더 보기
+      </button>
     </div>
   </div>
 </div>

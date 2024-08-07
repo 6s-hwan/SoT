@@ -5,6 +5,7 @@ import com.SoT.JIN.search.SearchRepository;
 import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
+import com.SoT.JIN.user.WriterController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import com.SoT.JIN.user.WriterController;  // WriterController 임포트 추가
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -31,15 +33,17 @@ public class StoryController {
     private final S3Service s3Service;
     private final StoryService storyService;
     private final UserRepository userRepository;
-    private SearchService searchService;
+    private final SearchService searchService;
+    private final WriterController writerController; // WriterController 주입 추가
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService, WriterController writerController) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
         this.storyService = storyService;
         this.userRepository = userRepository;
         this.searchService = searchService;
+        this.writerController = writerController; // WriterController 주입 초기화
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -147,6 +151,19 @@ public class StoryController {
         return "upload";
     }
 
+    @GetMapping("/home")
+    public String home(Model model, @RequestParam(defaultValue = "12") int limit) {
+        List<Story> topStories = storyService.getTopStories(limit);
+        model.addAttribute("stories", topStories);
+        model.addAttribute("limit", limit);
+
+        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6); // 6명의 인기 작가 정보 가져오기
+
+        model.addAttribute("popularWriters", popularWriters); // 인기 작가 정보를 모델에 추가
+
+        return "home";
+    }
+
     @GetMapping("/test")
     public String test(Model model) {
         List<Search> topSearches = searchService.getTopSearchKeywords(8);
@@ -155,8 +172,11 @@ public class StoryController {
                 .map(search -> searchService.getStoryWithSmallestId(search.getKeyword()))
                 .collect(Collectors.toList());
 
+        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6); // 6명의 인기 작가 정보 가져오기
+
         model.addAttribute("topSearches", topSearches);
         model.addAttribute("topStories", topStories);
+        model.addAttribute("popularWriters", popularWriters); // 인기 작가 정보를 모델에 추가
 
         return "test"; // test.html 뷰를 반환
     }

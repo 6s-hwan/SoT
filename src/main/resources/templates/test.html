@@ -50,6 +50,37 @@
 <div th:replace="fragments/terms_popup :: termsPopup"></div>
 <div th:replace="fragments/privacy_popup :: privacyPopup"></div>
 
+<!-- 인기 작가 스토리 시작 -->
+<div id="popular_full">
+    <div id="popular">
+        <div id="popular_title">
+            <img th:src="@{/images/popularimg.png}" class="popularimg"/>
+            <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
+        </div>
+        <div id="popularback">
+            <div th:each="writer, iterStat : ${popularWriters}" class="popular-item">
+                <div class="popular-item-img">
+                    <button type="button" th:style="'background-image:url(' + ${writer.profileImageUrl} + ');'" class="profile-img-btn" th:data-url="'/writer/' + ${writer.username}"></button>
+                </div>
+                <div class="popular-item-text">
+                    <p class="popular-item-name" th:text="${writer.username}">Cosmos</p>
+                </div>
+                <div class="popular-item-etc">
+                    <div class="popular-item-story">
+                        <img th:src="@{/images/imageimg.png}" class="popular-item-icon"/>
+                        <p class="popular-item-count" th:text="${writer.totalStories}">451</p>
+                    </div>
+                    <div class="popular-item-like" style="padding-left: 27px;">
+                        <img th:src="@{/images/favorite.png}" class="popular-item-icon"/>
+                        <p class="popular-item-count" th:text="${writer.totalLikes}">36.2k</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 인기 작가 스토리 끝 -->
+
 <!-- 급상승 여행지 시작 -->
 <div id="rise_full">
     <div id="rise">
@@ -82,34 +113,5 @@
 <!-- 급상승 여행지 끝 -->
 
 <script th:src="@{/js/Home.js}"></script>
-<script>
-    function goToRisePage(button) {
-        const keyword = button.getAttribute('data-keyword');
-        window.location.href = '/rise/' + keyword;
-    }
-
-    function togglePopup(popupId) {
-        const popup = document.getElementById(popupId);
-        popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function showJoinPopup() {
-        togglePopup('loginPopup'); // 기존 로그인 팝업 닫기
-        togglePopup('joinPopup'); // 회원가입 팝업 열기
-    }
-
-    function showLoginPopup() {
-        togglePopup('joinPopup'); // 기존 회원가입 팝업 닫기
-        togglePopup('loginPopup'); // 로그인 팝업 열기
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // 초기 팝업들 숨기기
-        document.getElementById('loginPopup').style.display = 'none';
-        document.getElementById('joinPopup').style.display = 'none';
-        document.getElementById('termsPopup').style.display = 'none';
-        document.getElementById('privacyPopup').style.display = 'none';
-    });
-</script>
 </body>
 </html>

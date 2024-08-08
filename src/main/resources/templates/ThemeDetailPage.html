@@ -15,7 +15,7 @@
   <div class="nav_logo">
     <div id="nav_left">
       <div id="nav_logo1">
-        <a href="./test">
+        <a th:href="@{/test}">
           <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
         </a>
       </div>
@@ -33,7 +33,7 @@
     </div>
     <div id="nav_right">
       <input type="button" id="uploadbtn">
-      <input type="button" class="imagebtn" onclick="location.href='my-page'">
+      <input type="button" class="imagebtn" onclick="location.href='/my-page'">
       <input type="checkbox" id="join" style="display: none;">
       <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
       <form action="/logout" method="post" style="display:inline;">

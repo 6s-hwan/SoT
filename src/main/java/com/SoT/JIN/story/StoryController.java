@@ -149,6 +149,9 @@ public class StoryController {
     @GetMapping("/upload")
     public String upload() {
         return "upload";
+    }@GetMapping("/bookmark")
+    public String bookmark() {
+        return "BookmarkPage";
     }
 
     @GetMapping("/home")
@@ -273,6 +276,7 @@ public class StoryController {
     @GetMapping("/local")
     public String getStories(Model model) {
         Map<String, List<Story>> groupedStories = storyService.getGroupedStories();
+        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
     }

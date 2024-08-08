@@ -418,6 +418,7 @@ input.mypageedit {
   padding-top: 60px;
   padding-bottom: 30px;
 }
+
 #story_select {
   display: flex;
   width: 145px;
@@ -431,6 +432,7 @@ input.mypageedit {
   border: 1.6px solid #ececec;
   background: #fff;
 }
+
 .recom_select {
   color: #606060;
   text-align: center;

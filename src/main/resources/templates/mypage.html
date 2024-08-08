@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" th:href="@{/css/mypage.css}" />
-  <link
-          rel="stylesheet"
-          type="text/css"
-          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-          rel="stylesheet"
-  />
-  <title>SoT</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" th:href="@{/css/mypage.css}"/>
+  <link rel="stylesheet" th:href="@{/css/writerpage.css}"/>
+  <link rel="stylesheet" th:href="@{/css/Home.css}"/>
+  <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"/>
+  <title>writerpage Page</title>
 </head>
 <body>
 <nav class="navbar">
@@ -23,12 +16,8 @@
     <div id="nav_left">
       <div id="nav_logo1">
         <a href="./test">
-          <img
-                  th:src="@{/images/MainLogo.png}"
-                  alt="로고"
-                  width="200px"
-                  height="46px"
-          /></a>
+          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
+        </a>
       </div>
       <div class="nav_menu">
         <ul class="navigation">
@@ -37,29 +26,30 @@
           <li><a href="" class="c">북마크</a></li>
         </ul>
       </div>
-
       <form action="/search" method="get" id="search">
-        <input type="text" name="query" class="search" />
-        <img
-                th:src="@{/images/search.png}"
-                alt="돋보기"
-                width="30px"
-                height="30px"
-        />
+        <input type="text" name="query" class="search">
+        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">
       </form>
     </div>
     <div id="nav_right">
-      <input type="button" id="uploadbtn" />
-      <input
-              type="button"
-              class="imagebtn"
-              onclick="location.href='my-page' "
-      />
-      <input type="checkbox" id="join" />
-      <label for="join">로그인</label>
+      <input type="button" id="uploadbtn">
+      <input type="button" class="imagebtn" onclick="location.href='my-page'">
+      <input type="checkbox" id="join" style="display: none;">
+      <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
+      <form action="/logout" method="post" style="display:inline;">
+        <button type="submit">로그아웃</button>
+      </form>
     </div>
   </div>
 </nav>
+
+<!-- 팝업창들 -->
+<div th:replace="fragments/upload_popup :: uploadPopup"></div>
+<div th:replace="fragments/login_popup :: loginPopup"></div>
+<div th:replace="fragments/join_popup :: joinPopup"></div>
+<div th:replace="fragments/terms_popup :: termsPopup"></div>
+<div th:replace="fragments/privacy_popup :: privacyPopup"></div>
+
 
 <!-- 마이페이지 시작 -->
 <div id="mypagefull">
@@ -151,6 +141,7 @@
                 id="story_select"
                 onchange="sortStories()"
         >
+          <option value="" class="select_disabled" disabled selected>정렬기준</option>
           <option value="likes" class="recom_select">추천순</option>
           <option value="recent" class="newest_select">최신순</option>
           <option value="views" class="inquiry_select">조회순</option>
@@ -192,7 +183,7 @@
     </div>
   </div>
 </div>
-
+<script th:src="@{/js/Home.js}"></script>
 <script>
   function sortStories() {
     var select = document.getElementById("story_select");

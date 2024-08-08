@@ -225,6 +225,27 @@ public class StoryController {
         return "redirect:/story/" + storyId;
     }
 
+    @PostMapping("/batch/updateThemes")
+    @ResponseBody
+    public String updateThemesForExistingStories() {
+        List<Story> stories = storyRepository.findAll();
+        String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
+
+        for (Story story : stories) {
+            if (story.getTheme() == null || story.getTheme().isEmpty()) {
+                String theme = openAIService.predictTheme(story.getTitle(), story.getLocation(), story.getDescription(), story.getTags());
+                if (isValidTheme(theme, validThemes)) {
+                    story.setTheme(theme);
+                    storyRepository.save(story);
+                } else {
+                    logger.warn("Invalid theme returned for story ID {}: {}", story.getStoryId(), theme);
+                }
+            }
+        }
+
+        return "Themes updated for existing stories.";
+    }
+
     private boolean isValidTheme(String theme, String[] validThemes) {
         for (String validTheme : validThemes) {
             if (validTheme.equals(theme)) {

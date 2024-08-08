@@ -149,6 +149,9 @@ public class StoryController {
     @GetMapping("/upload")
     public String upload() {
         return "upload";
+    }@GetMapping("/bookmark")
+    public String bookmark() {
+        return "BookmarkPage";
     }
 
     @GetMapping("/home")

@@ -146,10 +146,7 @@ public class StoryController {
         return "BestStoryDetailPage";
     }
 
-    @GetMapping("/upload")
-    public String upload() {
-        return "upload";
-    }@GetMapping("/bookmark")
+    @GetMapping("/bookmark")
     public String bookmark() {
         return "BookmarkPage";
     }
@@ -164,7 +161,7 @@ public class StoryController {
 
         model.addAttribute("popularWriters", popularWriters);
 
-        return "home";
+        return "Home";
     }
 
     @GetMapping("/test")

@@ -67,7 +67,7 @@ public class StoryController {
     public String showStoryDetails(@PathVariable Long id, Model model) {
         Story story = storyService.getStoryAndIncrementViewCount(id);
         model.addAttribute("story", story);
-        return "StoryDetails";
+        return "StoryDetailS";
     }
 
     @GetMapping("/rise")

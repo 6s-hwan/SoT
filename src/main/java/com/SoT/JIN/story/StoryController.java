@@ -1,10 +1,10 @@
 package com.SoT.JIN.story;
 
 import com.SoT.JIN.search.Search;
-import com.SoT.JIN.search.SearchRepository;
 import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
+import com.SoT.JIN.user.WriterController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +31,19 @@ public class StoryController {
     private final S3Service s3Service;
     private final StoryService storyService;
     private final UserRepository userRepository;
-    private SearchService searchService;
+    private final SearchService searchService;
+    private final WriterController writerController;
+    private final OpenAIService openAIService;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService, WriterController writerController, OpenAIService openAIService) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
         this.storyService = storyService;
         this.userRepository = userRepository;
         this.searchService = searchService;
+        this.writerController = writerController;
+        this.openAIService = openAIService;
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -111,7 +115,6 @@ public class StoryController {
             seasonStories = stories;
         }
 
-        // 정렬 기준에 따른 정렬
         if (sortCriteria != null) {
             switch (sortCriteria) {
                 case "likes":
@@ -122,7 +125,7 @@ public class StoryController {
                     break;
                 case "recent":
                     seasonStories = seasonStories.stream()
-                            .filter(story -> story.getUploadTime() != null) // UploadTime이 있는 스토리만 필터링
+                            .filter(story -> story.getUploadTime() != null)
                             .sorted((s1, s2) -> s2.getUploadTime().compareTo(s1.getUploadTime()))
                             .collect(Collectors.toList());
                     break;
@@ -142,9 +145,26 @@ public class StoryController {
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
     }
+
     @GetMapping("/upload")
     public String upload() {
         return "upload";
+    }@GetMapping("/bookmark")
+    public String bookmark() {
+        return "BookmarkPage";
+    }
+
+    @GetMapping("/home")
+    public String home(Model model, @RequestParam(defaultValue = "12") int limit) {
+        List<Story> topStories = storyService.getTopStories(limit);
+        model.addAttribute("stories", topStories);
+        model.addAttribute("limit", limit);
+
+        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
+
+        model.addAttribute("popularWriters", popularWriters);
+
+        return "home";
     }
 
     @GetMapping("/test")
@@ -155,11 +175,15 @@ public class StoryController {
                 .map(search -> searchService.getStoryWithSmallestId(search.getKeyword()))
                 .collect(Collectors.toList());
 
+        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
+
         model.addAttribute("topSearches", topSearches);
         model.addAttribute("topStories", topStories);
+        model.addAttribute("popularWriters", popularWriters);
 
-        return "test"; // test.html 뷰를 반환
+        return "test";
     }
+
     @PostMapping("/upload")
     public String addStory(@RequestParam("image_url") String imageUrl,
                            @RequestParam("title") String title,
@@ -188,9 +212,50 @@ public class StoryController {
         story.setDescription(description);
         story.setUsername(userDetails.getUsername());
 
+        // OpenAI를 통해 테마 예측
+        String theme = openAIService.predictTheme(title, location, description, tags);
+
+        // 유효한 테마인지 확인
+        String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
+        if (!isValidTheme(theme, validThemes)) {
+            return "redirect:/upload?error=Invalid theme returned: " + theme;
+        }
+
+        story.setTheme(theme);
+
         storyRepository.save(story);
         Long storyId = story.getStoryId();
         return "redirect:/story/" + storyId;
+    }
+
+    @PostMapping("/batch/updateThemes")
+    @ResponseBody
+    public String updateThemesForExistingStories() {
+        List<Story> stories = storyRepository.findAll();
+        String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
+
+        for (Story story : stories) {
+            if (story.getTheme() == null || story.getTheme().isEmpty()) {
+                String theme = openAIService.predictTheme(story.getTitle(), story.getLocation(), story.getDescription(), story.getTags());
+                if (isValidTheme(theme, validThemes)) {
+                    story.setTheme(theme);
+                    storyRepository.save(story);
+                } else {
+                    logger.warn("Invalid theme returned for story ID {}: {}", story.getStoryId(), theme);
+                }
+            }
+        }
+
+        return "Themes updated for existing stories.";
+    }
+
+    private boolean isValidTheme(String theme, String[] validThemes) {
+        for (String validTheme : validThemes) {
+            if (validTheme.equals(theme)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @GetMapping("/presigned-url")
@@ -200,16 +265,18 @@ public class StoryController {
         logger.info("Presigned URL generated: {}", result);
         return result;
     }
+
     @GetMapping("/rise/{keyword}")
     public String getStoriesByKeyword(@PathVariable String keyword, Model model) {
         List<Story> stories = storyService.findStoriesByKeyword(keyword);
         model.addAttribute("stories", stories);
-        return "RiseDetailPage"; // 관련 스토리를 보여줄 페이지
+        return "RiseDetailPage";
     }
 
     @GetMapping("/local")
     public String getStories(Model model) {
         Map<String, List<Story>> groupedStories = storyService.getGroupedStories();
+        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
     }

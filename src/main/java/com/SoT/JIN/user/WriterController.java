@@ -127,6 +127,14 @@ public class WriterController {
 
     @GetMapping("/popular")
     public String getPopularWriters(Model model) {
+        List<WriterInfo> writerInfos = fetchPopularWriters(72); // 72명의 인기 작가 정보 가져오기
+
+        model.addAttribute("popularWriters", writerInfos);
+        return "PopularWriter";
+    }
+
+    // fetchPopularWriters 메서드 추가
+    public List<WriterInfo> fetchPopularWriters(int limit) {
         List<WriterInfo> writerInfos = userRepository.findAll().stream()
                 .map(user -> {
                     List<Story> userStories = storyRepository.findByUsername(user.getEmail());
@@ -168,7 +176,7 @@ public class WriterController {
                 .sorted(Comparator.comparingInt(WriterInfo::getTotalLikes)
                         .thenComparingInt(WriterInfo::getTotalViews).reversed()
                         .thenComparingInt(WriterInfo::getTotalStories))
-                .limit(72)
+                .limit(limit)
                 .collect(Collectors.toList());
 
         // 등수 설정
@@ -176,8 +184,7 @@ public class WriterController {
             writerInfos.get(i).setRank(i + 1);
         }
 
-        model.addAttribute("popularWriters", writerInfos);
-        return "PopularWriter";
+        return writerInfos;
     }
 
     public class WriterInfo {

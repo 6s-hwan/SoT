@@ -29,6 +29,9 @@ public class Story {
     // 업로드 시간을 저장할 필드
     private LocalDateTime uploadTime;
 
+    // 테마를 저장할 필드 추가
+    private String theme;
+
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL)
     private Set<LikeEntity> likes = new HashSet<>();
 

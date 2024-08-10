@@ -110,17 +110,27 @@ public class MemberController {
         User user = userRepository.findByEmail(username).orElse(null);
 
         if (user != null) {
-            List<Story> userStories;
+            List<Story> userStories = storyRepository.findByUsername(username);
 
-            // 정렬 기준에 따라 스토리를 가져옴
+            // 정렬 기준에 따라 스토리를 정렬
             if ("likes".equals(sortCriteria)) {
-                userStories = storyRepository.findByUsernameOrderByLikesDesc(username);
+                userStories.sort((s1, s2) -> {
+                    int cmp = Integer.compare(s2.getLikes() != null ? s2.getLikes().size() : 0,
+                            s1.getLikes() != null ? s1.getLikes().size() : 0);
+                    if (cmp == 0) {
+                        return Integer.compare(s2.getViewCount(), s1.getViewCount());
+                    }
+                    return cmp;
+                });
             } else if ("views".equals(sortCriteria)) {
-                userStories = storyRepository.findByUsernameOrderByViewCountDesc(username);
+                userStories.sort((s1, s2) -> Integer.compare(s2.getViewCount(), s1.getViewCount()));
             } else if ("recent".equals(sortCriteria)) {
-                userStories = storyRepository.findByUsernameOrderByUploadTimeDesc(username);
-            } else {
-                userStories = storyRepository.findByUsername(username);
+                userStories.sort((s1, s2) -> {
+                    if (s2.getUploadTime() == null && s1.getUploadTime() == null) return 0;
+                    if (s2.getUploadTime() == null) return -1;
+                    if (s1.getUploadTime() == null) return 1;
+                    return s2.getUploadTime().compareTo(s1.getUploadTime());
+                });
             }
 
             // 전체 스토리 수 계산

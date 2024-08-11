@@ -67,7 +67,7 @@ public class StoryController {
     public String showStoryDetails(@PathVariable Long id, Model model) {
         Story story = storyService.getStoryAndIncrementViewCount(id);
         model.addAttribute("story", story);
-        return "StoryDetails";
+        return "StoryDetailS";
     }
 
     @GetMapping("/rise")
@@ -146,10 +146,7 @@ public class StoryController {
         return "BestStoryDetailPage";
     }
 
-    @GetMapping("/upload")
-    public String upload() {
-        return "upload";
-    }@GetMapping("/bookmark")
+    @GetMapping("/bookmark")
     public String bookmark() {
         return "BookmarkPage";
     }
@@ -164,7 +161,7 @@ public class StoryController {
 
         model.addAttribute("popularWriters", popularWriters);
 
-        return "home";
+        return "Home";
     }
 
     @GetMapping("/test")

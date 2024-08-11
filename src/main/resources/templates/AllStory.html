@@ -11,37 +11,38 @@
   <title>SoT</title>
 </head>
 <body>
-<nav class="navbar">
-  <div class="nav_logo">
-    <div id="nav_left">
-      <div id="nav_logo1">
-        <a th:href="@{/test}">
-          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
-        </a>
-      </div>
-      <div class="nav_menu">
-        <ul class="navigation">
-          <li><a th:href="@{/test}" class="b">홈</a></li>
-          <li><a href="" class="c">지역</a></li>
-          <li><a href="" class="c">북마크</a></li>
-        </ul>
-      </div>
-      <form action="/search" method="get" id="search">
-        <input type="text" name="query" class="search">
-        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">
-      </form>
-    </div>
-    <div id="nav_right">
-      <input type="button" id="uploadbtn">
-      <input type="button" class="imagebtn" onclick="location.href='/my-page'">
-      <input type="checkbox" id="join" style="display: none;">
-      <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
-      <form action="/logout" method="post" style="display:inline;">
-        <button type="submit">로그아웃</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<!--네비게이션 바-->
+<!--<nav class="navbar">-->
+<!--  <div class="nav_logo">-->
+<!--    <div id="nav_left">-->
+<!--      <div id="nav_logo1">-->
+<!--        <a th:href="@{/test}">-->
+<!--          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--      <div class="nav_menu">-->
+<!--        <ul class="navigation">-->
+<!--          <li><a th:href="@{/test}" class="b">홈</a></li>-->
+<!--          <li><a href="" class="c">지역</a></li>-->
+<!--          <li><a href="" class="c">북마크</a></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--      <form action="/search" method="get" id="search">-->
+<!--        <input type="text" name="query" class="search">-->
+<!--        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">-->
+<!--      </form>-->
+<!--    </div>-->
+<!--    <div id="nav_right">-->
+<!--      <input type="button" id="uploadbtn">-->
+<!--      <input type="button" class="imagebtn" onclick="location.href='/my-page'">-->
+<!--      <input type="checkbox" id="join" style="display: none;">-->
+<!--      <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>-->
+<!--      <form action="/logout" method="post" style="display:inline;">-->
+<!--        <button type="submit">로그아웃</button>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
 
 <!-- 팝업창들 -->
 <div th:replace="fragments/upload_popup :: uploadPopup"></div>

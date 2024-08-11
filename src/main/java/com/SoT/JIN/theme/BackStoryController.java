@@ -33,15 +33,15 @@ public class BackStoryController {
         // 선택된 정렬 기준에 따라 스토리 리스트를 정렬
         sortStories(stories, sortCriteria);
 
-        // 인기 있는 작가 정보를 가져옴
-        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
+//        인기 있는 작가 정보를 가져옴
+//        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
 
         // 모델에 속성을 추가하여 뷰에서 사용할 수 있도록 함
         model.addAttribute("stories", stories);
         model.addAttribute("selectedTheme", "모든 테마");
         model.addAttribute("sortCriteria", sortCriteria);
 
-        // "ThemeDetailPage"라는 이름의 뷰를 반환함
+        // "AllStory"라는 이름의 뷰를 반환함
         return "AllStory";
     }
 

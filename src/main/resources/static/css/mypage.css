@@ -109,7 +109,6 @@ hr {
   justify-content: space-between;
   align-items: center;
   border-radius: 46px;
-  border-radius: 46px;
   background: #fff;
   cursor: pointer;
 }
@@ -230,6 +229,7 @@ input.imagebtn {
   height: 200px;
   padding-right: 32px;
   position: relative;
+  overflow: hidden; /* 이미지가 부모 요소를 넘어가지 않도록 함 */
 }
 #changeprofileimg {
   position: absolute;
@@ -240,12 +240,11 @@ input.imagebtn {
   left: 145px;
 }
 #changeprofile {
-  width: 200px;
-  height: 200px;
-  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 14px;
   border: 3px solid #fff;
-  background: lightgray 50% / cover no-repeat;
+  object-fit: cover; /* 이미지 비율을 유지하면서 영역에 맞춤 */
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
 #mypagedetail_1 {
@@ -291,29 +290,6 @@ input.imagebtn {
   line-height: 20px; /* 125% */
   letter-spacing: -0.32px;
 }
-/* input.mypageadd {
-  display: flex;
-  background: url("../images/mypageadd.png") no-repeat center;
-  background-size: 36px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  margin-top: 3px;
-  cursor: pointer;
-}
-
-input.mypageedit {
-  display: flex;
-  background: url("../images/mypagedit.png") no-repeat center;
-  background-size: 36px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  margin-top: 3px;
-  margin-left: 540px;
-  margin-right: 12px;
-  cursor: pointer;
-} */
 
 #mypagedetail_2 {
   box-sizing: border-box;
@@ -480,8 +456,8 @@ input.mypageedit {
 }
 
 #back {
-  width: 1240px;
-  /* height: 1684px; */ /* 이 코드를 없애면 스토리 사이즈 맞게 조절된다*/
+  width: 100%; /* 전체 너비를 사용하도록 변경 */
+  max-width: 1240px; /* 최대 너비를 설정 */
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
@@ -489,16 +465,17 @@ input.mypageedit {
   margin-bottom: 150px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); /* 반응형으로 변경 */
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
-  width: 285px;
+  width: 100%;
   height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
+  object-fit: cover; /* 추가된 부분: 비율을 유지하면서 이미지가 잘리도록 함 */
 }
 #storyTitlefull {
   display: flex; /* 수직적으로 가운데 정렬 */
@@ -517,8 +494,7 @@ input.mypageedit {
 }
 .story {
   position: relative; /* Relative positioning for title placement */
-  width: 285px;
-  height: 235px;
+  width: 100%; /* 100% 너비로 변경 */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -526,8 +502,7 @@ input.mypageedit {
 }
 .stories {
   position: relative; /* Relative positioning for title placement */
-  width: 285px;
-  height: 235px;
+  width: 100%; /* 100% 너비로 변경 */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -535,8 +510,7 @@ input.mypageedit {
   margin-bottom: 10px;
 }
 .story > a {
-  width: 285px;
-  height: 235px;
+  width: 100%; /* 100% 너비로 변경 */
 }
 .right-side {
   display: flex;
@@ -564,4 +538,67 @@ input.mypageedit {
   letter-spacing: -0.24px;
   padding-top: 2px;
   padding-right: 10px;
+}
+/* 반응형 설정 */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .nav_logo {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .nav_menu {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+
+  #nav_left, #nav_right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #back {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 모바일에 맞게 조정 */
+    gap: 15px;
+  }
+
+  #mypageprofilefull {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 16px;
+  }
+
+  #mypage_select {
+    padding-left: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #story_select {
+    width: 100%;
+  }
+
+  #mypagefollower, #mypage_title, #username {
+    justify-content: center;
+    text-align: center;
+  }
+
+  #changeprofile {
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+    height: auto; /* 비율을 유지하면서 높이 조정 */
+    object-fit: cover; /* 비율 유지 */
+  }
+
+  #storyimage {
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+    height: auto; /* 비율을 유지하면서 높이 조정 */
+    object-fit: cover; /* 비율 유지 */
+  }
 }

@@ -22,4 +22,6 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
     List<Long> findIdsByKeyword(String keyword);
     List<Story> findByUsernameOrderByLikesDescViewCountDesc(String username); // 새로운 메서드 추가
     List<Story> findByTheme(String theme);
+
+    List<Story> findByThemeContaining(String selectedTheme);
 }

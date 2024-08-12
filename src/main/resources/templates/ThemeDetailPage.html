@@ -60,112 +60,75 @@
 
     <div class="themeback">
       <div id="theme_container">
-        <label for="theme1">
-          <button type="button" id="theme1" onclick="location.href='/theme/1'">
-            <p id="text_theme1">
-              자연 속 여행
-              <img th:src="@{/images/theme_checked.png}" id="themecheck1" alt="체크" width="24px" height="24px" />
-            </p>
-
-            <img id="overlayImage1" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme1" onclick="toggleTheme(1)">
+          <p id="text_theme1">자연 속 여행</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck1" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage1" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme2">
-          <button type="button" id="theme2" onclick="location.href='/theme/2'">
-            <p id="text_theme2">
-              역사와 문화
-              <img th:src="@{/images/theme_checked.png}" id="themecheck2" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage2" th:src="@{/images/theme_overlay2.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme2" onclick="toggleTheme(2)">
+          <p id="text_theme2">역사와 문화</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck2" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage2" th:src="@{/images/theme_overlay2.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme3">
-          <button type="button" id="theme3" onclick="location.href='/theme/3'">
-            <p id="text_theme3">
-              식도락 여행
-              <img th:src="@{/images/theme_checked.png}" id="themecheck3" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage3" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme3" onclick="toggleTheme(3)">
+          <p id="text_theme3">식도락 여행</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck3" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage3" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme4">
-          <button type="button" id="theme4" onclick="location.href='/theme/4'">
-            <p id="text_theme4">
-              축제
-              <img th:src="@{/images/theme_checked.png}" id="themecheck4" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage4" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme4" onclick="toggleTheme(4)">
+          <p id="text_theme4">축제</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck4" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage4" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme5">
-          <button type="button" id="theme5" onclick="location.href='/theme/5'">
-            <p id="text_theme5">
-              예술 및 체험
-              <img th:src="@{/images/theme_checked.png}" id="themecheck5" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage5" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme5" onclick="toggleTheme(5)">
+          <p id="text_theme5">예술 및 체험</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck5" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage5" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme6">
-          <button type="button" id="theme6" onclick="location.href='/theme/6'">
-            <p id="text_theme6">
-              산악 여행
-              <img th:src="@{/images/theme_checked.png}" id="themecheck6" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage6" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme6" onclick="toggleTheme(6)">
+          <p id="text_theme6">산악 여행</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck6" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage6" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme7">
-          <button type="button" id="theme7" onclick="location.href='/theme/7'">
-            <p id="text_theme7">
-              도심속 여행
-              <img th:src="@{/images/theme_checked.png}" id="themecheck7" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage7" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme7" onclick="toggleTheme(7)">
+          <p id="text_theme7">도심속 여행</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck7" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage7" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme8">
-          <button type="button" id="theme8" onclick="location.href='/theme/8'">
-            <p id="text_theme8">
-              바다와 해변
-              <img th:src="@{/images/theme_checked.png}" id="themecheck8" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage8" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme8" onclick="toggleTheme(8)">
+          <p id="text_theme8">바다와 해변</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck8" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage8" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
 
       <div id="theme_container">
-        <label for="theme9">
-          <button type="button" id="theme9" onclick="location.href='/theme/9'">
-            <p id="text_theme9">
-              테마파크
-              <img th:src="@{/images/theme_checked.png}" id="themecheck9" alt="체크" width="24px" height="24px" />
-            </p>
-            <img id="overlayImage9" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-          </button>
-        </label>
+        <button type="button" id="theme9" onclick="toggleTheme(9)">
+          <p id="text_theme9">테마파크</p>
+          <img th:src="@{/images/theme_checked.png}" id="themecheck9" alt="체크" width="24px" height="24px" style="display: none;" />
+          <img id="overlayImage9" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
+        </button>
       </div>
     </div>
   </div>

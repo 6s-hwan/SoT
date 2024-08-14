@@ -55,17 +55,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 위치 정보를 업데이트하는 함수
 function updateLocationInput() {
-  const category = document.getElementById('location-category').value; // 국내/국외
+  const category = document.getElementById('location-category').value;
   const region = document.getElementById('region').value;
   const city = document.getElementById('city').value;
 
   const locationInput = document.getElementById('location');
 
-  // '국내' 또는 '국외' 접두어를 빼고 순수 위치만 설정
-  if (category === '국내' || category === '국외') {
-    locationInput.value = `${region} ${city}`;
+  if (category === '어딘가') {
+    // "어딘가"를 선택한 경우 "어딘가"를 유효한 값으로 처리
+    locationInput.value = '어딘가';
+  } else if (category === '국내' && region === '어딘가' && city === '어딘가') {
+    // "국내"에서 "어딘가" 선택한 경우 "대한민국 어딘가"를 유효한 값으로 처리
+    locationInput.value = '대한민국 어딘가';
+  } else if (category === '국외' && region === '어딘가' && city === '어딘가') {
+    // "국외"에서 "어딘가" 선택한 경우 "해외 어딘가"를 유효한 값으로 처리
+    locationInput.value = '해외 어딘가';
+  } else if (!region || !city || region === "지역 선택" || city === "도시 선택") {
+    // 기본 선택값 또는 선택되지 않은 경우 location 필드를 빈 값으로 설정
+    locationInput.value = '';
   } else {
-    locationInput.value = city;
+    locationInput.value = `${region} ${city}`;
   }
 
   console.log('Updated location:', locationInput.value); // 값이 정상인지 확인하는 로그
@@ -104,7 +113,7 @@ const regionsData = {
     "강원특별자치도", "제주특별자치도", "어딘가"
   ],
   "해외": [
-      "일본", "중국", "베트남", "태국", "필리핀", "미국", "대만", "말레이시아", "싱가포르", "인도네시아"
+      "일본", "중국", "베트남", "태국", "필리핀", "미국", "대만", "말레이시아", "싱가포르", "인도네시아", "어딘가"
   ]
 };
 
@@ -306,6 +315,9 @@ function updateLocationInput() {
   else if (category === '국내' && (region === '어딘가' || city === '어딘가')) {
     locationInput.value = '대한민국 어딘가';
   }
+  else if (category === '국외' && (region === '어딘가' || city === '어딘가')) {
+    locationInput.value = '해외 어딘가';
+  }
   // 그 외의 경우
   else {
     locationInput.value = `${region} ${city}`;
@@ -375,35 +387,6 @@ function updateTagsInput() {
       tag.textContent.replace("#", "")
   );
   document.getElementById("tags").value = tags.join(",");
-}
-
-function uploadPost(event) {
-  event.preventDefault();
-
-  let form = event.target;
-  let title = form.title.value;
-  let date_year = form.date_year.value;
-  let date_month = form.date_month.value;
-  let date_day = form.date_day.value;
-  let location = form.location.value;
-  let tags = form.tags.value;
-  let description = form.description.value;
-  let imageUrl = form.imageUrl.value;
-
-  // location 값 확인을 위한 로그 추가
-  console.log('Title:', title);
-  console.log('Date:', date_year + "-" + date_month + "-" + date_day);
-  console.log('Location:', location); // 이 로그가 제대로 location 값을 출력하는지 확인하세요.
-  console.log('Tags:', tags);
-  console.log('Description:', description);
-  console.log('Image URL:', imageUrl);
-
-  if (!title || !date_year || !date_month || !date_day || !location || !description || !imageUrl) {
-    alert("모든 필드를 채워주세요!");
-    return false;
-  }
-
-  form.submit();
 }
 
 function resetForm() {

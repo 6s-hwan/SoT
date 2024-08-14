@@ -66,3 +66,34 @@ window.onload = function () {
   //     "../static/images/theme_check.png";
   // }
 };
+
+const selectedThemes = new Set();
+
+function toggleTheme(themeId) {
+  const checkElement = document.getElementById(`themecheck${themeId}`);
+  if (selectedThemes.has(themeId)) {
+    selectedThemes.delete(themeId);
+    checkElement.style.display = 'none';
+  } else {
+    selectedThemes.add(themeId);
+    checkElement.style.display = 'block';
+  }
+
+  // Set을 배열로 변환한 후 정렬
+  const themesParam = Array.from(selectedThemes).sort((a, b) => a - b).join(',');
+  const newUrl = themesParam.length > 0 ? `/theme?themes=${themesParam}` : `/theme`;
+  window.location.href = newUrl;
+}
+
+// 페이지 로드 시 URL에 있는 테마 ID를 읽어와 체크박스 상태를 업데이트합니다.
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const themes = urlParams.get('themes');
+  if (themes) {
+    themes.split(',').forEach(themeId => {
+      selectedThemes.add(parseInt(themeId));
+      document.getElementById(`themecheck${themeId}`).style.display = 'block';
+    });
+  }
+});
+

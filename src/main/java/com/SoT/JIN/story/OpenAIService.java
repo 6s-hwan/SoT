@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class OpenAIService {
         this.restTemplate = restTemplate;
     }
 
-    public String predictTheme(String title, String location, String description, String tags) {
+    public List<String> predictThemes(String title, String location, String description, String tags) {
         String url = "https://api.openai.com/v1/chat/completions";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -31,7 +32,7 @@ public class OpenAIService {
         String themesList = String.join(", ", themes);
 
         String prompt = String.format(
-                "Title: %s\nLocation: %s\nDescription: %s\nTags: %s\n\nPlease respond with one of the following themes: %s",
+                "Title: %s\nLocation: %s\nDescription: %s\nTags: %s\n\nPlease list all applicable themes from the following list: %s.",
                 title, location, description, tags, themesList);
 
         Map<String, Object> request = new HashMap<>();
@@ -42,7 +43,7 @@ public class OpenAIService {
                     put("content", prompt);
                 }}
         });
-        request.put("max_tokens", 60);
+        request.put("max_tokens", 100);
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(request, headers);
 
@@ -53,11 +54,11 @@ public class OpenAIService {
         while (retryCount < maxRetries) {
             try {
                 ResponseEntity<Map> response = restTemplate.exchange(url, HttpMethod.POST, entity, Map.class);
-                String theme = extractTheme(response);
-                if (isValidTheme(theme, themes)) {
-                    return theme;
+                List<String> extractedThemes = extractThemes(response, themes);
+                if (!extractedThemes.isEmpty()) {
+                    return extractedThemes;
                 } else {
-                    return "Invalid theme returned: " + theme;
+                    return List.of("Invalid or no themes returned");
                 }
             } catch (HttpClientErrorException.TooManyRequests e) {
                 retryCount++;
@@ -73,16 +74,25 @@ public class OpenAIService {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                return "API 호출 실패: " + e.getMessage();
+                return List.of("API 호출 실패: " + e.getMessage());
             }
         }
-        return "API 호출 실패: 최대 재시도 횟수 초과";
+        return List.of("API 호출 실패: 최대 재시도 횟수 초과");
     }
 
-    private String extractTheme(ResponseEntity<Map> response) {
+    private List<String> extractThemes(ResponseEntity<Map> response, String[] validThemes) {
+        List<String> validThemesList = new ArrayList<>();
         List<Map<String, Object>> choices = (List<Map<String, Object>>) response.getBody().get("choices");
-        String theme = (String) ((Map<String, Object>) choices.get(0).get("message")).get("content");
-        return theme.trim();
+        String content = (String) ((Map<String, Object>) choices.get(0).get("message")).get("content");
+        String[] predictedThemes = content.split(",");
+
+        for (String theme : predictedThemes) {
+            theme = theme.trim(); // 공백 제거
+            if (isValidTheme(theme, validThemes)) {
+                validThemesList.add(theme);
+            }
+        }
+        return validThemesList;
     }
 
     private boolean isValidTheme(String theme, String[] validThemes) {

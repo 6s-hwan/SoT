@@ -16,10 +16,14 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
     List<Story> findByUsernameOrderByUploadTimeDesc(String username);
     // 페이징 및 정렬을 위한 메서드
     Page<Story> findAll(Pageable pageable);
+    // 사용자별 게시글 수를 세는 메서드
+    long countByUsername(String username);
     List<Story> findByTitleContainingIgnoreCase(String query);
     // 특정 키워드가 포함된 스토리 ID 조회
     @Query("SELECT s.storyId FROM Story s WHERE s.tags LIKE %:keyword% OR s.description LIKE %:keyword% OR s.location LIKE %:keyword% OR s.title LIKE %:keyword%")
     List<Long> findIdsByKeyword(String keyword);
     List<Story> findByUsernameOrderByLikesDescViewCountDesc(String username); // 새로운 메서드 추가
     List<Story> findByTheme(String theme);
+
+    List<Story> findByThemeContaining(String selectedTheme);
 }

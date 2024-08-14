@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -137,7 +138,14 @@ public class StoryController {
         model.addAttribute("sortCriteria", sortCriteria);
         return "SeasonDetailPage";
     }
-
+    private boolean isValidTheme(String theme, String[] validThemes) {
+        for (String validTheme : validThemes) {
+            if (validTheme.equals(theme)) {
+                return true;
+            }
+        }
+        return false;
+    }
     @GetMapping("/best")
     public String best(Model model, @RequestParam(defaultValue = "24") int limit) {
         List<Story> topStories = storyService.getTopStories(limit);
@@ -209,16 +217,20 @@ public class StoryController {
         story.setDescription(description);
         story.setUsername(userDetails.getUsername());
 
-        // OpenAI를 통해 테마 예측
-        String theme = openAIService.predictTheme(title, location, description, tags);
+        // OpenAI를 통해 여러 테마 예측
+        List<String> themes = new ArrayList<>(openAIService.predictThemes(title, location, description, tags));
 
-        // 유효한 테마인지 확인
+        // 유효한 테마들만 필터링
         String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
-        if (!isValidTheme(theme, validThemes)) {
-            return "redirect:/upload?error=Invalid theme returned: " + theme;
+        themes.removeIf(theme -> !isValidTheme(theme, validThemes));
+
+        // 유효한 테마가 없으면 기본 테마 "기타"를 설정
+        if (themes.isEmpty()) {
+            themes.add("기타");
         }
 
-        story.setTheme(theme);
+        // 선택된 테마들을 콤마로 연결하여 저장
+        story.setTheme(String.join(", ", themes));
 
         storyRepository.save(story);
         Long storyId = story.getStoryId();
@@ -232,28 +244,27 @@ public class StoryController {
         String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
 
         for (Story story : stories) {
-            if (story.getTheme() == null || story.getTheme().isEmpty()) {
-                String theme = openAIService.predictTheme(story.getTitle(), story.getLocation(), story.getDescription(), story.getTags());
-                if (isValidTheme(theme, validThemes)) {
-                    story.setTheme(theme);
-                    storyRepository.save(story);
-                } else {
-                    logger.warn("Invalid theme returned for story ID {}: {}", story.getStoryId(), theme);
-                }
+            // 새로운 테마를 예측
+            List<String> themes = openAIService.predictThemes(story.getTitle(), story.getLocation(), story.getDescription(), story.getTags());
+
+            // themes 리스트가 불변일 수 있으므로, 가변 리스트로 변환
+            themes = new ArrayList<>(themes);
+
+            // 유효한 테마들만 필터링
+            themes.removeIf(theme -> !isValidTheme(theme, validThemes));
+
+            if (!themes.isEmpty()) {
+                // 선택된 테마들을 콤마로 연결하여 저장
+                story.setTheme(String.join(", ", themes));
+                storyRepository.save(story);
+            } else {
+                logger.warn("Invalid themes returned for story ID {}: {}", story.getStoryId(), themes);
             }
         }
 
         return "Themes updated for existing stories.";
     }
 
-    private boolean isValidTheme(String theme, String[] validThemes) {
-        for (String validTheme : validThemes) {
-            if (validTheme.equals(theme)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @GetMapping("/presigned-url")
     @ResponseBody
@@ -273,7 +284,6 @@ public class StoryController {
     @GetMapping("/local")
     public String getStories(Model model) {
         Map<String, List<Story>> groupedStories = storyService.getGroupedStories();
-        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
     }

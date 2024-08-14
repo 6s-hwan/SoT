@@ -63,90 +63,25 @@ public class StoryService {
         Set<Long> storyIds = storyRepository.findIdsByKeyword(keyword).stream().collect(Collectors.toSet());
         return storyRepository.findAllById(storyIds);
     }
-    public List<Story> getAllStories() {
-        return storyRepository.findAll();
-    }
 
     public Map<String, List<Story>> getGroupedStories() {
-        List<Story> stories = getAllStories();
-        Pattern specificPattern = Pattern.compile(".*(시|도) .*(구|시)");
+        List<Story> stories = getAllStories(); // DB에서 모든 스토리 가져오기
 
-        // 위치 정보를 표준화
-        List<Story> standardizedStories = stories.stream()
-                .map(story -> {
-                    story.setLocation(mapToProperLocation(story.getLocation()));
-                    return story;
-                })
-                .collect(Collectors.toList());
-
-        // 특정 형식의 위치 정보를 그룹화
-        Map<String, List<Story>> groupedStories = standardizedStories.stream()
-                .filter(story -> specificPattern.matcher(story.getLocation()).matches())
+        // Location 값이 "test"가 아닌 경우에만 그룹화
+        Map<String, List<Story>> groupedStories = stories.stream()
+                .filter(story -> !"test".equalsIgnoreCase(story.getLocation())) // "test" 값을 가진 스토리는 제외
                 .collect(Collectors.groupingBy(Story::getLocation))
                 .entrySet().stream()
-                .filter(entry -> entry.getValue().size() >= 3)
+                .filter(entry -> entry.getValue().size() >= 3) // 3개 이상의 스토리만 필터링
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().subList(0, Math.min(3, entry.getValue().size()))));
-
-        // 특정 형식이 아닌 경우를 처리하는 로직 추가
-        Map<String, List<Story>> genericGroup = standardizedStories.stream()
-                .filter(story -> isValidGenericLocation(story.getLocation()))
-                .collect(Collectors.groupingBy(story -> getGenericGroupName(story.getLocation())))
-                .entrySet().stream()
-                .filter(entry -> entry.getValue().size() >= 3)
-                .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().subList(0, Math.min(3, entry.getValue().size()))));
-
-        groupedStories.putAll(genericGroup);
 
         return groupedStories;
     }
 
-    private String mapToProperLocation(String location) {
-        // 표준화된 지역 이름 목록
-        Map<String, String> locationMap = Map.of(
-                "서울", "서울특별시",
-                "경기", "경기도",
-                "강원", "강원도",
-                "부산", "부산광역시",
-                "인천", "인천광역시",
-                "대구", "대구광역시",
-                "대전", "대전광역시",
-                "울산", "울산광역시",
-                "광주", "광주광역시",
-                "세종", "세종특별자치시"
-        );
-
-        for (Map.Entry<String, String> entry : locationMap.entrySet()) {
-            if (location.startsWith(entry.getKey()) && !location.startsWith(entry.getValue())) {
-                return location.replaceFirst(entry.getKey(), entry.getValue());
-            }
-        }
-        return location;
+    // 모든 스토리를 가져오는 메서드 (구현 예시)
+    private List<Story> getAllStories() {
+        // DB에서 스토리 가져오는 로직이 들어갑니다.
+        return storyRepository.findAll(); // 예시로 storyRepository를 사용
     }
 
-    private boolean isValidGenericLocation(String location) {
-        Pattern validPattern = Pattern.compile(".*(서울|경기|강원|부산|인천|대구|대전|울산|광주|세종).*");
-        return validPattern.matcher(location).matches() && !location.matches(".*(시|도) .*(구|시)");
-    }
-
-    private String getGenericGroupName(String location) {
-        Map<String, String> locationMap = Map.of(
-                "서울특별시", "서울특별시 어딘가",
-                "경기도", "경기도 어딘가",
-                "강원도", "강원도 어딘가",
-                "부산광역시", "부산광역시 어딘가",
-                "인천광역시", "인천광역시 어딘가",
-                "대구광역시", "대구광역시 어딘가",
-                "대전광역시", "대전광역시 어딘가",
-                "울산광역시", "울산광역시 어딘가",
-                "광주광역시", "광주광역시 어딘가",
-                "세종특별자치시", "세종특별자치시 어딘가"
-        );
-
-        for (Map.Entry<String, String> entry : locationMap.entrySet()) {
-            if (location.startsWith(entry.getKey()) && !location.matches(entry.getKey() + " .*" + (entry.getKey().equals("경기도") ? "시" : "구"))) {
-                return entry.getValue();
-            }
-        }
-        return "기타";
-    }
 }

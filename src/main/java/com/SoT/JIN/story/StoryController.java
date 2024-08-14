@@ -283,7 +283,6 @@ public class StoryController {
     @GetMapping("/local")
     public String getStories(Model model) {
         Map<String, List<Story>> groupedStories = storyService.getGroupedStories();
-        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
     }

@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <title>Upload Story</title>
 </head>
 <body>
 <div id="bg_gray1" style="display: none;" th:fragment="uploadPopup">
@@ -49,7 +50,19 @@
             <!-- 위치 -->
             <div class="form-field">
                 <label for="location">위치</label>
-                <input type="text" id="location" name="location" placeholder="예) 서울 청계천, 부산 해운대, 설악산 신선대 "/>
+                <!-- 카테고리 선택 -->
+                <select id="location-category">
+                    <option disabled selected>국가 선택</option>
+                </select>
+                <!-- 지역 선택 -->
+                <select id="region">
+                    <option disabled selected>지역 선택</option>
+                </select>
+                <!-- 도시 선택 -->
+                <select id="city">
+                    <option disabled selected>도시 선택</option>
+                </select>
+                <input type="hidden" id="location" name="location"/>
             </div>
             <!-- 태그 -->
             <div class="form-field">
@@ -72,6 +85,7 @@
             <button type="submit" class="upload-button">업로드</button>
         </form>
     </div>
+    <script th:src="@{js/upload.js}"></script>
 </div>
 </body>
 </html>

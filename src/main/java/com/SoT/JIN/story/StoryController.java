@@ -218,14 +218,15 @@ public class StoryController {
         story.setUsername(userDetails.getUsername());
 
         // OpenAI를 통해 여러 테마 예측
-        List<String> themes = openAIService.predictThemes(title, location, description, tags);
+        List<String> themes = new ArrayList<>(openAIService.predictThemes(title, location, description, tags));
 
         // 유효한 테마들만 필터링
         String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
         themes.removeIf(theme -> !isValidTheme(theme, validThemes));
 
+        // 유효한 테마가 없으면 기본 테마 "기타"를 설정
         if (themes.isEmpty()) {
-            return "redirect:/upload?error=Invalid themes returned.";
+            themes.add("기타");
         }
 
         // 선택된 테마들을 콤마로 연결하여 저장

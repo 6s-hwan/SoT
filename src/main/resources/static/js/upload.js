@@ -312,11 +312,20 @@ function updateLocationInput() {
     locationInput.value = '어딘가';
   }
   // '국내' 카테고리에서 '어딘가'를 선택한 경우
-  else if (category === '국내' && (region === '어딘가' || city === '어딘가')) {
+  else if (category === '국내' && region === '어딘가') {
     locationInput.value = '대한민국 어딘가';
   }
-  else if (category === '국외' && (region === '어딘가' || city === '어딘가')) {
+  // '국내' 카테고리에서 특정 지역을 선택한 경우
+  else if (category === '국내' && city === '어딘가') {
+    locationInput.value = `${region} 어딘가`;
+  }
+  // '국외' 카테고리에서 '어딘가'를 선택한 경우
+  else if (category === '국외' && region === '어딘가') {
     locationInput.value = '해외 어딘가';
+  }
+  // '국외' 카테고리에서 특정 지역을 선택한 경우
+  else if (category === '국외' && city === '어딘가') {
+    locationInput.value = `${region} 어딘가`;
   }
   // 그 외의 경우
   else {
@@ -325,6 +334,7 @@ function updateLocationInput() {
 
   console.log('Updated location:', locationInput.value); // 값이 정상인지 확인하는 로그
 }
+
 
 function getURL(e) {
   if (e.files && e.files[0]) {

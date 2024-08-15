@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Email</title>
+</head>
+<body>
+<h2>Find Your Email</h2>
+
+<!-- 전화번호 입력 폼 -->
+<div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" placeholder="+1234567890">
+    <button onclick="sendVerificationCode()">Send Verification Code</button>
+    <p id="sendStatus"></p>
+</div>
+
+<!-- 인증번호 입력 폼 -->
+<div>
+    <label for="verificationCode">Verification Code:</label>
+    <input type="text" id="verificationCode" placeholder="123456">
+    <button onclick="verifyCode()">Verify Code</button>
+    <p id="verifyStatus"></p>
+</div>
+
+<script>
+    async function sendVerificationCode() {
+        const phoneNumber = document.getElementById('phoneNumber').value;
+
+        const response = await fetch('/api/sendVerificationCode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ phoneNumber })
+        });
+
+        const result = await response.text();
+        document.getElementById('sendStatus').textContent = result;
+    }
+
+    async function verifyCode() {
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const verificationCode = document.getElementById('verificationCode').value;
+
+        const response = await fetch('/api/verifyCode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ phoneNumber, verificationCode })
+        });
+
+        const result = await response.text();
+        document.getElementById('verifyStatus').textContent = result;
+    }
+</script>
+</body>
+</html>

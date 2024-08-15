@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface StoryRepository extends JpaRepository<Story, Long> {
+
+    List<Story> findByLocation(String location);
     // 사용자별 스토리 조회 (정렬 없음)
     List<Story> findByUsername(String username);
     List<Story> findByUsernameOrderByLikesDesc(String username);

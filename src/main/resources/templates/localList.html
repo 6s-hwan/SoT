@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -91,13 +91,14 @@
                   </p>
                 </div>
                 <img
-                  th:src="@{/images/localarrow.png}"
-                  alt="더보기 화살표"
-                  id="localarrow"
-                  width="24px"
-                  height="24px"
-                  style="cursor: pointer"
-                  onclick="location.href='a.html'"
+                        th:src="@{/images/localarrow.png}"
+                        alt="더보기 화살표"
+                        id="localarrow"
+                        width="24px"
+                        height="24px"
+                        style="cursor: pointer"
+                        th:data-location="${entry.key}"
+                        onclick="redirectToDetailPage(this)"
                 />
               </div>
               <div id="localImagegroup">
@@ -116,5 +117,11 @@
       </div>
     </div>
   <script th:src="@{/js/Home.js}"></script>
+  <script>
+    function redirectToDetailPage(element) {
+      var location = element.getAttribute('data-location');
+      window.location.href = '/localDetailPage?location=' + encodeURIComponent(location);
+    }
+  </script>
   </body>
 </html>

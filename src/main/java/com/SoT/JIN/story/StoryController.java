@@ -5,6 +5,8 @@ import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
 import com.SoT.JIN.user.WriterController;
+import com.SoT.JIN.story.StoryGroupRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +37,12 @@ public class StoryController {
     private final SearchService searchService;
     private final WriterController writerController;
     private final OpenAIService openAIService;
+    private final StoryGroupRepository storyGroupRepository;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService, UserRepository userRepository, SearchService searchService, WriterController writerController, OpenAIService openAIService) {
+    public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService,
+                           UserRepository userRepository, SearchService searchService, WriterController writerController,
+                           OpenAIService openAIService, StoryGroupRepository storyGroupRepository) {
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
         this.storyService = storyService;
@@ -45,6 +50,7 @@ public class StoryController {
         this.searchService = searchService;
         this.writerController = writerController;
         this.openAIService = openAIService;
+        this.storyGroupRepository = storyGroupRepository; // 올바르게 주입
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -152,6 +158,10 @@ public class StoryController {
         model.addAttribute("stories", topStories);
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
+    }
+    @GetMapping("/index")
+    public String index() {
+        return "index";
     }
 
     @GetMapping("/bookmark")
@@ -286,5 +296,17 @@ public class StoryController {
         Map<String, List<Story>> groupedStories = storyService.getGroupedStories();
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
+    }
+    @GetMapping("/localDetailPage")
+    public String getLocalDetailPage(@RequestParam("location") String location, Model model) {
+        List<Story> stories = storyService.getStoriesByLocation(location);
+        StoryGroup storyGroup = storyGroupRepository.findByGroupName(location)
+                .orElseThrow(() -> new IllegalArgumentException("Group not found"));
+
+        model.addAttribute("location", location);
+        model.addAttribute("stories", stories);
+        model.addAttribute("storyGroup", storyGroup);
+
+        return "localDetailPage"; // 해당 템플릿 페이지로 이동
     }
 }

@@ -159,6 +159,10 @@ public class StoryController {
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
     }
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
 
     @GetMapping("/bookmark")
     public String bookmark() {

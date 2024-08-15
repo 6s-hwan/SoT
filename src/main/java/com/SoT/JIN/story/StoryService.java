@@ -17,11 +17,15 @@ public class StoryService {
     private final StoryRepository storyRepository;
     private final LikeRepository likeRepository;
     private final SearchService searchService;
+    private final StoryGroupRepository storyGroupRepository;
+
     @Autowired
-    public StoryService(StoryRepository storyRepository, LikeRepository likeRepository, SearchService searchService) {
+    public StoryService(StoryRepository storyRepository, LikeRepository likeRepository,
+                        SearchService searchService, StoryGroupRepository storyGroupRepository) {
         this.storyRepository = storyRepository;
         this.likeRepository = likeRepository;
         this.searchService = searchService;
+        this.storyGroupRepository = storyGroupRepository;
     }
     @Transactional
     public Story getStoryAndIncrementViewCount(Long id) {
@@ -74,7 +78,14 @@ public class StoryService {
                 .entrySet().stream()
                 .filter(entry -> entry.getValue().size() >= 3) // 3개 이상의 스토리만 필터링
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().subList(0, Math.min(3, entry.getValue().size()))));
-
+        // 새로운 그룹 이름으로 StoryGroup 엔티티 생성
+        groupedStories.keySet().forEach(groupName -> {
+            if (!storyGroupRepository.existsByGroupName(groupName)) {
+                // 여기서는 그룹 이름만으로 엔티티를 생성합니다.
+                StoryGroup newGroup = new StoryGroup(groupName, null, null); // 영문 이름과 이미지 URL은 null로 설정
+                storyGroupRepository.save(newGroup);
+            }
+        });
         return groupedStories;
     }
 
@@ -82,6 +93,9 @@ public class StoryService {
     private List<Story> getAllStories() {
         // DB에서 스토리 가져오는 로직이 들어갑니다.
         return storyRepository.findAll(); // 예시로 storyRepository를 사용
+    }
+    public List<Story> getStoriesByLocation(String location) {
+        return storyRepository.findByLocation(location); // 해당 위치의 스토리만 필터링하여 가져오기
     }
 
 }

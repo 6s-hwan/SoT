@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 이미지 업로드</title>
+</head>
+<body>
+<h1>프로필 이미지 업로드</h1>
+<form action="/test/profile/update-image" method="post" enctype="multipart/form-data">
+    <label for="file">파일 선택:</label>
+    <input type="file" id="file" name="file" required>
+    <button type="submit">업로드</button>
+</form>
+<p><a href="/my-page">내 페이지로 돌아가기</a></p>
+</body>
+</html>

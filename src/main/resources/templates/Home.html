@@ -1,414 +1,666 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/BestStoryDetailPage.css}" />
-    <link rel="stylesheet" th:href="@{/css/Home.css}">
-    <link rel="stylesheet" th:href="@{/css/ThemeDetailPage.css}">
+    <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link rel="stylesheet" th:href="@{/css/ThemeDetailPage.css}" />
     <link
-            rel="stylesheet"
-            type="text/css"
-            th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-            rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
     />
     <title>SoT</title>
-</head>
-<body>
-<nav class="navbar">
-    <div class="nav_logo">
+  </head>
+  <body>
+    <!-- 내비게이션바 -->
+    <nav class="navbar">
+      <div class="nav_logo">
         <div id="nav_left">
-            <div id="nav_logo1">
-                <a href="./test">
-                    <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
-                </a>
-            </div>
-            <div class="nav_menu">
-                <ul class="navigation">
-                    <li><a href="./test" class="b">홈</a></li>
-                    <li><a href="" class="c">지역</a></li>
-                    <li><a href="" class="c">북마크</a></li>
-                </ul>
-            </div>
-            <form action="/search" method="get" id="search">
-                <input type="text" name="query" class="search">
-                <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">
-            </form>
+          <div id="nav_logo1">
+            <a href="./test">
+              <img
+                th:src="@{/images/MainLogo.png}"
+                alt="로고"
+                width="200px"
+                height="46px"
+              />
+            </a>
+          </div>
+          <div class="nav_menu">
+            <ul class="navigation">
+              <li><a href="./test" class="b">홈</a></li>
+              <li><a href="" class="c">지역</a></li>
+              <li><a href="" class="c">북마크</a></li>
+            </ul>
+          </div>
+          <form action="/search" method="get" id="search">
+            <input type="text" name="query" class="search" />
+            <img
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+            />
+          </form>
         </div>
         <div id="nav_right">
-            <input type="button" id="uploadbtn">
-            <input type="button" class="imagebtn" onclick="location.href='my-page'">
-            <input type="checkbox" id="join" style="display: none;">
-            <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
-            <form action="/logout" method="post" style="display:inline;">
-                <button type="submit">로그아웃</button>
-            </form>
+          <input type="button" id="uploadbtn" />
+          <input
+            type="button"
+            class="imagebtn"
+            onclick="location.href='my-page'"
+          />
+          <input type="checkbox" id="join" style="display: none" />
+          <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')"
+            >로그인</label
+          >
+          <form action="/logout" method="post" style="display: inline">
+            <button type="submit">로그아웃</button>
+          </form>
         </div>
+      </div>
+    </nav>
+
+    <!-- 팝업창들 -->
+    <div th:replace="fragments/upload_popup :: uploadPopup"></div>
+    <div th:replace="fragments/login_popup :: loginPopup"></div>
+    <div th:replace="fragments/join_popup :: joinPopup"></div>
+    <div th:replace="fragments/terms_popup :: termsPopup"></div>
+    <div th:replace="fragments/privacy_popup :: privacyPopup"></div>
+    <!-- <div th:replace="fragments/joinfinsih_popup :: joinFinishPopup"></div> -->
+    <!-- <div th:replace="fragments/emailfind_popup :: emailFindPopup"></div> -->
+    <!-- <div th:replace="fragments/emailcheck_popup :: emailCheckPopup"></div> -->
+    <!-- <div th:replace="fragments/pwfind_popup :: pwFindPopup"></div> -->
+
+    <!-- 슬라이드 광고 시작 -->
+    <div class="slide-container">
+      <div class="slide_content">
+        <div class="slide">
+          <img
+            th:src="@{/images/slide1.png}"
+            alt="Slide 1"
+            width="1200px"
+            height="480px"
+          />
+          <div class="button-container">
+            <button class="slide-btn1" onclick="prevSlide()"></button>
+            <div class="text-container">
+              <div id="slide_text1">북촌 한옥마을</div>
+              <div id="slide_text2">
+                북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운
+                곳입니다.<br />
+                작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과
+                문화를 그대로 <br />간직하고 있습니다.
+              </div>
+              <div id="slide_text3"><a href="#">자세히 보기</a></div>
+            </div>
+            <button class="slide-btn2" onclick="nextSlide()"></button>
+          </div>
+          <div class="index-container">
+            <span class="current-index">1/3</span>
+          </div>
+        </div>
+        <div class="slide">
+          <img
+            th:src="@{/images/slide2.png}"
+            alt="Slide 2"
+            width="1200px"
+            height="480px"
+          />
+          <div class="button-container">
+            <button class="slide-btn1" onclick="prevSlide()"></button>
+            <div class="text-container">
+              <div id="slide_text1">북촌 한옥마을</div>
+              <div id="slide_text2">
+                북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운
+                곳입니다.<br />
+                작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과
+                문화를 그대로 <br />간직하고 있습니다.
+              </div>
+              <div id="slide_text3"><a href="#">자세히 보기</a></div>
+            </div>
+            <button class="slide-btn2" onclick="nextSlide()"></button>
+          </div>
+          <div class="index-container">
+            <span class="current-index">2/3</span>
+          </div>
+        </div>
+        <div class="slide">
+          <img
+            th:src="@{/images/slide3.png}"
+            alt="Slide 3"
+            width="1200px"
+            height="480px"
+          />
+          <div class="button-container">
+            <button class="slide-btn1" onclick="prevSlide()"></button>
+            <div class="text-container">
+              <div id="slide_text1">북촌 한옥마을</div>
+              <div id="slide_text2">
+                북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운
+                곳입니다.<br />
+                작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과
+                문화를 그대로 <br />간직하고 있습니다.
+              </div>
+              <div id="slide_text3"><a href="#">자세히 보기</a></div>
+            </div>
+            <button class="slide-btn2" onclick="nextSlide()"></button>
+          </div>
+          <div class="index-container">
+            <span class="current-index">3/3</span>
+          </div>
+        </div>
+      </div>
     </div>
-</nav>
+    <!-- 슬라이드 광고 끝 -->
 
-<!-- 팝업창들 -->
-<div th:replace="fragments/upload_popup :: uploadPopup"></div>
-<div th:replace="fragments/login_popup :: loginPopup"></div>
-<div th:replace="fragments/join_popup :: joinPopup"></div>
-<div th:replace="fragments/terms_popup :: termsPopup"></div>
-<div th:replace="fragments/privacy_popup :: privacyPopup"></div>
-
-<!-- 슬라이드 광고 시작 -->
-<div class="slide-container">
-    <div class="slide_content">
-        <div class="slide">
-            <img th:src="@{/images/slide1.png}" alt="Slide 1" width="1200px" height="480px"/>
-            <div class="button-container">
-                <button class="slide-btn1" onclick="prevSlide()"></button>
-                <div class="text-container">
-                    <div id="slide_text1">북촌 한옥마을</div>
-                    <div id="slide_text2">
-                        북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운 곳입니다.<br/>
-                        작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과 문화를 그대로 <br/>간직하고 있습니다.
-                    </div>
-                    <div id="slide_text3"><a href="#">자세히 보기</a></div>
-                </div>
-                <button class="slide-btn2" onclick="nextSlide()"></button>
-            </div>
-            <div class="index-container">
-                <span class="current-index">1/3</span>
-            </div>
-        </div>
-        <div class="slide">
-            <img th:src="@{/images/slide2.png}" alt="Slide 2" width="1200px" height="480px"/>
-            <div class="button-container">
-                <button class="slide-btn1" onclick="prevSlide()"></button>
-                <div class="text-container">
-                    <div id="slide_text1">북촌 한옥마을</div>
-                    <div id="slide_text2">
-                        북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운 곳입니다.<br/>
-                        작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과 문화를 그대로 <br/>간직하고 있습니다.
-                    </div>
-                    <div id="slide_text3"><a href="#">자세히 보기</a></div>
-                </div>
-                <button class="slide-btn2" onclick="nextSlide()"></button>
-            </div>
-            <div class="index-container">
-                <span class="current-index">2/3</span>
-            </div>
-        </div>
-        <div class="slide">
-            <img th:src="@{/images/slide3.png}" alt="Slide 3" width="1200px" height="480px"/>
-            <div class="button-container">
-                <button class="slide-btn1" onclick="prevSlide()"></button>
-                <div class="text-container">
-                    <div id="slide_text1">북촌 한옥마을</div>
-                    <div id="slide_text2">
-                        북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운 곳입니다.<br/>
-                        작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과 문화를 그대로 <br/>간직하고 있습니다.
-                    </div>
-                    <div id="slide_text3"><a href="#">자세히 보기</a></div>
-                </div>
-                <button class="slide-btn2" onclick="nextSlide()"></button>
-            </div>
-            <div class="index-container">
-                <span class="current-index">3/3</span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 슬라이드 광고 끝 -->
-
-<!-- 내스토리 등록하기 시작 -->
-<div id="myStoryUpload">
-    <div id="mystory">
+    <!-- 내스토리 등록하기 시작 -->
+    <div id="myStoryUpload">
+      <div id="mystory">
         <div id="text31">
-            여러 사람들에게 <span>여러분만의 스토리</span>를 소개해보세요!
+          여러 사람들에게 <span>여러분만의 스토리</span>를 소개해보세요!
         </div>
         <div id="text32">
-            <a href="" class="text32design">
-                내 스토리 등록하기
-                <img th:src="@{/images/Vector%2010.png}" alt="화살표" width="7px" height="14px"/>
-            </a>
+          <a href="" class="text32design">
+            내 스토리 등록하기
+            <img
+              th:src="@{/images/Vector%2010.png}"
+              alt="화살표"
+              width="7px"
+              height="14px"
+            />
+          </a>
         </div>
-        <img th:src="@{/images/storyupload.png}" alt="내 스토리 등록하기 그림" class="storyimg" width="221px" height="100px"/>
+        <img
+          th:src="@{/images/storyupload.png}"
+          alt="내 스토리 등록하기 그림"
+          class="storyimg"
+          width="221px"
+          height="100px"
+        />
+      </div>
     </div>
-</div>
-<!-- 내 스토리 등록하기 끝 -->
+    <!-- 내 스토리 등록하기 끝 -->
 
-<!--  테마별 여행지 시작 -->
-<div id="theme_full">
-    <div id="theme">
+    <!--  테마별 여행지 시작 -->
+    <div id="theme_full">
+      <div id="theme">
         <div id="theme_title">
-            <img th:src="@{/images/themeimg.png}" class="themeimg" />
-            <p class="theme">테마별 여행지</p>
+          <img th:src="@{/images/themeimg.png}" class="themeimg" />
+          <p class="theme">테마별 여행지</p>
         </div>
         <div class="themeback">
-            <div id="theme_container">
-                <label for="theme1">
-                    <button type="button" id="theme1" onclick="toggleTheme(1)">
-                        <p id="text_theme1">
-                            자연 속 여행
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck1" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage1" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme1">
+              <button type="button" id="theme1" onclick="toggleTheme(1)">
+                <p id="text_theme1">
+                  자연 속 여행
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck1"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage1"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme2">
-                    <button type="button" id="theme2" onclick="toggleTheme(2)">
-                        <p id="text_theme2">
-                            역사와 문화
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck2" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage2" th:src="@{/images/theme_overlay2.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme2">
+              <button type="button" id="theme2" onclick="toggleTheme(2)">
+                <p id="text_theme2">
+                  역사와 문화
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck2"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage2"
+                  th:src="@{/images/theme_overlay2.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme3">
-                    <button type="button" id="theme3" onclick="toggleTheme(3)">
-                        <p id="text_theme3">
-                            식도락 여행
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck3" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage3" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme3">
+              <button type="button" id="theme3" onclick="toggleTheme(3)">
+                <p id="text_theme3">
+                  식도락 여행
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck3"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage3"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme4">
-                    <button type="button" id="theme4" onclick="toggleTheme(4)">
-                        <p id="text_theme4">
-                            축제
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck4" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage4" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme4">
+              <button type="button" id="theme4" onclick="toggleTheme(4)">
+                <p id="text_theme4">
+                  축제
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck4"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage4"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme5">
-                    <button type="button" id="theme5" onclick="toggleTheme(5)">
-                        <p id="text_theme5">
-                            예술 및 체험
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck5" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage5" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme5">
+              <button type="button" id="theme5" onclick="toggleTheme(5)">
+                <p id="text_theme5">
+                  예술 및 체험
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck5"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage5"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme6">
-                    <button type="button" id="theme6" onclick="toggleTheme(6)">
-                        <p id="text_theme6">
-                            산악 여행
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck6" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage6" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme6">
+              <button type="button" id="theme6" onclick="toggleTheme(6)">
+                <p id="text_theme6">
+                  산악 여행
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck6"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage6"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme7">
-                    <button type="button" id="theme7" onclick="toggleTheme(7)">
-                        <p id="text_theme7">
-                            도심속 여행
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck7" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage7" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme7">
+              <button type="button" id="theme7" onclick="toggleTheme(7)">
+                <p id="text_theme7">
+                  도심속 여행
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck7"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage7"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme8">
-                    <button type="button" id="theme8" onclick="toggleTheme(8)">
-                        <p id="text_theme8">
-                            바다와 해변
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck8" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage8" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme8">
+              <button type="button" id="theme8" onclick="toggleTheme(8)">
+                <p id="text_theme8">
+                  바다와 해변
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck8"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage8"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
 
-            <div id="theme_container">
-                <label for="theme9">
-                    <button type="button" id="theme9" onclick="toggleTheme(9)">
-                        <p id="text_theme9">
-                            테마파크
-                            <img th:src="@{/images/theme_checked.png}" id="themecheck9" class="theme-check" alt="체크" width="24px" height="24px" />
-                        </p>
-                        <img id="overlayImage9" th:src="@{/images/theme_overlay.png}" alt="오버레이 이미지" />
-                    </button>
-                </label>
-            </div>
+          <div id="theme_container">
+            <label for="theme9">
+              <button type="button" id="theme9" onclick="toggleTheme(9)">
+                <p id="text_theme9">
+                  테마파크
+                  <img
+                    th:src="@{/images/theme_checked.png}"
+                    id="themecheck9"
+                    class="theme-check"
+                    alt="체크"
+                    width="24px"
+                    height="24px"
+                  />
+                </p>
+                <img
+                  id="overlayImage9"
+                  th:src="@{/images/theme_overlay.png}"
+                  alt="오버레이 이미지"
+                />
+              </button>
+            </label>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!--  테마별 여행지 끝 -->
+    <!--  테마별 여행지 끝 -->
 
-<!-- 시즌별 스토리 시작 -->
-<div id="season_full">
-    <div id="season">
+    <!-- 시즌별 스토리 시작 -->
+    <div id="season_full">
+      <div id="season">
         <div id="season_title">
-            <img th:src="@{/images/seasonimg.png}" class="seasonimg"/>
-            <p class="season">시즌별 스토리</p>
-            <button type="button" id="spring">봄</button>
-            <button type="button" id="summer">여름</button>
-            <button type="button" id="fall">가을</button>
-            <button type="button" id="winter">겨울</button>
+          <img th:src="@{/images/seasonimg.png}" class="seasonimg" />
+          <p class="season">시즌별 스토리</p>
+          <button type="button" id="spring">봄</button>
+          <button type="button" id="summer">여름</button>
+          <button type="button" id="fall">가을</button>
+          <button type="button" id="winter">겨울</button>
         </div>
         <div class="seasonback">
-            <label for="season1">
-                <button type="button" id="season1" onclick="location.href='./seasonpage.html';"></button>
-            </label>
-            <label for="season2">
-                <button type="button" id="season2" onclick="location.href='./seasonpage.html';"></button>
-            </label>
-            <label for="season3">
-                <button type="button" id="season3" onclick="location.href='./seasonpage.html';"></button>
-            </label>
-            <label for="season4">
-                <button type="button" id="season4" onclick="location.href='./seasonpage.html';"></button>
-            </label>
-            <label for="season5">
-                <button type="button" id="season5" onclick="location.href='./seasonpage.html';"></button>
-            </label>
+          <label for="season1">
+            <button
+              type="button"
+              id="season1"
+              onclick="location.href='./seasonpage.html';"
+            ></button>
+          </label>
+          <label for="season2">
+            <button
+              type="button"
+              id="season2"
+              onclick="location.href='./seasonpage.html';"
+            ></button>
+          </label>
+          <label for="season3">
+            <button
+              type="button"
+              id="season3"
+              onclick="location.href='./seasonpage.html';"
+            ></button>
+          </label>
+          <label for="season4">
+            <button
+              type="button"
+              id="season4"
+              onclick="location.href='./seasonpage.html';"
+            ></button>
+          </label>
+          <label for="season5">
+            <button
+              type="button"
+              id="season5"
+              onclick="location.href='./seasonpage.html';"
+            ></button>
+          </label>
         </div>
         <label for="seasonmorebtn">
-            <button type="button" id="seasonmorebtn" onclick="location.href='./seasonpage.html';"></button>
+          <button
+            type="button"
+            id="seasonmorebtn"
+            onclick="location.href='./seasonpage.html';"
+          ></button>
         </label>
+      </div>
     </div>
-</div>
-<!-- 시즌별 스토리 끝 -->
+    <!-- 시즌별 스토리 끝 -->
 
-<!-- 베스트 스토리 시작 -->
-<div id="bestStoryfull">
-    <div id="bestStory">
+    <!-- 베스트 스토리 시작 -->
+    <div id="bestStoryfull">
+      <div id="bestStory">
         <div id="bestStoryTitle">
-            <div id="best_title">
-                <img th:src="@{/images/bestimg.png}" class="bestimg"/>
-                <div id="best_text">
-                    <p class="best">Best Story</p>
-                    <p class="best_1">다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요</p>
-                </div>
+          <div id="best_title">
+            <img th:src="@{/images/bestimg.png}" class="bestimg" />
+            <div id="best_text">
+              <p class="best">Best Story</p>
+              <p class="best_1">
+                다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요
+              </p>
             </div>
+          </div>
         </div>
         <div id="back">
-            <div class="stories" th:each="story, iterStat : ${stories}">
-                <div class="story" th:if="${iterStat.index < 12}">
-                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                        <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
-                        <div id="storyTitlefull">
-                            <p id="storyTitle" th:text="${story.title}">Story Title</p>
-                            <div class="right-side">
-                                <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px"/>
-                                <p class="imagetext" th:text="${story.viewCount}">0</p>
-                                <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px"/>
-                                <p class="imagetext" th:text="${story.likes.size()}">0</p>
-                            </div>
-                        </div>
-                    </a>
+          <div class="stories" th:each="story, iterStat : ${stories}">
+            <div class="story" th:if="${iterStat.index < 12}">
+              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                <img
+                  id="storyimage"
+                  th:src="${story.image_url}"
+                  alt="Story Image"
+                />
+                <div id="storyTitlefull">
+                  <p id="storyTitle" th:text="${story.title}">Story Title</p>
+                  <div class="right-side">
+                    <img
+                      th:src="@{/images/seeimg.png}"
+                      class="seeimage"
+                      width="16px"
+                      height="16px"
+                    />
+                    <p class="imagetext" th:text="${story.viewCount}">0</p>
+                    <img
+                      th:src="@{/images/likeimg.png}"
+                      class="likeimage"
+                      width="14px"
+                      height="14px"
+                    />
+                    <p class="imagetext" th:text="${story.likes.size()}">0</p>
+                  </div>
                 </div>
+              </a>
             </div>
+          </div>
         </div>
         <div>
-            <label for="bestmorebtn">
-                <button type="button" id="bestmorebtn" th:onclick="|location.href='@{/best}';|"></button>
-            </label>
+          <label for="bestmorebtn">
+            <button
+              type="button"
+              id="bestmorebtn"
+              th:onclick="|location.href='@{/best}';|"
+            ></button>
+          </label>
         </div>
+      </div>
     </div>
-</div>
-<!-- 베스트 스토리 끝 -->
+    <!-- 베스트 스토리 끝 -->
 
-<!-- 급상승 여행지 시작 -->
-<div id="rise_full">
-    <div id="rise">
+    <!-- 급상승 여행지 시작 -->
+    <div id="rise_full">
+      <div id="rise">
         <div id="rise_title">
-            <img th:src="@{/images/riseimg.png}" class="riseimg"/>
-            <p class="rise">급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요</p>
+          <img th:src="@{/images/riseimg.png}" class="riseimg" />
+          <p class="rise">
+            급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요
+          </p>
         </div>
         <div id="TopSearchesList" th:each="search, iterStat : ${topSearches}">
-            <div class="searchItem" th:attr="id='search' + ${iterStat.index + 1}">
-                <h2><a th:href="@{/rise/{keyword}(keyword=${search.keyword})}" th:text="${search.keyword}"></a></h2>
-                <div class="storyImage" th:if="${topStories[iterStat.index]} != null">
-                    <a th:href="@{/rise/{keyword}(keyword=${search.keyword})}">
-                        <img th:src="${topStories[iterStat.index].image_url}" alt="Story Image" class="search_img"/>
-                    </a>
-                </div>
-                <p th:if="${topStories[iterStat.index]} == null">스토리를 찾을 수 없습니다</p>
+          <div class="searchItem" th:attr="id='search' + ${iterStat.index + 1}">
+            <h2>
+              <a
+                th:href="@{/rise/{keyword}(keyword=${search.keyword})}"
+                th:text="${search.keyword}"
+              ></a>
+            </h2>
+            <div
+              class="storyImage"
+              th:if="${topStories[iterStat.index]} != null"
+            >
+              <a th:href="@{/rise/{keyword}(keyword=${search.keyword})}">
+                <img
+                  th:src="${topStories[iterStat.index].image_url}"
+                  alt="Story Image"
+                  class="search_img"
+                />
+              </a>
             </div>
+            <p th:if="${topStories[iterStat.index]} == null">
+              스토리를 찾을 수 없습니다
+            </p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- 급상승 여행지 끝 -->
+    <!-- 급상승 여행지 끝 -->
 
-<!-- 인기 작가 스토리 시작 -->
-<div id="popular_full">
-    <div id="popular">
+    <!-- 인기 작가 스토리 시작 -->
+    <div id="popular_full">
+      <div id="popular">
         <div id="popular_title">
-            <img th:src="@{/images/popularimg.png}" class="popularimg"/>
-            <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
+          <img th:src="@{/images/popularimg.png}" class="popularimg" />
+          <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
         </div>
         <div id="popularback">
-            <div th:each="writer, iterStat : ${popularWriters}" class="popular-item">
-                <div class="popular-item-img">
-                    <button type="button" th:style="'background-image:url(' + ${writer.profileImageUrl} + ');'" class="profile-img-btn" th:data-url="'/writer/' + ${writer.username}"></button>
-                </div>
-                <div class="popular-item-text">
-                    <p class="popular-item-name" th:text="${writer.username}">Cosmos</p>
-                </div>
-                <div class="popular-item-etc">
-                    <div class="popular-item-story">
-                        <img th:src="@{/images/imageimg.png}" class="popular-item-icon"/>
-                        <p class="popular-item-count" th:text="${writer.totalStories}">451</p>
-                    </div>
-                    <div class="popular-item-like" style="padding-left: 27px;">
-                        <img th:src="@{/images/favorite.png}" class="popular-item-icon"/>
-                        <p class="popular-item-count" th:text="${writer.totalLikes}">36.2k</p>
-                    </div>
-                </div>
+          <div
+            th:each="writer, iterStat : ${popularWriters}"
+            class="popular-item"
+          >
+            <div class="popular-item-img">
+              <button
+                type="button"
+                th:style="'background-image:url(' + ${writer.profileImageUrl} + ');'"
+                class="profile-img-btn"
+                th:data-url="'/writer/' + ${writer.username}"
+              ></button>
             </div>
+            <div class="popular-item-text">
+              <p class="popular-item-name" th:text="${writer.username}">
+                작가 이름
+              </p>
+            </div>
+            <div class="popular-item-etc">
+              <div class="popular-item-story">
+                <img
+                  th:src="@{/images/imageimg.png}"
+                  class="popular-item-icon"
+                />
+                <p class="popular-item-count" th:text="${writer.totalStories}">
+                  0
+                </p>
+              </div>
+              <div class="popular-item-like" style="padding-left: 27px">
+                <img
+                  th:src="@{/images/favorite.png}"
+                  class="popular-item-icon"
+                />
+                <p class="popular-item-count1" th:text="${writer.totalLikes}">
+                  0
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div>
+          <label for="popularmorebtn">
+            <button type="button" id="popularmorebtn"></button>
+          </label>
+        </div>
+      </div>
     </div>
-</div>
-<!-- 인기 작가 스토리 끝 -->
+    <!-- 인기 작가 스토리 끝 -->
 
-<!-- 나머지들 -->
-<div id="etc_thing">
-    <div id="etc_full">
+    <!-- 나머지들 -->
+    <div id="etc_thing">
+      <div id="etc_full">
         <div id="terms_of_use">
-            <button type="button" value="이용약관" class="terms_of_use" onclick="location.href='./terms_of_use.html';">
-                이용약관
-            </button>
+          <button
+            type="button"
+            value="이용약관"
+            class="terms_of_use"
+            onclick="location.href='./terms_of_use.html';"
+          >
+            이용약관
+          </button>
         </div>
         <div id="personal_inf">
-            <button type="button" value="개인정보처리방침" class="personal_inf" onclick="location.href='./personal_inf.html';">
-                개인정보처리방침
-            </button>
+          <button
+            type="button"
+            value="개인정보처리방침"
+            class="personal_inf"
+            onclick="location.href='./personal_inf.html';"
+          >
+            개인정보처리방침
+          </button>
         </div>
         <div id="contact">
-            <button type="button" value="Contact" class="contact" onclick="location.href='./contact.html';">
-                Contact
-            </button>
+          <button
+            type="button"
+            value="Contact"
+            class="contact"
+            onclick="location.href='./contact.html';"
+          >
+            Contact
+          </button>
         </div>
         <div id="c_SoT">
-            <p class="c_SoT">ⓒ 2024 SoT</p>
+          <p class="c_SoT">ⓒ 2024 SoT</p>
         </div>
+      </div>
     </div>
-</div>
 
-<script th:src="@{/js/Home.js}"></script>
-<script th:src="@{/js/ThemeDetailPage.js}"></script>
-</body>
+    <script th:src="@{/js/Home.js}"></script>
+    <script th:src="@{/js/ThemeDetailPage.js}"></script>
+  </body>
 </html>

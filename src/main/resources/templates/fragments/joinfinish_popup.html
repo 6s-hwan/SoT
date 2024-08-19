@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/SoT/src/main/resources/static/css/Home.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <!-- 임시버튼 -->
+    <input type="checkbox" id="join3" />
+    <label for="join3">업로드</label>
+
+    <div id="bg_gray5" style="display: none" th:fragment="joinFinishPopup">
+      <div id="joinfinsih_pop_up">
+        <div id="joincheckTitle">
+          <p id="joinchecktitle1">회원가입</p>
+          <div id="close">
+            <img
+              src="/SoT/src/main/resources/static/images/X.png"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="document.getElementById('bg_gray5').style.display='none'"
+            />
+          </div>
+        </div>
+        <p id="joinfinishcontent">회원가입이 완료되었습니다.</p>
+
+        <div id="joinfinishbuttons">
+          <button id="joinfinishbtn" type="button">닫기</button>
+          <button id="gotologinbtn" type="button">로그인</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var Joinbtn = document.querySelector("#join3");
+      var joinfinishPopup = document.getElementById("bg_gray5");
+
+      // 로그인 버튼 누르면 회원가입창 열기
+      Joinbtn.addEventListener("click", function (event) {
+        event.preventDefault(); // 링크의 기본 동작 방지
+        joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
+      });
+    });
+  </script>
+</html>

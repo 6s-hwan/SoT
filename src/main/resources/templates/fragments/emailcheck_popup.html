@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/SoT/src/main/resources/static/css/Home.css" />
+    <link rel="stylesheet" th:href="@{/css/Home.css}" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -28,7 +28,7 @@
           <p id="emailchecktitle1">이메일 찾기</p>
           <div id="close">
             <img
-              src="/SoT/src/main/resources/static/images/X.png"
+              th:src="@{/images/X.png}"
               alt="X"
               width="28px"
               height="28px"

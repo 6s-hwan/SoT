@@ -168,6 +168,17 @@ public class StoryController {
     public String bookmark() {
         return "BookmarkPage";
     }
+    @GetMapping("/email")
+    public String email() {
+        return "fragments/emailcheck_popup";
+    }
+    @GetMapping("/email2")
+    public String email2() {
+        return "fragments/emailfind_popup";
+    }@GetMapping("/join")
+    public String join() {
+        return "fragments/joinfinish_popup";
+    }
 
     @GetMapping("/home")
     public String home(Model model, @RequestParam(defaultValue = "12") int limit) {

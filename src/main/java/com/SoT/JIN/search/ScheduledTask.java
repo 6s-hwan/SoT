@@ -15,7 +15,7 @@ public class ScheduledTask {
     }
 
     // 매일 자정에 실행되는 스케줄러 (CRON 표현식: 초 분 시 일 월 요일)
-    @Scheduled(cron = "0 0 0 * * *")
+    @Scheduled(cron = "0 0 0 * * MON")
     public void resetSearchCountsDaily() {
         searchService.resetSearchCounts();
     }

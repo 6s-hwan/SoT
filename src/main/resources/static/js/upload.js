@@ -3,15 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 팝업 보이기
   StoryUploadPopup.style.display = "block";
 
-  // 창 닫는 js 코드
-  // var loginBtn = document.getElementById("join");
-
-  // loginBtn.addEventListener("click", function () {
-  //   StoryUploadPopup.style.display = "block";
-  //   document.body.style.overflow = ""; // 스크롤 허용
-  //   resetForm();
-  // });
-
   // 닫기 버튼 클릭 시
   const closeButton = document.getElementById("uploadclose");
   closeButton.addEventListener("click", function () {
@@ -38,12 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupDateSelectors();
 
   // 위치 선택 관련 코드 추가
-  populateCategories();
-
-  const locationCategorySelect = document.getElementById("location-category");
-  locationCategorySelect.addEventListener("change", function () {
-    populateRegions(this.value);
-  });
+  populateRegions();
 
   const regionSelect = document.getElementById("region");
   regionSelect.addEventListener("change", function () {
@@ -56,28 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 위치 정보를 업데이트하는 함수
 function updateLocationInput() {
-  const category = document.getElementById("location-category").value;
   const region = document.getElementById("region").value;
   const city = document.getElementById("city").value;
 
   const locationInput = document.getElementById("location");
 
-  if (category === "어딘가") {
-    // "어딘가"를 선택한 경우 "어딘가"를 유효한 값으로 처리
+  if (region === "어딘가") {
     locationInput.value = "어딘가";
-  } else if (category === "국내" && region === "어딘가" && city === "어딘가") {
-    // "국내"에서 "어딘가" 선택한 경우 "대한민국 어딘가"를 유효한 값으로 처리
-    locationInput.value = "대한민국 어딘가";
-  } else if (category === "국외" && region === "어딘가" && city === "어딘가") {
-    // "국외"에서 "어딘가" 선택한 경우 "해외 어딘가"를 유효한 값으로 처리
-    locationInput.value = "해외 어딘가";
-  } else if (
-    !region ||
-    !city ||
-    region === "지역 선택" ||
-    city === "도시 선택"
-  ) {
-    // 기본 선택값 또는 선택되지 않은 경우 location 필드를 빈 값으로 설정
+  } else if (city === "어딘가") {
+    locationInput.value = `${region} 어딘가`;
+  } else if (!region || !city || region === "지역 선택" || city === "도시 선택") {
     locationInput.value = "";
   } else {
     locationInput.value = `${region} ${city}`;
@@ -99,15 +73,7 @@ function uploadPost(event) {
   let description = form.description.value;
   let imageUrl = form.imageUrl.value;
 
-  if (
-    !title ||
-    !date_year ||
-    !date_month ||
-    !date_day ||
-    !location ||
-    !description ||
-    !imageUrl
-  ) {
+  if (!title || !date_year || !date_month || !date_day || !location || !description || !imageUrl) {
     alert("모든 필드를 채워주세요!");
     return false;
   }
@@ -115,10 +81,7 @@ function uploadPost(event) {
   form.submit();
 }
 
-// 국내, 국외, 어딘가 카테고리 정의
-const categoriesData = ["국내", "국외", "어딘가"];
-
-// 국내외 지역 및 도시 데이터 정의
+// 국내 지역 및 도시 데이터 정의
 const regionsData = {
   대한민국: [
     "서울특별시",
@@ -138,19 +101,6 @@ const regionsData = {
     "경상북도",
     "강원특별자치도",
     "제주특별자치도",
-    "어딘가",
-  ],
-  해외: [
-    "일본",
-    "중국",
-    "베트남",
-    "태국",
-    "필리핀",
-    "미국",
-    "대만",
-    "말레이시아",
-    "싱가포르",
-    "인도네시아",
     "어딘가",
   ],
 };
@@ -298,8 +248,6 @@ const citiesData = {
     "태안군",
     "어딘가",
   ],
-
-  // 충청북도
   충청북도: [
     "청주시",
     "충주시",
@@ -314,8 +262,6 @@ const citiesData = {
     "단양군",
     "어딘가",
   ],
-
-  // 전라남도
   전라남도: [
     "목포시",
     "여수시",
@@ -341,8 +287,6 @@ const citiesData = {
     "신안군",
     "어딘가",
   ],
-
-  // 전라북도
   전라북도: [
     "전주시",
     "군산시",
@@ -360,8 +304,6 @@ const citiesData = {
     "부안군",
     "어딘가",
   ],
-
-  // 경상남도
   경상남도: [
     "창원시",
     "진주시",
@@ -383,8 +325,6 @@ const citiesData = {
     "합천군",
     "어딘가",
   ],
-
-  // 경상북도
   경상북도: [
     "포항시",
     "경주시",
@@ -411,8 +351,6 @@ const citiesData = {
     "울릉군",
     "어딘가",
   ],
-
-  // 강원특별자치도
   강원특별자치도: [
     "춘천시",
     "원주시",
@@ -434,93 +372,17 @@ const citiesData = {
     "양양군",
     "어딘가",
   ],
-
-  // 제주특별자치도
   제주특별자치도: ["제주시", "서귀포시", "어딘가"],
-
-  일본: ["도쿄도", "오사카부", "교토부", "후쿠오카현", "홋카이도", "어딘가"],
-  중국: ["베이징", "상하이", "광저우", "청두", "시안", "어딘가"],
-  베트남: ["하노이", "호치민", "다낭", "호이안", "나트랑", "어딘가"],
-  태국: ["방콕", "푸켓", "치앙마이", "파타야", "끄라비", "어딘가"],
-  필리핀: ["마닐라", "세부", "보라카이", "다바오", "클락", "어딘가"],
-  미국: [
-    "New York",
-    "Los Angeles",
-    "San Francisco",
-    "Chicago",
-    "Las Vegas",
-    "Hawaii",
-    "어딘가",
-  ],
-  대만: [
-    "타이베이",
-    "가오슝",
-    "타이중",
-    "타이난",
-    "타이둥",
-    "단수이",
-    "어딘가",
-  ],
-  말레이시아: [
-    "쿠알라룸푸르",
-    "조호르바루",
-    "코타키나발루",
-    "페낭",
-    "말라카",
-    "어딘가",
-  ],
-  싱가포르: ["싱가포르", "어딘가"],
-  인도네시아: ["자카르타", "발리", "수라바야", "반둥", "족자카르타", "어딘가"],
-  어딘가: ["어딘가"], // '어딘가'를 위한 특별 처리
 };
 
-function populateCategories() {
-  const categorySelect = document.getElementById("location-category");
-  categoriesData.forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category;
-    categorySelect.appendChild(option);
-  });
-}
-
-function populateRegions(category) {
+function populateRegions() {
   const regionSelect = document.getElementById("region");
-  regionSelect.innerHTML = ""; // 기존 옵션 제거
-  document.getElementById("city").innerHTML = ""; // 도시 선택도 초기화
-
-  if (category === "국내") {
-    regionsData["대한민국"].forEach((region) => {
-      const option = document.createElement("option");
-      option.value = region;
-      option.textContent = region;
-      regionSelect.appendChild(option);
-    });
-  } else if (category === "국외") {
-    regionsData["해외"].forEach((region) => {
-      const option = document.createElement("option");
-      option.value = region;
-      option.textContent = region;
-      regionSelect.appendChild(option);
-    });
-  } else if (category === "어딘가") {
+  regionsData["대한민국"].forEach((region) => {
     const option = document.createElement("option");
-    option.value = "어딘가";
-    option.textContent = "어딘가";
+    option.value = region;
+    option.textContent = region;
     regionSelect.appendChild(option);
-
-    const citySelect = document.getElementById("city");
-    citySelect.innerHTML = ""; // 도시 선택 초기화
-    const cityOption = document.createElement("option");
-    cityOption.value = "어딘가";
-    cityOption.textContent = "어딘가";
-    citySelect.appendChild(cityOption);
-  }
-
-  // 첫 번째 지역 선택 후 해당 도시에 대해 populateCities 호출
-  if (regionSelect.value) {
-    populateCities(regionSelect.value);
-  }
+  });
 }
 
 function populateCities(region) {
@@ -546,34 +408,16 @@ function populateCities(region) {
 
 // 위치 정보를 업데이트하는 함수
 function updateLocationInput() {
-  const category = document.getElementById("location-category").value; // 국내/국외/어딘가
   const region = document.getElementById("region").value;
   const city = document.getElementById("city").value;
 
   const locationInput = document.getElementById("location");
 
-  // '어딘가' 카테고리에서 선택한 경우
-  if (category === "어딘가") {
+  if (region === "어딘가") {
     locationInput.value = "어딘가";
-  }
-  // '국내' 카테고리에서 '어딘가'를 선택한 경우
-  else if (category === "국내" && region === "어딘가") {
-    locationInput.value = "대한민국 어딘가";
-  }
-  // '국내' 카테고리에서 특정 지역을 선택한 경우
-  else if (category === "국내" && city === "어딘가") {
+  } else if (city === "어딘가") {
     locationInput.value = `${region} 어딘가`;
-  }
-  // '국외' 카테고리에서 '어딘가'를 선택한 경우
-  else if (category === "국외" && region === "어딘가") {
-    locationInput.value = "해외 어딘가";
-  }
-  // '국외' 카테고리에서 특정 지역을 선택한 경우
-  else if (category === "국외" && city === "어딘가") {
-    locationInput.value = `${region} 어딘가`;
-  }
-  // 그 외의 경우
-  else {
+  } else {
     locationInput.value = `${region} ${city}`;
   }
 
@@ -591,29 +435,28 @@ function getURL(e) {
       document.querySelector(".upload-placeholder div").style.display = "none"; // 이미지 선택시 텍스트를 숨김
       document.querySelector(".upload-placeholder p").style.display = "none"; // 이미지 선택시 텍스트를 숨김
       document.querySelector(".upload-placeholder img").style.display = "none"; // 이미지 선택시 텍스트를 숨김
-      document.querySelector(".upload-placeholder label").style.display =
-        "none";
+      document.querySelector(".upload-placeholder label").style.display = "none";
     };
     reader.readAsDataURL(e.files[0]);
 
     // Get presigned URL for S3
     const fileName = encodeURIComponent(e.files[0].name);
     fetch(`/presigned-url?filename=${fileName}`)
-      .then((response) => response.text())
-      .then((url) => {
-        return fetch(url, {
-          method: "PUT",
-          body: e.files[0],
+        .then((response) => response.text())
+        .then((url) => {
+          return fetch(url, {
+            method: "PUT",
+            body: e.files[0],
+          });
+        })
+        .then((response) => {
+          if (response.ok) {
+            const imageUrl = response.url.split("?")[0];
+            document.getElementById("imageUrl").value = imageUrl; // 추가
+          } else {
+            alert("이미지 업로드에 실패했습니다.");
+          }
         });
-      })
-      .then((response) => {
-        if (response.ok) {
-          const imageUrl = response.url.split("?")[0];
-          document.getElementById("imageUrl").value = imageUrl; // 추가
-        } else {
-          alert("이미지 업로드에 실패했습니다.");
-        }
-      });
   }
 }
 
@@ -639,7 +482,7 @@ function addTag() {
 function updateTagsInput() {
   let tagList = document.getElementById("tagList");
   let tags = Array.from(tagList.children).map((tag) =>
-    tag.textContent.replace("#", "")
+      tag.textContent.replace("#", "")
   );
   document.getElementById("tags").value = tags.join(",");
 }

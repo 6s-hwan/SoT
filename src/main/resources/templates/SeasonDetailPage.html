@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/SeasonDetailPage.css}" />
     <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -137,9 +138,43 @@
 </div>
 <!-- 시즌별 상세페이지 끝 -->
 
-<!-- 기타 -->
+<!-- 나머지들 -->
 <div id="etc_thing">
-    <!-- 기타 내용 -->
+    <div id="etc_full">
+        <div id="terms_of_use">
+            <button
+                    type="button"
+                    value="이용약관"
+                    class="terms_of_use"
+                    onclick="location.href='./terms_of_use.html';"
+            >
+                이용약관
+            </button>
+        </div>
+        <div id="personal_inf">
+            <button
+                    type="button"
+                    value="개인정보처리방침"
+                    class="personal_inf"
+                    onclick="location.href='./personal_inf.html';"
+            >
+                개인정보처리방침
+            </button>
+        </div>
+        <div id="contact">
+            <button
+                    type="button"
+                    value="Contact"
+                    class="contact"
+                    onclick="location.href='./contact.html';"
+            >
+                Contact
+            </button>
+        </div>
+        <div id="c_SoT">
+            <p class="c_SoT">ⓒ 2024 SoT</p>
+        </div>
+    </div>
 </div>
 
 <script>

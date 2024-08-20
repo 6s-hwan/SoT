@@ -1,110 +1,156 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/Home.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <!-- 임시버튼 -->
-    <input type="checkbox" id="join3" />
-    <label for="join3">업로드</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/Home.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>SoT</title>
+</head>
+<body>
+<!-- 팝업 열기 버튼 -->
+<button id="openPopupBtn">이메일 찾기</button>
 
-    <div id="bg_gray6" style="display: none" th:fragment="emailFindPopup">
-      <div id="emailfind_pop_up">
-        <div id="emailfindTitle">
-          <div id="emailfindback">
-            <img
-              th:src="@{/images/arrow1.png}"
-              alt="뒤로가기"
-              width="24px"
-              height="24px"
-            />
-          </div>
-          <p id="emailfindtitle1">이메일 찾기</p>
-          <div id="close">
-            <img
-              th:src="@{/images/X.png}"
-              alt="X"
-              width="28px"
-              height="28px"
-              onclick="document.getElementById('bg_gray6').style.display='none'"
-            />
-          </div>
-        </div>
-        <div id="phone1">전화번호</div>
-        <div class="input4">
-          <label for="phone_input1">
-            <input
-              type="text"
-              class="phone_input"
-              id="phone_input1"
-              name="phone1"
-              placeholder="010"
-              oninput="checkInputs()"
-            />
-          </label>
-          <div id="text7">-</div>
-          <label for="phone_input2">
-            <input
-              type="text"
-              class="phone_input"
-              id="phone_input2"
-              name="phone2"
-              placeholder="1234"
-              oninput="checkInputs()"
-            />
-          </label>
-          <div id="text7">-</div>
-          <label for="phone_input3">
-            <input
-              type="text"
-              class="phone_input"
-              id="phone_input3"
-              name="phone3"
-              placeholder="5678"
-              oninput="checkInputs()"
-            />
-          </label>
-        </div>
-        <div class="input5">
-          <label for="CertificationNumber_input">
-            <input
-              type="text"
-              class="CertificationNumber_input"
-              id="CertificationNumber_input"
-              name="verificationCode"
-              placeholder="인증번호를 입력해 주세요"
-            />
-          </label>
-          <button type="button" onclick="sendVerification()">전송</button>
-        </div>
-        <button id="emailfindcheckbtn">확인</button>
+<div id="bg_gray6" style="display: none" th:fragment="emailFindPopup">
+  <div id="emailfind_pop_up">
+    <div id="emailfindTitle">
+      <div id="emailfindback">
+        <img
+                th:src="@{/images/arrow1.png}"
+                alt="뒤로가기"
+                width="24px"
+                height="24px"
+        />
+      </div>
+      <p id="emailfindtitle1">이메일 찾기</p>
+      <div id="close">
+        <img
+                th:src="@{/images/X.png}"
+                alt="X"
+                width="28px"
+                height="28px"
+                onclick="closePopup()"
+        />
       </div>
     </div>
-  </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var Joinbtn = document.querySelector("#join3");
-      var joinfinishPopup = document.getElementById("bg_gray6");
+    <div id="phone1">전화번호</div>
+    <div class="input4">
+      <label for="phone_input1">
+        <input
+                type="text"
+                class="phone_input"
+                id="phone_input1"
+                name="phone1"
+                placeholder="010"
+                oninput="checkInputs()"
+        />
+      </label>
+      <div id="text7">-</div>
+      <label for="phone_input2">
+        <input
+                type="text"
+                class="phone_input"
+                id="phone_input2"
+                name="phone2"
+                placeholder="1234"
+                oninput="checkInputs()"
+        />
+      </label>
+      <div id="text7">-</div>
+      <label for="phone_input3">
+        <input
+                type="text"
+                class="phone_input"
+                id="phone_input3"
+                name="phone3"
+                placeholder="5678"
+                oninput="checkInputs()"
+        />
+      </label>
+    </div>
+    <div class="input5">
+      <label for="CertificationNumber_input">
+        <input
+                type="text"
+                class="CertificationNumber_input"
+                id="CertificationNumber_input"
+                name="verificationCode"
+                placeholder="인증번호를 입력해 주세요"
+        />
+      </label>
+      <button onclick="verifyCode()">전송</button>
+      <p id="verifyStatus"></p>
+    </div>
+    <button id="emailfindcheckbtn">확인</button>
+  </div>
+</div>
 
-      // 로그인 버튼 누르면 회원가입창 열기
-      Joinbtn.addEventListener("click", function (event) {
-        event.preventDefault(); // 링크의 기본 동작 방지
-        joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
-      });
+<script>
+  function formatPhoneNumber(phoneNumber) {
+    // '010xxxxxxxx' 형식으로 입력된 번호를 '+8210xxxxxxxx' 형식으로 변환
+    if (phoneNumber.startsWith('010')) {
+      return '+82' + phoneNumber.slice(1);
+    }
+    return phoneNumber;
+  }
+
+  async function sendVerificationCode() {
+    let phone1 = document.getElementById('phone_input1').value;
+    let phone2 = document.getElementById('phone_input2').value;
+    let phone3 = document.getElementById('phone_input3').value;
+    let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
+
+    const response = await fetch('/api/sendVerificationCode', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ phoneNumber })
     });
-  </script>
+
+    const result = await response.text();
+    document.getElementById('sendStatus').textContent = result;
+  }
+
+  async function verifyCode() {
+    let phone1 = document.getElementById('phone_input1').value;
+    let phone2 = document.getElementById('phone_input2').value;
+    let phone3 = document.getElementById('phone_input3').value;
+    let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
+
+    const verificationCode = document.getElementById('CertificationNumber_input').value;
+
+    const response = await fetch('/api/verifyCode', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ phoneNumber, verificationCode })
+    });
+
+    const result = await response.text();
+    document.getElementById('verifyStatus').textContent = result;
+  }
+  // 팝업 열기
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("openPopupBtn").addEventListener("click", function () {
+      document.getElementById("bg_gray6").style.display = "block";
+    });
+
+    function closePopup() {
+      document.getElementById("bg_gray6").style.display = "none";
+    }
+  });
+</script>
+</body>
 </html>

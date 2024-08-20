@@ -70,11 +70,14 @@
     </nav>
 
     <!-- 팝업창들 -->
-    <div th:replace="fragments/upload_popup :: uploadPopup"></div>
-    <div th:replace="fragments/login_popup :: loginPopup"></div>
-    <div th:replace="fragments/join_popup :: joinPopup"></div>
-    <div th:replace="fragments/terms_popup :: termsPopup"></div>
-    <div th:replace="fragments/privacy_popup :: privacyPopup"></div>
+    <div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
+    <div th:replace="~{fragments/login_popup :: loginPopup}"></div>
+    <div th:replace="~{fragments/join_popup :: joinPopup}"></div>
+    <div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
+    <div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
+    <div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
+    <div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
+    <div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
     <!-- <div th:replace="fragments/joinfinsih_popup :: joinFinishPopup"></div> -->
     <!-- <div th:replace="fragments/emailfind_popup :: emailFindPopup"></div> -->
     <!-- <div th:replace="fragments/emailcheck_popup :: emailCheckPopup"></div> -->

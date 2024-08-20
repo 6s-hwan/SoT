@@ -85,10 +85,12 @@ public class StoryController {
     @GetMapping("/season")
     public String season(@RequestParam(value = "season", required = false) String season,
                          @RequestParam(value = "sort", required = false) String sortCriteria,
+                         @RequestParam(name = "limit", defaultValue = "24") int limit,
                          Model model) {
         List<Story> stories = storyRepository.findAll();
         List<Story> seasonStories;
 
+        // 시즌별 필터링
         if (season != null) {
             seasonStories = stories.stream()
                     .filter(story -> {
@@ -122,6 +124,7 @@ public class StoryController {
             seasonStories = stories;
         }
 
+        // 정렬 기준 적용
         if (sortCriteria != null) {
             switch (sortCriteria) {
                 case "likes":
@@ -139,11 +142,24 @@ public class StoryController {
             }
         }
 
-        model.addAttribute("seasonStories", seasonStories);
+        // 페이징 처리: limit만큼 가져오기
+        List<Story> limitedStories = seasonStories.stream().limit(limit).collect(Collectors.toList());
+
+        model.addAttribute("seasonStories", limitedStories);
         model.addAttribute("selectedSeason", season);
         model.addAttribute("sortCriteria", sortCriteria);
+        model.addAttribute("resultCount", seasonStories.size());
+        model.addAttribute("limit", limit);
+
+        // 총 좋아요와 조회수를 모델에 추가
+        int totalLikes = seasonStories.stream().mapToInt(Story::getLikesCount).sum();
+        int totalViews = seasonStories.stream().mapToInt(Story::getViewCount).sum();
+        model.addAttribute("totalLikes", totalLikes);
+        model.addAttribute("totalViews", totalViews);
+
         return "SeasonDetailPage";
     }
+
     private boolean isValidTheme(String theme, String[] validThemes) {
         for (String validTheme : validThemes) {
             if (validTheme.equals(theme)) {

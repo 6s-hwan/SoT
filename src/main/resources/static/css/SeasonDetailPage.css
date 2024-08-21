@@ -361,55 +361,7 @@ input.uploadbtn {
   background: #fff;
 }
 
-.recom_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
 
-.newest_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-
-.inquiry_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-
-.month_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
-
-.today_select {
-  color: #606060;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
 
 #back {
   width: 100%;

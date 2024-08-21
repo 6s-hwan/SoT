@@ -77,11 +77,6 @@ public class StoryController {
         return "StoryDetailS";
     }
 
-    @GetMapping("/rise")
-    public String rise() {
-        return "RiseDetailPage";
-    }
-
     @GetMapping("/season")
     public String season(@RequestParam(value = "season", required = false) String season,
                          @RequestParam(value = "sort", required = false) String sortCriteria,
@@ -311,12 +306,6 @@ public class StoryController {
         return result;
     }
 
-    @GetMapping("/rise/{keyword}")
-    public String getStoriesByKeyword(@PathVariable String keyword, Model model) {
-        List<Story> stories = storyService.findStoriesByKeyword(keyword);
-        model.addAttribute("stories", stories);
-        return "RiseDetailPage";
-    }
 
     @GetMapping("/local")
     public String getStories(Model model) {

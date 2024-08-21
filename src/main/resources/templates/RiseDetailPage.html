@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/RiseDetailPage.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/nav.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -16,68 +18,66 @@
             rel="stylesheet"
     />
     <title>SoT</title>
-    <style>
-        .story-row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .story {
-            flex: 1 1 25%;
-            box-sizing: border-box;
-            padding: 10px;
-        }
-        .story img {
-            width: 100%;
-            height: auto;
-        }
-        .story p {
-            margin: 0;
-        }
-        .story .info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
 </head>
 <body>
+<!-- 내비게이션바 -->
 <nav class="navbar">
     <div class="nav_logo">
-        <div id="nav_logo1">
-            <a href="./test">
+        <div id="nav_left">
+            <div id="nav_logo1">
+                <a href="./test">
+                    <img
+                            th:src="@{/images/MainLogo.png}"
+                            alt="로고"
+                            width="200px"
+                            height="46px"
+                    />
+                </a>
+            </div>
+            <div class="nav_menu">
+                <ul class="navigation">
+                    <li><a href="./test" class="b">홈</a></li>
+                    <li><a href="" class="c">지역</a></li>
+                    <li><a href="" class="c">북마크</a></li>
+                </ul>
+            </div>
+            <form action="/search" method="get" id="search">
+                <input type="text" name="query" class="search" />
                 <img
-                        th:src="@{/images/MainLogo.png}"
-                        alt="로고"
-                        width="225px"
-                        height="60px"
+                        th:src="@{/images/search.png}"
+                        alt="돋보기"
+                        width="30px"
+                        height="30px"
                 />
-            </a>
+            </form>
         </div>
-        <div class="nav_menu">
-            <ul class="navigation">
-                <li><a href="./test" class="b">홈</a></li>
-                <li><a href="" class="c">지역</a></li>
-                <li><a href="" class="c">지도</a></li>
-                <li><a href="" class="c">북마크</a></li>
-            </ul>
-        </div>
-
-        <div id="search">
-            <input type="text" class="search" />
-            <img
-                    th:src="@{/images/search.png}"
-                    alt="돋보기"
-                    width="30px"
-                    height="30px"
+        <div id="nav_right">
+            <input type="button" id="uploadbtn" />
+            <input
+                    type="button"
+                    class="imagebtn"
+                    onclick="location.href='my-page'"
             />
+            <input type="checkbox" id="join" style="display: none" />
+            <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')"
+            >로그인</label
+            >
+            <form action="/logout" method="post" style="display: inline">
+                <button type="submit">로그아웃</button>
+            </form>
         </div>
-        <input type="button" class="imagebtn" />
-        <input type="button" class="uploadbtn" />
-        <input type="checkbox" id="join" />
-        <label for="join">로그인</label>
     </div>
 </nav>
 
+<!-- 팝업창들 -->
+<div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
+<div th:replace="~{fragments/login_popup :: loginPopup}"></div>
+<div th:replace="~{fragments/join_popup :: joinPopup}"></div>
+<div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
+<div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
+<div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
+<div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
+<div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
 <!-- 급상승 시작 -->
 
 <div id="Risefull">
@@ -93,58 +93,67 @@
                 <p class="RiseTitle1">급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요</p>
             </div>
         </div>
-        <div id="RiseStoryBack">
+        <div id="RiseBack">
             <div id="RiseMainIMG">
                 <img
-                        th:src="@{/images/RiseMain.png}"
-                        class="risemainimg"
-                        width="1200px"
-                        height="352px"
-                />
+                        th:src="${rising.imageUrl}" <!-- imageUrl을 여기에 바인딩 -->
+                <div id="Rise_text">
+                    <p class="rise_name" th:text="${rising.keyword}">서울 청계천</p> <!-- keyword를 여기에 바인딩 -->
+                    <div id="rise_">
+                        <p class="rise_1" th:text="'최근 일주일 많이 찾은 여행지 ' + ${rising.rankOrder} + '위'">최근 일주일 많이 찾은 여행지 1위</p> <!-- rankOrder를 여기에 바인딩 -->
+                        <p class="rise_2" th:text="${rising.location}">서울 종로구 창신동</p> <!-- location을 여기에 바인딩 -->
+                    </div>
+                </div>
             </div>
             <div id="RiseStorySet">
-                <p class="RiseStoryNum">1,223개의 스토리</p>
+                <p class="RiseegionStoryNum">1,223개의 스토리</p>
                 <div id="RiseStoryList">
-                    <form action="#">
-                        <select name="story_select" id="story_select">
-                            <option value="recom" class="recom_select">추천순</option>
-                            <option value="newest" class="newest_select">최신순</option>
-                            <option value="inquiry" class="inquiry_select">조회순</option>
-                            <option value="month" class="month_select">이번 달 조회순</option>
-                            <option value="today" class="today_select">오늘 조회순</option>
+                    <form>
+                        <select name="story_select" id="story_select" onchange="sortStories()">
+                            <option value="" class="select_disabled" disabled selected>정렬기준</option>
+                            <option value="likes" class="recom_select">추천순</option>
+                            <option value="recent" class="newest_select">최신순</option>
+                            <option value="views" class="inquiry_select">조회순</option>
                         </select>
                     </form>
                 </div>
             </div>
-
-            <div class="story-row">
-                <div th:each="story, iterStat : ${stories}">
+            <div id="back">
+                <div class="stories" th:each="story, iterStat : ${stories}">
                     <div class="story">
                         <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                            <img th:src="${story.image_url}" alt="Story Image" />
-                            <div>
-                                <p th:text="${story.title}"></p>
-                                <div class="info">
-                                    <div>
-                                        <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px" />
-                                        <p class="imagetext" th:text="${story.viewCount}">0</p>
-                                    </div>
-                                    <div>
-                                        <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px" />
-                                        <p class="imagetext" th:text="${story.likes.size()}">0</p>
-                                    </div>
+                            <img
+                                    class="storyimage"
+                                    th:src="${story.image_url}"
+                                    alt="Story Image"
+                            />
+                            <div id="storyTitlefull">
+                                <p id="storyTitle" th:text="${story.title}">Story Title</p>
+                                <div class="right-side">
+                                    <img th:src="@{/images/seeimg.png}"
+                                         class="seeimage"
+                                         width="16px"
+                                         height="16px"
+                                    />
+                                    <p class="imagetext" th:text="${story.viewCount}">0</p>
+                                    <img
+                                            th:src="@{/images/likeimg.png}"
+                                            class="likeimage"
+                                            width="14px"
+                                            height="14px"
+                                    />
+                                    <p class="imagetext" th:text="${story.likes.size()}">0</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
-
             <div>
-                <label for="risemorebtn">
+                <label for="morebtn">
                     <button
                             type="button"
-                            id="risemorebtn"
+                            id="morebtn"
                             onclick="location.href='';"
                     ></button>
                 </label>
@@ -158,43 +167,47 @@
                         id="otherrisebtn1"
                         onclick="location.href='';"
                 ></button>
-
-                <button
-                        type="button"
-                        id="otherrisebtn2"
-                        onclick="location.href='';"
-                ></button>
-
-                <button
-                        type="button"
-                        id="otherrisebtn3"
-                        onclick="location.href='';"
-                ></button>
-
-                <button
-                        type="button"
-                        id="otherrisebtn4"
-                        onclick="location.href='';"
-                ></button>
-
-                <button
-                        type="button"
-                        id="otherrisebtn5"
-                        onclick="location.href='';"
-                ></button>
-
-                <button
-                        type="button"
-                        id="otherrisebtn6"
-                        onclick="location.href='';"
-                ></button><button
+<!-- 푸터 -->
+<!-- 나머지들 -->
+<div id="etc_thing">
+    <div id="etc_full">
+        <div id="terms_of_use">
+            <button
                     type="button"
-                    id="otherrisebtn7"
-                    onclick="location.href='';"
-            ></button>
-            </div>
+                    value="이용약관"
+                    class="terms_of_use"
+                    onclick="location.href='./terms_of_use.html';"
+            >
+                이용약관
+            </button>
+        </div>
+        <div id="personal_inf">
+            <button
+                    type="button"
+                    value="개인정보처리방침"
+                    class="personal_inf"
+                    onclick="location.href='./personal_inf.html';"
+            >
+                개인정보처리방침
+            </button>
+        </div>
+        <div id="contact">
+            <button
+                    type="button"
+                    value="Contact"
+                    class="contact"
+                    onclick="location.href='./contact.html';"
+            >
+                Contact
+            </button>
+        </div>
+        <div id="c_SoT">
+            <p class="c_SoT">ⓒ 2024 SoT</p>
         </div>
     </div>
 </div>
+<script th:src="@{/js/Home.js}"></script>
+<script th:src="@{/js/upload.js}"></script>
+<!-- 푸터 끝 -->
 </body>
 </html>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/SeasonDetailPage.css}" />
+    <link rel="stylesheet" th:href="@{/css/nav.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -18,128 +20,124 @@
     <title>SoT</title>
 </head>
 <body>
+<!-- 내비게이션바 -->
 <nav class="navbar">
     <div class="nav_logo">
-        <div id="nav_logo1">
-            <img
-                    th:src="@{/images/MainLogo.png}"
-                    alt="로고"
-                    width="225px"
-                    height="60px"
+        <div id="nav_left">
+            <div id="nav_logo1">
+                <a href="./test">
+                    <img
+                            th:src="@{/images/MainLogo.png}"
+                            alt="로고"
+                            width="200px"
+                            height="46px"
+                    />
+                </a>
+            </div>
+            <div class="nav_menu">
+                <ul class="navigation">
+                    <li><a href="./test" class="b">홈</a></li>
+                    <li><a href="" class="c">지역</a></li>
+                    <li><a href="" class="c">북마크</a></li>
+                </ul>
+            </div>
+            <form action="/search" method="get" id="search">
+                <input type="text" name="query" class="search" />
+                <img
+                        th:src="@{/images/search.png}"
+                        alt="돋보기"
+                        width="30px"
+                        height="30px"
+                />
+            </form>
+        </div>
+        <div id="nav_right">
+            <input type="button" id="uploadbtn" />
+            <input
+                    type="button"
+                    class="imagebtn"
+                    onclick="location.href='my-page'"
             />
+            <input type="checkbox" id="join" style="display: none" />
+            <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')"
+            >로그인</label
+            >
+            <form action="/logout" method="post" style="display: inline">
+                <button type="submit">로그아웃</button>
+            </form>
         </div>
-        <div class="nav_menu">
-            <ul class="navigation">
-                <li><a th:href="@{/home}" class="b">홈</a></li>
-                <li><a href="#" class="c">지역</a></li>
-                <li><a href="#" class="c">지도</a></li>
-                <li><a href="#" class="c">북마크</a></li>
-            </ul>
-        </div>
-
-        <div id="search">
-            <input type="text" class="search" />
-            <img
-                    th:src="@{/images/search.png}"
-                    alt="돋보기"
-                    width="30px"
-                    height="30px"
-            />
-        </div>
-        <input type="button" class="imagebtn" />
-        <input type="button" class="uploadbtn" />
-        <input type="checkbox" id="join" />
-        <label for="join">로그인</label>
     </div>
 </nav>
 
-<!--  시즌별 시작 -->
+<!-- 팝업창들 -->
+<div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
+<div th:replace="~{fragments/login_popup :: loginPopup}"></div>
+<div th:replace="~{fragments/join_popup :: joinPopup}"></div>
+<div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
+<div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
+<div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
+<div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
+<div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
 
+<!-- 시즌별 시작 -->
 <div id="SeasonStoryfull">
     <div id="SeasonStory">
         <div id="SeasonStoryTitle">
+            <!-- 시즌 필터링 버튼들 -->
             <div id="seasonstorytitle_1">
-                <img
-                        th:src="@{/images/seasonimg.png}"
-                        class="seasonstoryimg"
-                        width="90px"
-                        height="90px"
-                />
+                <img th:src="@{/images/seasonimg.png}" class="seasonstoryimg" width="90px" height="90px"/>
                 <p class="seasontitle1">시즌별 스토리</p>
-
-                <button
-                        type="button"
-                        id="spring"
-                        onclick="changeSeason('spring')"
-                        th:classappend="${selectedSeason == 'spring'} ? 'selected' : ''"
-                >봄</button>
-
-                <button
-                        type="button"
-                        id="summer"
-                        onclick="changeSeason('summer')"
-                        th:classappend="${selectedSeason == 'summer'} ? 'selected' : ''"
-                >여름</button>
-
-                <button
-                        type="button"
-                        id="fall"
-                        onclick="changeSeason('fall')"
-                        th:classappend="${selectedSeason == 'fall'} ? 'selected' : ''"
-                >가을</button>
-
-                <button
-                        type="button"
-                        id="winter"
-                        onclick="changeSeason('winter')"
-                        th:classappend="${selectedSeason == 'winter'} ? 'selected' : ''"
-                >겨울</button>
+                <button type="button" id="button1spring" class="myButton" onclick="changeSeason('spring'); changeTextColor('button1spring')">봄</button>
+                <button type="button" id="button2summer" class="myButton" onclick="changeSeason('summer'); changeTextColor('button2summer')">여름</button>
+                <button type="button" id="button3autumn" class="myButton" onclick="changeSeason('fall'); changeTextColor('button3autumn')">가을</button>
+                <button type="button" id="button4winter" class="myButton" onclick="changeSeason('winter'); changeTextColor('button4winter')">겨울</button>
             </div>
+
+            <!-- 정렬 기준 선택 -->
             <div id="seasonstory_select">
                 <form>
-                    <select
-                            name="story_select"
-                            id="story_select"
-                            onchange="sortStories()"
-                    >
-                        <option value="likes" th:selected="${sortCriteria == 'likes'}">추천순</option>
-                        <option value="recent" th:selected="${sortCriteria == 'recent'}">최신순</option>
-                        <option value="views" th:selected="${sortCriteria == 'views'}">조회순</option>
+                    <select name="story_select" id="story_select" onchange="sortStories()">
+                        <option value="" class="select_disabled" disabled selected>정렬기준</option>
+                        <option value="likes" class="recom_select">추천순</option>
+                        <option value="recent" class="newest_select">최신순</option>
+                        <option value="views" class="inquiry_select">조회순</option>
                     </select>
                 </form>
             </div>
         </div>
-        <div id="SeasonStoryBack">
-            <div id="season1-4" th:each="story : ${seasonStories}">
-                <div class="story-card">
-                    <!--  스토리 시작 -->
-                    <div class="story-img">
-                        <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                            <img
-                                    id="storyimage"
-                                    th:src="${story.image_url}"
-                                    alt="Story Image"
-                            />
-                        </a>
-                    </div>
-                    <!-- 스토리 제목, 조회수, 좋아요 등의 정보를 표시 -->
 
+        <!-- 스토리 목록 -->
+        <div id="back">
+            <div class="stories" th:each="story : ${seasonStories}">
+                <div class="story">
+                    <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                        <img th:src="${story.image_url}" alt="Story Image" class="storyimage"/>
+                        <div id="storyTitlefull">
+                            <p id="storyTitle" th:text="${story.title}">Story Title</p>
+                            <div class="right-side">
+                                <img th:src="@{/images/seeimg.png}" class="seeimage"/>
+                                <p class="imagetext" th:text="${story.viewCount}">0</p>
+                                <img th:src="@{/images/likeimg.png}" class="likeimage"/>
+                                <p class="imagetext" th:text="${story.likesCount}">0</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <!-- 다른 시즌 스토리도 동일한 형식으로 표시 -->
             </div>
         </div>
+
+        <!-- 더보기 버튼 -->
         <div>
-            <label for="seasonmorebtn">
-                <button
-                        type="button"
-                        id="seasonmorebtn"
-                        onclick="location.href='';"
-                ></button>
+            <label for="morebtn">
+                <button type="button" id="morebtn"
+                        th:if="${limit < resultCount}"
+                        th:onclick="|location.href='@{/season(season=${selectedSeason}, sort=${sortCriteria}, limit=${limit + 24})}';|"></button>
             </label>
         </div>
     </div>
 </div>
-<!-- 시즌별 상세페이지 스토리 끝 -->
+<!-- 시즌별 상세페이지 끝 -->
+
 <!-- 나머지들 -->
 <div id="etc_thing">
     <div id="etc_full">
@@ -148,7 +146,7 @@
                     type="button"
                     value="이용약관"
                     class="terms_of_use"
-                    th:onclick="|location.href='@{/terms_of_use}';|"
+                    onclick="location.href='./terms_of_use.html';"
             >
                 이용약관
             </button>
@@ -158,7 +156,7 @@
                     type="button"
                     value="개인정보처리방침"
                     class="personal_inf"
-                    th:onclick="|location.href='@{/personal_inf}';|"
+                    onclick="location.href='./personal_inf.html';"
             >
                 개인정보처리방침
             </button>
@@ -168,7 +166,7 @@
                     type="button"
                     value="Contact"
                     class="contact"
-                    th:onclick="|location.href='@{/contact}';|"
+                    onclick="location.href='./contact.html';"
             >
                 Contact
             </button>
@@ -178,29 +176,32 @@
         </div>
     </div>
 </div>
-</body>
+
 <script>
     function sortStories() {
-        var select = document.getElementById("story_select");
-        var sort = select.value;
-        var season = new URLSearchParams(window.location.search).get('season');
-        if (season) {
-            window.location.href = "/season?season=" + season + "&sort=" + sort;
-        } else {
-            window.location.href = "/season?sort=" + sort;
-        }
+        const select = document.getElementById("story_select");
+        const sort = select.value;
+        const season = new URLSearchParams(window.location.search).get('season');
+        window.location.href = season ? `/season?season=${season}&sort=${sort}` : `/season?sort=${sort}`;
     }
 
     function changeSeason(season) {
-        var sort = new URLSearchParams(window.location.search).get('sort');
-        if (sort) {
-            window.location.href = "/season?season=" + season + "&sort=" + sort;
-        } else {
-            window.location.href = "/season?season=" + season;
-        }
+        const sort = new URLSearchParams(window.location.search).get('sort');
+        window.location.href = sort ? `/season?season=${season}&sort=${sort}` : `/season?season=${season}`;
     }
 
-    // 페이지 로드 시 현재 선택된 정렬 기준을 유지
+    function changeTextColor(buttonId) {
+        document.querySelectorAll('.myButton').forEach(button => button.classList.remove('selected'));
+        document.getElementById(buttonId).classList.add('selected');
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const season = new URLSearchParams(window.location.search).get('season');
+        if (season) {
+            const buttons = {spring: 'button1spring', summer: 'button2summer', fall: 'button3autumn', winter: 'button4winter'};
+            changeTextColor(buttons[season]);
+        }
+    });
     document.addEventListener("DOMContentLoaded", function () {
         var params = new URLSearchParams(window.location.search);
         var sort = params.get("sort");
@@ -209,4 +210,6 @@
         }
     });
 </script>
+<script th:src="@{/js/Home.js}"></script>
+</body>
 </html>

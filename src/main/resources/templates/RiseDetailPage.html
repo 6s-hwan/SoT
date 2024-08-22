@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div id="RiseStorySet">
-                <p class="RiseegionStoryNum">1,223개의 스토리</p>
+                <p class="RiseegionStoryNum" th:text="${resultCount} + '개의 스토리'"> 1,223개의 스토리</p>
                 <div id="RiseStoryList">
                     <form>
                         <select name="story_select" id="story_select" onchange="sortStories()">

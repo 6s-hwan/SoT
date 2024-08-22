@@ -35,6 +35,7 @@ public class RisingController {
         List<Story> stories = storyService.findStoriesByKeyword(keyword);
 
         // 모델에 데이터 추가
+        model.addAttribute("resultCount", stories.size());
         model.addAttribute("rising", rising); // 메인 Rising 데이터를 모델에 추가
         model.addAttribute("stories", stories); // 현재 키워드의 Story 리스트를 모델에 추가
 

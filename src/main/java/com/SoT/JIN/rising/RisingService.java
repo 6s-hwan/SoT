@@ -16,30 +16,15 @@ import java.util.Optional;
 public class RisingService {
 
     private final RisingRepository risingRepository;
-    private final SearchService searchService;
-    private final SearchRepository searchRepository;
 
+    // SearchService 의존성을 제거하고 필요 시 메서드 인자로 전달받도록 변경
     @Autowired
-    public RisingService(RisingRepository risingRepository, SearchService searchService, SearchRepository searchRepository) {
+    public RisingService(RisingRepository risingRepository) {
         this.risingRepository = risingRepository;
-        this.searchService = searchService;
-        this.searchRepository = searchRepository;
-    }
-
-    public List<Rising> getAllRising() {
-        return risingRepository.findAll();
     }
 
     @Transactional
-    public void resetRisingData() {
-        // 모든 Rising 데이터를 삭제하여 초기화
-        risingRepository.deleteAll();
-    }
-
-
-    @Transactional
-    public void updateRisingFromSearch() {
-        // 모든 검색어를 가져옴
+    public void updateRisingFromSearch(SearchService searchService) {
         List<Search> topSearches = searchService.getTopSearchKeywords(Integer.MAX_VALUE);
 
         int rank = 1;
@@ -47,10 +32,8 @@ public class RisingService {
             Rising rising = risingRepository.findByKeyword(search.getKeyword()).orElse(null);
 
             if (rising != null) {
-                // 기존 데이터가 있으면 업데이트 및 활성화
                 rising.setRankOrder(rank);
             } else {
-                // 기존 데이터가 없으면 새로 생성
                 rising = new Rising(
                         search.getKeyword(),
                         rank,
@@ -66,5 +49,9 @@ public class RisingService {
     @Transactional(readOnly = true)
     public Optional<Rising> findByKeyword(String keyword) {
         return risingRepository.findByKeyword(keyword);
+    }
+    public void resetRisingData() {
+        // 모든 Rising 데이터를 삭제하여 초기화
+        risingRepository.deleteAll();
     }
 }

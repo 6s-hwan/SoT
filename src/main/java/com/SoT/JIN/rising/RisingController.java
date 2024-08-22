@@ -40,10 +40,7 @@ public class RisingController {
             stories.sort((s1, s2) -> {
                 int cmp = Integer.compare(s2.getLikes() != null ? s2.getLikes().size() : 0,
                         s1.getLikes() != null ? s1.getLikes().size() : 0);
-                if (cmp == 0) {
-                    return Integer.compare(s2.getViewCount(), s1.getViewCount());
-                }
-                return cmp;
+                return cmp != 0 ? cmp : Integer.compare(s2.getViewCount(), s1.getViewCount());
             });
         } else if ("views".equals(sortCriteria)) {
             stories.sort((s1, s2) -> Integer.compare(s2.getViewCount(), s1.getViewCount()));

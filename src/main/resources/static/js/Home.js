@@ -1,8 +1,14 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
   // 초기 팝업 숨기기
-  const popups = ["bg_gray", "bg_gray2", "bg_gray3", "bg_gray4", "bg_gray5", "bg_gray6", "bg_gray7"];
+  const popups = [
+    "bg_gray",
+    "bg_gray2",
+    "bg_gray3",
+    "bg_gray4",
+    "bg_gray5",
+    "bg_gray6",
+    "bg_gray7",
+  ];
   popups.forEach(function (popupId) {
     const popup = document.getElementById(popupId);
     if (popup) popup.style.display = "none";
@@ -117,8 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const popupToShow = document.getElementById(popupIdToShow);
     const popupToHide = document.getElementById(popupIdToHide);
 
-    if (popupToHide) popupToHide.style.display = 'none';
-    if (popupToShow) popupToShow.style.display = 'block';
+    if (popupToHide) popupToHide.style.display = "none";
+    if (popupToShow) popupToShow.style.display = "block";
   }
 
   function showJoinPopup() {
@@ -185,13 +191,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // 로그인 상태 확인 함수
   function checkLoginStatus() {
     fetch("/api/user/profile")
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.isLoggedIn) {
-            login(data.profileImageUrl);
-          }
-        })
-        .catch((error) => console.error("Error:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          login(data.profileImageUrl);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   // 로그인 처리 함수
@@ -1159,3 +1165,84 @@ function sendVerification() {
       alert("인증번호 전송 중 오류가 발생했습니다.");
     });
 }
+
+//home.html의 급상승 파트의 js 코드
+// const items = document.querySelector("#TopSearchesList");
+// const nextBtn = document.getElementById("nextBtn");
+// const prevBtn = document.getElementById("prevBtn");
+
+// let currentIndex = 0;
+// const itemsToShow = 4;
+// const totalItems = document.querySelectorAll(".searchItem").length;
+// const itemsPerClick = 4; // 한 번 클릭 시 이동할 요소의 수
+// const itemWidth = 285; // 각 searchItem의 가로 크기 (padding 제외)
+
+// nextBtn.addEventListener("click", () => {
+//   if (currentIndex < totalItems - itemsToShow) {
+//     currentIndex += itemsPerClick;
+//     updateCarousel();
+//   }
+// });
+
+// prevBtn.addEventListener("click", () => {
+//   if (currentIndex > 0) {
+//     currentIndex -= itemsPerClick;
+//     updateCarousel();
+//   }
+// });
+
+// function updateCarousel() {
+//   items.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+//   checkButtons();
+// }
+
+// function checkButtons() {
+//   prevBtn.style.display = currentIndex === 0 ? "none" : "block";
+//   nextBtn.style.display =
+//     currentIndex >= totalItems - itemsToShow ? "none" : "block";
+// }
+
+// // 초기 버튼 상태 설정
+// checkButtons();
+document.addEventListener("DOMContentLoaded", function () {
+  const wrapper = document.querySelector(".wrapper");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+
+  let currentIndex = 0;
+  const itemsToShow = 4;
+  const totalItems = document.querySelectorAll("#TopSearchesList").length;
+  const itemsPerClick = 4; // 한 번 클릭 시 이동할 요소의 수
+  const itemWidth = Math.round(
+    document.querySelector(".searchItem").offsetWidth
+  ); // 각 searchItem의 가로 크기 (padding 포함)
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < totalItems - itemsToShow) {
+      currentIndex += itemsPerClick;
+      updateCarousel();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex -= itemsPerClick;
+      updateCarousel();
+    }
+  });
+
+  function updateCarousel() {
+    const offset = currentIndex * itemWidth;
+    wrapper.style.transform = `translateX(-${offset}px)`; // 전체 그룹을 이동
+    checkButtons();
+  }
+
+  function checkButtons() {
+    prevBtn.style.display = currentIndex === 0 ? "none" : "block";
+    nextBtn.style.display =
+      currentIndex >= totalItems - itemsToShow ? "none" : "block";
+  }
+
+  // 초기 버튼 상태 설정
+  checkButtons();
+});

@@ -82,6 +82,7 @@
 
 <div id="Risefull">
     <div id="RiseStory">
+        <input type="hidden" id="keyword" th:value="${rising.keyword}" />
         <div id="RiseTitle">
             <div id="RiseTitle_1">
                 <img
@@ -151,11 +152,10 @@
             </div>
             <div>
                 <label for="morebtn">
-                    <button
-                            type="button"
-                            id="morebtn"
-                            onclick="location.href='';"
-                    ></button>
+                    <button type="button" id="morebtn"
+                            th:if="${limit < resultCount}"
+                            th:onclick="|location.href='@{/rise/{keyword}(keyword=${rising.keyword}, sort=${sortCriteria}, limit=${limit + 24})}';|">
+                    </button>
                 </label>
             </div>
 
@@ -206,8 +206,34 @@
         </div>
     </div>
 </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 <script th:src="@{/js/Home.js}"></script>
 <script th:src="@{/js/upload.js}"></script>
+<script>
+    function sortStories() {
+        var select = document.getElementById("story_select");
+        var sort = select.value;
+
+        // HTML에서 keyword 값을 가져옵니다.
+        var keyword = document.getElementById("keyword").value;
+
+        // 새로운 URL을 구성하여 페이지를 이동시킵니다.
+        window.location.href = "/rise/" + keyword + "?sort=" + sort;
+    }
+
+    // 페이지 로드 시 현재 선택된 정렬 기준을 유지
+    document.addEventListener("DOMContentLoaded", function () {
+        var params = new URLSearchParams(window.location.search);
+        var sort = params.get("sort");
+        if (sort) {
+            document.getElementById("story_select").value = sort;
+        }
+    });
+</script>
 <!-- 푸터 끝 -->
 </body>
 </html>

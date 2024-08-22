@@ -51,7 +51,6 @@
   color: #606060;
 }
 
-
 * {
   /* All */
   margin: 0;
@@ -645,6 +644,7 @@ input.imagebtn {
   justify-content: center;
   box-sizing: border-box;
   padding-top: 100px;
+  padding-bottom: 120px;
 }
 
 #themeStoryTitle {
@@ -751,23 +751,19 @@ input.imagebtn {
   line-height: 26px;
 }
 
-#back {
-  width: 1200px;
-  height: 1593px;
+#back1 {
+  width: 1240px;
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
-  padding: 20px 0px 30px 20px;
-  margin-bottom: 400px;
+  padding: 20px;
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap; /* Flexbox로 여러 줄로 나열 */
-  justify-content: flex-start; /* 요소들을 시작 부분에 정렬(가로) */
-  align-content: flex-start; /* 요소들을 시작 부분에 정렬(세로) */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* Increased gap for better spacing */
 }
-
 #storyimage {
-  width: 275px;
+  width: 285px;
   height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -776,7 +772,8 @@ input.imagebtn {
 }
 #storyTitlefull {
   display: flex; /* 수직적으로 가운데 정렬 */
-  box-sizing: border-box; /* 요소가 여러 개일때 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
 }
 #storyTitle {
   color: #1d1d1d;
@@ -786,34 +783,34 @@ input.imagebtn {
   font-weight: 500;
   line-height: 24px; /* 133.333% */
   padding-left: 2px;
-  /* padding-right: 95px; */
-  margin-right: auto; /* 다음 요소들을 오른쪽으로 밀기 위해 설정 */
+  flex: 1;
 }
 .story {
   position: relative; /* Relative positioning for title placement */
-  width: 275px;
+  width: 285px;
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 20px;
-  margin-bottom: 30px;
 }
 .stories {
   position: relative; /* Relative positioning for title placement */
-  width: 275px;
+  width: 285px;
   height: 235px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .story > a {
-  width: 275px;
+  width: 285px;
   height: 235px;
+}
+.right-side {
+  display: flex;
+  align-items: center;
 }
 .seeimage {
   width: 16px;
@@ -827,7 +824,7 @@ input.imagebtn {
   padding-top: 5px;
   padding-right: 2px;
 }
-.seeimagetext {
+.imagetext {
   color: #666;
   font-family: "Noto Sans KR";
   font-size: 12px;
@@ -837,19 +834,5 @@ input.imagebtn {
   letter-spacing: -0.24px;
   padding-top: 2px;
   padding-right: 10px;
-  /* width: 24px; */
 }
-.likeimagetext {
-  color: #666;
-  font-family: "Noto Sans KR";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  padding-top: 2px;
-  padding-right: 10px;
-  /* width: 24px; */
-}
-
 /* 테마별 상세페이지 스토리 끝 */

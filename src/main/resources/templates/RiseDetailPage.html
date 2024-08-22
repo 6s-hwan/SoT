@@ -25,13 +25,8 @@
     <div class="nav_logo">
         <div id="nav_left">
             <div id="nav_logo1">
-                <a href="./test">
-                    <img
-                            th:src="@{/images/MainLogo.png}"
-                            alt="로고"
-                            width="200px"
-                            height="46px"
-                    />
+                <a href="/test">
+                    <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px" />
                 </a>
             </div>
             <div class="nav_menu">
@@ -162,12 +157,20 @@
             <img th:src="@{images/riseline.png}" class="riseline" />
             <p class="otherrise">다른 급상승 여행지 둘러보기</p>
             <div id="otherStory">
-                <button
-                        type="button"
-                        id="otherrisebtn1"
-                        onclick="location.href='';"
-                ></button>
-<!-- 푸터 -->
+                <div th:each="otherRising, iterStat : ${otherRisings}">
+                    <button
+                            type="button"
+                            th:id="'otherrisebtn' + ${iterStat.index + 1}"
+                            th:style="'background-image:url(' + ${otherRising.imageUrl} + ');'"
+                            th:onclick="|location.href='@{/rise/{keyword}(keyword=${otherRising.keyword})}';|">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 푸터 -->
 <!-- 나머지들 -->
 <div id="etc_thing">
     <div id="etc_full">

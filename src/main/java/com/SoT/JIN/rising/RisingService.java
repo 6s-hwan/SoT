@@ -54,4 +54,9 @@ public class RisingService {
         // 모든 Rising 데이터를 삭제하여 초기화
         risingRepository.deleteAll();
     }
+    @Transactional(readOnly = true)
+    public List<Rising> getOtherTopRisings(String excludeKeyword, int limit) {
+        // 키워드를 제외한 상위 limit개의 Rising 엔티티를 가져옴
+        return risingRepository.findByKeywordNot(excludeKeyword, PageRequest.of(0, limit, Sort.by(Sort.Direction.ASC, "rankOrder")));
+    }
 }

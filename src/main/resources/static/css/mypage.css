@@ -213,7 +213,6 @@ input.imagebtn {
   line-height: normal;
   letter-spacing: -0.6px;
 }
-
 #mypageprofilefull {
   display: flex;
   box-sizing: border-box;
@@ -230,6 +229,10 @@ input.imagebtn {
   padding-right: 32px;
   position: relative;
   overflow: hidden; /* 이미지가 부모 요소를 넘어가지 않도록 함 */
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #changeprofileimg {
   position: absolute;
@@ -465,7 +468,10 @@ input.imagebtn {
   margin-bottom: 150px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); /* 반응형으로 변경 */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(285px, 1fr)
+  ); /* 반응형으로 변경 */
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
@@ -558,13 +564,17 @@ input.imagebtn {
     margin-top: 10px;
   }
 
-  #nav_left, #nav_right {
+  #nav_left,
+  #nav_right {
     flex-direction: column;
     align-items: center;
   }
 
   #back {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 모바일에 맞게 조정 */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* 모바일에 맞게 조정 */
     gap: 15px;
   }
 
@@ -585,7 +595,9 @@ input.imagebtn {
     width: 100%;
   }
 
-  #mypagefollower, #mypage_title, #username {
+  #mypagefollower,
+  #mypage_title,
+  #username {
     justify-content: center;
     text-align: center;
   }

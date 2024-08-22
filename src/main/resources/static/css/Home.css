@@ -2364,7 +2364,6 @@ input:focus {
 /* 테마별 여행지 시작 - 끝 */
 
 /* 시즌별 스토리 시작 */
-
 #season_full {
   display: flex;
   align-items: center;
@@ -2373,21 +2372,18 @@ input:focus {
   padding-top: 120px;
   padding-bottom: 20px;
 }
-
 #season_title {
   box-sizing: border-box;
   display: flex;
   height: 60px;
   margin-bottom: 16px;
 }
-
 .seasonimg {
   width: 60px;
   height: 60px;
   padding-right: 16px;
   padding-left: 20px;
 }
-
 .season {
   top: 1716px;
   left: 436px;
@@ -2399,7 +2395,6 @@ input:focus {
   color: #000;
   line-height: 56px;
 }
-
 #spring {
   padding-left: 50px;
   border: none;
@@ -2410,7 +2405,6 @@ input:focus {
   line-height: normal;
   background-color: #fff;
 }
-
 #summer {
   padding-left: 20px;
   border: none;

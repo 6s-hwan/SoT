@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Controller
 public class RisingController {
 
-   @Autowired
+
     private final RisingService risingService;
     private final StoryService storyService;
 

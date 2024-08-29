@@ -3,6 +3,8 @@ package com.SoT.JIN.rising;
 import com.SoT.JIN.search.Search;
 import com.SoT.JIN.search.SearchRepository;
 import com.SoT.JIN.search.SearchService;
+import com.SoT.JIN.story.StoryRepository;
+import com.SoT.JIN.story.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -16,35 +18,39 @@ import java.util.Optional;
 public class RisingService {
 
     private final RisingRepository risingRepository;
+    private final StoryRepository storyRepository; // StoryRepository 필드 추가
 
-    // SearchService 의존성을 제거하고 필요 시 메서드 인자로 전달받도록 변경
     @Autowired
-    public RisingService(RisingRepository risingRepository) {
+    public RisingService(RisingRepository risingRepository, StoryRepository storyRepository) {
         this.risingRepository = risingRepository;
+        this.storyRepository = storyRepository; // 생성자에서 StoryRepository 주입
     }
-
     @Transactional
     public void updateRisingFromSearch(SearchService searchService) {
         List<Search> topSearches = searchService.getTopSearchKeywords(Integer.MAX_VALUE);
 
         int rank = 1;
         for (Search search : topSearches) {
-            Rising rising = risingRepository.findByKeyword(search.getKeyword()).orElse(null);
+            int storyCount = storyRepository.countByKeywordAcrossFields(search.getKeyword());
 
-            if (rising != null) {
-                rising.setRankOrder(rank);
-            } else {
-                rising = new Rising(
-                        search.getKeyword(),
-                        rank,
-                        "Location Placeholder",
-                        "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/regionmain.png"
-                );
+            // 스토리가 3개 이상인 경우에만 Rising 엔티티 생성
+            if (storyCount >= 3) {
+                Rising rising = risingRepository.findByKeyword(search.getKeyword()).orElse(null);
+
+                if (rising != null) {
+                    rising.setRankOrder(rank);
+                } else {
+                    rising = new Rising(
+                            search.getKeyword(),
+                            rank,
+                            "Location Placeholder",
+                            "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/regionmain.png"
+                    );
+                }
+                risingRepository.save(rising);
+                rank++;
             }
-            risingRepository.save(rising);
-            rank++;
         }
-
     }
     @Transactional(readOnly = true)
     public Optional<Rising> findByKeyword(String keyword) {

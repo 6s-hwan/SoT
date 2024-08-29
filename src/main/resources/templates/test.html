@@ -151,7 +151,7 @@
                         type="button"
                         th:id="'rise' + ${iterStat.index + 1}"
                         th:data-keyword="${search.keyword}"
-                        th:style="${topStories[iterStat.index] != null} ? 'background-image:url(' + ${topStories[iterStat.index].image_url} + ');' : 'background-image:url(/images/default.jpg);'"
+                        th:style="'background-image:url(' + (${topStories[iterStat.index]?.image_url != null} ? ${topStories[iterStat.index].image_url} : '/images/mypageprofile.png') + ');'"
                         onclick="goToRisePage(this)"
                       ></button>
                     </label>

@@ -25,13 +25,8 @@
     <div class="nav_logo">
         <div id="nav_left">
             <div id="nav_logo1">
-                <a href="./test">
-                    <img
-                            th:src="@{/images/MainLogo.png}"
-                            alt="로고"
-                            width="200px"
-                            height="46px"
-                    />
+                <a href="/test">
+                    <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px" />
                 </a>
             </div>
             <div class="nav_menu">
@@ -82,6 +77,7 @@
 
 <div id="Risefull">
     <div id="RiseStory">
+        <input type="hidden" id="keyword" th:value="${rising.keyword}" />
         <div id="RiseTitle">
             <div id="RiseTitle_1">
                 <img
@@ -106,7 +102,7 @@
                 </div>
             </div>
             <div id="RiseStorySet">
-                <p class="RiseegionStoryNum">1,223개의 스토리</p>
+                <p class="RiseegionStoryNum" th:text="${resultCount} + '개의 스토리'"> 1,223개의 스토리</p>
                 <div id="RiseStoryList">
                     <form>
                         <select name="story_select" id="story_select" onchange="sortStories()">
@@ -151,23 +147,30 @@
             </div>
             <div>
                 <label for="morebtn">
-                    <button
-                            type="button"
-                            id="morebtn"
-                            onclick="location.href='';"
-                    ></button>
+                    <button type="button" id="morebtn"
+                            th:if="${limit < resultCount}"
+                            th:onclick="|location.href='@{/rise/{keyword}(keyword=${rising.keyword}, sort=${sortCriteria}, limit=${limit + 24})}';|">
+                    </button>
                 </label>
             </div>
 
             <img th:src="@{images/riseline.png}" class="riseline" />
             <p class="otherrise">다른 급상승 여행지 둘러보기</p>
             <div id="otherStory">
-                <button
-                        type="button"
-                        id="otherrisebtn1"
-                        onclick="location.href='';"
-                ></button>
-<!-- 푸터 -->
+                <div th:each="otherRising, iterStat : ${otherRisings}">
+                    <button
+                            type="button"
+                            th:id="'otherrisebtn' + ${iterStat.index + 1}"
+                            th:style="'background-image:url(' + ${otherRising.imageUrl} + ');'"
+                            th:onclick="|location.href='@{/rise/{keyword}(keyword=${otherRising.keyword})}';|">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 푸터 -->
 <!-- 나머지들 -->
 <div id="etc_thing">
     <div id="etc_full">
@@ -206,8 +209,34 @@
         </div>
     </div>
 </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 <script th:src="@{/js/Home.js}"></script>
 <script th:src="@{/js/upload.js}"></script>
+<script>
+    function sortStories() {
+        var select = document.getElementById("story_select");
+        var sort = select.value;
+
+        // HTML에서 keyword 값을 가져옵니다.
+        var keyword = document.getElementById("keyword").value;
+
+        // 새로운 URL을 구성하여 페이지를 이동시킵니다.
+        window.location.href = "/rise/" + keyword + "?sort=" + sort;
+    }
+
+    // 페이지 로드 시 현재 선택된 정렬 기준을 유지
+    document.addEventListener("DOMContentLoaded", function () {
+        var params = new URLSearchParams(window.location.search);
+        var sort = params.get("sort");
+        if (sort) {
+            document.getElementById("story_select").value = sort;
+        }
+    });
+</script>
 <!-- 푸터 끝 -->
 </body>
 </html>

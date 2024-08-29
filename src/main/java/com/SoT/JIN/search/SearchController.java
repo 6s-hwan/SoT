@@ -16,22 +16,22 @@ import java.util.stream.Collectors;
 @Controller
 public class SearchController {
 
-    private final StoryRepository storyRepository;
     private final SearchService searchService;
-    private final RisingService risingService; // RisingService 선언
+    private final RisingService risingService;
+    private final StoryRepository storyRepository;
 
     @Autowired
-    public SearchController(StoryRepository storyRepository, SearchService searchService, RisingService risingService) {
-        this.storyRepository = storyRepository;
+    public SearchController(SearchService searchService, RisingService risingService, StoryRepository storyRepository) {
         this.searchService = searchService;
-        this.risingService = risingService; // RisingService 주입
+        this.risingService = risingService;
+        this.storyRepository = storyRepository;
     }
 
     @GetMapping("/search")
     public String search(@RequestParam("query") String query,
                          @RequestParam(name = "limit", defaultValue = "24") int limit,
                          Model model) {
-        // 검색어 저장
+        // 검색어 저장과 동시에 Rising 업데이트
         searchService.saveSearchKeyword(query);
 
         // 검색어에 따른 스토리 검색
@@ -59,11 +59,10 @@ public class SearchController {
 
         return "Home";
     }
-    // 수동으로 Rising 업데이트하는 테스트 메서드
     @GetMapping("/update-rising-now")
     @ResponseBody
     public String updateRisingNow() {
-        risingService.updateRisingFromSearch();
+        risingService.updateRisingFromSearch(searchService);
         return "Rising entity has been updated!";
     }
 

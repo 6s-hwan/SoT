@@ -1,5 +1,6 @@
 package com.SoT.JIN.search;
 
+import com.SoT.JIN.rising.RisingService;
 import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,13 @@ import java.util.stream.Collectors;
 public class SearchService {
     private final SearchRepository searchRepository;
     private final StoryRepository storyRepository;
+    private final RisingService risingService; // RisingService 추가
 
     @Autowired
-    public SearchService(SearchRepository searchRepository, StoryRepository storyRepository) {
+    public SearchService(SearchRepository searchRepository, StoryRepository storyRepository, RisingService risingService) {
         this.searchRepository = searchRepository;
         this.storyRepository = storyRepository;
+        this.risingService = risingService; // RisingService 주입
     }
 
     @Transactional
@@ -35,6 +38,9 @@ public class SearchService {
             newSearch.setCount(1L);
             searchRepository.save(newSearch);
         }
+
+        // 검색어 저장 후 Rising 업데이트
+        risingService.updateRisingFromSearch(this);  // 현재 인스턴스를 전달
     }
 
     @Transactional

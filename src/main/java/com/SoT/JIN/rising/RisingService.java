@@ -5,6 +5,8 @@ import com.SoT.JIN.search.SearchRepository;
 import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.story.StoryRepository;
 import com.SoT.JIN.story.StoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -16,14 +18,14 @@ import java.util.Optional;
 
 @Service
 public class RisingService {
-
+    private static final Logger logger = LoggerFactory.getLogger(RisingService.class);  // Logger 선언
     private final RisingRepository risingRepository;
-    private final StoryRepository storyRepository; // StoryRepository 필드 추가
+    private final StoryRepository storyRepository;
 
     @Autowired
     public RisingService(RisingRepository risingRepository, StoryRepository storyRepository) {
         this.risingRepository = risingRepository;
-        this.storyRepository = storyRepository; // 생성자에서 StoryRepository 주입
+        this.storyRepository = storyRepository;
     }
     @Transactional
     public void updateRisingFromSearch(SearchService searchService) {
@@ -33,7 +35,6 @@ public class RisingService {
         for (Search search : topSearches) {
             int storyCount = storyRepository.countByKeywordAcrossFields(search.getKeyword());
 
-            // 스토리가 3개 이상인 경우에만 Rising 엔티티 생성
             if (storyCount >= 3) {
                 Rising rising = risingRepository.findByKeyword(search.getKeyword()).orElse(null);
 
@@ -56,13 +57,19 @@ public class RisingService {
     public Optional<Rising> findByKeyword(String keyword) {
         return risingRepository.findByKeyword(keyword);
     }
+    @Transactional
     public void resetRisingData() {
-        // 모든 Rising 데이터를 삭제하여 초기화
         risingRepository.deleteAll();
     }
     @Transactional(readOnly = true)
     public List<Rising> getOtherTopRisings(String excludeKeyword, int limit) {
-        // 키워드를 제외한 상위 limit개의 Rising 엔티티를 가져옴
         return risingRepository.findByKeywordNot(excludeKeyword, PageRequest.of(0, limit, Sort.by(Sort.Direction.ASC, "rankOrder")));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Rising> getTopRisings(int limit) {
+        List<Rising> risings = risingRepository.findAllByOrderByRankOrderAsc(PageRequest.of(0, limit));
+        logger.info("Fetched Rising entities: " + risings.size());  // 로그 메시지 추가
+        return risings;
     }
 }

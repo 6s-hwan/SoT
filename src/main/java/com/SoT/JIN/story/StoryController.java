@@ -1,5 +1,7 @@
 package com.SoT.JIN.story;
 
+import com.SoT.JIN.rising.Rising;
+import com.SoT.JIN.rising.RisingService;
 import com.SoT.JIN.search.Search;
 import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.user.User;
@@ -38,11 +40,13 @@ public class StoryController {
     private final WriterController writerController;
     private final OpenAIService openAIService;
     private final StoryGroupRepository storyGroupRepository;
+    private final RisingService risingService; // RisingService 추가
 
     @Autowired
     public StoryController(StoryRepository storyRepository, S3Service s3Service, StoryService storyService,
                            UserRepository userRepository, SearchService searchService, WriterController writerController,
-                           OpenAIService openAIService, StoryGroupRepository storyGroupRepository) {
+                           OpenAIService openAIService, StoryGroupRepository storyGroupRepository,
+                           RisingService risingService) { // RisingService 생성자에 추가
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
         this.storyService = storyService;
@@ -50,7 +54,8 @@ public class StoryController {
         this.searchService = searchService;
         this.writerController = writerController;
         this.openAIService = openAIService;
-        this.storyGroupRepository = storyGroupRepository; // 올바르게 주입
+        this.storyGroupRepository = storyGroupRepository;
+        this.risingService = risingService; // RisingService 초기화
     }
 
     @PostMapping("/story/{storyId}/like")
@@ -206,15 +211,21 @@ public class StoryController {
 
     @GetMapping("/test")
     public String test(Model model) {
-        List<Search> topSearches = searchService.getTopSearchKeywords(8);
 
-        List<Story> topStories = topSearches.stream()
-                .map(search -> searchService.getStoryWithSmallestId(search.getKeyword()))
+        // Rising 엔티티에서 상위 8개의 검색어 가져오기
+        List<Rising> topRisings = risingService.getTopRisings(8);
+        logger.info("Rising 엔티티 개수: " + topRisings.size());
+
+        // Rising 엔티티에서 가져온 검색어를 바탕으로 Story 가져오기
+        List<Story> topStories = topRisings.stream()
+                .map(rising -> searchService.getStoryWithSmallestId(rising.getKeyword()))
                 .collect(Collectors.toList());
 
+        // 인기 작가 가져오기
         List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
 
-        model.addAttribute("topSearches", topSearches);
+        // 모델에 데이터 추가
+        model.addAttribute("topSearches", topRisings);
         model.addAttribute("topStories", topStories);
         model.addAttribute("popularWriters", popularWriters);
 

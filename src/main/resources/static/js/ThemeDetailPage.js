@@ -1,74 +1,7 @@
-// 각 버튼의 오버레이 이미지 상태를 저장할 배열
-var isOverlayVisible = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-];
-
-// 각 버튼의 체크된 이미지 상태를 저장할 배열
-var isCheckVisible = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-];
-
-// 버튼을 누르면 체크이미지와 오버레이된 이미지가 나타남
-function toggleImageAndCheck(index) {
-  var overlayImage = document.getElementById("overlayImage" + index);
-  var checkImage = document.getElementById("themecheck" + index);
-
-  if (!isOverlayVisible[index - 1]) {
-    overlayImage.style.display = "block"; // 오버레이 이미지 표시
-    checkImage.src = "../static/images/theme_check.png"; // 체크된 이미지로 변경
-  } else {
-    overlayImage.style.display = "none"; // 오버레이 이미지 숨김
-    checkImage.src = "../static/images/theme_checked.png"; // 체크 해제된 이미지로 변경
-  }
-
-  // 상태 반전
-  isOverlayVisible[index - 1] = !isOverlayVisible[index - 1];
-  isCheckVisible[index - 1] = !isCheckVisible[index - 1];
-}
-
-// 페이지가 로드될 때 실행되는 함수
-window.onload = function () {
-  // URL에서 파라미터 추출
-  const urlParams = new URLSearchParams(window.location.search);
-  // const overlayVisible = urlParams.get("overlay");
-  // const checkVisible = urlParams.get("check");
-  const overlayIndex = parseInt(urlParams.get("index"));
-
-  // 오버레이 이미지와 체크 이미지의 상태에 따라 화면에 보여주거나 숨김
-  if (overlayIndex) {
-    document.getElementById("overlayImage" + overlayIndex).style.display =
-      "block";
-    document.getElementById("themecheck" + overlayIndex).src =
-      "../static/images/theme_check.png";
-  }
-  // 오버레이 이미지와 체크 이미지의 상태에 따라 화면에 보여주거나 숨김
-  // if (overlayVisible === "false") {
-  //   document.getElementById("overlayImage1").style.display = "block";
-  // }
-  // if (checkVisible === "false") {
-  //   document.getElementById("themecheck1").src =
-  //     "../static/images/theme_check.png";
-  // }
-};
-
+// 선택된 테마를 저장하는 Set
 const selectedThemes = new Set();
 
+// 테마를 클릭하면 테마 선택 및 페이지 리디렉션을 수행하는 함수
 function toggleTheme(themeId) {
   const checkElement = document.getElementById(`themecheck${themeId}`);
   if (selectedThemes.has(themeId)) {
@@ -81,11 +14,26 @@ function toggleTheme(themeId) {
 
   // Set을 배열로 변환한 후 정렬
   const themesParam = Array.from(selectedThemes).sort((a, b) => a - b).join(',');
-  const newUrl = themesParam.length > 0 ? `/theme?themes=${themesParam}` : `/theme`;
+
+  // 현재 선택된 정렬 기준 가져오기
+  const currentUrl = new URL(window.location.href);
+  const sortParam = currentUrl.searchParams.get('sort') || '';
+
+  // 선택된 테마와 정렬 기준을 포함한 새로운 URL로 리디렉션
+  const newUrl = `/theme?themes=${encodeURIComponent(themesParam)}&sort=${encodeURIComponent(sortParam)}`;
   window.location.href = newUrl;
 }
 
-// 페이지 로드 시 URL에 있는 테마 ID를 읽어와 체크박스 상태를 업데이트합니다.
+// 정렬 폼을 제출하는 함수 (정렬 기준 변경 시 호출)
+function submitSortForm() {
+  const hiddenThemes = document.getElementById("hiddenThemes");
+  hiddenThemes.value = Array.from(selectedThemes).sort((a, b) => a - b).join(',');
+
+  // 폼 제출
+  document.getElementById("sortForm").submit();
+}
+
+// 페이지 로드 시 URL에 있는 테마 ID를 읽어와 체크박스 상태를 업데이트
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const themes = urlParams.get('themes');
@@ -96,4 +44,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-

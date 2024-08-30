@@ -23,77 +23,89 @@ var isCheckVisible = [
   false,
   false,
 ];
+// var isOverlayVisible = [false];
+// var isCheckVisible = [false];
 
-// 버튼을 누르면 체크이미지와 오버레이된 이미지가 나타남
+function executeBothFunctions(index) {
+  toggleImageAndCheck(index);
+  toggleTheme(index);
+}
+
 function toggleImageAndCheck(index) {
   var overlayImage = document.getElementById("overlayImage" + index);
   var checkImage = document.getElementById("themecheck" + index);
 
   if (!isOverlayVisible[index - 1]) {
     overlayImage.style.display = "block"; // 오버레이 이미지 표시
-    checkImage.src = "../static/images/theme_check.png"; // 체크된 이미지로 변경
+    checkImage.style.display = "inline"; // 체크 이미지 표시
+    isOverlayVisible[index - 1] = true;
+    isCheckVisible[index - 1] = true;
   } else {
     overlayImage.style.display = "none"; // 오버레이 이미지 숨김
-    checkImage.src = "../static/images/theme_checked.png"; // 체크 해제된 이미지로 변경
+    checkImage.style.display = "none"; // 체크 이미지 숨김
+    isOverlayVisible[index - 1] = false;
+    isCheckVisible[index - 1] = false;
   }
-
-  // 상태 반전
-  isOverlayVisible[index - 1] = !isOverlayVisible[index - 1];
-  isCheckVisible[index - 1] = !isCheckVisible[index - 1];
+  updateURL();
 }
 
-// 페이지가 로드될 때 실행되는 함수
-window.onload = function () {
-  // URL에서 파라미터 추출
-  const urlParams = new URLSearchParams(window.location.search);
-  // const overlayVisible = urlParams.get("overlay");
-  // const checkVisible = urlParams.get("check");
-  const overlayIndex = parseInt(urlParams.get("index"));
-
-  // 오버레이 이미지와 체크 이미지의 상태에 따라 화면에 보여주거나 숨김
-  if (overlayIndex) {
-    document.getElementById("overlayImage" + overlayIndex).style.display =
-      "block";
-    document.getElementById("themecheck" + overlayIndex).src =
-      "../static/images/theme_check.png";
-  }
-  // 오버레이 이미지와 체크 이미지의 상태에 따라 화면에 보여주거나 숨김
-  // if (overlayVisible === "false") {
-  //   document.getElementById("overlayImage1").style.display = "block";
-  // }
-  // if (checkVisible === "false") {
-  //   document.getElementById("themecheck1").src =
-  //     "../static/images/theme_check.png";
-  // }
-};
-
 const selectedThemes = new Set();
+const selectedOverlays = new Set();
 
 function toggleTheme(themeId) {
   const checkElement = document.getElementById(`themecheck${themeId}`);
   if (selectedThemes.has(themeId)) {
     selectedThemes.delete(themeId);
-    checkElement.style.display = 'none';
+    checkElement.style.display = "none";
+    selectedOverlays.delete(themeId); // 오버레이도 같이 숨김
   } else {
     selectedThemes.add(themeId);
-    checkElement.style.display = 'block';
+    checkElement.style.display = "inline";
+    selectedOverlays.add(themeId); // 오버레이도 같이 표시
   }
+  updateURL();
+}
 
-  // Set을 배열로 변환한 후 정렬
-  const themesParam = Array.from(selectedThemes).sort((a, b) => a - b).join(',');
-  const newUrl = themesParam.length > 0 ? `/theme?themes=${themesParam}` : `/theme`;
+function updateURL() {
+  const themesParam = Array.from(selectedThemes)
+    .sort((a, b) => a - b)
+    .join(",");
+  const overlaysParam = Array.from(selectedOverlays)
+    .sort((a, b) => a - b)
+    .join(",");
+
+  let newUrl = "/theme";
+  if (themesParam || overlaysParam) {
+    newUrl += "?";
+    if (themesParam) {
+      newUrl += `themes=${themesParam}`;
+    }
+    if (overlaysParam) {
+      if (themesParam) newUrl += "&";
+      newUrl += `overlays=${overlaysParam}`;
+    }
+  }
   window.location.href = newUrl;
 }
 
-// 페이지 로드 시 URL에 있는 테마 ID를 읽어와 체크박스 상태를 업데이트합니다.
-document.addEventListener('DOMContentLoaded', () => {
+// 페이지 로드 시 URL에 있는 상태를 읽어와 체크박스와 오버레이 상태를 업데이트합니다.
+document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const themes = urlParams.get('themes');
+  const themes = urlParams.get("themes");
+  const overlays = urlParams.get("overlays");
+
   if (themes) {
-    themes.split(',').forEach(themeId => {
+    themes.split(",").forEach((themeId) => {
       selectedThemes.add(parseInt(themeId));
-      document.getElementById(`themecheck${themeId}`).style.display = 'block';
+      document.getElementById(`themecheck${themeId}`).style.display = "block";
+    });
+  }
+
+  if (overlays) {
+    overlays.split(",").forEach((overlayId) => {
+      selectedOverlays.add(parseInt(overlayId));
+      document.getElementById(`overlayImage${overlayId}`).style.display =
+        "block";
     });
   }
 });
-

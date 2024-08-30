@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <!-- 기존 HTML 버튼 -->
+    <button id="emailfindcheckbtn">확인</button>
+
+    <!-- 비밀번호 전송 완료 팝업 -->
+    <div
+      id="bg_gray9"
+      style="display: none"
+      th:fragment="pwFindSendNoticePopup"
+    >
+      <div id="pwfindsendnotice_pop_up">
+        <div id="pwfindsendnoticeTitle">
+          <p id="pwfindsendnoticetitle1">전송완료</p>
+          <div id="close">
+            <img
+              th:src="@{/images/X.png}"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="document.getElementById('bg_gray9').style.display='none';
+            enableScroll();"
+            />
+          </div>
+        </div>
+        <div id="pwfindsendnoticecontent">
+          비밀번호 변경 링크를 보냈습니다.<br />
+          이메일을 통해 비밀변호를 변경해주세요.
+        </div>
+
+        <button id="pwfindsendnoticecbtn">확인</button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var Joinbtn = document.querySelector("#emailfindcheckbtn");
+        var joinfinishPopup = document.getElementById("bg_gray9");
+
+        // 로그인 버튼 누르면 회원가입창 열기
+        Joinbtn.addEventListener("click", function (event) {
+          event.preventDefault(); // 링크의 기본 동작 방지
+          joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
+        });
+      });
+    </script>
+    <!-- <script th:src="@{/js/Home.js}"></script> -->
+  </body>
+</html>

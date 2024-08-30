@@ -1005,7 +1005,7 @@ input:focus {
 #check_pw {
   box-sizing: border-box;
   display: flex;
-  width: 472px;
+  /* width: 472px; */
   height: 32px;
   padding-top: 13px;
   padding-left: 44px;
@@ -1708,7 +1708,7 @@ input:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 472px;
+  width: 474px;
   height: 740px;
   overflow-y: auto;
   border-radius: 8px;
@@ -2264,7 +2264,7 @@ input:focus {
 #pwfind_pop_up > #pwfindTitle {
   box-sizing: border-box;
   display: flex;
-  width: 472px;
+  width: 474px;
   height: 97px;
   padding-left: 44px;
   padding-top: 28px;
@@ -2382,6 +2382,396 @@ input:focus {
   cursor: pointer;
 }
 /* 비밀번호 찾기 팝업창 끝 */
+
+/* 비밀번호 전송 완료 팝업창 시작 */
+#bg_gray9 {
+  position: absolute;
+  display: none; /* 버튼이 안눌러지면 display:none */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow-y: scroll; /* 세로 스크롤 사용 */
+  z-index: 100;
+}
+#pwfindsendnotice_pop_up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 474px;
+  height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+#pwfindsendnotice_pop_up > #pwfindsendnoticeTitle {
+  box-sizing: border-box;
+  display: flex;
+  width: 472px;
+  height: 59px;
+  padding-left: 40px;
+  padding-top: 28px;
+}
+#pwfindsendnotice_pop_up > #pwfindsendnoticeTitle > #pwfindsendnoticetitle1 {
+  color: #111;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: -0.44px;
+}
+#pwfindsendnotice_pop_up > #pwfindsendnoticeTitle > #close {
+  padding-top: 3px;
+  padding-left: 292px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+#pwfindsendnoticecontent {
+  color: #222;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%; /* 32px */
+  letter-spacing: -0.4px;
+  padding-top: 41px;
+  padding-left: 40px;
+  padding-bottom: 24px;
+}
+#pwfindsendnoticecbtn {
+  display: flex;
+  width: 400px;
+  padding: 14px 174px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  margin-left: 36px;
+  color: #464646;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+}
+/* 비밀번호 전송 완료 팝업창 끝 */
+
+/* 팔로우 취소 팝업창 시작 */
+#bg_gray10 {
+  position: absolute;
+  display: none; /* 버튼이 안눌러지면 display:none */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow-y: scroll; /* 세로 스크롤 사용 */
+  z-index: 100;
+}
+#followcancel_pop_up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 474px;
+  height: 247px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+#followcancel_pop_up > #followcancelTitle {
+  box-sizing: border-box;
+  display: flex;
+  width: 472px;
+  height: 59px;
+  padding-left: 40px;
+  padding-top: 28px;
+}
+#followcancel_pop_up > #followcancelTitle > #followcanceltitle1 {
+  color: #111;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: -0.44px;
+}
+#followcancel_pop_up > #followcancelTitle > #close {
+  padding-top: 3px;
+  padding-left: 273px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+#followcancelcontent {
+  color: #222;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+  padding-top: 38px;
+  padding-left: 40px;
+  padding-bottom: 30px;
+}
+
+#verifyStatus {
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+}
+#followcancelbuttons {
+  padding-left: 36px;
+}
+#closefollowcancelbtn {
+  width: 192px;
+  height: 53px;
+  flex-shrink: 0;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  color: #464646;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: -0.36px;
+  margin-right: 16px;
+}
+#closefollowcancelbtn2 {
+  width: 192px;
+  height: 53px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 25.2px */
+  letter-spacing: -0.36px;
+  cursor: pointer;
+}
+/* 팔로우 취소 팝업창 끝 */
+
+/* 비밀번호 변경 팝업 시작*/
+#bg_gray11 {
+  position: absolute;
+  display: none; /* 버튼이 안눌러지면 display:none */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow-y: scroll; /* 세로 스크롤 사용 */
+  z-index: 100;
+}
+#changepw_pop_up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 474px;
+  height: 510px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+#changepw_pop_up > #changepwTitle {
+  box-sizing: border-box;
+  display: flex;
+  width: 472px;
+  height: 59px;
+  padding-left: 40px;
+  padding-top: 28px;
+}
+#changepw_pop_up > #changepwTitle > #changepwtitle1 {
+  color: #111;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: -0.44px;
+}
+#changepw_pop_up > #changepwTitle > #close {
+  padding-top: 3px;
+  padding-left: 255px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+#currentpwpart {
+  padding-top: 38px;
+  padding-left: 36px;
+}
+#currentpwparttext,
+#newpwparttext,
+#recheckpwparttext {
+  display: flex;
+  padding-left: 4px;
+}
+#currentpwparttext1,
+#newpwparttext1,
+#recheckpwparttext1 {
+  color: #616161;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 21px */
+  letter-spacing: -0.3px;
+  padding-bottom: 6px;
+}
+#currentpwparttext2 {
+  color: #ff5656;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 21px */
+}
+#inputcurrentpw,
+#inputnewpw,
+#inputrecheckpw {
+  box-sizing: border-box;
+  width: 400px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #f9f9f9;
+  border: none;
+}
+#currentpwpart > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.34px;
+}
+#newpwpart > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.34px;
+}
+#recheckpwpart > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.34px;
+}
+#newpwpart {
+  padding-top: 11px;
+  padding-left: 36px;
+}
+#recheckpwpart {
+  padding-top: 18px;
+  padding-left: 36px;
+  padding-bottom: 30px;
+}
+#check_pw1 {
+  box-sizing: border-box;
+  display: flex;
+  /* width: 472px; */
+  height: 32px;
+  padding-top: 13px;
+  padding-left: 44px;
+}
+#check_pw1 > #middle31 {
+  width: 22px;
+}
+#check_pw1 span {
+  color: #c1c1c1; /* 기본 색상 */
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+#recheckpwparttext2 {
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 17px;
+}
+#changepwbtn {
+  display: flex;
+  width: 400px;
+  padding: 14px 174px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #adadad;
+  background: #fff;
+  margin-left: 36px;
+  color: #464646;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+}
+/* 비밀번호 변경 팝업 끝 */
 
 /* 슬라이드 광고 시작 */
 .slide-container {
@@ -3237,7 +3627,7 @@ input:focus {
 #check_pw {
   box-sizing: border-box;
   display: flex;
-  width: 472px;
+  /* width: 472px; */
   height: 32px;
   padding-top: 13px;
   padding-left: 44px;

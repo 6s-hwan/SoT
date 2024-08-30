@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <!-- 기존 HTML 버튼 -->
+    <button id="emailfindcheckbtn">확인</button>
+
+    <!-- 비밀번호 변경 팝업 -->
+    <div id="bg_gray11" style="display: none" th:fragment="changePwPopup">
+      <div id="changepw_pop_up">
+        <div id="changepwTitle">
+          <p id="changepwtitle1">비밀번호 변경</p>
+          <div id="close">
+            <img
+              th:src="@{/images/X.png}"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="resetPasswordFields(); document.getElementById('bg_gray11').style.display='none'; enableScroll(); "
+            />
+          </div>
+        </div>
+        <div id="currentpwpart">
+          <div id="currentpwparttext">
+            <p id="currentpwparttext1">현재 비밀번호</p>
+            <p id="currentpwparttext2"></p>
+          </div>
+          <input type="password" id="inputcurrentpw" />
+        </div>
+        <div id="newpwpart">
+          <div id="newpwparttext">
+            <p id="newpwparttext1" style="width: 67px; padding-top: 13px">
+              새 비밀번호
+            </p>
+            <div id="check_pw1">
+              <span id="text241" class="pw11">특수문자 포함</span>
+              <div id="imageContainer11" style="display: none">
+                <img
+                  id="check_img11"
+                  th:src="@{/images/check.png}"
+                  alt="check"
+                  width="8px"
+                  height="5px"
+                />
+              </div>
+              <div id="middle31"></div>
+              <span id="text251" class="pw21">8자 이상</span>
+              <div id="imageContainer21" style="display: none">
+                <img
+                  id="check_img21"
+                  th:src="@{/images/check.png}"
+                  alt="check"
+                  width="8px"
+                  height="5px"
+                />
+              </div>
+            </div>
+          </div>
+          <input
+            type="password"
+            id="inputnewpw"
+            oninput="checkInputs1()"
+            onchange="check_pw1()"
+          />
+        </div>
+        <div id="recheckpwpart">
+          <div id="recheckpwparttext">
+            <p id="recheckpwparttext1">새 비밀번호 확인</p>
+            <p id="recheckpwparttext2"></p>
+          </div>
+          <input type="password" id="inputrecheckpw" />
+        </div>
+
+        <button id="changepwbtn" onclick="resetPasswordFields();">확인</button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var Joinbtn = document.querySelector("#emailfindcheckbtn");
+        var joinfinishPopup = document.getElementById("bg_gray11");
+
+        // 로그인 버튼 누르면 회원가입창 열기
+        Joinbtn.addEventListener("click", function (event) {
+          event.preventDefault(); // 링크의 기본 동작 방지
+          joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
+        });
+      });
+
+      //비밀번호 변경 팝업창 js 코드
+      document
+        .getElementById("inputnewpw")
+        .addEventListener("keyup", checkInputs1);
+
+      function checkInputs1() {
+        var pw2 = document.getElementById("inputnewpw").value;
+        var specialCharacters1 = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
+        var checkText1 = document.getElementById("text241"); // 특수문자 포함 문구의 span 요소
+        var checkNumber1 = document.getElementById("text251"); // 8자 이상 문구의 span 요소
+        var imageContainer11 = document.getElementById("imageContainer11"); // 특수문자 체크 이미지 컨테이너
+        var imageContainer21 = document.getElementById("imageContainer21"); // 8자 이상 체크 이미지 컨테이너
+        var checkImage11 = document.getElementById("check_img11"); // 특수문자 체크 이미지 요소
+        var checkImage21 = document.getElementById("check_img21"); // 8자 이상 체크 이미지 요소
+
+        // 패딩 추가
+        checkImage11.style.paddingLeft = "5px";
+        checkImage11.style.paddingTop = "7px";
+        checkImage11.style.paddingBottom = "7px";
+        checkImage21.style.paddingLeft = "5px";
+        checkImage21.style.paddingTop = "7px";
+        checkImage21.style.paddingBottom = "7px";
+
+        if (specialCharacters1.test(pw2)) {
+          checkText1.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
+          imageContainer11.style.display = "block"; // 이미지 표시
+        } else {
+          checkText1.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
+          imageContainer11.style.display = "none"; // 이미지 숨기기
+        }
+
+        if (pw2.length >= 8) {
+          checkNumber1.style.color = "#448fff"; // 8자 이상일 때 색상 변경
+          imageContainer21.style.display = "block"; // 이미지 표시
+        } else {
+          checkNumber1.style.color = "#c1c1c1"; // 8자 미만일 때 기본 색상으로 변경
+          imageContainer21.style.display = "none"; // 이미지 숨기기
+        }
+      }
+
+      // 비밀번호 유효성 검사 함수
+      function check_pw1(password) {
+        var pwRegex1 =
+          /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
+        return pwRegex1.test(password);
+      }
+
+      // 비밀번호 일치 여부 확인
+      document
+        .getElementById("inputrecheckpw")
+        .addEventListener("input", checkPasswordsMatch);
+
+      function checkPasswordsMatch() {
+        var newPassword = document.getElementById("inputnewpw").value;
+        var recheckPassword = document.getElementById("inputrecheckpw").value;
+        var messageElement = document.getElementById("recheckpwparttext2");
+
+        if (newPassword === recheckPassword) {
+          messageElement.style.color = "#448FFF"; // 일치할 때 색상
+          messageElement.textContent = "비밀번호가 일치합니다.";
+        } else {
+          messageElement.style.color = "#FF4F4F"; // 일치하지 않을 때 색상
+          messageElement.textContent = "비밀번호가 일치하지 않습니다.";
+        }
+      }
+
+      // 비밀번호 필드 및 유효성 검사 메시지 초기화 함수
+      function resetPasswordFields() {
+        // 비밀번호 입력 필드 초기화
+        document.getElementById("inputcurrentpw").value = "";
+        document.getElementById("inputnewpw").value = "";
+        document.getElementById("inputrecheckpw").value = "";
+
+        // 유효성 검사 메시지 초기화
+        document.getElementById("recheckpwparttext2").textContent = "";
+
+        // 특수문자 및 8자 이상 체크 초기화
+        document.getElementById("text241").style.color = "#c1c1c1";
+        document.getElementById("imageContainer11").style.display = "none";
+        document.getElementById("text251").style.color = "#c1c1c1";
+        document.getElementById("imageContainer21").style.display = "none";
+      }
+    </script>
+
+    <!-- <script th:src="@{/js/Home.js}"></script> -->
+  </body>
+</html>

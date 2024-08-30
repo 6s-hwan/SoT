@@ -220,32 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
     profilebtn.style.display = "block";
   }
 
-  // 비밀번호 체크 함수
-  function checkInputs() {
-    var pw = document.getElementById("join_pw_input").value;
-    var specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
-    var checkText = document.getElementById("text24");
-    var checkNumber = document.getElementById("text25");
-    var imageContainer1 = document.getElementById("imageContainer1");
-    var imageContainer2 = document.getElementById("imageContainer2");
-
-    if (specialCharacters.test(pw)) {
-      checkText.style.color = "#448fff";
-      imageContainer1.style.display = "block";
-    } else {
-      checkText.style.color = "#c1c1c1";
-      imageContainer1.style.display = "none";
-    }
-
-    if (pw.length >= 8) {
-      checkNumber.style.color = "#448fff";
-      imageContainer2.style.display = "block";
-    } else {
-      checkNumber.style.color = "#c1c1c1";
-      imageContainer2.style.display = "none";
-    }
-  }
-
   // 생년월일 선택 시 hidden input 요소에 값 설정
   function selectBirthday() {
     const year = document.getElementById("birth-year").value;
@@ -417,19 +391,23 @@ function submitForm(event) {
 }
 
 // 초기 팝업창들 숨기기
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("loginPopup").style.display = "none";
-  document.getElementById("joinPopup").style.display = "none";
-  document.getElementById("termsPopup").style.display = "none";
-  document.getElementById("privacyPopup").style.display = "none";
-  document.getElementById("joinfinishPopup").style.display = "none";
-  document.getElementById("emailFindPopup").style.display = "none";
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   document.getElementById("loginPopup").style.display = "none";
+//   document.getElementById("joinPopup").style.display = "none";
+//   document.getElementById("termsPopup").style.display = "none";
+//   document.getElementById("privacyPopup").style.display = "none";
+//   document.getElementById("joinfinishPopup").style.display = "none";
+//   document.getElementById("emailFindPopup").style.display = "none";
+//   document.getElementById("emailCheckPopup").style.display = "none";
+//   document.getElementById("pwFindPopup").style.display = "none";
+//   document.getElementById("pwfindsendnotice_popup").style.display = "none";
+// });
 
 //팝업창 닫으면 스크롤 활성화
 function enableScroll() {
   document.body.style.overflow = "auto"; // 스크롤 활성화
 }
+
 //팝업창 열고 닫는 이벤트
 document.addEventListener("DOMContentLoaded", function () {
   var Joinbtn = document.querySelector("#join"); //로그인버튼
@@ -450,6 +428,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var EmailFindCheckBtn = document.querySelector("#emailfindcheckbtn");
   var FindPwBtn = document.querySelector("#findpwbtn");
   var GoToLoginBtn2 = document.querySelector("#gotologinbtn2"); //이메일확인
+  var PwFindCheckBtn = document.querySelector("#pwfindcheckbtn");
+  var PwFindSendNoticecBtn = document.querySelector("#pwfindsendnoticecbtn");
 
   var loginPopup = document.getElementById("bg_gray");
   var joinPopup = document.getElementById("bg_gray2");
@@ -458,7 +438,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var joinfinishPopup = document.getElementById("bg_gray5");
   var emailFindPopup = document.getElementById("bg_gray6");
   var emailCheckPopup = document.getElementById("bg_gray7");
-  var pwFindPopup = document.getElementById("bg_gray7");
+  var pwFindPopup = document.getElementById("bg_gray8");
+  var pwFindSendNoticePopup = document.getElementById("bg_gray9");
 
   // 로그인 버튼 누르면 로그인 팝업창 열기
   Joinbtn.addEventListener("click", function (event) {
@@ -574,6 +555,17 @@ document.addEventListener("DOMContentLoaded", function () {
   //   loginPopup.style.display = "block"; // 로그인 팝업 보이기
   //   pwFindPopup.style.display = "none"; // 비밀번호 찾기 팝업 숨기기
   // });
+  //비밀번호 찾기 팝업창에서 확인 버튼 누르면 비밀번호 전송 완료 팝업창으로 넘어가기
+  PwFindCheckBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    pwFindPopup.style.display = "none"; // 비밀번호 찾기 팝업 숨기기
+    pwFindSendNoticePopup.style.display = "block"; // 비밀번호 전송 완료 팝업 보이기
+  });
+  //비밀번호 전송 완료 팝업창에서 확인버튼 누르면 창 닫히기
+  PwFindSendNoticecBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    pwFindSendNoticePopup.style.display = "none"; // 비밀번호 전송 완료 팝업 숨기기
+  });
 });
 
 // 회원가입 팝업창(join_popup)
@@ -1242,4 +1234,85 @@ async function verifyCode() {
   if (result === "인증 성공") {
     document.getElementById("bg_gray6").style.display = "none";
   }
+}
+
+//비밀번호 변경 팝업창 js 코드
+document.getElementById("inputnewpw").addEventListener("keyup", checkInputs1);
+
+function checkInputs1() {
+  var pw2 = document.getElementById("inputnewpw").value;
+  var specialCharacters1 = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
+  var checkText1 = document.getElementById("text241"); // 특수문자 포함 문구의 span 요소
+  var checkNumber1 = document.getElementById("text251"); // 8자 이상 문구의 span 요소
+  var imageContainer11 = document.getElementById("imageContainer11"); // 특수문자 체크 이미지 컨테이너
+  var imageContainer21 = document.getElementById("imageContainer21"); // 8자 이상 체크 이미지 컨테이너
+  var checkImage11 = document.getElementById("check_img11"); // 특수문자 체크 이미지 요소
+  var checkImage21 = document.getElementById("check_img21"); // 8자 이상 체크 이미지 요소
+
+  // 패딩 추가
+  checkImage11.style.paddingLeft = "5px";
+  checkImage11.style.paddingTop = "7px";
+  checkImage11.style.paddingBottom = "7px";
+  checkImage21.style.paddingLeft = "5px";
+  checkImage21.style.paddingTop = "7px";
+  checkImage21.style.paddingBottom = "7px";
+
+  if (specialCharacters1.test(pw2)) {
+    checkText1.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
+    imageContainer11.style.display = "block"; // 이미지 표시
+  } else {
+    checkText1.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
+    imageContainer11.style.display = "none"; // 이미지 숨기기
+  }
+
+  if (pw2.length >= 8) {
+    checkNumber1.style.color = "#448fff"; // 8자 이상일 때 색상 변경
+    imageContainer21.style.display = "block"; // 이미지 표시
+  } else {
+    checkNumber1.style.color = "#c1c1c1"; // 8자 미만일 때 기본 색상으로 변경
+    imageContainer21.style.display = "none"; // 이미지 숨기기
+  }
+}
+
+// 비밀번호 유효성 검사 함수
+function check_pw1(password) {
+  var pwRegex1 =
+    /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
+  return pwRegex1.test(password);
+}
+
+// 비밀번호 일치 여부 확인
+document
+  .getElementById("inputrecheckpw")
+  .addEventListener("input", checkPasswordsMatch);
+
+function checkPasswordsMatch() {
+  var newPassword = document.getElementById("inputnewpw").value;
+  var recheckPassword = document.getElementById("inputrecheckpw").value;
+  var messageElement = document.getElementById("recheckpwparttext2");
+
+  if (newPassword === recheckPassword) {
+    messageElement.style.color = "#448FFF"; // 일치할 때 색상
+    messageElement.textContent = "비밀번호가 일치합니다.";
+  } else {
+    messageElement.style.color = "#FF4F4F"; // 일치하지 않을 때 색상
+    messageElement.textContent = "비밀번호가 일치하지 않습니다.";
+  }
+}
+
+// 비밀번호 필드 및 유효성 검사 메시지 초기화 함수
+function resetPasswordFields() {
+  // 비밀번호 입력 필드 초기화
+  document.getElementById("inputcurrentpw").value = "";
+  document.getElementById("inputnewpw").value = "";
+  document.getElementById("inputrecheckpw").value = "";
+
+  // 유효성 검사 메시지 초기화
+  document.getElementById("recheckpwparttext2").textContent = "";
+
+  // 특수문자 및 8자 이상 체크 초기화
+  document.getElementById("text241").style.color = "#c1c1c1";
+  document.getElementById("imageContainer11").style.display = "none";
+  document.getElementById("text251").style.color = "#c1c1c1";
+  document.getElementById("imageContainer21").style.display = "none";
 }

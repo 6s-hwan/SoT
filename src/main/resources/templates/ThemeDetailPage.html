@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" th:href="@{/css/ThemeDetailPage.css}" />
-  <link rel="stylesheet" th:href="@{/css/footer.css}" />
   <link
           rel="stylesheet"
           type="text/css"
@@ -23,7 +22,7 @@
   <div class="nav_logo">
     <div id="nav_left">
       <div id="nav_logo1">
-        <a th:href="@{/home}">
+        <a th:href="@{/test}">
           <img
                   th:src="@{/images/MainLogo.png}"
                   alt="로고"
@@ -34,8 +33,8 @@
       </div>
       <div class="nav_menu">
         <ul class="navigation">
-          <li><a th:href="@{/home}" class="b">홈</a></li>
-          <li><a th:href="@{/local}" class="c">지역</a></li>
+          <li><a th:href="@{/test}" class="b">홈</a></li>
+          <li><a href="" class="c">지역</a></li>
           <li><a href="" class="c">북마크</a></li>
         </ul>
       </div>
@@ -74,7 +73,7 @@
 <div th:replace="fragments/terms_popup :: termsPopup"></div>
 <div th:replace="fragments/privacy_popup :: privacyPopup"></div>
 
-<!-- 테마별 여행지 시작 -->
+<!--  테마별 여행지 시작 -->
 <div id="theme_full">
   <div id="theme">
     <div id="theme_title">
@@ -84,10 +83,10 @@
 
     <div class="themeback">
       <div id="theme_container">
-        <button type="button" id="theme1" onclick="toggleTheme(1)">
+        <button type="button" id="theme1" onclick="executeBothFunctions(1)">
           <p id="text_theme1">자연 속 여행</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck1"
                   alt="체크"
                   width="24px"
@@ -103,10 +102,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme2" onclick="toggleTheme(2)">
+        <button type="button" id="theme2" onclick="executeBothFunctions(2)">
           <p id="text_theme2">역사와 문화</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck2"
                   alt="체크"
                   width="24px"
@@ -122,10 +121,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme3" onclick="toggleTheme(3)">
+        <button type="button" id="theme3" onclick="executeBothFunctions(3)">
           <p id="text_theme3">식도락 여행</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck3"
                   alt="체크"
                   width="24px"
@@ -141,10 +140,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme4" onclick="toggleTheme(4)">
+        <button type="button" id="theme4" onclick="executeBothFunctions(4)">
           <p id="text_theme4">축제</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck4"
                   alt="체크"
                   width="24px"
@@ -160,10 +159,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme5" onclick="toggleTheme(5)">
+        <button type="button" id="theme5" onclick="executeBothFunctions(5)">
           <p id="text_theme5">예술 및 체험</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck5"
                   alt="체크"
                   width="24px"
@@ -179,10 +178,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme6" onclick="toggleTheme(6)">
+        <button type="button" id="theme6" onclick="executeBothFunctions(6)">
           <p id="text_theme6">산악 여행</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck6"
                   alt="체크"
                   width="24px"
@@ -198,10 +197,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme7" onclick="toggleTheme(7)">
+        <button type="button" id="theme7" onclick="executeBothFunctions(7)">
           <p id="text_theme7">도심속 여행</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck7"
                   alt="체크"
                   width="24px"
@@ -217,10 +216,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme8" onclick="toggleTheme(8)">
+        <button type="button" id="theme8" onclick="executeBothFunctions(8)">
           <p id="text_theme8">바다와 해변</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck8"
                   alt="체크"
                   width="24px"
@@ -236,10 +235,10 @@
       </div>
 
       <div id="theme_container">
-        <button type="button" id="theme9" onclick="toggleTheme(9)">
+        <button type="button" id="theme9" onclick="executeBothFunctions(9)">
           <p id="text_theme9">테마파크</p>
           <img
-                  th:src="@{/images/theme_checked.png}"
+                  th:src="@{/images/theme_check.png}"
                   id="themecheck9"
                   alt="체크"
                   width="24px"
@@ -256,7 +255,7 @@
     </div>
   </div>
 </div>
-<!-- 테마별 여행지 끝 -->
+<!--  테마별 여행지 끝 -->
 
 <!-- 테마별 상세페이지 스토리 시작 -->
 <div id="themeStoryfull">
@@ -272,9 +271,7 @@
         <p class="themetitle1">스토리</p>
       </div>
       <div id="themestory_select">
-        <!-- 정렬 시 선택된 테마를 함께 전송 -->
         <form id="sortForm" action="#" method="get">
-          <input type="hidden" name="themes" id="hiddenThemes" />
           <select
                   name="sort"
                   id="story_select"
@@ -286,16 +283,15 @@
             <option value="likes" th:selected="${sortCriteria == 'likes'}">
               추천순
             </option>
-            <option
-                    value="recent"
-                    th:selected="${sortCriteria == 'recent'}"
-            >
+            <option value="recent" th:selected="${sortCriteria == 'recent'}">
               최신순
             </option>
             <option value="views" th:selected="${sortCriteria == 'views'}">
               조회순
             </option>
           </select>
+          <input type="hidden" id="hiddenThemes" name="themes">
+          <input type="hidden" id="hiddenOverlays" name="overlays">
         </form>
       </div>
     </div>
@@ -335,44 +331,6 @@
   </div>
 </div>
 <!-- 테마별 상세페이지 스토리 끝 -->
-<!-- 나머지들 -->
-<div id="etc_thing">
-  <div id="etc_full">
-    <div id="terms_of_use">
-      <button
-              type="button"
-              value="이용약관"
-              class="terms_of_use"
-              onclick="location.href='./terms_of_use.html';"
-      >
-        이용약관
-      </button>
-    </div>
-    <div id="personal_inf">
-      <button
-              type="button"
-              value="개인정보처리방침"
-              class="personal_inf"
-              onclick="location.href='./personal_inf.html';"
-      >
-        개인정보처리방침
-      </button>
-    </div>
-    <div id="contact">
-      <button
-              type="button"
-              value="Contact"
-              class="contact"
-              onclick="location.href='./contact.html';"
-      >
-        Contact
-      </button>
-    </div>
-    <div id="c_SoT">
-      <p class="c_SoT">ⓒ 2024 SoT</p>
-    </div>
-  </div>
-</div>
 </body>
 
 <script th:src="@{/js/ThemeDetailPage.js}"></script>

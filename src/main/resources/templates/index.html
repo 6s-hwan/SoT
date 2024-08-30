@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Find Your Email</title>
-</head>
-<body>
-<h2>Find Your Email</h2>
+  </head>
+  <body>
+    <h2>Find Your Email</h2>
 
-<!-- 전화번호 입력 폼 -->
-<div>
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="text" id="phoneNumber" placeholder="010xxxxxxxx">
-    <button onclick="sendVerificationCode()">Send Verification Code</button>
-    <p id="sendStatus"></p>
-</div>
+    <!-- 전화번호 입력 폼 -->
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" placeholder="010xxxxxxxx" />
+      <button onclick="sendVerificationCode()">Send Verification Code</button>
+      <p id="sendStatus"></p>
+    </div>
 
-<!-- 인증번호 입력 폼 -->
-<div>
-    <label for="verificationCode">Verification Code:</label>
-    <input type="text" id="verificationCode" placeholder="123456">
-    <button onclick="verifyCode()">Verify Code</button>
-    <p id="verifyStatus"></p>
-</div>
+    <!-- 인증번호 입력 폼 -->
+    <div>
+      <label for="verificationCode">Verification Code:</label>
+      <input type="text" id="verificationCode" placeholder="123456" />
+      <button onclick="verifyCode()">Verify Code</button>
+      <p id="verifyStatus"></p>
+    </div>
 
-<script>
-    function formatPhoneNumber(phoneNumber) {
+    <script>
+      function formatPhoneNumber(phoneNumber) {
         // '010xxxxxxxx' 형식으로 입력된 번호를 '+8210xxxxxxxx' 형식으로 변환
-        if (phoneNumber.startsWith('010')) {
-            return '+82' + phoneNumber.slice(1);
+        if (phoneNumber.startsWith("010")) {
+          return "+82" + phoneNumber.slice(1);
         }
         return phoneNumber;
-    }
+      }
 
-    async function sendVerificationCode() {
-        let phoneNumber = document.getElementById('phoneNumber').value;
+      async function sendVerificationCode() {
+        let phoneNumber = document.getElementById("phoneNumber").value;
         phoneNumber = formatPhoneNumber(phoneNumber);
 
-        const response = await fetch('/api/sendVerificationCode', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ phoneNumber })
+        const response = await fetch("/api/sendVerificationCode", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ phoneNumber }),
         });
 
         const result = await response.text();
-        document.getElementById('sendStatus').textContent = result;
-    }
+        document.getElementById("sendStatus").textContent = result;
+      }
 
-    async function verifyCode() {
-        let phoneNumber = document.getElementById('phoneNumber').value;
+      async function verifyCode() {
+        let phoneNumber = document.getElementById("phoneNumber").value;
         phoneNumber = formatPhoneNumber(phoneNumber);
 
-        const verificationCode = document.getElementById('verificationCode').value;
+        const verificationCode =
+          document.getElementById("verificationCode").value;
 
-        const response = await fetch('/api/verifyCode', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ phoneNumber, verificationCode })
+        const response = await fetch("/api/verifyCode", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ phoneNumber, verificationCode }),
         });
 
         const result = await response.text();
-        document.getElementById('verifyStatus').textContent = result;
-    }
-</script>
-</body>
+        document.getElementById("verifyStatus").textContent = result;
+      }
+    </script>
+  </body>
 </html>

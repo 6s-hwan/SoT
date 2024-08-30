@@ -426,6 +426,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("emailFindPopup").style.display = "none";
 });
 
+//팝업창 닫으면 스크롤 활성화
+function enableScroll() {
+  document.body.style.overflow = "auto"; // 스크롤 활성화
+}
 //팝업창 열고 닫는 이벤트
 document.addEventListener("DOMContentLoaded", function () {
   var Joinbtn = document.querySelector("#join"); //로그인버튼
@@ -861,48 +865,6 @@ if (slides.length > 0) {
   showSlide(currentSlide);
 }
 
-// 테마별 여행지에서 각 버튼을 누르면 누른 상태로 상세페이지로 넘어가기
-// 각 버튼의 오버레이 이미지 상태를 저장할 배열
-var isOverlayVisible = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-];
-
-// 각 버튼의 체크 이미지 상태를 저장할 배열
-var isCheckVisible = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-];
-
-// 넘어갈 때 파라미터 전달하고 페이지 이동하는 함수
-function passParamsAndNavigate(number) {
-  // 오버레이 이미지와 체크 이미지의 상태를 전달하는 부분
-  var overlayVisible = isOverlayVisible[number - 1];
-  var checkVisible = isCheckVisible[number - 1];
-
-  // 파라미터를 전달하고 페이지 이동
-  window.location.href =
-    "ThemeDetailPage.html?overlay=" +
-    overlayVisible +
-    "&check=" +
-    checkVisible +
-    "&index=" +
-    number;
-}
 // 생년월일 선택 시 hidden input 요소에 값 설정
 function selectBirthday() {
   const year = document.getElementById("birth-year").value;
@@ -1167,43 +1129,6 @@ function sendVerification() {
 }
 
 //home.html의 급상승 파트의 js 코드
-// const items = document.querySelector("#TopSearchesList");
-// const nextBtn = document.getElementById("nextBtn");
-// const prevBtn = document.getElementById("prevBtn");
-
-// let currentIndex = 0;
-// const itemsToShow = 4;
-// const totalItems = document.querySelectorAll(".searchItem").length;
-// const itemsPerClick = 4; // 한 번 클릭 시 이동할 요소의 수
-// const itemWidth = 285; // 각 searchItem의 가로 크기 (padding 제외)
-
-// nextBtn.addEventListener("click", () => {
-//   if (currentIndex < totalItems - itemsToShow) {
-//     currentIndex += itemsPerClick;
-//     updateCarousel();
-//   }
-// });
-
-// prevBtn.addEventListener("click", () => {
-//   if (currentIndex > 0) {
-//     currentIndex -= itemsPerClick;
-//     updateCarousel();
-//   }
-// });
-
-// function updateCarousel() {
-//   items.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-//   checkButtons();
-// }
-
-// function checkButtons() {
-//   prevBtn.style.display = currentIndex === 0 ? "none" : "block";
-//   nextBtn.style.display =
-//     currentIndex >= totalItems - itemsToShow ? "none" : "block";
-// }
-
-// // 초기 버튼 상태 설정
-// checkButtons();
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.querySelector(".wrapper");
   const nextBtn = document.getElementById("nextBtn");
@@ -1246,3 +1171,73 @@ document.addEventListener("DOMContentLoaded", function () {
   // 초기 버튼 상태 설정
   checkButtons();
 });
+
+// 이메일 찾기 팝업창 js코드
+// '010xxxxxxxx' 형식으로 입력된 번호를 '+8210xxxxxxxx' 형식으로 변환
+function formatPhoneNumber(phoneNumber) {
+  if (phoneNumber.startsWith("010")) {
+    return "+82" + phoneNumber.slice(1);
+  }
+  return phoneNumber;
+}
+// 팝업 닫기 및 input 필드 리셋
+function closePopup() {
+  document.getElementById("bg_gray6").style.display = "none";
+  document.body.style.overflow = "auto"; // 스크롤 활성화
+  resetInputs();
+}
+
+// input 필드 리셋
+function resetInputs() {
+  document.getElementById("phone_input11").value = "";
+  document.getElementById("phone_input21").value = "";
+  document.getElementById("phone_input31").value = "";
+  document.getElementById("CertificationNumber_input").value = "";
+  document.getElementById("sendStatus").textContent = "";
+  document.getElementById("verifyStatus").textContent = "";
+}
+
+async function sendVerificationCode() {
+  let phone1 = document.getElementById("phone_input11").value;
+  let phone2 = document.getElementById("phone_input21").value;
+  let phone3 = document.getElementById("phone_input31").value;
+  let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
+
+  const response = await fetch("/api/sendVerificationCode", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ phoneNumber }),
+  });
+
+  const result = await response.text();
+  document.getElementById("sendStatus").textContent = result;
+}
+
+async function verifyCode() {
+  let phone1 = document.getElementById("phone_input11").value;
+  let phone2 = document.getElementById("phone_input21").value;
+  let phone3 = document.getElementById("phone_input31").value;
+  let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
+
+  const verificationCode = document.getElementById(
+    "CertificationNumber_input"
+  ).value;
+
+  const response = await fetch("/api/verifyCode", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ phoneNumber, verificationCode }),
+  });
+
+  const result = await response.text();
+  document.getElementById("verifyStatus").textContent = result;
+
+  // 인증 성공 시 팝업 닫기 (예시)
+  if (result === "인증 성공") {
+    document.getElementById("bg_gray6").style.display = "none";
+  }
+}

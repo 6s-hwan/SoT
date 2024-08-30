@@ -15,9 +15,13 @@ hr {
   stroke-width: 1px;
   stroke: #d2d2d2;
 }
-.scrollLock {
+/* .scrollLock {
   overflow: hidden;
 }
+html,
+body {
+  overflow-x: hidden;
+} */
 
 /* 내비게이션바 시작 */
 .navbar {
@@ -1827,6 +1831,7 @@ input:focus {
   width: 474px;
   height: 247px;
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   background: #fff;
@@ -1932,6 +1937,7 @@ input:focus {
   width: 474px;
   height: 393px;
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   background: #fff;
@@ -1982,6 +1988,99 @@ input:focus {
   line-height: 140%; /* 21px */
   letter-spacing: -0.3px;
 }
+.input41 {
+  box-sizing: border-box;
+  display: flex;
+  width: 400px;
+  height: 56px;
+  margin-left: 36px;
+  margin-right: 36px;
+}
+.input41 > #phone_input11 {
+  box-sizing: border-box;
+  display: flex;
+  width: 120px;
+  height: 56px;
+  padding: 18px 46px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.input41 > #phone_input21 {
+  box-sizing: border-box;
+  display: flex;
+  width: 120px;
+  height: 56px;
+  padding: 18px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.input41 > #phone_input31 {
+  box-sizing: border-box;
+  display: flex;
+  width: 120px;
+  height: 56px;
+  padding: 18px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.input41 > input {
+  width: 40px;
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.34px;
+}
+#sendStatus {
+  box-sizing: border-box;
+  padding-top: 8px;
+  padding-left: 44px;
+  color: #448fff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 #emailfindcheckbtn {
   display: flex;
   width: 400px;
@@ -1993,7 +2092,7 @@ input:focus {
   border: 1px solid #adadad;
   background: #fff;
   margin-left: 36px;
-  margin-top: 39px;
+  margin-top: 23px;
   color: #464646;
   text-align: center;
   font-family: Pretendard;
@@ -2026,6 +2125,7 @@ input:focus {
   width: 474px;
   height: 274px;
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   background: #fff;
@@ -2071,7 +2171,7 @@ input:focus {
 #emailcheckcontent1 {
   display: flex;
 }
-#checkedemail {
+#verifyStatus {
   color: #448fff;
   font-family: Pretendard;
   font-size: 20px;
@@ -2143,6 +2243,7 @@ input:focus {
   width: 474px;
   height: 505px;
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   background: #fff;
@@ -2606,7 +2707,7 @@ input:focus {
   z-index: 0;
 }
 #prevBtn {
-  background-image: url("../images/risenextbtn.png");
+  background-image: url("../images/riseprevbtn.png");
   border: none;
   cursor: pointer;
   width: 41px;

@@ -446,11 +446,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var GoToLoginBtn = document.querySelector("#gotologinbtn"); //회원가입완료
   var FindEmailLink = document.querySelector("#findemail");
   var FindPwLink = document.querySelector("#findpw");
-  var EmailFindBackBtn = document.querySelector("#emailfindback");
+  // var EmailFindBackBtn = document.querySelector("#emailfindback");
   var EmailFindCheckBtn = document.querySelector("#emailfindcheckbtn");
   var FindPwBtn = document.querySelector("#findpwbtn");
   var GoToLoginBtn2 = document.querySelector("#gotologinbtn2"); //이메일확인
-  var PwFindBackBtn = document.querySelector("#pwfindback");
 
   var loginPopup = document.getElementById("bg_gray");
   var joinPopup = document.getElementById("bg_gray2");
@@ -545,12 +544,12 @@ document.addEventListener("DOMContentLoaded", function () {
     loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     pwFindPopup.style.display = "block"; // 비밀번호 찾기 팝업 보이기
   });
-  // 이메일 찾기 팝업창에서 로그인 팝업창으로 넘어가기
-  EmailFindBackBtn.addEventListener("click", function (event) {
-    event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "block"; // 로그인 팝업 보이기
-    emailFindPopup.style.display = "none"; // 이메일 찾기 팝업 숨기기
-  });
+  // // 이메일 찾기 팝업창에서 로그인 팝업창으로 넘어가기
+  // EmailFindBackBtn.addEventListener("click", function (event) {
+  //   event.preventDefault(); // 링크의 기본 동작 방지
+  //   loginPopup.style.display = "block"; // 로그인 팝업 보이기
+  //   emailFindPopup.style.display = "none"; // 이메일 찾기 팝업 숨기기
+  // });
   // 이메일 찾기 팝업창에서 확인 버튼 눌러서 이메일 확인 팝업창으로 넘어가기
   EmailFindCheckBtn.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
@@ -569,12 +568,12 @@ document.addEventListener("DOMContentLoaded", function () {
     loginPopup.style.display = "block"; // 로그인 팝업 보이기
     emailCheckPopup.style.display = "none"; // 이메일 확인 팝업 숨기기
   });
-  // 비밀번호 찾기 팝업창에서 뒤로가기 버튼 누르면 로그인 팝업창을 넘어가기
-  PwFindBackBtn.addEventListener("click", function (event) {
-    event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "block"; // 로그인 팝업 보이기
-    pwFindPopup.style.display = "none"; // 비밀번호 찾기 팝업 숨기기
-  });
+  // // 비밀번호 찾기 팝업창에서 뒤로가기 버튼 누르면 로그인 팝업창을 넘어가기
+  // PwFindBackBtn.addEventListener("click", function (event) {
+  //   event.preventDefault(); // 링크의 기본 동작 방지
+  //   loginPopup.style.display = "block"; // 로그인 팝업 보이기
+  //   pwFindPopup.style.display = "none"; // 비밀번호 찾기 팝업 숨기기
+  // });
 });
 
 // 회원가입 팝업창(join_popup)
@@ -1172,7 +1171,7 @@ document.addEventListener("DOMContentLoaded", function () {
   checkButtons();
 });
 
-// 이메일 찾기 팝업창 js코드
+// // 이메일 찾기 팝업창 js코드
 // '010xxxxxxxx' 형식으로 입력된 번호를 '+8210xxxxxxxx' 형식으로 변환
 function formatPhoneNumber(phoneNumber) {
   if (phoneNumber.startsWith("010")) {
@@ -1180,11 +1179,12 @@ function formatPhoneNumber(phoneNumber) {
   }
   return phoneNumber;
 }
+
 // 팝업 닫기 및 input 필드 리셋
 function closePopup() {
+  resetInputs(); // 입력 필드 리셋
   document.getElementById("bg_gray6").style.display = "none";
   document.body.style.overflow = "auto"; // 스크롤 활성화
-  resetInputs();
 }
 
 // input 필드 리셋
@@ -1236,7 +1236,9 @@ async function verifyCode() {
   const result = await response.text();
   document.getElementById("verifyStatus").textContent = result;
 
-  // 인증 성공 시 팝업 닫기 (예시)
+  resetInputs(); // 인증 후 무조건 입력 필드를 리셋
+
+  // 인증 성공 시 팝업 닫기 및 입력 필드 리셋
   if (result === "인증 성공") {
     document.getElementById("bg_gray6").style.display = "none";
   }

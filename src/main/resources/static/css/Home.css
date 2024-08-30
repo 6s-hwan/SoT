@@ -651,13 +651,13 @@ input::placeholder {
 #bg_gray > #login_pop_up > #first > #middle {
   width: 136px;
 }
-/* #close {
+#close {
   padding-top: 12px;
   padding-bottom: 16px;
   width: 28px;
   height: 28px;
   cursor: pointer;
-} */
+}
 #close1 {
   padding-top: 12px;
   padding-bottom: 16px;
@@ -1953,8 +1953,18 @@ input:focus {
   padding-top: 28px;
   padding-bottom: 38px;
 }
+#emailfind_pop_up > #emailfindTitle > #pwfindlogin {
+  color: #cacaca;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
 #emailfind_pop_up > #emailfindTitle > #emailfindback {
   padding-top: 2px;
+  padding-left: 11px;
   cursor: pointer;
 }
 #emailfind_pop_up > #emailfindTitle > #emailfindtitle1 {
@@ -1968,7 +1978,7 @@ input:focus {
 }
 #emailfind_pop_up > #emailfindTitle > #close {
   padding-top: 3px;
-  padding-left: 245px;
+  padding-left: 180px;
   width: 28px;
   height: 28px;
   cursor: pointer;
@@ -2241,7 +2251,8 @@ input:focus {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 474px;
-  height: 505px;
+  height: 340px;
+  flex-shrink: 0;
   overflow-y: auto;
   overflow-x: hidden;
   border-radius: 8px;
@@ -2255,13 +2266,22 @@ input:focus {
   display: flex;
   width: 472px;
   height: 97px;
-  padding-left: 40px;
+  padding-left: 44px;
   padding-top: 28px;
   padding-bottom: 38px;
 }
+#pwfind_pop_up > #pwfindTitle > #pwfindlogin {
+  color: #cacaca;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 30.8px */
+  letter-spacing: -0.44px;
+}
 #pwfind_pop_up > #pwfindTitle > #pwfindback {
   padding-top: 2px;
-  cursor: pointer;
+  padding-left: 9px;
 }
 #pwfind_pop_up > #pwfindTitle > #pwfindtitle1 {
   color: #111;
@@ -2274,29 +2294,70 @@ input:focus {
 }
 #pwfind_pop_up > #pwfindTitle > #close {
   padding-top: 2px;
-  padding-left: 245px;
+  padding-left: 162px;
   width: 28px;
   height: 28px;
   cursor: pointer;
 }
-#pwfindblank {
-  width: 472px;
-  height: 24px;
-}
-#phone1 {
+.join_input11 {
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   width: 472px;
-  height: 32px;
-  padding-left: 40px;
-  padding-bottom: 12px;
+  height: 83px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+.join_input11 > #text2 {
+  padding-left: 4px;
+  padding-bottom: 8px;
   color: #616161;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.34px;
+}
+.join_input11 > label {
+  width: 380px;
+  height: 56px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.join_input11 > label > input {
+  border: none;
+  background-color: #f9f9f9;
+  color: #373737;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.34px;
+}
+#pwfindnoticepart {
+  padding-left: 44px;
+  padding-top: 12px;
+  display: flex;
+}
+#pwfindnotice {
+  width: 22px;
+  height: 22px;
+  padding-right: 7px;
+}
+#pwfindnoticetext {
+  color: #969696;
   font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
-  line-height: 140%; /* 21px */
+  line-height: 20px; /* 133.333% */
   letter-spacing: -0.3px;
+  padding-top: 1px;
 }
 #pwfindcheckbtn {
   display: flex;
@@ -2309,7 +2370,7 @@ input:focus {
   border: 1px solid #adadad;
   background: #fff;
   margin-left: 36px;
-  margin-top: 39px;
+  margin-top: 30px;
   color: #464646;
   text-align: center;
   font-family: Pretendard;

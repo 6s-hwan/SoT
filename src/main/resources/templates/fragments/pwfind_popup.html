@@ -25,6 +25,7 @@
     <div id="bg_gray8" style="display: none" th:fragment="pwFindPopup">
       <div id="pwfind_pop_up">
         <div id="pwfindTitle">
+          <p id="pwfindlogin">로그인</p>
           <div id="pwfindback">
             <img
               src="/SoT/src/main/resources/static/images/arrow1.png"
@@ -44,65 +45,30 @@
             />
           </div>
         </div>
-        <div class="join_input1">
+        <div class="join_input11">
           <div id="text2">이메일</div>
-          <label for="email_input1">
+          <label for="email_input11">
             <input
               type="text"
-              id="email_input1"
+              id="email_input11"
               name="email"
               placeholder="이메일 입력"
             />
           </label>
         </div>
-        <div id="pwfindblank"></div>
-        <div id="phone1">전화번호</div>
-        <div class="input4">
-          <label for="phone_input1">
-            <input
-              type="text"
-              class="phone_input"
-              id="phone_input1"
-              name="phone1"
-              placeholder="010"
-              oninput="checkInputs()"
-            />
-          </label>
-          <div id="text7">-</div>
-          <label for="phone_input2">
-            <input
-              type="text"
-              class="phone_input"
-              id="phone_input2"
-              name="phone2"
-              placeholder="1234"
-              oninput="checkInputs()"
-            />
-          </label>
-          <div id="text7">-</div>
-          <label for="phone_input3">
-            <input
-              type="text"
-              class="phone_input"
-              id="phone_input3"
-              name="phone3"
-              placeholder="5678"
-              oninput="checkInputs()"
-            />
-          </label>
+        <div id="pwfindnoticepart">
+          <img
+            src="/SoT/src/main/resources/static/images/pwfindnotice.png"
+            id="pwfindnotice"
+            alt="안내표시"
+            width="22px"
+            height="22px"
+          />
+          <p id="pwfindnoticetext">
+            입력된 이메일로 비밀번호 변경 링크를 보내드립니다.
+          </p>
         </div>
-        <div class="input5">
-          <label for="CertificationNumber_input">
-            <input
-              type="text"
-              class="CertificationNumber_input"
-              id="CertificationNumber_input"
-              name="verificationCode"
-              placeholder="인증번호를 입력해 주세요"
-            />
-          </label>
-          <button type="button" onclick="sendVerification()">전송</button>
-        </div>
+
         <button id="pwfindcheckbtn">확인</button>
       </div>
     </div>

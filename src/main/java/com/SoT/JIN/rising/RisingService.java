@@ -3,6 +3,10 @@ package com.SoT.JIN.rising;
 import com.SoT.JIN.search.Search;
 import com.SoT.JIN.search.SearchRepository;
 import com.SoT.JIN.search.SearchService;
+import com.SoT.JIN.story.StoryRepository;
+import com.SoT.JIN.story.StoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,49 +18,58 @@ import java.util.Optional;
 
 @Service
 public class RisingService {
-
+    private static final Logger logger = LoggerFactory.getLogger(RisingService.class);  // Logger 선언
     private final RisingRepository risingRepository;
+    private final StoryRepository storyRepository;
 
-    // SearchService 의존성을 제거하고 필요 시 메서드 인자로 전달받도록 변경
     @Autowired
-    public RisingService(RisingRepository risingRepository) {
+    public RisingService(RisingRepository risingRepository, StoryRepository storyRepository) {
         this.risingRepository = risingRepository;
+        this.storyRepository = storyRepository;
     }
-
     @Transactional
     public void updateRisingFromSearch(SearchService searchService) {
         List<Search> topSearches = searchService.getTopSearchKeywords(Integer.MAX_VALUE);
 
         int rank = 1;
         for (Search search : topSearches) {
-            Rising rising = risingRepository.findByKeyword(search.getKeyword()).orElse(null);
+            int storyCount = storyRepository.countByKeywordAcrossFields(search.getKeyword());
 
-            if (rising != null) {
-                rising.setRankOrder(rank);
-            } else {
-                rising = new Rising(
-                        search.getKeyword(),
-                        rank,
-                        "Location Placeholder",
-                        "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/regionmain.png"
-                );
+            if (storyCount >= 3) {
+                Rising rising = risingRepository.findByKeyword(search.getKeyword()).orElse(null);
+
+                if (rising != null) {
+                    rising.setRankOrder(rank);
+                } else {
+                    rising = new Rising(
+                            search.getKeyword(),
+                            rank,
+                            "Location Placeholder",
+                            "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/regionmain.png"
+                    );
+                }
+                risingRepository.save(rising);
+                rank++;
             }
-            risingRepository.save(rising);
-            rank++;
         }
-
     }
     @Transactional(readOnly = true)
     public Optional<Rising> findByKeyword(String keyword) {
         return risingRepository.findByKeyword(keyword);
     }
+    @Transactional
     public void resetRisingData() {
-        // 모든 Rising 데이터를 삭제하여 초기화
         risingRepository.deleteAll();
     }
     @Transactional(readOnly = true)
     public List<Rising> getOtherTopRisings(String excludeKeyword, int limit) {
-        // 키워드를 제외한 상위 limit개의 Rising 엔티티를 가져옴
         return risingRepository.findByKeywordNot(excludeKeyword, PageRequest.of(0, limit, Sort.by(Sort.Direction.ASC, "rankOrder")));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Rising> getTopRisings(int limit) {
+        List<Rising> risings = risingRepository.findAllByOrderByRankOrderAsc(PageRequest.of(0, limit));
+        logger.info("Fetched Rising entities: " + risings.size());  // 로그 메시지 추가
+        return risings;
     }
 }

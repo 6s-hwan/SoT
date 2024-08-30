@@ -1213,9 +1213,10 @@ async function verifyCode() {
   let phone3 = document.getElementById("phone_input31").value;
   let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
 
-  const verificationCode = document.getElementById(
-    "CertificationNumber_input"
-  ).value;
+  const verificationCode = document.getElementById("CertificationNumber_input").value;
+
+  console.log("Phone Number:", phoneNumber); // 디버깅용 콘솔 출력
+  console.log("Verification Code:", verificationCode); // 디버깅용 콘솔 출력
 
   const response = await fetch("/api/verifyCode", {
     method: "POST",

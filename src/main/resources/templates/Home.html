@@ -26,7 +26,7 @@
       <div class="nav_logo">
         <div id="nav_left">
           <div id="nav_logo1">
-            <a href="./test">
+            <a href="./home">
               <img
                 th:src="@{/images/MainLogo.png}"
                 alt="로고"
@@ -37,8 +37,8 @@
           </div>
           <div class="nav_menu">
             <ul class="navigation">
-              <li><a href="./test" class="b">홈</a></li>
-              <li><a href="" class="c">지역</a></li>
+              <li><a href="./home" class="b">홈</a></li>
+              <li><a href="./local" class="c">지역</a></li>
               <li><a href="" class="c">북마크</a></li>
             </ul>
           </div>
@@ -582,7 +582,9 @@
         </div>
         <div>
           <label for="popularmorebtn">
-            <button type="button" id="popularmorebtn"></button>
+            <button type="button" id="popularmorebtn"
+                    th:onclick="|location.href='@{/popular}';|"
+            ></button>
           </label>
         </div>
       </div>

@@ -23,8 +23,8 @@ var isCheckVisible = [
   false,
   false,
 ];
-// var isOverlayVisible = [false];
-// var isCheckVisible = [false];
+const selectedThemes = new Set();
+const selectedOverlays = new Set();
 
 function executeBothFunctions(index) {
   toggleImageAndCheck(index);
@@ -32,8 +32,8 @@ function executeBothFunctions(index) {
 }
 
 function toggleImageAndCheck(index) {
-  var overlayImage = document.getElementById("overlayImage" + index);
-  var checkImage = document.getElementById("themecheck" + index);
+  const overlayImage = document.getElementById("overlayImage" + index);
+  const checkImage = document.getElementById("themecheck" + index);
 
   if (!isOverlayVisible[index - 1]) {
     overlayImage.style.display = "block"; // 오버레이 이미지 표시
@@ -48,9 +48,6 @@ function toggleImageAndCheck(index) {
   }
   updateURL();
 }
-
-const selectedThemes = new Set();
-const selectedOverlays = new Set();
 
 function toggleTheme(themeId) {
   const checkElement = document.getElementById(`themecheck${themeId}`);
@@ -67,24 +64,36 @@ function toggleTheme(themeId) {
 }
 
 function updateURL() {
-  const themesParam = Array.from(selectedThemes)
-    .sort((a, b) => a - b)
-    .join(",");
-  const overlaysParam = Array.from(selectedOverlays)
-    .sort((a, b) => a - b)
-    .join(",");
+  const themesParam = Array.from(selectedThemes).sort((a, b) => a - b).join(",");
+  const overlaysParam = Array.from(selectedOverlays).sort((a, b) => a - b).join(",");
+  const sortParam = new URLSearchParams(window.location.search).get('sort');
 
-  let newUrl = "/theme";
-  if (themesParam || overlaysParam) {
-    newUrl += "?";
-    if (themesParam) {
-      newUrl += `themes=${themesParam}`;
-    }
-    if (overlaysParam) {
-      if (themesParam) newUrl += "&";
-      newUrl += `overlays=${overlaysParam}`;
-    }
-  }
+  let newUrl = "/theme?";
+  if (themesParam) newUrl += `themes=${themesParam}`;
+  if (overlaysParam) newUrl += (themesParam ? "&" : "") + `overlays=${overlaysParam}`;
+  if (sortParam) newUrl += (themesParam || overlaysParam ? "&" : "") + `sort=${sortParam}`;
+
+  window.location.href = newUrl;
+}
+
+// 정렬 폼을 제출하는 함수 (정렬 기준 변경 시 호출)
+function submitSortForm() {
+  const hiddenThemes = document.getElementById("hiddenThemes");
+  const hiddenOverlays = document.getElementById("hiddenOverlays");
+  const sortParam = document.getElementById("story_select").value;
+
+  hiddenThemes.value = Array.from(selectedThemes).sort((a, b) => a - b).join(',');
+  hiddenOverlays.value = Array.from(selectedOverlays).sort((a, b) => a - b).join(',');
+
+  // 기존 URL에서 themes와 overlays 유지하면서 sort 추가
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set('sort', sortParam);
+
+  let newUrl = "/theme?";
+  if (hiddenThemes.value) newUrl += `themes=${hiddenThemes.value}&`;
+  if (hiddenOverlays.value) newUrl += `overlays=${hiddenOverlays.value}&`;
+  newUrl += `sort=${sortParam}`;
+
   window.location.href = newUrl;
 }
 
@@ -104,8 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (overlays) {
     overlays.split(",").forEach((overlayId) => {
       selectedOverlays.add(parseInt(overlayId));
-      document.getElementById(`overlayImage${overlayId}`).style.display =
-        "block";
+      document.getElementById(`overlayImage${overlayId}`).style.display = "block";
     });
   }
 });

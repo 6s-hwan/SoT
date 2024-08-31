@@ -53,6 +53,7 @@
 
 <!-- 모든 스토리 -->
 <div id="themeStoryfull">
+<<<<<<< HEAD
     <div id="themeStory">
         <div id="themeStoryTitle">
             <div id="themestorytitle_1">
@@ -84,6 +85,36 @@
                         </div>
                     </a>
                 </div>
+=======
+  <div id="themeStory">
+    <div id="themeStoryTitle">
+      <div id="themestorytitle_1">
+        <h2 class="themetitle1">모든 스토리</h2>
+      </div>
+      <div id="themestory_select">
+        <form action="#" method="get">
+          <select name="sort" id="story_select" onchange="this.form.submit()">
+            <option value="" class="select_disabled" disabled selected>정렬기준</option>
+            <option value="likes" th:selected="${sortCriteria == 'likes'}">추천순</option>
+            <option value="recent" th:selected="${sortCriteria == 'recent'}">최신순</option>
+            <option value="views" th:selected="${sortCriteria == 'views'}">조회순</option>
+          </select>
+        </form>
+      </div>
+    </div>
+
+    <div id="back">
+      <div class="stories" id="stories" th:each="story, iterStat : ${stories}">
+        <div class="story">
+          <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+            <img id="storyimage" th:src="${story.image_url}" alt="Story Image" />
+            <div id="storyTitlefull">
+              <p id="storyTitle" th:text="${story.title}">Story Title</p>
+              <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px" />
+              <p class="seeimagetext" th:text="${story.viewCount}">0</p>
+              <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px" />
+              <p class="likeimagetext" th:text="${story.likes.size()}">0</p>
+>>>>>>> 7198877b648697fca8d2624ed72e707ac9036027
             </div>
         </div>
     </div>

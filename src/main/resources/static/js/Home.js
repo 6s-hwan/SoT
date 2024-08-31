@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "bg_gray5",
     "bg_gray6",
     "bg_gray7",
+    "bg_gray8",
+    "bg_gray9",
+    "bg_gray10",
+    "bg_gray11",
   ];
   popups.forEach(function (popupId) {
     const popup = document.getElementById(popupId);
@@ -95,26 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
       resetJoinForm(); // 폼 초기화
       document.getElementById("bg_gray").style.display = "none";
       document.getElementById("bg_gray2").style.display = "none";
-    });
-  }
-
-  // 회원가입 입력값 초기화 함수
-  function resetJoinForm() {
-    document.getElementById("email_input1").value = "";
-    document.getElementById("join_pw_input").value = "";
-    document.getElementById("name_input").value = "";
-    document.getElementById("birth-year").selectedIndex = 0;
-    document.getElementById("birth-month").selectedIndex = 0;
-    document.getElementById("birth-day").selectedIndex = 0;
-    document.getElementById("phone_input1").value = "";
-    document.getElementById("phone_input2").value = "";
-    document.getElementById("phone_input3").value = "";
-    document.getElementById("CertificationNumber_input").value = "";
-
-    const checkboxes = ["checkbtn2", "checkbtn3"];
-    checkboxes.forEach(function (checkboxId) {
-      const checkbox = document.getElementById(checkboxId);
-      if (checkbox) checkbox.checked = false;
     });
   }
 
@@ -227,26 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const day = document.getElementById("birth-day").value;
     const birth = `${year}-${month}-${day}`;
     document.getElementById("birth_input").value = birth;
-  }
-
-  // 회원가입 폼 제출 시 초기화
-  function resetJoinForm() {
-    document.getElementById("email_input1").value = "";
-    document.getElementById("join_pw_input").value = "";
-    document.getElementById("name_input").value = "";
-    document.getElementById("birth-year").selectedIndex = 0;
-    document.getElementById("birth-month").selectedIndex = 0;
-    document.getElementById("birth-day").selectedIndex = 0;
-    document.getElementById("phone_input1").value = "";
-    document.getElementById("phone_input2").value = "";
-    document.getElementById("phone_input3").value = "";
-    document.getElementById("CertificationNumber_input").value = "";
-
-    const checkboxes = ["checkbtn2", "checkbtn3"];
-    checkboxes.forEach(function (checkboxId) {
-      const checkbox = document.getElementById(checkboxId);
-      if (checkbox) checkbox.checked = false;
-    });
   }
 });
 
@@ -583,8 +547,10 @@ input.addEventListener("keyup", (event) => {
 
   if (isEmail(value)) {
     p.textContent = `사용 가능한 이메일입니다.`;
+    p.style.display = "block"; // 또는 "inline"
   } else {
     p.textContent = ``;
+    p.style.display = "none"; // 또는 "inline"
   }
 });
 
@@ -724,30 +690,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// 회원가입 버튼 누르면 로그인창으로 넘어가는 함수
-// document.addEventListener("DOMContentLoaded", function () {
-//   var joinBtn = document.getElementById("join_btn");
-//   var joincloseBtn = document.getElementById("close");
-//   var loginPopup = document.getElementById("login_pop_up");
-//   var joinPopup = document.getElementById("join_pop_up");
-//   var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
-//   var PrivacyPopup = document.getElementById("Privacy_pop_up");
-
-//   joinBtn.addEventListener("click", function () {
-//     // loginPopup.style.display = "none"; // 회원가입 버튼 클릭 시 로그인 팝업 창 숨기기
-//     loginPopup.style.display = "block"; // 로그인 팝업 창 표시
-//     joinPopup.style.display = "none"; // 회원가입 팝업 창 숨기기
-//     TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-//     PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
-
-//     // 회원가입 입력값 초기화
-//   });
-//   joincloseBtn.addEventListener("click", function () {
-//     // 회원가입 입력값 초기화
-//     resetJoinForm();
-//   });
-// });
-
 // 회원가입 버튼 누를 시 입력값 초기화 함수
 function resetJoinForm() {
   document.getElementById("email_input").value = "";
@@ -765,25 +707,26 @@ function resetJoinForm() {
   // 성별 선택 초기화
   document.getElementById("button1").classList.remove("selected");
   document.getElementById("button2").classList.remove("selected");
+  document.getElementById("gender_input").value = "";
   // 전화번호 입력칸 초기화
   document.getElementById("phone_input1").value = "";
   document.getElementById("phone_input2").value = "";
   document.getElementById("phone_input3").value = "";
   // 인증번호 입력칸 초기화
   document.getElementById("CertificationNumber_input").value = "";
-  // 이용약관 입력칸 초기화
-  var agreementCheckbox1 = document.getElementById("checkbtn");
-  var agreementCheckbox2 = document.getElementById("checkbtn2");
-  var agreementCheckbox3 = document.getElementById("checkbtn3");
+  // 이용약관 체크박스 초기화
+  document.getElementById("checkbtn2").checked = false;
+  document.getElementById("checkbtn3").checked = false;
 
-  agreementCheckbox1.checked = false;
-  agreementCheckbox2.checked = false;
-  agreementCheckbox3.checked = false;
+  // 비밀번호 조건 스팬 초기화
+  document.getElementById("text24").style.color = "#c1c1c1";
+  document.getElementById("text25").style.color = "#c1c1c1";
 
-  // 이벤트 리스너 제거
-  document
-    .getElementById("join_pw_input")
-    .removeEventListener("keyup", checkInputs);
+  // 비밀번호 조건 이미지 초기화
+  document.getElementById("imageContainer1").style.display = "none";
+  document.getElementById("imageContainer2").style.display = "none";
+
+  document.querySelector(".emailcheck-content").style.display = "none";
 }
 
 // 회원가입에서 로그인으로 넘어갈 때 입력값 초기화

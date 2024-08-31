@@ -504,29 +504,34 @@
             급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요
           </p>
         </div>
-        <div id="TopSearchesList" th:each="search, iterStat : ${topSearches}">
-          <div class="searchItem" th:attr="id='search' + ${iterStat.index + 1}">
-            <h2>
-              <a
-                th:href="@{/rise/{keyword}(keyword=${search.keyword})}"
-                th:text="${search.keyword}"
-              ></a>
-            </h2>
-            <div
-              class="storyImage"
-              th:if="${topStories[iterStat.index]} != null"
-            >
-              <a th:href="@{/rise/{keyword}(keyword=${search.keyword})}">
-                <img
-                  th:src="${topStories[iterStat.index].image_url}"
-                  alt="Story Image"
-                  class="search_img"
-                />
-              </a>
+        <div class="riseback">
+          <div class="carousel-container">
+            <button id="prevBtn"></button>
+            <div class="wrapper">
+              <div
+                      id="TopSearchesList"
+                      th:each="search, iterStat : ${topSearches}"
+              >
+                <div
+                        class="searchItem"
+                        th:attr="id='rise_' + ${iterStat.index + 1}"
+                >
+                  <div id="rise_img">
+                    <label th:for="'rise' + ${iterStat.index + 1}">
+                      <button
+                              type="button"
+                              th:id="'rise' + ${iterStat.index + 1}"
+                              th:data-keyword="${search.keyword}"
+                              th:style="'background-image:url(' + (${topStories[iterStat.index]?.image_url != null} ? ${topStories[iterStat.index].image_url} : '/images/mypageprofile.png') + ');'"
+                              onclick="goToRisePage(this)"
+                      ></button>
+                    </label>
+                  </div>
+                  <p class="rise_text" th:text="${search.keyword}"></p>
+                </div>
+              </div>
             </div>
-            <p th:if="${topStories[iterStat.index]} == null">
-              스토리를 찾을 수 없습니다
-            </p>
+            <button id="nextBtn"></button>
           </div>
         </div>
       </div>

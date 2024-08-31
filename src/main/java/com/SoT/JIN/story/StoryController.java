@@ -170,8 +170,8 @@ public class StoryController {
     }
     @GetMapping("/best")
     public String best(Model model, @RequestParam(defaultValue = "24") int limit) {
-        List<Story> topStories = storyService.getTopStories(limit);
-        model.addAttribute("stories", topStories);
+        List<Story> bestStories = storyService.getBestStories(limit);
+        model.addAttribute("stories", bestStories);
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
     }
@@ -198,12 +198,25 @@ public class StoryController {
 
     @GetMapping("/home")
     public String home(Model model, @RequestParam(defaultValue = "12") int limit) {
-        List<Story> topStories = storyService.getTopStories(limit);
-        model.addAttribute("stories", topStories);
+
+        // Rising 엔티티에서 상위 8개의 검색어 가져오기
+        List<Rising> topRisings = risingService.getTopRisings(8);
+        logger.info("Rising 엔티티 개수: " + topRisings.size());
+
+        // Rising 엔티티에서 가져온 검색어를 바탕으로 Story 가져오기
+        List<Story> topStories = topRisings.stream()
+                .map(rising -> searchService.getStoryWithSmallestId(rising.getKeyword()))
+                .collect(Collectors.toList());
+
+        List<Story> bestStories = storyService.getBestStories(12);
+        model.addAttribute("stories", bestStories);
         model.addAttribute("limit", limit);
 
         List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
 
+        // 모델에 데이터 추가
+        model.addAttribute("topSearches", topRisings);
+        model.addAttribute("topStories", topStories);
         model.addAttribute("popularWriters", popularWriters);
 
         return "Home";

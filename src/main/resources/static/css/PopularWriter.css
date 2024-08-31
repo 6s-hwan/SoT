@@ -250,7 +250,9 @@ input.imagebtn {
   height: 160px;
   position: relative;
   display: inline-block;
+  overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
 }
+
 #profile_A .overlay {
   display: inline-flex;
   padding: 1px 7px 2px 7px;
@@ -264,14 +266,18 @@ input.imagebtn {
   left: 18px;
   z-index: 2;
 }
+
 #profileimg {
-  width: 140px;
-  height: 140px;
+  width: 140px; /* 이미지의 너비 */
+  height: 140px; /* 이미지의 높이 */
   z-index: 1;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
+  border-radius: 8px; /* 이미지 자체에 border-radius 적용 */
+  display: block;
+  object-fit: cover; /* 이미지를 컨테이너에 맞게 조절 */
+  margin: 0 auto; /* 이미지를 가운데로 정렬 */
+  margin-top: 10px;
 }
+
 #profile_B {
   width: 127px;
 }
@@ -311,12 +317,16 @@ input.imagebtn {
   padding-left: 2px;
   padding-bottom: 2px;
 }
-#writerTags {
+.writerTags {
   display: flex;
-  padding-top: 36px;
+  flex-wrap: wrap; /* 줄바꿈 허용 */
+  /* padding-top: 36px; */
   box-sizing: border-box;
+  max-width: 160px; /* 총 길이가 5 이상일 경우 줄바꿈 발생 */
+  transition: padding-top 0.3s ease; /* 패딩 값 변경 시 애니메이션 */
 }
-#writertag {
+
+.writertag {
   display: inline-flex;
   height: 24px;
   padding: 3px 8px;
@@ -328,9 +338,11 @@ input.imagebtn {
   border: 1px solid #f4f4f4;
   background: #fff;
   z-index: 1;
-  margin-right: 7px;
+  margin-right: 4px;
+  margin-bottom: 4px; /* 두 번째 줄 간격 추가 */
 }
-#writertagname {
+
+.writertagname {
   color: #767676;
   font-family: Pretendard;
   font-size: 13px;

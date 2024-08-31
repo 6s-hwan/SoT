@@ -1,5 +1,6 @@
 package com.SoT.JIN.story;
 
+import com.SoT.JIN.bookmark.BookmarkEntity;
 import com.SoT.JIN.like.LikeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -57,5 +58,16 @@ public class Story {
             return new String[]{mainLocation, subLocation};
         }
         return new String[]{this.location, ""};
+    }
+
+    @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BookmarkEntity> bookmarks = new HashSet<>();
+
+    public Set<BookmarkEntity> getBookmarks() {
+        return bookmarks;
+    }
+
+    public void setBookmarks(Set<BookmarkEntity> bookmarks) {
+        this.bookmarks = bookmarks;
     }
 }

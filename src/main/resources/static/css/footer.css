@@ -1,0 +1,95 @@
+/* 나머지들 시작 */
+#etc_thing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#etc_full {
+    /* width: 1240px; */
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    display: flex;
+    padding-top: 240px;
+    padding-bottom: 43px;
+}
+
+.terms_of_use {
+    font-size: 12px;
+    font-style: normal;
+    width: 42px;
+    height: 14px;
+    border: none;
+    flex-shrink: 0;
+    color: #7a7a7a;
+    font-family: Pretendard;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+    /* padding-top: 10px; */
+    margin-left: 79px;
+}
+
+#personal_inf {
+    width: 83px;
+    height: 15px;
+    flex-shrink: 0;
+    padding-left: 56px;
+    /* padding-top: 10px; */
+}
+
+.personal_inf {
+    font-style: normal;
+    height: 14px;
+    border: none;
+    flex-shrink: 0;
+    color: #7a7a7a;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+}
+
+#contact {
+    width: 36px;
+    height: 15px;
+    flex-shrink: 0;
+    padding-left: 648px;
+    /* padding-top: 10px; */
+}
+
+.contact {
+    font-style: normal;
+    width: 36px;
+    height: 12px;
+    border: none;
+    flex-shrink: 0;
+    color: #8f8f8f;
+    font-family: Pretendard;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+}
+
+#c_SoT {
+    width: 60px;
+    height: 15px;
+    flex-shrink: 0;
+    padding-left: 67px;
+    /* padding-top: 10px; */
+}
+
+.c_SoT {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #8f8f8f;
+    font-family: Pretendard;
+}

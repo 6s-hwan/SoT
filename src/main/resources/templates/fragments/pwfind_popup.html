@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/SoT/src/main/resources/static/css/Home.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>SoT</title>
+  </head>
+  <body>
+    <!-- 임시버튼 -->
+    <input type="checkbox" id="join3" />
+    <label for="join3">업로드</label>
+
+    <div id="bg_gray8" style="display: none" th:fragment="pwFindPopup">
+      <div id="pwfind_pop_up">
+        <div id="pwfindTitle">
+          <div id="pwfindback">
+            <img
+              src="/SoT/src/main/resources/static/images/arrow1.png"
+              alt="뒤로가기"
+              width="24px"
+              height="24px"
+            />
+          </div>
+          <p id="pwfindtitle1">비밀번호 찾기</p>
+          <div id="close">
+            <img
+              src="/SoT/src/main/resources/static/images/X.png"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="document.getElementById('bg_gray8').style.display='none'"
+            />
+          </div>
+        </div>
+        <div class="join_input1">
+          <div id="text2">이메일</div>
+          <label for="email_input1">
+            <input
+              type="text"
+              id="email_input1"
+              name="email"
+              placeholder="이메일 입력"
+            />
+          </label>
+        </div>
+        <div id="pwfindblank"></div>
+        <div id="phone1">전화번호</div>
+        <div class="input4">
+          <label for="phone_input1">
+            <input
+              type="text"
+              class="phone_input"
+              id="phone_input1"
+              name="phone1"
+              placeholder="010"
+              oninput="checkInputs()"
+            />
+          </label>
+          <div id="text7">-</div>
+          <label for="phone_input2">
+            <input
+              type="text"
+              class="phone_input"
+              id="phone_input2"
+              name="phone2"
+              placeholder="1234"
+              oninput="checkInputs()"
+            />
+          </label>
+          <div id="text7">-</div>
+          <label for="phone_input3">
+            <input
+              type="text"
+              class="phone_input"
+              id="phone_input3"
+              name="phone3"
+              placeholder="5678"
+              oninput="checkInputs()"
+            />
+          </label>
+        </div>
+        <div class="input5">
+          <label for="CertificationNumber_input">
+            <input
+              type="text"
+              class="CertificationNumber_input"
+              id="CertificationNumber_input"
+              name="verificationCode"
+              placeholder="인증번호를 입력해 주세요"
+            />
+          </label>
+          <button type="button" onclick="sendVerification()">전송</button>
+        </div>
+        <button id="pwfindcheckbtn">확인</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var Joinbtn = document.querySelector("#join3");
+      var joinfinishPopup = document.getElementById("bg_gray8");
+
+      // 로그인 버튼 누르면 회원가입창 열기
+      Joinbtn.addEventListener("click", function (event) {
+        event.preventDefault(); // 링크의 기본 동작 방지
+        joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
+      });
+    });
+  </script>
+</html>

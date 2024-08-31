@@ -1,36 +1,307 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // 초기 팝업 숨기기
+  const popups = [
+    "bg_gray",
+    "bg_gray2",
+    "bg_gray3",
+    "bg_gray4",
+    "bg_gray5",
+    "bg_gray6",
+    "bg_gray7",
+  ];
+  popups.forEach(function (popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) popup.style.display = "none";
+  });
+
+  // 로그인 상태 확인
+  checkLoginStatus();
+
+  // 로그인/회원가입 팝업 전환 이벤트 리스너 등록
+  const loginLabel = document.getElementById("loginLabel");
+  const signupLink = document.querySelector("#join_membership a");
+  const loginLink = document.querySelector("#secondback a");
+
+  if (loginLabel) {
+    loginLabel.addEventListener("click", function () {
+      showLoginPopup();
+      document.body.style.overflow = "hidden"; // 스크롤 비활성화
+    });
+  }
+
+  if (signupLink) {
+    signupLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      showJoinPopup(); // 회원가입 팝업 표시
+    });
+  }
+
+  if (loginLink) {
+    loginLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      showLoginPopup(); // 로그인 팝업 표시
+    });
+  }
+
+  // 이메일 찾기 및 비밀번호 찾기 팝업 전환
+  const findEmailLink = document.querySelector("#findemail");
+  const findPwLink = document.querySelector("#findpw");
+  const emailFindBackBtn = document.querySelector("#emailfindback");
+  const emailFindCheckBtn = document.querySelector("#emailfindcheckbtn");
+
+  if (findEmailLink) {
+    findEmailLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      openEmailFindPopup();
+    });
+  }
+
+  if (emailFindBackBtn) {
+    emailFindBackBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      returnToLoginFromEmailFind();
+    });
+  }
+
+  if (emailFindCheckBtn) {
+    emailFindCheckBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      // 이메일 확인 팝업으로 전환하는 로직 추가
+      togglePopup("bg_gray7", "bg_gray6"); // bg_gray7: 이메일 확인 팝업, bg_gray6: 이메일 찾기 팝업
+    });
+  }
+
+  // 로그아웃 버튼 이벤트 리스너 등록
+  const logoutButton = document.querySelector("form[action='/logout'] button");
+  if (logoutButton) {
+    logoutButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      logout();
+    });
+  }
+
+  // 슬라이드 초기화
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+
+  if (slides.length > 0) {
+    showSlide(currentSlide);
+  }
+
+  // 닫기 버튼 이벤트 리스너 등록 (X 버튼)
+  const closeButton = document.querySelector("#close");
+  if (closeButton) {
+    closeButton.addEventListener("click", function () {
+      resetJoinForm(); // 폼 초기화
+      document.getElementById("bg_gray").style.display = "none";
+      document.getElementById("bg_gray2").style.display = "none";
+    });
+  }
+
+  // 회원가입 입력값 초기화 함수
+  function resetJoinForm() {
+    document.getElementById("email_input1").value = "";
+    document.getElementById("join_pw_input").value = "";
+    document.getElementById("name_input").value = "";
+    document.getElementById("birth-year").selectedIndex = 0;
+    document.getElementById("birth-month").selectedIndex = 0;
+    document.getElementById("birth-day").selectedIndex = 0;
+    document.getElementById("phone_input1").value = "";
+    document.getElementById("phone_input2").value = "";
+    document.getElementById("phone_input3").value = "";
+    document.getElementById("CertificationNumber_input").value = "";
+
+    const checkboxes = ["checkbtn2", "checkbtn3"];
+    checkboxes.forEach(function (checkboxId) {
+      const checkbox = document.getElementById(checkboxId);
+      if (checkbox) checkbox.checked = false;
+    });
+  }
+
+  // 팝업 전환 함수
+  function togglePopup(popupIdToShow, popupIdToHide) {
+    const popupToShow = document.getElementById(popupIdToShow);
+    const popupToHide = document.getElementById(popupIdToHide);
+
+    if (popupToHide) popupToHide.style.display = "none";
+    if (popupToShow) popupToShow.style.display = "block";
+  }
+
+  function showJoinPopup() {
+    togglePopup("bg_gray2", "bg_gray");
+  }
+
+  function showLoginPopup() {
+    togglePopup("bg_gray", "bg_gray2");
+  }
+
+  function openEmailFindPopup() {
+    togglePopup("bg_gray6", "bg_gray");
+  }
+
+  function returnToLoginFromEmailFind() {
+    togglePopup("bg_gray", "bg_gray6");
+  }
+
+  // 로그아웃 처리 함수
+  function logout() {
+    fetch("/logout", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }).then((response) => {
+      if (response.ok) {
+        location.href = "/my-page";
+      } else {
+        alert("로그아웃 완료!");
+        location.href = "/test";
+      }
+    });
+  }
+
+  // 슬라이드 기능
+  function showSlide(n) {
+    if (slides.length === 0 || !slides[n]) {
+      return;
+    }
+    slides.forEach((slide) => {
+      slide.style.display = "none";
+    });
+    slides[n].style.display = "block";
+  }
+
+  function nextSlide() {
+    currentSlide++;
+    if (currentSlide >= slides.length) {
+      currentSlide = 0;
+    }
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = slides.length - 1;
+    }
+    showSlide(currentSlide);
+  }
+
+  // 로그인 상태 확인 함수
+  function checkLoginStatus() {
+    fetch("/api/user/profile")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          login(data.profileImageUrl);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  // 로그인 처리 함수
+  function login(profileImageUrl) {
+    const checkbox = document.getElementById("join");
+    const loginLabel = document.getElementById("loginLabel");
+    const uploadbtn = document.getElementById("uploadbtn");
+    const profilebtn = document.querySelector(".imagebtn");
+
+    checkbox.checked = true;
+    loginLabel.style.width = "36px";
+    loginLabel.style.height = "36px";
+    loginLabel.style.padding = "0";
+    loginLabel.style.fontSize = "0";
+    loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
+    loginLabel.style.backgroundSize = "cover";
+    loginLabel.style.backgroundPosition = "center";
+
+    uploadbtn.style.display = "block";
+    profilebtn.style.display = "block";
+  }
+
+  // 비밀번호 체크 함수
+  function checkInputs() {
+    var pw = document.getElementById("join_pw_input").value;
+    var specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
+    var checkText = document.getElementById("text24");
+    var checkNumber = document.getElementById("text25");
+    var imageContainer1 = document.getElementById("imageContainer1");
+    var imageContainer2 = document.getElementById("imageContainer2");
+
+    if (specialCharacters.test(pw)) {
+      checkText.style.color = "#448fff";
+      imageContainer1.style.display = "block";
+    } else {
+      checkText.style.color = "#c1c1c1";
+      imageContainer1.style.display = "none";
+    }
+
+    if (pw.length >= 8) {
+      checkNumber.style.color = "#448fff";
+      imageContainer2.style.display = "block";
+    } else {
+      checkNumber.style.color = "#c1c1c1";
+      imageContainer2.style.display = "none";
+    }
+  }
+
+  // 생년월일 선택 시 hidden input 요소에 값 설정
+  function selectBirthday() {
+    const year = document.getElementById("birth-year").value;
+    const month = document.getElementById("birth-month").value;
+    const day = document.getElementById("birth-day").value;
+    const birth = `${year}-${month}-${day}`;
+    document.getElementById("birth_input").value = birth;
+  }
+
+  // 회원가입 폼 제출 시 초기화
+  function resetJoinForm() {
+    document.getElementById("email_input1").value = "";
+    document.getElementById("join_pw_input").value = "";
+    document.getElementById("name_input").value = "";
+    document.getElementById("birth-year").selectedIndex = 0;
+    document.getElementById("birth-month").selectedIndex = 0;
+    document.getElementById("birth-day").selectedIndex = 0;
+    document.getElementById("phone_input1").value = "";
+    document.getElementById("phone_input2").value = "";
+    document.getElementById("phone_input3").value = "";
+    document.getElementById("CertificationNumber_input").value = "";
+
+    const checkboxes = ["checkbtn2", "checkbtn3"];
+    checkboxes.forEach(function (checkboxId) {
+      const checkbox = document.getElementById(checkboxId);
+      if (checkbox) checkbox.checked = false;
+    });
+  }
+});
+
 function goToRisePage(button) {
-  const keyword = button.getAttribute('data-keyword');
-  window.location.href = '/rise/' + keyword;
+  const keyword = button.getAttribute("data-keyword");
+  window.location.href = "/rise/" + keyword;
 }
 
 function togglePopup(popupId) {
   const popup = document.getElementById(popupId);
-  popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+  popup.style.display = popup.style.display === "none" ? "block" : "none";
 }
 
 function showJoinPopup() {
-  togglePopup('loginPopup'); // 기존 로그인 팝업 닫기
-  togglePopup('joinPopup'); // 회원가입 팝업 열기
+  togglePopup("loginPopup"); // 기존 로그인 팝업 닫기
+  togglePopup("joinPopup"); // 회원가입 팝업 열기
 }
 
 function showLoginPopup() {
-  togglePopup('joinPopup'); // 기존 회원가입 팝업 닫기
-  togglePopup('loginPopup'); // 로그인 팝업 열기
+  togglePopup("joinPopup"); // 기존 회원가입 팝업 닫기
+  togglePopup("loginPopup"); // 로그인 팝업 열기
 }
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll(".profile-img-btn").forEach(function(button) {
-    button.addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".profile-img-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
       const url = button.getAttribute("data-url");
       window.location.href = url;
     });
   });
-});
-document.addEventListener('DOMContentLoaded', function () {
-  // 초기 팝업들 숨기기
-  document.getElementById('loginPopup').style.display = 'none';
-  document.getElementById('joinPopup').style.display = 'none';
-  document.getElementById('termsPopup').style.display = 'none';
-  document.getElementById('privacyPopup').style.display = 'none';
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -70,14 +341,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // 로그인 상태를 확인하고 프로필 이미지를 가져오는 함수 (예시)
   function checkLoginStatus() {
     fetch("/api/user/profile") // 서버에서 로그인 상태와 프로필 이미지를 가져오는 API 엔드포인트
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("checkLoginStatus data:", data);
-          if (data.isLoggedIn) {
-            login(data.profileImageUrl);
-          }
-        })
-        .catch((error) => console.error("Error:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("checkLoginStatus data:", data);
+        if (data.isLoggedIn) {
+          login(data.profileImageUrl);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   // 페이지 로드 시 로그인 상태 확인
@@ -145,138 +416,182 @@ function submitForm(event) {
   }
 }
 
-
-//창 여는 이벤트
+// 초기 팝업창들 숨기기
 document.addEventListener("DOMContentLoaded", function () {
-  var Joinbtn = document.querySelector("#join");
+  document.getElementById("loginPopup").style.display = "none";
+  document.getElementById("joinPopup").style.display = "none";
+  document.getElementById("termsPopup").style.display = "none";
+  document.getElementById("privacyPopup").style.display = "none";
+  document.getElementById("joinfinishPopup").style.display = "none";
+  document.getElementById("emailFindPopup").style.display = "none";
+});
+
+//팝업창 열고 닫는 이벤트
+document.addEventListener("DOMContentLoaded", function () {
+  var Joinbtn = document.querySelector("#join"); //로그인버튼
   var signupLink = document.querySelector("#join_membership a");
-  var loginLink = document.querySelector("#back a");
+  var loginLink = document.querySelector("#secondback a");
   var TermsOfUseOpenLink = document.querySelector("#container2 a");
   var TermsOfUseCloseLink = document.querySelector("#Usebackarrow");
   var TermsOfUseAgreeCloseLink = document.querySelector("#UseAgree_btn");
   var PrivacyOpenLink = document.querySelector("#container1 a");
   var PrivacyCloseLink = document.querySelector("#Privacybackarrow");
   var PrivacyAgreeCloseLink = document.querySelector("#PrivacyAgree_btn");
+  var JoinMembershipBtn = document.querySelector("#join_btn"); //회원가입버튼
+  var JoinFinishBtn = document.querySelector("#joinfinishbtn");
+  var GoToLoginBtn = document.querySelector("#gotologinbtn"); //회원가입완료
+  var FindEmailLink = document.querySelector("#findemail");
+  var FindPwLink = document.querySelector("#findpw");
+  var EmailFindBackBtn = document.querySelector("#emailfindback");
+  var EmailFindCheckBtn = document.querySelector("#emailfindcheckbtn");
+  var FindPwBtn = document.querySelector("#findpwbtn");
+  var GoToLoginBtn2 = document.querySelector("#gotologinbtn2"); //이메일확인
+  var PwFindBackBtn = document.querySelector("#pwfindback");
 
-  var loginPopup = document.getElementById("login_pop_up");
-  var joinPopup = document.getElementById("join_pop_up");
-  var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
-  var PrivacyPopup = document.getElementById("Privacy_pop_up");
-  // 로그인 버튼 누르면 회원가입창 열기
+  var loginPopup = document.getElementById("bg_gray");
+  var joinPopup = document.getElementById("bg_gray2");
+  var TermsOfUsePopup = document.getElementById("bg_gray3");
+  var PrivacyPopup = document.getElementById("bg_gray4");
+  var joinfinishPopup = document.getElementById("bg_gray5");
+  var emailFindPopup = document.getElementById("bg_gray6");
+  var emailCheckPopup = document.getElementById("bg_gray7");
+  var pwFindPopup = document.getElementById("bg_gray7");
+
+  // 로그인 버튼 누르면 로그인 팝업창 열기
   Joinbtn.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
     loginPopup.style.display = "block"; // 로그인 팝업 보이기
-    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+    // joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
   });
   // 로그인 팝업 창에서 회원가입 페이지로 이동하는 링크 클릭 시 이벤트 처리
   signupLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
     loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     joinPopup.style.display = "block"; // 회원가입 팝업 보이기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
   // 회원가입 창에서 로그인 페이지로 돌아가기 링크를 누르면 로그인 팝업 창 열기
   loginLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
     loginPopup.style.display = "block"; // 로그인 팝업 보이기
     joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
   // 개인정보 취급방침창 열기
   TermsOfUseOpenLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
-    joinPopup.style.display = "none"; // 회원가입 팝업 보이기
-    TermsOfUsePopup.style.display = "block"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
+    TermsOfUsePopup.style.display = "block"; // 개인정보 취급방침 팝업 보이기
   });
   // 개인정보 취급방침창 닫기
   TermsOfUseCloseLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     joinPopup.style.display = "block"; // 회원가입 팝업 보이기
     TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
   // 개인정보 취급방침 동의 버튼 눌러서 창 닫기
   TermsOfUseAgreeCloseLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     joinPopup.style.display = "block"; // 회원가입 팝업 보이기
     TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
   // 이용약관 창 열기
   PrivacyOpenLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
-    joinPopup.style.display = "none"; // 회원가입 팝업 보이기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "block"; // 이용약관 팝업 숨기기
+    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
+    PrivacyPopup.style.display = "block"; // 이용약관 팝업 보이기
   });
   // 이용약관 창 닫기
   PrivacyCloseLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     joinPopup.style.display = "block"; // 회원가입 팝업 보이기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
     PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
   // 이용약관 동의버튼 눌러서 창 닫기
   PrivacyAgreeCloseLink.addEventListener("click", function (event) {
     event.preventDefault(); // 링크의 기본 동작 방지
-    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
     joinPopup.style.display = "block"; // 회원가입 팝업 보이기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
     PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
   });
+  // 회원가입 버튼 누르면 회원가입 완료 팝업창 열기
+  JoinMembershipBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    joinPopup.style.display = "none"; // 회원가입 팝업 숨기기
+    joinfinishPopup.style.display = "block"; // 회원가입 확인 팝업 보이기
+    resetJoinForm(); // 회원가입 입력값 초기화
+  });
+  // 회원가입 완료 팝업창에서 닫기 버튼 누르기
+  JoinFinishBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    joinfinishPopup.style.display = "none"; // 회원가입 확인 팝업 숨기기
+  });
+  // 회원가입 완료 팝업창에서 로그인 버튼 누르기
+  GoToLoginBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    joinfinishPopup.style.display = "none"; // 회원가입 확인 팝업 숨기기
+  });
+  // 로그인 팝업창에서 이메일 찾기 팝업창으로 넘어가기
+  FindEmailLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    emailFindPopup.style.display = "block"; // 이메일 찾기 팝업 보이기
+  });
+  // 로그인 팝업창에서 비밀번호 찾기 팝업창으로 넘어가기
+  FindPwLink.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "none"; // 로그인 팝업 숨기기
+    pwFindPopup.style.display = "block"; // 비밀번호 찾기 팝업 보이기
+  });
+  // 이메일 찾기 팝업창에서 로그인 팝업창으로 넘어가기
+  EmailFindBackBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    emailFindPopup.style.display = "none"; // 이메일 찾기 팝업 숨기기
+  });
+  // 이메일 찾기 팝업창에서 확인 버튼 눌러서 이메일 확인 팝업창으로 넘어가기
+  EmailFindCheckBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    emailCheckPopup.style.display = "block"; // 이메일 확인 팝업 보이기
+    emailFindPopup.style.display = "none"; // 이메일 찾기 팝업 숨기기
+  });
+  // 이메일 확인 팝업창에서 비밀번호 찾기 팝업창으로 넘어가기
+  FindPwBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    emailCheckPopup.style.display = "none"; // 이메일 확인 팝업 숨기기
+    pwFindPopup.style.display = "block"; // 비밀번호 찾기 팝업 보이기
+  });
+  // 이메일 확인 팝업창에서 로그인 팝업창으로 넘어가기
+  GoToLoginBtn2.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    emailCheckPopup.style.display = "none"; // 이메일 확인 팝업 숨기기
+  });
+  // 비밀번호 찾기 팝업창에서 뒤로가기 버튼 누르면 로그인 팝업창을 넘어가기
+  PwFindBackBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // 링크의 기본 동작 방지
+    loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    pwFindPopup.style.display = "none"; // 비밀번호 찾기 팝업 숨기기
+  });
 });
 
-// 개인정보 취급방침, 이용약관 창을 닫으면 check박스 선택되기
-document.addEventListener("DOMContentLoaded", function () {
-  // 버튼 요소를 가져옴
-  var checkButton1 = document.getElementById("PrivacyAgree_btn"); //이용약관
-  var checkButton2 = document.getElementById("UseAgree_btn"); //개인정보
-
-  // 체크박스 요소를 가져옴
-  var checkBox1 = document.getElementById("checkbtn2"); //이용약관
-  var checkBox2 = document.getElementById("checkbtn3"); //개인정보
-
-  // 버튼을 클릭했을 때 체크박스가 체크되도록 이벤트 리스너 등록
-  checkButton1.addEventListener("click", function () {
-    checkBox1.checked = true;
-  });
-  checkButton2.addEventListener("click", function () {
-    checkBox2.checked = true;
-  });
-});
-
+// 회원가입 팝업창(join_popup)
 // 이메일 파트
-function emailCheck(email_address) {
-  email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-  if (!email_regex.test(email_address)) {
-    return false;
+const input = document.querySelector("#email_input1");
+const p = document.querySelector(".emailcheck-content");
+let value;
+
+const isEmail = (value) => {
+  return value.indexOf("@") > 1 && value.split("@")[1].indexOf(".") > 1;
+};
+
+input.addEventListener("keyup", (event) => {
+  value = event.currentTarget.value;
+
+  if (isEmail(value)) {
+    p.textContent = `사용 가능한 이메일입니다.`;
   } else {
-    return true;
+    p.textContent = ``;
   }
-}
-
-function validateEmail() {
-  var emailInput = document.getElementById("email_input1");
-  var resultDiv = document.getElementById("email_text");
-
-  var email = emailInput.value;
-
-  if (emailCheck(email)) {
-    resultDiv.innerHTML = "사용 가능한 이메일입니다.";
-  } else {
-    resultDiv.innerHTML = "";
-  }
-}
+});
 
 // 비밀번호 파트
 document.getElementById("join_pw_input").addEventListener("keyup", checkInputs);
@@ -319,6 +634,8 @@ function checkInputs() {
     imageContainer2.style.display = "none"; // 이미지 숨기기
   }
 }
+
+// 닉네임
 
 //생년월일
 // '년' 셀렉트 박스 option 목록 동적 생성
@@ -378,66 +695,6 @@ birthDayEl.addEventListener("focus", function () {
   }
 });
 
-function checkInputs() {
-  var emailInput = document.getElementById("email_input");
-  var email = emailInput.value;
-  var emailRegex =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  // var emailText = document.getElementById("email_text");
-  var possibleEmail = document.getElementById("possible_email");
-
-  if (emailRegex.test(email)) {
-    possibleEmail.innerHTML = "사용 가능한 이메일입니다.";
-    possibleEmail.style.color = "#448FFF";
-  }
-  // } else {
-  //   possibleEmail.innerHTML = "유효하지 않은 이메일 주소입니다.";
-  //   possibleEmail.style.color = "red";
-  // }
-}
-
-// 비밀번호 파트
-document.getElementById("join_pw_input").addEventListener("keyup", checkInputs);
-function checkInputs() {
-  var pw = document.getElementById("join_pw_input").value;
-  var specialCharacters = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
-  var checkText = document.getElementById("text24"); // 특수문자 포함 문구의 span 요소
-  var checkNumber = document.getElementById("text25");
-  var imageContainer1 = document.getElementById("imageContainer1");
-  var imageContainer2 = document.getElementById("imageContainer2");
-  // 첫 번째 이미지 요소 가져오기
-  var checkImage1 = document.getElementById("check_img1");
-
-  // 첫 번째 이미지에 패딩 추가
-  checkImage1.style.paddingLeft = "5px";
-  checkImage1.style.paddingTop = "7px";
-  checkImage1.style.paddingBottom = "7px";
-
-  // 두 번째 이미지 요소 가져오기
-  var checkImage2 = document.getElementById("check_img2");
-
-  // 두 번째 이미지에 패딩 추가
-  checkImage2.style.paddingLeft = "5px";
-  checkImage2.style.paddingTop = "7px";
-  checkImage2.style.paddingBottom = "7px";
-
-  if (specialCharacters.test(pw)) {
-    checkText.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
-    imageContainer1.style.display = "block"; // 이미지 표시
-  } else {
-    checkText.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
-    imageContainer1.style.display = "none"; // 이미지 숨기기
-  }
-
-  if (pw.length >= 8) {
-    checkNumber.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
-    imageContainer2.style.display = "block"; // 이미지 표시
-  } else {
-    checkNumber.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
-    imageContainer2.style.display = "none"; // 이미지 숨기기
-  }
-}
-
 // 남녀 확인 버튼
 function selectButton(selectedButton) {
   // 모든 버튼에서 'selected' 클래스 제거
@@ -453,29 +710,49 @@ function selectButton(selectedButton) {
     selectedButton === 1 ? "male" : "female";
 }
 
-// 회원가입 버튼 누르면 로그인창으로 넘어가는 함수
+// 개인정보 취급방침, 이용약관 창을 닫으면 check박스 선택되기
 document.addEventListener("DOMContentLoaded", function () {
-  var joinBtn = document.getElementById("join_btn");
-  var joincloseBtn = document.getElementById("close");
-  var loginPopup = document.getElementById("login_pop_up");
-  var joinPopup = document.getElementById("join_pop_up");
-  var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
-  var PrivacyPopup = document.getElementById("Privacy_pop_up");
+  // 버튼 요소를 가져옴
+  var checkButton1 = document.getElementById("PrivacyAgree_btn"); //이용약관
+  var checkButton2 = document.getElementById("UseAgree_btn"); //개인정보
 
-  joinBtn.addEventListener("click", function () {
-    // loginPopup.style.display = "none"; // 회원가입 버튼 클릭 시 로그인 팝업 창 숨기기
-    loginPopup.style.display = "block"; // 로그인 팝업 창 표시
-    joinPopup.style.display = "none"; // 회원가입 팝업 창 숨기기
-    TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
-    PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+  // 체크박스 요소를 가져옴
+  var checkBox1 = document.getElementById("checkbtn2"); //이용약관
+  var checkBox2 = document.getElementById("checkbtn3"); //개인정보
 
-    // 회원가입 입력값 초기화
+  // 버튼을 클릭했을 때 체크박스가 체크되도록 이벤트 리스너 등록
+  checkButton1.addEventListener("click", function () {
+    checkBox1.checked = true;
   });
-  joincloseBtn.addEventListener("click", function () {
-    // 회원가입 입력값 초기화
-    resetJoinForm();
+  checkButton2.addEventListener("click", function () {
+    checkBox2.checked = true;
   });
 });
+
+// 회원가입 버튼 누르면 로그인창으로 넘어가는 함수
+// document.addEventListener("DOMContentLoaded", function () {
+//   var joinBtn = document.getElementById("join_btn");
+//   var joincloseBtn = document.getElementById("close");
+//   var loginPopup = document.getElementById("login_pop_up");
+//   var joinPopup = document.getElementById("join_pop_up");
+//   var TermsOfUsePopup = document.getElementById("TermsOfUse_pop_up");
+//   var PrivacyPopup = document.getElementById("Privacy_pop_up");
+
+//   joinBtn.addEventListener("click", function () {
+//     // loginPopup.style.display = "none"; // 회원가입 버튼 클릭 시 로그인 팝업 창 숨기기
+//     loginPopup.style.display = "block"; // 로그인 팝업 창 표시
+//     joinPopup.style.display = "none"; // 회원가입 팝업 창 숨기기
+//     TermsOfUsePopup.style.display = "none"; // 개인정보 취급방침 팝업 숨기기
+//     PrivacyPopup.style.display = "none"; // 이용약관 팝업 숨기기
+
+//     // 회원가입 입력값 초기화
+//   });
+//   joincloseBtn.addEventListener("click", function () {
+//     // 회원가입 입력값 초기화
+//     resetJoinForm();
+//   });
+// });
+
 // 회원가입 버튼 누를 시 입력값 초기화 함수
 function resetJoinForm() {
   document.getElementById("email_input").value = "";
@@ -654,7 +931,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var StoryUploadPopup = document.getElementById("Upload_pop_up");
   StoryUploadPopup.style.display = "block"; //업로드 팝업 보이기
 
-  // 업로드 팝업창 닫는 js 코드
+  // 업로드 팝업창 js 코드
   var UploadBtn = document.getElementById("uploadbtn");
   var StoryUploadPopup = document.getElementById("bg_gray1");
   UploadBtn.addEventListener("click", function () {
@@ -888,3 +1165,84 @@ function sendVerification() {
       alert("인증번호 전송 중 오류가 발생했습니다.");
     });
 }
+
+//home.html의 급상승 파트의 js 코드
+// const items = document.querySelector("#TopSearchesList");
+// const nextBtn = document.getElementById("nextBtn");
+// const prevBtn = document.getElementById("prevBtn");
+
+// let currentIndex = 0;
+// const itemsToShow = 4;
+// const totalItems = document.querySelectorAll(".searchItem").length;
+// const itemsPerClick = 4; // 한 번 클릭 시 이동할 요소의 수
+// const itemWidth = 285; // 각 searchItem의 가로 크기 (padding 제외)
+
+// nextBtn.addEventListener("click", () => {
+//   if (currentIndex < totalItems - itemsToShow) {
+//     currentIndex += itemsPerClick;
+//     updateCarousel();
+//   }
+// });
+
+// prevBtn.addEventListener("click", () => {
+//   if (currentIndex > 0) {
+//     currentIndex -= itemsPerClick;
+//     updateCarousel();
+//   }
+// });
+
+// function updateCarousel() {
+//   items.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+//   checkButtons();
+// }
+
+// function checkButtons() {
+//   prevBtn.style.display = currentIndex === 0 ? "none" : "block";
+//   nextBtn.style.display =
+//     currentIndex >= totalItems - itemsToShow ? "none" : "block";
+// }
+
+// // 초기 버튼 상태 설정
+// checkButtons();
+document.addEventListener("DOMContentLoaded", function () {
+  const wrapper = document.querySelector(".wrapper");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+
+  let currentIndex = 0;
+  const itemsToShow = 4;
+  const totalItems = document.querySelectorAll("#TopSearchesList").length;
+  const itemsPerClick = 4; // 한 번 클릭 시 이동할 요소의 수
+  const itemWidth = Math.round(
+    document.querySelector(".searchItem").offsetWidth
+  ); // 각 searchItem의 가로 크기 (padding 포함)
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < totalItems - itemsToShow) {
+      currentIndex += itemsPerClick;
+      updateCarousel();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex -= itemsPerClick;
+      updateCarousel();
+    }
+  });
+
+  function updateCarousel() {
+    const offset = currentIndex * itemWidth;
+    wrapper.style.transform = `translateX(-${offset}px)`; // 전체 그룹을 이동
+    checkButtons();
+  }
+
+  function checkButtons() {
+    prevBtn.style.display = currentIndex === 0 ? "none" : "block";
+    nextBtn.style.display =
+      currentIndex >= totalItems - itemsToShow ? "none" : "block";
+  }
+
+  // 초기 버튼 상태 설정
+  checkButtons();
+});

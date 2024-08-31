@@ -247,6 +247,9 @@ input.imagebtn {
   width: 200px;
   height: 200px;
   padding-right: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #writerpagedetail_1 {
   box-sizing: border-box;

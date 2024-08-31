@@ -1,117 +1,172 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/Home.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>SoT</title>
-</head>
-<body>
-<nav class="navbar">
-    <div class="nav_logo">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav_logo">
         <div id="nav_left">
-            <div id="nav_logo1">
-                <a href="./test">
-                    <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
-                </a>
-            </div>
-            <div class="nav_menu">
-                <ul class="navigation">
-                    <li><a href="./test" class="b">홈</a></li>
-                    <li><a href="" class="c">지역</a></li>
-                    <li><a href="" class="c">북마크</a></li>
-                </ul>
-            </div>
-            <form action="/search" method="get" id="search">
-                <input type="text" name="query" class="search">
-                <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">
-            </form>
+          <div id="nav_logo1">
+            <a href="./test">
+              <img
+                th:src="@{/images/MainLogo.png}"
+                alt="로고"
+                width="200px"
+                height="46px"
+              />
+            </a>
+          </div>
+          <div class="nav_menu">
+            <ul class="navigation">
+              <li><a href="./test" class="b">홈</a></li>
+              <li><a href="" class="c">지역</a></li>
+              <li><a href="" class="c">북마크</a></li>
+            </ul>
+          </div>
+          <form action="/search" method="get" id="search">
+            <input type="text" name="query" class="search" />
+            <img
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+            />
+          </form>
         </div>
         <div id="nav_right">
-            <input type="button" id="uploadbtn">
-            <input type="button" class="imagebtn" onclick="location.href='my-page'">
-            <input type="checkbox" id="join" style="display: none;">
-            <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
-            <form action="/logout" method="post" style="display:inline;">
-                <button type="submit">로그아웃</button>
-            </form>
+          <input type="button" id="uploadbtn" />
+          <input
+            type="button"
+            class="imagebtn"
+            onclick="location.href='my-page'"
+          />
+          <input type="checkbox" id="join" style="display: none" />
+          <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')"
+            >로그인</label
+          >
+          <form action="/logout" method="post" style="display: inline">
+            <button type="submit">로그아웃</button>
+          </form>
         </div>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<!-- 팝업창들 -->
-<div th:replace="fragments/upload_popup :: uploadPopup"></div>
-<div th:replace="fragments/login_popup :: loginPopup"></div>
-<div th:replace="fragments/join_popup :: joinPopup"></div>
-<div th:replace="fragments/terms_popup :: termsPopup"></div>
-<div th:replace="fragments/privacy_popup :: privacyPopup"></div>
+    <!-- 팝업창들 -->
+    <div th:replace="fragments/upload_popup :: uploadPopup"></div>
+    <div th:replace="fragments/login_popup :: loginPopup"></div>
+    <div th:replace="fragments/join_popup :: joinPopup"></div>
+    <div th:replace="fragments/terms_popup :: termsPopup"></div>
+    <div th:replace="fragments/privacy_popup :: privacyPopup"></div>
 
-<!-- 인기 작가 스토리 시작 -->
-<div id="popular_full">
-    <div id="popular">
+    <!-- 인기 작가 스토리 시작 -->
+    <div id="popular_full">
+      <div id="popular">
         <div id="popular_title">
-            <img th:src="@{/images/popularimg.png}" class="popularimg"/>
-            <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
+          <img th:src="@{/images/popularimg.png}" class="popularimg" />
+          <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
         </div>
         <div id="popularback">
-            <div th:each="writer, iterStat : ${popularWriters}" class="popular-item">
-                <div class="popular-item-img">
-                    <button type="button" th:style="'background-image:url(' + ${writer.profileImageUrl} + ');'" class="profile-img-btn" th:data-url="'/writer/' + ${writer.username}"></button>
-                </div>
-                <div class="popular-item-text">
-                    <p class="popular-item-name" th:text="${writer.username}">Cosmos</p>
-                </div>
-                <div class="popular-item-etc">
-                    <div class="popular-item-story">
-                        <img th:src="@{/images/imageimg.png}" class="popular-item-icon"/>
-                        <p class="popular-item-count" th:text="${writer.totalStories}">451</p>
-                    </div>
-                    <div class="popular-item-like" style="padding-left: 27px;">
-                        <img th:src="@{/images/favorite.png}" class="popular-item-icon"/>
-                        <p class="popular-item-count" th:text="${writer.totalLikes}">36.2k</p>
-                    </div>
-                </div>
+          <div
+            th:each="writer, iterStat : ${popularWriters}"
+            class="popular-item"
+          >
+            <div class="popular-item-img">
+              <button
+                type="button"
+                th:style="'background-image:url(' + ${writer.profileImageUrl} + ');'"
+                class="profile-img-btn"
+                th:data-url="'/writer/' + ${writer.username}"
+              ></button>
             </div>
+            <div class="popular-item-text">
+              <p class="popular-item-name" th:text="${writer.username}">
+                Cosmos
+              </p>
+            </div>
+            <div class="popular-item-etc">
+              <div class="popular-item-story">
+                <img
+                  th:src="@{/images/imageimg.png}"
+                  class="popular-item-icon"
+                />
+                <p class="popular-item-count" th:text="${writer.totalStories}">
+                  451
+                </p>
+              </div>
+              <div class="popular-item-like" style="padding-left: 27px">
+                <img
+                  th:src="@{/images/favorite.png}"
+                  class="popular-item-icon"
+                />
+                <p class="popular-item-count" th:text="${writer.totalLikes}">
+                  36.2k
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- 인기 작가 스토리 끝 -->
+    <!-- 인기 작가 스토리 끝 -->
 
-<!-- 급상승 여행지 시작 -->
-<div id="rise_full">
-    <div id="rise">
+    <!-- 급상승 여행지 시작 -->
+    <div id="rise_full">
+      <div id="rise">
         <div id="rise_title">
-            <img th:src="@{/images/riseimg.png}" class="riseimg">
-            <p class="rise">급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요</p>
+          <img th:src="@{/images/riseimg.png}" class="riseimg" />
+          <p class="rise">
+            급상승! 최근 다른 사용자들이 많이 찾아보는 여행지에요
+          </p>
         </div>
         <div class="riseback">
-            <div id="TopSearchesList" th:each="search, iterStat : ${topSearches}">
-                <div class="searchItem" th:attr="id='rise_' + ${iterStat.index + 1}">
-                    <div id="rise1_img">
-                        <label th:for="'rise' + ${iterStat.index + 1}">
-                            <button
-                                    type="button"
-                                    th:id="'rise' + ${iterStat.index + 1}"
-                                    th:data-keyword="${search.keyword}"
-                                    th:style="'background-image:url(' + ${topStories[iterStat.index].image_url} + ');'"
-                                    onclick="goToRisePage(this)"
-                            ></button>
-                        </label>
-                    </div>
-                    <div id="rise1_text">
-                        <p class="rise1_name" th:text="${search.keyword}"></p>
-                    </div>
+          <div class="carousel-container">
+            <button id="prevBtn"></button>
+            <div class="wrapper">
+              <div
+                id="TopSearchesList"
+                th:each="search, iterStat : ${topSearches}"
+              >
+                <div
+                  class="searchItem"
+                  th:attr="id='rise_' + ${iterStat.index + 1}"
+                >
+                  <div id="rise_img">
+                    <label th:for="'rise' + ${iterStat.index + 1}">
+                      <button
+                        type="button"
+                        th:id="'rise' + ${iterStat.index + 1}"
+                        th:data-keyword="${search.keyword}"
+                        th:style="${topStories[iterStat.index] != null} ? 'background-image:url(' + ${topStories[iterStat.index].image_url} + ');' : 'background-image:url(/images/default.jpg);'"
+                        onclick="goToRisePage(this)"
+                      ></button>
+                    </label>
+                  </div>
+                  <p class="rise_text" th:text="${search.keyword}"></p>
                 </div>
+              </div>
             </div>
+            <button id="nextBtn"></button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- 급상승 여행지 끝 -->
+    <!-- 급상승 여행지 끝 -->
 
-<script th:src="@{/js/Home.js}"></script>
-</body>
+    <script th:src="@{/js/Home.js}"></script>
+  </body>
 </html>

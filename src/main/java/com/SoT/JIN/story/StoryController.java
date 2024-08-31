@@ -337,16 +337,69 @@ public class StoryController {
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
     }
+
     @GetMapping("/localDetailPage")
-    public String getLocalDetailPage(@RequestParam("location") String location, Model model) {
-        List<Story> stories = storyService.getStoriesByLocation(location);
+    public String getLocalDetailPage(@RequestParam("location") String location,
+                                     @RequestParam(value = "sort", required = false) String sortCriteria,
+                                     @RequestParam(name = "limit", defaultValue = "24") int limit,
+                                     Model model) {
+        // 1. 해당 위치에 해당하는 StoryGroup 조회
         StoryGroup storyGroup = storyGroupRepository.findByGroupName(location)
                 .orElseThrow(() -> new IllegalArgumentException("Group not found"));
 
+        // 2. 해당 위치에 있는 스토리들 가져오기
+        List<Story> stories = storyService.getStoriesByLocation(location);
+
+        // 3. 정렬 기준에 따라 스토리 정렬
+        if ("likes".equals(sortCriteria)) {
+            stories.sort((s1, s2) -> {
+                int likesComparison = Integer.compare(
+                        (s2.getLikes() != null ? s2.getLikes().size() : 0),
+                        (s1.getLikes() != null ? s1.getLikes().size() : 0)
+                );
+
+                // 좋아요 수가 같다면 조회수로 정렬
+                if (likesComparison == 0) {
+                    return Integer.compare(s2.getViewCount(), s1.getViewCount());
+                }
+
+                return likesComparison;
+            });
+        } else if ("views".equals(sortCriteria)) {
+            stories.sort((s1, s2) -> {
+                int viewsComparison = Integer.compare(s2.getViewCount(), s1.getViewCount());
+
+                // 조회수가 같다면 좋아요 수로 정렬
+                if (viewsComparison == 0) {
+                    return Integer.compare(
+                            (s2.getLikes() != null ? s2.getLikes().size() : 0),
+                            (s1.getLikes() != null ? s1.getLikes().size() : 0)
+                    );
+                }
+
+                return viewsComparison;
+            });
+        } else if ("recent".equals(sortCriteria)) {
+            stories.sort((s1, s2) -> {
+                if (s2.getUploadTime() == null && s1.getUploadTime() == null) return 0;
+                if (s2.getUploadTime() == null) return -1;
+                if (s1.getUploadTime() == null) return 1;
+                return s2.getUploadTime().compareTo(s1.getUploadTime());
+            });
+        }
+
+        // 4. 정렬된 스토리 중 limit 만큼 가져오기
+        List<Story> limitedStories = stories.stream().limit(limit).collect(Collectors.toList());
+
+        // 5. 모델에 데이터 추가
         model.addAttribute("location", location);
-        model.addAttribute("stories", stories);
+        model.addAttribute("stories", limitedStories);
         model.addAttribute("storyGroup", storyGroup);
+        model.addAttribute("resultCount", stories.size()); // 총 스토리 수
+        model.addAttribute("limit", limit);
+        model.addAttribute("sortCriteria", sortCriteria);
 
         return "localDetailPage"; // 해당 템플릿 페이지로 이동
     }
+
 }

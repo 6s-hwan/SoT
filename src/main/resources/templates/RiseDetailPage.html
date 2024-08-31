@@ -91,13 +91,12 @@
         </div>
         <div id="RiseBack">
             <div id="RiseMainIMG">
-                <img
-                        th:src="${rising.imageUrl}" <!-- imageUrl을 여기에 바인딩 -->
+                <img th:src="${rising.imageUrl}" />
                 <div id="Rise_text">
-                    <p class="rise_name" th:text="${rising.keyword}">서울 청계천</p> <!-- keyword를 여기에 바인딩 -->
+                    <p class="rise_name" th:text="${rising.keyword}">서울 청계천</p>
                     <div id="rise_">
-                        <p class="rise_1" th:text="'최근 일주일 많이 찾은 여행지 ' + ${rising.rankOrder} + '위'">최근 일주일 많이 찾은 여행지 1위</p> <!-- rankOrder를 여기에 바인딩 -->
-                        <p class="rise_2" th:text="${rising.location}">서울 종로구 창신동</p> <!-- location을 여기에 바인딩 -->
+                        <p class="rise_1" th:text="'최근 일주일 많이 찾은 여행지 ' + ${rising.rankOrder} + '위'">최근 일주일 많이 찾은 여행지 1위</p>
+                        <p class="rise_2" th:text="${rising.location}">서울 종로구 창신동</p>
                     </div>
                 </div>
             </div>
@@ -115,29 +114,16 @@
                 </div>
             </div>
             <div id="back">
-                <div class="stories" th:each="story, iterStat : ${stories}">
+                <div class="stories" th:each="story : ${stories}">
                     <div class="story">
                         <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                            <img
-                                    class="storyimage"
-                                    th:src="${story.image_url}"
-                                    alt="Story Image"
-                            />
+                            <img class="storyimage" th:src="${story.image_url}" alt="Story Image" />
                             <div id="storyTitlefull">
                                 <p id="storyTitle" th:text="${story.title}">Story Title</p>
                                 <div class="right-side">
-                                    <img th:src="@{/images/seeimg.png}"
-                                         class="seeimage"
-                                         width="16px"
-                                         height="16px"
-                                    />
+                                    <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px" />
                                     <p class="imagetext" th:text="${story.viewCount}">0</p>
-                                    <img
-                                            th:src="@{/images/likeimg.png}"
-                                            class="likeimage"
-                                            width="14px"
-                                            height="14px"
-                                    />
+                                    <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px" />
                                     <p class="imagetext" th:text="${story.likes.size()}">0</p>
                                 </div>
                             </div>
@@ -154,16 +140,14 @@
                 </label>
             </div>
 
-            <img th:src="@{images/riseline.png}" class="riseline" />
+            <!-- 다른 급상승 여행지 둘러보기 -->
             <p class="otherrise">다른 급상승 여행지 둘러보기</p>
             <div id="otherStory">
-                <div th:each="otherRising, iterStat : ${otherRisings}">
-                    <button
-                            type="button"
-                            th:id="'otherrisebtn' + ${iterStat.index + 1}"
-                            th:style="'background-image:url(' + ${otherRising.imageUrl} + ');'"
-                            th:onclick="|location.href='@{/rise/{keyword}(keyword=${otherRising.keyword})}';|">
-                    </button>
+                <div th:each="entry : ${otherTopStories}">
+                    <a th:href="@{/rise/{keyword}(keyword=${entry.key.keyword})}">
+                        <img th:src="${entry.value.image_url != null ? entry.value.image_url : '/images/default_image.png'}"
+                             alt="Other Rising Story Image" class="otherRisingImage"/>
+                    </a>
                 </div>
             </div>
         </div>
@@ -210,25 +194,17 @@
     </div>
 </div>
 
-            </div>
-        </div>
-    </div>
-</div>
 <script th:src="@{/js/Home.js}"></script>
 <script th:src="@{/js/upload.js}"></script>
 <script>
     function sortStories() {
         var select = document.getElementById("story_select");
         var sort = select.value;
-
-        // HTML에서 keyword 값을 가져옵니다.
         var keyword = document.getElementById("keyword").value;
 
-        // 새로운 URL을 구성하여 페이지를 이동시킵니다.
         window.location.href = "/rise/" + keyword + "?sort=" + sort;
     }
 
-    // 페이지 로드 시 현재 선택된 정렬 기준을 유지
     document.addEventListener("DOMContentLoaded", function () {
         var params = new URLSearchParams(window.location.search);
         var sort = params.get("sort");
@@ -237,6 +213,5 @@
         }
     });
 </script>
-<!-- 푸터 끝 -->
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.SoT.JIN.rising;
 import com.SoT.JIN.search.Search;
 import com.SoT.JIN.search.SearchRepository;
 import com.SoT.JIN.search.SearchService;
+import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryRepository;
 import com.SoT.JIN.story.StoryService;
 import org.slf4j.Logger;
@@ -14,7 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class RisingService {
@@ -71,5 +77,29 @@ public class RisingService {
         List<Rising> risings = risingRepository.findAllByOrderByRankOrderAsc(PageRequest.of(0, limit));
         logger.info("Fetched Rising entities: " + risings.size());  // 로그 메시지 추가
         return risings;
+    }
+    // 특정 키워드에 해당하는 가장 작은 ID를 가진 Story를 가져오기
+    public Story getStoryWithSmallestId(String keyword) {
+        List<Long> storyIds = storyRepository.findIdsByKeyword(keyword);
+        if (storyIds.isEmpty()) {
+            return null;
+        }
+        Long smallestId = storyIds.stream().min(Long::compare).orElse(null);
+        return storyRepository.findById(smallestId).orElse(null);
+    }
+    // 특정 키워드를 제외한 상위 6개의 Rising 키워드에 해당하는 Story 가져오기
+    public Map<Rising, Story> getTopStoriesExcludingKeyword(String excludeKeyword, int limit) {
+        List<Rising> topRisings = getTopRisings(limit + 1); // 제외할 키워드를 고려해 limit + 1로 가져옴
+
+        // 제외할 키워드를 제외하고 상위 limit개의 Rising 리스트를 필터링한 후, LinkedHashMap에 저장
+        return topRisings.stream()
+                .filter(rising -> !rising.getKeyword().equals(excludeKeyword))
+                .limit(limit)
+                .collect(Collectors.toMap(
+                        rising -> rising,
+                        rising -> getStoryWithSmallestId(rising.getKeyword()),
+                        (oldValue, newValue) -> oldValue,  // 충돌 방지 처리
+                        LinkedHashMap::new  // LinkedHashMap을 사용하여 순서 보장
+                ));
     }
 }

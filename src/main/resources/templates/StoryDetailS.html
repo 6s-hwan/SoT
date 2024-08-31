@@ -89,6 +89,16 @@
                 </button>
             </form>
             <p><span th:text="${story.likes.size()}">0</span></p>
+
+            <!--            북마크 버튼 추가 - 효정-->
+            <form th:action="@{/story/{storyId}/bookmark(storyId=${story.storyId})}" method="post">
+                <button type="submit" class="bookmark-button">
+                    <img src="/images/StoryDetailbtn2.png" alt="Bookmark Icon" class="icon">
+                </button>
+            </form>
+
+            <p>좋아요: <span th:text="${story.likes.size()}">0</span></p>
+            <p>북마크: <span th:text="${story.bookmarks.size()}">0</span></p>
         </div>
     </div>
     <div class="tags">

@@ -56,7 +56,7 @@ public class StoryService {
         storyRepository.save(story);
     }
 
-    public List<Story> getTopStories(int limit) {
+    public List<Story> getBestStories(int limit) {
         return storyRepository.findAll().stream()
                 .sorted(Comparator.comparingInt((Story s) -> s.getLikes().size())
                         .thenComparingInt(Story::getViewCount).reversed())

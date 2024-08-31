@@ -1,3 +1,23 @@
+.recom_select {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.select_disabled {
+    color: #606060;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
 * {
     /* All */
     margin: 0;

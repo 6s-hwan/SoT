@@ -74,11 +74,39 @@
     </div>
     <ul class="following-list">
       <li class="following-item" th:each="follow : ${followsInfos}">
-        <a th:href="@{'/writer/' + ${follow.username}}">
-          <img th:src="${follow.profileImageUrl}" alt="프로필 이미지" class="profile-img"/>
-        </a>
-        <p class="username" th:text="${follow.username}">Username</p>
-        <p class="story-count" th:text="'게시글 수: ' + ${follow.totalStories}">Story Count</p>
+        <div class="profile-container">
+          <a th:href="@{'/writer/' + ${follow.username}}">
+            <img th:src="${follow.profileImageUrl}" alt="프로필 이미지" class="profile-img"/>
+          </a>
+          <p class="username" th:text="${follow.username}">Username</p>
+          <p class="follower-count" th:text="'팔로워 수: ' + ${follow.followerCount}">Follower Count</p>
+          <p class="story-count" th:text="'게시글 수: ' + ${follow.totalStories}">Story Count</p>
+          <p class="like-count" th:text="'총 좋아요 수: ' + ${follow.totalLikes}">Total Likes</p>
+          <p class="last-upload" th:text="'최근 업로드: ' + ${follow.lastUploadDate}">Last Upload</p>
+          <!-- 주요 테마를 2개로 표시 -->
+          <p class="top-theme" th:text="'주요 테마: ' + ${follow.topThemes}">Top Themes</p>
+        </div>
+
+        <!-- 최근 스토리 8개로 확장 -->
+        <div class="recent-stories">
+          <p>최근 스토리</p>
+          <ul class="story-list">
+            <li th:each="story : ${follow.recentStories}">
+              <a th:href="@{'/story/' + ${story.storyId}}">
+                <img th:src="${story.image_url}" alt="스토리 이미지" class="story-img" width="100" height="100"/>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 팔로우 여부 표시 및 팔로우 취소 버튼 추가 -->
+        <div class="follow-status">
+          <p th:text="${follow.isFollowing} ? '팔로우 중' : '팔로우 안함'">Following Status</p>
+
+          <form th:action="@{'/writer/' + ${follow.username} + '/unfollow'}" method="post">
+            <button type="submit">팔로우 취소</button>
+          </form>
+        </div>
       </li>
     </ul>
   </div>

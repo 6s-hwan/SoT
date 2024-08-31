@@ -1,29 +1,149 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local Detail Page</title>
-  <link rel="stylesheet" th:href="@{/css/localDetailPage.css}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/RegionDetail.css}" />
+  <link rel="stylesheet" th:href="@{/css/nav.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>SoT</title>
 </head>
 <body>
 
-<!-- 스토리 그룹 정보 표시 -->
-<div>
-  <h1 th:text="${storyGroup.groupName}"></h1>
-  <h2 th:text="${storyGroup.groupNameEn}"></h2>
-  <div>
-    <img th:src="@{${storyGroup.groupImage}}"/>
+<!-- 오류 메시지 표시 -->
+<div th:if="${error != null}" class="error-message">
+  <p th:text="${error}"></p>
+</div>
+
+<!-- 정상적인 페이지 컨텐츠 -->
+<div th:if="${error == null}">
+  <!-- 내비게이션바 -->
+  <nav class="navbar">
+    <div class="nav_logo">
+      <div id="nav_left">
+        <div id="nav_logo1">
+          <a href="./home">
+            <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px" />
+          </a>
+        </div>
+        <div class="nav_menu">
+          <ul class="navigation">
+            <li><a href="./home" class="b">홈</a></li>
+            <li><a href="./local" class="c">지역</a></li>
+            <li><a href="" class="c">북마크</a></li>
+          </ul>
+        </div>
+        <form action="/search" method="get" id="search">
+          <input type="text" name="query" class="search" />
+          <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px"/>
+        </form>
+      </div>
+      <div id="nav_right">
+        <input type="button" id="uploadbtn" />
+        <input type="button" class="imagebtn" onclick="location.href='my-page'"/>
+        <input type="checkbox" id="join" style="display: none" />
+        <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
+        <form action="/logout" method="post" style="display: inline">
+          <button type="submit">로그아웃</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 지역 상세 페이지 시작 -->
+  <div id="Regionfull">
+    <div id="RegionBack">
+      <div id="RegionMainIMG">
+        <div>
+          <img th:src="@{${storyGroup.groupImage}}" class="risemainimg" width="1200px" height="352px"/>
+        </div>
+        <p class="region_Kname" th:text="${storyGroup.groupName}">서울 특별시 송파구</p>
+        <p class="region_Ename" th:text="${storyGroup.groupNameEn}">Songpa-gu</p>
+      </div>
+      <div id="RegionStorySet">
+        <!-- 총 스토리 수 표시 -->
+        <p class="RegionStoryNum" th:text="${resultCount} + '개의 스토리'">0개의 스토리</p>
+        <!-- 정렬 기준 선택 -->
+        <div id="RegionStoryList">
+          <input type="hidden" id="location" th:value="${location}" />
+          <form>
+            <select name="story_select" id="story_select" onchange="sortStories()">
+              <option value="" class="select_disabled" disabled selected>정렬기준</option>
+              <option value="likes" class="recom_select">추천순</option>
+              <option value="recent" class="newest_select">최신순</option>
+              <option value="views" class="inquiry_select">조회순</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <!-- 스토리 목록 -->
+      <div id="back">
+        <div class="stories" th:each="story : ${stories}">
+          <div class="story">
+            <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+              <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+              <div id="storyTitlefull">
+                <p id="storyTitle" th:text="${story.title}">Story Title</p>
+                <div class="right-side">
+                  <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px"/>
+                  <p class="imagetext" th:text="${story.viewCount}">0</p>
+                  <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px"/>
+                  <p class="imagetext" th:text="${story.likes.size()}">0</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- 더보기 버튼 -->
+      <div>
+        <label for="morebtn">
+          <button type="button" id="morebtn" th:if="${limit < resultCount}"
+                  th:onclick="|location.href='@{/localDetailPage?location=${location}&sort=${sortCriteria}&limit=${limit + 24}}';|">
+            더 보기
+          </button>
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- 각 스토리 정보 표시 -->
-<div th:each="story : ${stories}">
-  <h2 th:text="${story.title}">스토리 제목</h2>
-  <img th:src="@{${story.image_url}}" alt="스토리 이미지" />
-  <p th:text="'조회수: ' + ${story.viewCount}">조회수</p>
-  <p th:text="'좋아요 수: ' + ${story.likesCount}">좋아요 수</p>
+<!-- 푸터 -->
+<div id="Footer">
+  <button class="footer_1">개인정보처리방침</button>
+  <button class="footer_2">이용약관</button>
+  <p class="email">Contact. SoT.office@gmail.com</p>
+  <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
 </div>
+<!-- 푸터 끝 -->
 
+<script th:src="@{/js/Home.js}"></script>
+<script th:src="@{/js/upload.js}"></script>
+<script>
+  function sortStories() {
+    var select = document.getElementById("story_select");
+    var sort = select.value;
+    var location = document.getElementById("location").value;
+    window.location.href = "/localDetailPage?location=" + location + "&sort=" + sort;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var params = new URLSearchParams(window.location.search);
+    var sort = params.get("sort");
+    if (sort) {
+      document.getElementById("story_select").value = sort;
+    }
+  });
+</script>
 </body>
 </html>

@@ -170,8 +170,8 @@ public class StoryController {
     }
     @GetMapping("/best")
     public String best(Model model, @RequestParam(defaultValue = "24") int limit) {
-        List<Story> topStories = storyService.getTopStories(limit);
-        model.addAttribute("stories", topStories);
+        List<Story> bestStories = storyService.getBestStories(limit);
+        model.addAttribute("stories", bestStories);
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
     }
@@ -198,12 +198,25 @@ public class StoryController {
 
     @GetMapping("/home")
     public String home(Model model, @RequestParam(defaultValue = "12") int limit) {
-        List<Story> topStories = storyService.getTopStories(limit);
-        model.addAttribute("stories", topStories);
+
+        // Rising 엔티티에서 상위 8개의 검색어 가져오기
+        List<Rising> topRisings = risingService.getTopRisings(8);
+        logger.info("Rising 엔티티 개수: " + topRisings.size());
+
+        // Rising 엔티티에서 가져온 검색어를 바탕으로 Story 가져오기
+        List<Story> topStories = topRisings.stream()
+                .map(rising -> searchService.getStoryWithSmallestId(rising.getKeyword()))
+                .collect(Collectors.toList());
+
+        List<Story> bestStories = storyService.getBestStories(12);
+        model.addAttribute("stories", bestStories);
         model.addAttribute("limit", limit);
 
         List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
 
+        // 모델에 데이터 추가
+        model.addAttribute("topSearches", topRisings);
+        model.addAttribute("topStories", topStories);
         model.addAttribute("popularWriters", popularWriters);
 
         return "Home";
@@ -324,16 +337,69 @@ public class StoryController {
         model.addAttribute("groupedStories", groupedStories);
         return "localList";
     }
+
     @GetMapping("/localDetailPage")
-    public String getLocalDetailPage(@RequestParam("location") String location, Model model) {
-        List<Story> stories = storyService.getStoriesByLocation(location);
+    public String getLocalDetailPage(@RequestParam("location") String location,
+                                     @RequestParam(value = "sort", required = false) String sortCriteria,
+                                     @RequestParam(name = "limit", defaultValue = "24") int limit,
+                                     Model model) {
+        // 1. 해당 위치에 해당하는 StoryGroup 조회
         StoryGroup storyGroup = storyGroupRepository.findByGroupName(location)
                 .orElseThrow(() -> new IllegalArgumentException("Group not found"));
 
+        // 2. 해당 위치에 있는 스토리들 가져오기
+        List<Story> stories = storyService.getStoriesByLocation(location);
+
+        // 3. 정렬 기준에 따라 스토리 정렬
+        if ("likes".equals(sortCriteria)) {
+            stories.sort((s1, s2) -> {
+                int likesComparison = Integer.compare(
+                        (s2.getLikes() != null ? s2.getLikes().size() : 0),
+                        (s1.getLikes() != null ? s1.getLikes().size() : 0)
+                );
+
+                // 좋아요 수가 같다면 조회수로 정렬
+                if (likesComparison == 0) {
+                    return Integer.compare(s2.getViewCount(), s1.getViewCount());
+                }
+
+                return likesComparison;
+            });
+        } else if ("views".equals(sortCriteria)) {
+            stories.sort((s1, s2) -> {
+                int viewsComparison = Integer.compare(s2.getViewCount(), s1.getViewCount());
+
+                // 조회수가 같다면 좋아요 수로 정렬
+                if (viewsComparison == 0) {
+                    return Integer.compare(
+                            (s2.getLikes() != null ? s2.getLikes().size() : 0),
+                            (s1.getLikes() != null ? s1.getLikes().size() : 0)
+                    );
+                }
+
+                return viewsComparison;
+            });
+        } else if ("recent".equals(sortCriteria)) {
+            stories.sort((s1, s2) -> {
+                if (s2.getUploadTime() == null && s1.getUploadTime() == null) return 0;
+                if (s2.getUploadTime() == null) return -1;
+                if (s1.getUploadTime() == null) return 1;
+                return s2.getUploadTime().compareTo(s1.getUploadTime());
+            });
+        }
+
+        // 4. 정렬된 스토리 중 limit 만큼 가져오기
+        List<Story> limitedStories = stories.stream().limit(limit).collect(Collectors.toList());
+
+        // 5. 모델에 데이터 추가
         model.addAttribute("location", location);
-        model.addAttribute("stories", stories);
+        model.addAttribute("stories", limitedStories);
         model.addAttribute("storyGroup", storyGroup);
+        model.addAttribute("resultCount", stories.size()); // 총 스토리 수
+        model.addAttribute("limit", limit);
+        model.addAttribute("sortCriteria", sortCriteria);
 
         return "localDetailPage"; // 해당 템플릿 페이지로 이동
     }
+
 }

@@ -7,6 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("/writer")
 public class FollowController {
@@ -49,4 +51,22 @@ public class FollowController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류가 발생했습니다.");
         }
     }
+    @PostMapping("/{username}/unfollow")
+    public ResponseEntity<Void> unfollowUser(@PathVariable("username") String username) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserEmail = authentication.getName();
+        User currentUser = userRepository.findByEmail(currentUserEmail).orElse(null);
+
+        if (currentUser != null) {
+            User userToUnfollow = userRepository.findByUsername(username).orElse(null);
+            if (userToUnfollow != null) {
+                currentUser.getFollowing().remove(userToUnfollow);
+                userRepository.save(currentUser);
+                return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/follows")).build();
+            }
+        }
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
 }

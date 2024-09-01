@@ -139,14 +139,15 @@
                     </button>
                 </label>
             </div>
-
-            <!-- 다른 급상승 여행지 둘러보기 -->
+        </div>
+        <!-- 다른 급상승 여행지 둘러보기 -->
+        <div class="other_back">
             <p class="otherrise">다른 급상승 여행지 둘러보기</p>
-            <div id="otherStory">
-                <div th:each="entry : ${otherTopStories}">
-                    <a th:href="@{/rise/{keyword}(keyword=${entry.key.keyword})}">
-                        <img th:src="${entry.value.image_url != null ? entry.value.image_url : '/images/default_image.png'}"
-                             alt="Other Rising Story Image" class="otherRisingImage"/>
+            <div class="otherStory">
+                <div class th:each="other : ${otherTopStories}">
+                    <a th:href="@{/rise/{keyword}(keyword=${other.key.keyword})}">
+                        <img id="otherimage" th:src="${other.value.image_url != null ? other.value.image_url : '/images/default_image.png'}"
+                             alt="other Image"/>
                     </a>
                 </div>
             </div>
@@ -154,7 +155,7 @@
     </div>
 </div>
 
-    <!-- 푸터 -->
+<!-- 푸터 -->
 <!-- 나머지들 -->
 <div id="etc_thing">
     <div id="etc_full">

@@ -371,6 +371,12 @@ a {
     margin-bottom: 30px;
 }
 
+.other_back{
+    padding-top: 72px;
+    width: 1240px;
+    height: 265px;
+}
+
 .otherrise{
     color: #050505;
     font-family: "Noto Sans KR";
@@ -379,50 +385,64 @@ a {
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.4px;
-    padding-top: 72px;
     padding-bottom: 8px;
 }
 
-#otherStory{
+.otherStory {
     width: 1240px;
     height: 224px;
-    background-color: #f8f8f8;
+    flex-shrink: 0;
     border-radius: 12px;
+    background: #f8f8f8;
+    padding: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px; /* Increased gap for better spacing */
 }
 
-#otherrisebtn1{
-    background: url("../images/otherrise1.png");
+#otherimage {
     width: 183px;
     height: 184px;
     flex-shrink: 0;
-    border: none;
+    border-radius: 8px;
+    background: #d9d9d9;
+    background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
+    background-position: center;  /* 중앙에 이미지를 위치시킴 */
+    background-repeat: no-repeat;
     cursor: pointer;
-    margin-top: 20px;
-    margin-left: 20px;
-    background-color: #F8F8F8;
 }
 
-#otherrisebtn2{
-    background: url("../images/otherrise2.png");
-    width: 183px;
-    height: 184px;
-    flex-shrink: 0;
-    border: none;
-    cursor: pointer;
-    margin-left: 16px;
-    background-color: #F8F8F8;
+.other {
+    position: relative; /* Relative positioning for title placement */
+    width: 184px;
+    height: 183px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-#otherrisebtn3{
-    background: url("../images/otherrise3.png");
-    width: 183px;
-    height: 184px;
-    flex-shrink: 0;
-    border: none;
-    cursor: pointer;
-    margin-left: 16px;
-    background-color: #F8F8F8;
+.others {
+    position: relative; /* Relative positioning for title placement */
+    width: 184px;
+    height: 183px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.other > a {
+    width: 184px;
+    height: 183px;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+}
+
 
 
 

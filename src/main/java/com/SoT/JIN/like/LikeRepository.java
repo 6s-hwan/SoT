@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface LikeRepository extends JpaRepository<LikeEntity, Long> {
     Optional<LikeEntity> findByStoryAndUser(Story story, User user);
+    boolean existsByStoryAndUser(Story story, User user);  // 사용자가 이 스토리에 좋아요를 눌렀는지 확인
+
 }

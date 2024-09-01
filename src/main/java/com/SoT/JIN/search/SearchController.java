@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -71,5 +73,18 @@ public class SearchController {
     public String resetRisingKeywordsnow() {
         searchService.resetSearchCounts();
         return "Rising entity has been updated!";
+    }
+    @GetMapping("/api/search-count")
+    @ResponseBody
+    public Map<String, Object> getSearchCount(@RequestParam("query") String query) {
+        // 검색어에 따른 스토리 검색
+        List<Story> stories = storyRepository.findByTitleContainingIgnoreCase(query);
+
+        // 결과를 JSON 형식으로 반환
+        Map<String, Object> response = new HashMap<>();
+        response.put("resultCount", stories.size());
+        response.put("stories", stories);
+
+        return response;
     }
 }

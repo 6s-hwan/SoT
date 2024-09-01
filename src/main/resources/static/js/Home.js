@@ -276,36 +276,77 @@ document.addEventListener("DOMContentLoaded", function () {
     profilebtn.style.display = "block";
   }
 
-  // 로그인 상태를 확인하고 프로필 이미지를 가져오는 함수 (예시)
+  // function checkLoginStatus() {
+  //   fetch("/api/user/profile") // 서버에서 로그인 상태와 프로필 이미지를 가져오는 API 엔드포인트
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("checkLoginStatus data:", data);
+  //       if (data.isLoggedIn) {
+  //         // 로그인 성공 시
+  //         document.querySelector(".followingbtn").style.display =
+  //           "inline-block"; // 팔로잉 버튼 표시
+  //         document.getElementById("uploadbtn").style.display = "inline-block"; // 업로드 버튼 표시
+  //         document.querySelector(".imagebtn").style.display = "inline-block"; // 마이페이지 버튼 표시
+  //         document.getElementById("loginLabel").style.display = "none"; // 로그인 버튼 숨기기
+  //         document.getElementById("dropdownMenu").style.display = "block"; // 드롭다운 메뉴 표시
+  //       } else {
+  //         // 로그인 실패 시
+  //         document.getElementById("uploadbtn").style.display = "none"; // 업로드 버튼 숨기기
+  //         document.querySelector(".imagebtn").style.display = "none"; // 마이페이지 버튼 숨기기
+  //         document.getElementById("loginLabel").style.display = "inline-block"; // 로그인 버튼 표시
+  //         document.getElementById("dropdownMenu").style.display = "none"; // 드롭다운 메뉴 숨기기
+  //       }
+  //     })
+  //     .catch((error) => console.error("Error:", error));
+  // }
+
+  // // 페이지가 로드될 때 로그인 상태를 확인
+  // window.onload = function () {
+  //   checkLoginStatus();
+  // };
+  function togglePopup1(popupId) {
+    const popup = document.getElementById(popupId);
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    if (popup.style.display === "none" || popup.style.display === "") {
+      popup.style.display = "block";
+      dropdownMenu.style.display = "none"; // 드롭다운 메뉴 숨기기
+    } else {
+      popup.style.display = "none";
+    }
+  }
+
+  function toggleDropdown() {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    dropdownMenu.style.display =
+      dropdownMenu.style.display === "block" ? "none" : "block";
+  }
+
   function checkLoginStatus() {
-    fetch("/api/user/profile") // 서버에서 로그인 상태와 프로필 이미지를 가져오는 API 엔드포인트
+    fetch("/api/user/profile")
       .then((response) => response.json())
       .then((data) => {
-        console.log("checkLoginStatus data:", data);
         if (data.isLoggedIn) {
-          login(data.profileImageUrl);
+          document.querySelector(".followingbtn").style.display =
+            "inline-block";
+          document.getElementById("uploadbtn").style.display = "inline-block";
+          document.querySelector(".imagebtn").style.display = "inline-block";
+
+          // 로그인 성공 후에는 팝업을 표시하지 않고 드롭다운 메뉴만 표시
+          document.getElementById("loginLabel").onclick = toggleDropdown;
+        } else {
+          // 로그인 전에는 로그인 버튼을 클릭하면 팝업을 띄움
+          document.getElementById("loginLabel").onclick = function () {
+            togglePopup1("loginPopup");
+          };
         }
       })
       .catch((error) => console.error("Error:", error));
   }
 
-  // 페이지 로드 시 로그인 상태 확인
-  checkLoginStatus();
-
-  // checkbox 상태 변경 시 스타일 업데이트
-  checkbox.addEventListener("change", function () {
-    if (checkbox.checked) {
-      loginLabel.style.width = "36px";
-      loginLabel.style.height = "36px";
-      loginLabel.style.padding = "0";
-      loginLabel.style.fontSize = "0";
-    } else {
-      loginLabel.style.width = "109px";
-      loginLabel.style.height = "45px";
-      loginLabel.style.padding = "10px 29px";
-      loginLabel.style.fontSize = "18px";
-    }
-  });
+  window.onload = function () {
+    checkLoginStatus();
+  };
 
   // 로그아웃 버튼 클릭 시 로그아웃 처리
   logoutButton.addEventListener("click", function (event) {
@@ -326,6 +367,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+});
+// checkbox 상태 변경 시 스타일 업데이트
+checkbox.addEventListener("change", function () {
+  if (checkbox.checked) {
+    loginLabel.style.width = "36px";
+    loginLabel.style.height = "36px";
+    loginLabel.style.padding = "0";
+    loginLabel.style.fontSize = "0";
+  } else {
+    loginLabel.style.width = "109px";
+    loginLabel.style.height = "45px";
+    loginLabel.style.padding = "10px 29px";
+    loginLabel.style.fontSize = "18px";
+  }
 });
 
 // 로그인 창 입력값 확인 후 로그인 버튼 활성화
@@ -1156,7 +1211,9 @@ async function verifyCode() {
   let phone3 = document.getElementById("phone_input31").value;
   let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
 
-  const verificationCode = document.getElementById("CertificationNumber_input").value;
+  const verificationCode = document.getElementById(
+    "CertificationNumber_input"
+  ).value;
 
   console.log("Phone Number:", phoneNumber); // 디버깅용 콘솔 출력
   console.log("Verification Code:", verificationCode); // 디버깅용 콘솔 출력

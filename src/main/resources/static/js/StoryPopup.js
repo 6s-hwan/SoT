@@ -107,6 +107,23 @@ function showStoryPopup(storyId) {
                 tagsContainer.appendChild(tagElement);
             });
 
+            // 검색 결과 개수 가져오기
+            fetch(`/api/search-count?query=${encodeURIComponent(data.title)}`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(resultData => {
+                    document.getElementById("searchResultCount").textContent = `총 ${resultData.resultCount}개`;
+                })
+
+
             // 프로필 관련 요소에 클릭 이벤트 추가
             const profileLink = `/writer/${data.username}`;
             document.getElementById("popupProfileImage").onclick = () => { window.location.href = profileLink; };
@@ -179,4 +196,9 @@ function toggleBookmark() {
             }
         })
         .catch(error => console.error('Error toggling bookmark:', error));
+}
+
+function searchByTitle() {
+    const query = document.getElementById("popupTitle").textContent;
+    window.location.href = `/search?query=${encodeURIComponent(query)}`;
 }

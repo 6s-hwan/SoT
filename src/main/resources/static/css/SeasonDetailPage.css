@@ -230,9 +230,6 @@ input.uploadbtn {
 }
 /* 네비게이션바 끝 */
 
-
-
-
 /* 시즌별 시작 */
 
 #SeasonStoryfull {
@@ -249,7 +246,7 @@ input.uploadbtn {
   /* align-items: center; */
   box-sizing: border-box;
   /* 요소가 여러 개일때 가운데 정렬 */
-  width:1220px;
+  width: 1220px;
   height: 90px;
   margin-bottom: 20px;
 }
@@ -283,7 +280,7 @@ input.uploadbtn {
   letter-spacing: -0.96px;
 }
 
-#button1spring{
+#button1spring {
   padding-left: 50px;
   border: none;
   font-family: "Noto Sans KR";
@@ -295,12 +292,12 @@ input.uploadbtn {
   cursor: pointer;
 }
 
-.button1spring.active{
+.button1spring.active {
   color: #000;
   text-decoration: underline;
 }
 
-#button2summer{
+#button2summer {
   padding-left: 20px;
   border: none;
   font-family: "Noto Sans KR";
@@ -312,12 +309,12 @@ input.uploadbtn {
   cursor: pointer;
 }
 
-.button2summer.active{
+.button2summer.active {
   color: #000;
   text-decoration: underline;
 }
 
-#button3autumn{
+#button3autumn {
   padding-left: 20px;
   border: none;
   font-family: "Noto Sans KR";
@@ -329,12 +326,12 @@ input.uploadbtn {
   cursor: pointer;
 }
 
-.button3autumn.active{
+.button3autumn.active {
   color: #000;
   text-decoration: underline;
 }
 
-#button4winter{
+#button4winter {
   padding-left: 20px;
   border: none;
   font-family: "Noto Sans KR";
@@ -346,18 +343,18 @@ input.uploadbtn {
   cursor: pointer;
 }
 
-.button4winter.active{
+.button4winter.active {
   color: #000;
   text-decoration: underline;
 }
 
-.myButton{
+.myButton {
   color: #909090;
   cursor: pointer;
   border: none;
 }
 
-.selected{
+.selected {
   color: #000;
 }
 
@@ -380,8 +377,6 @@ input.uploadbtn {
   background: #fff;
 }
 
-
-
 #back {
   width: 100%;
   max-width: 1240px;
@@ -391,7 +386,10 @@ input.uploadbtn {
   padding: 20px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); /* Flexible grid with auto-fill */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(285px, 1fr)
+  ); /* Flexible grid with auto-fill */
   gap: 20px;
   justify-content: center;
 }
@@ -402,8 +400,8 @@ input.uploadbtn {
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
-  background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
-  background-position: center;  /* 중앙에 이미지를 위치시킴 */
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -421,7 +419,7 @@ input.uploadbtn {
   line-height: 24px;
 }
 .story {
-  width: 100%;  /* Full width within the grid column */
+  width: 100%; /* Full width within the grid column */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -444,7 +442,7 @@ input.uploadbtn {
 .storyimage {
   width: 100%;
   height: 200px;
-  object-fit: cover;  /* Ensures the image covers the container without stretching */
+  object-fit: cover; /* Ensures the image covers the container without stretching */
   border-radius: 8px;
   background-color: #d9d9d9; /* Default background if image fails to load */
 }
@@ -582,4 +580,57 @@ input.uploadbtn {
   line-height: normal;
   color: #8f8f8f;
   font-family: Pretendard;
+}
+
+/* 홈화면 시즌별스토리 css */
+#SeasonStoryfull1 {
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+}
+#seasonback {
+  width: 100%;
+  max-width: 1240px;
+  height: 603px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(387px, 1fr)
+  ); /* Flexible grid with auto-fill */
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.seasonstory {
+  width: 100%; /* Full width within the grid column */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.seasonstories {
+  position: relative; /* Relative positioning for title placement */
+  width: 387px;
+  height: 272px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.seasonstory > a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.seasonstoryimage {
+  width: 100%;
+  height: 272px;
+  object-fit: cover; /* Ensures the image covers the container without stretching */
+  border-radius: 8px;
+  background-color: #d9d9d9; /* Default background if image fails to load */
 }

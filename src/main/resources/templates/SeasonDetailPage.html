@@ -24,8 +24,9 @@
 <nav class="navbar">
     <div class="nav_logo">
         <div id="nav_left">
+            <!-- 로고 -->
             <div id="nav_logo1">
-                <a href="./test">
+                <a href="./home">
                     <img
                             th:src="@{/images/MainLogo.png}"
                             alt="로고"
@@ -34,13 +35,15 @@
                     />
                 </a>
             </div>
+            <!-- 메뉴바 -->
             <div class="nav_menu">
                 <ul class="navigation">
-                    <li><a href="./test" class="b">홈</a></li>
-                    <li><a href="" class="c">지역</a></li>
+                    <li><a href="./home" class="b">홈</a></li>
+                    <li><a href="./local" class="c">지역</a></li>
                     <li><a href="" class="c">북마크</a></li>
                 </ul>
             </div>
+            <!-- 검색바 -->
             <form action="/search" method="get" id="search">
                 <input type="text" name="query" class="search" />
                 <img
@@ -52,19 +55,26 @@
             </form>
         </div>
         <div id="nav_right">
-            <input type="button" id="uploadbtn" />
+            <input type="button" class="followingbtn" style="display: none" />
             <input
                     type="button"
                     class="imagebtn"
+                    style="display: none"
                     onclick="location.href='my-page'"
             />
+            <input type="button" id="uploadbtn" style="display: none" />
+
             <input type="checkbox" id="join" style="display: none" />
-            <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')"
+            <label for="join" id="loginLabel" onclick="toggleDropdown()"
             >로그인</label
             >
-            <form action="/logout" method="post" style="display: inline">
-                <button type="submit">로그아웃</button>
-            </form>
+            <!-- 드롭다운 메뉴 -->
+            <div id="dropdownMenu" class="dropdown-content" style="display: none">
+                <button>마이페이지</button>
+                <form action="/logout" method="post">
+                    <button type="submit">로그아웃</button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

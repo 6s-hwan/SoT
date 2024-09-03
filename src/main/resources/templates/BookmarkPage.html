@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/BookmarkPage.css}" />
+    <link rel="stylesheet" th:href="@{/css/nav.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -16,42 +17,76 @@
     />
     <title>SoT</title>
 </head>
-<body>
+<body>    <!-- 내비게이션바 -->
 <nav class="navbar">
     <div class="nav_logo">
-        <div id="nav_logo1">
-            <img
-                    th:src="@{/images/MainLogo.png}"
-                    alt="로고"
-                    width="225px"
-                    height="60px"
+        <div id="nav_left">
+            <!-- 로고 -->
+            <div id="nav_logo1">
+                <a href="./home">
+                    <img
+                            th:src="@{/images/MainLogo.png}"
+                            alt="로고"
+                            width="200px"
+                            height="46px"
+                    />
+                </a>
+            </div>
+            <!-- 메뉴바 -->
+            <div class="nav_menu">
+                <ul class="navigation">
+                    <li>
+                        <a href="/home" class="b">홈</a>
+                    </li>
+                    <li><a href="./local" class="c">지역</a></li>
+                    <li><a href="./bookmark" class="dh">북마크</a></li>
+                </ul>
+            </div>
+            <!-- 검색바 -->
+            <form action="/search" method="get" id="search">
+                <input type="text" name="query" class="search" />
+                <img
+                        th:src="@{/images/search.png}"
+                        alt="돋보기"
+                        width="30px"
+                        height="30px"
+                />
+            </form>
+        </div>
+        <div id="nav_right">
+            <input type="button" class="followingbtn" style="display: none" />
+            <input
+                    type="button"
+                    class="imagebtn"
+                    style="display: none"
+                    onclick="location.href='my-page'"
             />
-        </div>
-        <div class="nav_menu">
-            <ul class="navigation">
-                <li><a href="Home.html" class="b">홈</a></li>
-                <li><a href="#" class="c">지역</a></li>
-                <li><a href="#" class="c">지도</a></li>
-                <li><a href="#" class="c">북마크</a></li>
-            </ul>
-        </div>
+            <input type="button" id="uploadbtn" style="display: none" />
 
-        <div id="search">
-            <input type="text" class="search" />
-            <img
-                    th:src="@{/images/search.png}"
-                    alt="돋보기"
-                    width="30px"
-                    height="30px"
-            />
+            <input type="checkbox" id="join" style="display: none" />
+            <label for="join" id="loginLabel" onclick="toggleDropdown()"
+            >로그인</label
+            >
+            <!-- 드롭다운 메뉴 -->
+            <div id="dropdownMenu" class="dropdown-content" style="display: none">
+                <button>마이페이지</button>
+                <form action="/logout" method="post">
+                    <button type="submit">로그아웃</button>
+                </form>
+            </div>
         </div>
-        <input type="button" class="imagebtn" />
-        <input type="button" class="uploadbtn" />
-        <input type="checkbox" id="join" />
-        <label for="join">로그인</label>
     </div>
 </nav>
 
+<!-- 팝업창들 -->
+<div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
+<div th:replace="~{fragments/login_popup :: loginPopup}"></div>
+<div th:replace="~{fragments/join_popup :: joinPopup}"></div>
+<div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
+<div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
+<div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
+<div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
+<div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
 <!--  북마크 시작 -->
 
 <div id="Bookmarkfull">

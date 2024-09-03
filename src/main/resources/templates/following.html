@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" th:href="@{/css/following.css}" />
-  <link rel="stylesheet" th:href="@{/css/Home.css}" />
   <link
           rel="stylesheet"
           type="text/css"
@@ -21,33 +20,36 @@
 <body>
 <nav class="navbar">
   <div class="nav_logo">
-    <div id="nav_left">
-      <div id="nav_logo1">
-        <a href="./test">
-          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px">
-        </a>
-      </div>
-      <div class="nav_menu">
-        <ul class="navigation">
-          <li><a href="./test" class="b">홈</a></li>
-          <li><a href="" class="c">지역</a></li>
-          <li><a href="" class="c">북마크</a></li>
-        </ul>
-      </div>
-      <form action="/search" method="get" id="search">
-        <input type="text" name="query" class="search">
-        <img th:src="@{/images/search.png}" alt="돋보기" width="30px" height="30px">
-      </form>
+    <div id="nav_logo1">
+      <img
+              th:src="@{/images/MainLogo.png}"
+              alt="로고"
+              width="225px"
+              height="60px"
+      />
     </div>
-    <div id="nav_right">
-      <input type="button" id="uploadbtn">
-      <input type="button" class="imagebtn" onclick="location.href='my-page'">
-      <input type="checkbox" id="join" style="display: none;">
-      <label for="join" id="loginLabel" onclick="togglePopup('loginPopup')">로그인</label>
-      <form action="/logout" method="post" style="display:inline;">
-        <button type="submit">로그아웃</button>
-      </form>
+    <div class="nav_menu">
+      <ul class="navigation">
+        <li><a href="Home.html" class="b">홈</a></li>
+        <li><a href="#" class="c">지역</a></li>
+        <li><a href="#" class="c">지도</a></li>
+        <li><a href="#" class="c">북마크</a></li>
+      </ul>
     </div>
+
+    <div id="search">
+      <input type="text" class="search" />
+      <img
+              th:src="@{/images/search.png}"
+              alt="돋보기"
+              width="30px"
+              height="30px"
+      />
+    </div>
+    <input type="button" class="imagebtn" />
+    <input type="button" class="uploadbtn" />
+    <input type="checkbox" id="join" />
+    <label for="join">로그인</label>
   </div>
 </nav>
 
@@ -59,60 +61,111 @@
 <div th:replace="fragments/privacy_popup :: privacyPopup"></div>
 
 <!-- 팔로잉 페이지 시작 -->
-<div id="followingfull">
-  <div id="following">
-    <div id="followingTitle">
-      <div id="followingtitletext">
+<div class="followingfull">
+  <div class="following">
+    <div class="followingTitle">
+      <div class="followingtitletext">
         <img
                 th:src="@{/images/followingicon.png}"
                 class="followingimg"
-                width="52px"
-                height="46px"
+                width="80px"
+                height="80px"
         />
-        <p class="followingtitle1">팔로잉</p>
+        <p class="followingtitle1">팔로잉 목록</p>
       </div>
     </div>
     <ul class="following-list">
       <li class="following-item" th:each="follow : ${followsInfos}">
-        <div class="profile-container">
-          <a th:href="@{'/writer/' + ${follow.username}}">
-            <img th:src="${follow.profileImageUrl}" alt="프로필 이미지" class="profile-img"/>
-          </a>
-          <p class="username" th:text="${follow.username}">Username</p>
-          <p class="follower-count" th:text="'팔로워 수: ' + ${follow.followerCount}">Follower Count</p>
-          <p class="story-count" th:text="'게시글 수: ' + ${follow.totalStories}">Story Count</p>
-          <p class="like-count" th:text="'총 좋아요 수: ' + ${follow.totalLikes}">Total Likes</p>
-          <p class="last-upload" th:text="'최근 업로드: ' + ${follow.lastUploadDate}">Last Upload</p>
-          <!-- 주요 테마를 2개로 표시 -->
-          <p class="top-theme" th:text="'주요 테마: ' + ${follow.topThemes}">Top Themes</p>
+        <div class="content">
+          <img
+                  th:src="${follow.profileImageUrl}"
+                  alt="프로필 이미지"
+                  class="profile-img"
+                  width="170px"
+                  height="170px"
+          />
+          <div class="follow1">
+            <p class="username" th:text="${follow.username}">Username</p>
+          </div>
+          <div class="follow1_1">
+            <p class="follower-count" th:text="'팔로워 수: ' + ${follow.followerCount}">3.2k</p>
+            <img
+                    th:src="@{/images/line.png}"
+                    class="followline"
+                    width="1px"
+                    height="10px"
+            >
+            <p class="following-status">팔로우중</p>
+            <form th:action="@{'/writer/' + ${follow.username} + '/unfollow'}" method="post" id="unfollowForm">
+              <button type="submit" style="display: none;"></button>
+              <img
+                      th:src="@{/images/follow_x.png}"
+                      class="follow_x"
+                      width="16px"
+                      height="16px"
+                      alt="팔로우 취소"
+                      onclick="document.getElementById('unfollowForm').submit();"
+                      style="cursor: pointer;"
+              />
+            </form>
+          </div>
+
+          <div class="follow2">
+            <p class="story-count" th:text="'스토리: ' + ${follow.totalStories}">Story Count</p>
+            <p class="like-count" th:text="'좋아요: ' + ${follow.totalLikes}">Total Likes</p>
+          </div>
+          <div class="follow3">
+            <p class="upload">최근 업로드</p>
+            <p class="last-upload" th:text="${follow.lastUploadDate}">Last Upload</p>
+          </div>
+          <div class="theme">
+            <div class="theme1">
+              <p class="theme1_text"># 축제</p>
+            </div>
+            <div class="theme2">
+              <p class="theme2_text"># 연등</p>
+            </div>
+          </div>
         </div>
 
-        <!-- 최근 스토리 8개로 확장 -->
-        <div class="recent-stories">
-          <p>최근 스토리</p>
+        <button
+                type="button"
+                class="morebtn"
+        ></button>
+
+        <div class="extra-content">
+          <p class="recent">최근 스토리</p>
           <ul class="story-list">
             <li th:each="story : ${follow.recentStories}">
               <a th:href="@{'/story/' + ${story.storyId}}">
-                <img th:src="${story.image_url}" alt="스토리 이미지" class="story-img" width="100" height="100"/>
+                <img th:src="${story.image_url}" alt="스토리 이미지" class="story-img"/>
               </a>
             </li>
           </ul>
-        </div>
-
-        <!-- 팔로우 여부 표시 및 팔로우 취소 버튼 추가 -->
-        <div class="follow-status">
-          <p th:text="${follow.isFollowing} ? '팔로우 중' : '팔로우 안함'">Following Status</p>
-
-          <form th:action="@{'/writer/' + ${follow.username} + '/unfollow'}" method="post">
-            <button type="submit">팔로우 취소</button>
-          </form>
         </div>
       </li>
     </ul>
   </div>
 </div>
 <!-- 팔로잉 페이지 끝 -->
+<script>
+  document.querySelectorAll('.morebtn').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var container = button.closest('.following-item');
+      var content = container.querySelector('.content');
+      var extraContent = container.querySelector('.extra-content');
 
-<script th:src="@{/js/Home.js}"></script>
+      if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded');
+        content.style.height = '175px';
+        extraContent.style.display = 'none';
+      } else {
+        container.classList.add('expanded');
+        content.style.height = '528px';
+        extraContent.style.display = 'block';
+      }
+    });
+  });
+</script>
 </body>
 </html>

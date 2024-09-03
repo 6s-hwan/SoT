@@ -1,54 +1,66 @@
+<body>
+<!-- 팝업창 -->
+<button onclick="showPopup()">Show Popup</button>
+
+<div class="bg_gray9" style="display: none;"></div> <!-- 팝업 배경 -->
 <div id="storyPopup" style="display: none;">
-    <div id="close">
-        <img src="/static/images/closebtn.png" alt="X" width="28px" height="28px" onclick="closePopup()" />
-    </div>
+    <!-- 닫기 버튼 -->
+    <button type="button" class="close" onclick="closePopup9()">
+        <img th:src="@{/images/closebtn.png}" alt="Close" width="28px" height="28px">
+    </button>
     <div class="container">
         <div class="image-container">
             <img id="popupImage" src="" alt="image">
         </div>
         <div class="story-etc">
             <div class="story-text">
-                <p id="popupTitle" class="Detail_name"></p>
+                <p id="popupTitle" class="Detail_name">서울 봉은사</p>
                 <div id="story_">
-                    <p id="popupAddress" class="Detail_address"></p>
-                    <p id="popupDate" class="Detail_date"></p>
+                    <p id="popupAddress" class="Detail_address">서울특별시 강남구 봉은사로 531</p>
+                    <p id="popupDate" class="Detail_date">2023년 5월 23일</p>
                 </div>
-                <p id="popupDescription" class="Detail_text"></p>
+                <p id="popupDescription" class="Detail_text">23년 5월 부처님오신날 진행했던 연등축제입니다.</p>
             </div>
-            <!-- 좋아요 및 북마크 버튼 추가 -->
             <div id="del_to_book">
-                <p id="popupLikes" class="Detail_likes"></p>
-                <p id="popupBookmarks" class="Detail_bookmarks"></p>
+                <p id="popupLikes" class="Detail_likes">좋아요 10개</p>
+                <p id="popupBookmarks" class="Detail_bookmarks">북마크 5개</p>
                 <button type="button" class="Story_like" onclick="toggleLike()">
-                    <img src="/images/favorite.png" alt="Heart Icon" class="icon">
+                    <img src="../static/images/favorite.png" alt="Heart Icon" class="icon" width="36px" height="36px">
                 </button>
                 <button type="button" class="Story_book" onclick="toggleBookmark()">
-                    <img src="/images/StoryDetailbtn2.png" alt="Bookmark Icon" class="icon">
+                    <img src="../static/images/StoryDetailbtn2.png" alt="Bookmark Icon" class="icon" width="36px" height="36px">
                 </button>
-                <button type="button" class="Story_del"></button>
             </div>
 
-            <div class="tag" id="popupTagsContainer"></div>
+            <div class="tag" id="popupTagsContainer">
+                <p class="tag1_text"># 축제</p>
+                <p class="tag1_text"># 연등</p>
+            </div>
+
             <div class="profile">
                 <div class="Profile_Image">
                     <button class="profile_1">
-                        <img id="popupProfileImage" class="profile_2" src="" width="42" height="42" alt="Profile Image" style="border: none; cursor: pointer; outline: none; background-color: #FFF;">
+                        <img id="popupProfileImage" class="profile_2" src="../static/images/popular1.png" width="42" height="42" alt="Profile Image" style="border: none; cursor: pointer; outline: none; background-color: #FFF;">
                     </button>
                 </div>
                 <div class="profile_text">
-                    <p id="popupProfileName" class="profile_name"></p>
-                    <p id="popupProfileFollowers" class="profile_follow"></p>
+                    <p id="popupProfileName" class="profile_name">Olivia2</p>
+                    <p id="popupProfileFollowers" class="profile_follow">팔로워 202명</p>
                 </div>
             </div>
-            <button type="button" id="relatedStoriesButton" class="related"></button>
-        </div>
-        <!-- 삭제 버튼 추가 -->
-        <button type="button" id="deleteButton" onclick="deleteStory()">삭제하기</button>
-        <!-- 검색하기 버튼과 검색 결과 개수 추가 -->
-        <div class="search-container">
-            <button type="button" id="searchButton" onclick="searchByTitle()">검색하기</button>
-            <span id="searchResultCount" style="margin-left: 10px;"></span> <!-- 검색 결과 개수 표시 -->
+
+            <!-- "관련 스토리 보러가기" 버튼에 검색 기능 추가 -->
+            <button type="button" id="relatedStoriesButton" class="related" onclick="searchByTitle()">
+                <b>'서울 봉은사'</b> 관련 스토리 1건 보러가기
+            </button>
         </div>
 
+        <!-- "검색하기" 버튼 제거 -->
+        <!-- 검색하기 버튼과 검색 결과 개수 추가 제거 -->
+        <div class="search-container">
+            <!-- <button type="button" id="searchButton" onclick="searchByTitle()">검색하기</button> -->
+            <span id="searchResultCount" style="margin-left: 10px;">총 10개</span>
+        </div>
     </div>
 </div>
+</body>

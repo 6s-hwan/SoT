@@ -310,7 +310,10 @@ input.imagebtn {
   padding: 20px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(285px, 1fr)
+  ); /* Flexible grid with auto-fill */
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
@@ -319,6 +322,9 @@ input.imagebtn {
   flex-shrink: 0;
   border-radius: 8px;
   background: #d9d9d9;
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
+  background-repeat: no-repeat;
   margin-bottom: 8px;
 }
 #storyTitlefull {
@@ -337,13 +343,10 @@ input.imagebtn {
   flex: 1;
 }
 .story {
-  position: relative; /* Relative positioning for title placement */
-  width: 285px;
-  height: 235px;
+  width: 100%; /* Full width within the grid column */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .stories {
   position: relative; /* Relative positioning for title placement */

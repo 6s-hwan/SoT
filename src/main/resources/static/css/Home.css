@@ -1,3 +1,6 @@
+.myButton.selected {
+  color: #000 ; /* 선택된 버튼의 글씨 색상을 검정색으로 강제 변경 */
+}
 .bh {
   text-decoration: none;
   color: #000;

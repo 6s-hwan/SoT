@@ -1,3 +1,24 @@
+function showPopup(popupId) {
+  var popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = "block";
+  } else {
+    console.log("Popup element with ID " + popupId + " not found.");
+  }
+}
+
+
+function closePopup3(popupId) {
+  console.log("Attempting to close popup with ID:", popupId); // 추가된 로그
+  var popup = document.getElementById(popupId);
+  if (popup) {
+    console.log("Popup found:", popup); // 추가된 로그
+    popup.style.display = "none";
+  } else {
+    console.log("Popup element with ID " + popupId + " not found.");
+  }
+}
+//푸터 여는 js
 document.addEventListener("DOMContentLoaded", function () {
   // 초기 팝업 숨기기
   const popups = [

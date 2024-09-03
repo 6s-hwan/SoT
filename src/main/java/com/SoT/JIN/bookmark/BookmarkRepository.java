@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface BookmarkRepository extends JpaRepository<BookmarkEntity, Long> {
     Optional<BookmarkEntity> findByStoryAndUser(Story story, User user);
+    boolean existsByStoryAndUser(Story story, User user);  // 사용자가 이 스토리를 북마크했는지 확인
+
 }

@@ -1,59 +1,45 @@
 package com.SoT.JIN.story;
 
+import com.SoT.JIN.bookmark.BookmarkEntity;
+import com.SoT.JIN.bookmark.BookmarkRepository;
 import com.SoT.JIN.like.LikeEntity;
 import com.SoT.JIN.like.LikeRepository;
 import com.SoT.JIN.user.User;
-import com.SoT.JIN.search.SearchService;
+import com.SoT.JIN.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
 public class StoryService {
+
     private final StoryRepository storyRepository;
     private final LikeRepository likeRepository;
-    private final SearchService searchService;
+    private final UserRepository userRepository;
     private final StoryGroupRepository storyGroupRepository;
+    private final BookmarkRepository bookmarkRepository;
 
     @Autowired
     public StoryService(StoryRepository storyRepository, LikeRepository likeRepository,
-                        SearchService searchService, StoryGroupRepository storyGroupRepository) {
+                        UserRepository userRepository, StoryGroupRepository storyGroupRepository,
+                        BookmarkRepository bookmarkRepository) {
         this.storyRepository = storyRepository;
         this.likeRepository = likeRepository;
-        this.searchService = searchService;
+        this.userRepository = userRepository;
         this.storyGroupRepository = storyGroupRepository;
+        this.bookmarkRepository = bookmarkRepository;
     }
+
     @Transactional
     public Story getStoryAndIncrementViewCount(Long id) {
-        Story story = storyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
+        Story story = storyRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
         story.setViewCount(story.getViewCount() + 1);
         return story;
-        }
-
-    public void toggleLike(Long storyId, User user) {
-        Story story = storyRepository.findById(storyId)
-                .orElseThrow(() -> new IllegalArgumentException("Story not found"));
-
-        Optional<LikeEntity> existingLike = likeRepository.findByStoryAndUser(story, user);
-        if (existingLike.isPresent()) {
-            story.getLikes().remove(existingLike.get());
-            existingLike.get().setStory(null);
-            existingLike.get().setUser(null);
-            likeRepository.delete(existingLike.get());
-            story.setViewCount(story.getViewCount() - 1);
-        } else {
-            LikeEntity newLike = new LikeEntity();
-            newLike.setStory(story);
-            newLike.setUser(user);
-            story.getLikes().add(newLike);
-            likeRepository.save(newLike);
-            story.setViewCount(story.getViewCount() - 1);
-        }
-        storyRepository.save(story);
     }
 
     public List<Story> getBestStories(int limit) {
@@ -63,39 +49,133 @@ public class StoryService {
                 .limit(limit)
                 .collect(Collectors.toList());
     }
+
     public List<Story> findStoriesByKeyword(String keyword) {
         Set<Long> storyIds = storyRepository.findIdsByKeyword(keyword).stream().collect(Collectors.toSet());
         return storyRepository.findAllById(storyIds);
     }
 
     public Map<String, List<Story>> getGroupedStories() {
-        List<Story> stories = getAllStories(); // DB에서 모든 스토리 가져오기
+        List<Story> stories = getAllStories();
 
-        // Location 값이 "test"가 아닌 경우에만 그룹화
         Map<String, List<Story>> groupedStories = stories.stream()
-                .filter(story -> !"test".equalsIgnoreCase(story.getLocation())) // "test" 값을 가진 스토리는 제외
+                .filter(story -> !"test".equalsIgnoreCase(story.getLocation()))
                 .collect(Collectors.groupingBy(Story::getLocation))
                 .entrySet().stream()
-                .filter(entry -> entry.getValue().size() >= 3) // 3개 이상의 스토리만 필터링
+                .filter(entry -> entry.getValue().size() >= 3)
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().subList(0, Math.min(3, entry.getValue().size()))));
-        // 새로운 그룹 이름으로 StoryGroup 엔티티 생성
+
         groupedStories.keySet().forEach(groupName -> {
             if (!storyGroupRepository.existsByGroupName(groupName)) {
-                // 여기서는 그룹 이름만으로 엔티티를 생성합니다.
-                StoryGroup newGroup = new StoryGroup(groupName, null, null); // 영문 이름과 이미지 URL은 null로 설정
+                StoryGroup newGroup = new StoryGroup(groupName, null, null);
                 storyGroupRepository.save(newGroup);
             }
         });
         return groupedStories;
     }
 
-    // 모든 스토리를 가져오는 메서드 (구현 예시)
     private List<Story> getAllStories() {
-        // DB에서 스토리 가져오는 로직이 들어갑니다.
-        return storyRepository.findAll(); // 예시로 storyRepository를 사용
-    }
-    public List<Story> getStoriesByLocation(String location) {
-        return storyRepository.findByLocation(location); // 해당 위치의 스토리만 필터링하여 가져오기
+        return storyRepository.findAll();
     }
 
+    public List<Story> getStoriesByLocation(String location) {
+        return storyRepository.findByLocation(location);
+    }
+
+    public List<Story> getStoriesByUser(User user) {
+        return storyRepository.findByUsername(user.getUsername());
+    }
+
+    @Transactional
+    public Story updateStory(Long storyId, String title, String description, String location) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new IllegalArgumentException("Story not found"));
+
+        story.setTitle(title);
+        story.setDescription(description);
+        story.setLocation(location);
+        story.setUploadTime(LocalDateTime.now());
+
+        return storyRepository.save(story);
+    }
+
+    @Transactional(readOnly = true)
+    public StoryDTO getStoryDetail(Long storyId, User user) {
+        try {
+            Story story = storyRepository.findById(storyId)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid story ID: " + storyId));
+
+            boolean isLiked = user != null && likeRepository.existsByStoryAndUser(story, user);
+            boolean isBookmarked = user != null && bookmarkRepository.existsByStoryAndUser(story, user);
+
+            User storyUser = userRepository.findByEmail(story.getUsername())
+                    .orElseThrow(() -> new IllegalArgumentException("User not found for email: " + story.getUsername()));
+
+            int bookmarksCount = story.getBookmarks().size();
+            int likesCount = story.getLikesCount();
+            int followersCount = storyUser.getFollowers().size();
+
+            return new StoryDTO(
+                    story.getStoryId(),
+                    story.getTitle(),
+                    story.getImage_url(),
+                    story.getDescription(),
+                    story.getLocation(),
+                    story.getDate(),
+                    story.getTags(),
+                    likesCount,
+                    bookmarksCount,
+                    storyUser.getUsername(),
+                    storyUser.getProfileImageUrl(),
+                    followersCount,
+                    isLiked, // 이 부분에서 올바르게 좋아요 상태 전달
+                    isBookmarked // 이 부분에서 올바르게 북마크 상태 전달
+            );
+        } catch (Exception e) {  // 이 블록이 올바르게 try 블록과 연관되도록 수정
+            e.printStackTrace();
+            throw new RuntimeException("Error retrieving story details", e);
+        }
+    }
+
+    public List<Story> searchStoriesByTitle(String title) {
+        return storyRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    public void deleteStoryById(Long storyId) {
+        storyRepository.deleteById(storyId);
+    }
+
+    public boolean toggleLike(Long storyId, User user) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid story Id:" + storyId));
+
+        Optional<LikeEntity> existingLike = likeRepository.findByStoryAndUser(story, user);
+        if (existingLike.isPresent()) {
+            likeRepository.delete(existingLike.get());
+            return false;
+        } else {
+            LikeEntity newLike = new LikeEntity();
+            newLike.setStory(story);
+            newLike.setUser(user);
+            likeRepository.save(newLike);
+            return true;
+        }
+    }
+
+    public boolean toggleBookmark(Long storyId, User user) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid story Id:" + storyId));
+
+        Optional<BookmarkEntity> existingBookmark = bookmarkRepository.findByStoryAndUser(story, user);
+        if (existingBookmark.isPresent()) {
+            bookmarkRepository.delete(existingBookmark.get());
+            return false;
+        } else {
+            BookmarkEntity newBookmark = new BookmarkEntity();
+            newBookmark.setStory(story);
+            newBookmark.setUser(user);
+            bookmarkRepository.save(newBookmark);
+            return true;
+        }
+    }
 }

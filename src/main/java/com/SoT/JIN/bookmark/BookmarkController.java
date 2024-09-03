@@ -1,47 +1,42 @@
 package com.SoT.JIN.bookmark;
 
-import com.SoT.JIN.story.StoryRepository;
+import com.SoT.JIN.story.StoryService;
 import com.SoT.JIN.user.UserRepository;
 import com.SoT.JIN.user.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
 
 import java.security.Principal;
-import java.util.Optional;
 
 @Controller
 public class BookmarkController {
 
+    private static final Logger logger = LoggerFactory.getLogger(BookmarkController.class);
+
     @Autowired
-    private BookmarkService bookmarkService;
+    private StoryService storyService;
 
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private StoryRepository storyRepository;
+    @PostMapping(value = "/story/{storyId}/bookmark")
+    public ResponseEntity<Void> toggleBookmark(@PathVariable Long storyId, Principal principal) {
+        User user = getUserFromPrincipal(principal);
+        logger.debug("Received bookmark request. StoryId: {}, UserId: {}", storyId, user.getUserId());
+        storyService.toggleBookmark(storyId, user);
+        return ResponseEntity.ok().build();
+    }
 
-    @PostMapping("/story/{storyId}/bookmark")
-    public String toggleBookmark(@PathVariable Long storyId, Principal principal) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || !authentication.isAuthenticated()) {
-            throw new RuntimeException("User not authenticated");
-        }
 
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Optional<User> optionalUser = userRepository.findByEmail(userDetails.getUsername());
 
-        User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        bookmarkService.toggleBookmark(storyId, user);
-
-        return "redirect:/story/" + storyId;
+    private User getUserFromPrincipal(Principal principal) {
+        String email = principal.getName();
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }

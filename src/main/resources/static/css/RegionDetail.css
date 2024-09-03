@@ -344,19 +344,18 @@ input.uploadbtn {
     line-height: 26px;
 }
 
-#back{
-    width: 1240px;
-    margin-top: 20px;
-    /* height: 1684px; */ /* 이 코드를 없애면 스토리 사이즈 맞게 조절된다*/
+#back {
+    width: 100%;
+    max-width: 1240px;
     flex-shrink: 0;
     border-radius: 12px;
     background: #f8f8f8;
     padding: 20px;
-    margin-bottom: 150px;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px; /* Increased gap for better spacing */
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); /* Flexible grid with auto-fill */
+    gap: 20px;
+    justify-content: center;
 }
 
 #storyimage {
@@ -395,7 +394,6 @@ input.uploadbtn {
     position: relative; /* Relative positioning for title placement */
     width: 285px;
     height: 235px;
-    padding-left: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

@@ -255,7 +255,7 @@ a {
   gap: 20px;
   justify-content: center;
 }
-#storyimage {
+.storyimage {
   width: 285px;
   height: 200px;
   flex-shrink: 0;
@@ -266,12 +266,12 @@ a {
   background-position: center; /* 중앙에 이미지를 위치시킴 */
   background-repeat: no-repeat;
   cursor: pointer;
+  margin-bottom: 8px;
 }
 #storyTitlefull {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
 }
 #storyTitle {
   color: #1d1d1d;

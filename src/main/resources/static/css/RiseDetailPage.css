@@ -1,331 +1,342 @@
-#Rise_text{
-    display: flex;
-    /* 수직적으로 가운데 정렬 */
-    /* align-items: center; */
-    box-sizing: border-box;
-    /* 요소가 여러 개일때 가운데 정렬 */
-    position: relative;
-    bottom: 90px;
-    left: 20px;
+#Rise_text {
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+  position: relative;
+  bottom: 90px;
+  left: 20px;
 }
 
 #writerpage_select {
-    padding-left: 1075px;
-    padding-top: 60px;
-    padding-bottom: 30px;
+  padding-left: 1075px;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 
 #story_select {
-    display: flex;
-    width: 145px;
-    height: 30px;
-    padding: 4px 4px 4px 8px;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1.6px solid #ececec;
-    background: #fff;
+  display: flex;
+  width: 145px;
+  height: 30px;
+  padding: 4px 4px 4px 8px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1.6px solid #ececec;
+  background: #fff;
 }
 
 .recom_select {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 .select_disabled {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 * {
-    /* All */
-    margin: 0;
-    padding: 0;
-    font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* 급상승 시작 */
 
 #Risefull {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    padding-top: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 130px;
 }
 
 #RiseTitle {
-    display: flex;
-    /* 수직적으로 가운데 정렬 */
-    /* align-items: center; */
-    box-sizing: border-box;
-    /* 요소가 여러 개일때 가운데 정렬 */
-    width:1240px;
-    height: 90px;
-    margin-bottom: 24px;
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+  width: 1240px;
+  height: 90px;
+  margin-bottom: 24px;
 }
 
 #RiseTitle_1 {
-    display: flex;
-    /* 수직적으로 가운데 정렬 */
-    /* align-items: center; */
-    box-sizing: border-box;
-    /* 요소가 여러 개일때 가운데 정렬 */
-    width: 1220px;
-    height: 90px;
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+  width: 1220px;
+  height: 90px;
 }
 
 .risestoryimg {
-    width: 90px;
-    height: 90px;
-    padding-left: 20px;
-    padding-right: 12px;
+  width: 90px;
+  height: 90px;
+  padding-left: 20px;
+  padding-right: 12px;
 }
 
 .RiseTitle1 {
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 46px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 90px;
-    padding-left: 16px;
-    color: #000;
-    letter-spacing: -0.92px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 90px;
+  padding-left: 16px;
+  color: #000;
+  letter-spacing: -0.92px;
 }
 
-#RiseBack{
-    width: 1240px;
-    border-radius: 12px;
-    background: #f8f8f8;
-    padding-top: 20px;
+#RiseBack {
+  width: 1240px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding-top: 20px;
 }
 
-#RiseMainIMG{
-    width: 1200px;
-    height: 352px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    padding-left: 20px;
+#RiseMainIMG {
+  width: 1200px;
+  height: 352px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  padding-left: 20px;
 }
 
-.risemainimg{
-    width: 1200px;
-    height: 352px;
-    flex-shrink: 0;
-    border-radius: 8px;
+.risemainimg {
+  width: 1200px;
+  height: 352px;
+  flex-shrink: 0;
+  border-radius: 8px;
 }
 
-.rise_name{
-    color: #FFF;
-    font-family: "Noto Sans KR";
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.8px;
-    position: relative;
-    padding-left: 20px;
+.rise_name {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  position: relative;
+  padding-left: 20px;
 }
-.rise_1{
-    color: #EFEFEF;
-    font-family: "Noto Sans KR";
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.3px;
-    position: relative;
-    padding-left: 20px;
-    padding-top: 12px;
-}
-
-.rise_2{
-    color: #B9B9B9;
-    font-family: "Noto Sans KR";
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.24px;
-    position: relative;
-    padding-left: 20px;
-    padding-top: 3px;
+.rise_1 {
+  color: #efefef;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  position: relative;
+  padding-left: 20px;
+  padding-top: 12px;
 }
 
-#RiseStorySet{
-    display: flex;
-    /* 수직적으로 가운데 정렬 */
-    /* align-items: center; */
-    box-sizing: border-box;
-    /* 요소가 여러 개일때 가운데 정렬 */
-    padding-top: 40px;
-    padding-left: 24px;
-    padding-bottom: 45px;
-    width: 1234px;
-    height: 30px;
+.rise_2 {
+  color: #b9b9b9;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  position: relative;
+  padding-left: 20px;
+  padding-top: 3px;
 }
 
-.RiseStoryNum{
-    color: #1E1E1E;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 18px;
-    padding-top: 4px;
+#RiseStorySet {
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
+  padding-top: 40px;
+  padding-left: 24px;
+  padding-bottom: 45px;
+  width: 1234px;
+  height: 30px;
 }
 
-#RiseStoryList{
-    margin-left: 915px;
+.RiseStoryNum {
+  color: #1e1e1e;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-top: 4px;
+}
+
+#RiseStoryList {
+  margin-left: 915px;
 }
 
 #story_select {
-    display: flex;
-    width: 145px;
-    height: 30px;
-    padding: 4px 4px 4px 8px;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #ececec;
-    background: #fff;
-    color: #606060;
+  display: flex;
+  width: 145px;
+  height: 30px;
+  padding: 4px 4px 4px 8px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #ececec;
+  background: #fff;
+  color: #606060;
 }
 
 .recom_select {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 .newest_select {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 .inquiry_select {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 .month_select {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 .today_select {
-    color: #606060;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+  color: #606060;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
 }
 
 #back {
-    width: 100%;
-    max-width: 1240px;
-    flex-shrink: 0;
-    border-radius: 12px;
-    background: #f8f8f8;
-    padding: 20px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); /* Flexible grid with auto-fill */
-    gap: 20px;
-    justify-content: center;
+  width: 100%;
+  max-width: 1240px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(285px, 1fr)
+  ); /* Flexible grid with auto-fill */
+  gap: 20px;
+  justify-content: center;
 }
 
-#storyimage {
-    width: 285px;
-    height: 200px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #d9d9d9;
-    margin-bottom: 8px;
-    background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
-    background-position: center;  /* 중앙에 이미지를 위치시킴 */
-    background-repeat: no-repeat;
-    cursor: pointer;
+.storyimage {
+  width: 285px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #d9d9d9;
+  margin-bottom: 8px;
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-bottom: 8px;
 }
 
 #storyTitlefull {
-    display: flex; /* 수직적으로 가운데 정렬 */
-    justify-content: space-between;
-    align-items: center;
+  display: flex; /* 수직적으로 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
 }
 
 #storyTitle {
-    color: #1d1d1d;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 133.333% */
-    padding-left: 2px;
-    flex: 1;
+  color: #1d1d1d;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+  padding-left: 2px;
+  flex: 1;
 }
 .story {
-    width: 100%;  /* Full width within the grid column */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  width: 100%; /* Full width within the grid column */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .stories {
-    position: relative; /* Relative positioning for title placement */
-    width: 285px;
-    height: 235px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  position: relative; /* Relative positioning for title placement */
+  width: 285px;
+  height: 235px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 .story > a {
-    width: 285px;
-    height: 235px;
+  width: 285px;
+  height: 235px;
 }
 .storyimage {
+<<<<<<< HEAD
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Ensures the image covers the container without stretching */
+  border-radius: 8px;
+  background-color: #d9d9d9; /* Default background if image fails to load */
+=======
     width: 100%;
     height: 200px;
     flex-shrink: 0;
@@ -334,6 +345,7 @@ a {
     margin-bottom: 8px;
     object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 추가 */
+>>>>>>> main
 }
 
 .storyimage:hover {
@@ -342,75 +354,86 @@ a {
 }
 
 .right-side {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .seeimage {
-    width: 16px;
-    height: 16px;
-    padding-top: 4px;
-    padding-right: 2px;
+  width: 16px;
+  height: 16px;
+  padding-top: 4px;
+  padding-right: 2px;
 }
 .likeimage {
-    width: 14px;
-    height: 14px;
-    padding-top: 5px;
-    padding-right: 2px;
+  width: 14px;
+  height: 14px;
+  padding-top: 5px;
+  padding-right: 2px;
 }
 .imagetext {
-    color: #666;
-    font-family: "Noto Sans KR";
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.24px;
-    padding-top: 2px;
-    padding-right: 10px;
+  color: #666;
+  font-family: "Noto Sans KR";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  padding-top: 2px;
+  padding-right: 10px;
 }
 
-#morebtn{
-    background: url("../images/morebtn.png");
-    width: 128px;
-    height: 48px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-left: 556px;
-    margin-bottom: 30px;
+#morebtn {
+  background: url("../images/morebtn.png");
+  width: 128px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 556px;
+  margin-bottom: 30px;
 }
 
-.other_back{
-    padding-top: 72px;
-    width: 1240px;
-    height: 265px;
+.other_back {
+  padding-top: 72px;
+  width: 1240px;
+  height: 265px;
 }
 
-.otherrise{
-    color: #050505;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.4px;
-    padding-bottom: 8px;
+.otherrise {
+  color: #050505;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.4px;
+  padding-bottom: 8px;
 }
 
 .otherStory {
-    width: 1240px;
-    height: 224px;
-    flex-shrink: 0;
-    border-radius: 12px;
-    background: #f8f8f8;
-    padding: 20px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px; /* Increased gap for better spacing */
+  width: 1240px;
+  height: 224px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px; /* Increased gap for better spacing */
 }
 
 #otherimage {
+<<<<<<< HEAD
+  width: 183px;
+  height: 184px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #d9d9d9;
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
+  background-repeat: no-repeat;
+  cursor: pointer;
+=======
     width: 183px;
     height: 184px;
     flex-shrink: 0;
@@ -426,107 +449,104 @@ a {
 #otherimage:hover {
     transform: scale(1.05); /* 호버 시 이미지가 약간 확대됨 */
     filter: brightness(1.1); /* 호버 시 이미지가 약간 밝아짐 */
+>>>>>>> main
 }
 
 .other {
-    position: relative; /* Relative positioning for title placement */
-    width: 184px;
-    height: 183px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: relative; /* Relative positioning for title placement */
+  width: 184px;
+  height: 183px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .others {
-    position: relative; /* Relative positioning for title placement */
-    width: 184px;
-    height: 183px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: relative; /* Relative positioning for title placement */
+  width: 184px;
+  height: 183px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .other > a {
-    width: 184px;
-    height: 183px;
+  width: 184px;
+  height: 183px;
 }
 
 .right-side {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-
-
-
-
 
 /* 푸터 시작 */
 
-#Footer{
-    width: 1720px;
-    height: 50px;
-    margin-top: 165px;
-    display: flex;
-    /* 수직적으로 가운데 정렬 */
-    /* align-items: center; */
-    box-sizing: border-box;
-    /* 요소가 여러 개일때 가운데 정렬 */
+#Footer {
+  width: 1720px;
+  height: 50px;
+  margin-top: 165px;
+  display: flex;
+  /* 수직적으로 가운데 정렬 */
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* 요소가 여러 개일때 가운데 정렬 */
 }
 
-.footer_1{
-    width: 90px;
-    height: 16px;
-    color: rgba(0, 0, 0, 0.40);
-    background: #FFF;
-    font-family: Pretendard;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border: none;
-    margin-top: 17px;
-    margin-left: 320px;
-    cursor: pointer;
+.footer_1 {
+  width: 90px;
+  height: 16px;
+  color: rgba(0, 0, 0, 0.4);
+  background: #fff;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  margin-top: 17px;
+  margin-left: 320px;
+  cursor: pointer;
 }
 
-.footer_2{
-    width: 45px;
-    height: 16px;
-    color: rgba(0, 0, 0, 0.40);
-    background: #FFF;
-    font-family: Pretendard;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border: none;
-    margin-top: 17px;
-    margin-left: 29px;
-    cursor: pointer;
+.footer_2 {
+  width: 45px;
+  height: 16px;
+  color: rgba(0, 0, 0, 0.4);
+  background: #fff;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  margin-top: 17px;
+  margin-left: 29px;
+  cursor: pointer;
 }
 
-.email{
-    color: rgba(0, 0, 0, 0.40);
-    font-family: Pretendard;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 17px;
-    margin-left: 540px;
+.email {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 17px;
+  margin-left: 540px;
 }
 
-.SoT_2024{
-    color: rgba(0, 0, 0, 0.40);
-    font-family: Pretendard;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 17px;
-    margin-left: 118px;
+.SoT_2024 {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 17px;
+  margin-left: 118px;
 }
 
 /* 푸터 끝 */

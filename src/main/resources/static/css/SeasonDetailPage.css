@@ -69,7 +69,6 @@ a {
 }
 
 
-
 /* 시즌별 시작 */
 
 #SeasonStoryfull {
@@ -86,7 +85,7 @@ a {
   /* align-items: center; */
   box-sizing: border-box;
   /* 요소가 여러 개일때 가운데 정렬 */
-  width:1220px;
+  width: 1220px;
   height: 90px;
   margin-bottom: 20px;
 }
@@ -134,7 +133,11 @@ a {
 
 #button1spring:hover {
   color: #000;
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
+}
 
+.button1spring.active {
+  color: #000;
   transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 
@@ -153,7 +156,11 @@ a {
 
 #button2summer:hover {
   color: #000;
+  transform: scale(1.05);
+}
 
+.button2summer.active {
+  color: #000;
   transform: scale(1.05);
 }
 
@@ -172,7 +179,11 @@ a {
 
 #button3autumn:hover {
   color: #000;
+  transform: scale(1.05);
+}
 
+.button3autumn.active {
+  color: #000;
   transform: scale(1.05);
 }
 
@@ -191,10 +202,13 @@ a {
 
 #button4winter:hover {
   color: #000;
-
   transform: scale(1.05);
 }
 
+.button4winter.active {
+  color: #000;
+  transform: scale(1.05);
+}
 
 .myButton{
   color: #909090;
@@ -202,7 +216,7 @@ a {
   border: none;
 }
 
-.selected{
+.selected {
   color: #000;
 }
 
@@ -225,8 +239,6 @@ a {
   background: #fff;
 }
 
-
-
 #back {
   width: 100%;
   max-width: 1240px;
@@ -236,7 +248,10 @@ a {
   padding: 20px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); /* Flexible grid with auto-fill */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(285px, 1fr)
+  ); /* Flexible grid with auto-fill */
   gap: 20px;
   justify-content: center;
 }
@@ -247,8 +262,8 @@ a {
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
-  background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
-  background-position: center;  /* 중앙에 이미지를 위치시킴 */
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -266,7 +281,7 @@ a {
   line-height: 24px;
 }
 .story {
-  width: 100%;  /* Full width within the grid column */
+  width: 100%; /* Full width within the grid column */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -290,6 +305,7 @@ a {
   width: 100%;
   height: 200px;
   flex-shrink: 0;
+  object-fit: cover; /* Ensures the image covers the container without stretching */
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
@@ -339,3 +355,210 @@ a {
   margin-left: 556px;
 }
 /* 시즌별 끝 */
+
+
+/* 나머지들 시작 */
+#etc_thing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+#etc_full {
+  /* width: 1240px; */
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 240px;
+  padding-bottom: 43px;
+}
+
+.terms_of_use {
+  font-size: 12px;
+  font-style: normal;
+  width: 42px;
+  height: 14px;
+  border: none;
+  flex-shrink: 0;
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #fff;
+  /* padding-top: 10px; */
+  margin-left: 79px;
+}
+
+#personal_inf {
+  width: 83px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 56px;
+  /* padding-top: 10px; */
+}
+
+.personal_inf {
+  font-style: normal;
+  height: 14px;
+  border: none;
+  flex-shrink: 0;
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #fff;
+}
+
+#contact {
+  width: 36px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 648px;
+  /* padding-top: 10px; */
+}
+
+.contact {
+  font-style: normal;
+  width: 36px;
+  height: 12px;
+  border: none;
+  flex-shrink: 0;
+  color: #8f8f8f;
+  font-family: Pretendard;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #fff;
+}
+
+#c_SoT {
+  width: 60px;
+  height: 15px;
+  flex-shrink: 0;
+  padding-left: 67px;
+  /* padding-top: 10px; */
+}
+
+.c_SoT {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #8f8f8f;
+  font-family: Pretendard;
+}
+
+/* 홈화면 시즌별스토리 css */
+#SeasonStoryfull1 {
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+}
+#seasonback {
+  width: 100%;
+  max-width: 1240px;
+  height: 603px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(387px, 1fr)
+  ); /* Flexible grid with auto-fill */
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.seasonstory {
+  width: 100%; /* Full width within the grid column */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.seasonstories {
+  position: relative; /* Relative positioning for title placement */
+  width: 387px;
+  height: 272px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.seasonstory > a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.seasonstoryimage {
+  width: 100%;
+  height: 272px;
+  object-fit: cover; /* Ensures the image covers the container without stretching */
+  border-radius: 8px;
+  background-color: #d9d9d9; /* Default background if image fails to load */
+}
+
+
+  /* 홈화면 시즌별스토리 css */
+  #SeasonStoryfull1 {
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 120px;
+  }
+  #seasonback {
+    width: 100%;
+    max-width: 1240px;
+    height: 603px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #f8f8f8;
+    padding: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(
+    auto-fill,
+    minmax(387px, 1fr)
+  ); /* Flexible grid with auto-fill */
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .seasonstory {
+    width: 100%; /* Full width within the grid column */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  .seasonstories {
+    position: relative; /* Relative positioning for title placement */
+    width: 387px;
+    height: 272px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .seasonstory > a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .seasonstoryimage {
+    width: 100%;
+    height: 272px;
+    object-fit: cover; /* Ensures the image covers the container without stretching */
+    border-radius: 8px;
+    background-color: #d9d9d9; /* Default background if image fails to load */
+  }
+
+
+

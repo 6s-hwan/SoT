@@ -6,8 +6,10 @@
     <link rel="stylesheet" th:href="@{/css/BestStoryDetailPage.css}" />
     <link rel="stylesheet" th:href="@{/css/Home.css}" />
     <link rel="stylesheet" th:href="@{/css/ThemeDetailPage.css}" />
+    <link rel="stylesheet" th:href="@{/css/SeasonDetailPage.css}" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <link rel="stylesheet" th:href="@{/css/nav.css}" />
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -211,6 +213,13 @@
         <div id="theme_title">
           <img th:src="@{/images/themeimg.png}" class="themeimg" />
           <p class="theme">테마별 여행지</p>
+          <button
+            type="button"
+            id="thememorebtn"
+            th:onclick="|location.href='@{/theme}';|"
+          >
+            더보기 >
+          </button>
         </div>
         <div class="themeback">
           <div id="theme_container">
@@ -389,60 +398,74 @@
     <!--  테마별 여행지 끝 -->
 
     <!-- 시즌별 스토리 시작 -->
-    <div id="season_full">
-      <div id="season">
-        <div id="season_title">
-          <img th:src="@{/images/seasonimg.png}" class="seasonimg" />
-          <p class="season">시즌별 스토리</p>
-          <button type="button" id="spring">봄</button>
-          <button type="button" id="summer">여름</button>
-          <button type="button" id="fall">가을</button>
-          <button type="button" id="winter">겨울</button>
-        </div>
-        <div class="seasonback">
-          <label for="season1">
+    <div id="SeasonStoryfull">
+      <div id="SeasonStory">
+        <div id="SeasonStoryTitle">
+          <!-- 시즌 필터링 버튼들 -->
+          <div id="seasonstorytitle_1">
+            <img
+              th:src="@{/images/seasonimg.png}"
+              class="seasonstoryimg"
+              width="90px"
+              height="90px"
+            />
+            <p class="seasontitle1">시즌별 스토리</p>
             <button
               type="button"
-              id="season1"
-              onclick="location.href='./seasonpage.html';"
-            ></button>
-          </label>
-          <label for="season2">
+              id="button1spring"
+              class="myButton"
+              onclick="changeSeason('spring'); changeTextColor('button1spring')"
+            >
+              봄
+            </button>
             <button
               type="button"
-              id="season2"
-              onclick="location.href='./seasonpage.html';"
-            ></button>
-          </label>
-          <label for="season3">
+              id="button2summer"
+              class="myButton"
+              onclick="changeSeason('summer'); changeTextColor('button2summer')"
+            >
+              여름
+            </button>
             <button
               type="button"
-              id="season3"
-              onclick="location.href='./seasonpage.html';"
-            ></button>
-          </label>
-          <label for="season4">
+              id="button3autumn"
+              class="myButton"
+              onclick="changeSeason('fall'); changeTextColor('button3autumn')"
+            >
+              가을
+            </button>
             <button
               type="button"
-              id="season4"
-              onclick="location.href='./seasonpage.html';"
-            ></button>
-          </label>
-          <label for="season5">
-            <button
-              type="button"
-              id="season5"
-              onclick="location.href='./seasonpage.html';"
-            ></button>
-          </label>
-        </div>
-        <label for="seasonmorebtn">
+              id="button4winter"
+              class="myButton"
+              onclick="changeSeason('winter'); changeTextColor('button4winter')"
+            >
+              겨울
+            </button>
+          </div>
+
           <button
             type="button"
-            id="seasonmorebtn"
-            onclick="location.href='./seasonpage.html';"
-          ></button>
-        </label>
+            id="seasonstorymorebtn"
+            th:onclick="|location.href='@{/season}';|"
+          >
+            더보기 >
+          </button>
+        </div>
+        <!-- 스토리 목록 -->
+        <div id="seasonback">
+          <div class="seasonstories" th:each="story : ${seasonStories}">
+            <div class="seasonstory">
+              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+                <img
+                  th:src="${story.image_url}"
+                  alt="Story Image"
+                  class="seasonstoryimage"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- 시즌별 스토리 끝 -->
@@ -459,6 +482,13 @@
                 다른 사용자가 포스팅한 베스트 스토리들을 구경해보세요
               </p>
             </div>
+            <button
+              type="button"
+              id="beststorymorebtn"
+              th:onclick="|location.href='@{/best}';|"
+            >
+              더보기 >
+            </button>
           </div>
         </div>
         <div id="back">
@@ -493,15 +523,6 @@
             </div>
           </div>
         </div>
-        <div>
-          <label for="bestmorebtn1">
-            <button
-              type="button"
-              id="bestmorebtn1"
-              th:onclick="|location.href='@{/best}';|"
-            ></button>
-          </label>
-        </div>
       </div>
     </div>
     <!-- 베스트 스토리 끝 -->
@@ -520,21 +541,21 @@
             <button id="prevBtn"></button>
             <div class="wrapper">
               <div
-                      id="TopSearchesList"
-                      th:each="search, iterStat : ${topSearches}"
+                id="TopSearchesList"
+                th:each="search, iterStat : ${topSearches}"
               >
                 <div
-                        class="searchItem"
-                        th:attr="id='rise_' + ${iterStat.index + 1}"
+                  class="searchItem"
+                  th:attr="id='rise_' + ${iterStat.index + 1}"
                 >
                   <div id="rise_img">
                     <label th:for="'rise' + ${iterStat.index + 1}">
                       <button
-                              type="button"
-                              th:id="'rise' + ${iterStat.index + 1}"
-                              th:data-keyword="${search.keyword}"
-                              th:style="'background-image:url(' + (${topStories[iterStat.index]?.image_url != null} ? ${topStories[iterStat.index].image_url} : '/images/mypageprofile.png') + ');'"
-                              onclick="goToRisePage(this)"
+                        type="button"
+                        th:id="'rise' + ${iterStat.index + 1}"
+                        th:data-keyword="${search.keyword}"
+                        th:style="${topStories[iterStat.index] != null} ? 'background-image:url(' + ${topStories[iterStat.index].image_url} + ');' : 'background-image:url(/images/default.jpg);'"
+                        onclick="goToRisePage(this)"
                       ></button>
                     </label>
                   </div>
@@ -555,6 +576,13 @@
         <div id="popular_title">
           <img th:src="@{/images/popularimg.png}" class="popularimg" />
           <p class="popular">인기 작가들의 스토리를 구경해보세요!</p>
+          <button
+            type="button"
+            id="popularwritermorebtn"
+            th:onclick="|location.href='@{/popular}';|"
+          >
+            더보기 >
+          </button>
         </div>
         <div id="popularback">
           <div
@@ -595,15 +623,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <label for="popularmorebtn">
-            <button
-              type="button"
-              id="popularmorebtn"
-              th:onclick="|location.href='@{/popular}';|"
-            ></button>
-          </label>
         </div>
       </div>
     </div>

@@ -18,11 +18,8 @@
   border-radius: 14px;
   background: #f8f8f8;
 }
-#nav_left {
-  display: flex;
-  align-items: center;
-}
-#nav_right {
+
+#nav_left, #nav_right {
   display: flex;
   align-items: center;
 }
@@ -55,7 +52,7 @@
 }
 .b {
   text-decoration: none;
-  color: #000;
+  color: #bbb;
   font-family: "Noto Sans KR";
   font-size: 18px;
   font-style: normal;
@@ -63,6 +60,7 @@
   line-height: normal;
   text-align: center;
   cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .c {
   text-decoration: none;
@@ -74,25 +72,59 @@
   line-height: normal;
   padding-left: 24px;
   cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
+.d {
+  text-decoration: none;
+  color: #bbb;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.b:hover, .c:hover, .d:hover {
+  color: #000; /* 호버 시 텍스트 색상을 진하게 변경 */
+  transform: scale(1.05); /* 호버 시 살짝 확대 */
+}
+
+/* 검색창 스타일 */
 #search {
   display: flex;
   width: 270px;
   height: 46px;
   box-sizing: border-box;
-  background: url("../images/search.png") no-repeat;
-  background-position: center;
-  background-size: 30px;
   background: #fff;
   border: none;
   padding: 8px 16px 8px 16px;
   justify-content: space-between;
   align-items: center;
   border-radius: 46px;
-  border-radius: 46px;
-  background: #fff;
   cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+/* 검색창 호버 효과 */
+#search:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 추가 */
+  transform: scale(1.05); /* 호버 시 살짝 확대 */
+}
+
+/* 돋보기 아이콘 기본 스타일 */
+#searchIcon {
+  transition: filter 0.3s ease, transform 0.3s ease; /* 필터와 변형 효과를 위한 트랜지션 추가 */
+}
+
+/* 돋보기 아이콘 호버 효과 */
+#searchIcon:hover {
+  filter: brightness(0.7); /* 호버 시 아이콘 색상을 어둡게 */
+  transform: scale(1.2); /* 호버 시 아이콘 확대 */
+}
+
 input.search {
   -webkit-appearance: none;
   width: 210px;
@@ -140,12 +172,14 @@ input.imagebtn {
   border: none;
   margin-right: 24px;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #join {
   display: none;
   width: 112px;
   height: 46px;
 }
+
 #join + label {
   margin-right: 36px;
   box-sizing: border-box;
@@ -190,6 +224,7 @@ input.imagebtn {
   border-radius: 14px;
   background: #f8f8f8;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
 #dropdownMenu button {
@@ -207,5 +242,34 @@ input.imagebtn {
   line-height: 140%; /* 22.4px */
   border: none;
 }
+.followingbtn, #uploadbtn, .imagebtn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 46px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.followingbtn:hover, #uploadbtn:hover, .imagebtn:hover {
+  transform: scale(1.1); /* 호버 시 살짝 확대 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 추가 */
+}
+/* 프로필 이미지 버튼 스타일 */
+#profileBtn {
+  width: 46px;
+  height: 46px;
+  border-radius: 46px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 프로필 이미지 버튼 호버 효과 */
+#profileBtn:hover {
+  transform: scale(1.1); /* 호버 시 살짝 확대 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 추가 */
+}
 /* 내비게이션바 끝 */

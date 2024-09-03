@@ -1,3 +1,15 @@
+.bh {
+  text-decoration: none;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
 * {
   /* All */
   margin: 0;
@@ -2998,6 +3010,12 @@ button:disabled {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 확대 및 그림자 효과 */
+}
+
+.profile-img-btn:hover {
+  transform: scale(1.1); /* 호버 시 10% 확대 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* 그림자 효과로 입체감 추가 */
 }
 .popular-item {
   width: 183px;

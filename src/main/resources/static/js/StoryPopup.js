@@ -107,6 +107,22 @@ function showStoryPopup(storyId) {
                 tagsContainer.appendChild(tagElement);
             });
 
+            // 검색 결과 개수 가져오기
+            fetch(`/api/search-count?query=${encodeURIComponent(data.title)}`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(resultData => {
+                    document.getElementById("searchResultCount").textContent = `총 ${resultData.resultCount}개`;
+                });
+
             // 프로필 관련 요소에 클릭 이벤트 추가
             const profileLink = `/writer/${data.username}`;
             document.getElementById("popupProfileImage").onclick = () => { window.location.href = profileLink; };
@@ -114,9 +130,63 @@ function showStoryPopup(storyId) {
             document.getElementById("popupProfileFollowers").onclick = () => { window.location.href = profileLink; };
 
             // 팝업을 표시
-            document.getElementById("storyPopup").style.display = "block";
+            showPopup();
         })
         .catch(error => console.error('Error fetching story details:', error));
+}
+
+// 팝업 이미지 크기 조정 함수
+function adjustImageSize() {
+    const container = document.querySelector('.container');
+    const bg_gray9 = document.querySelector('.bg_gray9');
+    const related = document.querySelector('.related');
+    const image = document.getElementById('popupImage');
+
+    const imageWidth = image.naturalWidth;
+    const imageHeight = image.naturalHeight;
+
+    let newWidth, newHeight;
+
+    if (imageWidth < imageHeight) {
+        newWidth = 390;
+        newHeight = (imageHeight / imageWidth) * 390;
+    } else {
+        newHeight = 350;
+        newWidth = (imageWidth / imageHeight) * 350;
+    }
+
+    image.style.width = `${newWidth}px`;
+    image.style.height = `${newHeight}px`;
+
+    container.style.width = `${newWidth}px`;
+    container.style.height = `${newHeight + 295}px`;
+
+    bg_gray9.style.height = `${newHeight + 610}px`;
+
+    related.style.width = `${newWidth}px`;
+}
+
+function showPopup() {
+    document.getElementById("storyPopup").style.display = "block";
+    document.querySelector(".bg_gray9").style.display = "block"; // 배경 표시
+    adjustImageSize(); // 팝업을 열 때 이미지 크기 조정
+}
+function closePopup9() {
+    console.log("closePopup 함수가 호출되었습니다."); // 함수 호출 확인용 로그
+    const popup = document.getElementById("storyPopup");
+    const background = document.querySelector(".bg_gray9");
+
+    if (popup) {
+        popup.style.display = "none"; // 팝업 닫기
+    } else {
+        console.error("팝업 요소를 찾을 수 없습니다.");
+    }
+
+    if (background) {
+        background.style.display = "none"; // 배경 숨기기
+    } else {
+        console.error("배경 요소를 찾을 수 없습니다.");
+    }
 }
 
 // toggleLike 함수 정의
@@ -180,3 +250,10 @@ function toggleBookmark() {
         })
         .catch(error => console.error('Error toggling bookmark:', error));
 }
+
+function searchByTitle() {
+    const query = document.getElementById("popupTitle").textContent;
+    window.location.href = `/search?query=${encodeURIComponent(query)}`;
+}
+
+window.onresize = adjustImageSize;

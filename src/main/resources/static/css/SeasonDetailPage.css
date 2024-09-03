@@ -68,167 +68,6 @@ a {
   text-decoration: none;
 }
 
-/* 네비게이션바 시작 */
-.navbar {
-  display: flex;
-  /* 수직적으로 가운데 정렬 */
-  align-items: center;
-  box-sizing: border-box;
-  /* 요소가 여러 개일때 가운데 정렬 */
-  justify-content: center;
-  /* text-align: center; */
-  /* position: fixed; */
-  /* width: 1920px; */
-  height: 173px;
-  padding-top: 27px;
-  padding-bottom: 40px;
-  /* padding-left: 360px; */
-  /* padding-right: 360px; */
-}
-.nav_logo {
-  display: flex;
-  align-items: center;
-  width: 1200px;
-  height: 106px;
-  flex-shrink: 0;
-  border-radius: 14px;
-  background: #f8f8f8;
-}
-#nav_logo1 {
-  padding-left: 44px;
-  padding-top: 21px;
-  /* padding-bottom: 23px; */
-  padding-right: 68px;
-}
-.nav_menu {
-  display: flex;
-  box-sizing: border-box;
-  /* display: inline-flex; */
-  width: 263px;
-  height: 46px;
-  padding: 10px 28px;
-  /* align-items: flex-start; */
-  border-radius: 33px;
-  background: #fff;
-  list-style: none;
-  margin-right: 30px;
-}
-
-.navigation {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  color: #bbb;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-/* .navigation a {
-    text-decoration: none;
-    color: #bbb;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  } */
-
-.b {
-  text-decoration: none;
-  color: #000;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-}
-.c {
-  text-decoration: none;
-  color: #bbb;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-left: 24px;
-}
-#search {
-  display: flex;
-  width: 242px;
-  height: 46px;
-  border-radius: 23px;
-  background: #fff;
-  margin-right: 13px;
-  border: none;
-}
-input.search {
-  background: url("../images/search.png") no-repeat center;
-  background-size: 30px;
-  width: 212px;
-  height: 46px;
-  border-radius: 23px;
-  background: #fff;
-  border: none;
-}
-#search > img {
-  padding-top: 10px;
-  padding-right: 14px;
-}
-input.imagebtn {
-  background: url("../images/pic.png") no-repeat center;
-  background-size: 30px;
-  width: 46px;
-  height: 46px;
-  border-radius: 23px;
-  background-color: #fff;
-  border: none;
-  margin-right: 9px;
-}
-input.uploadbtn {
-  background: url("../images/upload.png") no-repeat center;
-  background-size: 30px;
-  width: 46px;
-  height: 46px;
-  border-radius: 23px;
-  background-color: #fff;
-  border: none;
-  margin-right: 72px;
-}
-
-/* 임시 로그인 버튼 */
-#join {
-  display: none;
-  width: 109px;
-  height: 46px;
-}
-
-#join + label {
-  box-sizing: border-box;
-  /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
-  display: flex;
-  /* 이 코드가 있어야 나란히 정렬 가능 */
-  /* display: inline-block; */
-  color: #000;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  width: 109px;
-  height: 46px;
-  background: #fff;
-  padding: 10px 29px 10px 28px;
-  /* line-height: 36px; */
-  cursor: pointer;
-  border-radius: 35px;
-  /* 동작 천천히 보여주기 */
-  transition: all 500ms ease-in;
-}
-/* 네비게이션바 끝 */
 
 /* 시즌별 시작 */
 
@@ -279,7 +118,6 @@ input.uploadbtn {
   color: #000;
   letter-spacing: -0.96px;
 }
-
 #button1spring {
   padding-left: 50px;
   border: none;
@@ -290,11 +128,17 @@ input.uploadbtn {
   line-height: normal;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 밑줄, 변형 효과 */
+}
+
+#button1spring:hover {
+  color: #000;
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 
 .button1spring.active {
   color: #000;
-  text-decoration: underline;
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 
 #button2summer {
@@ -307,11 +151,17 @@ input.uploadbtn {
   line-height: normal;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease;
+}
+
+#button2summer:hover {
+  color: #000;
+  transform: scale(1.05);
 }
 
 .button2summer.active {
   color: #000;
-  text-decoration: underline;
+  transform: scale(1.05);
 }
 
 #button3autumn {
@@ -324,11 +174,17 @@ input.uploadbtn {
   line-height: normal;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease;
+}
+
+#button3autumn:hover {
+  color: #000;
+  transform: scale(1.05);
 }
 
 .button3autumn.active {
   color: #000;
-  text-decoration: underline;
+  transform: scale(1.05);
 }
 
 #button4winter {
@@ -341,14 +197,20 @@ input.uploadbtn {
   line-height: normal;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease;
+}
+
+#button4winter:hover {
+  color: #000;
+  transform: scale(1.05);
 }
 
 .button4winter.active {
   color: #000;
-  text-decoration: underline;
+  transform: scale(1.05);
 }
 
-.myButton {
+.myButton{
   color: #909090;
   cursor: pointer;
   border: none;
@@ -442,9 +304,18 @@ input.uploadbtn {
 .storyimage {
   width: 100%;
   height: 200px;
+  flex-shrink: 0;
   object-fit: cover; /* Ensures the image covers the container without stretching */
   border-radius: 8px;
-  background-color: #d9d9d9; /* Default background if image fails to load */
+  background: #d9d9d9;
+  margin-bottom: 8px;
+  object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 추가 */
+}
+
+.storyimage:hover {
+  transform: scale(1.05); /* 호버 시 이미지 확대 */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 효과 추가 */
 }
 .right-side {
   display: flex;
@@ -483,8 +354,8 @@ input.uploadbtn {
   margin-top: 20px;
   margin-left: 556px;
 }
-
 /* 시즌별 끝 */
+
 
 /* 나머지들 시작 */
 #etc_thing {
@@ -634,3 +505,60 @@ input.uploadbtn {
   border-radius: 8px;
   background-color: #d9d9d9; /* Default background if image fails to load */
 }
+
+
+  /* 홈화면 시즌별스토리 css */
+  #SeasonStoryfull1 {
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 120px;
+  }
+  #seasonback {
+    width: 100%;
+    max-width: 1240px;
+    height: 603px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #f8f8f8;
+    padding: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(
+    auto-fill,
+    minmax(387px, 1fr)
+  ); /* Flexible grid with auto-fill */
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .seasonstory {
+    width: 100%; /* Full width within the grid column */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  .seasonstories {
+    position: relative; /* Relative positioning for title placement */
+    width: 387px;
+    height: 272px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .seasonstory > a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .seasonstoryimage {
+    width: 100%;
+    height: 272px;
+    object-fit: cover; /* Ensures the image covers the container without stretching */
+    border-radius: 8px;
+    background-color: #d9d9d9; /* Default background if image fails to load */
+  }
+
+
+

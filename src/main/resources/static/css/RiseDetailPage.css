@@ -328,10 +328,19 @@ a {
 .storyimage {
     width: 100%;
     height: 200px;
-    object-fit: cover;  /* Ensures the image covers the container without stretching */
+    flex-shrink: 0;
     border-radius: 8px;
-    background-color: #d9d9d9; /* Default background if image fails to load */
+    background: #d9d9d9;
+    margin-bottom: 8px;
+    object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 추가 */
 }
+
+.storyimage:hover {
+    transform: scale(1.05); /* 호버 시 이미지 확대 */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 효과 추가 */
+}
+
 .right-side {
     display: flex;
     align-items: center;
@@ -411,6 +420,12 @@ a {
     background-position: center;  /* 중앙에 이미지를 위치시킴 */
     background-repeat: no-repeat;
     cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease; /* 부드러운 변형 및 밝기 조정 효과 */
+}
+
+#otherimage:hover {
+    transform: scale(1.05); /* 호버 시 이미지가 약간 확대됨 */
+    filter: brightness(1.1); /* 호버 시 이미지가 약간 밝아짐 */
 }
 
 .other {

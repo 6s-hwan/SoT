@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../static/css/StoryDetail.css" />
+  <link rel="stylesheet" href="/static/css/storyPopup.css" />
   <link
           rel="stylesheet"
           type="text/css"
@@ -18,14 +18,27 @@
   <title>게시물 상세페이지</title>
 </head>
 <body>
-<div class="bg_gray">
+
+<!-- 팝업창 -->
+
+<button onclick="showPopup()">Show Popup</button>
+
+<div class="bg_gray9" id="bg_gray9">
+  <div id="close">
+    <img
+            src="../static/images/closebtn.png"
+            alt="X"
+            width="28px"
+            height="28px"
+            onclick="closePopup()"
+    />
+  </div>
   <div class="container">
-    <div class="story-details">
-      <div class="story_main">
-        <img src="../static/images/StoryDetail.png" class="Story_Image">
-        <p class="Story_date">23년 5월</p>
-      </div>
-      <div id="story-text">
+    <div class="image-container">
+      <img id="image" src="../static/images/StoryDetail.png" alt="image">
+    </div>
+    <div class="story-etc">
+      <div class="story-text">
         <p class="Detail_name">서울 봉은사</p>
         <div id="story_">
           <p class="Detail_address">서울특별시 강남구 봉은사로 531</p>
@@ -50,7 +63,7 @@
                 class="Story_book"
         ></button>
       </div>
-      <div id="tag">
+      <div class="tag">
         <div class="tag1">
           <p class="tag1_text"># 축제</p>
         </div>
@@ -58,37 +71,67 @@
           <p class="tag2_text"># 연등</p>
         </div>
       </div>
-      <div id="profile">
-        <div class="porfile_image">
-          <img src="../static/images/popular3.png" class="Profile_Image">
+      <div class="profile">
+        <div class="Profile_Image">
+          <button class="profile_1">
+            <img class="profile_2" src="../static/images/popular1.png" width="42" height="42" alt="Button Image" style="border: none; cursor: pointer; outline: none; background-color: #FFF;">
+          </button>
         </div>
         <div class="profile_text">
           <p class="profile_name">Olivia2</p>
           <p class="profile_follow">팔로워 202명</p>
         </div>
       </div>
-      <img src="../static/images/Detailline.png" class="Detail_line">
-      <div id="Related_Story">
-        <div id="Related">
-          <p class="Related_Title">'서울 봉은사' 관련 스토리</p>
-          <button
-                  type="button"
-                  class="Story_more"
-          >더보기</button>
-        </div>
-        <div id="Related_Img">
-          <img src="../static/images/Related1.png" class="Related_Image1">
-          <img src="../static/images/Related2.png" class="Related_Image2">
-          <img src="../static/images/Related3.png" class="Related_Image3">
-          <img src="../static/images/Related4.png" class="Related_Image4">
-        </div>
-        <button
-                type="button"
-                class="MoreRelatedbtn"
-        ></button>
-      </div>
+      <button
+              type="button"
+              class="related"
+      ><b>'서울 봉은사'</b> 관련 스토리 1건 보러가기</button>
     </div>
   </div>
 </div>
-</div>
+
+
+
+<script>
+  function showPopup() {
+    document.getElementById("bg_gray9").style.display = "block";
+  }
+  function closePopup() {
+    document.getElementById("bg_gray9").style.display = "none";
+  }
+
+  function adjustImageSize() {
+    const container = document.querySelector('.container');
+    const bg_gray9 = document.querySelector('.bg_gray9');
+    const related = document.querySelector('.related');
+    const image = document.getElementById('image');
+
+    const imageWidth = image.naturalWidth;
+    const imageHeight = image.naturalHeight;
+
+    let newWidth, newHeight;
+
+    if (imageWidth < imageHeight) {
+      newWidth = 390;
+      newHeight = (imageHeight / imageWidth) * 390;
+    } else {
+      newHeight = 350;
+      newWidth = (imageWidth / imageHeight) * 350;
+    }
+
+    image.style.width = `${newWidth}px`;
+    image.style.height = `${newHeight}px`;
+
+    container.style.width = `${newWidth}px`;
+    container.style.height = `${newHeight + 295}px`;
+
+    bg_gray9.style.height = `${newHeight + 610}px`;
+
+    related.style.width = `${newWidth}px`;
+  }
+
+  window.onload = adjustImageSize;
+  window.onresize = adjustImageSize;
+
+</script>
 </body>

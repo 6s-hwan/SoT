@@ -18,172 +18,6 @@ hr {
 .scrollLock {
   overflow: hidden;
 }
-/* 내비게이션바 시작 */
-.navbar {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  justify-content: center;
-  height: 173px;
-  padding-top: 27px;
-  padding-bottom: 40px;
-}
-.nav_logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 1240px;
-  height: 106px;
-  flex-shrink: 0;
-  border-radius: 14px;
-  background: #f8f8f8;
-}
-#nav_left {
-  display: flex;
-  align-items: center;
-}
-#nav_right {
-  display: flex;
-  align-items: center;
-}
-#nav_logo1 {
-  padding-left: 45px;
-  padding-top: 10px;
-  padding-right: 66px;
-}
-.nav_menu {
-  display: flex;
-  box-sizing: border-box;
-  width: 205px;
-  height: 46px;
-  padding: 10px 28px;
-  border-radius: 33px;
-  background: #fff;
-  list-style: none;
-  margin-right: 74px;
-}
-.navigation {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  color: #bbb;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-.b {
-  text-decoration: none;
-  color: #000;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  cursor: pointer;
-}
-.c {
-  text-decoration: none;
-  color: #bbb;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-left: 24px;
-  cursor: pointer;
-}
-#search {
-  display: flex;
-  width: 264px;
-  height: 46px;
-  box-sizing: border-box;
-  background: url("../images/search.png") no-repeat;
-  background-position: center;
-  background-size: 30px;
-  background: #fff;
-  border: none;
-  padding: 8px 16px 8px 30px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 46px;
-  border-radius: 46px;
-  background: #fff;
-  cursor: pointer;
-}
-input.search {
-  -webkit-appearance: none;
-  width: 188px;
-  height: 30px;
-  color: #3d3d3d;
-  font-family: "Noto Sans CJK KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  border: none;
-}
-#uploadbtn {
-  background: url("../images/upload.png") no-repeat center;
-  background-size: 30px;
-  width: 46px;
-  height: 46px;
-  padding: 8px;
-  border-radius: 46px;
-  background-color: #fff;
-  border: none;
-  margin-right: 20px;
-  cursor: pointer;
-}
-input.imagebtn {
-  background: url("../images/pic.png") no-repeat center;
-  background-size: 24px;
-  width: 46px;
-  height: 46px;
-  padding: 11px;
-  border-radius: 46px;
-  background-color: #fff;
-  border: none;
-  margin-right: 20px;
-  cursor: pointer;
-}
-#join {
-  display: none;
-  width: 109px;
-  height: 46px;
-}
-#join + label {
-  margin-right: 36px;
-  box-sizing: border-box;
-  display: flex;
-  color: #000;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  width: 109px;
-  height: 45px;
-  background: #fff;
-  padding: 10px 29px 10px 29px;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: all 500ms ease-in; /* 동작 천천히 보여주기 */
-}
-#join:checked + label {
-  width: 36px;
-  height: 36px;
-  padding: 0; /* 내부 여백 제거 */
-  font-size: 0; /* 텍스트 숨기기 */
-  border-radius: 49px;
-  border: 2px solid #fff;
-  background: url(<path-to-image>) lightgray 50% / cover no-repeat;
-  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.15);
-}
-/* 내비게이션바 끝 */
 
 /* 마이페이지 시작 */
 #writerpagefull {
@@ -526,12 +360,19 @@ dit.png") no-repeat center;
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
-  width: 285px;
+  width: 100%;
   height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
+  object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 추가 */
+}
+
+#storyimage:hover {
+  transform: scale(1.05); /* 호버 시 이미지 확대 */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 효과 추가 */
 }
 #storyTitlefull {
   display: flex; /* 수직적으로 가운데 정렬 */

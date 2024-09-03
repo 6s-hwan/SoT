@@ -19,6 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
       rel="stylesheet"
     />
+
     <title>SoT</title>
   </head>
   <body>
@@ -40,24 +41,23 @@
           <!-- 메뉴바 -->
           <div class="nav_menu">
             <ul class="navigation">
-              <li><a href="./home" class="b">홈</a></li>
+              <li>
+                <a href="/home" class="bh">홈</a>
+              </li>
               <li><a href="./local" class="c">지역</a></li>
-              <li><a href="" class="c">북마크</a></li>
+              <li><a href="./bookmark" class="d">북마크</a></li>
             </ul>
           </div>
           <!-- 검색바 -->
           <form action="/search" method="get" id="search">
             <input type="text" name="query" class="search" />
-            <img
-              th:src="@{/images/search.png}"
-              alt="돋보기"
-              width="30px"
-              height="30px"
-            />
+            <button type="submit" id="searchBtn" style="background: none; border: none;">
+              <img th:src="@{/images/search.png}" alt="돋보기" id="searchIcon" width="30px" height="30px" />
+            </button>
           </form>
         </div>
         <div id="nav_right">
-          <input type="button" class="followingbtn" style="display: none" />
+          <input type="button" class="followingbtn" style="display: none" onclick="location.href='follows'" />
           <input
             type="button"
             class="imagebtn"

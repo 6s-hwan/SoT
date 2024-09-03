@@ -194,7 +194,9 @@ public class StoryController {
     }
 
     @GetMapping("/home")
-    public String home(Model model, @RequestParam(defaultValue = "12") int limit) {
+    public String home(@RequestParam(value = "season", required = false) String season,
+                       @RequestParam(defaultValue = "12") int limit,
+                       Model model) {
 
         // Rising 엔티티에서 상위 8개의 검색어 가져오기
         List<Rising> topRisings = risingService.getTopRisings(8);
@@ -205,10 +207,23 @@ public class StoryController {
                 .map(rising -> searchService.getStoryWithSmallestId(rising.getKeyword()))
                 .collect(Collectors.toList());
 
-        List<Story> bestStories = storyService.getBestStories(12);
+        // 베스트 스토리 가져오기
+        List<Story> bestStories = storyService.getBestStories(limit);
         model.addAttribute("stories", bestStories);
         model.addAttribute("limit", limit);
 
+        // 시즌별 스토리 필터링
+        List<Story> seasonStories;
+        if (season != null) {
+            seasonStories = storyService.getSeasonStories(season, 6);
+            model.addAttribute("selectedSeason", season);
+        } else {
+            // 시즌이 지정되지 않았을 경우 모든 스토리를 보여주기
+            seasonStories = storyService.getBestStories(6); // 예시로 베스트 스토리 6개를 가져오도록 함
+        }
+        model.addAttribute("seasonStories", seasonStories);
+
+        // 인기 작가 정보 가져오기
         List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
 
         // 모델에 데이터 추가

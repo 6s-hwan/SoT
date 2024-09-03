@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -140,7 +142,40 @@ public class StoryService {
     public List<Story> searchStoriesByTitle(String title) {
         return storyRepository.findByTitleContainingIgnoreCase(title);
     }
+    public List<Story> getSeasonStories(String season, int limit) {
+        List<Story> stories = storyRepository.findAll();
+        List<Story> seasonStories = stories.stream()
+                .filter(story -> {
+                    String dateStr = story.getDate();
+                    if (dateStr == null || dateStr.isEmpty()) {
+                        return false;
+                    }
 
+                    int month;
+                    try {
+                        month = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-M-d")).getMonthValue();
+                    } catch (Exception e) {
+                        return false;
+                    }
+
+                    switch (season) {
+                        case "spring":
+                            return month >= 3 && month <= 5;
+                        case "summer":
+                            return month >= 6 && month <= 8;
+                        case "fall":
+                            return month >= 9 && month <= 11;
+                        case "winter":
+                            return month == 12 || month <= 2;
+                        default:
+                            return false;
+                    }
+                })
+                .limit(limit)
+                .collect(Collectors.toList());
+
+        return seasonStories;
+    }
     public void deleteStoryById(Long storyId) {
         storyRepository.deleteById(storyId);
     }

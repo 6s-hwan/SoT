@@ -2973,6 +2973,7 @@ button:disabled {
   justify-content: center;
   box-sizing: border-box;
   padding-top: 120px;
+  padding-bottom : 100px;
 }
 #popular_title {
   box-sizing: border-box;

@@ -1,3 +1,24 @@
+function showPopupf(popupId) {
+  var popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = "block";
+  } else {
+    console.log("Popup element with ID " + popupId + " not found.");
+  }
+}
+
+
+function closePopup3(popupId) {
+  console.log("Attempting to close popup with ID:", popupId); // 추가된 로그
+  var popup = document.getElementById(popupId);
+  if (popup) {
+    console.log("Popup found:", popup); // 추가된 로그
+    popup.style.display = "none";
+  } else {
+    console.log("Popup element with ID " + popupId + " not found.");
+  }
+}
+//푸터 여는 js
 document.addEventListener("DOMContentLoaded", function () {
   // 초기 팝업 숨기기
   const popups = [
@@ -84,13 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 슬라이드 초기화
-  const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
 
-  if (slides.length > 0) {
-    showSlide(currentSlide);
-  }
 
   // 닫기 버튼 이벤트 리스너 등록 (X 버튼)
   const closeButton = document.querySelector("#close");
@@ -137,40 +152,14 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     }).then((response) => {
       if (response.ok) {
-        location.href = "/my-page";
+        location.href = "/home";
       } else {
         alert("로그아웃 완료!");
-        location.href = "/test";
+        location.href = "/home";
       }
     });
   }
 
-  // 슬라이드 기능
-  function showSlide(n) {
-    if (slides.length === 0 || !slides[n]) {
-      return;
-    }
-    slides.forEach((slide) => {
-      slide.style.display = "none";
-    });
-    slides[n].style.display = "block";
-  }
-
-  function nextSlide() {
-    currentSlide++;
-    if (currentSlide >= slides.length) {
-      currentSlide = 0;
-    }
-    showSlide(currentSlide);
-  }
-
-  function prevSlide() {
-    currentSlide--;
-    if (currentSlide < 0) {
-      currentSlide = slides.length - 1;
-    }
-    showSlide(currentSlide);
-  }
 
   // 로그인 상태 확인 함수
   function checkLoginStatus() {
@@ -360,27 +349,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then((response) => {
       if (response.ok) {
         // 로그아웃 성공 시 동작
-        location.href = "/my-page"; // 로그아웃 성공 후 이동할 페이지
+        location.href = "/home"; // 로그아웃 성공 후 이동할 페이지
       } else {
         alert("로그아웃 완료!");
-        location.href = "/test";
+        location.href = "/home";
       }
     });
   });
-});
-// checkbox 상태 변경 시 스타일 업데이트
-checkbox.addEventListener("change", function () {
-  if (checkbox.checked) {
-    loginLabel.style.width = "36px";
-    loginLabel.style.height = "36px";
-    loginLabel.style.padding = "0";
-    loginLabel.style.fontSize = "0";
-  } else {
-    loginLabel.style.width = "109px";
-    loginLabel.style.height = "45px";
-    loginLabel.style.padding = "10px 29px";
-    loginLabel.style.fontSize = "18px";
-  }
 });
 
 // 로그인 창 입력값 확인 후 로그인 버튼 활성화

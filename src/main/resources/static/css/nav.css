@@ -27,6 +27,12 @@
   padding-left: 64px;
   padding-top: 10px;
   padding-right: 57px;
+  transition: transform 0.5s ease, filter 0.5s ease; /* 부드러운 전환 효과 */
+}
+
+#nav_logo1:hover {
+  transform: scale(1.2) rotate(360deg) ; /* 호버 시 로고 크기 증가, 회전, 위로 이동 */
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); /* 무난한 검정빛 그림자 */
 }
 .nav_menu {
   display: flex;

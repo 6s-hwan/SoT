@@ -2645,9 +2645,11 @@ input:focus {
   border: none;
   transform: translate(-50%, -50%);
   margin-left: 56px;
-  z-index: 100; /* 버튼이 다른 요소 위에 오도록 설정 */
-  background-color: transparent; /* 배경색을 투명으로 설정 */
+  z-index: 100;
+  background-color: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 호버 전환 효과 추가 */
 }
+
 .slide-btn2 {
   position: absolute;
   top: 50%;
@@ -2661,7 +2663,15 @@ input:focus {
   transform: translate(-50%, -50%);
   margin-right: 8px;
   z-index: 100;
-  background-color: transparent; /* 배경색을 투명으로 설정 */
+  background-color: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 호버 전환 효과 추가 */
+}
+
+/* 호버 시 효과 */
+.slide-btn1:hover,
+.slide-btn2:hover {
+  transform: translate(-50%, -50%) scale(1.1); /* 크기를 1.1배 키움 */
+  opacity: 0.8; /* 투명도를 80%로 줄임 */
 }
 .text-container {
   position: absolute;
@@ -2772,6 +2782,12 @@ input:focus {
   font-weight: 400;
   line-height: 30px; /* 150% */
   padding-top: 39px;
+  transition: color 0.3s ease, font-size 0.3s ease; /* 호버 시 전환 효과 */
+}
+
+.text32design:hover {
+  color: #333333; /* 호버 시 글자색을 좀 더 진하게 변경 */
+  font-size: 21px; /* 호버 시 글자 크기를 살짝 키움 */
 }
 .storyimg {
   width: 221px;
@@ -2794,6 +2810,12 @@ input:focus {
   border: none;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
+}
+
+#thememorebtn:hover {
+  color: #000;
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 /* 테마별 여행지 끝 */
 
@@ -2812,6 +2834,12 @@ input:focus {
   border: none;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
+}
+
+#seasonstorymorebtn:hover {
+  color: #000;
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 /* 시즌별 스토리 끝 */
 
@@ -2829,9 +2857,14 @@ input:focus {
   border: none;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
+}
+
+#beststorymorebtn:hover {
+  color: #000;
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 /* 베스트 스토리 끝 */
-
 /* 급상승 여행지 시작 */
 #rise_full {
   display: flex;
@@ -2915,6 +2948,12 @@ input:focus {
   margin-left: 20px;
   background-size: contain; /* 이미지가 요소 크기에 맞게 조정됨 */
   background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 부드러운 변형과 투명도 효과 */
+}
+
+#prevBtn:hover {
+  transform: translate(25%, -50%) scale(1.1); /* 호버 시 버튼 크기를 1.1배로 확대 */
+  opacity: 0.8; /* 투명도를 80%로 낮춤 */
 }
 
 #nextBtn {
@@ -2932,12 +2971,19 @@ input:focus {
   transform: translate(-25%, -50%);
   z-index: 1;
   background-color: transparent; /* 배경색을 투명으로 설정 */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 부드러운 변형과 투명도 효과 */
+}
+
+#nextBtn:hover {
+  transform: translate(-25%, -50%) scale(1.1); /* 호버 시 버튼 크기를 1.1배로 확대 */
+  opacity: 0.8; /* 투명도를 80%로 낮춤 */
 }
 
 button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
 #rise1,
 #rise2,
 #rise3,
@@ -2952,7 +2998,22 @@ button:disabled {
   border: none;
   cursor: pointer;
   border-radius: 8px;
+  transition: box-shadow 0.3s ease, filter 0.3s ease; /* 부드러운 그림자와 밝기 변화 */
 }
+
+#rise1:hover,
+#rise2:hover,
+#rise3:hover,
+#rise4:hover,
+#rise5:hover,
+#rise6:hover,
+#rise7:hover,
+#rise8:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* 호버 시 더 강한 그림자 추가 */
+  filter: brightness(1.2); /* 호버 시 밝기를 20% 증가 */
+}
+
+
 .rise_text {
   width: 285px;
   color: #000;
@@ -3118,6 +3179,12 @@ button:disabled {
   border: none;
   background-color: #fff;
   cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
+}
+
+#popularwritermorebtn:hover {
+  color: #000; /* 호버 시 글자 색을 더 진하게 */
+  transform: scale(1.05); /* 버튼을 살짝 확대 */
 }
 /* 인기 작가 스토리 끝 */
 

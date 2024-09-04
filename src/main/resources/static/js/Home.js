@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     togglePopup("bg_gray", "bg_gray6");
   }
 
-  // 로그아웃 처리 함수
+// 로그아웃 처리 함수
   function logout() {
     fetch("/logout", {
       method: "POST",
@@ -150,14 +150,21 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-    }).then((response) => {
-      if (response.ok) {
-        location.href = "/home";
-      } else {
-        alert("로그아웃 완료!");
-        location.href = "/home";
-      }
-    });
+    })
+        .then((response) => {
+          if (response.ok) {
+            // 로그아웃 성공 시
+            alert("로그아웃이 완료되었습니다!"); // 로그아웃 성공 메시지
+            location.href = "/home"; // 홈 페이지로 리디렉션
+          } else {
+            // 로그아웃 실패 시
+            alert("로그아웃에 실패했습니다. 다시 시도해 주세요.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("로그아웃 중 오류가 발생했습니다. 다시 시도해 주세요.");
+        });
   }
 
 

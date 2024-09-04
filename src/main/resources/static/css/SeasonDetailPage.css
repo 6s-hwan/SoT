@@ -496,6 +496,12 @@ a {
   object-fit: cover; /* Ensures the image covers the container without stretching */
   border-radius: 8px;
   background-color: #d9d9d9; /* Default background if image fails to load */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* 전환 시간과 효과를 살짝 더 늘림 */
+}
+
+.seasonstoryimage:hover {
+  transform: scale(1.1) rotate(1deg); /* 호버 시 이미지 확대 및 살짝 회전 */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* 호버 시 더 강한 그림자 효과 추가 */
 }
 
 /* 홈화면 시즌별스토리 css */

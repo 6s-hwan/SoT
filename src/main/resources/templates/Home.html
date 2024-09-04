@@ -156,7 +156,6 @@
               height="480px"
       />
       <div class="button-container">
-        <button class="slide-btn1" onclick="prevSlide()"></button>
         <div class="text-container">
           <div id="slide_text1">북촌 한옥마을</div>
           <div id="slide_text2">
@@ -211,7 +210,6 @@
           </div>
           <div id="slide_text3"><a href="#">자세히 보기</a></div>
         </div>
-        <button class="slide-btn2" onclick="nextSlide()"></button>
       </div>
       <div class="index-container">
         <span class="current-index">3/3</span>
@@ -228,7 +226,7 @@
       여러 사람들에게 <span>여러분만의 스토리</span>를 소개해보세요!
     </div>
     <div id="text32">
-      <a href="" class="text32design">
+      <a href="#" class="text32design" onclick="handleUploadClick()">
         내 스토리 등록하기
         <img
                 th:src="@{/images/Vector%2010.png}"
@@ -237,6 +235,36 @@
                 height="14px"
         />
       </a>
+
+      <input type="button" id="uploadbtn" style="display: none;" />
+
+      <script>
+        // 로그인 상태를 확인하는 함수
+        function checkLoginStatus() {
+          return fetch("/api/user/profile")
+                  .then(response => response.json())
+                  .then(data => data.isLoggedIn) // 로그인 여부 반환
+                  .catch(error => {
+                    console.error("Error:", error);
+                    return false;
+                  });
+        }
+
+        // 클릭 이벤트 핸들러
+        function handleUploadClick() {
+          // 로그인 상태를 확인하고, 로그인된 경우에만 업로드 버튼 클릭
+          checkLoginStatus().then(isAuthenticated => {
+            if (isAuthenticated) {
+              // 로그인된 경우 업로드 버튼 클릭
+              document.getElementById('uploadbtn').click();
+            } else {
+              // 로그인되지 않은 경우 경고 메시지 표시
+              alert("로그인 후 스토리를 등록할 수 있습니다.");
+            }
+          });
+        }
+      </script>
+      <input type="button" id="uploadbtn" style="display: none;" />
     </div>
     <img
             th:src="@{/images/storyupload.png}"
@@ -644,8 +672,8 @@
 
 <!-- 푸터 -->
 <div id="Footer">
-  <button class="footer_1" onclick="showPopup('bg_gray33')">개인정보처리방침</button>
-  <button class="footer_2" onclick="showPopup('bg_gray44')">이용약관</button>
+  <button class="footer_1" onclick="showPopupf('bg_gray33')">개인정보처리방침</button>
+  <button class="footer_2" onclick="showPopupf('bg_gray44')">이용약관</button>
   <p class="email">Contact. Story.of.Travel.official@gmail.com</p>
   <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
 </div>

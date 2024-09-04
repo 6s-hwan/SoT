@@ -30,10 +30,10 @@ public class SecurityConfig {
             authorize.requestMatchers("/**").permitAll();
         });
         http.formLogin((formLogin) -> {
-            formLogin.loginPage("/login").defaultSuccessUrl("/test").failureUrl("/error");
+            formLogin.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/error");
         });
         http.logout((logout) -> {
-            logout.logoutUrl("/logout").logoutSuccessUrl("/my-page").invalidateHttpSession(true).deleteCookies("JSESSIONID");
+            logout.logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true).deleteCookies("JSESSIONID");
         });
         return http.build();
     }

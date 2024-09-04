@@ -150,42 +150,36 @@
       </div>
     </nav>
 
-    <!-- 팝업창들 -->
-    <div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
-    <div th:replace="~{fragments/login_popup :: loginPopup}"></div>
-    <div th:replace="~{fragments/join_popup :: joinPopup}"></div>
-    <div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
-    <div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
-    <div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
-    <div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
-    <div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
 
-    <!-- 슬라이드 광고 시작 -->
-    <div class="slide-container">
-      <div class="slide_content">
-        <div class="slide">
-          <img
-            th:src="@{/images/slide1.png}"
-            alt="Slide 1"
-            width="1200px"
-            height="480px"
-          />
-          <div class="button-container">
-            <button class="slide-btn1" onclick="prevSlide()"></button>
-            <div class="text-container">
-              <div id="slide_text1">북촌 한옥마을</div>
-              <div id="slide_text2">
-                북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운
-                곳입니다.<br />
-                작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과
-                문화를 그대로 간직하고 있습니다.
-              </div>
-              <div id="slide_text3"><a href="#">자세히 보기</a></div>
-            </div>
-            <button class="slide-btn2" onclick="nextSlide()"></button>
-          </div>
-          <div class="index-container">
-            <span class="current-index">1/3</span>
+<!-- 팝업창들 -->
+<div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
+<div th:replace="~{fragments/login_popup :: loginPopup}"></div>
+<div th:replace="~{fragments/join_popup :: joinPopup}"></div>
+<div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
+<div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
+<div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
+<div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
+<div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
+<div th:replace="~{fragments/privacy_footer_popup :: privacy_footer}"></div>
+<div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
+
+<!-- 슬라이드 광고 시작 -->
+<div class="slide-container">
+  <div class="slide_content">
+    <div class="slide">
+      <img
+              th:src="@{/images/slide1.png}"
+              alt="Slide 1"
+              width="1200px"
+              height="480px"
+      />
+      <div class="button-container">
+        <div class="text-container">
+          <div id="slide_text1">북촌 한옥마을</div>
+          <div id="slide_text2">
+            북촌 한옥마을은 한국의 전통과 현대가 공존하는 아름다운 곳입니다.<br />
+            작은 골목과 돌담길로 이루어진 이 마을은 조선 시대의 전통 가옥과 문화를 그대로 간직하고 있습니다.
+
           </div>
         </div>
         <div class="slide">
@@ -233,32 +227,26 @@
               <div id="slide_text3"><a href="#">자세히 보기</a></div>
             </div>
             <button class="slide-btn2" onclick="nextSlide()"></button>
-          </div>
-          <div class="index-container">
-            <span class="current-index">3/3</span>
-          </div>
-        </div>
+          
+      </div>
+      <div class="index-container">
+        <span class="current-index">3/3</span>
+
       </div>
     </div>
     <!-- 슬라이드 광고 끝 -->
 
-    <!-- 내스토리 등록하기 시작 -->
-    <div id="myStoryUpload">
-      <div id="mystory">
-        <div id="text31">
-          여러 사람들에게 <span>여러분만의 스토리</span>를 소개해보세요!
-        </div>
-        <div id="text32">
-          <a href="" class="text32design">
-            내 스토리 등록하기
-            <img
-              th:src="@{/images/Vector%2010.png}"
-              alt="화살표"
-              width="7px"
-              height="14px"
-            />
-          </a>
-        </div>
+
+<!-- 내스토리 등록하기 시작 -->
+<div id="myStoryUpload">
+  <div id="mystory">
+    <div id="text31">
+      여러 사람들에게 <span>여러분만의 스토리</span>를 소개해보세요!
+    </div>
+    <div id="text32">
+      <a href="#" class="text32design" onclick="handleUploadClick()">
+        내 스토리 등록하기
+
         <img
           th:src="@{/images/storyupload.png}"
           alt="내 스토리 등록하기 그림"
@@ -266,7 +254,39 @@
           width="221px"
           height="100px"
         />
-      </div>
+
+      </a>
+
+      <input type="button" id="uploadbtn" style="display: none;" />
+
+      <script>
+        // 로그인 상태를 확인하는 함수
+        function checkLoginStatus() {
+          return fetch("/api/user/profile")
+                  .then(response => response.json())
+                  .then(data => data.isLoggedIn) // 로그인 여부 반환
+                  .catch(error => {
+                    console.error("Error:", error);
+                    return false;
+                  });
+        }
+
+        // 클릭 이벤트 핸들러
+        function handleUploadClick() {
+          // 로그인 상태를 확인하고, 로그인된 경우에만 업로드 버튼 클릭
+          checkLoginStatus().then(isAuthenticated => {
+            if (isAuthenticated) {
+              // 로그인된 경우 업로드 버튼 클릭
+              document.getElementById('uploadbtn').click();
+            } else {
+              // 로그인되지 않은 경우 경고 메시지 표시
+              alert("로그인 후 스토리를 등록할 수 있습니다.");
+            }
+          });
+        }
+      </script>
+      <input type="button" id="uploadbtn" style="display: none;" />
+
     </div>
     <!-- 내 스토리 등록하기 끝 -->
 
@@ -730,6 +750,20 @@
         </div>
       </div>
     </div>
+
+  </div>
+</div>
+<!-- 인기 작가 스토리 끝 -->
+
+<!-- 푸터 -->
+<div id="Footer">
+  <button class="footer_1" onclick="showPopupf('bg_gray33')">개인정보처리방침</button>
+  <button class="footer_2" onclick="showPopupf('bg_gray44')">이용약관</button>
+  <p class="email">Contact. Story.of.Travel.official@gmail.com</p>
+  <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
+</div>
+<!-- 푸터 끝 -->
+
 
     <script th:src="@{/js/Home.js}"></script>
     <script th:src="@{/js/ThemeDetailPage.js}"></script>

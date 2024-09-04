@@ -34,7 +34,7 @@ hr {
 /* 업로드 팝업창 시작 */
 #bg_gray1 {
   /*업로드 창이 떴을 때 뒷배경 회색처리 */
-  position: absolute;
+  position: fixed;
   display: none; /* 버튼이 안눌러지면 display:none */
   top: 0;
   left: 0;
@@ -58,7 +58,7 @@ hr {
   display: none;
 }
 #bg_gray1 > #Upload_pop_up {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -2645,7 +2645,7 @@ input:focus {
   border: none;
   transform: translate(-50%, -50%);
   margin-left: 56px;
-  border-radius: 50px;
+  z-index: 100; /* 버튼이 다른 요소 위에 오도록 설정 */
   background-color: transparent; /* 배경색을 투명으로 설정 */
 }
 .slide-btn2 {
@@ -2660,7 +2660,7 @@ input:focus {
   border: none;
   transform: translate(-50%, -50%);
   margin-right: 8px;
-  border-radius: 50px;
+  z-index: 100;
   background-color: transparent; /* 배경색을 투명으로 설정 */
 }
 .text-container {

@@ -116,7 +116,7 @@ public class VerificationController {
         // 인증 정보 삭제
         verificationRepository.delete(verification);
 
-        return ResponseEntity.ok("사용자의 이메일: " + user.getEmail());
+        return ResponseEntity.ok(user.getEmail());
     }
     private String generateVerificationCode() {
         // 6자리 숫자로 인증번호 생성

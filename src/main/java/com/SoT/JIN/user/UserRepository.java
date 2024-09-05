@@ -17,4 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u JOIN u.followers f WHERE f.userId = :userId")
     List<User> findFollowingByUserId(@Param("userId") Long userId);
+
+    // 전화번호가 존재하는지 확인하는 메서드
+    boolean existsByPhoneNumber(String phoneNumber);
 }

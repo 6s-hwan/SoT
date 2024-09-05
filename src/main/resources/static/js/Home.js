@@ -420,7 +420,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var PrivacyOpenLink = document.querySelector("#container1 a");
   var PrivacyCloseLink = document.querySelector("#Privacybackarrow");
   var PrivacyAgreeCloseLink = document.querySelector("#PrivacyAgree_btn");
-  var JoinMembershipBtn = document.querySelector("#join_btn"); //회원가입버튼
   var JoinFinishBtn = document.querySelector("#joinfinishbtn");
   var GoToLoginBtn = document.querySelector("#gotologinbtn"); //회원가입완료
   var FindEmailLink = document.querySelector("#findemail");

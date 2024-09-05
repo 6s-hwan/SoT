@@ -37,22 +37,34 @@ public class VerificationController {
     @PostMapping("/sendVerification")
     public ResponseEntity<String> sendVerification(@RequestBody VerificationRequest request) {
         String phoneNumber = request.getPhoneNumber();
+
+        // 전화번호를 +82 형식으로 변환 (예: 010 -> +8210)
+        if (phoneNumber.startsWith("0")) {
+            phoneNumber = "+82" + phoneNumber.substring(1);
+        }
+
+        // 이미 등록된 전화번호인지 확인 (User 테이블에서 확인)
+        if (userRepository.existsByPhoneNumber(phoneNumber)) {
+            return ResponseEntity.badRequest().body("이미 가입된 전화번호입니다.");
+        }
+
         String verificationCode = generateVerificationCode(); // 인증번호 생성
 
         try {
+            // Twilio SMS 전송
             Twilio.init(twilioAccountSid, twilioAuthToken);
             Message message = Message.creator(
                     new PhoneNumber(phoneNumber),
                     new PhoneNumber(twilioPhoneNumber),
-                    "Your verification code is: " + verificationCode
+                    "[Story of Travel(SoT)] 인증번호[" + verificationCode + "]입니다."
             ).create();
 
             System.out.println("SMS sent: " + message.getSid());
 
-            // 사용자가 있는지 확인하고, 없으면 새로 생성하여 인증번호 저장
-            User user = userRepository.findByPhoneNumber(phoneNumber).orElseGet(User::new);
+            // User 테이블에 인증번호 저장 (기존 유저가 없으면 새로 생성)
+            User user = userRepository.findByPhoneNumber(phoneNumber).orElse(new User());
             user.setPhoneNumber(phoneNumber);
-            user.setVerificationCode(verificationCode);
+            user.setVerificationCode(verificationCode);  // 인증번호 저장
             userRepository.save(user);
 
             return ResponseEntity.ok("인증번호가 전송되었습니다.");
@@ -73,7 +85,7 @@ public class VerificationController {
             Message message = Message.creator(
                     new PhoneNumber(phoneNumber),
                     new PhoneNumber(twilioPhoneNumber),
-                    "Your verification code is: " + verificationCode
+                    "[Story of Travel(SoT)] 인증번호["+ verificationCode+"]입니다."
             ).create();
 
             System.out.println("SMS sent: " + message.getSid());

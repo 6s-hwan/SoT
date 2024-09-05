@@ -41,7 +41,7 @@
     /* 요소가 여러 개일때 가운데 정렬 */
 }
 
-.footer_1 {
+.footer_1{
     width: 110px;
     height: 16px;
     color: rgba(0, 0, 0, 0.40);
@@ -53,17 +53,17 @@
     line-height: normal;
     border: none;
     margin-top: 17px;
-    margin-left: 320px;
+    margin-left: 380px;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상 및 변형 전환 */
 }
+
 
 .footer_1:hover {
     color: rgba(0, 0, 0, 0.70); /* 호버 시 텍스트 색상을 더 진하게 */
     transform: scale(1.05); /* 살짝 확대 */
 }
 
-.footer_2 {
+.footer_2{
     width: 60px;
     height: 16px;
     color: rgba(0, 0, 0, 0.40);
@@ -77,14 +77,13 @@
     margin-top: 17px;
     margin-left: 29px;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상 및 변형 전환 */
 }
+
 
 .footer_2:hover {
     color: rgba(0, 0, 0, 0.70); /* 호버 시 텍스트 색상을 더 진하게 */
     transform: scale(1.05); /* 살짝 확대 */
 }
-
 .email{
     color: rgba(0, 0, 0, 0.40);
     font-family: Pretendard;
@@ -93,7 +92,7 @@
     font-weight: 400;
     line-height: normal;
     margin-top: 17px;
-    margin-left: 540px;
+    margin-left: 580px;
 }
 
 .SoT_2024{

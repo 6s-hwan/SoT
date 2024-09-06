@@ -226,6 +226,7 @@ input.uploadbtn {
   padding-left: 15px;
   margin-top: 35px;
   width: 1240px;
+  gap: 20px;
   flex-shrink: 0;
   box-sizing: border-box;
   display: grid;
@@ -293,12 +294,12 @@ input.uploadbtn {
   /* align-items: center; */
   box-sizing: border-box;
   /* 요소가 여러 개일때 가운데 정렬 */
-  width: 150px;
+  width: 130px;
   height: 30px;
   z-index: 10px;
   position: relative;
   bottom: 200px;
-  margin-left: 295px;
+  margin-left: 270px;
 }
 
 .follower-count{
@@ -456,13 +457,12 @@ input.uploadbtn {
 
 .morebtn{
   background: url("../images/followmore.png");
-  width: 29px;
-  height: 29px;
+  width: 70px;
+  height: 168px;
   border: none;
   cursor: pointer;
   position: absolute;
-  margin-left: 90px;
-  margin-top: 75px;
+  margin-left: 500px;
 }
 
 #extraContent {
@@ -473,6 +473,20 @@ input.uploadbtn {
   display: block;
 }
 
+.extra-content{
+  width: 578px;
+  height: 310px;
+  position: relative;
+  top: 200px;
+  right: 415px;
+  display: none;
+}
+
+.recent_text{
+  width: 70px;
+  margin-bottom: 6px;
+}
+
 .recent{
   color: #000;
   text-align: center;
@@ -481,9 +495,18 @@ input.uploadbtn {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  position: relative;
-  top: 190px;
-  right: 475px;
+}
+
+.recent_story{
+  width: 578px;
+  height: 284px;
+}
+
+.story-list{
+  gap: 12px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .story-img{
@@ -491,9 +514,10 @@ input.uploadbtn {
   height: 136px;
   flex-shrink: 0;
   border-radius: 15px;
-  position: relative;
-  top: 200px;
-  right: 444px;
+  background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center;  /* 중앙에 이미지를 위치시킴 */
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 /* 팔로잉 목록 끝 */

@@ -88,7 +88,7 @@
             <p class="username" th:text="${follow.username}">Username</p>
           </div>
           <div class="follow1_1">
-            <p class="follower-count" th:text="'팔로워 수: ' + ${follow.followerCount}">3.2k</p>
+            <p class="follower-count" th:text="${follow.followerCount}">3.2k</p>
             <img
                     th:src="@{/images/line.png}"
                     class="followline"
@@ -96,18 +96,12 @@
                     height="10px"
             >
             <p class="following-status">팔로우중</p>
-            <form th:action="@{'/writer/' + ${follow.username} + '/unfollow'}" method="post" id="unfollowForm">
-              <button type="submit" style="display: none;"></button>
-              <img
-                      th:src="@{/images/follow_x.png}"
-                      class="follow_x"
-                      width="16px"
-                      height="16px"
-                      alt="팔로우 취소"
-                      onclick="document.getElementById('unfollowForm').submit();"
-                      style="cursor: pointer;"
-              />
-            </form>
+            <img
+                    th:src="@{/images/follow_x.png}"
+                    class="follow_x"
+                    width="16px"
+                    height="16px"
+            >
           </div>
 
           <div class="follow2">
@@ -134,14 +128,18 @@
         ></button>
 
         <div class="extra-content">
-          <p class="recent">최근 스토리</p>
-          <ul class="story-list">
-            <li th:each="story : ${follow.recentStories}">
-              <a th:href="@{'/story/' + ${story.storyId}}">
-                <img th:src="${story.image_url}" alt="스토리 이미지" class="story-img"/>
-              </a>
-            </li>
-          </ul>
+          <div class="recent_text">
+            <p class="recent">최근 스토리</p>
+          </div>
+          <div class="recent_story">
+            <ul class="story-list">
+              <li th:each="story : ${follow.recentStories}">
+                <a th:href="@{'/story/' + ${story.storyId}}">
+                  <img th:src="${story.image_url}" alt="스토리 이미지" class="story-img"/>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </li>
     </ul>

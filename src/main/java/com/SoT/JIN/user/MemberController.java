@@ -225,4 +225,10 @@ public class MemberController {
         // 일자 차이 계산
         return (int) ChronoUnit.DAYS.between(uploadDate, currentDate);
     }
+
+    @GetMapping("/reset-password")
+    public String showResetPasswordPage(@RequestParam("token") String token, Model model) {
+        model.addAttribute("token", token);
+        return "resetpassword";
+    }
 }

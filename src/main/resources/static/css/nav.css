@@ -37,7 +37,7 @@
 .nav_menu {
   display: flex;
   box-sizing: border-box;
-  width: 205px;
+  width: 226px;
   height: 46px;
   padding: 10px 28px;
   border-radius: 33px;
@@ -218,13 +218,13 @@ input.imagebtn {
 /* 드롭다운 메뉴 위치 조정 */
 #dropdownMenu {
   position: absolute;
-  width: 100px;
-  height: 92px;
+  width: 110px;
+  height: 138px;
   z-index: 1;
   right: 220px;
   top: 135px; /* 로그인 버튼 바로 아래에 배치 */
   overflow: hidden;
-  padding: 0px 20px;
+  padding: 0px 25px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 14px;

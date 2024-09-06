@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,8 @@ public class User {
     private String phoneNumber;
     private String verificationCode;
     private String profileImageUrl; // 추가: 프로필 이미지 URL
-
+    // 추가: 인증번호 생성 시간
+    private LocalDateTime verificationCodeCreatedAt;
     @ManyToMany
     @JoinTable(
             name = "user_following",
@@ -44,5 +46,10 @@ public class User {
     public void unfollow(User user) {
         this.following.remove(user);
         user.getFollowers().remove(this);
+    }
+    // 인증번호 생성 시간을 설정하는 메서드
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+        this.verificationCodeCreatedAt = LocalDateTime.now(); // 인증번호 생성 시간 설정
     }
 }

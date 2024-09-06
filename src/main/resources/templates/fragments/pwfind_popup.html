@@ -1,88 +1,37 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/SoT/src/main/resources/static/css/Home.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <!-- 임시버튼 -->
-    <input type="checkbox" id="join3" />
-    <label for="join3">업로드</label>
-
-    <div id="bg_gray8" style="display: none" th:fragment="pwFindPopup">
-      <div id="pwfind_pop_up">
-        <div id="pwfindTitle">
-          <p id="pwfindlogin">로그인</p>
-          <div id="pwfindback">
-            <img
-              th:src="@{/images/arrow1.png}"
-              alt="뒤로가기"
-              width="24px"
-              height="24px"
-            />
-          </div>
-          <p id="pwfindtitle1">비밀번호 찾기</p>
-          <div id="close">
-            <img
-              th:src="@{/images/X.png}"
-              alt="X"
-              width="28px"
-              height="28px"
-              onclick="document.getElementById('bg_gray8').style.display='none'; enableScroll();"
-            />
-          </div>
-        </div>
-        <div class="join_input11">
-          <div id="text2">이메일</div>
-          <label for="email_input11">
-            <input
-              type="text"
-              id="email_input11"
-              name="email"
-              placeholder="이메일 입력"
-            />
-          </label>
-        </div>
-        <div id="pwfindnoticepart">
-          <img
-            th:src="@{/images/pwfindnotice.png}"
-            id="pwfindnotice"
-            alt="안내표시"
-            width="22px"
-            height="22px"
-          />
-          <p id="pwfindnoticetext">
-            입력된 이메일로 비밀번호 변경 링크를 보내드립니다.
-          </p>
-        </div>
-
-        <button id="pwfindcheckbtn">확인</button>
+<body>
+<div id="bg_gray8" style="display: none" th:fragment="pwFindPopup">
+  <div id="pwfind_pop_up">
+    <div id="pwfindTitle">
+      <p id="pwfindlogin">로그인</p>
+      <div id="pwfindback">
+        <img th:src="@{/images/arrow1.png}" alt="뒤로가기" width="24px" height="24px" />
+      </div>
+      <p id="pwfindtitle1">비밀번호 찾기</p>
+      <div id="close">
+        <img
+                th:src="@{/images/X.png}"
+                alt="X"
+                width="28px"
+                height="28px"
+                onclick="document.getElementById('bg_gray8').style.display='none'; enableScroll();"
+        />
       </div>
     </div>
-  </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var Joinbtn = document.querySelector("#join3");
-      var joinfinishPopup = document.getElementById("bg_gray8");
-
-      // 로그인 버튼 누르면 회원가입창 열기
-      Joinbtn.addEventListener("click", function (event) {
-        event.preventDefault(); // 링크의 기본 동작 방지
-        joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
-      });
-    });
-  </script>
-</html>
+    <!-- 이메일 전송 폼 -->
+    <form action="/forgot-password" method="POST">
+      <div class="join_input11">
+        <div id="text2">이메일</div>
+        <label for="email_input11">
+          <input type="email" id="email_input11" name="email" placeholder="이메일 입력" required />
+        </label>
+      </div>
+      <div id="pwfindnoticepart">
+        <img th:src="@{/images/pwfindnotice.png}" id="pwfindnotice" alt="안내표시" width="22px" height="22px" />
+        <p id="pwfindnoticetext">입력된 이메일로 비밀번호 변경 링크를 보내드립니다.</p>
+      </div>
+      <!-- 확인 버튼: 폼 제출 -->
+      <button id="pwfindcheckbtn" type="submit">확인</button>
+    </form>
+  </div>
+</div>
+</body>

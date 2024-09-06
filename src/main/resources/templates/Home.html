@@ -97,7 +97,7 @@
             <a href="/home" class="bh">홈</a>
           </li>
           <li><a href="./local" class="c">지역</a></li>
-          <li><a href="./bookmark" class="d">북마크</a></li>
+          <li><a href="./popular" class="d">인기 작가</a></li>
         </ul>
       </div>
       <!-- 검색바 -->
@@ -114,7 +114,7 @@
               type="button"
               class="imagebtn"
               style="display: none"
-              onclick="location.href='my-page'"
+              onclick="location.href='bookmark'"
       />
       <input type="button" id="uploadbtn" style="display: none" />
 
@@ -124,7 +124,8 @@
       >
       <!-- 드롭다운 메뉴 -->
       <div id="dropdownMenu" class="dropdown-content" style="display: none">
-        <button>마이페이지</button>
+        <button onclick="location.href='/my-page'">마이페이지</button>
+        <button onclick="document.getElementById('bg_gray11').style.display='block';">비밀번호 변경</button>
         <form action="/logout" method="post">
           <button type="submit">로그아웃</button>
         </form>
@@ -145,6 +146,7 @@
 <div th:replace="~{fragments/privacy_footer_popup :: privacy_footer}"></div>
 <div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
 <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
+<div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
 
 <!-- 슬라이드 광고 시작 -->
 <div class="slide-container">

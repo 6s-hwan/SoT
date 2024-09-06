@@ -844,6 +844,14 @@ input:focus {
   line-height: 20px;
   letter-spacing: -0.34px;
 }
+#check_change_pw {
+  box-sizing: border-box;
+  display: flex;
+  /* width: 472px; */
+  height: 25px;
+  padding-top: 13px;
+  padding-left: 44px;
+}
 #check_pw {
   box-sizing: border-box;
   display: flex;
@@ -2429,7 +2437,7 @@ input:focus {
 
 /* 비밀번호 변경 팝업 시작*/
 #bg_gray11 {
-  position: absolute;
+  position: fixed;
   display: none; /* 버튼이 안눌러지면 display:none */
   top: 0;
   left: 0;
@@ -2509,7 +2517,7 @@ input:focus {
   line-height: 140%; /* 21px */
 }
 #inputcurrentpw,
-#inputnewpw,
+#inputnewpwp,
 #inputrecheckpw {
   box-sizing: border-box;
   width: 400px;

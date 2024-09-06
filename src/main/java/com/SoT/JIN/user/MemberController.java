@@ -3,6 +3,7 @@ package com.SoT.JIN.user;
 import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryRepository;
 import com.SoT.JIN.story.S3Service;
+import com.SoT.JIN.verification.VerificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,14 +28,16 @@ public class MemberController {
     private final UserRepository userRepository;
     private final StoryRepository storyRepository;
     private final S3Service s3Service;
+    private final VerificationRepository verificationRepository;
 
     private static final String DEFAULT_PROFILE_IMAGE_URL = "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/mypageprofile.png";
 
     @Autowired
-    public MemberController(UserRepository userRepository, StoryRepository storyRepository, S3Service s3Service) {
+    public MemberController(UserRepository userRepository, StoryRepository storyRepository, S3Service s3Service, VerificationRepository verificationRepository) {
         this.userRepository = userRepository;
         this.storyRepository = storyRepository;
         this.s3Service = s3Service;
+        this.verificationRepository = verificationRepository;
     }
 
     @PostMapping("/user")
@@ -58,6 +61,7 @@ public class MemberController {
         Optional<User> userOptional = userRepository.findByPhoneNumberAndVerificationCode(phoneNumber, verificationCode);
         User user = userOptional.orElse(null);
 
+        // 인증번호가 유효하지 않으면 에러 처리
         if (user == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "전화번호 또는 인증번호가 올바르지 않습니다.");
             return "redirect:/error";
@@ -73,13 +77,16 @@ public class MemberController {
             // 기본 프로필 이미지 설정
             user.setProfileImageUrl(DEFAULT_PROFILE_IMAGE_URL);
 
+            // 인증번호 삭제
+            user.setVerificationCode(null);
+            // 유저 정보 저장
             userRepository.save(user);
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "회원 가입 중 오류가 발생했습니다.");
             return "redirect:/error";
         }
 
-        return "redirect:/home";
+        return "redirect:/home?status=success"; // 성공 시
     }
 
     @PostMapping("/update-profile-image")

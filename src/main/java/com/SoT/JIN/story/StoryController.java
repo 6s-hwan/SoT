@@ -88,7 +88,7 @@ public class StoryController {
         List<Story> seasonStories;
 
         // 시즌별 필터링
-        if (season != null) {
+        if (season != null && !season.isEmpty()) {  // 시즌 값이 null이거나 빈 문자열이 아닌 경우에만 필터링 적용
             seasonStories = stories.stream()
                     .filter(story -> {
                         String dateStr = story.getDate();
@@ -118,11 +118,12 @@ public class StoryController {
                     })
                     .collect(Collectors.toList());
         } else {
+            // season 값이 없으면 전체 stories 반환
             seasonStories = stories;
         }
 
         // 정렬 기준 적용
-        if (sortCriteria != null) {
+        if (sortCriteria != null && !sortCriteria.isEmpty()) {  // sortCriteria가 null 또는 빈 문자열이 아닐 때만 적용
             switch (sortCriteria) {
                 case "likes":
                     seasonStories.sort((s1, s2) -> Integer.compare(s2.getLikesCount(), s1.getLikesCount()));
@@ -156,7 +157,6 @@ public class StoryController {
 
         return "SeasonDetailPage";
     }
-
     private boolean isValidTheme(String theme, String[] validThemes) {
         for (String validTheme : validThemes) {
             if (validTheme.equals(theme)) {

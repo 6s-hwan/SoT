@@ -1,15 +1,4 @@
-.dh {
-    text-decoration: none;
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    padding-left: 24px;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+
 
 * {
     /* All */

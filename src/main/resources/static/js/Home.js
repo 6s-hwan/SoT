@@ -1455,3 +1455,151 @@ function closePasswordPopup() {
 //     checkNumber1.style.color = "#c1c1c1";
 //   }
 // }
+
+//링크로 받은 비밀번호 변경 js 코드 시작
+document
+  .getElementById("inputnewpwp11")
+  .addEventListener("keyup", checkInputs1p);
+
+function checkInputs1p1() {
+  var pw2 = document.getElementById("inputnewpwp11").value;
+  var specialCharacters1 = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
+  var checkText1 = document.getElementById("text2411"); // 특수문자 포함 문구의 span 요소
+  var checkNumber1 = document.getElementById("text2511"); // 8자 이상 문구의 span 요소
+  var imageContainer11 = document.getElementById("imageContainer111"); // 특수문자 체크 이미지 컨테이너
+  var imageContainer21 = document.getElementById("imageContainer211"); // 8자 이상 체크 이미지 컨테이너
+  var checkImage11 = document.getElementById("check_img111"); // 특수문자 체크 이미지 요소
+  var checkImage21 = document.getElementById("check_img211"); // 8자 이상 체크 이미지 요소
+
+  // 패딩 추가
+  checkImage11.style.paddingLeft = "5px";
+  checkImage11.style.paddingTop = "7px";
+  checkImage11.style.paddingBottom = "7px";
+  checkImage21.style.paddingLeft = "5px";
+  checkImage21.style.paddingTop = "7px";
+  checkImage21.style.paddingBottom = "7px";
+
+  if (specialCharacters1.test(pw2)) {
+    checkText1.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
+    imageContainer11.style.display = "block"; // 이미지 표시
+  } else {
+    checkText1.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
+    imageContainer11.style.display = "none"; // 이미지 숨기기
+  }
+
+  if (pw2.length >= 8) {
+    checkNumber1.style.color = "#448fff"; // 8자 이상일 때 색상 변경
+    imageContainer21.style.display = "block"; // 이미지 표시
+  } else {
+    checkNumber1.style.color = "#c1c1c1"; // 8자 미만일 때 기본 색상으로 변경
+    imageContainer21.style.display = "none"; // 이미지 숨기기
+  }
+}
+
+// 비밀번호 유효성 검사 함수
+function check_pw2(password) {
+  var pwRegex1 =
+    /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
+  return pwRegex1.test(password);
+}
+
+// 비밀번호 일치 여부 확인
+document
+  .getElementById("inputrecheckpw1")
+  .addEventListener("input", checkPasswordsMatchp);
+
+// 비밀번호 일치 여부 확인 함수
+function checkPasswordsMatchp1() {
+  const newPassword = document.getElementById("inputnewpwp11").value;
+  const recheckPassword = document.getElementById("inputrecheckpw1").value;
+  const validationMessage = document.getElementById("recheckpwparttext21");
+
+  if (newPassword === recheckPassword) {
+    validationMessage.style.color = "#448FFF";
+    validationMessage.textContent = "비밀번호가 일치합니다.";
+  } else {
+    validationMessage.style.color = "#FF4F4F";
+    validationMessage.textContent = "비밀번호가 일치하지 않습니다.";
+  }
+}
+
+// 비밀번호 변경 함수 정의
+function submitPasswordChange1() {
+  console.log("submitPasswordChange 함수 호출됨.");
+
+  // const currentPw = document.getElementById("inputcurrentpw").value;
+  const newPw = document.getElementById("inputnewpwp11").value;
+  const recheckPw = document.getElementById("inputrecheckpw1").value;
+  // const currentPwError = document.getElementById("currentPwError"); // 오류 메시지 요소 가져오기
+  const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
+
+  // 비밀번호 유효성 검사
+  if (!specialCharacters.test(newPw) || newPw.length < 8) {
+    alert("새 비밀번호는 8자 이상이어야 하며, 특수문자를 포함해야 합니다.");
+    return;
+  }
+
+  // 비밀번호 확인 일치 여부
+  if (newPw !== recheckPw) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
+  // AJAX 요청
+  console.log("AJAX 요청 시작");
+
+  fetch("/change-password", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      currentPassword: currentPw,
+      newPassword: newPw,
+    }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("비밀번호 변경 성공");
+        alert("비밀번호가 성공적으로 변경되었습니다.");
+        resetPasswordFieldsp();
+        closePasswordPopup(); // 팝업 닫기
+        currentPwError.style.display = "none"; // 성공 시 오류 메시지 숨기기
+      } else {
+        return response.json().then((data) => {
+          console.log("비밀번호 변경 실패", data);
+          currentPwError.style.display = "block"; // 오류 메시지 표시
+          currentPwError.textContent =
+            data.message || "비밀번호 변경에 실패했습니다.";
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      currentPwError.style.display = "block"; // 비밀번호 일치하지 않을 때 메시지 표시
+      currentPwError.textContent = "현재 비밀번호가 일치하지 않습니다.";
+    });
+}
+
+// // 비밀번호 입력 필드 및 유효성 검사 초기화
+// function resetPasswordFieldsp() {
+//   document.getElementById("inputcurrentpw").value = "";
+//   document.getElementById("inputnewpwp1").value = "";
+//   document.getElementById("inputrecheckpw1").value = "";
+
+//   document.getElementById("text241").style.color = "#c1c1c1";
+//   document.getElementById("imageContainer11").style.display = "none";
+//   document.getElementById("text251").style.color = "#c1c1c1";
+//   document.getElementById("imageContainer21").style.display = "none";
+
+//   const validationMessage = document.getElementById("recheckpwparttext2");
+//   if (validationMessage) {
+//     validationMessage.textContent = "";
+//   }
+// }
+
+// // 팝업 닫기와 스크롤 활성화
+// function closePasswordPopup() {
+//   document.getElementById("bg_gray11").style.display = "none";
+//   enableScroll();
+// }

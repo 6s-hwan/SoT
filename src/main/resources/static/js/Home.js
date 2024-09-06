@@ -1,3 +1,78 @@
+document.addEventListener("DOMContentLoaded", function () {
+  var Joinbtn = document.querySelector("#join"); // 로그인 버튼
+  var loginLabel = document.getElementById("loginLabel"); // 로그인 라벨
+  var dropdownMenu = document.getElementById("dropdownMenu"); // 드롭다운 메뉴
+  var followingBtn = document.querySelector(".followingbtn");
+  var uploadBtn = document.getElementById("uploadbtn");
+  var imageBtn = document.querySelector(".imagebtn");
+
+  // 처음에 버튼들을 숨김 (로그인 전)
+  followingBtn.style.display = "none";
+  uploadBtn.style.display = "none";
+  imageBtn.style.display = "none";
+
+  // 로그인 상태 확인 함수
+  function checkLoginStatus() {
+    fetch("/api/user/profile")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          // 프로필 이미지 설정
+          login(data.profileImageUrl);
+
+          // 팔로우, 업로드, 이미지 버튼 애니메이션 적용
+          setTimeout(function () {
+            followingBtn.style.display = "inline-block";
+            uploadBtn.style.display = "inline-block";
+            imageBtn.style.display = "inline-block";
+
+            followingBtn.classList.add("fade-in");
+            uploadBtn.classList.add("fade-in");
+            imageBtn.classList.add("fade-in");
+          }, 600); // 0.3초 후에 버튼 표시 및 애니메이션 추가
+
+          // 로그인 버튼(#join)을 제거
+          if (Joinbtn) {
+            Joinbtn.remove();
+          }
+
+          // 로그인 라벨 클릭 시 드롭다운 메뉴 표시
+          loginLabel.onclick = function () {
+            toggleDropdown();
+          };
+        } else {
+          // 로그인되지 않은 경우 로그인 버튼을 클릭하면 팝업을 띄움
+          loginLabel.onclick = function () {
+            togglePopup1("loginPopup");
+          };
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  // 로그인 상태일 때 프로필 이미지를 설정하는 함수
+  function login(profileImageUrl) {
+    loginLabel.style.width = "36px";
+    loginLabel.style.height = "36px";
+    loginLabel.style.padding = "0";
+    loginLabel.style.fontSize = "0";
+    loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
+    loginLabel.style.backgroundSize = "cover";
+    loginLabel.style.backgroundPosition = "center";
+    loginLabel.style.border = "none"; // 테두리 제거
+    loginLabel.style.borderRadius = "50%"; // 원형으로 만들기
+    loginLabel.style.cursor = "pointer";
+  }
+
+  // 드롭다운 메뉴 토글 함수
+  function toggleDropdown() {
+    dropdownMenu.style.display =
+      dropdownMenu.style.display === "block" ? "none" : "block";
+  }
+
+  // 로그인 상태 확인
+  checkLoginStatus();
+});
 function closePopup3(popupId) {
   console.log("Attempting to close popup with ID:", popupId); // 추가된 로그
   var popup = document.getElementById(popupId);
@@ -37,13 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const signupLink = document.querySelector("#join_membership a");
   const loginLink = document.querySelector("#secondback a");
 
-  if (loginLabel) {
-    loginLabel.addEventListener("click", function () {
-      showLoginPopup();
-      document.body.style.overflow = "hidden"; // 스크롤 비활성화
-    });
-  }
-
   if (signupLink) {
     signupLink.addEventListener("click", function (event) {
       event.preventDefault();
@@ -68,6 +136,13 @@ document.addEventListener("DOMContentLoaded", function () {
     findEmailLink.addEventListener("click", function (event) {
       event.preventDefault();
       openEmailFindPopup();
+    });
+  }
+
+  if (findPwLink) {
+    findPwLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      openPwFindPopup();
     });
   }
 
@@ -126,6 +201,9 @@ document.addEventListener("DOMContentLoaded", function () {
     togglePopup("bg_gray6", "bg_gray");
   }
 
+  function openPwFindPopup() {
+    togglePopup("bg_gray8", "bg_gray");
+  }
   function returnToLoginFromEmailFind() {
     togglePopup("bg_gray", "bg_gray6");
   }
@@ -153,47 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error:", error);
         alert("로그아웃 중 오류가 발생했습니다. 다시 시도해 주세요.");
       });
-  }
-
-  // 로그인 상태 확인 함수
-  function checkLoginStatus() {
-    fetch("/api/user/profile")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.isLoggedIn) {
-          login(data.profileImageUrl);
-        }
-      })
-      .catch((error) => console.error("Error:", error));
-  }
-
-  // 로그인 처리 함수
-  function login(profileImageUrl) {
-    const checkbox = document.getElementById("join");
-    const loginLabel = document.getElementById("loginLabel");
-    const uploadbtn = document.getElementById("uploadbtn");
-    const profilebtn = document.querySelector(".imagebtn");
-
-    checkbox.checked = true;
-    loginLabel.style.width = "36px";
-    loginLabel.style.height = "36px";
-    loginLabel.style.padding = "0";
-    loginLabel.style.fontSize = "0";
-    loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
-    loginLabel.style.backgroundSize = "cover";
-    loginLabel.style.backgroundPosition = "center";
-
-    uploadbtn.style.display = "block";
-    profilebtn.style.display = "block";
-  }
-
-  // 생년월일 선택 시 hidden input 요소에 값 설정
-  function selectBirthday() {
-    const year = document.getElementById("birth-year").value;
-    const month = document.getElementById("birth-month").value;
-    const day = document.getElementById("birth-day").value;
-    const birth = `${year}-${month}-${day}`;
-    document.getElementById("birth_input").value = birth;
   }
 });
 
@@ -236,13 +273,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 디버깅 메시지 추가
   console.log("DOM fully loaded and parsed");
 
-  // 로그인 버튼 클릭 시 팝업 표시
-  loginLabel.addEventListener("click", function () {
-    console.log("Login label clicked");
-    loginPopup.style.display = "block";
-    document.body.style.overflow = "hidden"; // 스크롤 비활성화
-  });
-
   // 로그인 성공 시 호출할 함수
   function login(profileImageUrl) {
     console.log("Login function called with profileImageUrl:", profileImageUrl);
@@ -259,34 +289,6 @@ document.addEventListener("DOMContentLoaded", function () {
     profilebtn.style.display = "block";
   }
 
-  // function checkLoginStatus() {
-  //   fetch("/api/user/profile") // 서버에서 로그인 상태와 프로필 이미지를 가져오는 API 엔드포인트
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("checkLoginStatus data:", data);
-  //       if (data.isLoggedIn) {
-  //         // 로그인 성공 시
-  //         document.querySelector(".followingbtn").style.display =
-  //           "inline-block"; // 팔로잉 버튼 표시
-  //         document.getElementById("uploadbtn").style.display = "inline-block"; // 업로드 버튼 표시
-  //         document.querySelector(".imagebtn").style.display = "inline-block"; // 마이페이지 버튼 표시
-  //         document.getElementById("loginLabel").style.display = "none"; // 로그인 버튼 숨기기
-  //         document.getElementById("dropdownMenu").style.display = "block"; // 드롭다운 메뉴 표시
-  //       } else {
-  //         // 로그인 실패 시
-  //         document.getElementById("uploadbtn").style.display = "none"; // 업로드 버튼 숨기기
-  //         document.querySelector(".imagebtn").style.display = "none"; // 마이페이지 버튼 숨기기
-  //         document.getElementById("loginLabel").style.display = "inline-block"; // 로그인 버튼 표시
-  //         document.getElementById("dropdownMenu").style.display = "none"; // 드롭다운 메뉴 숨기기
-  //       }
-  //     })
-  //     .catch((error) => console.error("Error:", error));
-  // }
-
-  // // 페이지가 로드될 때 로그인 상태를 확인
-  // window.onload = function () {
-  //   checkLoginStatus();
-  // };
   function togglePopup1(popupId) {
     const popup = document.getElementById(popupId);
     const dropdownMenu = document.getElementById("dropdownMenu");
@@ -304,32 +306,6 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownMenu.style.display =
       dropdownMenu.style.display === "block" ? "none" : "block";
   }
-
-  function checkLoginStatus() {
-    fetch("/api/user/profile")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.isLoggedIn) {
-          document.querySelector(".followingbtn").style.display =
-            "inline-block";
-          document.getElementById("uploadbtn").style.display = "inline-block";
-          document.querySelector(".imagebtn").style.display = "inline-block";
-
-          // 로그인 성공 후에는 팝업을 표시하지 않고 드롭다운 메뉴만 표시
-          document.getElementById("loginLabel").onclick = toggleDropdown;
-        } else {
-          // 로그인 전에는 로그인 버튼을 클릭하면 팝업을 띄움
-          document.getElementById("loginLabel").onclick = function () {
-            togglePopup1("loginPopup");
-          };
-        }
-      })
-      .catch((error) => console.error("Error:", error));
-  }
-
-  window.onload = function () {
-    checkLoginStatus();
-  };
 
   // 로그아웃 버튼 클릭 시 로그아웃 처리
   logoutButton.addEventListener("click", function (event) {
@@ -377,19 +353,6 @@ function submitForm(event) {
     checkLoginStatus();
   }
 }
-
-// 초기 팝업창들 숨기기
-// document.addEventListener("DOMContentLoaded", function () {
-//   document.getElementById("loginPopup").style.display = "none";
-//   document.getElementById("joinPopup").style.display = "none";
-//   document.getElementById("termsPopup").style.display = "none";
-//   document.getElementById("privacyPopup").style.display = "none";
-//   document.getElementById("joinfinishPopup").style.display = "none";
-//   document.getElementById("emailFindPopup").style.display = "none";
-//   document.getElementById("emailCheckPopup").style.display = "none";
-//   document.getElementById("pwFindPopup").style.display = "none";
-//   document.getElementById("pwfindsendnotice_popup").style.display = "none";
-// });
 
 //팝업창 닫으면 스크롤 활성화
 function enableScroll() {
@@ -962,12 +925,6 @@ function uploadPost(event) {
   // 데이터 콘솔에 출력
   console.log(formData);
 
-  // 나머지 코드
-  // ...
-
-  // 서버로 전송
-  // ...
-
   // 이벤트 기본 동작 방지 (페이지 새로고침 방지)
   event.preventDefault();
 
@@ -1001,13 +958,6 @@ function resetForm() {
   tagList.innerHTML = ""; // 기존 태그 초기화
 }
 
-function selectDate() {
-  const year = document.getElementById("upload-year").value;
-  const month = document.getElementById("upload-month").value;
-  const day = document.getElementById("upload-day").value;
-  const date = `${year}-${month}-${day}`;
-  document.getElementById("date_input").value = date;
-}
 function setupUploadDateSelectors() {
   // '년' 셀렉트 박스 option 목록 동적 생성
   const uploadYearEl = document.querySelector("#upload-year");
@@ -1360,246 +1310,3 @@ function closePasswordPopup() {
   document.getElementById("bg_gray11").style.display = "none";
   enableScroll();
 }
-
-// function checkInputs1p() {
-//   const pw2 = document.getElementById("inputnewpwp").value;
-//   const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
-//   const checkText1 = document.getElementById("text241"); // 특수문자 포함 문구
-//   const checkNumber1 = document.getElementById("text251"); // 8자 이상 문구
-
-//   // 특수 문자 포함 여부 검사
-//   if (specialCharacters.test(pw2)) {
-//     checkText1.style.color = "#448fff"; // 특수 문자가 포함되면 파란색으로 변경
-//   } else {
-//     checkText1.style.color = "#c1c1c1"; // 특수 문자가 없으면 회색
-//   }
-
-//   // 8자 이상 여부 검사
-//   if (pw2.length >= 8) {
-//     checkNumber1.style.color = "#448fff"; // 8자 이상이면 파란색으로 변경
-//   } else {
-//     checkNumber1.style.color = "#c1c1c1"; // 8자 미만이면 회색
-//   }
-// }
-
-// // 비밀번호 일치 여부 확인 함수
-// function checkPasswordsMatch() {
-//   const newPassword = document.getElementById("inputnewpw").value;
-//   const recheckPassword = document.getElementById("inputrecheckpw").value;
-//   const validationMessage = document.getElementById("recheckpwparttext2");
-
-//   if (newPassword === recheckPassword) {
-//     validationMessage.style.color = "#448FFF"; // 비밀번호가 일치하면 파란색
-//     validationMessage.textContent = "비밀번호가 일치합니다.";
-//   } else {
-//     validationMessage.style.color = "#FF4F4F"; // 비밀번호가 일치하지 않으면 빨간색
-//     validationMessage.textContent = "비밀번호가 일치하지 않습니다.";
-//   }
-// }
-// function showPopupf(popupId) {
-//   var popup = document.getElementById(popupId);
-//   if (popup) {
-//     popup.style.display = "block";
-//   } else {
-//     console.log("Popup element with ID " + popupId + " not found.");
-//   }
-// }
-
-// function checkPasswordsMatchp() {
-//   var newPassword = document.getElementById("inputnewpwp").value;
-//   var recheckPassword = document.getElementById("inputrecheckpw").value;
-//   var messageElement = document.getElementById("recheckpwparttext2");
-
-//   if (newPassword === recheckPassword) {
-//     messageElement.style.color = "#448FFF"; // 일치할 때 색상
-//     messageElement.textContent = "비밀번호가 일치합니다.";
-//   } else {
-//     messageElement.style.color = "#FF4F4F"; // 일치하지 않을 때 색상
-//     messageElement.textContent = "비밀번호가 일치하지 않습니다.";
-//   }
-// }
-
-// // 비밀번호 필드 및 유효성 검사 메시지 초기화 함수
-// function resetPasswordFields() {
-//   // 비밀번호 입력 필드 초기화
-//   document.getElementById("inputcurrentpw").value = "";
-//   document.getElementById("inputnewpw").value = "";
-//   document.getElementById("inputrecheckpw").value = "";
-
-//   // 유효성 검사 메시지 초기화
-//   document.getElementById("recheckpwparttext2").textContent = "";
-
-//   // 특수문자 및 8자 이상 체크 초기화
-//   document.getElementById("text241").style.color = "#c1c1c1";
-//   document.getElementById("imageContainer11").style.display = "none";
-//   document.getElementById("text251").style.color = "#c1c1c1";
-//   document.getElementById("imageContainer21").style.display = "none";
-// }
-
-// // 비밀번호 유효성 검사 함수
-// function checkInputs1p() {
-//   const pw2 = document.getElementById("inputnewpwp").value;
-//   const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
-//   const checkText1 = document.getElementById("text241");
-//   const checkNumber1 = document.getElementById("text251");
-
-//   if (specialCharacters.test(pw2)) {
-//     checkText1.style.color = "#448fff";
-//   } else {
-//     checkText1.style.color = "#c1c1c1";
-//   }
-
-//   if (pw2.length >= 8) {
-//     checkNumber1.style.color = "#448fff";
-//   } else {
-//     checkNumber1.style.color = "#c1c1c1";
-//   }
-// }
-
-//링크로 받은 비밀번호 변경 js 코드 시작
-document
-  .getElementById("inputnewpwp11")
-  .addEventListener("keyup", checkInputs1p);
-
-function checkInputs1p1() {
-  var pw2 = document.getElementById("inputnewpwp11").value;
-  var specialCharacters1 = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
-  var checkText1 = document.getElementById("text2411"); // 특수문자 포함 문구의 span 요소
-  var checkNumber1 = document.getElementById("text2511"); // 8자 이상 문구의 span 요소
-  var imageContainer11 = document.getElementById("imageContainer111"); // 특수문자 체크 이미지 컨테이너
-  var imageContainer21 = document.getElementById("imageContainer211"); // 8자 이상 체크 이미지 컨테이너
-  var checkImage11 = document.getElementById("check_img111"); // 특수문자 체크 이미지 요소
-  var checkImage21 = document.getElementById("check_img211"); // 8자 이상 체크 이미지 요소
-
-  // 패딩 추가
-  checkImage11.style.paddingLeft = "5px";
-  checkImage11.style.paddingTop = "7px";
-  checkImage11.style.paddingBottom = "7px";
-  checkImage21.style.paddingLeft = "5px";
-  checkImage21.style.paddingTop = "7px";
-  checkImage21.style.paddingBottom = "7px";
-
-  if (specialCharacters1.test(pw2)) {
-    checkText1.style.color = "#448fff"; // 특수 문자가 포함될 때 색상 변경
-    imageContainer11.style.display = "block"; // 이미지 표시
-  } else {
-    checkText1.style.color = "#c1c1c1"; // 특수 문자가 포함되지 않을 때 기본 색상으로 변경
-    imageContainer11.style.display = "none"; // 이미지 숨기기
-  }
-
-  if (pw2.length >= 8) {
-    checkNumber1.style.color = "#448fff"; // 8자 이상일 때 색상 변경
-    imageContainer21.style.display = "block"; // 이미지 표시
-  } else {
-    checkNumber1.style.color = "#c1c1c1"; // 8자 미만일 때 기본 색상으로 변경
-    imageContainer21.style.display = "none"; // 이미지 숨기기
-  }
-}
-
-// 비밀번호 유효성 검사 함수
-function check_pw2(password) {
-  var pwRegex1 =
-    /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
-  return pwRegex1.test(password);
-}
-
-// 비밀번호 일치 여부 확인
-document
-  .getElementById("inputrecheckpw1")
-  .addEventListener("input", checkPasswordsMatchp);
-
-// 비밀번호 일치 여부 확인 함수
-function checkPasswordsMatchp1() {
-  const newPassword = document.getElementById("inputnewpwp11").value;
-  const recheckPassword = document.getElementById("inputrecheckpw1").value;
-  const validationMessage = document.getElementById("recheckpwparttext21");
-
-  if (newPassword === recheckPassword) {
-    validationMessage.style.color = "#448FFF";
-    validationMessage.textContent = "비밀번호가 일치합니다.";
-  } else {
-    validationMessage.style.color = "#FF4F4F";
-    validationMessage.textContent = "비밀번호가 일치하지 않습니다.";
-  }
-}
-
-// 비밀번호 변경 함수 정의
-function submitPasswordChange1() {
-  console.log("submitPasswordChange 함수 호출됨.");
-
-  // const currentPw = document.getElementById("inputcurrentpw").value;
-  const newPw = document.getElementById("inputnewpwp11").value;
-  const recheckPw = document.getElementById("inputrecheckpw1").value;
-  // const currentPwError = document.getElementById("currentPwError"); // 오류 메시지 요소 가져오기
-  const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
-
-  // 비밀번호 유효성 검사
-  if (!specialCharacters.test(newPw) || newPw.length < 8) {
-    alert("새 비밀번호는 8자 이상이어야 하며, 특수문자를 포함해야 합니다.");
-    return;
-  }
-
-  // 비밀번호 확인 일치 여부
-  if (newPw !== recheckPw) {
-    alert("비밀번호가 일치하지 않습니다.");
-    return;
-  }
-
-  // AJAX 요청
-  console.log("AJAX 요청 시작");
-
-  fetch("/change-password", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      currentPassword: currentPw,
-      newPassword: newPw,
-    }),
-  })
-    .then((response) => {
-      if (response.ok) {
-        console.log("비밀번호 변경 성공");
-        alert("비밀번호가 성공적으로 변경되었습니다.");
-        resetPasswordFieldsp();
-        closePasswordPopup(); // 팝업 닫기
-        currentPwError.style.display = "none"; // 성공 시 오류 메시지 숨기기
-      } else {
-        return response.json().then((data) => {
-          console.log("비밀번호 변경 실패", data);
-          currentPwError.style.display = "block"; // 오류 메시지 표시
-          currentPwError.textContent =
-            data.message || "비밀번호 변경에 실패했습니다.";
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      currentPwError.style.display = "block"; // 비밀번호 일치하지 않을 때 메시지 표시
-      currentPwError.textContent = "현재 비밀번호가 일치하지 않습니다.";
-    });
-}
-
-// // 비밀번호 입력 필드 및 유효성 검사 초기화
-// function resetPasswordFieldsp() {
-//   document.getElementById("inputcurrentpw").value = "";
-//   document.getElementById("inputnewpwp1").value = "";
-//   document.getElementById("inputrecheckpw1").value = "";
-
-//   document.getElementById("text241").style.color = "#c1c1c1";
-//   document.getElementById("imageContainer11").style.display = "none";
-//   document.getElementById("text251").style.color = "#c1c1c1";
-//   document.getElementById("imageContainer21").style.display = "none";
-
-//   const validationMessage = document.getElementById("recheckpwparttext2");
-//   if (validationMessage) {
-//     validationMessage.textContent = "";
-//   }
-// }
-
-// // 팝업 닫기와 스크롤 활성화
-// function closePasswordPopup() {
-//   document.getElementById("bg_gray11").style.display = "none";
-//   enableScroll();
-// }

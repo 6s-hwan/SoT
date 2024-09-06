@@ -177,10 +177,6 @@ public class StoryController {
         return "index";
     }
 
-    @GetMapping("/bookmark")
-    public String bookmark() {
-        return "BookmarkPage";
-    }
     @GetMapping("/email")
     public String email() {
         return "fragments/emailcheck_popup";

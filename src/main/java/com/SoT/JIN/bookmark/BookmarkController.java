@@ -1,42 +1,86 @@
 package com.SoT.JIN.bookmark;
 
-import com.SoT.JIN.story.StoryService;
-import com.SoT.JIN.user.UserRepository;
+import com.SoT.JIN.story.Story;
 import com.SoT.JIN.user.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.SoT.JIN.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class BookmarkController {
 
-    private static final Logger logger = LoggerFactory.getLogger(BookmarkController.class);
-
     @Autowired
-    private StoryService storyService;
+    private BookmarkService bookmarkService;
 
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping(value = "/story/{storyId}/bookmark")
-    public ResponseEntity<Void> toggleBookmark(@PathVariable Long storyId, Principal principal) {
-        User user = getUserFromPrincipal(principal);
-        logger.debug("Received bookmark request. StoryId: {}, UserId: {}", storyId, user.getUserId());
-        storyService.toggleBookmark(storyId, user);
-        return ResponseEntity.ok().build();
+    @PostMapping("/story/{storyId}/bookmark")
+    public String toggleBookmark(@PathVariable Long storyId, Principal principal) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("User not authenticated");
+        }
+
+        Object principalObj = authentication.getPrincipal();
+        String username;
+        if (principalObj instanceof UserDetails) {
+            username = ((UserDetails) principalObj).getUsername();
+        } else {
+            username = principalObj.toString();
+        }
+
+        Optional<User> optionalUser = userRepository.findByEmail(username);
+        User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        bookmarkService.toggleBookmark(storyId, user);
+
+        return "redirect:/story/" + storyId;
     }
 
+    @GetMapping("/bookmark")
+    public String getBookmarkedStories(@RequestParam(name = "limit", defaultValue = "15") int limit, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("User not authenticated");
+        }
 
+        Object principalObj = authentication.getPrincipal();
+        String username;
+        if (principalObj instanceof UserDetails) {
+            username = ((UserDetails) principalObj).getUsername();
+        } else {
+            username = principalObj.toString();
+        }
 
-    private User getUserFromPrincipal(Principal principal) {
-        String email = principal.getName();
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        Optional<User> optionalUser = userRepository.findByEmail(username);
+        User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        // 1. 북마크된 스토리들 가져오기
+        List<Story> bookmarkedStories = bookmarkService.getBookmarkedStories(user);
+
+        // 2. 가져올 스토리 제한 (limit 만큼)
+        List<Story> limitedBookmarkedStories = bookmarkedStories.stream().limit(limit).collect(Collectors.toList());
+
+        // 3. 모델에 데이터 추가
+        model.addAttribute("bookmarkedStories", limitedBookmarkedStories);
+        model.addAttribute("totalStories", bookmarkedStories.size()); // 총 북마크된 스토리 수
+        model.addAttribute("limit", limit);
+
+        return "bookmarkPage"; // 북마크 페이지로 이동
     }
 }

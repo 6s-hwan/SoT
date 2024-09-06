@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/BookmarkPage.css}" />
     <link rel="stylesheet" th:href="@{/css/nav.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -87,8 +88,6 @@
 <div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
 <div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
 <div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
-<!--  북마크 시작 -->
-
 <div id="Bookmarkfull">
     <div id="BookmarkStory">
         <div id="BookmarkTitle">
@@ -102,65 +101,30 @@
                 <p class="Bookmarktitle1">북마크</p>
             </div>
         </div>
+        <!-- 북마크된 스토리 목록을 이곳에 표시 -->
         <div id="BookmarkBack">
-            <label for="Bookmark">
-                <button
-                        type="button"
-                        id="Bookmark"
-                        onclick="location.href='./bookmarkpage.html';"
-                ></button>
-            </label>
+            <div class="Bookmark-container">
+                <div th:each="story : ${bookmarkedStories}" class="Bookmark">
+                    <img th:src="${story.image_url}"  class="Bookmark-img">
+                </div>
+            </div>
+        </div>
 
-        </div>
+        <!-- 더보기 버튼 -->
         <div>
-            <label for="Bookmarkmorebtn">
-                <button
-                        type="button"
-                        id="Bookmarkmorebtn"
-                        onclick="location.href='';"
-                ></button>
-            </label>
+            <button id="Bookmarkmorebtn" th:if="${totalStories > limit}"
+                    th:onclick="'location.href=\'/bookmark?limit=' + (${limit} + 15) + '\''">
+            </button>
         </div>
     </div>
 </div>
-<!-- 북마크 페이지 끝 -->
-<!-- 나머지들 -->
-<div id="etc_thing">
-    <div id="etc_full">
-        <div id="terms_of_use">
-            <button
-                    type="button"
-                    value="이용약관"
-                    class="terms_of_use"
-                    th:onclick="|location.href='@{/terms_of_use}';|"
-            >
-                이용약관
-            </button>
-        </div>
-        <div id="personal_inf">
-            <button
-                    type="button"
-                    value="개인정보처리방침"
-                    class="personal_inf"
-                    th:onclick="|location.href='@{/personal_inf}';|"
-            >
-                개인정보처리방침
-            </button>
-        </div>
-        <div id="contact">
-            <button
-                    type="button"
-                    value="Contact"
-                    class="contact"
-                    th:onclick="|location.href='@{/contact}';|"
-            >
-                Contact
-            </button>
-        </div>
-        <div id="c_SoT">
-            <p class="c_SoT">ⓒ 2024 SoT</p>
-        </div>
-    </div>
+<!-- 푸터 -->
+<div id="Footer">
+    <button class="footer_1" onclick="showPopupf('bg_gray33')">개인정보처리방침</button>
+    <button class="footer_2" onclick="showPopupf('bg_gray44')">이용약관</button>
+    <p class="email">Contact. Story.of.Travel.official@gmail.com</p>
+    <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
 </div>
+<!-- 푸터 끝 -->
 </body>
 </html>

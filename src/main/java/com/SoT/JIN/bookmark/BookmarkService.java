@@ -12,7 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BookmarkService {
@@ -47,4 +49,10 @@ public class BookmarkService {
         storyRepository.save(story);
     }
 
+    // 북마크된 스토리 조회
+    public List<Story> getBookmarkedStories(User user) {
+        return bookmarkRepository.findByUser(user).stream()
+                .map(BookmarkEntity::getStory)
+                .collect(Collectors.toList());
+    }
 }

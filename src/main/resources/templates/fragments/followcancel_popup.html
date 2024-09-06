@@ -1,67 +1,45 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/Home.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
-  <body>
-    <!-- 기존 HTML 버튼 -->
-    <button id="emailfindcheckbtn">확인</button>
-
-    <!-- 팔로우 취소 팝업 -->
-    <div id="bg_gray10" style="display: none" th:fragment="followCancelPopup">
-      <div id="followcancel_pop_up">
+<!-- 팔로우 취소 팝업 -->
+<body>
+<div id="bg_gray10" style="display: none" th:fragment="followCancelPopup">
+    <div id="followcancel_pop_up">
         <div id="followcancelTitle">
-          <p id="followcanceltitle1">팔로우 취소</p>
-          <div id="close">
-            <img
-              th:src="@{/images/X.png}"
-              alt="X"
-              width="28px"
-              height="28px"
-              onclick="document.getElementById('bg_gray10').style.display='none'; enableScroll();"
-            />
-          </div>
+            <p id="followcanceltitle1">팔로우 취소</p>
+            <div id="close">
+                <img
+                        th:src="@{/images/X.png}"
+                        alt="X"
+                        width="28px"
+                        height="28px"
+                        onclick="document.getElementById('bg_gray10').style.display='none';"
+                />
+            </div>
         </div>
         <div id="followcancelcontent">팔로우를 취소하시겠습니까?</div>
 
         <div id="followcancelbuttons">
-          <button
-            id="closefollowcancelbtn"
-            type="button"
-            onclick="document.getElementById('bg_gray10').style.display='none'; enableScroll();"
-          >
-            닫기
-          </button>
-          <button id="closefollowcancelbtn2" type="button">취소하기</button>
+            <button
+                    id="closefollowcancelbtn"
+                    type="button"
+                    onclick="document.getElementById('bg_gray10').style.display='none';"
+            >
+                닫기
+            </button>
+            <!-- 취소하기 버튼 클릭 시 form 제출 -->
+            <button id="closefollowcancelbtn2" type="button" onclick="submitUnfollowForm()">
+                취소하기
+            </button>
         </div>
-      </div>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var Joinbtn = document.querySelector("#emailfindcheckbtn");
-        var joinfinishPopup = document.getElementById("bg_gray10");
+</div>
 
-        // 로그인 버튼 누르면 회원가입창 열기
-        Joinbtn.addEventListener("click", function (event) {
-          event.preventDefault(); // 링크의 기본 동작 방지
-          joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
-        });
-      });
-    </script>
-    <!-- <script th:src="@{/js/Home.js}"></script> -->
-  </body>
-</html>
+<!-- 팔로우 취소 form -->
+<form th:action="@{'/writer/' + ${follow.username} + '/unfollow'}" method="post" id="unfollowForm">
+</form>
+
+<script>
+    // '취소하기' 버튼 클릭 시 form 제출
+    function submitUnfollowForm() {
+        document.getElementById('unfollowForm').submit();
+    }
+</script>
+</body>

@@ -1,5 +1,5 @@
 .myButton.selected {
-  color: #000 ; /* 선택된 버튼의 글씨 색상을 검정색으로 강제 변경 */
+  color: #000; /* 선택된 버튼의 글씨 색상을 검정색으로 강제 변경 */
 }
 .bh {
   text-decoration: none;
@@ -2508,13 +2508,14 @@ input:focus {
   letter-spacing: -0.3px;
   padding-bottom: 6px;
 }
-#currentpwparttext2 {
+#currentPwError {
   color: #ff5656;
   font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 21px */
+  padding-left: 15px;
 }
 #inputcurrentpw,
 #inputnewpwp,
@@ -2577,8 +2578,7 @@ input:focus {
   display: flex;
   /* width: 472px; */
   height: 32px;
-  padding-top: 13px;
-  padding-left: 44px;
+  padding-left: 15px;
 }
 #check_pw1 > #middle31 {
   width: 22px;
@@ -3021,7 +3021,6 @@ button:disabled {
   filter: brightness(1.2); /* 호버 시 밝기를 20% 증가 */
 }
 
-
 .rise_text {
   width: 285px;
   color: #000;
@@ -3042,7 +3041,7 @@ button:disabled {
   justify-content: center;
   box-sizing: border-box;
   padding-top: 120px;
-  padding-bottom : 100px;
+  padding-bottom: 100px;
 }
 #popular_title {
   box-sizing: border-box;

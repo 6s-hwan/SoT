@@ -1,48 +1,3 @@
-function checkInputs1p() {
-  const pw2 = document.getElementById("inputnewpwp").value;
-  const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
-  const checkText1 = document.getElementById("text241"); // 특수문자 포함 문구
-  const checkNumber1 = document.getElementById("text251"); // 8자 이상 문구
-
-  // 특수 문자 포함 여부 검사
-  if (specialCharacters.test(pw2)) {
-    checkText1.style.color = "#448fff"; // 특수 문자가 포함되면 파란색으로 변경
-  } else {
-    checkText1.style.color = "#c1c1c1"; // 특수 문자가 없으면 회색
-  }
-
-  // 8자 이상 여부 검사
-  if (pw2.length >= 8) {
-    checkNumber1.style.color = "#448fff"; // 8자 이상이면 파란색으로 변경
-  } else {
-    checkNumber1.style.color = "#c1c1c1"; // 8자 미만이면 회색
-  }
-}
-
-// 비밀번호 일치 여부 확인 함수
-function checkPasswordsMatch() {
-  const newPassword = document.getElementById("inputnewpw").value;
-  const recheckPassword = document.getElementById("inputrecheckpw").value;
-  const validationMessage = document.getElementById("recheckpwparttext2");
-
-  if (newPassword === recheckPassword) {
-    validationMessage.style.color = "#448FFF"; // 비밀번호가 일치하면 파란색
-    validationMessage.textContent = "비밀번호가 일치합니다.";
-  } else {
-    validationMessage.style.color = "#FF4F4F"; // 비밀번호가 일치하지 않으면 빨간색
-    validationMessage.textContent = "비밀번호가 일치하지 않습니다.";
-  }
-}
-function showPopupf(popupId) {
-  var popup = document.getElementById(popupId);
-  if (popup) {
-    popup.style.display = "block";
-  } else {
-    console.log("Popup element with ID " + popupId + " not found.");
-  }
-}
-
-
 function closePopup3(popupId) {
   console.log("Attempting to close popup with ID:", popupId); // 추가된 로그
   var popup = document.getElementById(popupId);
@@ -140,8 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
-
   // 닫기 버튼 이벤트 리스너 등록 (X 버튼)
   const closeButton = document.querySelector("#close");
   if (closeButton) {
@@ -177,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     togglePopup("bg_gray", "bg_gray6");
   }
 
-// 로그아웃 처리 함수
+  // 로그아웃 처리 함수
   function logout() {
     fetch("/logout", {
       method: "POST",
@@ -186,22 +139,21 @@ document.addEventListener("DOMContentLoaded", function () {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     })
-        .then((response) => {
-          if (response.ok) {
-            // 로그아웃 성공 시
-            alert("로그아웃이 완료되었습니다!"); // 로그아웃 성공 메시지
-            location.href = "/home"; // 홈 페이지로 리디렉션
-          } else {
-            // 로그아웃 실패 시
-            alert("로그아웃에 실패했습니다. 다시 시도해 주세요.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("로그아웃 중 오류가 발생했습니다. 다시 시도해 주세요.");
-        });
+      .then((response) => {
+        if (response.ok) {
+          // 로그아웃 성공 시
+          alert("로그아웃이 완료되었습니다!"); // 로그아웃 성공 메시지
+          location.href = "/home"; // 홈 페이지로 리디렉션
+        } else {
+          // 로그아웃 실패 시
+          alert("로그아웃에 실패했습니다. 다시 시도해 주세요.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("로그아웃 중 오류가 발생했습니다. 다시 시도해 주세요.");
+      });
   }
-
 
   // 로그인 상태 확인 함수
   function checkLoginStatus() {
@@ -1226,46 +1178,48 @@ async function verifyCode() {
   let phone3 = document.getElementById("phone_input31").value;
   let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
 
-  const verificationCode = document.getElementById("CertificationNumber_inputp").value;
+  const verificationCode = document.getElementById(
+    "CertificationNumber_inputp"
+  ).value;
 
   const response = await fetch("/api/verifyCode", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ phoneNumber, verificationCode }),  // 서버로 인증번호 전송
+    body: JSON.stringify({ phoneNumber, verificationCode }), // 서버로 인증번호 전송
   });
 
-  const result = await response.text();  // 서버 응답 받기
+  const result = await response.text(); // 서버 응답 받기
 
   // 서버 응답에 이메일이 포함된 경우 인증 성공으로 처리
   if (result.includes("@")) {
-
     // 팝업 전환: bg_gray6 팝업 닫고 bg_gray7 팝업 열기
-    document.getElementById("bg_gray6").style.display = "none";  // 기존 팝업 닫기
-    document.getElementById("bg_gray7").style.display = "block";  // 새 팝업 열기
+    document.getElementById("bg_gray6").style.display = "none"; // 기존 팝업 닫기
+    document.getElementById("bg_gray7").style.display = "block"; // 새 팝업 열기
     console.log("팝업 전환 완료");
 
     // 팝업 전환 후 이메일 설정
-    setTimeout(function() {
+    setTimeout(function () {
       const emailStatusElement = document.getElementById("verifyStatus");
       if (emailStatusElement) {
-        emailStatusElement.textContent = result;  // 이메일을 UI에 표시
+        emailStatusElement.textContent = result; // 이메일을 UI에 표시
       }
     }, 100); // 팝업이 제대로 열릴 수 있는 짧은 시간 대기 후 설정
   } else {
     console.log("인증 실패 - 인증 결과:", result);
-    document.getElementById("verifyStatus").textContent = "인증 실패: " + result;  // 실패 메시지 표시
+    document.getElementById("verifyStatus").textContent =
+      "인증 실패: " + result; // 실패 메시지 표시
   }
 
-  resetInputs();  // 인증 후 입력 필드 리셋
+  resetInputs(); // 인증 후 입력 필드 리셋
 }
 
 //비밀번호 변경 팝업창 js 코드
 document.getElementById("inputnewpwp").addEventListener("keyup", checkInputs1p);
 
-function checkInputs1() {
-  var pw2 = document.getElementById("inputnewpw").value;
+function checkInputs1p() {
+  var pw2 = document.getElementById("inputnewpwp").value;
   var specialCharacters1 = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
   var checkText1 = document.getElementById("text241"); // 특수문자 포함 문구의 span 요소
   var checkNumber1 = document.getElementById("text251"); // 8자 이상 문구의 span 요소
@@ -1311,57 +1265,6 @@ document
   .getElementById("inputrecheckpw")
   .addEventListener("input", checkPasswordsMatchp);
 
-function checkPasswordsMatchp() {
-  var newPassword = document.getElementById("inputnewpwp").value;
-  var recheckPassword = document.getElementById("inputrecheckpw").value;
-  var messageElement = document.getElementById("recheckpwparttext2");
-
-  if (newPassword === recheckPassword) {
-    messageElement.style.color = "#448FFF"; // 일치할 때 색상
-    messageElement.textContent = "비밀번호가 일치합니다.";
-  } else {
-    messageElement.style.color = "#FF4F4F"; // 일치하지 않을 때 색상
-    messageElement.textContent = "비밀번호가 일치하지 않습니다.";
-  }
-}
-
-// 비밀번호 필드 및 유효성 검사 메시지 초기화 함수
-function resetPasswordFields() {
-  // 비밀번호 입력 필드 초기화
-  document.getElementById("inputcurrentpw").value = "";
-  document.getElementById("inputnewpw").value = "";
-  document.getElementById("inputrecheckpw").value = "";
-
-  // 유효성 검사 메시지 초기화
-  document.getElementById("recheckpwparttext2").textContent = "";
-
-  // 특수문자 및 8자 이상 체크 초기화
-  document.getElementById("text241").style.color = "#c1c1c1";
-  document.getElementById("imageContainer11").style.display = "none";
-  document.getElementById("text251").style.color = "#c1c1c1";
-  document.getElementById("imageContainer21").style.display = "none";
-}
-
-// 비밀번호 유효성 검사 함수
-function checkInputs1p() {
-  const pw2 = document.getElementById("inputnewpwp").value;
-  const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
-  const checkText1 = document.getElementById("text241");
-  const checkNumber1 = document.getElementById("text251");
-
-  if (specialCharacters.test(pw2)) {
-    checkText1.style.color = "#448fff";
-  } else {
-    checkText1.style.color = "#c1c1c1";
-  }
-
-  if (pw2.length >= 8) {
-    checkNumber1.style.color = "#448fff";
-  } else {
-    checkNumber1.style.color = "#c1c1c1";
-  }
-}
-
 // 비밀번호 일치 여부 확인 함수
 function checkPasswordsMatchp() {
   const newPassword = document.getElementById("inputnewpwp").value;
@@ -1384,7 +1287,7 @@ function submitPasswordChange() {
   const currentPw = document.getElementById("inputcurrentpw").value;
   const newPw = document.getElementById("inputnewpwp").value;
   const recheckPw = document.getElementById("inputrecheckpw").value;
-
+  const currentPwError = document.getElementById("currentPwError"); // 오류 메시지 요소 가져오기
   const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
 
   // 비밀번호 유효성 검사
@@ -1402,33 +1305,37 @@ function submitPasswordChange() {
   // AJAX 요청
   console.log("AJAX 요청 시작");
 
-  fetch('/change-password', {
-    method: 'POST',
+  fetch("/change-password", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       currentPassword: currentPw,
-      newPassword: newPw
+      newPassword: newPw,
     }),
   })
-      .then(response => {
-        if (response.ok) {
-          console.log("비밀번호 변경 성공");
-          alert("비밀번호가 성공적으로 변경되었습니다.");
-          resetPasswordFieldsp();
-          closePasswordPopup(); // 팝업 닫기
-        } else {
-          return response.json().then(data => {
-            console.log("비밀번호 변경 실패", data);
-            alert(data.message || "비밀번호 변경에 실패했습니다.");
-          });
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert("현재 비밀번호가 일치하지 않습니다.");
-      });
+    .then((response) => {
+      if (response.ok) {
+        console.log("비밀번호 변경 성공");
+        alert("비밀번호가 성공적으로 변경되었습니다.");
+        resetPasswordFieldsp();
+        closePasswordPopup(); // 팝업 닫기
+        currentPwError.style.display = "none"; // 성공 시 오류 메시지 숨기기
+      } else {
+        return response.json().then((data) => {
+          console.log("비밀번호 변경 실패", data);
+          currentPwError.style.display = "block"; // 오류 메시지 표시
+          currentPwError.textContent =
+            data.message || "비밀번호 변경에 실패했습니다.";
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      currentPwError.style.display = "block"; // 비밀번호 일치하지 않을 때 메시지 표시
+      currentPwError.textContent = "현재 비밀번호가 일치하지 않습니다.";
+    });
 }
 
 // 비밀번호 입력 필드 및 유효성 검사 초기화
@@ -1438,7 +1345,9 @@ function resetPasswordFieldsp() {
   document.getElementById("inputrecheckpw").value = "";
 
   document.getElementById("text241").style.color = "#c1c1c1";
+  document.getElementById("imageContainer11").style.display = "none";
   document.getElementById("text251").style.color = "#c1c1c1";
+  document.getElementById("imageContainer21").style.display = "none";
 
   const validationMessage = document.getElementById("recheckpwparttext2");
   if (validationMessage) {
@@ -1448,6 +1357,101 @@ function resetPasswordFieldsp() {
 
 // 팝업 닫기와 스크롤 활성화
 function closePasswordPopup() {
-  document.getElementById('bg_gray11').style.display = 'none';
+  document.getElementById("bg_gray11").style.display = "none";
   enableScroll();
 }
+
+// function checkInputs1p() {
+//   const pw2 = document.getElementById("inputnewpwp").value;
+//   const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/; // 특수 문자 정규식
+//   const checkText1 = document.getElementById("text241"); // 특수문자 포함 문구
+//   const checkNumber1 = document.getElementById("text251"); // 8자 이상 문구
+
+//   // 특수 문자 포함 여부 검사
+//   if (specialCharacters.test(pw2)) {
+//     checkText1.style.color = "#448fff"; // 특수 문자가 포함되면 파란색으로 변경
+//   } else {
+//     checkText1.style.color = "#c1c1c1"; // 특수 문자가 없으면 회색
+//   }
+
+//   // 8자 이상 여부 검사
+//   if (pw2.length >= 8) {
+//     checkNumber1.style.color = "#448fff"; // 8자 이상이면 파란색으로 변경
+//   } else {
+//     checkNumber1.style.color = "#c1c1c1"; // 8자 미만이면 회색
+//   }
+// }
+
+// // 비밀번호 일치 여부 확인 함수
+// function checkPasswordsMatch() {
+//   const newPassword = document.getElementById("inputnewpw").value;
+//   const recheckPassword = document.getElementById("inputrecheckpw").value;
+//   const validationMessage = document.getElementById("recheckpwparttext2");
+
+//   if (newPassword === recheckPassword) {
+//     validationMessage.style.color = "#448FFF"; // 비밀번호가 일치하면 파란색
+//     validationMessage.textContent = "비밀번호가 일치합니다.";
+//   } else {
+//     validationMessage.style.color = "#FF4F4F"; // 비밀번호가 일치하지 않으면 빨간색
+//     validationMessage.textContent = "비밀번호가 일치하지 않습니다.";
+//   }
+// }
+// function showPopupf(popupId) {
+//   var popup = document.getElementById(popupId);
+//   if (popup) {
+//     popup.style.display = "block";
+//   } else {
+//     console.log("Popup element with ID " + popupId + " not found.");
+//   }
+// }
+
+// function checkPasswordsMatchp() {
+//   var newPassword = document.getElementById("inputnewpwp").value;
+//   var recheckPassword = document.getElementById("inputrecheckpw").value;
+//   var messageElement = document.getElementById("recheckpwparttext2");
+
+//   if (newPassword === recheckPassword) {
+//     messageElement.style.color = "#448FFF"; // 일치할 때 색상
+//     messageElement.textContent = "비밀번호가 일치합니다.";
+//   } else {
+//     messageElement.style.color = "#FF4F4F"; // 일치하지 않을 때 색상
+//     messageElement.textContent = "비밀번호가 일치하지 않습니다.";
+//   }
+// }
+
+// // 비밀번호 필드 및 유효성 검사 메시지 초기화 함수
+// function resetPasswordFields() {
+//   // 비밀번호 입력 필드 초기화
+//   document.getElementById("inputcurrentpw").value = "";
+//   document.getElementById("inputnewpw").value = "";
+//   document.getElementById("inputrecheckpw").value = "";
+
+//   // 유효성 검사 메시지 초기화
+//   document.getElementById("recheckpwparttext2").textContent = "";
+
+//   // 특수문자 및 8자 이상 체크 초기화
+//   document.getElementById("text241").style.color = "#c1c1c1";
+//   document.getElementById("imageContainer11").style.display = "none";
+//   document.getElementById("text251").style.color = "#c1c1c1";
+//   document.getElementById("imageContainer21").style.display = "none";
+// }
+
+// // 비밀번호 유효성 검사 함수
+// function checkInputs1p() {
+//   const pw2 = document.getElementById("inputnewpwp").value;
+//   const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
+//   const checkText1 = document.getElementById("text241");
+//   const checkNumber1 = document.getElementById("text251");
+
+//   if (specialCharacters.test(pw2)) {
+//     checkText1.style.color = "#448fff";
+//   } else {
+//     checkText1.style.color = "#c1c1c1";
+//   }
+
+//   if (pw2.length >= 8) {
+//     checkNumber1.style.color = "#448fff";
+//   } else {
+//     checkNumber1.style.color = "#c1c1c1";
+//   }
+// }

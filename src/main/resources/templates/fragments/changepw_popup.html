@@ -1,16 +1,16 @@
 <!-- 비밀번호 변경 팝업 -->
-<div id="bg_gray11" style="display: none;" th:fragment="changePwPopup">
+<div id="bg_gray11" style="display: none" th:fragment="changePwPopup">
   <div id="changepw_pop_up">
     <div id="changepwTitle">
       <p id="changepwtitle1">비밀번호 변경</p>
       <div id="close">
         <!-- 팝업창 닫기 버튼 -->
         <img
-                th:src="@{/images/X.png}"
-                alt="X"
-                width="28px"
-                height="28px"
-                onclick="resetPasswordFieldsp(); closePasswordPopup();"
+          th:src="@{/images/X.png}"
+          alt="X"
+          width="28px"
+          height="28px"
+          onclick="resetPasswordFieldsp(); closePasswordPopup();"
         />
       </div>
     </div>
@@ -20,35 +20,72 @@
       <div id="currentpwpart">
         <div id="currentpwparttext">
           <p id="currentpwparttext1">현재 비밀번호</p>
+          <p id="currentPwError" style="color: red; display: none">
+            현재 비밀번호가 일치하지 않습니다.
+          </p>
         </div>
+
         <input type="password" id="inputcurrentpw" required />
+
+        <!-- 오류 메시지 -->
       </div>
 
       <div id="newpwpart">
         <div id="newpwparttext">
           <p id="currentpwparttext1">새 비밀번호</p>
+          <div id="check_pw1">
+            <span id="text241">특수문자 포함</span>
+            <div id="imageContainer11" style="display: none">
+              <img
+                id="check_img11"
+                th:src="@{/images/check.png}"
+                alt="check"
+                width="8px"
+                height="5px"
+              />
+            </div>
+            <div id="middle31"></div>
+            <span id="text251">8자 이상</span>
+            <div id="imageContainer21" style="display: none">
+              <img
+                id="check_img21"
+                th:src="@{/images/check.png}"
+                alt="check"
+                width="8px"
+                height="5px"
+              />
+            </div>
+          </div>
         </div>
-        <input type="password" id="inputnewpwp" oninput="checkInputs1p()" required />
 
-        <!-- 비밀번호 유효성 검사 메시지 -->
-        <div id="check_change_pw">
-          <p id="text241" style="color: #c1c1c1;">특수문자 포함</p>
-          <p id="text251" style="color: #c1c1c1;">8자 이상</p>
-        </div>
+        <input
+          type="password"
+          id="inputnewpwp"
+          oninput="checkInputs1p()"
+          required
+        />
       </div>
 
       <div id="recheckpwpart">
         <div id="recheckpwparttext">
           <p id="recheckpwparttext1">새 비밀번호 확인</p>
+          <p id="recheckpwparttext2" style="color: red"></p>
         </div>
-        <input type="password" id="inputrecheckpw" oninput="checkPasswordsMatchp()" required />
-        <p id="recheckpwparttext2" style="color: red;"></p> <!-- 비밀번호 일치 여부 표시 -->
+        <input
+          type="password"
+          id="inputrecheckpw"
+          oninput="checkPasswordsMatchp()"
+          required
+        />
+
+        <!-- 비밀번호 일치 여부 표시 -->
       </div>
 
       <!-- 버튼에 클릭 이벤트 리스너 직접 추가 -->
-      <button type="button" id="changepwbtn" onclick="submitPasswordChange()">확인</button>
+      <button type="button" id="changepwbtn" onclick="submitPasswordChange()">
+        확인
+      </button>
     </form>
     <!-- 비밀번호 변경 폼 끝 -->
-
   </div>
 </div>

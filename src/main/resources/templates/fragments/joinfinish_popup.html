@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/Home.css}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>SoT</title>
-  </head>
   <body>
-    <!-- 임시 버튼 -->
-    <input type="checkbox" id="join3" />
-    <label for="join3">업로드</label>
-
     <!-- 회원가입 완료 팝업 -->
     <div id="bg_gray5" style="display: none" th:fragment="joinFinishPopup">
       <div id="joinfinsih_pop_up">
@@ -40,38 +17,13 @@
         <p id="joinfinishcontent">회원가입이 완료되었습니다.</p>
 
         <div id="joinfinishbuttons">
-          <button id="joinfinishbtn" type="button" onclick="closePopup()">
+          <button id="joinfinishbtn" type="button" onclick="closePopupff()">
             닫기
           </button>
-          <button id="gotologinbtn" type="button" onclick="goToLogin()">
+          <button id="gotologinbtn" type="button" onclick="goTonewLoginff()">
             로그인
           </button>
         </div>
       </div>
     </div>
-
-    <script>
-      // DOM이 로드되었을 때 실행되는 스크립트
-      document.addEventListener("DOMContentLoaded", function () {
-        var joinBtn = document.querySelector("#join3");
-        var joinFinishPopup = document.getElementById("bg_gray5");
-
-        // 업로드 버튼 클릭 시 팝업 열기
-        joinBtn.addEventListener("click", function (event) {
-          event.preventDefault(); // 기본 동작 방지
-          joinFinishPopup.style.display = "block"; // 팝업 표시
-        });
-      });
-
-      // 팝업 닫기
-      function closePopup() {
-        document.getElementById("bg_gray5").style.display = "none";
-      }
-
-      // 로그인 페이지로 이동 (실제 로그인 페이지로 경로 설정 필요)
-      function goToLogin() {
-        window.location.href = "/login"; // 실제 로그인 페이지 경로로 변경 필요
-      }
-    </script>
   </body>
-</html>

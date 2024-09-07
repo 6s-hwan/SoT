@@ -1,217 +1,239 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>회원가입</title>
-  <style>
-    /* 비밀번호 체크 시 스타일 */
-    #text24, #text25 {
-      color: #c1c1c1;
-    }
-    #imageContainer1, #imageContainer2 {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-<div id="bg_gray2" style="display: none" th:fragment="joinPopup">
-  <div id="join_pop_up">
-    <div id="first">
-      <div id="logo">
-        <img
-                th:src="@{/images/Logo.png}"
-                alt="Logo"
-                width="238px"
-                height="55px"
-        />
-      </div>
-      <div id="middle"></div>
-      <div id="close">
-        <img
-                th:src="@{/images/X.png}"
-                alt="X"
-                width="28px"
-                height="28px"
-                onclick="document.getElementById('bg_gray2').style.display='none'; enableScroll();"
-        />
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원가입</title>
+    <style>
+      /* 비밀번호 체크 시 스타일 */
+      #text24,
+      #text25 {
+        color: #c1c1c1;
+      }
+      #imageContainer1,
+      #imageContainer2 {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg_gray2" style="display: none" th:fragment="joinPopup">
+      <div id="join_pop_up">
+        <div id="first">
+          <div id="logo">
+            <img
+              th:src="@{/images/Logo.png}"
+              alt="Logo"
+              width="238px"
+              height="55px"
+            />
+          </div>
+          <div id="middle"></div>
+          <div id="close">
+            <img
+              th:src="@{/images/X.png}"
+              alt="X"
+              width="28px"
+              height="28px"
+              onclick="document.getElementById('bg_gray2').style.display='none'; enableScroll();"
+            />
+          </div>
+        </div>
+        <div id="second">
+          <div id="text">회원가입</div>
+          <div id="middle2"></div>
+          <div id="secondback">
+            <a href="#" onclick="openLoginPopup()">로그인 페이지로 돌아가기</a>
+          </div>
+        </div>
+        <form id="joinForm">
+          <div class="join_input1">
+            <div id="text2">이메일</div>
+            <label for="email_input1">
+              <input
+                type="text"
+                id="email_input1"
+                name="email"
+                placeholder="이메일 입력"
+              />
+            </label>
+          </div>
+          <p class="emailcheck-content" id="emailCheckMessage"></p>
+          <div id="blank"></div>
+
+          <!-- 비밀번호 입력 및 검사 -->
+          <div class="join_input2">
+            <div id="text3">비밀번호</div>
+            <label for="join_pw_input">
+              <input
+                type="password"
+                id="join_pw_input"
+                name="password"
+                placeholder="비밀번호 입력"
+                oninput="checkPassword()"
+              />
+            </label>
+          </div>
+          <div id="check_pw">
+            <span id="text24" class="pw1">특수문자 포함</span>
+            <div id="imageContainer1">
+              <img
+                id="check_img1"
+                th:src="@{/images/check.png}"
+                alt="check"
+                width="8px"
+                height="5px"
+              />
+            </div>
+            <div id="middle3"></div>
+            <span id="text25" class="pw2">8자 이상</span>
+            <div id="imageContainer2">
+              <img
+                id="check_img2"
+                th:src="@{/images/check.png}"
+                alt="check"
+                width="8px"
+                height="5px"
+              />
+            </div>
+          </div>
+          <div id="blank"></div>
+
+          <!-- 닉네임 -->
+          <div class="input3">
+            <div id="text4">닉네임</div>
+            <label for="name_input">
+              <input
+                type="text"
+                id="name_input"
+                name="username"
+                placeholder="닉네임을 입력해주세요.(2~8자)"
+                size="32"
+              />
+            </label>
+          </div>
+          <p class="namecheck-content" id="nameCheckMessage"></p>
+          <div id="blank"></div>
+
+          <!-- 생년월일 -->
+          <div id="birth">
+            <div id="text5">생년월일</div>
+          </div>
+          <div class="info" id="info__birth">
+            <select class="box" id="birth-year" name="birth_year">
+              <option selected>년</option>
+            </select>
+            <select class="box" id="birth-month" name="birth_month">
+              <option selected>월</option>
+            </select>
+            <select class="box" id="birth-day" name="birth_day">
+              <option selected>일</option>
+            </select>
+          </div>
+          <input type="hidden" id="birth_input" name="birth" value="" />
+          <div id="blank"></div>
+
+          <!-- 성별 선택 -->
+          <div id="gender">
+            <div id="text6">성별</div>
+          </div>
+          <div id="gender_choose">
+            <button
+              id="button1"
+              class="button"
+              onclick="selectButton(1)"
+              type="button"
+            >
+              남성
+            </button>
+            <button
+              id="button2"
+              class="button"
+              onclick="selectButton(2)"
+              type="button"
+            >
+              여성
+            </button>
+          </div>
+          <input type="hidden" id="gender_input" name="gender" value="" />
+          <div id="blank"></div>
+
+          <!-- 전화번호 -->
+          <div id="phone">전화번호</div>
+          <div class="input4">
+            <label for="phone_input1">
+              <input
+                type="text"
+                class="phone_input"
+                id="phone_input1"
+                name="phone1"
+                placeholder="010"
+              />
+            </label>
+            <div id="text7">-</div>
+            <label for="phone_input2">
+              <input
+                type="text"
+                class="phone_input"
+                id="phone_input2"
+                name="phone2"
+                placeholder="1234"
+              />
+            </label>
+            <div id="text7">-</div>
+            <label for="phone_input3">
+              <input
+                type="text"
+                class="phone_input"
+                id="phone_input3"
+                name="phone3"
+                placeholder="5678"
+              />
+            </label>
+          </div>
+          <div class="input5">
+            <label for="CertificationNumber_input">
+              <input
+                type="text"
+                class="CertificationNumber_input"
+                id="CertificationNumber_input"
+                name="verificationCode"
+                placeholder="인증번호를 입력해 주세요"
+              />
+            </label>
+            <button type="button" onclick="sendVerification()">전송</button>
+          </div>
+          <div id="text8">실명인증을 완료해 주세요</div>
+          <div id="blank"></div>
+
+          <!-- 약관 동의 -->
+          <div id="container1">
+            <input type="checkbox" class="orgin2" id="checkbtn2" />
+            <label for="checkbtn2"
+              ><a href="#" style="color: #448fff">이용약관</a>&nbsp;동의</label
+            >
+          </div>
+          <div id="blank3"></div>
+          <div id="container2">
+            <input type="checkbox" class="orgin3" id="checkbtn3" />
+            <label for="checkbtn3"
+              ><a href="#" style="color: #448fff">개인정보 처리방침</a
+              >&nbsp;동의</label
+            >
+          </div>
+          <div id="blank"></div>
+          <button
+            type="button"
+            class="confirm"
+            id="join_btn"
+            onclick="submitSignUpForm()"
+          >
+            회원가입
+          </button>
+        </form>
+        <div id="blank4"></div>
       </div>
     </div>
-    <div id="second">
-      <div id="text">회원가입</div>
-      <div id="middle2"></div>
-      <div id="secondback">
-        <a href="#" onclick="openLoginPopup()">로그인 페이지로 돌아가기</a>
-      </div>
-    </div>
-    <form id="joinForm">
-      <div class="join_input1">
-        <div id="text2">이메일</div>
-        <label for="email_input1">
-          <input
-                  type="text"
-                  id="email_input1"
-                  name="email"
-                  placeholder="이메일 입력"
-          />
-        </label>
-      </div>
-      <p class="emailcheck-content" id="emailCheckMessage">사용 가능한 이메일입니다.</p>
-      <div id="blank"></div>
 
-      <!-- 비밀번호 입력 및 검사 -->
-      <div class="join_input2">
-        <div id="text3">비밀번호</div>
-        <label for="join_pw_input">
-          <input
-                  type="password"
-                  id="join_pw_input"
-                  name="password"
-                  placeholder="비밀번호 입력"
-                  oninput="checkPassword()"
-          />
-        </label>
-      </div>
-      <div id="check_pw">
-        <span id="text24" class="pw1">특수문자 포함</span>
-        <div id="imageContainer1">
-          <img
-                  id="check_img1"
-                  th:src="@{/images/check.png}"
-                  alt="check"
-                  width="8px"
-                  height="5px"
-          />
-        </div>
-        <div id="middle3"></div>
-        <span id="text25" class="pw2">8자 이상</span>
-        <div id="imageContainer2">
-          <img
-                  id="check_img2"
-                  th:src="@{/images/check.png}"
-                  alt="check"
-                  width="8px"
-                  height="5px"
-          />
-        </div>
-      </div>
-      <div id="blank"></div>
-
-      <!-- 닉네임 -->
-      <div class="input3">
-        <div id="text4">닉네임</div>
-        <label for="name_input">
-          <input
-                  type="text"
-                  id="name_input"
-                  name="username"
-                  placeholder="닉네임을 입력해주세요.(2~8자)"
-                  size="32"
-          />
-        </label>
-      </div>
-      <p class="namecheck-content" id="nameCheckMessage">사용 가능한 닉네임입니다.</p>
-      <div id="name_possible"></div>
-
-      <!-- 생년월일 -->
-      <div id="birth">
-        <div id="text5">생년월일</div>
-      </div>
-      <div class="info" id="info__birth">
-        <select class="box" id="birth-year" name="birth_year">
-          <option selected>년</option>
-        </select>
-        <select class="box" id="birth-month" name="birth_month">
-          <option selected>월</option>
-        </select>
-        <select class="box" id="birth-day" name="birth_day">
-          <option selected>일</option>
-        </select>
-      </div>
-      <input type="hidden" id="birth_input" name="birth" value="" />
-      <div id="blank"></div>
-
-      <!-- 성별 선택 -->
-      <div id="gender">
-        <div id="text6">성별</div>
-      </div>
-      <div id="gender_choose">
-        <button id="button1" class="button" onclick="selectButton(1)" type="button">남성</button>
-        <button id="button2" class="button" onclick="selectButton(2)" type="button">여성</button>
-      </div>
-      <input type="hidden" id="gender_input" name="gender" value="" />
-      <div id="blank"></div>
-
-      <!-- 전화번호 -->
-      <div id="phone">전화번호</div>
-      <div class="input4">
-        <label for="phone_input1">
-          <input
-                  type="text"
-                  class="phone_input"
-                  id="phone_input1"
-                  name="phone1"
-                  placeholder="010"
-          />
-        </label>
-        <div id="text7">-</div>
-        <label for="phone_input2">
-          <input
-                  type="text"
-                  class="phone_input"
-                  id="phone_input2"
-                  name="phone2"
-                  placeholder="1234"
-          />
-        </label>
-        <div id="text7">-</div>
-        <label for="phone_input3">
-          <input
-                  type="text"
-                  class="phone_input"
-                  id="phone_input3"
-                  name="phone3"
-                  placeholder="5678"
-          />
-        </label>
-      </div>
-      <div class="input5">
-        <label for="CertificationNumber_input">
-          <input
-                  type="text"
-                  class="CertificationNumber_input"
-                  id="CertificationNumber_input"
-                  name="verificationCode"
-                  placeholder="인증번호를 입력해 주세요"
-          />
-        </label>
-        <button type="button" onclick="sendVerification()">전송</button>
-      </div>
-      <div id="text8">실명인증을 완료해 주세요</div>
-      <div id="blank"></div>
-
-      <!-- 약관 동의 -->
-      <div id="container1">
-        <input type="checkbox" class="orgin2" id="checkbtn2" />
-        <label for="checkbtn2"
-        ><a href="#" style="color: #448fff;">이용약관</a>&nbsp;동의</label
-        >
-      </div>
-      <div id="blank3"></div>
-      <div id="container2">
-        <input type="checkbox" class="orgin3" id="checkbtn3" />
-        <label for="checkbtn3"
-        ><a href="#" style="color: #448fff;">개인정보 처리방침</a>&nbsp;동의</label
-        >
-      </div>
-      <div id="blank"></div>
-      <button type="button" class="confirm" id="join_btn" onclick="submitSignUpForm()">회원가입</button>
-    </form>
-    <div id="blank4"></div>
-  </div>
-</div>
-
-<script>
-
-</script>
-</body>
+    <script></script>
+  </body>
 </html>

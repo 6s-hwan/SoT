@@ -55,8 +55,8 @@
   letter-spacing: -0.3px;
 }
 
-#inputnewpwp11,
-#inputrecheckpw1 {
+#newPassword,
+#confirmPassword {
   box-sizing: border-box;
   width: 460px;
   height: 56px;

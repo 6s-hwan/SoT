@@ -28,8 +28,11 @@
   z-index: 9999; /* 가장 위에 나타나도록 z-index 설정 */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* 그림자 추가로 팝업을 더 돋보이게 */
 }
+#content {
+  flex: 1; /* 콘텐츠 영역이 남는 공간을 채우도록 설정 */
+}
 #Footer {
-  position: fixed; /* 화면에 고정 */
+  position: relative; /* 고정된 위치가 아니라 페이지의 마지막에 고정 */
   bottom: 0; /* 화면의 하단에 위치 */
   width: 100%; /* 화면의 전체 너비를 차지 */
   height: 50px; /* 기존 설정 유지 */
@@ -38,7 +41,7 @@
   justify-content: center;
   box-sizing: border-box;
   background: #f8f8f8;
-  z-index: 1000; /* 다른 요소 위에 오도록 설정 */
+  z-index: 1; /* 다른 요소 위에 오도록 설정 */
 }
 /* #Footer {
   font-style: bold;

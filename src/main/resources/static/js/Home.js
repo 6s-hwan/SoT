@@ -1,3 +1,286 @@
+let debounceTimeout;
+
+// 이메일 유효성 및 중복 검사 함수
+function checkEmail() {
+  var email = document.getElementById("email_input1").value;
+  var emailCheckMessage = document.getElementById("emailCheckMessage");
+
+  clearTimeout(debounceTimeout); // 기존 타임아웃을 초기화
+
+  // 입력이 멈춘 후 500ms 후에 유효성 검사 진행
+  debounceTimeout = setTimeout(() => {
+    const emailPattern = /.+@.+/;  // 간단한 이메일 정규식
+
+    if (emailPattern.test(email)) {
+      // 이메일 유효성 통과 후, 중복 체크를 위한 서버 요청 추가
+      fetch(`/check-email?email=${email}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.isDuplicate) {
+              emailCheckMessage.textContent = "중복된 이메일입니다.";
+              emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
+              emailCheckMessage.style.display = "block";
+            } else {
+              emailCheckMessage.textContent = "사용 가능한 이메일입니다.";
+              emailCheckMessage.style.color = "#448fff"; // 파란색
+              emailCheckMessage.style.display = "block";
+            }
+          });
+    } else {
+      emailCheckMessage.textContent = "유효하지 않은 이메일 형식입니다.";
+      emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
+      emailCheckMessage.style.display = "block";
+    }
+  }, 750); // 500ms (0.5초) 후에 유효성 검사 실행
+}
+
+// 이메일 입력 필드에 이벤트 리스너 추가
+document.getElementById("email_input1").addEventListener("input", checkEmail);
+
+// 이메일 파트
+const input = document.querySelector("#email_input1");
+const p = document.querySelector(".emailcheck-content");
+let value;
+const isEmail = (value) => {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(value);
+};
+input.addEventListener("keyup", (event) => {
+  value = event.currentTarget.value;
+
+  if (isEmail(value)) {
+    p.textContent = `사용 가능한 이메일입니다.`;
+    p.style.display = "block"; // 또는 "inline"
+  } else {
+    p.textContent = ``;
+    p.style.display = "none"; // 또는 "inline"
+  }
+});
+// 비밀번호 유효성 검사 함수
+function checkInputs1p1() {
+  const password = document.getElementById("newPassword").value;
+  const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/; // 특수문자 정규식
+  const checkTextSpecial = document.getElementById("text2411"); // 특수문자 포함 텍스트
+  const checkTextLength = document.getElementById("text2511"); // 8자 이상 텍스트
+  const imageContainerSpecial = document.getElementById("imageContainer111"); // 특수문자 체크 이미지
+  const imageContainerLength = document.getElementById("imageContainer211"); // 8자 이상 체크 이미지
+
+  // 특수문자 포함 여부 확인
+  if (specialCharacters.test(password)) {
+    checkTextSpecial.style.color = "#448fff"; // 조건 만족 시 파란색
+    imageContainerSpecial.style.display = "block"; // 체크 이미지 표시
+  } else {
+    checkTextSpecial.style.color = "#c1c1c1"; // 기본 색상 회색
+    imageContainerSpecial.style.display = "none"; // 체크 이미지 숨김
+  }
+
+  // 8자 이상 여부 확인
+  if (password.length >= 8) {
+    checkTextLength.style.color = "#448fff"; // 조건 만족 시 파란색
+    imageContainerLength.style.display = "block"; // 체크 이미지 표시
+  } else {
+    checkTextLength.style.color = "#c1c1c1"; // 기본 색상 회색
+    imageContainerLength.style.display = "none"; // 체크 이미지 숨김
+  }
+}
+
+// 비밀번호 확인 일치 여부 확인 함수
+function checkPasswordsMatchp1() {
+  const newPassword = document.getElementById("newPassword").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  const validationMessage = document.getElementById("recheckpwparttext21");
+
+  if (newPassword === confirmPassword) {
+    validationMessage.style.color = "#448fff";
+    validationMessage.textContent = "비밀번호가 일치합니다.";
+  } else {
+    validationMessage.style.color = "#FF4F4F";
+    validationMessage.textContent = "비밀번호가 일치하지 않습니다.";
+  }
+}
+// 팝업 닫기 함수
+function closePopupff() {
+  document.getElementById('bg_gray5').style.display = 'none'; // 회원가입 완료 팝업 닫기
+  enableScroll(); // 스크롤 활성화
+}
+
+// 로그인 팝업 열기 함수
+function goTonewLoginff() {
+  closePopupff(); // 회원가입 완료 팝업 닫기
+  document.getElementById('bg_gray').style.display = 'block'; // 로그인 팝업 열기
+}
+// 회원가입 완료 팝업 표시 함수
+function showSignupCompletePopup() {
+  // 로그인 팝업 닫기
+  document.getElementById("bg_gray2").style.display = "none"; // 로그인 팝업 닫기
+
+  // 회원가입 완료 팝업 열기
+  document.getElementById("bg_gray5").style.display = "block"; // 회원가입 완료 팝업 열기
+}
+// 닉네임 유효성 및 중복 검사 함수
+function checkUsername() {
+  var username = document.getElementById("name_input").value;
+  var nameCheckContent = document.querySelector(".namecheck-content");
+  var namePattern = /^[a-zA-Z가-힣]{2,8}$/; // 2~8자 한글, 영문
+
+  if (namePattern.test(username)) {
+    // 서버에서 닉네임 중복 체크
+    fetch(`/check-username?username=${username}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.isDuplicate) {
+            nameCheckContent.textContent = "중복된 닉네임입니다.";
+            nameCheckContent.style.color = "#FF4F4F"; // 빨간색
+            nameCheckContent.style.display = "block";
+          } else {
+            nameCheckContent.textContent = "사용 가능한 닉네임입니다.";
+            nameCheckContent.style.color = "#448fff"; // 파란색
+            nameCheckContent.style.display = "block";
+          }
+        });
+  } else {
+    nameCheckContent.textContent = "닉네임은 2~8자의 한글 또는 영문이어야 합니다.";
+    nameCheckContent.style.color = "#FF4F4F"; // 빨간색
+    nameCheckContent.style.display = "block";
+  }
+}
+
+// 닉네임 입력 필드에 이벤트 리스너 추가
+document.getElementById("name_input").addEventListener("input", checkUsername);
+function checkPassword() {
+  var password = document.getElementById("join_pw_input").value;
+  var specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
+  var checkText = document.getElementById("text24");
+  var checkNumber = document.getElementById("text25");
+  var imageContainer1 = document.getElementById("imageContainer1");
+  var imageContainer2 = document.getElementById("imageContainer2");
+
+  // 특수문자 포함 검사
+  if (specialCharacters.test(password)) {
+    checkText.style.color = "#448fff";
+    imageContainer1.style.display = "block";
+  } else {
+    checkText.style.color = "#c1c1c1";
+    imageContainer1.style.display = "none";
+  }
+
+  // 비밀번호 8자 이상 검사
+  if (password.length >= 8) {
+    checkNumber.style.color = "#448fff";
+    imageContainer2.style.display = "block";
+  } else {
+    checkNumber.style.color = "#c1c1c1";
+    imageContainer2.style.display = "none";
+  }
+}
+
+// 이메일 형식 확인
+function isEmailValid(email) {
+  var emailPattern = /.+@.+/;  // 간단한 이메일 정규식
+  return emailPattern.test(email);
+}
+// 모든 입력 필드의 유효성 검사 후 비동기 회원가입 폼 제출
+function submitSignUpForm() {
+  var email = document.getElementById("email_input1").value;
+  var password = document.getElementById("join_pw_input").value;
+  var username = document.getElementById("name_input").value;
+  var phone1 = document.getElementById("phone_input1").value;
+  var phone2 = document.getElementById("phone_input2").value;
+  var phone3 = document.getElementById("phone_input3").value;
+  var verificationCode = document.getElementById("CertificationNumber_input").value;
+  var gender = document.getElementById("gender_input").value;
+  var birthYear = document.getElementById("birth-year").value;
+  var birthMonth = document.getElementById("birth-month").value;
+  var birthDay = document.getElementById("birth-day").value;
+
+  // 이용약관과 개인정보 처리방침 체크 여부 확인
+  var termsOfUseChecked = document.getElementById("checkbtn2").checked; // 이용약관 체크박스
+  var privacyPolicyChecked = document.getElementById("checkbtn3").checked; // 개인정보 처리방침 체크박스
+
+  // 필수 입력 필드가 비어있는지 확인
+  if (!email) {
+    alert("이메일을 입력해 주세요.");
+    return false;
+  }
+  if (!password) {
+    alert("비밀번호를 입력해 주세요.");
+    return false;
+  }
+  if (!username) {
+    alert("닉네임을 입력해 주세요.");
+    return false;
+  }
+  if (birthYear === "년" || birthMonth === "월" || birthDay === "일") {
+    alert("생년월일을 올바르게 선택해 주세요.");
+    return false;
+  }
+  if (!gender) {
+    alert("성별을 선택해 주세요.");
+    return false;
+  }
+  if (!phone1 || !phone2 || !phone3) {
+    alert("전화번호를 입력해 주세요.");
+    return false;
+  }
+  if (!verificationCode) {
+    alert("인증번호를 입력해 주세요.");
+    return false;
+  }
+  // 이용약관과 개인정보 처리방침 동의 여부 확인
+  if (!termsOfUseChecked) {
+    alert("이용약관에 동의해 주세요.");
+    return false;
+  }
+  if (!privacyPolicyChecked) {
+    alert("개인정보 처리방침에 동의해 주세요.");
+    return false;
+  }
+
+  var specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
+
+  // 비밀번호 유효성 검사
+  if (!specialCharacters.test(password)) {
+    alert("비밀번호는 특수문자를 포함해야 합니다.");
+    return false;
+  }
+  if (password.length < 8) {
+    alert("비밀번호는 8자 이상이어야 합니다.");
+    return false;
+  }
+
+  var formData = new FormData(document.getElementById("joinForm"));
+  fetch("/user", {
+    method: "POST",
+    body: formData
+  })
+      .then(response => response.json())
+      .then(data => {
+        // 이메일 중복
+        if (data.status === "error" && data.message === "이미 사용 중인 이메일입니다.") {
+          var emailCheckMessage = document.getElementById("emailCheckMessage");
+          emailCheckMessage.textContent = "중복된 이메일입니다.";
+          emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+          emailCheckMessage.style.display = "block";
+        }
+
+        // 닉네임 중복
+        if (data.status === "error" && data.message === "이미 사용 중인 닉네임입니다.") {
+          var nameCheckMessage = document.getElementById("nameCheckMessage");
+          nameCheckMessage.textContent = "중복된 닉네임입니다.";
+          nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+          nameCheckMessage.style.display = "block";
+        }
+
+        // 성공 메시지 처리
+        if (data.status === "success") {
+          showSignupCompletePopup();
+        }
+      })
+      .catch(error => {
+        alert("오류가 발생했습니다: " + error.message);
+      });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // 비밀번호 찾기 버튼에 대한 이벤트 리스너
   const findPwBtn = document.querySelector("#findpwbtn");
@@ -621,27 +904,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// 회원가입 팝업창(join_popup)
-// 이메일 파트
-const input = document.querySelector("#email_input1");
-const p = document.querySelector(".emailcheck-content");
-let value;
-
-const isEmail = (value) => {
-  return value.indexOf("@") > 1 && value.split("@")[1].indexOf(".") > 1;
-};
-
-input.addEventListener("keyup", (event) => {
-  value = event.currentTarget.value;
-
-  if (isEmail(value)) {
-    p.textContent = `사용 가능한 이메일입니다.`;
-    p.style.display = "block"; // 또는 "inline"
-  } else {
-    p.textContent = ``;
-    p.style.display = "none"; // 또는 "inline"
-  }
-});
 
 // 비밀번호 파트
 document.getElementById("join_pw_input").addEventListener("keyup", checkInputs);

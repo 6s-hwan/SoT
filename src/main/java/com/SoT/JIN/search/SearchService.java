@@ -4,6 +4,8 @@ import com.SoT.JIN.rising.RisingService;
 import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,11 +73,14 @@ public class SearchService {
     }
 
     public Story getStoryWithSmallestId(String keyword) {
-        List<Long> storyIds = storyRepository.findIdsByKeyword(keyword);
-        if (storyIds.isEmpty()) {
+        Pageable pageable = PageRequest.of(0, 1); // 1개의 결과만 가져옴
+        List<Long> largestStoryIds = storyRepository.findIdsByKeyword(keyword, pageable);
+
+        if (largestStoryIds.isEmpty()) {
             return null;
         }
-        Long smallestId = storyIds.stream().min(Long::compare).orElse(null);
-        return storyRepository.findById(smallestId).orElse(null);
+
+        Long largestId = largestStoryIds.get(0);
+        return storyRepository.findById(largestId).orElse(null);
     }
 }

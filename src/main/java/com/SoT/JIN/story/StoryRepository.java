@@ -28,11 +28,12 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
     // 사용자별 게시글 수를 세는 메서드
     long countByUsername(String username);
 
-    List<Story> findByTitleContainingIgnoreCase(String query);
+    List<Story> findByTitleContainingIgnoreCaseOrderByStoryIdDesc(String query);
 
-    // 특정 키워드가 포함된 스토리 ID 조회
-    @Query("SELECT s.storyId FROM Story s WHERE s.tags LIKE %:keyword% OR s.description LIKE %:keyword% OR s.location LIKE %:keyword% OR s.title LIKE %:keyword%")
-    List<Long> findIdsByKeyword(String keyword);
+
+    // 특정 키워드가 포함된 스토리 ID 중 가장 큰 ID 조회
+    @Query("SELECT s.storyId FROM Story s WHERE s.tags LIKE %:keyword% OR s.description LIKE %:keyword% OR s.location LIKE %:keyword% OR s.title LIKE %:keyword% ORDER BY s.storyId DESC")
+    List<Long> findIdsByKeyword(String keyword, Pageable pageable);
 
     List<Story> findByThemeContaining(String selectedTheme);
 

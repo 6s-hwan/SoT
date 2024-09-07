@@ -7,6 +7,8 @@ import com.SoT.JIN.like.LikeRepository;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,8 +55,17 @@ public class StoryService {
     }
 
     public List<Story> findStoriesByKeyword(String keyword) {
-        Set<Long> storyIds = storyRepository.findIdsByKeyword(keyword).stream().collect(Collectors.toSet());
-        return storyRepository.findAllById(storyIds);
+        // 필요한 만큼의 페이지 크기 설정 (예: 100개씩 가져오기)
+        Pageable pageable = PageRequest.of(0, 100);  // 100개씩 가져옴
+        List<Long> storyIds = storyRepository.findIdsByKeyword(keyword, pageable);
+
+        if (storyIds.isEmpty()) {
+            return Collections.emptyList();  // ID가 없으면 빈 리스트 반환
+        }
+
+        // ID 리스트를 Set으로 변환 후, 모든 스토리를 조회
+        Set<Long> storyIdSet = storyIds.stream().collect(Collectors.toSet());
+        return storyRepository.findAllById(storyIdSet);  // 해당 ID들로 스토리 조회
     }
 
     public Map<String, List<Story>> getGroupedStories() {
@@ -139,9 +150,6 @@ public class StoryService {
         }
     }
 
-    public List<Story> searchStoriesByTitle(String title) {
-        return storyRepository.findByTitleContainingIgnoreCase(title);
-    }
     public List<Story> getSeasonStories(String season, int limit) {
         List<Story> stories = storyRepository.findAll();
         List<Story> seasonStories = stories.stream()

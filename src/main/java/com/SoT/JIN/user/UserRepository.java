@@ -20,4 +20,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     // 전화번호가 존재하는지 확인하는 메서드
     boolean existsByPhoneNumber(String phoneNumber);
+
+    // 이메일 중복 확인 메소드
+    boolean existsByEmail(String email);
+
+    // 닉네임 중복 확인 메소드
+    boolean existsByUsername(String username);
 }

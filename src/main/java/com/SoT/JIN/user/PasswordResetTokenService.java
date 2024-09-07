@@ -47,4 +47,7 @@ public class PasswordResetTokenService {
     public void invalidateToken(String token) {
         tokenRepository.deleteByToken(token);
     }
+    public PasswordResetToken findByUser(User user) {
+        return tokenRepository.findByUser(user);
+    }
 }

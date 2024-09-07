@@ -124,14 +124,24 @@
                     height="10px"
             >
             <p class="following-status">팔로우중</p>
-            <img
-                    th:src="@{/images/follow_x.png}"
-                    class="follow_x"
-                    width="16px"
-                    height="16px"
-                    alt="팔로우 취소"
-                    onclick="document.getElementById('bg_gray10').style.display='block';"
-            />
+            <!-- 팔로우 취소 버튼 (x 버튼) -->
+            <form th:action="@{'/writer/' + ${follow.username} + '/unfollow'}" method="post" style="display: inline;">
+              <button type="submit" style="border: none; background: none;">
+                <img
+                        th:src="@{/images/follow_x.png}"
+                        class="follow_x"
+                        width="16px"
+                        height="16px"
+                        alt="팔로우 취소"
+                />
+              </button>
+            </form>
+            <!-- 팝업 -->
+            <div id="bg_gray10" style="display: none" th:fragment="followCancelPopup">
+              <p>정말로 팔로우를 취소하시겠습니까?</p>
+              <button type="button" onclick="confirmUnfollow()">확인</button>
+              <button type="button" onclick="closeUnfollowPopup()">취소</button>
+            </div>
           </div>
 
           <div class="follow2">
@@ -177,6 +187,30 @@
 </div>
 <!-- 팔로잉 페이지 끝 -->
 <script>
+  let currentForm = null;  // 현재 제출될 폼을 저장
+
+  // 폼 제출 이벤트를 가로채고 팝업 띄우기
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();  // 폼 제출 중단
+      currentForm = this;  // 현재 폼 저장
+      document.getElementById('bg_gray10').style.display = 'block';  // 팝업 표시
+    });
+  });
+
+  // 팝업 닫기
+  function closeUnfollowPopup() {
+    document.getElementById('bg_gray10').style.display = 'none';
+    currentForm = null;  // 폼 초기화
+  }
+
+  // 팝업에서 '확인'을 누르면 폼 제출 진행
+  function confirmUnfollow() {
+    if (currentForm) {
+      currentForm.submit();  // 폼 제출
+    }
+    closeUnfollowPopup();  // 팝업 닫기
+  }
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.following-item').forEach(function(item) {
       var content = item.querySelector('.content');

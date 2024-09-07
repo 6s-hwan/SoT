@@ -14,40 +14,40 @@ document.addEventListener("DOMContentLoaded", function () {
   // 로그인 상태 확인 함수
   function checkLoginStatus() {
     fetch("/api/user/profile")
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.isLoggedIn) {
-            // 프로필 이미지 설정
-            login(data.profileImageUrl);
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          // 프로필 이미지 설정
+          login(data.profileImageUrl);
 
-            // 팔로우, 업로드, 이미지 버튼 애니메이션 적용
-            setTimeout(function () {
-              followingBtn.style.display = "inline-block";
-              uploadBtn.style.display = "inline-block";
-              imageBtn.style.display = "inline-block";
+          // 팔로우, 업로드, 이미지 버튼 애니메이션 적용
+          setTimeout(function () {
+            followingBtn.style.display = "inline-block";
+            uploadBtn.style.display = "inline-block";
+            imageBtn.style.display = "inline-block";
 
-              followingBtn.classList.add("fade-in");
-              uploadBtn.classList.add("fade-in");
-              imageBtn.classList.add("fade-in");
-            }, 600); // 0.3초 후에 버튼 표시 및 애니메이션 추가
+            followingBtn.classList.add("fade-in");
+            uploadBtn.classList.add("fade-in");
+            imageBtn.classList.add("fade-in");
+          }, 600); // 0.3초 후에 버튼 표시 및 애니메이션 추가
 
-            // 로그인 버튼(#join)을 제거
-            if (Joinbtn) {
-              Joinbtn.remove();
-            }
-
-            // 로그인 라벨 클릭 시 드롭다운 메뉴 표시
-            loginLabel.onclick = function () {
-              toggleDropdown();
-            };
-          } else {
-            // 로그인되지 않은 경우 로그인 버튼을 클릭하면 팝업을 띄움
-            loginLabel.onclick = function () {
-              togglePopup1("loginPopup");
-            };
+          // 로그인 버튼(#join)을 제거
+          if (Joinbtn) {
+            Joinbtn.remove();
           }
-        })
-        .catch((error) => console.error("Error:", error));
+
+          // 로그인 라벨 클릭 시 드롭다운 메뉴 표시
+          loginLabel.onclick = function () {
+            toggleDropdown();
+          };
+        } else {
+          // 로그인되지 않은 경우 로그인 버튼을 클릭하면 팝업을 띄움
+          loginLabel.onclick = function () {
+            togglePopup1("loginPopup");
+          };
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   // 로그인 상태일 때 프로필 이미지를 설정하는 함수
@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 드롭다운 메뉴 토글 함수
   function toggleDropdown() {
-    dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    dropdownMenu.style.display =
+      dropdownMenu.style.display === "block" ? "none" : "block";
   }
 
   // 로그인 상태 확인
@@ -110,8 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginLabel = document.getElementById("loginLabel");
   const signupLink = document.querySelector("#join_membership a");
   const loginLink = document.querySelector("#secondback a");
-
-
 
   if (signupLink) {
     signupLink.addEventListener("click", function (event) {
@@ -233,7 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("로그아웃 중 오류가 발생했습니다. 다시 시도해 주세요.");
       });
   }
-
 });
 
 function goToRisePage(button) {
@@ -275,8 +273,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 디버깅 메시지 추가
   console.log("DOM fully loaded and parsed");
 
-
-
   // 로그인 성공 시 호출할 함수
   function login(profileImageUrl) {
     console.log("Login function called with profileImageUrl:", profileImageUrl);
@@ -310,7 +306,6 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownMenu.style.display =
       dropdownMenu.style.display === "block" ? "none" : "block";
   }
-
 
   // 로그아웃 버튼 클릭 시 로그아웃 처리
   logoutButton.addEventListener("click", function (event) {

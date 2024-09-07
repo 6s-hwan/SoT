@@ -1,3 +1,35 @@
+.myButton.selected {
+  color: #000; /* 선택된 버튼의 글씨 색상을 검정색으로 강제 변경 */
+}
+.bh {
+  text-decoration: none;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+* {
+  /* All */
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, "Noto Sans KR", sans-serif, "Noto Sans KR";
+}
+a {
+  text-decoration: none;
+}
+hr {
+  /* 가로선 */
+  margin-left: 36px;
+  width: 400px;
+  height: 0px;
+  stroke-width: 1px;
+  stroke: #d2d2d2;
+}
 /* 내비게이션바 시작 */
 .navbar {
   display: flex;
@@ -37,7 +69,7 @@
 }
 
 #nav_logo1:hover {
-  transform: scale(1.2) rotate(360deg) ; /* 호버 시 로고 크기 증가, 회전, 위로 이동 */
+  transform: scale(1.2) rotate(360deg); /* 호버 시 로고 크기 증가, 회전, 위로 이동 */
   filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); /* 무난한 검정빛 그림자 */
 }
 .nav_menu {
@@ -99,7 +131,9 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.b:hover, .c:hover, .d:hover {
+.b:hover,
+.c:hover,
+.d:hover {
   color: #000; /* 호버 시 텍스트 색상을 진하게 변경 */
   transform: scale(1.05); /* 호버 시 살짝 확대 */
 }
@@ -261,13 +295,13 @@ input.imagebtn {
   border: none;
 }
 
-
 /* 버튼 호버 효과 */
-.followingbtn:hover, #uploadbtn:hover, .imagebtn:hover {
+.followingbtn:hover,
+#uploadbtn:hover,
+.imagebtn:hover {
   transform: scale(1.1); /* 살짝 확대 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
-}/* 프로필 이미지 버튼 스타일 */
-
+} /* 프로필 이미지 버튼 스타일 */
 
 /* 프로필 이미지 호버 효과 */
 #loginLabel:hover {
@@ -311,10 +345,9 @@ input.imagebtn {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
 }
 
-
 /* 로그인 후 애니메이션 적용 */
-.followingbtn.fade-in, #uploadbtn.fade-in, .imagebtn.fade-in {
+.followingbtn.fade-in,
+#uploadbtn.fade-in,
+.imagebtn.fade-in {
   opacity: 10; /* 서서히 보이게 */
 }
-
-

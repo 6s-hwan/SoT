@@ -138,7 +138,7 @@ a {
   z-index: 10px;
   position: relative;
   bottom: 200px;
-  margin-left: 270px;
+  margin-left: 350px;
 }
 
 .follower-count{
@@ -320,7 +320,7 @@ a {
   height: 310px;
   position: relative;
   top: 200px;
-  right: 415px;
+  right: 480px;
   display: none;
 }
 

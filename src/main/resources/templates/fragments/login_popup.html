@@ -1,65 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <div id="bg_gray" style="display: none" th:fragment="loginPopup">
-      <div id="login_pop_up">
-        <div id="first">
-          <div id="logo">
-            <img
-              th:src="@{/images/Logo.png}"
-              alt="Logo"
-              width="238px"
-              height="55px"
-            />
-          </div>
-          <div id="middle"></div>
-          <div id="close">
-            <img
-              th:src="@{/images/X.png}"
-              alt="X"
-              width="28px"
-              height="28px"
-              onclick="document.getElementById('bg_gray').style.display='none'; enableScroll();"
-            />
-          </div>
-        </div>
-        <!-- <hr /> -->
-        <div id="text">로그인 후 당신의 스토리를 포스팅해보세요!</div>
-        <form id="loginForm" action="/login" method="POST">
-          <div class="input1">
-            <label for="email_input">
-              <input
-                type="text"
-                name="username"
-                id="email_input"
-                placeholder="이메일"
-              />
-            </label>
-          </div>
-          <div class="input2">
-            <label for="pw_input">
-              <input
-                type="password"
-                name="password"
-                id="pw_input"
-                placeholder="비밀번호"
-              />
-            </label>
-          </div>
-          <div id="join_membership">
-            <a th:href="@{/join_popup}" href="#">회원가입</a>
-          </div>
-          <p class="idandpwcheck-content"></p>
-          <button type="submit" class="confirm" id="login_btn">로그인</button>
-        </form>
-        <div id="text3">
-          계정을 잊으셨나요? <a id="findemail" href="#">이메일</a> 또는
-          <a id="findpw" href="#">비밀번호</a> 찾기
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <title>로그인 페이지</title>
+  <style>
+    /* 에러 메시지 공간을 미리 확보 */
+    .idandpwcheck-content {
+      height: 20px; /* 미리 공간을 확보 */
+      color: red;
+      visibility: hidden; /* 기본적으로 안 보이게 설정 */
+    }
+
+    .idandpwcheck-content.show {
+      visibility: visible; /* 에러가 발생했을 때만 보이게 설정 */
+    }
+  </style>
+</head>
+<body>
+<div id="bg_gray" style="display: none" th:fragment="loginPopup">
+  <div id="login_pop_up">
+    <div id="first">
+      <div id="logo">
+        <img
+                th:src="@{/images/Logo.png}"
+                alt="Logo"
+                width="238px"
+                height="55px"
+        />
+      </div>
+      <div id="middle"></div>
+      <div id="close">
+        <img
+                th:src="@{/images/X.png}"
+                alt="X"
+                width="28px"
+                height="28px"
+                onclick="document.getElementById('bg_gray').style.display='none'; enableScroll();"
+        />
       </div>
     </div>
-  </body>
+
+    <div id="text">로그인 후 당신의 스토리를 포스팅해보세요!</div>
+
+    <!-- 로그인 폼 -->
+    <form id="loginForm">
+      <div class="input1">
+        <label for="email_input">
+          <input
+                  type="text"
+                  name="username"
+                  id="email_input"
+                  placeholder="이메일"
+          />
+        </label>
+      </div>
+      <div class="input2">
+        <label for="pw_input">
+          <input
+                  type="password"
+                  name="password"
+                  id="pw_input"
+                  placeholder="비밀번호"
+          />
+        </label>
+      </div>
+      <p class="idandpwcheck-content" id="error-message" style="color: red;"></p>
+      <div id="join_membership">
+        <a th:href="@{/join_popup}" href="#">회원가입</a>
+      </div>
+      <!-- 로그인 실패 메시지가 출력될 부분 -->
+
+      <!-- 확인 버튼: AJAX로 폼 제출 -->
+      <button type="button" class="confirm" id="login_btn" onclick="submitLoginForm()">로그인</button>
+    </form>
+    <div id="text3">
+      계정을 잊으셨나요? <a id="findemail" href="#">이메일</a> 또는
+      <a id="findpw" href="#">비밀번호</a> 찾기
+    </div>
+  </div>
+</div>
+</body>
 </html>

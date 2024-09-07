@@ -5,6 +5,7 @@ import com.SoT.JIN.story.StoryRepository;
 import com.SoT.JIN.story.S3Service;
 import com.SoT.JIN.verification.VerificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -41,33 +42,50 @@ public class MemberController {
     }
 
     @PostMapping("/user")
-    public String addUser(@RequestParam("email") String email,
-                          @RequestParam("password") String password,
-                          @RequestParam("username") String username,
-                          @RequestParam("gender") String gender,
-                          @RequestParam("birth_year") String birthYear,
-                          @RequestParam("birth_month") String birthMonth,
-                          @RequestParam("birth_day") String birthDay,
-                          @RequestParam("phone1") String phone1,
-                          @RequestParam("phone2") String phone2,
-                          @RequestParam("phone3") String phone3,
-                          @RequestParam("verificationCode") String verificationCode,
-                          RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> addUser(@RequestParam("email") String email,
+                                                       @RequestParam("password") String password,
+                                                       @RequestParam("username") String username,
+                                                       @RequestParam("gender") String gender,
+                                                       @RequestParam("birth_year") String birthYear,
+                                                       @RequestParam("birth_month") String birthMonth,
+                                                       @RequestParam("birth_day") String birthDay,
+                                                       @RequestParam("phone1") String phone1,
+                                                       @RequestParam("phone2") String phone2,
+                                                       @RequestParam("phone3") String phone3,
+                                                       @RequestParam("verificationCode") String verificationCode) {
 
+        Map<String, String> response = new HashMap<>();
         String phone = phone1 + phone2 + phone3;
         String phoneNumber = "+82" + phone1.substring(1) + phone2 + phone3;
         String birth = birthYear + "-" + birthMonth + "-" + birthDay;
 
+        // 이미 사용 중인 이메일 확인
+        if (userRepository.existsByEmail(email)) {
+            response.put("status", "error");
+            response.put("message", "이미 사용 중인 이메일입니다.");
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        // 이미 사용 중인 닉네임 확인
+        if (userRepository.existsByUsername(username)) {
+            response.put("status", "error");
+            response.put("message", "이미 사용 중인 닉네임입니다.");
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        // 인증번호 확인
         Optional<User> userOptional = userRepository.findByPhoneNumberAndVerificationCode(phoneNumber, verificationCode);
         User user = userOptional.orElse(null);
 
-        // 인증번호가 유효하지 않으면 에러 처리
         if (user == null) {
-            redirectAttributes.addFlashAttribute("errorMessage", "전화번호 또는 인증번호가 올바르지 않습니다.");
-            return "redirect:/error";
+            response.put("status", "error");
+            response.put("message", "전화번호 또는 인증번호가 올바르지 않습니다.");
+            return ResponseEntity.badRequest().body(response);
         }
 
         try {
+            // 회원 정보 설정
             user.setEmail(email);
             user.setPassword(new BCryptPasswordEncoder().encode(password));
             user.setUsername(username);
@@ -79,14 +97,17 @@ public class MemberController {
 
             // 인증번호 삭제
             user.setVerificationCode(null);
+
             // 유저 정보 저장
             userRepository.save(user);
+            response.put("status", "success");
+            response.put("message", "회원 가입이 성공적으로 완료되었습니다.");
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "회원 가입 중 오류가 발생했습니다.");
-            return "redirect:/error";
+            response.put("status", "error");
+            response.put("message", "회원 가입 중 오류가 발생했습니다.");
+            return ResponseEntity.status(500).body(response);
         }
-
-        return "redirect:/home?status=success"; // 성공 시
     }
 
     @PostMapping("/update-profile-image")

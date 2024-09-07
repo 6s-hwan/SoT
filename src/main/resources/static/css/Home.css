@@ -2321,7 +2321,7 @@ input:focus {
 
 /* 팔로우 취소 팝업창 시작 */
 #bg_gray10 {
-  position: absolute;
+  position: fixed;
   display: none; /* 버튼이 안눌러지면 display:none */
   top: 0;
   left: 0;

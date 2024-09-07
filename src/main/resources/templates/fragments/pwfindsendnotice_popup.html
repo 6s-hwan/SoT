@@ -46,18 +46,22 @@
           이메일을 통해 비밀변호를 변경해주세요.
         </div>
 
-        <button id="pwfindsendnoticecbtn">확인</button>
+        <button id="pwfindsendnoticecbtn" onclick="document.getElementById('bg_gray9').style.display='none';">
+          확인
+        </button>
+
       </div>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var Joinbtn = document.querySelector("#emailfindcheckbtn");
         var joinfinishPopup = document.getElementById("bg_gray9");
+        var closeBtn = document.getElementById("pwfindsendnoticecbtn"); // 확인 버튼
 
         // 로그인 버튼 누르면 회원가입창 열기
-        Joinbtn.addEventListener("click", function (event) {
+        closeBtn.addEventListener("click", function (event) {
           event.preventDefault(); // 링크의 기본 동작 방지
-          joinfinishPopup.style.display = "block"; // 로그인 팝업 보이기
+          document.getElementById('bg_gray9').style.display='none'; // 로그인 팝업 보이기
         });
       });
     </script>

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,14 +79,17 @@ public class RisingService {
         logger.info("Fetched Rising entities: " + risings.size());  // 로그 메시지 추가
         return risings;
     }
-    // 특정 키워드에 해당하는 가장 작은 ID를 가진 Story를 가져오기
     public Story getStoryWithSmallestId(String keyword) {
-        List<Long> storyIds = storyRepository.findIdsByKeyword(keyword);
+        // 1개의 결과만 가져오는 Pageable 설정
+        Pageable pageable = PageRequest.of(0, 1);  // 첫 번째 페이지에서 한 개의 ID만 가져옴
+        List<Long> storyIds = storyRepository.findIdsByKeyword(keyword, pageable);
+
         if (storyIds.isEmpty()) {
             return null;
         }
-        Long smallestId = storyIds.stream().min(Long::compare).orElse(null);
-        return storyRepository.findById(smallestId).orElse(null);
+
+        Long smallestId = storyIds.get(0);  // 가장 작은 ID 가져오기 (첫 번째 값)
+        return storyRepository.findById(smallestId).orElse(null);  // 해당 스토리 조회
     }
     // 특정 키워드를 제외한 상위 6개의 Rising 키워드에 해당하는 Story 가져오기
     public Map<Rising, Story> getTopStoriesExcludingKeyword(String excludeKeyword, int limit) {

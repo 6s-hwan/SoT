@@ -1,5 +1,6 @@
 package com.SoT.JIN.rising;
 
+import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,13 @@ public class RisingController {
 
     private final RisingService risingService;
     private final StoryService storyService;
+    private final SearchService searchService;
 
     @Autowired
-    public RisingController(RisingService risingService, StoryService storyService) {
+    public RisingController(RisingService risingService, StoryService storyService, SearchService searchService) {
         this.risingService = risingService;
         this.storyService = storyService;
+        this.searchService = searchService;
     }
 
     @GetMapping("/rise/{keyword}")
@@ -30,6 +33,9 @@ public class RisingController {
                                       @RequestParam(value = "sort", required = false) String sortCriteria,
                                       @RequestParam(name = "limit", defaultValue = "24") int limit,
                                       Model model) {
+
+        // 1. 키워드에 해당하는 Search 카운트 증가
+        searchService.saveSearchKeyword(keyword);  // Search 카운트 증가
         // 1. 키워드에 해당하는 Rising 엔티티 조회
         Rising rising = risingService.findByKeyword(keyword)
                 .orElseThrow(() -> new IllegalArgumentException("급상승 키워드를 찾을 수 없습니다: " + keyword));

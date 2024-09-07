@@ -1,3 +1,70 @@
+// 페이지가 완전히 로드된 후 팝업 숨김 처리
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('bg_gray').style.display = 'none';
+});
+
+// AJAX를 통해 로그인 폼 제출
+function submitLoginForm() {
+  const username = document.querySelector('#email_input').value;
+  const password = document.querySelector('#pw_input').value;
+
+  // 오류 메시지 초기화
+  const errorMessageElement = document.getElementById('error-message');
+  errorMessageElement.textContent = '';  // 기존 메시지 제거
+  errorMessageElement.classList.remove('show');  // 에러 메시지 숨기기
+
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ username: username, password: password })
+  })
+      .then(response => {
+        if (!response.ok) {
+          // 실패 시 JSON 응답을 받아서 에러 메시지 출력
+          return response.json().then(err => { throw new Error(err.message); });
+        }
+        return response.text();  // 성공 시
+      })
+      .then(data => {
+        // 로그인 성공 시 메인 페이지로 이동
+        window.location.href = '/home';
+      })
+      .catch(error => {
+        // 로그인 실패 시 error-message 요소에 에러 메시지 표시
+        errorMessageElement.textContent = error.message;
+        errorMessageElement.classList.add('show');  // 에러 메시지 보이게 설정
+      });
+}
+
+function submitPwFindForm() {
+  const email = document.querySelector('#email_input11').value;
+
+  fetch('/forgot-password', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ email: email })
+  })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(err => { throw new Error(err.message); });
+        }
+        return response.json();
+      })
+      .then(data => {
+        // 성공 시 'bg_gray9' 팝업을 띄움
+
+        document.getElementById("bg_gray8").style.display = "none";
+        document.getElementById("bg_gray9").style.display = "block";
+
+      })
+      .catch(error => {
+        alert(error.message);  // 실패 시 에러 메시지를 alert로 표시
+      });
+}
 document.addEventListener("DOMContentLoaded", function () {
   var Joinbtn = document.querySelector("#join"); // 로그인 버튼
   var loginLabel = document.getElementById("loginLabel"); // 로그인 라벨

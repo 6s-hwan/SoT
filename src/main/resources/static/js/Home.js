@@ -1,3 +1,31 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // 비밀번호 찾기 버튼에 대한 이벤트 리스너
+  const findPwBtn = document.querySelector("#findpwbtn");
+  const emailCheckPopup = document.getElementById("bg_gray7");
+  const pwFindPopup = document.getElementById("bg_gray8");
+
+  if (findPwBtn) {
+    findPwBtn.addEventListener("click", function (event) {
+      event.preventDefault(); // 기본 동작 방지
+
+      // 이메일 확인 팝업 숨기고, 비밀번호 찾기 팝업 보이기
+      emailCheckPopup.style.display = "none";
+      pwFindPopup.style.display = "block"; // 비밀번호 찾기 팝업 보이기
+    });
+  }
+
+  // 로그인 버튼에 대한 이벤트 리스너 (만약 필요한 경우)
+  const goToLoginBtn2 = document.getElementById("gotologinbtn2");
+  const loginPopup = document.getElementById("bg_gray");
+
+  if (goToLoginBtn2) {
+    goToLoginBtn2.addEventListener("click", function (event) {
+      event.preventDefault();
+      emailCheckPopup.style.display = "none";
+      loginPopup.style.display = "block"; // 로그인 팝업 보이기
+    });
+  }
+});
 // 페이지가 완전히 로드된 후 팝업 숨김 처리
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('bg_gray').style.display = 'none';
@@ -196,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 이메일 찾기 및 비밀번호 찾기 팝업 전환
   const findEmailLink = document.querySelector("#findemail");
   const findPwLink = document.querySelector("#findpw");
+  var FindPwBtn = document.querySelector("#findpwbtn");
   const emailFindBackBtn = document.querySelector("#emailfindback");
   const emailFindCheckBtn = document.querySelector("#emailfindcheckbtn");
 
@@ -208,6 +237,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (findPwLink) {
     findPwLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      openPwFindPopup();
+    });
+  }
+
+  if (findPwbtnLink) {
+    findPwbtnLink.addEventListener("click", function (event) {
       event.preventDefault();
       openPwFindPopup();
     });

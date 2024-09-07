@@ -1418,7 +1418,7 @@ input:focus {
 
 /* 개인정보 취급방침 팝업창 시작 */
 #bg_gray3 {
-  position: absolute;
+  position: fixed;
   display: none;
   /* 버튼이 안눌러지면 display:none */
   top: 0;
@@ -1539,7 +1539,7 @@ input:focus {
 
 /* 이용약관 팝업창 css 시작 */
 #bg_gray4 {
-  position: absolute;
+  position: fixed;
   display: none;
   /* 버튼이 안눌러지면 display:none */
   top: 0;

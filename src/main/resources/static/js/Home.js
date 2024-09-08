@@ -1522,11 +1522,20 @@ async function sendVerificationCode() {
     }
 
     const result = await response.text();
-    document.getElementById("sendStatus").textContent = result;
-    document.getElementById("sendStatus").style.color = "#448fff"; // 메시지 색상을 빨간색으로 설정
+
+    // 응답이 "인증번호가 전송되었습니다."이면 파란색으로 표시, 그 외는 빨간색으로 표시
+    if (result === "인증번호가 전송되었습니다.") {
+      document.getElementById("sendStatus").textContent = result;
+      document.getElementById("sendStatus").style.color = "#448fff"; // 파란색 설정
+    } else {
+      document.getElementById("sendStatus").textContent = result;
+      document.getElementById("sendStatus").style.color = "red"; // 그 외는 빨간색 설정
+    }
+
   } catch (error) {
     console.error("Error:", error);
-    document.getElementById("sendStatus").textContent = error.message; // 메시지만 출력
+    document.getElementById("sendStatus").textContent = error.message; // 오류 메시지만 출력
+    document.getElementById("sendStatus").style.color = "red"; // 오류 메시지는 빨간색으로 표시
   }
 }
 async function verifyCode() {

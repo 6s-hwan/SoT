@@ -1,4 +1,4 @@
-package com.SoT.JIN.theme;
+/* package com.SoT.JIN.theme;
 
 import com.SoT.JIN.story.Story;
 import com.SoT.JIN.story.StoryRepository;
@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -51,3 +48,4 @@ public class BackStoryController {
 }
 
 
+*/

@@ -325,20 +325,26 @@ input.imagebtn {
   margin-right: 15px; /* 오른쪽 위치 고정 */
 }
 
-/* 로그인 후 프로필 이미지로 전환되는 상태 */
 #loginLabel.logged-in {
-  width: 46px; /* 프로필 이미지 크기 */
+  width: 46px;
   height: 46px;
-  padding: 0; /* 내부 여백 제거 */
-  font-size: 0; /* 텍스트를 완전히 숨김 */
+  padding: 0;
+  font-size: 0;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  transition: all 1s ease; /* 전환 시간을 1초로 설정 */
-  display: flex; /* 프로필 이미지를 가운데에 유지 */
+  border: 2px solid #fff; /* 흰색 테두리 추가 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* 그림자 효과 */
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+#loginLabel.logged-in:hover {
+  transform: scale(1.1); /* 호버 시 확대 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 더 강조 */
 }
 
 /* 프로필 이미지 호버 시 효과 */

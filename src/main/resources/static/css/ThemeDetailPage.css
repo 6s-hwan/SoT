@@ -17,6 +17,16 @@
   color: #606060;
 }
 
+#story_select:hover {
+  border-color: #000;
+}
+
+#story_select:focus {
+  outline: none;
+  border-color: #000;
+  background-color: #f0f0f0;
+}
+
 #story_select option {
   color: #606060;
   text-align: center;

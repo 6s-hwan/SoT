@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -73,14 +74,18 @@ public class BookmarkController {
         // 1. 북마크된 스토리들 가져오기
         List<Story> bookmarkedStories = bookmarkService.getBookmarkedStories(user);
 
-        // 2. 가져올 스토리 제한 (limit 만큼)
+        // 2. 스토리 순서를 거꾸로
+        Collections.reverse(bookmarkedStories);
+
+        // 3. 가져올 스토리 제한 (limit 만큼)
         List<Story> limitedBookmarkedStories = bookmarkedStories.stream().limit(limit).collect(Collectors.toList());
 
-        // 3. 모델에 데이터 추가
+        // 4. 모델에 데이터 추가
         model.addAttribute("bookmarkedStories", limitedBookmarkedStories);
         model.addAttribute("totalStories", bookmarkedStories.size()); // 총 북마크된 스토리 수
         model.addAttribute("limit", limit);
 
         return "bookmarkPage"; // 북마크 페이지로 이동
     }
+
 }

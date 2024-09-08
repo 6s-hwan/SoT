@@ -86,9 +86,13 @@ a {
   overflow: hidden;
   height: 170px;
 }
-
+.profile-img:hover {
+  transform: scale(1.05); /* 호버 시 이미지가 5% 확대 */
+  filter: brightness(1.1); /* 호버 시 이미지가 10% 밝아짐 */
+}
 .profile-img {
   border-radius: 15px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* 부드러운 확대 및 밝기 조정 */
 }
 
 .follow1 {
@@ -144,6 +148,7 @@ a {
   font-weight: 500;
   line-height: 15px; /* 100% */
   letter-spacing: -0.3px;
+  margin-bottom: 2px;
 }
 
 #following {
@@ -160,7 +165,14 @@ a {
 }
 
 .follow_x {
-  cursor: pointer;
+  cursor: pointer; /* 클릭 가능한 요소임을 표시 */
+  transition: filter 0.3s ease; /* 호버할 때 부드러운 전환 효과 */
+  margin-top: 4px
+}
+
+.follow_x:hover {
+  filter: brightness(0.70); /* 호버 시 15% 어두워짐 */
+
 }
 
 .follow2 {
@@ -292,9 +304,23 @@ a {
   cursor: pointer;
   position: absolute;
   margin-left: 500px;
+  transition: filter 0.3s ease; /* 부드러운 전환 효과 추가 */
 }
+
+.morebtn:hover {
+  filter: brightness(0.85); /* 호버 시 약간 어두워짐 */
+}
+
 .morebtn.rotated {
   transform: rotate(180deg); /* 180도 회전 */
+}
+
+#extraContent {
+  display: none;
+}
+
+.expanded #extraContent {
+  display: block;
 }
 
 #extraContent {
@@ -346,10 +372,17 @@ a {
   height: 136px;
   flex-shrink: 0;
   border-radius: 15px;
-  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
-  background-position: center; /* 중앙에 이미지를 위치시킴 */
+  object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 */
+  background-position: center; /* 이미지를 중앙에 위치 */
   background-repeat: no-repeat;
   cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease; /* 부드러운 효과 추가 */
+}
+
+.story-img:hover {
+  transform: scale(1.05); /* 호버 시 이미지가 5% 확대 */
+  filter: brightness(1.1); /* 호버 시 이미지가 10% 밝아짐 */
 }
 li::marker {
   content: "";

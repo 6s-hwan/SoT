@@ -2,12 +2,10 @@ package com.SoT.JIN.story;
 
 import com.SoT.JIN.rising.Rising;
 import com.SoT.JIN.rising.RisingService;
-import com.SoT.JIN.search.Search;
 import com.SoT.JIN.search.SearchService;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
 import com.SoT.JIN.user.WriterController;
-import com.SoT.JIN.story.StoryGroupRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +25,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -172,6 +169,7 @@ public class StoryController {
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
     }
+  /*
     @GetMapping("/index")
     public String index() {
         return "index";
@@ -184,11 +182,12 @@ public class StoryController {
     @GetMapping("/email2")
     public String email2() {
         return "fragments/emailfind_popup";
-    }@GetMapping("/join")
+    }
+    @GetMapping("/join")
     public String join() {
         return "fragments/joinfinish_popup";
     }
-
+*/
     @GetMapping("/home")
     public String home(@RequestParam(value = "season", required = false) String season,
                        @RequestParam(defaultValue = "12") int limit,
@@ -229,7 +228,7 @@ public class StoryController {
 
         return "Home";
     }
-
+/*
     @GetMapping("/test")
     public String test(Model model) {
 
@@ -252,7 +251,7 @@ public class StoryController {
 
         return "test";
     }
-
+*/
     @PostMapping("/upload")
     public String addStory(@RequestParam("image_url") String imageUrl,
                            @RequestParam("title") String title,

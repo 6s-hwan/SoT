@@ -17,7 +17,6 @@ hr {
 }
 
 /* 북마크 시작 */
-
 #Bookmarkfull {
   display: flex;
   align-items: center;
@@ -29,20 +28,14 @@ hr {
 
 #BookmarkTitle {
   display: flex;
-  /* 수직적으로 가운데 정렬 */
-  /* align-items: center; */
   box-sizing: border-box;
-  /* 요소가 여러 개일때 가운데 정렬 */
   width: 1220px;
   height: 90px;
 }
 
 #Bookmarktitle_1 {
   display: flex;
-  /* 수직적으로 가운데 정렬 */
-  /* align-items: center; */
   box-sizing: border-box;
-  /* 요소가 여러 개일때 가운데 정렬 */
   width: 1220px;
   height: 90px;
 }
@@ -59,11 +52,9 @@ hr {
   color: #000;
   font-family: "Noto Sans KR";
   font-size: 48px;
-  font-style: normal;
   font-weight: 500;
   line-height: 90px;
   padding-left: 16px;
-  color: #000;
   letter-spacing: -0.96px;
 }
 #BookmarkBack {
@@ -77,7 +68,7 @@ hr {
 /* 북마크 컨테이너 설정 */
 .Bookmark-container {
   display: flex;
-  flex-wrap: wrap; /* 여러 줄로 표시되도록 설정 */
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -88,6 +79,12 @@ hr {
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 변형 및 그림자 추가 */
+}
+
+.Bookmark:hover {
+  transform: scale(1.05); /* 호버 시 살짝 확대 */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
 }
 
 /* 이미지 크기 조정 */
@@ -96,8 +93,14 @@ hr {
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
+  transition: filter 0.3s ease; /* 부드러운 필터 효과 추가 */
 }
 
+.Bookmark-img:hover {
+  filter: brightness(1.1); /* 호버 시 이미지가 10% 밝아짐 */
+}
+
+/* 더보기 버튼 설정 */
 #Bookmarkmorebtn {
   background: url("../images/morebtn.png");
   width: 128px;
@@ -105,7 +108,12 @@ hr {
   border: none;
   margin-left: 556px;
   margin-top: 33px;
-  margin-bottom: 150px; /* 더보기 버튼과 푸터 사이의 간격 추가 */
+  margin-bottom: 150px;
   cursor: pointer;
+  transition: filter 0.3s ease; /* 부드러운 변형 및 배경색 추가 */
+}
+
+#Bookmarkmorebtn:hover {
+  filter: brightness(0.9); /* 호버 시 더보기 버튼이 살짝 어두워짐 */
 }
 /* 북마크 끝 */

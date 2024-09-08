@@ -1,3 +1,11 @@
+#localarrow {
+  transition: transform 0.3s ease, filter 0.3s ease; /* 이미지의 변형과 필터에 대한 부드러운 전환 효과 */
+}
+
+#localarrow:hover {
+  transform: scale(1.2); /* 호버 시 이미지가 살짝 커짐 */
+  filter: brightness(1.2); /* 호버 시 이미지가 살짝 어두워짐 */
+}
 .ch {
   text-decoration: none;
   color: #000;

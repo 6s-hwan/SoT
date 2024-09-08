@@ -126,11 +126,14 @@ public class WriterController {
     }
 
     @GetMapping("/popular")
-    public String getPopularWriters(Model model) {
-        List<WriterInfo> writerInfos = fetchPopularWriters(72); // 72명의 인기 작가 정보 가져오기
+    public String getPopularWriters(@RequestParam(defaultValue = "24") int limit, Model model) {
+        // 요청에서 limit 값을 받아서 인기 작가 목록을 가져옴 (기본값 24명)
+        List<WriterInfo> writerInfos = fetchPopularWriters(limit);
 
         model.addAttribute("popularWriters", writerInfos);
-        return "PopularWriter";
+        model.addAttribute("limit", limit); // 현재 limit 값을 모델에 추가하여 View에서 사용할 수 있도록 전달
+
+        return "PopularWriter"; // PopularWriter.html로 이동
     }
 
     // fetchPopularWriters 메서드 추가

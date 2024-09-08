@@ -265,7 +265,15 @@ function submitSignUpForm() {
     method: "POST",
     body: formData,
   })
-    .then((response) => response.json())
+      .then(response => {
+        if (!response.ok) {
+          // 상태 코드가 400, 500 등의 오류일 경우 처리
+          return response.json().then(err => {
+            throw new Error(err.message);
+          });
+        }
+        return response.json();
+      })
     .then((data) => {
       // 이메일 중복
       if (
@@ -295,7 +303,7 @@ function submitSignUpForm() {
       }
     })
     .catch((error) => {
-      alert("오류가 발생했습니다: " + error.message);
+      alert(error.message);  // 상태 코드 제외한 메시지만 표시
     });
 }
 
@@ -1499,16 +1507,36 @@ async function sendVerificationCode() {
   let phone3 = document.getElementById("phone_input31").value;
   let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
 
-  const response = await fetch("/api/sendVerificationCode", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ phoneNumber }),
-  });
+  try {
+    const response = await fetch("/api/sendVerificationCode", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ phoneNumber }),
+    });
 
-  const result = await response.text();
-  document.getElementById("sendStatus").textContent = result;
+    if (!response.ok) {
+      const errorData = await response.text();  // 서버에서 반환된 오류 메시지 추출
+      throw new Error(errorData);  // 상태 코드 제거하고 메시지만 에러로 던짐
+    }
+
+    const result = await response.text();
+
+    // 응답이 "인증번호가 전송되었습니다."이면 파란색으로 표시, 그 외는 빨간색으로 표시
+    if (result === "인증번호가 전송되었습니다.") {
+      document.getElementById("sendStatus").textContent = result;
+      document.getElementById("sendStatus").style.color = "#448fff"; // 파란색 설정
+    } else {
+      document.getElementById("sendStatus").textContent = result;
+      document.getElementById("sendStatus").style.color = "red"; // 그 외는 빨간색 설정
+    }
+
+  } catch (error) {
+    console.error("Error:", error);
+    document.getElementById("sendStatus").textContent = error.message; // 오류 메시지만 출력
+    document.getElementById("sendStatus").style.color = "red"; // 오류 메시지는 빨간색으로 표시
+  }
 }
 async function verifyCode() {
   let phone1 = document.getElementById("phone_input11").value;
@@ -1516,41 +1544,69 @@ async function verifyCode() {
   let phone3 = document.getElementById("phone_input31").value;
   let phoneNumber = formatPhoneNumber(phone1 + phone2 + phone3);
 
-  const verificationCode = document.getElementById(
-    "CertificationNumber_inputp"
-  ).value;
+  const verificationCode = document.getElementById("CertificationNumber_inputp").value;
 
-  const response = await fetch("/api/verifyCode", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ phoneNumber, verificationCode }), // 서버로 인증번호 전송
-  });
-
-  const result = await response.text(); // 서버 응답 받기
-
-  // 서버 응답에 이메일이 포함된 경우 인증 성공으로 처리
-  if (result.includes("@")) {
-    // 팝업 전환: bg_gray6 팝업 닫고 bg_gray7 팝업 열기
-    document.getElementById("bg_gray6").style.display = "none"; // 기존 팝업 닫기
-    document.getElementById("bg_gray7").style.display = "block"; // 새 팝업 열기
-    console.log("팝업 전환 완료");
-
-    // 팝업 전환 후 이메일 설정
-    setTimeout(function () {
-      const emailStatusElement = document.getElementById("verifyStatus");
-      if (emailStatusElement) {
-        emailStatusElement.textContent = result; // 이메일을 UI에 표시
-      }
-    }, 100); // 팝업이 제대로 열릴 수 있는 짧은 시간 대기 후 설정
-  } else {
-    console.log("인증 실패 - 인증 결과:", result);
-    document.getElementById("verifyStatus").textContent =
-      "인증 실패: " + result; // 실패 메시지 표시
+  // 인증번호가 비어 있는지 확인하고, UI에 메시지 표시
+  if (!verificationCode) {
+    document.getElementById("sendStatus").textContent = "인증번호를 입력해 주세요.";
+    document.getElementById("sendStatus").style.color = "red"; // 메시지 색상을 빨간색으로 설정
+    return; // 인증번호가 없으면 함수 종료
   }
 
-  resetInputs(); // 인증 후 입력 필드 리셋
+  try {
+    const response = await fetch("/api/verifyCode", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ phoneNumber, verificationCode }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.text();  // 서버에서 반환된 오류 메시지 추출
+      document.getElementById("sendStatus").textContent = errorData;  // 오류 메시지를 UI에 표시
+      document.getElementById("sendStatus").style.color = "red"; // 실패 메시지 색상 설정
+      return; // 요청이 실패한 경우, 아래 코드를 실행하지 않고 종료
+    }
+
+    const result = await response.text();
+
+
+    // 서버 응답에 이메일이 포함되거나 해당 번호로 가입된 이메일이 없을 때 처리
+    if (result.includes("@") || result === "해당 번호로 가입된 이메일이 없습니다.") {
+      // 팝업 전환: bg_gray6 팝업 닫고 bg_gray7 팝업 열기
+      document.getElementById("bg_gray6").style.display = "none"; // 기존 팝업 닫기
+      document.getElementById("bg_gray7").style.display = "block"; // 새 팝업 열기
+      console.log("팝업 전환 완료");
+
+      // 인증 성공 또는 해당 번호로 이메일이 없는 경우 메시지 설정
+      setTimeout(function () {
+        const emailStatusElement = document.getElementById("verifyStatus");
+        if (emailStatusElement) {
+          emailStatusElement.textContent = result; // 이메일 또는 메시지를 UI에 표시
+        }
+      }, 100); // 팝업이 제대로 열릴 수 있는 짧은 시간 대기 후 설정
+
+      // 입력 필드 초기화
+      document.getElementById("phone_input11").value = "";  // 전화번호 첫 번째 부분 초기화
+      document.getElementById("phone_input21").value = "";  // 전화번호 두 번째 부분 초기화
+      document.getElementById("phone_input31").value = "";  // 전화번호 세 번째 부분 초기화
+      document.getElementById("CertificationNumber_inputp").value = "";  // 인증번호 필드 초기화
+      document.getElementById("verifyStatus").value = "";  //
+
+    } else {
+      // 인증 실패 시 처리
+      console.log("인증 실패 - 인증 결과:", result);
+      document.getElementById("verifyStatus").textContent =
+          "인증 실패: " + result; // 실패 메시지 표시
+      document.getElementById("verifyStatus").style.color = "red"; // 실패 메시지 색상 설정
+    }
+
+  } catch (error) {
+    // 오류 발생 시 메시지 UI에 표시
+    document.getElementById("sendStatus").textContent = `오류 발생: ${error.message}`;
+    document.getElementById("sendStatus").style.color = "red"; // 오류 메시지 색상 설정
+  }
 }
 
 //비밀번호 변경 팝업창 js 코드

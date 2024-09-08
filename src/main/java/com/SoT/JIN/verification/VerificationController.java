@@ -8,6 +8,7 @@ import com.twilio.type.PhoneNumber;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,14 +82,21 @@ public class VerificationController {
     @PostMapping("/sendVerificationCode")
     public ResponseEntity<String> sendVerificationCode(@RequestBody VerificationRequest request) {
         String phoneNumber = request.getPhoneNumber();
+
+        // 전화번호 형식 검증 (예: +8210으로 시작하고, 뒤에 정확히 8자리 숫자가 붙는지 확인)
+        if (!phoneNumber.matches("^\\+8210[0-9]{8}$")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("전화번호를 올바르게 입력해주세요.");
+        }
+
         String verificationCode = generateVerificationCode();
 
         try {
+            // Twilio API로 SMS 전송
             Twilio.init(twilioAccountSid, twilioAuthToken);
             Message message = Message.creator(
                     new PhoneNumber(phoneNumber),
                     new PhoneNumber(twilioPhoneNumber),
-                    "Your verification code is: " + verificationCode
+                    "[Story of Travel(SoT)] 인증번호[" + verificationCode + "]입니다. 유효기간 5분."
             ).create();
 
             System.out.println("SMS sent: " + message.getSid());
@@ -96,29 +104,38 @@ public class VerificationController {
             // 이전 Verification 엔티티 삭제
             verificationRepository.deleteByPhoneNumber(phoneNumber);
 
-            // Verification 엔티티에 인증번호 저장
+            // 새 Verification 엔티티 생성 및 저장
             Verification verification = new Verification(phoneNumber, verificationCode);
             verificationRepository.save(verification);
 
             return ResponseEntity.ok("인증번호가 전송되었습니다.");
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body("SMS 전송 중 오류가 발생했습니다.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("SMS 전송 중 오류가 발생했습니다.");
         }
     }
-
-    // 인증번호 확인
     @PostMapping("/verifyCode")
     public ResponseEntity<String> verifyCode(@RequestBody VerificationRequest request) {
         String phoneNumber = request.getPhoneNumber();
         String verificationCode = request.getVerificationCode();
 
+        // 인증번호가 비어있는지 확인
+        if (verificationCode == null || verificationCode.trim().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인증번호를 입력해 주세요.");
+        }
+
+        // 전화번호 형식 검증 (예: +8210으로 시작하고, 뒤에 정확히 8자리 숫자가 붙는지 확인)
+        if (!phoneNumber.matches("^\\+8210[0-9]{8}$")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("전화번호를 올바르게 입력해주세요.");
+        }
+
         // 인증 정보 확인
         Optional<Verification> optionalVerification = verificationRepository
                 .findByPhoneNumberAndVerificationCode(phoneNumber, verificationCode);
 
+        // 인증 정보가 존재하지 않으면
         if (optionalVerification.isEmpty()) {
-            return ResponseEntity.ok("전화번호 또는 인증번호가 올바르지 않습니다.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인증번호가 올바르지 않습니다.");
         }
 
         Verification verification = optionalVerification.get();
@@ -127,13 +144,13 @@ public class VerificationController {
         LocalDateTime createdAt = verification.getCreatedAt();
         if (createdAt.isBefore(LocalDateTime.now().minusMinutes(VERIFICATION_EXPIRY_TIME_MINUTES))) {
             verificationRepository.delete(verification); // 인증번호 만료 시 삭제
-            return ResponseEntity.ok("인증번호가 만료되었습니다.");
+            return ResponseEntity.status(HttpStatus.GONE).body("인증번호가 만료되었습니다. 다시 전송해 주세요.");
         }
 
         // 인증 성공 시 유저 정보 반환
         User user = userRepository.findByPhoneNumber(phoneNumber).orElse(null);
         if (user == null) {
-            return ResponseEntity.ok("해당 번호로 가입된 이메일이 없습니다.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당 번호로 가입된 이메일이 없습니다.");
         }
 
         // 인증 정보 삭제

@@ -24,7 +24,7 @@
       <div id="nav_left">
         <!-- 로고 -->
         <div id="nav_logo1">
-          <a href="./home">
+          <a href="/home">
             <img
                     th:src="@{/images/MainLogo.png}"
                     alt="로고"
@@ -36,39 +36,56 @@
         <!-- 메뉴바 -->
         <div class="nav_menu">
           <ul class="navigation">
-            <li><a href="./home" class="b">홈</a></li>
-            <li><a href="./local" class="c">지역</a></li>
-            <li><a href="" class="c">북마크</a></li>
+            <li>
+              <a href="/home" class="b">홈</a>
+            </li>
+            <li><a href="/local" class="c">지역</a></li>
+            <li><a href="/popular" class="d">인기 작가</a></li>
           </ul>
         </div>
         <!-- 검색바 -->
         <form action="/search" method="get" id="search">
           <input type="text" name="query" class="search" />
-          <img
-                  th:src="@{/images/search.png}"
-                  alt="돋보기"
-                  width="30px"
-                  height="30px"
-          />
+          <button
+                  type="submit"
+                  id="searchBtn"
+                  style="background: none; border: none"
+          >
+            <img
+                    th:src="@{/images/search.png}"
+                    alt="돋보기"
+                    id="searchIcon"
+                    width="30px"
+                    height="30px"
+            />
+          </button>
         </form>
       </div>
       <div id="nav_right">
-        <input type="button" class="followingbtn" style="display: none" />
+        <input
+                type="button"
+                class="followingbtn"
+                style="display: none"
+                onclick="location.href='/follows'"
+        />
         <input
                 type="button"
                 class="imagebtn"
                 style="display: none"
-                onclick="location.href='my-page'"
+                onclick="location.href='/bookmark'"
         />
         <input type="button" id="uploadbtn" style="display: none" />
 
         <input type="checkbox" id="join" style="display: none" />
-        <label for="join" id="loginLabel" onclick="toggleDropdown()"
-        >로그인</label
-        >
+        <label for="join" id="loginLabel">로그인</label>
         <!-- 드롭다운 메뉴 -->
         <div id="dropdownMenu" class="dropdown-content" style="display: none">
-          <button>마이페이지</button>
+          <button onclick="location.href='/my-page'">마이페이지</button>
+          <button
+                  onclick="document.getElementById('bg_gray11').style.display='block';"
+          >
+            비밀번호 변경
+          </button>
           <form action="/logout" method="post">
             <button type="submit">로그아웃</button>
           </form>
@@ -88,6 +105,11 @@
   <div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
   <div th:replace="~{fragments/privacy_footer_popup :: privacy_footer}"></div>
   <div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
+  <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
+  <div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
+  <div
+          th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
+  ></div>
 
     <div id="writerpagefull">
       <div id="writerpage">
@@ -266,6 +288,7 @@
   </div>
   <!-- 푸터 끝 -->
   <script th:src="@{/js/Home.js}"></script>
+  <script th:src="@{/js/upload.js}"></script>
     <script>
       function sortStories() {
         var select = document.getElementById("story_select");

@@ -18,6 +18,16 @@
   background: #fff;
 }
 
+#story_select:hover {
+  border-color: #000;
+}
+
+#story_select:focus {
+  outline: none;
+  border-color: #000;
+  background-color: #f0f0f0;
+}
+
 .recom_select {
   color: #606060;
   text-align: center;
@@ -353,6 +363,12 @@ a {
   cursor: pointer;
   margin-top: 20px;
   margin-left: 556px;
+  background-size: cover;
+  transition: filter 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+#morebtn:hover {
+  filter: brightness(0.9); /* 호버 시 이미지 밝기를 90%로 줄여 살짝 어두워지게 */
 }
 /* 시즌별 끝 */
 

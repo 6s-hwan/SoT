@@ -246,6 +246,15 @@ hr {
   border: 1.6px solid #ececec;
   background: #fff;
 }
+#story_select:hover {
+  border-color: #000;
+}
+
+#story_select:focus {
+  outline: none;
+  border-color: #000;
+  background-color: #f0f0f0;
+}
 
 .select_disabled {
   color: #606060;

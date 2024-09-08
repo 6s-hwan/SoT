@@ -205,7 +205,7 @@ hr {
   line-height: 140%;
   letter-spacing: -0.26px;
 }
-#seasonmorebtn {
+#Popularmorebtn {
   background: url("../images/morebtn.png");
   width: 128px;
   height: 48px;
@@ -213,4 +213,9 @@ hr {
   margin-left: 556px;
   cursor: pointer;
   margin-bottom: 208px;
+}
+
+
+#Popularmorebtn:hover {
+  filter: brightness(0.9); /* 호버 시 이미지 밝기를 90%로 줄여 살짝 어두워지게 */
 }

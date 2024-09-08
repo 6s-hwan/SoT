@@ -150,6 +150,7 @@ hr {
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
+  cursor: pointer;
   width: 100%;
   height: 200px;
   flex-shrink: 0;
@@ -237,4 +238,8 @@ hr {
   margin-left: 556px;
   margin-top: 64px;
   cursor: pointer;
+  transition: filter 0.3s ease; /* 부드러운 변형 및 배경색 추가 */
+}
+#bestmorebtn:hover {
+  filter: brightness(0.9); /* 호버 시 더보기 버튼이 살짝 어두워짐 */
 }

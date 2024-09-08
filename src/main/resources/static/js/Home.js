@@ -265,7 +265,15 @@ function submitSignUpForm() {
     method: "POST",
     body: formData,
   })
-    .then((response) => response.json())
+      .then(response => {
+        if (!response.ok) {
+          // 상태 코드가 400, 500 등의 오류일 경우 처리
+          return response.json().then(err => {
+            throw new Error(err.message);
+          });
+        }
+        return response.json();
+      })
     .then((data) => {
       // 이메일 중복
       if (
@@ -295,7 +303,7 @@ function submitSignUpForm() {
       }
     })
     .catch((error) => {
-      alert("오류가 발생했습니다: " + error.message);
+      alert(error.message);  // 상태 코드 제외한 메시지만 표시
     });
 }
 

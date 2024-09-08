@@ -80,8 +80,8 @@ public class MemberController {
 
         if (user == null) {
             response.put("status", "error");
-            response.put("message", "전화번호 또는 인증번호가 올바르지 않습니다.");
-            return ResponseEntity.badRequest().body(response);
+            response.put("message", "인증번호가 올바르지 않습니다.");
+            return ResponseEntity.status(400).body(response);
         }
 
         try {

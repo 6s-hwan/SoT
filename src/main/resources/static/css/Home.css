@@ -1674,7 +1674,7 @@ input:focus {
   transition: all 500ms ease-in;
 }
 #bg_gray5 {
-  position: absolute;
+  position: fixed;
   display: none; /* 버튼이 안눌러지면 display:none */
   top: 0;
   left: 0;

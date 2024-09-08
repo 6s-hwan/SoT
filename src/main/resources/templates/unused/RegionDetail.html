@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/RegionDetail.css" />
+    <link rel="stylesheet" href="../../static/css/RegionDetail.css" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -23,7 +23,7 @@
         <div id="nav_logo1">
             <a href="./test">
                 <img
-                        src="../static/images/MainLogo.png"
+                        src="../../static/images/MainLogo.png"
                         alt="로고"
                         width="225px"
                         height="60px"
@@ -41,7 +41,7 @@
         <div id="search">
             <input type="text" class="search" />
             <img
-                    src="../static/images/search.png"
+                    src="../../static/images/search.png"
                     alt="돋보기"
                     width="30px"
                     height="30px"
@@ -62,7 +62,7 @@
     <div id="RegionBack">
         <div id="RegionMainIMG">
             <img
-                    src="../static/images/regionmain.png"
+                    src="../../static/images/regionmain.png"
                     class="risemainimg"
                     width="1200px"
                     height="352px"
@@ -90,21 +90,21 @@
                     <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
                         <img
                                 id="storyimage"
-                                src="../static/images/best1.png"
+                                src="../../static/images/best1.png"
                                 alt="Story Image"
                         />
                         <div id="storyTitlefull">
                             <p id="storyTitle" th:text="${story.title}">Story Title</p>
                             <div class="right-side">
                                 <img
-                                        src="../static/images/seeimg.png"
+                                        src="../../static/images/seeimg.png"
                                         class="seeimage"
                                         width="16px"
                                         height="16px"
                                 />
                                 <p class="imagetext" th:text="${story.viewCount}">0</p>
                                 <img
-                                        src="../static/images/likeimg.png"
+                                        src="../../static/images/likeimg.png"
                                         class="likeimage"
                                         width="14px"
                                         height="14px"

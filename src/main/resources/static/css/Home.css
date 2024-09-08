@@ -600,7 +600,7 @@ input::placeholder {
   box-sizing: border-box;
   display: flex;
   width: 472px;
-  height: 55px;
+  height: 30px;
   text-decoration: none;
   color: #448fff;
   font-family: Pretendard;
@@ -924,7 +924,7 @@ input:focus {
 }
 .namecheck-content {
   display: none; /* 처음에는 숨김 상태 */
-  font-family: 'Pretendard', sans-serif; /* 폰트 패밀리 설정 */
+  font-family: "Pretendard", sans-serif; /* 폰트 패밀리 설정 */
   font-size: 16px; /* 글씨 크기 */
   font-weight: 500; /* 글씨 두께 */
   line-height: 1.5; /* 줄 간격 */
@@ -2143,6 +2143,7 @@ input:focus {
 #pwfind_pop_up > #pwfindTitle > #pwfindback {
   padding-top: 2px;
   padding-left: 9px;
+  cursor: pointer;
 }
 #pwfind_pop_up > #pwfindTitle > #pwfindtitle1 {
   color: #111;
@@ -2708,7 +2709,7 @@ input:focus {
 }
 .text-container3 {
   position: absolute;
-  top: 38%;
+  top: 68%;
   left: 33%;
   transform: translate(-50%, -50%);
   padding-left: 54px;
@@ -2892,6 +2893,13 @@ input:focus {
 /* 테마별 여행지 끝 */
 
 /* 시즌별 스토리 시작 */
+#SeasonStoryfull1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+}
 #seasonstorymorebtn {
   padding: 12px 20px;
   width: 128px;
@@ -2916,6 +2924,14 @@ input:focus {
 /* 시즌별 스토리 끝 */
 
 /* 베스트 스토리 시작 */
+#bestStoryfull1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 120px;
+  padding-bottom: 300px;
+}
 #beststorymorebtn {
   padding: 12px 20px;
   margin-left: 652px;
@@ -3105,7 +3121,7 @@ button:disabled {
   justify-content: center;
   box-sizing: border-box;
   padding-top: 120px;
-  padding-bottom: 100px;
+  padding-bottom: 300px;
 }
 #popular_title {
   box-sizing: border-box;

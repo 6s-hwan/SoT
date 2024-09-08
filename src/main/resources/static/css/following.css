@@ -9,21 +9,17 @@ a {
   text-decoration: none;
 }
 
-
-
-
-
-
 /* 팔로잉 목록 시작 */
-.followingfull{
+.followingfull {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   padding-top: 140px;
+  padding-bottom: 300px;
 }
 
-.followingTitle{
+.followingTitle {
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -33,7 +29,7 @@ a {
   height: 80px;
 }
 
-.followingtitletext{
+.followingtitletext {
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -43,14 +39,14 @@ a {
   height: 80px;
 }
 
-.followingimg{
+.followingimg {
   width: 80px;
   height: 80px;
   padding-left: 20px;
   padding-right: 16px;
 }
 
-.followingtitle1{
+.followingtitle1 {
   color: #000;
   font-family: "Noto Sans KR";
   font-size: 48px;
@@ -61,7 +57,7 @@ a {
   letter-spacing: -0.96px;
 }
 
-.following-list{
+.following-list {
   padding-left: 15px;
   margin-top: 35px;
   width: 1240px;
@@ -72,7 +68,7 @@ a {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.following-item{
+.following-item {
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -91,12 +87,11 @@ a {
   height: 170px;
 }
 
-
-.profile-img{
+.profile-img {
   border-radius: 15px;
 }
 
-.follow1{
+.follow1 {
   display: flex;
   width: 280px;
   /* 수직적으로 가운데 정렬 */
@@ -109,8 +104,7 @@ a {
   bottom: 170px;
 }
 
-
-.username{
+.username {
   color: #000;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -120,14 +114,13 @@ a {
   line-height: normal;
 }
 
-
-.follow1_1{
+.follow1_1 {
   display: inline-flex;
   padding: 6px 12px;
   align-items: center;
   gap: 8px;
   border-radius: 32px;
-  background: #FFF;
+  background: #fff;
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -141,7 +134,7 @@ a {
   margin-left: 350px;
 }
 
-.follower-count{
+.follower-count {
   color: #444;
   leading-trim: both;
   text-edge: cap;
@@ -153,7 +146,7 @@ a {
   letter-spacing: -0.3px;
 }
 
-#following{
+#following {
   color: #444;
   width: 60px;
   leading-trim: both;
@@ -166,13 +159,11 @@ a {
   letter-spacing: -0.3px;
 }
 
-.follow_x{
+.follow_x {
   cursor: pointer;
 }
 
-
-
-.follow2{
+.follow2 {
   display: flex;
   /* 수직적으로 가운데 정렬 */
   /* align-items: center; */
@@ -184,7 +175,7 @@ a {
   left: 195px;
 }
 
-.story-count{
+.story-count {
   width: 90px;
   color: #777;
   font-family: "Noto Sans KR";
@@ -194,7 +185,7 @@ a {
   line-height: 16px;
 }
 
-.like-count{
+.like-count {
   width: 90px;
   color: #777;
   font-family: "Noto Sans KR";
@@ -204,7 +195,7 @@ a {
   line-height: 16px;
 }
 
-.follow3{
+.follow3 {
   width: 400px;
   display: flex;
   /* 수직적으로 가운데 정렬 */
@@ -217,7 +208,7 @@ a {
   left: 178px;
 }
 
-.upload{
+.upload {
   width: 90px;
   color: #444;
   font-family: "Noto Sans KR";
@@ -227,7 +218,7 @@ a {
   line-height: 140%; /* 21px */
 }
 
-.last-upload{
+.last-upload {
   width: 90px;
   color: #444;
   font-family: "Noto Sans KR";
@@ -237,7 +228,7 @@ a {
   line-height: 140%;
 }
 
-.theme{
+.theme {
   box-sizing: border-box;
   /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
   display: flex;
@@ -248,7 +239,7 @@ a {
   left: 190px;
 }
 
-.theme1{
+.theme1 {
   width: 49px;
   height: 24px;
   display: inline-flex;
@@ -256,12 +247,12 @@ a {
   align-items: center;
   flex-shrink: 0;
   border-radius: 5px;
-  border: 1px solid #F4F4F4;
-  background: #FFF;
+  border: 1px solid #f4f4f4;
+  background: #fff;
   margin-right: 8px;
 }
 
-.theme1_text{
+.theme1_text {
   color: #767676;
   font-family: Pretendard;
   font-size: 13px;
@@ -271,7 +262,7 @@ a {
   letter-spacing: -0.26px;
 }
 
-.theme2{
+.theme2 {
   width: 49px;
   height: 24px;
   display: inline-flex;
@@ -279,11 +270,11 @@ a {
   align-items: center;
   flex-shrink: 0;
   border-radius: 5px;
-  border: 1px solid #F4F4F4;
-  background: #FFF;
+  border: 1px solid #f4f4f4;
+  background: #fff;
 }
 
-.theme2_text{
+.theme2_text {
   color: #767676;
   font-family: Pretendard;
   font-size: 13px;
@@ -293,8 +284,7 @@ a {
   letter-spacing: -0.26px;
 }
 
-
-.morebtn{
+.morebtn {
   background: url("../images/followmore.png");
   width: 70px;
   height: 168px;
@@ -315,7 +305,7 @@ a {
   display: block;
 }
 
-.extra-content{
+.extra-content {
   width: 578px;
   height: 310px;
   position: relative;
@@ -324,12 +314,12 @@ a {
   display: none;
 }
 
-.recent_text{
+.recent_text {
   width: 70px;
   margin-bottom: 6px;
 }
 
-.recent{
+.recent {
   color: #000;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -339,30 +329,30 @@ a {
   line-height: normal;
 }
 
-.recent_story{
+.recent_story {
   width: 578px;
   height: 284px;
 }
 
-.story-list{
+.story-list {
   gap: 12px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
-.story-img{
+.story-img {
   width: 136px;
   height: 136px;
   flex-shrink: 0;
   border-radius: 15px;
-  background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
-  background-position: center;  /* 중앙에 이미지를 위치시킴 */
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
   background-repeat: no-repeat;
   cursor: pointer;
 }
 li::marker {
-  content: '';
+  content: "";
 }
 
 /* 팔로잉 목록 끝 */

@@ -41,6 +41,7 @@ hr {
   padding-bottom: 40px;
 }
 .nav_logo {
+  position: relative; /* 부모 요소를 상대적으로 설정 */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,7 +70,7 @@ hr {
 }
 
 #nav_logo1:hover {
-  transform: scale(1.1) ; /* 호버 시 로고 크기 증가, 회전, 위로 이동 */
+  transform: scale(1.1); /* 호버 시 로고 크기 증가, 회전, 위로 이동 */
   filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); /* 무난한 검정빛 그림자 */
 }
 .nav_menu {
@@ -215,10 +216,10 @@ input.search {
 /* 이미지 버튼 스타일 */
 input.imagebtn {
   background: url("../images/save.png") no-repeat center;
-  background-size: 24px;
+  background-size: 30px;
   width: 46px;
   height: 46px;
-  padding: 11px;
+  padding: 10px;
   border-radius: 46px;
   background-color: #fff;
   border: none;
@@ -264,11 +265,12 @@ input.imagebtn {
 /* 드롭다운 메뉴 위치 조정 */
 #dropdownMenu {
   position: absolute;
+  /* position: fixed; */
   width: 110px;
   height: 138px;
   z-index: 1;
-  right: 220px;
-  top: 135px; /* 로그인 버튼 바로 아래에 배치 */
+  right: 0; /* 부모 요소 기준으로 오른쪽에 고정 */
+  top: 100%; /* 부모 요소 바로 아래에 위치 */
   overflow: hidden;
   padding: 0px 25px;
   flex-direction: column;

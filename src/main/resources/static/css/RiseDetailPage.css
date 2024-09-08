@@ -68,6 +68,7 @@ a {
   justify-content: center;
   box-sizing: border-box;
   padding-top: 130px;
+  padding-bottom: 300px;
 }
 
 #RiseTitle {
@@ -193,7 +194,7 @@ a {
   padding-top: 4px;
 }
 
-#RiseStoryList{
+#RiseStoryList {
   margin-left: 915px;
 }
 
@@ -271,7 +272,10 @@ a {
   padding: 20px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); /* Flexible grid with auto-fill */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(285px, 1fr)
+  ); /* Flexible grid with auto-fill */
   gap: 20px;
   justify-content: center;
 }
@@ -283,8 +287,8 @@ a {
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
-  background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
-  background-position: center;  /* 중앙에 이미지를 위치시킴 */
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -306,7 +310,7 @@ a {
   flex: 1;
 }
 .story {
-  width: 100%;  /* Full width within the grid column */
+  width: 100%; /* Full width within the grid column */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -369,7 +373,7 @@ a {
   padding-right: 10px;
 }
 
-#morebtn{
+#morebtn {
   background: url("../images/morebtn.png");
   width: 128px;
   height: 48px;
@@ -380,13 +384,13 @@ a {
   margin-bottom: 30px;
 }
 
-.other_back{
+.other_back {
   padding-top: 72px;
   width: 1240px;
   height: 265px;
 }
 
-.otherrise{
+.otherrise {
   color: #050505;
   font-family: "Noto Sans KR";
   font-size: 20px;
@@ -416,8 +420,8 @@ a {
   flex-shrink: 0;
   border-radius: 8px;
   background: #d9d9d9;
-  background-size: cover;  /* 이미지를 컨테이너에 꽉 차게 함 */
-  background-position: center;  /* 중앙에 이미지를 위치시킴 */
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
   background-repeat: no-repeat;
   cursor: pointer;
   object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */

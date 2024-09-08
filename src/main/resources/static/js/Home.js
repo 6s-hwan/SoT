@@ -9,23 +9,23 @@ function checkEmail() {
 
   // 입력이 멈춘 후 500ms 후에 유효성 검사 진행
   debounceTimeout = setTimeout(() => {
-    const emailPattern = /.+@.+/;  // 간단한 이메일 정규식
+    const emailPattern = /.+@.+/; // 간단한 이메일 정규식
 
     if (emailPattern.test(email)) {
       // 이메일 유효성 통과 후, 중복 체크를 위한 서버 요청 추가
       fetch(`/check-email?email=${email}`)
-          .then(response => response.json())
-          .then(data => {
-            if (data.isDuplicate) {
-              emailCheckMessage.textContent = "중복된 이메일입니다.";
-              emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
-              emailCheckMessage.style.display = "block";
-            } else {
-              emailCheckMessage.textContent = "사용 가능한 이메일입니다.";
-              emailCheckMessage.style.color = "#448fff"; // 파란색
-              emailCheckMessage.style.display = "block";
-            }
-          });
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.isDuplicate) {
+            emailCheckMessage.textContent = "중복된 이메일입니다.";
+            emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
+            emailCheckMessage.style.display = "block";
+          } else {
+            emailCheckMessage.textContent = "사용 가능한 이메일입니다.";
+            emailCheckMessage.style.color = "#448fff"; // 파란색
+            emailCheckMessage.style.display = "block";
+          }
+        });
     } else {
       emailCheckMessage.textContent = "유효하지 않은 이메일 형식입니다.";
       emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
@@ -64,7 +64,16 @@ function checkInputs1p1() {
   const checkTextLength = document.getElementById("text2511"); // 8자 이상 텍스트
   const imageContainerSpecial = document.getElementById("imageContainer111"); // 특수문자 체크 이미지
   const imageContainerLength = document.getElementById("imageContainer211"); // 8자 이상 체크 이미지
+  const checkImage111 = document.getElementById("check_img111"); // 특수문자 체크 이미지 요소
+  const checkImage211 = document.getElementById("check_img211"); // 8자 이상 체크 이미지 요소
 
+  // 패딩 추가
+  checkImage111.style.paddingLeft = "5px";
+  checkImage111.style.paddingTop = "7px";
+  checkImage111.style.paddingBottom = "7px";
+  checkImage211.style.paddingLeft = "5px";
+  checkImage211.style.paddingTop = "7px";
+  checkImage211.style.paddingBottom = "7px";
   // 특수문자 포함 여부 확인
   if (specialCharacters.test(password)) {
     checkTextSpecial.style.color = "#448fff"; // 조건 만족 시 파란색
@@ -100,14 +109,14 @@ function checkPasswordsMatchp1() {
 }
 // 팝업 닫기 함수
 function closePopupff() {
-  document.getElementById('bg_gray5').style.display = 'none'; // 회원가입 완료 팝업 닫기
+  document.getElementById("bg_gray5").style.display = "none"; // 회원가입 완료 팝업 닫기
   enableScroll(); // 스크롤 활성화
 }
 
 // 로그인 팝업 열기 함수
 function goTonewLoginff() {
   closePopupff(); // 회원가입 완료 팝업 닫기
-  document.getElementById('bg_gray').style.display = 'block'; // 로그인 팝업 열기
+  document.getElementById("bg_gray").style.display = "block"; // 로그인 팝업 열기
 }
 // 회원가입 완료 팝업 표시 함수
 function showSignupCompletePopup() {
@@ -126,20 +135,21 @@ function checkUsername() {
   if (namePattern.test(username)) {
     // 서버에서 닉네임 중복 체크
     fetch(`/check-username?username=${username}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.isDuplicate) {
-            nameCheckContent.textContent = "중복된 닉네임입니다.";
-            nameCheckContent.style.color = "#FF4F4F"; // 빨간색
-            nameCheckContent.style.display = "block";
-          } else {
-            nameCheckContent.textContent = "사용 가능한 닉네임입니다.";
-            nameCheckContent.style.color = "#448fff"; // 파란색
-            nameCheckContent.style.display = "block";
-          }
-        });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isDuplicate) {
+          nameCheckContent.textContent = "중복된 닉네임입니다.";
+          nameCheckContent.style.color = "#FF4F4F"; // 빨간색
+          nameCheckContent.style.display = "block";
+        } else {
+          nameCheckContent.textContent = "사용 가능한 닉네임입니다.";
+          nameCheckContent.style.color = "#448fff"; // 파란색
+          nameCheckContent.style.display = "block";
+        }
+      });
   } else {
-    nameCheckContent.textContent = "닉네임은 2~8자의 한글 또는 영문이어야 합니다.";
+    nameCheckContent.textContent =
+      "닉네임은 2~8자의 한글 또는 영문이어야 합니다.";
     nameCheckContent.style.color = "#FF4F4F"; // 빨간색
     nameCheckContent.style.display = "block";
   }
@@ -176,7 +186,7 @@ function checkPassword() {
 
 // 이메일 형식 확인
 function isEmailValid(email) {
-  var emailPattern = /.+@.+/;  // 간단한 이메일 정규식
+  var emailPattern = /.+@.+/; // 간단한 이메일 정규식
   return emailPattern.test(email);
 }
 // 모든 입력 필드의 유효성 검사 후 비동기 회원가입 폼 제출
@@ -187,7 +197,9 @@ function submitSignUpForm() {
   var phone1 = document.getElementById("phone_input1").value;
   var phone2 = document.getElementById("phone_input2").value;
   var phone3 = document.getElementById("phone_input3").value;
-  var verificationCode = document.getElementById("CertificationNumber_input").value;
+  var verificationCode = document.getElementById(
+    "CertificationNumber_input"
+  ).value;
   var gender = document.getElementById("gender_input").value;
   var birthYear = document.getElementById("birth-year").value;
   var birthMonth = document.getElementById("birth-month").value;
@@ -251,34 +263,40 @@ function submitSignUpForm() {
   var formData = new FormData(document.getElementById("joinForm"));
   fetch("/user", {
     method: "POST",
-    body: formData
+    body: formData,
   })
-      .then(response => response.json())
-      .then(data => {
-        // 이메일 중복
-        if (data.status === "error" && data.message === "이미 사용 중인 이메일입니다.") {
-          var emailCheckMessage = document.getElementById("emailCheckMessage");
-          emailCheckMessage.textContent = "중복된 이메일입니다.";
-          emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
-          emailCheckMessage.style.display = "block";
-        }
+    .then((response) => response.json())
+    .then((data) => {
+      // 이메일 중복
+      if (
+        data.status === "error" &&
+        data.message === "이미 사용 중인 이메일입니다."
+      ) {
+        var emailCheckMessage = document.getElementById("emailCheckMessage");
+        emailCheckMessage.textContent = "중복된 이메일입니다.";
+        emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+        emailCheckMessage.style.display = "block";
+      }
 
-        // 닉네임 중복
-        if (data.status === "error" && data.message === "이미 사용 중인 닉네임입니다.") {
-          var nameCheckMessage = document.getElementById("nameCheckMessage");
-          nameCheckMessage.textContent = "중복된 닉네임입니다.";
-          nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
-          nameCheckMessage.style.display = "block";
-        }
+      // 닉네임 중복
+      if (
+        data.status === "error" &&
+        data.message === "이미 사용 중인 닉네임입니다."
+      ) {
+        var nameCheckMessage = document.getElementById("nameCheckMessage");
+        nameCheckMessage.textContent = "중복된 닉네임입니다.";
+        nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+        nameCheckMessage.style.display = "block";
+      }
 
-        // 성공 메시지 처리
-        if (data.status === "success") {
-          showSignupCompletePopup();
-        }
-      })
-      .catch(error => {
-        alert("오류가 발생했습니다: " + error.message);
-      });
+      // 성공 메시지 처리
+      if (data.status === "success") {
+        showSignupCompletePopup();
+      }
+    })
+    .catch((error) => {
+      alert("오류가 발생했습니다: " + error.message);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -310,71 +328,75 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // 페이지가 완전히 로드된 후 팝업 숨김 처리
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('bg_gray').style.display = 'none';
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("bg_gray").style.display = "none";
 });
 
 // AJAX를 통해 로그인 폼 제출
 function submitLoginForm() {
-  const username = document.querySelector('#email_input').value;
-  const password = document.querySelector('#pw_input').value;
+  const username = document.querySelector("#email_input").value;
+  const password = document.querySelector("#pw_input").value;
 
   // 오류 메시지 초기화
-  const errorMessageElement = document.getElementById('error-message');
-  errorMessageElement.textContent = '';  // 기존 메시지 제거
-  errorMessageElement.classList.remove('show');  // 에러 메시지 숨기기
+  const errorMessageElement = document.getElementById("error-message");
+  errorMessageElement.textContent = ""; // 기존 메시지 제거
+  errorMessageElement.classList.remove("show"); // 에러 메시지 숨기기
 
-  fetch('/login', {
-    method: 'POST',
+  fetch("/login", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: new URLSearchParams({ username: username, password: password })
+    body: new URLSearchParams({ username: username, password: password }),
   })
-      .then(response => {
-        if (!response.ok) {
-          // 실패 시 JSON 응답을 받아서 에러 메시지 출력
-          return response.json().then(err => { throw new Error(err.message); });
-        }
-        return response.text();  // 성공 시
-      })
-      .then(data => {
-        // 로그인 성공 시 메인 페이지로 이동
-        window.location.href = '/home';
-      })
-      .catch(error => {
-        // 로그인 실패 시 error-message 요소에 에러 메시지 표시
-        errorMessageElement.textContent = error.message;
-        errorMessageElement.classList.add('show');  // 에러 메시지 보이게 설정
-      });
+    .then((response) => {
+      if (!response.ok) {
+        // 실패 시 JSON 응답을 받아서 에러 메시지 출력
+        return response.json().then((err) => {
+          throw new Error(err.message);
+        });
+      }
+      return response.text(); // 성공 시
+    })
+    .then((data) => {
+      // 로그인 성공 시 메인 페이지로 이동
+      window.location.href = "/home";
+    })
+    .catch((error) => {
+      // 로그인 실패 시 error-message 요소에 에러 메시지 표시
+      errorMessageElement.textContent = error.message;
+      errorMessageElement.classList.add("show"); // 에러 메시지 보이게 설정
+      errorMessageElement.style.color = "#FF5656";
+    });
 }
 
 function submitPwFindForm() {
-  const email = document.querySelector('#email_input11').value;
+  const email = document.querySelector("#email_input11").value;
 
-  fetch('/forgot-password', {
-    method: 'POST',
+  fetch("/forgot-password", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: new URLSearchParams({ email: email })
+    body: new URLSearchParams({ email: email }),
   })
-      .then(response => {
-        if (!response.ok) {
-          return response.json().then(err => { throw new Error(err.message); });
-        }
-        return response.json();
-      })
-      .then(data => {
-        // 성공 시 'bg_gray9' 팝업을 띄움
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((err) => {
+          throw new Error(err.message);
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // 성공 시 'bg_gray9' 팝업을 띄움
 
-        document.getElementById("bg_gray8").style.display = "none";
-        document.getElementById("bg_gray9").style.display = "block";
-
-      })
-      .catch(error => {
-        alert(error.message);  // 실패 시 에러 메시지를 alert로 표시
-      });
+      document.getElementById("bg_gray8").style.display = "none";
+      document.getElementById("bg_gray9").style.display = "block";
+    })
+    .catch((error) => {
+      alert(error.message); // 실패 시 에러 메시지를 alert로 표시
+    });
 }
 document.addEventListener("DOMContentLoaded", function () {
   var Joinbtn = document.querySelector("#join"); // 로그인 버튼
@@ -430,8 +452,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 로그인 상태일 때 프로필 이미지를 설정하는 함수
   function login(profileImageUrl) {
-    loginLabel.style.width = "36px";
-    loginLabel.style.height = "36px";
+    loginLabel.style.width = "46px";
+    loginLabel.style.height = "46px";
     loginLabel.style.padding = "0";
     loginLabel.style.fontSize = "0";
     loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
@@ -659,21 +681,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // 디버깅 메시지 추가
   console.log("DOM fully loaded and parsed");
 
-  // 로그인 성공 시 호출할 함수
-  function login(profileImageUrl) {
-    console.log("Login function called with profileImageUrl:", profileImageUrl);
-    checkbox.checked = true;
-    loginLabel.style.width = "36px";
-    loginLabel.style.height = "36px";
-    loginLabel.style.padding = "0";
-    loginLabel.style.fontSize = "0";
-    loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
-    loginLabel.style.backgroundSize = "cover";
-    loginLabel.style.backgroundPosition = "center";
+  // // 로그인 성공 시 호출할 함수
+  // function login(profileImageUrl) {
+  //   console.log("Login function called with profileImageUrl:", profileImageUrl);
+  //   checkbox.checked = true;
+  //   loginLabel.style.width = "46px";
+  //   loginLabel.style.height = "46px";
+  //   loginLabel.style.padding = "0";
+  //   loginLabel.style.fontSize = "0";
+  //   loginLabel.style.backgroundImage = `url(${profileImageUrl})`;
+  //   loginLabel.style.backgroundSize = "cover";
+  //   loginLabel.style.backgroundPosition = "center";
 
-    uploadbtn.style.display = "block";
-    profilebtn.style.display = "block";
-  }
+  //   uploadbtn.style.display = "block";
+  //   profilebtn.style.display = "block";
+  // }
 
   function togglePopup1(popupId) {
     const popup = document.getElementById(popupId);
@@ -904,7 +926,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 // 비밀번호 파트
 document.getElementById("join_pw_input").addEventListener("keyup", checkInputs);
 function checkInputs() {
@@ -1078,6 +1099,8 @@ function resetJoinForm() {
   document.getElementById("imageContainer2").style.display = "none";
 
   document.querySelector(".emailcheck-content").style.display = "none";
+  document.querySelector(".namecheck-content").style.display = "none";
+  document.getElementById("error-message").style.color = "#fff";
 }
 
 // 회원가입에서 로그인으로 넘어갈 때 입력값 초기화

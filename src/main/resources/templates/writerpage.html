@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{/css/writerpage.css}"/>
-  <link rel="stylesheet" th:href="@{/css/nav.css}"/>
-  <link rel="stylesheet" th:href="@{/css/footer.css}"/>
-  <link rel="stylesheet" th:href="@{/css/Home.css}"/>
-  <link rel="stylesheet"
-        th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"/>
-  <title>작가 프로필 페이지</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/writerpage.css}" />
+  <link rel="stylesheet" th:href="@{/css/nav.css}" />
+  <link rel="stylesheet" th:href="@{/css/footer.css}" />
+  <link rel="stylesheet" th:href="@{/css/Home.css}" />
+  <link
+          rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+  />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>writerpage Page</title>
 </head>
 <body>
 <!-- 내비게이션바 -->
@@ -20,36 +25,67 @@
       <!-- 로고 -->
       <div id="nav_logo1">
         <a href="/home">
-          <img th:src="@{/images/MainLogo.png}" alt="로고" width="200px" height="46px"/>
+          <img
+                  th:src="@{/images/MainLogo.png}"
+                  alt="로고"
+                  width="200px"
+                  height="46px"
+          />
         </a>
       </div>
       <!-- 메뉴바 -->
       <div class="nav_menu">
         <ul class="navigation">
-          <li><a href="/home" class="b">홈</a></li>
+          <li>
+            <a href="/home" class="b">홈</a>
+          </li>
           <li><a href="/local" class="c">지역</a></li>
           <li><a href="/popular" class="d">인기 작가</a></li>
         </ul>
       </div>
       <!-- 검색바 -->
       <form action="/search" method="get" id="search">
-        <input type="text" name="query" class="search"/>
-        <button type="submit" id="searchBtn" style="background: none; border: none">
-          <img th:src="@{/images/search.png}" alt="돋보기" id="searchIcon" width="30px" height="30px"/>
+        <input type="text" name="query" class="search" />
+        <button
+                type="submit"
+                id="searchBtn"
+                style="background: none; border: none"
+        >
+          <img
+                  th:src="@{/images/search.png}"
+                  alt="돋보기"
+                  id="searchIcon"
+                  width="30px"
+                  height="30px"
+          />
         </button>
       </form>
     </div>
     <div id="nav_right">
-      <input type="button" class="followingbtn" style="display: none" onclick="location.href='/follows'"/>
-      <input type="button" class="imagebtn" style="display: none" onclick="location.href='/bookmark'"/>
-      <input type="button" id="uploadbtn" style="display: none"/>
+      <input
+              type="button"
+              class="followingbtn"
+              style="display: none"
+              onclick="location.href='/follows'"
+      />
+      <input
+              type="button"
+              class="imagebtn"
+              style="display: none"
+              onclick="location.href='/bookmark'"
+      />
+      <input type="button" id="uploadbtn" style="display: none" />
 
-      <input type="checkbox" id="join" style="display: none"/>
+      <input type="checkbox" id="join" style="display: none" />
       <label for="join" id="loginLabel">로그인</label>
       <!-- 드롭다운 메뉴 -->
       <div id="dropdownMenu" class="dropdown-content" style="display: none">
         <button onclick="location.href='/my-page'">마이페이지</button>
-        <button onclick="document.getElementById('bg_gray11').style.display='block';">비밀번호 변경</button>
+        <button
+                onclick="document.getElementById('bg_gray11').style.display='block';"
+        >
+          비밀번호 변경
+        </button>
         <form action="/logout" method="post">
           <button type="submit">로그아웃</button>
         </form>
@@ -71,21 +107,38 @@
 <div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
 <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
 <div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
-<div th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"></div>
+<div
+        th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
+></div>
 
-<!-- 작가 페이지 내용 -->
 <div id="writerpagefull">
   <div id="writerpage">
     <div id="writerpageTitle">
       <p id="writerpage_title">작가 프로필</p>
-      <img th:src="@{/images/listicon.png}" alt="목록보기" id="listicon" width="18px" height="18px"/>
+      <img
+              th:src="@{/images/listicon.png}"
+              alt="목록보기"
+              id="listicon"
+              width="18px"
+              height="18px"
+      />
       <p id="writerlist"><a th:href="@{/popular}">목록보기</a></p>
     </div>
 
     <div id="writerpageprofilefull">
       <div id="writerpageprofile">
-        <img th:src="${user.profileImageUrl != null ? user.profileImageUrl : '/images/default-profile.png'}"
-             alt="프로필" width="186px" height="186px" class="profile-img"/>
+        <img
+                th:src="${user.profileImageUrl != null ? user.profileImageUrl : '/images/default-profile.png'}"
+                alt="프로필"
+                width="186px"
+                height="186px"
+                style="
+                border: 3px solid #fff;
+                display: block;
+                border-radius: 14px;
+                box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+              "
+        />
       </div>
       <div id="writerpagedetail">
         <div id="writerpagedetail_1">
@@ -93,48 +146,88 @@
             <p id="username" th:text="${user.username}">Username</p>
           </div>
           <button id="followBtn" class="follow" onclick="toggleFollow()">
-            <p id="writerpagefollowertext"
-               th:text="${user.followers != null ? user.followers.size() : 0}">0</p>
+            <p
+                    id="writerpagefollowertext"
+                    th:text="${user.followers != null ? user.followers.size() : 0}"
+            >
+              0
+            </p>
             <p id="centerbar"></p>
-            <span id="followText" th:text="${isFollowing ? '팔로잉' : '팔로우'}">팔로우</span>
+            <span
+                    id="followText"
+                    th:text="${isFollowing ? '팔로잉' : '팔로우'}"
+            >팔로우</span
+            >
           </button>
         </div>
         <div id="writerpagedetail_2">
           <!-- 스토리 수 -->
-          <p id="writerpagedetail_2name">스토리&nbsp;</p>
-          <p id="writerpagedetail_2number" th:text="${totalStories != null ? totalStories : 0}">0</p>
+          <p id="writerpagedetail_2name">스토리&nbsp</p>
+          <p
+                  id="writerpagedetail_2number"
+                  th:text="${totalStories != null ? totalStories : 0}"
+          >
+            0
+          </p>
           <!-- 좋아요 수 -->
-          <p id="writerpagedetail_2name">좋아요&nbsp;</p>
-          <p id="writerpagedetail_2number" th:text="${totalLikes != null ? totalLikes : 0}">0</p>
+          <p id="writerpagedetail_2name">좋아요&nbsp</p>
+          <p
+                  id="writerpagedetail_2number"
+                  th:text="${totalLikes != null ? totalLikes : 0}"
+          >
+            0
+          </p>
           <!-- 조회수 수 -->
-          <p id="writerpagedetail_2name">조회수&nbsp;</p>
-          <p id="writerpagedetail_2number" th:text="${totalViews != null ? totalViews : 0}">0</p>
+          <p id="writerpagedetail_2name">조회수&nbsp</p>
+          <p
+                  id="writerpagedetail_2number"
+                  th:text="${totalViews != null ? totalViews : 0}"
+          >
+            0
+          </p>
         </div>
         <div id="writerpagedetail_3">
           <div id="majortheme">
             <p id="writerpagethemename">주요 테마</p>
           </div>
           <div id="writerpagetag">
-            <p id="writerpagetagname" th:text="'#' + (${topTheme != null ? topTheme : '없음'})">주요 테마</p>
+            <p
+                    id="writerpagetagname"
+                    th:text="'#' + (${topTheme != null ? topTheme : '없음'})"
+            >
+              주요 테마
+            </p>
           </div>
           <div id="writerpagetag">
-            <p id="writerpagetagname" th:text="'#' + (${secondTheme != null ? secondTheme : '없음'})">주요 테마</p>
+            <p
+                    id="writerpagetagname"
+                    th:text="'#' + (${secondTheme != null ? secondTheme : '없음'})"
+            >
+              주요 테마
+            </p>
           </div>
         </div>
         <div id="writerpagedetail_4">
           <p id="newestupload">최근 업로드</p>
-          <p id="newestuploaddate"
-             th:text="${daysSinceLastUpload != null ? daysSinceLastUpload + '일전' : '정보 없음'}">최근 업로드
+          <p
+                  id="newestuploaddate"
+                  th:text="${daysSinceLastUpload != null ? daysSinceLastUpload + '일전' : '정보 없음'}"
+          >
+            최근 업로드
           </p>
         </div>
       </div>
     </div>
-
-    <!-- 정렬 선택 -->
     <div id="writerpage_select">
       <form>
-        <select name="story_select" id="story_select" onchange="sortStories()">
-          <option value="" class="select_disabled" disabled selected>정렬기준</option>
+        <select
+                name="story_select"
+                id="story_select"
+                onchange="sortStories()"
+        >
+          <option value="" class="select_disabled" disabled selected>
+            정렬기준
+          </option>
           <option value="likes" class="recom_select">추천순</option>
           <option value="recent" class="newest_select">최신순</option>
           <option value="views" class="inquiry_select">조회순</option>
@@ -142,19 +235,42 @@
       </form>
     </div>
 
-    <!-- 스토리 리스트 -->
     <div id="back">
       <div class="stories" th:each="story, iterStat : ${stories}">
         <div class="story">
           <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-            <img id="storyimage" th:src="${story.image_url}" alt="Story Image"/>
+            <img
+                    id="storyimage"
+                    th:src="${story.image_url}"
+                    alt="Story Image"
+            />
             <div id="storyTitlefull">
               <p id="storyTitle" th:text="${story.title}">Story Title</p>
               <div class="right-side">
-                <img th:src="@{/images/seeimg.png}" class="seeimage" width="16px" height="16px"/>
-                <p class="imagetext" th:text="${story.viewCount != null ? story.viewCount : 0}">0</p>
-                <img th:src="@{/images/likeimg.png}" class="likeimage" width="14px" height="14px"/>
-                <p class="imagetext" th:text="${story.likes != null ? story.likes.size() : 0}">0</p>
+                <img
+                        th:src="@{/images/seeimg.png}"
+                        class="seeimage"
+                        width="16px"
+                        height="16px"
+                />
+                <p
+                        class="imagetext"
+                        th:text="${story.viewCount != null ? story.viewCount : 0}"
+                >
+                  0
+                </p>
+                <img
+                        th:src="@{/images/likeimg.png}"
+                        class="likeimage"
+                        width="14px"
+                        height="14px"
+                />
+                <p
+                        class="imagetext"
+                        th:text="${story.likes != null ? story.likes.size() : 0}"
+                >
+                  0
+                </p>
               </div>
             </div>
           </a>
@@ -163,7 +279,6 @@
     </div>
   </div>
 </div>
-
 <!-- 푸터 -->
 <div id="Footer">
   <button class="footer_1" onclick="showPopup('bg_gray33')">개인정보처리방침</button>
@@ -172,8 +287,6 @@
   <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
 </div>
 <!-- 푸터 끝 -->
-
-<!-- 스크립트 -->
 <script th:src="@{/js/Home.js}"></script>
 <script th:src="@{/js/upload.js}"></script>
 <script>
@@ -181,8 +294,8 @@
     var select = document.getElementById("story_select");
     var sort = select.value;
     if (sort) {
-      var username = document.getElementById("username").innerText;
-      window.location.href = "/writer/" + username + "?sort=" + sort;
+      var username = document.getElementById("username").innerText; // Get username
+      window.location.href = "/writer/" + username + "?sort=" + sort; // Redirect to /writer/username?sort=
     }
   }
 
@@ -197,12 +310,14 @@
   function toggleFollow() {
     const followBtn = document.getElementById("followBtn");
     const followText = document.getElementById("followText");
-    const followerCountElement = document.getElementById("writerpagefollowertext");
+    const followerCountElement = document.getElementById(
+            "writerpagefollowertext"
+    );
     let followerCount = parseInt(followerCountElement.innerText);
 
     followBtn.classList.toggle("following");
 
-    const username = document.getElementById("username").innerText;
+    const username = document.getElementById("username").innerText; // Get username
 
     fetch(`/writer/${username}/follow`, {
       method: "POST",
@@ -215,18 +330,36 @@
               if (data === "followed") {
                 followText.innerText = "팔로잉";
                 followerCountElement.innerText = followerCount + 1;
-                alert("팔로우 했습니다.");
               } else if (data === "unfollowed") {
                 followText.innerText = "팔로우";
                 followerCountElement.innerText = followerCount - 1;
-                alert("언팔로우 했습니다.");
               } else {
-                alert(data);
+                alert(data); // 에러 메시지 출력
               }
-              location.reload(); // alert 확인 후 페이지 새로고침
             })
             .catch((error) => console.error("Error:", error));
   }
+</script>
+
+<script>
+  function goToRisePage(button) {
+    const keyword = button.getAttribute("data-keyword");
+    window.location.href = "/rise/" + keyword;
+  }
+
+  function togglePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    popup.style.display = popup.style.display === "none" ? "block" : "none";
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // 초기 팝업들 숨기기
+    document.getElementById("loginPopup").style.display = "none";
+    document.getElementById("joinPopup").style.display = "none";
+    document.getElementById("termsPopup").style.display = "none";
+    document.getElementById("privacyPopup").style.display = "none";
+  });
 </script>
 </body>
 </html>

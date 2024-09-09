@@ -264,13 +264,13 @@ input.imagebtn {
   line-height: normal;
   padding-right: 16px;
 }
-#followBtn {
-  width: 131px;
+/* #followBtn {
+  width: 123px;
   height: 32px;
   margin-top: 9px;
   margin-bottom: 2px;
   display: inline-flex;
-  padding: 6px 17px;
+  padding: 8px 12px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -285,10 +285,77 @@ input.imagebtn {
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 125% */
+  line-height: 20px;
   letter-spacing: -0.32px;
 }
 #followText {
+  height: 20px;
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  border: none;
+}
+#centerbar {
+  width: 1px;
+  height: 8px;
+  background: #b3b3b3;
+  margin-left: 5px;
+  margin-right: 5px;
+} */
+#followBtn {
+  width: 142px;
+  height: 32px;
+  margin-top: 9px;
+  margin-bottom: 2px;
+  display: inline-flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 32px;
+  background: #161616;
+  cursor: pointer;
+  border: none;
+  transition: width 0.3s ease; /* 애니메이션 추가 */
+}
+
+#followBtn.following {
+  width: 150px; /* 팔로우중 상태일 때 너비 */
+}
+#followText .close-icon {
+  margin-left: 8px;
+  width: 12px; /* 아이콘 크기 */
+  height: 12px;
+  display: block; /* 이미지가 표시되도록 */
+  cursor: pointer;
+}
+.close-icon {
+  width: 16px; /* X 아이콘 크기 */
+  height: 16px;
+  display: none; /* 기본적으로 숨기기 */
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#followBtn.following .close-icon {
+  display: inline-block; /* 팔로우중일 때 보이기 */
+}
+
+#writerpagefollowertext {
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+}
+#followText {
+  position: relative;
   height: 20px;
   color: #fff;
   font-family: "Noto Sans KR";
@@ -299,13 +366,15 @@ input.imagebtn {
   letter-spacing: -0.32px;
   border: none;
 }
+
 #centerbar {
   width: 1px;
-  height: 8px;
+  height: 20px; /* 높이를 맞추기 위해 변경 */
   background: #b3b3b3;
   margin-left: 5px;
   margin-right: 5px;
 }
+
 /* input.writerpageadd {
     display: flex;
     background: url("../images/writerpage

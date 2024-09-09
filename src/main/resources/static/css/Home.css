@@ -3039,7 +3039,7 @@ input:focus {
 /* 테마별 여행지 시작 */
 #thememorebtn {
   padding: 12px 20px;
-  margin-left: 741px;
+  margin-left: 736px;
   margin-top: 28px;
   color: #333;
   font-family: "Noto Sans KR";
@@ -3070,7 +3070,7 @@ input:focus {
 #seasonstorymorebtn {
   padding: 12px 20px;
   width: 128px;
-  margin-left: 293px;
+  margin-left: 310px;
   margin-top: 32px;
   color: #333;
   font-family: "Noto Sans KR";
@@ -3103,10 +3103,11 @@ input:focus {
   width: 5px;
   height: 10px;
   padding-left: 6px;
+  padding-bottom: 1px;
 }
 #beststorymorebtn {
   padding: 12px 20px;
-  margin-left: 652px;
+  margin-left: 660px;
   margin-top: 45px;
   color: #333;
   font-family: "Noto Sans KR";
@@ -3419,7 +3420,7 @@ button:disabled {
   width: 128px;
   height: 48px;
   border: none;
-  margin-left: 556px;
+  margin-left: 565px;
   margin-top: 36px;
   cursor: pointer;
   background-size: contain; /* 이미지가 요소 크기에 맞게 조정됨 */

@@ -397,8 +397,8 @@ function submitLoginForm() {
       return response.text(); // 성공 시
     })
     .then((data) => {
-      // 로그인 성공 시 메인 페이지로 이동
-      window.location.href = "/home";
+// 로그인 성공 시 페이지 새로고침
+      window.location.reload();
     })
     .catch((error) => {
       // 로그인 실패 시 error-message 요소에 에러 메시지 표시

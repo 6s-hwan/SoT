@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   var StoryUploadPopup = document.getElementById("Upload_pop_up");
-  // 팝업 보이기
   StoryUploadPopup.style.display = "block";
 
-  // 닫기 버튼 클릭 시
+  var UploadBtn = document.getElementById("uploadbtn");
+  var StoryUploadPopup = document.getElementById("bg_gray1");
+  UploadBtn.addEventListener("click", function () {
+    StoryUploadPopup.style.display = "block";
+    document.body.style.overflow = ""; // 스크롤 허용
+    resetForm();
+  });
+
   const closeButton = document.getElementById("uploadclose");
   closeButton.addEventListener("click", function () {
     StoryUploadPopup.style.display = "none";
@@ -11,18 +17,71 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.reload(); // 페이지 새로고침
   });
 
-  // 폼 제출 시
-  const form = document.getElementById("uploadForm");
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    updateLocationInput(); // location 값을 업데이트
-    uploadPost(event);
+  let isFormSubmitted = false;
+
+  document.getElementById("uploadForm").addEventListener("submit", function (event) {
+    event.preventDefault();  // 기본 폼 제출 막기
+
+    if (validateForm()) {
+      if (!isFormSubmitted) {  // 중복 제출 방지
+        isFormSubmitted = true;
+        this.submit();  // 폼 제출
+      }
+    } else {
+    }
   });
 
-  // 이미지 업로드 클릭 오류 해결
-  const uploadPlaceholder = document.querySelector(".upload-placeholder");
-  uploadPlaceholder.addEventListener("click", function () {
-    document.getElementById("input-file").click();
+  function validateForm() {
+    let form = document.getElementById("uploadForm");
+    let title = form.title.value.trim();
+    let date_year = form.date_year.value;
+    let date_month = form.date_month.value;
+    let date_day = form.date_day.value;
+    let location = form.location.value.trim();
+    let tags = form.tags.value.trim();
+    let description = form.description.value.trim();
+    let imageUrl = form.imageUrl.value.trim();
+
+    // 날짜 선택 여부 확인
+    const isDateValid = date_year !== '년' && date_month !== '월' && date_day !== '일';
+
+    if (!imageUrl) {
+      alert("이미지를 업로드해 주세요.");
+      return false;
+    }
+    // 필드 값들이 모두 존재하는지 확인
+    if (!title) {
+      alert("제목을 입력해 주세요.");
+      return false;
+    }
+
+    if (!isDateValid) {
+      alert("날짜를 올바르게 선택해 주세요.");
+      return false;
+    }
+
+    if (!location) {
+      alert("위치를 선택해 주세요.");
+      return false;
+    }
+
+    if (!tags) {
+      alert("태그를 추가해 주세요.");
+      return false;
+    }
+
+    if (!description) {
+      alert("상세 설명을 입력해 주세요.");
+      return false;
+    }
+
+    // 모든 조건을 통과했을 경우 true 반환
+    return true;
+  }
+  document.querySelector(".upload-placeholder").addEventListener("click", function () {
+    if (!isFileSelected) {
+      document.getElementById("input-file").click();
+    }
   });
 
   // '년', '월', '일' 셀렉트 박스 option 목록 동적 생성
@@ -59,26 +118,14 @@ function updateLocationInput() {
 
   console.log("Updated location:", locationInput.value); // 값이 정상인지 확인하는 로그
 }
-
 function uploadPost(event) {
-  event.preventDefault();
-
-  let form = event.target;
-  let title = form.title.value;
-  let date_year = form.date_year.value;
-  let date_month = form.date_month.value;
-  let date_day = form.date_day.value;
-  let location = form.location.value; // updateLocationInput()으로 설정된 값
-  let tags = form.tags.value;
-  let description = form.description.value;
-  let imageUrl = form.imageUrl.value;
-
-  if (!title || !date_year || !date_month || !date_day || !location || !description || !imageUrl) {
+  // 추가적인 폼 제출 처리 로직이 필요하다면 여기에 작성
+  if (!validateForm()) {
+    event.preventDefault();  // 유효성 검사 실패 시 폼 제출 막기
     alert("모든 필드를 채워주세요!");
     return false;
   }
-
-  form.submit();
+  return true;  // 유효성 검사 통과 시 폼 제출 허용
 }
 
 // 국내 지역 및 도시 데이터 정의
@@ -388,6 +435,14 @@ function populateRegions() {
 function populateCities(region) {
   const citySelect = document.getElementById("city");
   citySelect.innerHTML = ""; // 기존 옵션 제거
+
+  // 기본 옵션 "도시 선택" 추가
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "도시 선택";
+  defaultOption.disabled = true;  // 기본값으로 비활성화
+  defaultOption.selected = true;  // 기본값으로 선택
+  citySelect.appendChild(defaultOption);
 
   // region에 해당하는 citiesData가 있는 경우에만 처리
   if (region && citiesData[region]) {

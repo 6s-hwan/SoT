@@ -70,7 +70,6 @@ hr {
 }
 
 #nav_logo1:hover {
-  transform: scale(1.1); /* 호버 시 로고 크기 증가, 회전, 위로 이동 */
   filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); /* 무난한 검정빛 그림자 */
 }
 .nav_menu {

@@ -104,6 +104,13 @@ hr {
 #bg_gray1 > #Upload_pop_up > #StoryUploadTitle > #uploadclose {
   padding-top: 6px;
   cursor: pointer;
+
+  transition: filter 0.3s ease; /* 부드러운 회전 및 밝기 조정 */
+}
+
+#bg_gray1 > #Upload_pop_up > #StoryUploadTitle > #uploadclose:hover {
+
+  filter: brightness(0.8);  /* 호버 시 밝기 20% 증가 */
 }
 #photoTitle {
   padding-left: 40px;
@@ -128,8 +135,14 @@ hr {
   align-items: center;
   box-sizing: border-box;
   text-align: center;
-  margin-bottom: 14spx;
+  margin-bottom: 14px;
   cursor: pointer;
+  border: 2px solid transparent; /* 기본 상태에서 투명 테두리 */
+  transition: border 0.3s ease; /* 테두리 변경 시 부드러운 전환 효과 */
+}
+
+.upload-placeholder:hover {
+  border-color: #000; /* 호버 시 테두리 색상만 변경 */
 }
 .UploadBlank {
   width: 396px;
@@ -147,6 +160,18 @@ hr {
   cursor: pointer;
   z-index: 10;
 }
+/* 이미지 업로드 아이콘 유지 */
+.upload-placeholder img {
+  max-width: 100%;
+  max-height: 100%;
+  display: none;
+  margin: auto;
+}
+
+.upload-placeholder.active img {
+  display: block;
+}
+/* 불러오기 버튼 호버 */
 .upload-placeholder label {
   width: 91px;
   height: 32px;
@@ -166,19 +191,15 @@ hr {
   font-weight: 600;
   line-height: normal;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
 }
-.upload-placeholder img {
-  max-width: 100%;
-  max-height: 100%;
-  display: none;
-  margin: auto;
+.upload-placeholder label:hover {
+  background-color: #f0f0f0;
 }
-.upload-placeholder.active img {
-  display: block;
-}
+
+/* 텍스트 스타일링 */
 .upload-placeholder p {
   margin: 0;
-  color: #aaa;
   padding-bottom: 28px;
   color: #cdcdcd;
   font-family: Pretendard;
@@ -271,6 +292,11 @@ button:focus {
   line-height: 140%;
   letter-spacing: -0.34px;
 }
+#region:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
 #city {
   border-style: none;
   outline: none;
@@ -289,7 +315,12 @@ button:focus {
   letter-spacing: -0.34px;
   margin-left: 25px;
 }
-
+#city:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+/* 업로드 버튼 호버 효과 */
 .upload-button {
   margin-top: 30px;
   margin-left: 36px;
@@ -308,6 +339,13 @@ button:focus {
   line-height: 140%;
   letter-spacing: -0.4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
+}
+
+.upload-button:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
 }
 .tag-list {
   display: none;
@@ -327,8 +365,8 @@ button:focus {
 .spantags {
   margin-right: 8px;
   margin-bottom: 4px;
-  display: flex; /* 아이템 가로 정렬을 위해 추가 */
-  align-items: center; /* 아이템 가로 정렬을 위해 추가 */
+  display: flex;
+  align-items: center;
   color: #767676;
   font-family: Pretendard;
   font-size: 13px;
@@ -340,13 +378,14 @@ button:focus {
   height: 24px;
   padding: 3px 8px;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
   border-radius: 5px;
   border: 1px solid #f4f4f4;
   background: #fff;
   box-sizing: border-box;
+}
+.spantags:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease-in-out;
 }
 .tag-list span::before {
   content: "#";
@@ -356,6 +395,7 @@ button:focus {
   display: flex;
   align-items: center;
 }
+/* 추가 버튼 호버 효과 */
 .tag-input-wrapper button {
   position: absolute;
   border-radius: 5px;
@@ -363,7 +403,6 @@ button:focus {
   border: none;
   width: 58px;
   height: 32px;
-  flex-shrink: 0;
   color: #6b6a6a;
   font-family: Pretendard;
   font-size: 14px;
@@ -376,6 +415,13 @@ button:focus {
   right: 46px;
   margin: auto 0;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
+}
+
+.tag-input-wrapper button:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
 }
 /* 날짜 */
 #upload-calender {
@@ -389,10 +435,9 @@ button:focus {
   line-height: 140%;
   letter-spacing: -0.3px;
 }
-#upload-year {
+#upload-year, #upload-month, #upload-day {
   border-style: none;
   outline: none;
-  width: 113px;
   height: 48px;
   border-radius: 8px;
   background: #f9f9f9;
@@ -404,42 +449,25 @@ button:focus {
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.34px;
+}
+#upload-year {
+  width: 113px;
 }
 #upload-month {
-  border-style: none;
-  outline: none;
   width: 113px;
-  height: 48px;
   margin-left: 25px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  text-align: left;
-  color: #8e8e8e;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.34px;
 }
 #upload-day {
-  border-style: none;
-  outline: none;
   width: 113px;
-  height: 48px;
   margin-left: 25px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  text-align: left;
-  color: #8e8e8e;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.34px;
+}
+#upload-year:hover, #upload-month:hover, #upload-day:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
 }
 /* 업로드 팝업창 끝 */
+
 
 /* 로그인 팝업창 시작 */
 input::placeholder {
@@ -641,7 +669,16 @@ input::placeholder {
   font-weight: 600;
   line-height: 140%;
   letter-spacing: -0.4px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 효과 */
 }
+
+/* 호버 효과 추가 */
+#login_btn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
+}
+
 #bg_gray > #login_pop_up > #text3 {
   color: #bfbfbf;
   text-align: right;
@@ -971,7 +1008,9 @@ input:focus {
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.34px;
+  transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
 }
+
 #info__birth > #birth-month {
   border-style: none;
   outline: none;
@@ -988,7 +1027,9 @@ input:focus {
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.34px;
+  transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
 }
+
 #info__birth > #birth-day {
   border-style: none;
   outline: none;
@@ -1005,7 +1046,17 @@ input:focus {
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.34px;
+  transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
 }
+
+/* 호버 효과 추가 */
+#info__birth > #birth-year:hover,
+#info__birth > #birth-month:hover,
+#info__birth > #birth-day:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 약간 어둡게 */
+  cursor: pointer;
+}
+
 #gender {
   box-sizing: border-box;
   display: flex;
@@ -1045,22 +1096,17 @@ input:focus {
   line-height: 140%;
   letter-spacing: -0.34px;
   cursor: pointer;
+  transition: border-color 0.3s ease; /* 부드러운 전환 효과 */
 }
+
 #button1.selected {
-  width: 192px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #0055fa;
-  background: #fff;
-  color: #373737;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.34px;
+  border: 1px solid #000;
 }
+
+#button1:hover {
+  border-color: #000; /* 호버 시 테두리 색상 변경 */
+}
+
 #button2 {
   width: 192px;
   height: 56px;
@@ -1077,21 +1123,15 @@ input:focus {
   letter-spacing: -0.34px;
   margin-left: 16px;
   cursor: pointer;
+  transition: border-color 0.3s ease; /* 부드러운 전환 효과 */
 }
+
 #button2.selected {
-  width: 192px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #0055fa;
-  background: #fff;
-  color: #373737;
-  font-family: Pretendard;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.34px;
+  border: 1px solid #000;
+}
+
+#button2:hover {
+  border-color: #000; /* 호버 시 테두리 색상 변경 */
 }
 #phone {
   box-sizing: border-box;
@@ -1244,6 +1284,13 @@ input:focus {
   right: 46px;
   margin: auto 0;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 호버 효과 추가 */
+.input5 > button:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
 }
 #text8 {
   box-sizing: border-box;
@@ -1377,6 +1424,7 @@ input:focus {
 #checkbtn3:checked + label {
   background-image: url("../images/checkbtn4.png");
 }
+
 #container1 {
   box-sizing: border-box;
   display: flex;
@@ -1409,7 +1457,16 @@ input:focus {
   font-weight: 600;
   line-height: 140%;
   letter-spacing: -0.4px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
 }
+
+/* 호버 효과 추가 */
+#join_btn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
+}
+
 .inputs > .join_btn:hover {
   background: #9c9c9c;
   color: white;
@@ -1472,6 +1529,13 @@ input:focus {
   cursor: pointer;
   padding-top: 4px;
   padding-right: 2px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+/* 호버 효과 추가 */
+#Usebackarrow:hover {
+  transform: scale(1.1); /* 크기 확대 효과 */
+  opacity: 0.8; /* 호버 시 투명도 효과 추가 */
 }
 #Use_text {
   color: #444;
@@ -1538,6 +1602,14 @@ input:focus {
   font-weight: 600;
   line-height: 20px; /* 100% */
   letter-spacing: -0.4px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
+}
+
+/* 호버 효과 추가 */
+#UseAgree_btn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
 }
 /* 개인정보 취급방침 팝업창 css 끝 */
 
@@ -1592,6 +1664,13 @@ input:focus {
   cursor: pointer;
   padding-top: 4px;
   padding-right: 2px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+/* 호버 효과 추가 */
+#Privacybackarrow:hover {
+  transform: scale(1.1); /* 크기 확대 효과 */
+  opacity: 0.8; /* 호버 시 투명도 효과 추가 */
 }
 #Privacy_text {
   color: #444;
@@ -1645,7 +1724,16 @@ input:focus {
   font-weight: 600;
   line-height: 20px; /* 100% */
   letter-spacing: -0.4px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
 }
+
+/* 호버 효과 추가 */
+#PrivacyAgree_btn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
+}
+
 /* 이용약관 팝업창 끝 */
 
 /* 회원가입 완료 팝업창 시작 */
@@ -1830,7 +1918,6 @@ input:focus {
 #emailfind_pop_up > #emailfindTitle > #emailfindback {
   padding-top: 2px;
   padding-left: 11px;
-  cursor: pointer;
 }
 #emailfind_pop_up > #emailfindTitle > #emailfindtitle1 {
   color: #111;
@@ -1977,7 +2064,15 @@ input:focus {
   line-height: 140%; /* 28px */
   letter-spacing: -0.4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
 }
+
+#emailfindcheckbtn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 */
+  color: #333; /* 호버 시 글자색 */
+  border-color: #888; /* 호버 시 테두리색 */
+}
+
 /* 이메일 찾기 팝업창 끝 */
 
 /* 이메일 확인 팝업창 시작 */
@@ -2077,7 +2172,15 @@ input:focus {
   line-height: 140%;
   letter-spacing: -0.36px;
   margin-right: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
 }
+
+#findpwbtn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 */
+  color: #333; /* 호버 시 글자색 */
+  border-color: #888; /* 호버 시 테두리색 */
+}
+
 #gotologinbtn2 {
   width: 192px;
   height: 53px;
@@ -2095,7 +2198,14 @@ input:focus {
   line-height: 140%; /* 25.2px */
   letter-spacing: -0.36px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 */
 }
+
+#gotologinbtn2:hover {
+  background-color: #333; /* 호버 시 배경색 변경 */
+  color: #f0f0f0; /* 호버 시 글자색 변경 */
+}
+
 /* 이메일 확인 팝업창 끝 */
 
 /* 비밀번호 찾기 팝업창 시작 */
@@ -2147,7 +2257,6 @@ input:focus {
 #pwfind_pop_up > #pwfindTitle > #pwfindback {
   padding-top: 2px;
   padding-left: 9px;
-  cursor: pointer;
 }
 #pwfind_pop_up > #pwfindTitle > #pwfindtitle1 {
   color: #111;
@@ -2246,7 +2355,15 @@ input:focus {
   line-height: 140%; /* 28px */
   letter-spacing: -0.4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
+#pwfindcheckbtn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+  color: #333; /* 호버 시 글자색 변경 */
+  border-color: #888; /* 호버 시 테두리 색상 변경 */
+}
+
 /* 비밀번호 찾기 팝업창 끝 */
 
 /* 비밀번호 전송 완료 팝업창 시작 */
@@ -2332,7 +2449,15 @@ input:focus {
   line-height: 140%; /* 28px */
   letter-spacing: -0.4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
+#pwfindsendnoticecbtn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+  color: #333; /* 호버 시 글자색 변경 */
+  border-color: #888; /* 호버 시 테두리 색상 변경 */
+}
+
 /* 비밀번호 전송 완료 팝업창 끝 */
 
 /* 팔로우 취소 팝업창 시작 */
@@ -2653,7 +2778,16 @@ input:focus {
   line-height: 140%; /* 28px */
   letter-spacing: -0.4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
 }
+
+/* 호버 효과 추가 */
+#changepwbtn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+  color: #333; /* 호버 시 텍스트 색상 진하게 */
+  border-color: #888; /* 호버 시 테두리 색상 진하게 */
+}
+
 /* 비밀번호 변경 팝업 끝 */
 .slide-container {
   display: flex;

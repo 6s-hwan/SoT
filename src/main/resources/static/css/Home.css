@@ -3039,7 +3039,7 @@ input:focus {
 /* 테마별 여행지 시작 */
 #thememorebtn {
   padding: 12px 20px;
-  margin-left: 736px;
+  margin-left: 719px;
   margin-top: 28px;
   color: #333;
   font-family: "Noto Sans KR";
@@ -3051,6 +3051,13 @@ input:focus {
   background-color: #fff;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
+}
+#detailbtn1 {
+  width: 5px;
+  height: 10px;
+  margin-right:10px;
+  padding-left: 0.75px;
+  padding-bottom: 1px;
 }
 
 #thememorebtn:hover {
@@ -3083,6 +3090,13 @@ input:focus {
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
 }
+#detailbtn2 {
+  width: 5px;
+  height: 10px;
+  margin-right:1px;
+  padding-left: 6px;
+  padding-bottom: 1px;
+}
 
 #seasonstorymorebtn:hover {
   color: #000;
@@ -3099,15 +3113,16 @@ input:focus {
   padding-top: 120px;
   padding-bottom: 120px;
 }
-#detailbtn {
+#detailbtn4 {
   width: 5px;
   height: 10px;
-  padding-left: 6px;
+  padding-left: 1px;
   padding-bottom: 1px;
+  margin-right:3px;
 }
 #beststorymorebtn {
   padding: 12px 20px;
-  margin-left: 660px;
+  margin-left: 637px;
   margin-top: 45px;
   color: #333;
   font-family: "Noto Sans KR";
@@ -3120,6 +3135,13 @@ input:focus {
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색상, 변형 효과 */
 }
+#detailbtn3 {
+   width: 5px;
+   height: 10px;
+   padding-left: 5.5px;
+   padding-bottom: 1px;
+   margin-right:3px;
+ }
 
 #beststorymorebtn:hover {
   color: #000;
@@ -3428,7 +3450,7 @@ button:disabled {
 }
 #popularwritermorebtn {
   padding: 12px 20px;
-  margin-left: 446px;
+  margin-left: 440px;
   padding-top: 20px;
   color: #333;
   font-family: "Noto Sans KR";

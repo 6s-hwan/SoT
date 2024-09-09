@@ -307,7 +307,7 @@ input.imagebtn {
   margin-right: 5px;
 } */
 #followBtn {
-  width: 142px;
+  width: 150px;
   height: 32px;
   margin-top: 9px;
   margin-bottom: 2px;
@@ -324,12 +324,12 @@ input.imagebtn {
 }
 
 #followBtn.following {
-  width: 150px; /* 팔로우중 상태일 때 너비 */
+  width: 150px !important; /* 팔로우중일 때 너비를 강제로 150px로 설정 */
 }
 #followText .close-icon {
   margin-left: 8px;
-  width: 12px; /* 아이콘 크기 */
-  height: 12px;
+  width: 16px; /* 아이콘 크기 */
+  height: 16px;
   display: block; /* 이미지가 표시되도록 */
   cursor: pointer;
 }

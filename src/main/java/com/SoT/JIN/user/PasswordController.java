@@ -85,7 +85,8 @@ public class PasswordController {
 
         // 이메일로 링크 전송
         emailService.sendEmail(user.getEmail(), "비밀번호 재설정 링크",
-                "비밀번호를 재설정하려면 다음 링크를 클릭하세요: " + resetLink);
+                "비밀번호를 재설정하려면 다음 링크를 클릭하세요: " + resetLink +
+                        "\n이 링크는 30분 동안만 유효한 보안 토큰과 함께 동작합니다. 시간이 지나면 링크를 다시 요청해 주세요.");
 
         response.put("message", "비밀번호 재설정 링크가 이메일로 전송되었습니다.");
         return ResponseEntity.ok(response);
@@ -107,7 +108,7 @@ public class PasswordController {
         Optional<User> userOptional = tokenService.validatePasswordResetToken(token);
 
         if (userOptional.isEmpty()) {
-            return ResponseEntity.status(400).body("유효하지 않은 토큰입니다.");
+            return ResponseEntity.status(400).body("유효하지 않은 토큰입니다. 비밀번호 재설정 요청을 다시 진행해 주세요.");
         }
 
         User user = userOptional.get();

@@ -60,7 +60,7 @@ public class VerificationController {
             Message message = Message.creator(
                     new PhoneNumber(phoneNumber),
                     new PhoneNumber(twilioPhoneNumber),
-                    "[Story of Travel(SoT)] 인증번호[" + verificationCode + "]입니다. 유효기간 5분."
+                    "[Story of Travel(SoT)] 인증번호는 [" + verificationCode + "]입니다. 5분 안에 입력해 주세요."
             ).create();
 
             System.out.println("SMS sent: " + message.getSid());
@@ -96,7 +96,7 @@ public class VerificationController {
             Message message = Message.creator(
                     new PhoneNumber(phoneNumber),
                     new PhoneNumber(twilioPhoneNumber),
-                    "[Story of Travel(SoT)] 인증번호[" + verificationCode + "]입니다. 유효기간 5분."
+                    "[Story of Travel(SoT)] 인증번호는 [" + verificationCode + "]입니다. 5분 안에 입력해 주세요."
             ).create();
 
             System.out.println("SMS sent: " + message.getSid());

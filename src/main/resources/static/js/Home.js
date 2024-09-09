@@ -1,3 +1,33 @@
+// 이메일 찾기 및 비밀번호 찾기 팝업 전환
+document.addEventListener("DOMContentLoaded", function () {
+  const findEmailLink = document.querySelector("#findemail");
+  const findPwLink = document.querySelector("#findpw");
+
+  if (findEmailLink) {
+    findEmailLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      openEmailFindPopup(); // 이메일 찾기 팝업 열기
+    });
+  }
+
+  if (findPwLink) {
+    findPwLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      openPwFindPopup(); // 비밀번호 찾기 팝업 열기
+    });
+  }
+});
+
+function openEmailFindPopup() {
+  document.getElementById("bg_gray6").style.display = "block"; // 이메일 찾기 팝업 열기
+  document.getElementById("bg_gray").style.display = "none"; // 로그인 팝업 닫기
+}
+
+function openPwFindPopup() {
+  document.getElementById("bg_gray8").style.display = "block"; // 비밀번호 찾기 팝업 열기
+  document.getElementById("bg_gray").style.display = "none"; // 로그인 팝업 닫기
+}
+
 let debounceTimeout;
 
 // 이메일 유효성 및 중복 검사 함수
@@ -437,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
             followingBtn.classList.add("fade-in");
             uploadBtn.classList.add("fade-in");
             imageBtn.classList.add("fade-in");
-          }, 600); // 0.3초 후에 버튼 표시 및 애니메이션 추가
+          }, 700); // 0.3초 후에 버튼 표시 및 애니메이션 추가
 
           // 로그인 버튼(#join)을 제거
           if (Joinbtn) {

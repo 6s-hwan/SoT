@@ -22,9 +22,6 @@ public class ScheduledTask {
         // 1. 검색 횟수 초기화
         searchService.resetSearchCounts();  // 1등부터 8등까지 검색 횟수 초기화
 
-        // 2. Rising 데이터를 초기화
-        risingService.resetRisingData(); // 모든 Rising 데이터를 초기화
-
         // 3. Rising 데이터를 SearchService 기반으로 업데이트
         risingService.updateRisingFromSearch(searchService); // SearchService 기반으로 Rising 데이터 업데이트
     }

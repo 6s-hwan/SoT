@@ -164,6 +164,7 @@ hr {
 /* 돋보기 아이콘 기본 스타일 */
 #searchIcon {
   transition: filter 0.3s ease, transform 0.3s ease; /* 필터와 변형 효과를 위한 트랜지션 추가 */
+  margin-top:7.5px;
 }
 
 /* 돋보기 아이콘 호버 효과 */

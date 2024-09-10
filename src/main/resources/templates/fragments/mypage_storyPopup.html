@@ -1,6 +1,4 @@
 <body>
-<!-- 팝업창 -->
-
 <div class="bg_gray9" style="display: none;"></div> <!-- 팝업 배경 -->
 <div id="storyPopup" style="display: none;">
     <!-- 닫기 버튼 -->
@@ -19,17 +17,28 @@
 
                 <!-- 좋아요/북마크 버튼을 제목과 같은 높이에 위치시킴 -->
                 <div id="del_to_book" style="position: absolute; right: 0; top: 0; display: flex; gap: 0px;">
+                    <div class="delete_btn" style="display: flex; flex-direction: column; align-items: center;">
+                        <button type="button" class="Story_delete" onclick="toggleDelete(currentStoryId)" style="border: none; background: none;">
+                            <img th:src="@{/images/deletebtn.png}" alt="삭제하기" class="icon1" style="width: 36px; height: 36px;">
+                        </button>
+                        <p id="popupLikes2" class="Detail_likes" style="margin: 0; visibility: hidden;"> 개</p>
+                        <div id="bg_gray19" style="display: none" th:fragment="storydeletePopup">
+                            <p>정말로 스토리를 삭제하시겠습니까?</p>
+                            <button type="button" onclick="confirmUnfollow()">확인</button>
+                            <button type="button" onclick="closeUnfollowPopup()">취소</button>
+                        </div>
+                    </div>
                     <div class="like_btn" style="display: flex; flex-direction: column; align-items: center;">
                         <button type="button" class="Story_like" onclick="toggleLike()" style="border: none; background: none;">
                             <img th:src="@{/images/favorite.png}" alt="좋아요" class="icon1" style="width: 36px; height: 36px;">
                         </button>
-                        <p id="popupLikes" class="Detail_likes" style="margin: 0; visibility: hidden;">좋아요 10개</p> <!-- 텍스트 숨김 -->
+                        <p id="popupLikes" class="Detail_likes" style="margin: 0;">10개</p>
                     </div>
                     <div class="book_btn" style="display: flex; flex-direction: column; align-items: center;">
                         <button type="button" class="Story_book" onclick="toggleBookmark()" style="border: none; background: none;">
                             <img th:src="@{/images/StoryDetailbtn2.png}" alt="북마크" class="icon2" style="width: 36px; height: 36px;">
                         </button>
-                        <p id="popupBookmarks" class="Detail_bookmarks" style="margin: 0; visibility: hidden;">북마크 5개</p> <!-- 텍스트 숨김 -->
+                        <p id="popupBookmarks" class="Detail_bookmarks" style="margin: 0;">북마크 5개</p>
                     </div>
                 </div>
             </div>
@@ -63,4 +72,3 @@
         </div>
     </div>
 </div>
-</body>

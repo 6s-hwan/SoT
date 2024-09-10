@@ -7,6 +7,7 @@
   <link rel="stylesheet" th:href="@{/css/nav.css}" />
   <link rel="stylesheet" th:href="@{/css/home.css}" />
   <link rel="stylesheet" th:href="@{/css/footer.css}" />
+  <link rel="stylesheet" th:href="@{/css/storyPopup.css}" />
   <link
           rel="stylesheet"
           type="text/css"
@@ -110,6 +111,7 @@
 <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
 <div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
 <div th:replace="~{fragments/followcancel_popup :: followCancelPopup}"></div>
+<div th:replace="~{fragments/storyPopup.html}"></div>
 <div
         th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
 ></div>
@@ -181,11 +183,13 @@
             <p class="last-upload" th:text="${follow.lastUploadDate}">Last Upload</p>
           </div>
           <div class="theme">
-            <div class="theme1">
-              <p class="theme1_text"># 축제</p>
+            <!-- 첫 번째 테마가 있을 경우에만 출력 -->
+            <div class="theme1" th:if="${follow.topThemes.size() > 0}">
+              <p class="theme1_text" th:text="'#' + ${follow.topThemes[0]}"># 축제</p>
             </div>
-            <div class="theme2">
-              <p class="theme2_text"># 연등</p>
+            <!-- 두 번째 테마가 있을 경우에만 출력 -->
+            <div class="theme2" th:if="${follow.topThemes.size() > 1}">
+              <p class="theme2_text" th:text="'#' + ${follow.topThemes[1]}"># 연등</p>
             </div>
           </div>
         </div>
@@ -202,9 +206,9 @@
           <div class="recent_story">
             <ul class="story-list">
               <li th:each="story : ${follow.recentStories}">
-                <a th:href="@{'/story/' + ${story.storyId}}">
+                <div class="story" th:onclick="'showStoryPopup(' + ${story.storyId} + ')'">
                   <img th:src="${story.image_url}" alt="스토리 이미지" class="story-img"/>
-                </a>
+                </div>
               </li>
             </ul>
           </div>
@@ -278,5 +282,6 @@
 </script>
 <script th:src="@{/js/Home.js}"></script>
 <script th:src="@{/js/upload.js}"></script>
+<script th:src="@{/js/StoryPopup.js}"></script>
 </body>
 </html>

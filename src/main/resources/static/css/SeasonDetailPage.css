@@ -412,6 +412,7 @@ a {
   color: inherit;
 }
 .seasonstoryimage {
+  cursor:pointer;
   width: 100%;
   height: 272px;
   object-fit: cover; /* Ensures the image covers the container without stretching */

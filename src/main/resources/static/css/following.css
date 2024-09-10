@@ -130,7 +130,7 @@ a {
   /* align-items: center; */
   box-sizing: border-box;
   /* 요소가 여러 개일때 가운데 정렬 */
-  width: 130px;
+  width: 137px;
   height: 30px;
   z-index: 10px;
   position: relative;
@@ -336,7 +336,7 @@ a {
   height: 310px;
   position: relative;
   top: 200px;
-  right: 480px;
+  right: 487px;
   display: none;
 }
 

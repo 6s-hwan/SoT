@@ -4,6 +4,8 @@ import com.SoT.JIN.story.Story;
 import com.SoT.JIN.user.User;
 import com.SoT.JIN.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,9 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -31,12 +31,14 @@ public class BookmarkController {
     private UserRepository userRepository;
 
     @PostMapping("/story/{storyId}/bookmark")
-    public String toggleBookmark(@PathVariable Long storyId, Principal principal) {
+    public ResponseEntity<?> toggleBookmark(@PathVariable Long storyId, Principal principal) {
+        // 인증 정보 확인
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            throw new RuntimeException("User not authenticated");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not authenticated");
         }
 
+        // 사용자 정보 가져오기
         Object principalObj = authentication.getPrincipal();
         String username;
         if (principalObj instanceof UserDetails) {
@@ -46,12 +48,24 @@ public class BookmarkController {
         }
 
         Optional<User> optionalUser = userRepository.findByEmail(username);
-        User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        if (!optionalUser.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+        User user = optionalUser.get();
 
-        bookmarkService.toggleBookmark(storyId, user);
+        // 북마크 토글 처리
+        try {
+            bookmarkService.toggleBookmark(storyId, user);
+            boolean isBookmarked = bookmarkService.isBookmarked(storyId, user); // 북마크 여부 확인
 
-        return "redirect:/story/" + storyId;
+            Map<String, Object> response = new HashMap<>();
+            response.put("bookmarked", isBookmarked); // 북마크 상태 반환
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing bookmark");
+        }
     }
+
 
     @GetMapping("/bookmark")
     public String getBookmarkedStories(@RequestParam(name = "limit", defaultValue = "15") int limit, Model model) {

@@ -20,13 +20,14 @@ public class StoryDTO {
     private int followersCount;
     private boolean isLikedByUser;
     private boolean isBookmarkedByUser;
-    private boolean isAuthenticated; // 추가된 필드: 사용자 인증 상태
+    private boolean isAuthenticated; // 사용자 인증 상태
+    private boolean isOwnStory; // 추가된 필드: 사용자가 작성자인지 여부
 
     // 생성자
     public StoryDTO(Long storyId, String title, String imageUrl, String description, String location, String date,
                     String tags, int likesCount, int bookmarksCount,
                     String username, String profileImageUrl, int followersCount,
-                    boolean isLikedByUser, boolean isBookmarkedByUser) {
+                    boolean isLikedByUser, boolean isBookmarkedByUser, boolean isOwnStory) {
         this.storyId = storyId;
         this.title = title;
         this.imageUrl = imageUrl;
@@ -41,6 +42,6 @@ public class StoryDTO {
         this.followersCount = followersCount;
         this.isLikedByUser = isLikedByUser;
         this.isBookmarkedByUser = isBookmarkedByUser;
+        this.isOwnStory = isOwnStory; // 새로운 필드 추가
     }
 }
-

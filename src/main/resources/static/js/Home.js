@@ -1,3 +1,13 @@
+// 엔터키를 눌렀을 때 로그인 버튼 클릭을 트리거하는 함수
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("loginForm");
+  form.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); // 폼이 자동으로 제출되는 것을 막음
+      document.getElementById("login_btn").click(); // 버튼 클릭 트리거
+    }
+  });
+});
 // 이메일 찾기 및 비밀번호 찾기 팝업 전환
 document.addEventListener("DOMContentLoaded", function () {
   const findEmailLink = document.querySelector("#findemail");

@@ -58,6 +58,8 @@
     flex-direction: column;
     align-items: center;
 }
+
+
 #del_to_book {
     display: flex;
     align-items: center;
@@ -67,13 +69,13 @@
     right: 10px;
 }
 
-.Story_like, .Story_book {
+.Story_like, .Story_book, .Story_delete {
     background: none;
     border: none;
     cursor: pointer;
 }
 
-.Story_like img, .Story_book img {
+.Story_like img, .Story_book img, .Story_delete img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -81,6 +83,21 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 */
 }
+
+/* 좋아요 버튼과 북마크 버튼에 호버 효과 추가 */
+.Story_delete:hover img{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 효과 추가 */
+    transform: scale(1.1); /* 호버 시 살짝 확대 */
+    transition: all 0.3s ease; /* 부드러운 전환 */
+}
+
+/* 호버 시 배경색 변경 */
+.Story_delete:hover{
+    background-color: #f0f0f0; /* 호버 시 배경색을 약간 밝게 변경 */
+    border-radius: 50%; /* 원형 버튼을 유지 */
+    transition: all 0.3s ease; /* 부드러운 전환 */
+}
+
 .image-container {
     width: 100%;
     text-align: center;
@@ -99,6 +116,54 @@
     overflow: hidden;
 }
 
+input::placeholder {
+    color: #8e8e8e;
+}
+
+#Upload_pop_up::-webkit-scrollbar {
+    width: 6px;
+}
+
+#Upload_pop_up::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #e8e8e8;
+}
+#Upload_pop_up::-webkit-scrollbar-button {
+    display: none;
+}
+.box {
+    padding-left: 30px;
+}
+/* 공통적인 부분 */
+#join {
+    display: none;
+    width: 109px;
+    height: 46px;
+}
+
+#join + label {
+    box-sizing: border-box;
+    /* 이 코드가 있어야 내가 원하는 높이 안에 padding값과 컨텐츠들을 넣을 수 있다. */
+    display: flex;
+    /* 이 코드가 있어야 나란히 정렬 가능 */
+    /* display: inline-block; */
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 109px;
+    height: 46px;
+    background: #fff;
+    padding: 10px 29px 10px 28px;
+    /* line-height: 36px; */
+    cursor: pointer;
+    border-radius: 35px;
+    /* 동작 천천히 보여주기 */
+    transition: all 500ms ease-in;
+}
 
 /* 팝업 배경을 반투명하게 설정 */
 .bg_gray9 {
@@ -121,6 +186,8 @@
     flex-direction: column;
     align-items: center;
 }
+
+
 
 .story-details {
     display: grid;
@@ -241,6 +308,7 @@
     flex-direction: column;
 }
 
+
 .Story_like{
     width: 36px;
     height: 36px;
@@ -252,6 +320,17 @@
     cursor: pointer;
 }
 
+.Detail_likes2 {
+    color: #939393;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 7.5px;
+}
+
 .Detail_likes{
     color: #939393;
     text-align: center;
@@ -260,7 +339,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    padding-left: 5px;
+    padding-left: 7.5px;
 }
 
 .book_btn{
@@ -286,10 +365,20 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    padding-left: 5px;
+    padding-left: 7.5px;
 }
 
 
+.Story_delete{
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    border-radius: 12px;
+    border: none;
+    background: url("../images/StoryDetailbtn1.png");
+    cursor: pointer;
+}
 
 
 #tag{
@@ -388,7 +477,6 @@
     filter: brightness(1.1); /* 밝기 10% 증가 */
 }
 
-
 .profile_text{
     position: absolute;
     margin-left: 55px;
@@ -415,6 +503,150 @@
     margin-top: 2px;
     cursor:pointer;
 }
+
+
+#relatedStoriesButton{
+    cursor:pointer;
+}
+#delete_img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 스토리 삭제 팝업창 시작 */
+#bg_gray19 {
+    position: fixed;
+    display: none; /* 버튼이 안눌러지면 display:none */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    overflow-y: scroll; /* 세로 스크롤 사용 */
+    z-index: 10000;
+}
+#storyDeletePopUp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 474px;
+    height: 247px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    box-shadow: 0px 4px 9.1px 0px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+}
+#storyDeletePopUp > #deleteTitle {
+    box-sizing: border-box;
+    display: flex;
+    width: 472px;
+    height: 59px;
+    padding-left: 40px;
+    padding-top: 28px;
+}
+#storyDeletePopUp > #deleteTitle > #deleteTitleText {
+    color: #111;
+    font-family: Pretendard;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: -0.44px;
+}
+#storyDeletePopUp > #deleteTitle > #close {
+    padding-top: 3px;
+    padding-left: 273px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+#deleteContent {
+    color: #222;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 28px */
+    letter-spacing: -0.4px;
+    padding-top: 38px;
+    padding-left: 40px;
+    padding-bottom: 30px;
+}
+
+#verifyStatus {
+    color: #448fff;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 28px */
+    letter-spacing: -0.4px;
+}
+#deleteButtons {
+    padding-left: 36px;
+}
+/* 첫 번째 버튼 호버 효과 */
+#cancelDeleteBtn {
+    width: 192px;
+    height: 53px;
+    flex-shrink: 0;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #adadad;
+    background: #fff;
+    color: #464646;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: -0.36px;
+    margin-right: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease; /* 부드러운 전환 */
+}
+
+#cancelDeleteBtn:hover {
+    background-color: #f0f0f0; /* 호버 시 배경색 살짝 어둡게 */
+    color: #333; /* 호버 시 텍스트 색상 진하게 */
+    border-color: #888; /* 호버 시 테두리 색상 진하게 */
+}
+
+/* 두 번째 버튼 호버 효과 */
+#confirmDeleteBtn {
+    width: 192px;
+    height: 53px;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: -0.36px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 */
+}
+
+#confirmDeleteBtn:hover {
+    background-color: #333; /* 호버 시 배경색 더 밝은 회색으로 변경 */
+    color: #f0f0f0; /* 호버 시 텍스트 색상 밝게 변경 */
+}
 #relatedStoriesButton {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
@@ -434,20 +666,5 @@
     color: #222; /* 텍스트도 조금 더 어둡게 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* 그림자를 더 어둡게 */
 }
+/* 팔로우 취소 팝업창 끝 */
 
-
-
-/* 좋아요 버튼과 북마크 버튼에 호버 효과 추가 */
-.Story_like:not([disabled]):hover img,
-.Story_book:not([disabled]):hover img {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 효과 추가 */
-    transform: scale(1.1); /* 호버 시 살짝 확대 */
-    transition: all 0.3s ease; /* 부드러운 전환 */
-}
-
-/* 호버 시 배경색 변경 */
-.Story_like:not([disabled]):hover,
-.Story_book:not([disabled]):hover {
-    background-color: #f0f0f0; /* 호버 시 배경색을 약간 밝게 변경 */
-    border-radius: 50%; /* 원형 버튼을 유지 */
-}

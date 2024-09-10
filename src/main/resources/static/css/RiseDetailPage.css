@@ -14,7 +14,6 @@
   padding-top: 60px;
   padding-bottom: 30px;
 }
-
 #story_select {
   display: flex;
   width: 145px;
@@ -25,8 +24,10 @@
   gap: 8px;
   flex-shrink: 0;
   border-radius: 8px;
-  border: 1.6px solid #ececec;
+  border: 1px solid #ececec;
   background: #fff;
+  color: #606060;
+  margin-left:50px;
 }
 
 #story_select:hover {
@@ -208,20 +209,6 @@ a {
   margin-left: 915px;
 }
 
-#story_select {
-  display: flex;
-  width: 145px;
-  height: 30px;
-  padding: 4px 4px 4px 8px;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid #ececec;
-  background: #fff;
-  color: #606060;
-}
 
 .recom_select {
   color: #606060;
@@ -340,6 +327,7 @@ a {
   height: 235px;
 }
 .storyimage {
+  cursor:pointer;
   width: 100%;
   height: 200px;
   flex-shrink: 0;

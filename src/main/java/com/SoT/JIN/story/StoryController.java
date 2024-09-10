@@ -169,6 +169,13 @@ public class StoryController {
         model.addAttribute("limit", limit);
         return "BestStoryDetailPage";
     }
+
+    @DeleteMapping("/api/stories/{storyId}")
+    public ResponseEntity<Void> deleteStory(@PathVariable Long storyId) {
+        storyService.deleteStoryById(storyId);
+        return ResponseEntity.ok().build();
+    }
+
   /*
     @GetMapping("/index")
     public String index() {

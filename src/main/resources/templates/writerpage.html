@@ -1,385 +1,437 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/writerpage.css}" />
-    <link rel="stylesheet" th:href="@{/css/nav.css}" />
-    <link rel="stylesheet" th:href="@{/css/footer.css}" />
-    <link rel="stylesheet" th:href="@{/css/Home.css}" />
-    <link
-      rel="stylesheet"
-      th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>writerpage Page</title>
-  </head>
-  <body>
-    <!-- 내비게이션바 -->
-    <nav class="navbar">
-      <div class="nav_logo">
-        <div id="nav_left">
-          <!-- 로고 -->
-          <div id="nav_logo1">
-            <a href="/home">
-              <img
-                th:src="@{/images/MainLogo.png}"
-                alt="로고"
-                width="200px"
-                height="46px"
-              />
-            </a>
-          </div>
-          <!-- 메뉴바 -->
-          <div class="nav_menu">
-            <ul class="navigation">
-              <li>
-                <a href="/home" class="b">홈</a>
-              </li>
-              <li><a href="/local" class="c">지역</a></li>
-              <li><a href="/popular" class="d">인기 작가</a></li>
-            </ul>
-          </div>
-          <!-- 검색바 -->
-          <form action="/search" method="get" id="search">
-            <input type="text" name="query" class="search" />
-            <button
-              type="submit"
-              id="searchBtn"
-              style="background: none; border: none"
-            >
-              <img
-                th:src="@{/images/search.png}"
-                alt="돋보기"
-                id="searchIcon"
-                width="30px"
-                height="30px"
-              />
-            </button>
-          </form>
-        </div>
-        <div id="nav_right">
-          <input
-            type="button"
-            class="followingbtn"
-            style="display: none"
-            onclick="location.href='/follows'"
-          />
-          <input
-            type="button"
-            class="imagebtn"
-            style="display: none"
-            onclick="location.href='/bookmark'"
-          />
-          <input type="button" id="uploadbtn" style="display: none" />
-
-          <input type="checkbox" id="join" style="display: none" />
-          <label for="join" id="loginLabel">로그인</label>
-          <!-- 드롭다운 메뉴 -->
-          <div id="dropdownMenu" class="dropdown-content" style="display: none">
-            <button onclick="location.href='/my-page'">마이페이지</button>
-            <button
-              onclick="document.getElementById('bg_gray11').style.display='block';"
-            >
-              비밀번호 변경
-            </button>
-            <form action="/logout" method="post">
-              <button type="submit">로그아웃</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- 팝업창들 -->
-    <div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
-    <div th:replace="~{fragments/login_popup :: loginPopup}"></div>
-    <div th:replace="~{fragments/join_popup :: joinPopup}"></div>
-    <div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
-    <div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
-    <div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
-    <div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
-    <div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
-    <div th:replace="~{fragments/privacy_footer_popup :: privacy_footer}"></div>
-    <div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
-    <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
-    <div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
-    <div
-      th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
-    ></div>
-
-    <div id="writerpagefull">
-      <div id="writerpage">
-        <div id="writerpageTitle">
-          <p id="writerpage_title">작가 프로필</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/writerpage.css}" />
+  <link rel="stylesheet" th:href="@{/css/nav.css}" />
+  <link rel="stylesheet" th:href="@{/css/footer.css}" />
+  <link rel="stylesheet" th:href="@{/css/Home.css}" />
+  <link rel="stylesheet" th:href="@{/css/storyPopup.css}" />
+  <link
+          rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css}"
+  />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet"
+  />
+  <title>writerpage Page</title>
+</head>
+<body>
+<!-- 내비게이션바 -->
+<nav class="navbar">
+  <div class="nav_logo">
+    <div id="nav_left">
+      <!-- 로고 -->
+      <div id="nav_logo1">
+        <a href="/home">
           <img
-            th:src="@{/images/listicon.png}"
-            alt="목록보기"
-            id="listicon"
-            width="18px"
-            height="18px"
+                  th:src="@{/images/MainLogo.png}"
+                  alt="로고"
+                  width="200px"
+                  height="46px"
           />
-          <p id="writerlist"><a th:href="@{/popular}">목록보기</a></p>
-        </div>
+        </a>
+      </div>
+      <!-- 메뉴바 -->
+      <div class="nav_menu">
+        <ul class="navigation">
+          <li>
+            <a href="/home" class="b">홈</a>
+          </li>
+          <li><a href="/local" class="c">지역</a></li>
+          <li><a href="/popular" class="d">인기 작가</a></li>
+        </ul>
+      </div>
+      <!-- 검색바 -->
+      <form action="/search" method="get" id="search">
+        <input type="text" name="query" class="search" />
+        <button
+                type="submit"
+                id="searchBtn"
+                style="background: none; border: none"
+        >
+          <img
+                  th:src="@{/images/search.png}"
+                  alt="돋보기"
+                  id="searchIcon"
+                  width="30px"
+                  height="30px"
+          />
+        </button>
+      </form>
+    </div>
+    <div id="nav_right">
+      <input
+              type="button"
+              class="followingbtn"
+              style="display: none"
+              onclick="location.href='/follows'"
+      />
+      <input
+              type="button"
+              class="imagebtn"
+              style="display: none"
+              onclick="location.href='/bookmark'"
+      />
+      <input type="button" id="uploadbtn" style="display: none" />
 
-        <div id="writerpageprofilefull">
-          <div id="writerpageprofile">
-            <img
-              th:src="${user.profileImageUrl != null ? user.profileImageUrl : '/images/default-profile.png'}"
-              alt="프로필"
-              width="186px"
-              height="186px"
-              style="
+      <input type="checkbox" id="join" style="display: none" />
+      <label for="join" id="loginLabel">로그인</label>
+      <!-- 드롭다운 메뉴 -->
+      <div id="dropdownMenu" class="dropdown-content" style="display: none">
+        <button onclick="location.href='/my-page'">마이페이지</button>
+        <button
+                onclick="document.getElementById('bg_gray11').style.display='block';"
+        >
+          비밀번호 변경
+        </button>
+        <form action="/logout" method="post">
+          <button type="submit">로그아웃</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 팝업창들 -->
+<div th:replace="~{fragments/upload_popup :: uploadPopup}"></div>
+<div th:replace="~{fragments/login_popup :: loginPopup}"></div>
+<div th:replace="~{fragments/join_popup :: joinPopup}"></div>
+<div th:replace="~{fragments/terms_popup :: termsPopup}"></div>
+<div th:replace="~{fragments/privacy_popup :: privacyPopup}"></div>
+<div th:replace="~{fragments/emailfind_popup :: emailFindPopup}"></div>
+<div th:replace="~{fragments/emailcheck_popup :: emailCheckPopup}"></div>
+<div th:replace="~{fragments/joinfinish_popup :: joinFinishPopup}"></div>
+<div th:replace="~{fragments/privacy_footer_popup :: privacy_footer}"></div>
+<div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
+<div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
+<div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
+<div th:replace="~{fragments/followcancel_popup :: followCancelPopup}"></div>
+<div th:replace="~{fragments/storyPopup.html}"></div>
+<div
+        th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
+></div>
+
+<div id="writerpagefull">
+  <div id="writerpage">
+    <div id="writerpageTitle">
+      <p id="writerpage_title">작가 프로필</p>
+      <img
+              th:src="@{/images/listicon.png}"
+              alt="목록보기"
+              id="listicon"
+              width="18px"
+              height="18px"
+      />
+      <p id="writerlist"><a th:href="@{/popular}">목록보기</a></p>
+    </div>
+
+    <div id="writerpageprofilefull">
+      <div id="writerpageprofile">
+        <img
+                th:src="${user.profileImageUrl != null ? user.profileImageUrl : '/images/default-profile.png'}"
+                alt="프로필"
+                width="186px"
+                height="186px"
+                style="
                 border: 3px solid #fff;
                 display: block;
                 border-radius: 14px;
                 box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
               "
-            />
+        />
+      </div>
+
+      <div id="writerpagedetail">
+        <div id="writerpagedetail_1">
+          <!-- 작가 이름 -->
+          <div id="writerpageusername">
+            <p id="username" th:text="${user.username}">Username</p>
           </div>
-          <div id="writerpagedetail">
-            <div id="writerpagedetail_1">
-              <div id="writerpageusername">
-                <p id="username" th:text="${user.username}">Username</p>
-              </div>
-              <button id="followBtn" class="follow" onclick="toggleFollow()">
-                <span
-                  id="writerpagefollowertext"
-                  th:text="${user.followers != null ? user.followers.size() : 0}"
-                >
-                  0
-                </span>
-                <div id="centerbar"></div>
-                <span
-                  id="followText"
-                  th:text="${isFollowing ? '팔로우중' : '팔로우하기'}"
-                  >팔로우하기</span
-                >
-                <img
-                  class="close-icon"
-                  id="unfollowIcon"
-                  th:src="@{/images/follow_x.png}"
-                  alt="Unfollow Icon"
-                  th:style="${isFollowing ? 'display:inline-block;' : 'display:none;'}"
-                />
-              </button>
-            </div>
-            <div id="writerpagedetail_2">
-              <!-- 스토리 수 -->
-              <p id="writerpagedetail_2name">스토리&nbsp</p>
-              <p
-                id="writerpagedetail_2number"
-                th:text="${totalStories != null ? totalStories : 0}"
-              >
-                0
-              </p>
-              <!-- 좋아요 수 -->
-              <p id="writerpagedetail_2name">좋아요&nbsp</p>
-              <p
-                id="writerpagedetail_2number"
-                th:text="${totalLikes != null ? totalLikes : 0}"
-              >
-                0
-              </p>
-              <!-- 조회수 수 -->
-              <p id="writerpagedetail_2name">조회수&nbsp</p>
-              <p
-                id="writerpagedetail_2number"
-                th:text="${totalViews != null ? totalViews : 0}"
-              >
-                0
-              </p>
-            </div>
-            <div id="writerpagedetail_3">
-              <div id="majortheme">
-                <p id="writerpagethemename">주요 테마</p>
-              </div>
-              <div id="writerpagetag">
-                <p
-                  id="writerpagetagname"
-                  th:text="'#' + (${topTheme != null ? topTheme : '없음'})"
-                >
-                  주요 테마
-                </p>
-              </div>
-              <div id="writerpagetag">
-                <p
-                  id="writerpagetagname"
-                  th:text="'#' + (${secondTheme != null ? secondTheme : '없음'})"
-                >
-                  주요 테마
-                </p>
-              </div>
-            </div>
-            <div id="writerpagedetail_4">
-              <p id="newestupload">최근 업로드</p>
-              <p
-                id="newestuploaddate"
-                th:text="${daysSinceLastUpload != null ? daysSinceLastUpload + '일전' : '정보 없음'}"
-              >
-                최근 업로드
-              </p>
-            </div>
-          </div>
-        </div>
-        <div id="writerpage_select">
-          <form>
-            <select
-              name="story_select"
-              id="story_select"
-              onchange="sortStories()"
+
+          <!-- 팔로우 상태에 따른 버튼 -->
+          <div id="followBtnWrapper">
+            <button
+                    id="followBtn"
+                    class="follow"
+                    th:classappend="${isFollowing} ? 'following' : ''"
+                    th:onclick="!${isFollowing} ? 'toggleFollow()' : null"
             >
-              <option value="" class="select_disabled" disabled selected>
-                정렬기준
-              </option>
-              <option value="likes" class="recom_select">추천순</option>
-              <option value="recent" class="newest_select">최신순</option>
-              <option value="views" class="inquiry_select">조회순</option>
-            </select>
-          </form>
+    <span
+            id="writerpagefollowertext"
+            th:text="${user.followers != null ? user.followers.size() : 0}"
+    >0</span>
+              <div id="centerbar"></div>
+              <span
+                      id="followText"
+                      th:text="${isFollowing ? '팔로우중' : '팔로우하기'}"
+              >팔로우하기</span>
+
+              <!-- 팔로우 중일 때의 X 버튼 (팔로우 취소 버튼) -->
+              <img
+                      th:src="@{/images/follow_x.png}"
+                      class="follow_x"
+                      alt="팔로우 취소"
+                      th:onclick="${isFollowing} ? 'openUnfollowPopup()' : ''"
+              />
+            </button>
+          </div>
         </div>
 
-        <div id="back">
-          <div class="stories" th:each="story, iterStat : ${stories}">
-            <div class="story">
-              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
-                <img
-                  id="storyimage"
-                  th:src="${story.image_url}"
-                  alt="Story Image"
-                />
-                <div id="storyTitlefull">
-                  <p id="storyTitle" th:text="${story.title}">Story Title</p>
-                  <div class="right-side">
-                    <img
-                      th:src="@{/images/seeimg.png}"
-                      class="seeimage"
-                      width="16px"
-                      height="16px"
-                    />
-                    <p
-                      class="imagetext"
-                      th:text="${story.viewCount != null ? story.viewCount : 0}"
-                    >
-                      0
-                    </p>
-                    <img
-                      th:src="@{/images/likeimg.png}"
-                      class="likeimage"
-                      width="14px"
-                      height="14px"
-                    />
-                    <p
-                      class="imagetext"
-                      th:text="${story.likes != null ? story.likes.size() : 0}"
-                    >
-                      0
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
+        <!-- 팔로우 취소 팝업 -->
+        <div id="bg_gray10" style="display: none;">
+          <p>정말로 팔로우를 취소하시겠습니까?</p>
+          <form
+                  id="unfollowForm"
+                  th:action="@{'/writer/' + ${user.username} + '/unfollow'}"
+                  method="post"
+          >
+            <button type="button" onclick="confirmUnfollow()">확인</button>
+            <button type="button" onclick="closeUnfollowPopup()">취소</button>
+          </form>
+        </div>
+        <div id="writerpagedetail_2">
+          <!-- 스토리 수 -->
+          <p id="writerpagedetail_2name">스토리&nbsp</p>
+          <p
+                  id="writerpagedetail_2number"
+                  th:text="${totalStories != null ? totalStories : 0}"
+          >
+            0
+          </p>
+          <!-- 좋아요 수 -->
+          <p id="writerpagedetail_2name">좋아요&nbsp</p>
+          <p
+                  id="writerpagedetail_2number"
+                  th:text="${totalLikes != null ? totalLikes : 0}"
+          >
+            0
+          </p>
+          <!-- 조회수 수 -->
+          <p id="writerpagedetail_2name">조회수&nbsp</p>
+          <p
+                  id="writerpagedetail_2number"
+                  th:text="${totalViews != null ? totalViews : 0}"
+          >
+            0
+          </p>
+        </div>
+        <div id="writerpagedetail_3">
+          <div id="majortheme">
+            <p id="writerpagethemename">주요 테마</p>
           </div>
+          <div id="writerpagetag">
+            <p
+                    id="writerpagetagname"
+                    th:text="'#' + (${topTheme != null ? topTheme : '없음'})"
+            >
+              주요 테마
+            </p>
+          </div>
+          <div id="writerpagetag">
+            <p
+                    id="writerpagetagname"
+                    th:text="'#' + (${secondTheme != null ? secondTheme : '없음'})"
+            >
+              주요 테마
+            </p>
+          </div>
+        </div>
+        <div id="writerpagedetail_4">
+          <p id="newestupload">최근 업로드</p>
+          <p
+                  id="newestuploaddate"
+                  th:text="${daysSinceLastUpload != null ? daysSinceLastUpload + '일전' : '정보 없음'}"
+          >
+            최근 업로드
+          </p>
         </div>
       </div>
     </div>
-    <!-- 푸터 -->
-    <div id="Footer">
-      <button class="footer_1" onclick="showPopup('bg_gray33')">
-        개인정보처리방침
-      </button>
-      <button class="footer_2" onclick="showPopup('bg_gray44')">
-        이용약관
-      </button>
-      <p class="email">Contact. Story.of.Travel.official@gmail.com</p>
-      <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
+    <div id="writerpage_select">
+      <form>
+        <select
+                name="story_select"
+                id="story_select"
+                onchange="sortStories()"
+        >
+          <option value="" class="select_disabled" disabled selected>
+            정렬기준
+          </option>
+          <option value="likes" class="recom_select">추천순</option>
+          <option value="recent" class="newest_select">최신순</option>
+          <option value="views" class="inquiry_select">조회순</option>
+        </select>
+      </form>
     </div>
-    <!-- 푸터 끝 -->
-    <script th:src="@{/js/Home.js}"></script>
-    <script th:src="@{/js/upload.js}"></script>
-    <script>
-      function sortStories() {
-        var select = document.getElementById("story_select");
-        var sort = select.value;
-        if (sort) {
-          var username = document.getElementById("username").innerText; // Get username
-          window.location.href = "/writer/" + username + "?sort=" + sort; // Redirect to /writer/username?sort=
-        }
-      }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var params = new URLSearchParams(window.location.search);
-        var sort = params.get("sort");
-        if (sort) {
-          document.getElementById("story_select").value = sort;
-        }
-      });
+    <div id="back">
+      <div class="stories" th:each="story, iterStat : ${stories}">
+        <div class="story" th:onclick="'showStoryPopup(' + ${story.storyId} + ')'">
+            <img
+                    id="storyimage"
+                    th:src="${story.image_url}"
+                    alt="Story Image"
+            />
+            <div id="storyTitlefull">
+              <p id="storyTitle" th:text="${story.title}">Story Title</p>
+              <div class="right-side">
+                <img
+                        th:src="@{/images/seeimg.png}"
+                        class="seeimage"
+                        width="16px"
+                        height="16px"
+                />
+                <p
+                        class="imagetext"
+                        th:text="${story.viewCount != null ? story.viewCount : 0}"
+                >
+                  0
+                </p>
+                <img
+                        th:src="@{/images/likeimg.png}"
+                        class="likeimage"
+                        width="14px"
+                        height="14px"
+                />
+                <p
+                        class="imagetext"
+                        th:text="${story.likes != null ? story.likes.size() : 0}"
+                >
+                  0
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 푸터 -->
+<div id="Footer">
+  <button class="footer_1" onclick="showPopup('bg_gray33')">
+    개인정보처리방침
+  </button>
+  <button class="footer_2" onclick="showPopup('bg_gray44')">
+    이용약관
+  </button>
+  <p class="email">Contact. Story.of.Travel.official@gmail.com</p>
+  <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
+</div>
+<!-- 푸터 끝 -->
+<script th:src="@{/js/Home.js}"></script>
+<script th:src="@{/js/upload.js}"></script>
+<script th:src="@{/js/StoryPopup.js}"></script>
+<script>
+  // 팝업에서 '확인'을 누르면 언팔로우 요청을 보내는 함수
+  function confirmUnfollow() {
+    const username = document.getElementById("username").innerText;
+    const followerCountElement = document.getElementById("writerpagefollowertext");
+    let followerCount = parseInt(followerCountElement.innerText);
+    const followBtn = document.getElementById("followBtn");
+    const followText = document.getElementById("followText");
+    const unfollowIcon = document.getElementById("unfollowIcon");
 
-      function toggleFollow() {
-        const followBtn = document.getElementById("followBtn");
-        const followText = document.getElementById("followText");
-        const followerCountElement = document.getElementById(
-          "writerpagefollowertext"
-        );
-        let followerCount = parseInt(followerCountElement.innerText);
-        const unfollowIcon = document.getElementById("unfollowIcon");
+    fetch(`/writer/${username}/unfollow`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+            .then(response => {
+              if (response.ok) {
+                // 언팔로우 성공 시 UI 업데이트
+                followText.innerHTML = "팔로우하기";
+                followerCountElement.innerText = followerCount - 1;
+                followBtn.classList.remove("following");
+                unfollowIcon.style.display = "none"; // X 아이콘 숨기기
+                closeUnfollowPopup();
+              } else {
+                alert("언팔로우 요청에 실패했습니다.");
+                closeUnfollowPopup();
+                window.location.reload(); // 상태 업데이트를 위한 새로고침
+              }
+            })
+            .catch(error => {
+              closeUnfollowPopup();
+              window.location.reload(); // 상태 업데이트를 위한 새로고침
+            });
+  }
 
-        followBtn.classList.toggle("following");
+  // 스토리 정렬
+  function sortStories() {
+    var select = document.getElementById("story_select");
+    var sort = select.value;
+    if (sort) {
+      var username = document.getElementById("username").innerText; // Get username
+      window.location.href = "/writer/" + username + "?sort=" + sort; // Redirect to /writer/username?sort=
+    }
+  }
 
-        const username = document.getElementById("username").innerText; // Get username
+  document.addEventListener("DOMContentLoaded", function () {
+    var params = new URLSearchParams(window.location.search);
+    var sort = params.get("sort");
+    if (sort) {
+      document.getElementById("story_select").value = sort;
+    }
+  });
 
-        fetch(`/writer/${username}/follow`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.text())
-          .then((data) => {
-            if (data === "followed") {
-              followText.innerHTML = "팔로우중";
-              // followBtn.style.width = "153px";
-              followBtn.classList.add("following"); // '팔로우중' 스타일 추가
-              unfollowIcon.style.display = "inline-block"; // X 아이콘 보이기
-              followerCountElement.innerText = followerCount + 1;
-            } else if (data === "unfollowed") {
-              followText.innerHTML = "팔로우하기";
-              // followBtn.style.width = "142px";
-              followBtn.classList.remove("following"); // '팔로우중' 스타일 제거
-              unfollowIcon.style.display = "none"; // X 아이콘 숨기기
-              followerCountElement.innerText = followerCount - 1;
-            } else {
-              alert(data); // 에러 메시지 출력
-            }
+  let currentForm = null; // 현재 제출될 폼을 저장
 
-            // 팔로우/언팔로우 완료 후 페이지 새로고침
-            location.reload();
-          })
-          .catch((error) => console.error("Error:", error));
-      }
-    </script>
+  // 팔로우 요청 보내기
+  function toggleFollow() {
+    const followBtn = document.getElementById("followBtn");
+    const followText = document.getElementById("followText");
+    const followerCountElement = document.getElementById("writerpagefollowertext");
+    let followerCount = parseInt(followerCountElement.innerText);
+    const unfollowIcon = document.getElementById("unfollowIcon");
 
-    <script>
-      function goToRisePage(button) {
-        const keyword = button.getAttribute("data-keyword");
-        window.location.href = "/rise/" + keyword;
-      }
+    const username = document.getElementById("username").innerText;
 
-      function togglePopup(popupId) {
-        const popup = document.getElementById(popupId);
-        popup.style.display = popup.style.display === "none" ? "block" : "none";
-      }
+    fetch(`/writer/${username}/follow`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+            .then(response => {
+              // 응답이 성공적이지 않은 경우 (200번대가 아닐 때)
+              if (!response.ok) {
+                return response.text().then(errorMessage => {
+                  throw new Error(errorMessage); // 서버에서 온 에러 메시지를 에러로 throw
+                });
+              }
+              return response.text(); // 응답 메시지 (팔로우 성공 시 메시지 등)
+            })
+            .then(data => {
+              // 백엔드에서 받은 응답 메시지를 alert로 출력
+              alert(data);
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // 초기 팝업들 숨기기
-        document.getElementById("loginPopup").style.display = "none";
-        document.getElementById("joinPopup").style.display = "none";
-        document.getElementById("termsPopup").style.display = "none";
-        document.getElementById("privacyPopup").style.display = "none";
-      });
-    </script>
-  </body>
+              if (data === "팔로우 했습니다.") {
+                window.location.reload(); // 상태 업데이트를 위한 새로고침
+              }
+              window.location.reload(); // 상태 업데이트를 위한 새로고침
+
+            })
+            .catch(error => {
+              // 서버에서 반환한 오류 메시지를 alert로 표시
+              alert(error.message);
+              console.error("Error:", error);
+            });
+  }
+
+  // 팝업 열기
+  function openUnfollowPopup() {
+    document.getElementById('bg_gray10').style.display = 'block';
+  }
+
+  // 팝업 닫기
+  function closeUnfollowPopup() {
+    document.getElementById('bg_gray10').style.display = 'none';
+  }
+</script>
+
+</body>
 </html>

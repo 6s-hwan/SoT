@@ -18,172 +18,20 @@ hr {
 .scrollLock {
   overflow: hidden;
 }
-/* 내비게이션바 시작 */
-.navbar {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  justify-content: center;
-  height: 173px;
-  padding-top: 27px;
-  padding-bottom: 40px;
+#story_select:hover {
+  border-color: #000;
 }
-.nav_logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 1240px;
-  height: 106px;
-  flex-shrink: 0;
-  border-radius: 14px;
-  background: #f8f8f8;
+
+#story_select:focus {
+  outline: none;
+  border-color: #000;
+  background-color: #f0f0f0;
 }
-#nav_left {
-  display: flex;
-  align-items: center;
+
+#storyimage:hover {
+  transform: scale(1.05); /* 호버 시 이미지 확대 */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 효과 추가 */
 }
-#nav_right {
-  display: flex;
-  align-items: center;
-}
-#nav_logo1 {
-  padding-left: 45px;
-  padding-top: 10px;
-  padding-right: 66px;
-}
-.nav_menu {
-  display: flex;
-  box-sizing: border-box;
-  width: 205px;
-  height: 46px;
-  padding: 10px 28px;
-  border-radius: 33px;
-  background: #fff;
-  list-style: none;
-  margin-right: 74px;
-}
-.navigation {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  color: #bbb;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-.b {
-  text-decoration: none;
-  color: #000;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  cursor: pointer;
-}
-.c {
-  text-decoration: none;
-  color: #bbb;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-left: 24px;
-  cursor: pointer;
-}
-#search {
-  display: flex;
-  width: 264px;
-  height: 46px;
-  box-sizing: border-box;
-  background: url("../images/search.png") no-repeat;
-  background-position: center;
-  background-size: 30px;
-  background: #fff;
-  border: none;
-  padding: 8px 16px 8px 30px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 46px;
-  border-radius: 46px;
-  background: #fff;
-  cursor: pointer;
-}
-input.search {
-  -webkit-appearance: none;
-  width: 188px;
-  height: 30px;
-  color: #3d3d3d;
-  font-family: "Noto Sans CJK KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  border: none;
-}
-#uploadbtn {
-  background: url("../images/upload.png") no-repeat center;
-  background-size: 30px;
-  width: 46px;
-  height: 46px;
-  padding: 8px;
-  border-radius: 46px;
-  background-color: #fff;
-  border: none;
-  margin-right: 20px;
-  cursor: pointer;
-}
-input.imagebtn {
-  background: url("../images/pic.png") no-repeat center;
-  background-size: 24px;
-  width: 46px;
-  height: 46px;
-  padding: 11px;
-  border-radius: 46px;
-  background-color: #fff;
-  border: none;
-  margin-right: 20px;
-  cursor: pointer;
-}
-#join {
-  display: none;
-  width: 109px;
-  height: 46px;
-}
-#join + label {
-  margin-right: 36px;
-  box-sizing: border-box;
-  display: flex;
-  color: #000;
-  font-family: "Noto Sans KR";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  width: 109px;
-  height: 45px;
-  background: #fff;
-  padding: 10px 29px 10px 29px;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: all 500ms ease-in; /* 동작 천천히 보여주기 */
-}
-#join:checked + label {
-  width: 36px;
-  height: 36px;
-  padding: 0; /* 내부 여백 제거 */
-  font-size: 0; /* 텍스트 숨기기 */
-  border-radius: 49px;
-  border: 2px solid #fff;
-  background: url(<path-to-image>) lightgray 50% / cover no-repeat;
-  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.15);
-}
-/* 내비게이션바 끝 */
 
 /* 마이페이지 시작 */
 #writerpagefull {
@@ -232,7 +80,16 @@ input.imagebtn {
   letter-spacing: -0.26px;
   padding-top: 23px;
   padding-left: 4px;
+  transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out; /* 색상, 굵기 변화 애니메이션 */
 }
+
+#writerlist:hover {
+  cursor: pointer;
+  color: #2c2c2c !important; /* !important를 사용해 우선순위 높임 */
+  font-weight: 600;
+}
+
+
 #writerpageprofilefull {
   display: flex;
   box-sizing: border-box;
@@ -264,143 +121,118 @@ input.imagebtn {
   line-height: normal;
   padding-right: 16px;
 }
-/* #followBtn {
-  width: 123px;
-  height: 32px;
-  margin-top: 9px;
-  margin-bottom: 2px;
-  display: inline-flex;
-  padding: 8px 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 32px;
-  background: #161616;
-  cursor: pointer;
-}
-#writerpagefollowertext {
-  height: 20px;
-  color: #fff;
-  font-family: "Noto Sans KR";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: -0.32px;
-}
-#followText {
-  height: 20px;
-  color: #fff;
-  font-family: "Noto Sans KR";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: -0.32px;
-  border: none;
-}
-#centerbar {
-  width: 1px;
-  height: 8px;
-  background: #b3b3b3;
-  margin-left: 5px;
-  margin-right: 5px;
-} */
+/* 팔로우 버튼 기본 스타일 */
 #followBtn {
   width: 150px;
   height: 32px;
   margin-top: 9px;
   margin-bottom: 2px;
-  display: inline-flex;
-  padding: 8px 12px;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 32px;
-  background: #161616;
-  cursor: pointer;
+  background: #161616; /* 기본 팔로우 버튼은 검은 배경 */
   border: none;
-  transition: width 0.3s ease; /* 애니메이션 추가 */
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer; /* 기본 팔로우 버튼의 커서는 pointer */
 }
 
+/* 팔로우 중이지 않을 때만 호버 스타일 추가 */
+#followBtn:not(.following):hover {
+  background-color: #333333; /* 약간 밝아진 배경 */
+  transform: scale(1.05); /* 살짝 확대되는 효과 */
+  color: #ffffff; /* 글씨 색상을 흰색으로 변경 */
+  transition: all 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 팔로우 중일 때 스타일 (호버 효과 없음) */
+
+
+
+/* 팔로우 중일 때 스타일 (흰색 배경, 검은 글씨) */
 #followBtn.following {
-  width: 150px !important; /* 팔로우중일 때 너비를 강제로 150px로 설정 */
-}
-#followText .close-icon {
-  margin-left: 8px;
-  width: 16px; /* 아이콘 크기 */
-  height: 16px;
-  display: block; /* 이미지가 표시되도록 */
-  cursor: pointer;
-}
-.close-icon {
-  width: 16px; /* X 아이콘 크기 */
-  height: 16px;
-  display: none; /* 기본적으로 숨기기 */
-  margin-left: 8px;
-  cursor: pointer;
+  background: #fff; /* 배경을 흰색으로 */
+  color: #161616; /* 글씨를 검은색으로 */
+  cursor: text; /* 팔로우 중일 때는 텍스트 커서 */
+
 }
 
-#followBtn.following .close-icon {
-  display: inline-block; /* 팔로우중일 때 보이기 */
+/* 팔로우 중일 때 X 버튼 위치 */
+#followBtn.following .follow_x {
+  position: absolute;
+  right: 10px;  /* X 버튼의 오른쪽 위치 조정 */
+  top: 52.5%;
+  transform: translateY(-50%);
+  display: inline-block;
+  cursor: pointer; /* X 버튼의 커서는 pointer */
+  left:109.5px;
+}
+
+/* 기본 X 아이콘 스타일 */
+.follow_x {
+  width: 16px;
+  height: 16px;
+  display: none; /* 팔로우 중이 아닐 때 숨김 */
+}
+
+.follow_x:hover {
+  filter: brightness(0.70); /* 호버 시 15% 어두워짐 */
+
+}
+
+#followBtn.following .follow_x {
+  display: inline-block; /* 팔로우 중일 때 보이기 */
+  margin-left: 12px;
 }
 
 #writerpagefollowertext {
-  color: #fff;
-  font-family: "Noto Sans KR";
+  color: #fff; /* 기본 글씨 색상은 흰색 */
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  letter-spacing: -0.32px;
-}
-#followText {
   position: relative;
-  height: 20px;
-  color: #fff;
-  font-family: "Noto Sans KR";
+}
+
+/* 팔로우 중일 때 위치 변경 */
+#followBtn.following #writerpagefollowertext {
+  color: #444444; /* 팔로우 중일 때 글씨 색상 */
+  left: -11.5px; /* 팔로우 중일 때 왼쪽으로 12px 이동 */
+}
+
+#followBtn.following #centerbar {
+  margin-left: -7px; /* 팔로우 중일 때 왼쪽으로 4px 이동 */
+  margin-right: 6px; /* 팔로우 중일 때 여유를 주기 위해 6px */
+}
+
+#followText {
+  color: #fff; /* 기본 글씨 색상은 흰색 */
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 125% */
-  letter-spacing: -0.32px;
-  border: none;
+  line-height: 20px;
+}
+
+#followBtn.following #followText {
+  color: #161616; /* 팔로우 중일 때 글씨 색상은 검은색 */
+  margin-right: 12px; /* X 버튼과의 여유 공간 */
 }
 
 #centerbar {
   width: 1px;
-  height: 20px; /* 높이를 맞추기 위해 변경 */
-  background: #b3b3b3;
+  height: 20px;
+  background: #d1d1d1; /* 가운데 바는 연한 회색 */
   margin-left: 5px;
   margin-right: 5px;
 }
 
-/* input.writerpageadd {
-    display: flex;
-    background: url("../images/writerpage
-add.png") no-repeat center;
-    background-size: 36px;
-    width: 36px;
-    height: 36px;
-    border: none;
-    margin-top: 3px;
-    cursor: pointer;
-  }
 
-  input.writerpage
-edit {
-    display: flex;
-    background: url("../images/writerpage
-dit.png") no-repeat center;
-    background-size: 36px;
-    width: 36px;
-    height: 36px;
-    border: none;
-    margin-top: 3px;
-    margin-left: 540px;
-    margin-right: 12px;
-    cursor: pointer;
-  } */
+
+
+
+
 
 #writerpagedetail_2 {
   box-sizing: border-box;
@@ -595,12 +427,15 @@ dit.png") no-repeat center;
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
-  width: 285px;
+  cursor:pointer;
+  width: 100%;
   height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
   background: #d9d9d9;
   margin-bottom: 8px;
+  object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 추가 */
 }
 #storyTitlefull {
   display: flex; /* 수직적으로 가운데 정렬 */

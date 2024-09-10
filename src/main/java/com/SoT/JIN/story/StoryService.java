@@ -128,6 +128,9 @@ public class StoryService {
             int likesCount = story.getLikesCount();
             int followersCount = storyUser.getFollowers().size();
 
+            // 현재 사용자가 이 스토리의 작성자인지 여부를 확인
+            boolean isOwnStory = user != null && user.getUsername().equals(story.getUsername());
+
             return new StoryDTO(
                     story.getStoryId(),
                     story.getTitle(),
@@ -141,10 +144,11 @@ public class StoryService {
                     storyUser.getUsername(),
                     storyUser.getProfileImageUrl(),
                     followersCount,
-                    isLiked, // 이 부분에서 올바르게 좋아요 상태 전달
-                    isBookmarked // 이 부분에서 올바르게 북마크 상태 전달
+                    isLiked, // 좋아요 상태
+                    isBookmarked, // 북마크 상태
+                    isOwnStory // 자신의 스토리 여부 추가
             );
-        } catch (Exception e) {  // 이 블록이 올바르게 try 블록과 연관되도록 수정
+        } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Error retrieving story details", e);
         }

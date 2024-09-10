@@ -131,6 +131,6 @@ hr {
 }
 
 .localImage3 img:hover {
-  transform: scale(1.03); /* 이미지가 약간 확대됨 */
-  filter: brightness(1.1); /* 이미지가 살짝 밝아짐 */
+
+  filter: brightness(1.2); /* 이미지가 살짝 밝아짐 */
 }

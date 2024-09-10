@@ -55,4 +55,11 @@ public class BookmarkService {
                 .map(BookmarkEntity::getStory)
                 .collect(Collectors.toList());
     }
+    // 북마크 여부 확인 로직 추가
+    public boolean isBookmarked(Long storyId, User user) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new IllegalArgumentException("Story not found"));
+
+        return bookmarkRepository.findByStoryAndUser(story, user).isPresent();
+    }
 }

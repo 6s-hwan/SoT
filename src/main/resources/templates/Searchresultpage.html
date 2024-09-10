@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/nav.css}" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link rel="stylesheet" th:href="@{/css/storyPopup.css}" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -110,6 +111,7 @@
   <div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
   <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
   <div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
+  <div th:replace="~{fragments/storyPopup.html}"></div>
   <div
           th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
   ></div>
@@ -127,8 +129,7 @@
         </div>
         <div id="back">
           <div class="stories" th:each="story, iterStat : ${stories}">
-            <div class="story">
-              <a th:href="@{/story/{storyId}(storyId=${story.storyId})}">
+            <div class="story" th:onclick="'showStoryPopup(' + ${story.storyId} + ')'">
                 <img
                   id="storyimage"
                   th:src="${story.image_url}"
@@ -153,7 +154,6 @@
                     <p class="imagetext" th:text="${story.likes.size()}">0</p>
                   </div>
                 </div>
-              </a>
             </div>
           </div>
         </div>
@@ -177,5 +177,6 @@
   <!-- 푸터 끝 -->
   </body>
   <script th:src="@{/js/Home.js}"></script>
+  <script th:src="@{/js/StoryPopup.js}"></script>
   <script th:src="@{/js/upload.js}"></script>
 </html>

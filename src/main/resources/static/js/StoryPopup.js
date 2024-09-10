@@ -3,8 +3,41 @@ let currentStoryId = null;
 let isLiked = false;
 let isBookmarked = false;
 let isAuthenticated = false;
+let isOwnStory = false; // 자신의 스토리 여부
 
-// disableButtonsIfNotAuthenticated 함수 정의
+// 좋아요와 북마크 버튼 비활성화 처리
+function disableButtonsIfOwnStory(isOwnStory) {
+    const likeButton = document.querySelector(".Story_like");
+    const bookmarkButton = document.querySelector(".Story_book");
+
+    if (isOwnStory) {
+        // 버튼 비활성화
+        likeButton.disabled = true;
+        bookmarkButton.disabled = true;
+
+        // 버튼 클릭 이벤트 제거 (좋아요, 북마크 기능 무효화)
+        likeButton.onclick = null;
+        bookmarkButton.onclick = null;
+
+        // 버튼 이미지 반투명 처리
+        likeButton.querySelector("img").style.opacity = "0.5";
+        bookmarkButton.querySelector("img").style.opacity = "0.5";
+    } else {
+        // 버튼 활성화
+        likeButton.disabled = false;
+        bookmarkButton.disabled = false;
+
+        // 클릭 이벤트 복구
+        likeButton.onclick = toggleLike;
+        bookmarkButton.onclick = toggleBookmark;
+
+        // 버튼 이미지 원래 상태로 복구
+        likeButton.querySelector("img").style.opacity = "1";
+        bookmarkButton.querySelector("img").style.opacity = "1";
+    }
+}
+
+// 인증되지 않은 사용자를 위한 버튼 비활성화
 function disableButtonsIfNotAuthenticated(isAuthenticated) {
     const likeButton = document.querySelector(".Story_like");
     const bookmarkButton = document.querySelector(".Story_book");
@@ -12,60 +45,72 @@ function disableButtonsIfNotAuthenticated(isAuthenticated) {
     if (!isAuthenticated) {
         likeButton.disabled = true;
         bookmarkButton.disabled = true;
+
+        // 버튼 클릭 이벤트 제거
+        likeButton.onclick = null;
+        bookmarkButton.onclick = null;
+
         likeButton.querySelector("img").style.opacity = "0.5";
         bookmarkButton.querySelector("img").style.opacity = "0.5";
     } else {
         likeButton.disabled = false;
         bookmarkButton.disabled = false;
+
+        // 클릭 이벤트 복구
+        likeButton.onclick = toggleLike;
+        bookmarkButton.onclick = toggleBookmark;
+
         likeButton.querySelector("img").style.opacity = "1";
         bookmarkButton.querySelector("img").style.opacity = "1";
     }
 }
 
+// 좋아요 버튼 상태 업데이트
 function updateLikeButton() {
     const likeButton = document.querySelector(".Story_like img");
-    const likesElement = document.getElementById("popupLikes");
 
+    // 현재 경로가 /my-page일 경우 무조건 like.png로 설정
+    if (window.location.pathname === '/my-page') {
+        likeButton.src = "/images/like.png";
+        likeButton.title = "좋아요 취소";
+        return;
+    }
+
+    // 일반적인 경우
     if (isLiked) {
-        likeButton.src = "/images/like.png"; // 좋아요 누른 상태를 나타내는 이미지로 변경
-        if (!likesElement.textContent.includes(" ✓")) {
-            likesElement.textContent += " ✓"; // 좋아요 수 옆에 체크 표시 추가
-        }
-        likeButton.title = "좋아요 취소"; // 툴팁으로 '좋아요 취소' 표시
+        likeButton.src = "/images/like.png";
+        likeButton.title = "좋아요 취소";
     } else {
-        likeButton.src = "/images/favorite.png"; // 기본 이미지
-        likesElement.textContent = likesElement.textContent.replace(" ✓", ""); // 체크 표시 제거
-        likeButton.title = "좋아요"; // 툴팁으로 '좋아요' 표시
+        likeButton.src = "/images/favorite.png";
+        likeButton.title = "좋아요";
     }
 }
 
-// 북마크 버튼 상태 업데이트 함수
+// 북마크 버튼 상태 업데이트
 function updateBookmarkButton() {
     const bookmarkButton = document.querySelector(".Story_book img");
-    const bookmarksElement = document.getElementById("popupBookmarks");
 
+    // 현재 경로가 /my-page일 경우 무조건 bookmarked.png로 설정
+    if (window.location.pathname === '/my-page') {
+        bookmarkButton.src = "/images/bookmarked.png";
+        return;
+    }
+
+    // 일반적인 경우
     if (isBookmarked) {
-        bookmarkButton.src = "/images/bookmarked.png"; // 북마크 누른 상태를 나타내는 이미지로 변경
-        if (!bookmarksElement.textContent.includes(" ✓")) {
-            bookmarksElement.textContent += " ✓"; // 북마크 수 옆에 체크 표시 추가
-        }
-        bookmarkButton.title = "북마크 취소"; // 툴팁으로 '북마크 취소' 표시
+        bookmarkButton.src = "/images/bookmarked.png";
     } else {
-        bookmarkButton.src = "/images/StoryDetailbtn2.png"; // 기본 이미지
-        bookmarksElement.textContent = bookmarksElement.textContent.replace(" ✓", ""); // 체크 표시 제거
-        bookmarkButton.title = "북마크"; // 툴팁으로 '북마크' 표시
+        bookmarkButton.src = "/images/StoryDetailbtn2.png";
     }
 }
 
-// showStoryPopup 함수 정의
+
+// 스토리 세부 정보 팝업 표시
 function showStoryPopup(storyId) {
     currentStoryId = storyId;
 
-    // 스토리 세부 정보 가져오기
     fetch(`/story/detail/${storyId}`, {
-        headers: {
-            'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
     })
         .then(response => {
             if (!response.ok) {
@@ -82,17 +127,23 @@ function showStoryPopup(storyId) {
             document.getElementById("popupProfileImage").src = data.profileImageUrl;
             document.getElementById("popupProfileName").textContent = data.username;
             document.getElementById("popupProfileFollowers").textContent = `팔로워 ${data.followersCount}명`;
-            document.getElementById("popupLikes").textContent = `좋아요 ${data.likesCount}개`;
-            document.getElementById("popupBookmarks").textContent = `북마크 ${data.bookmarksCount}개`;
-            document.getElementById("popupDate").textContent = `날짜: ${data.date}`;
+            document.getElementById("popupLikes").textContent = data.likesCount;
+            document.getElementById("popupBookmarks").textContent = data.bookmarksCount;
+            document.getElementById('popupTitle2').textContent = `'${data.title}'`;
 
-            // 사용자 인증 상태와 좋아요/북마크 상태를 저장
+            // 날짜 포맷팅
+            const date = new Date(data.date);
+            document.getElementById("popupDate").textContent = `${String(date.getFullYear()).slice(2)}년 ${date.getMonth() + 1}월`;
+
+            // 인증 상태 및 좋아요/북마크 상태 업데이트
             isAuthenticated = data.authenticated;
             isLiked = data.likedByUser;
             isBookmarked = data.bookmarkedByUser;
+            isOwnStory = data.ownStory;
 
-            // UI 업데이트
+
             disableButtonsIfNotAuthenticated(isAuthenticated);
+            disableButtonsIfOwnStory(isOwnStory);
             updateLikeButton();
             updateBookmarkButton();
 
@@ -109,44 +160,36 @@ function showStoryPopup(storyId) {
 
             // 검색 결과 개수 가져오기
             fetch(`/api/search-count?query=${encodeURIComponent(data.title)}`, {
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(resultData => {
-                    document.getElementById("searchResultCount").textContent = `총 ${resultData.resultCount}개`;
+                    document.getElementById("searchResultCount").textContent = resultData.resultCount;
                 });
 
-            // 프로필 관련 요소에 클릭 이벤트 추가
+            // 프로필 이미지 클릭 이벤트
             const profileLink = `/writer/${data.username}`;
-            document.getElementById("popupProfileImage").onclick = () => { window.location.href = profileLink; };
-            document.getElementById("popupProfileName").onclick = () => { window.location.href = profileLink; };
-            document.getElementById("popupProfileFollowers").onclick = () => { window.location.href = profileLink; };
+            document.getElementById("popupProfileImage").onclick = () => window.location.href = profileLink;
+            document.getElementById("popupProfileName").onclick = () => window.location.href = profileLink;
+            document.getElementById("popupProfileFollowers").onclick = () => window.location.href = profileLink;
 
-            // 팝업을 표시
-            showPopup();
+            // 팝업 표시
+            showPopupd();
         })
         .catch(error => console.error('Error fetching story details:', error));
 }
 
-// 팝업 이미지 크기 조정 함수
+// 팝업 이미지 크기 조정
 function adjustImageSize() {
+    const image = document.getElementById('popupImage');
     const container = document.querySelector('.container');
     const bg_gray9 = document.querySelector('.bg_gray9');
     const related = document.querySelector('.related');
-    const image = document.getElementById('popupImage');
 
     const imageWidth = image.naturalWidth;
     const imageHeight = image.naturalHeight;
 
     let newWidth, newHeight;
-
     if (imageWidth < imageHeight) {
         newWidth = 390;
         newHeight = (imageHeight / imageWidth) * 390;
@@ -160,42 +203,49 @@ function adjustImageSize() {
 
     container.style.width = `${newWidth}px`;
     container.style.height = `${newHeight + 295}px`;
-
     bg_gray9.style.height = `${newHeight + 610}px`;
-
     related.style.width = `${newWidth}px`;
 }
 
-function showPopup() {
+function showPopupd() {
     document.getElementById("storyPopup").style.display = "block";
-    document.querySelector(".bg_gray9").style.display = "block"; // 배경 표시
-    adjustImageSize(); // 팝업을 열 때 이미지 크기 조정
+    document.querySelector(".bg_gray9").style.display = "block";
+    adjustImageSize();
 }
+
 function closePopup9() {
-    console.log("closePopup 함수가 호출되었습니다."); // 함수 호출 확인용 로그
     const popup = document.getElementById("storyPopup");
     const background = document.querySelector(".bg_gray9");
 
-    if (popup) {
-        popup.style.display = "none"; // 팝업 닫기
-    } else {
-        console.error("팝업 요소를 찾을 수 없습니다.");
-    }
+    if (popup) popup.style.display = "none";
+    if (background) background.style.display = "none";
 
-    if (background) {
-        background.style.display = "none"; // 배경 숨기기
-    } else {
-        console.error("배경 요소를 찾을 수 없습니다.");
+    // 현재 경로가 /bookmark이면 페이지 새로고침
+    if (window.location.pathname === '/bookmark') {
+        window.location.reload();
+    }
+    // 현재 경로가 /bookmark이면 페이지 새로고침
+    if (window.location.pathname === '/best') {
+        window.location.reload();
     }
 }
 
-// toggleLike 함수 정의
+// 좋아요 기능
 function toggleLike() {
+    const likeButton = document.querySelector(".Story_like");
+
+    // 버튼이 비활성화 상태인 경우, 서버 요청을 차단
+    if (likeButton.disabled) {
+        console.log("좋아요 버튼이 비활성화되었습니다.");
+        return; // 더 이상 요청을 진행하지 않음
+    }
+
     if (!currentStoryId || !isAuthenticated) {
-        console.error('Story ID is undefined or user is not authenticated');
+        console.error('스토리 ID가 없거나 사용자가 인증되지 않았습니다.');
         return;
     }
 
+    // 서버로 좋아요 요청
     fetch(`/story/${currentStoryId}/like`, {
         method: 'POST',
         headers: {
@@ -204,26 +254,35 @@ function toggleLike() {
     })
         .then(response => {
             if (response.ok) {
+                // 좋아요 상태 업데이트
                 const likesElement = document.getElementById("popupLikes");
                 let currentLikes = parseInt(likesElement.textContent.replace('좋아요 ', '').replace('개', ''), 10);
 
+                // 좋아요 상태 반전
                 if (isLiked) {
-                    likesElement.textContent = `좋아요 ${currentLikes - 1}개`;
+                    likesElement.textContent = currentLikes - 1;
                 } else {
-                    likesElement.textContent = `좋아요 ${currentLikes + 1}개`;
+                    likesElement.textContent = currentLikes + 1;
                 }
-
-                isLiked = !isLiked; // 상태 반전
+                isLiked = !isLiked; // 좋아요 상태 반전
                 updateLikeButton(); // UI 업데이트
             }
         })
-        .catch(error => console.error('Error toggling like:', error));
+        .catch(error => console.error('좋아요 상태 변경 중 오류 발생:', error));
 }
 
-// toggleBookmark 함수 정의
+// 북마크 기능
 function toggleBookmark() {
+    const bookmarkButton = document.querySelector(".Story_book");
+
+    // 버튼이 비활성화 상태인 경우, 서버 요청을 차단
+    if (bookmarkButton.disabled) {
+        console.log("북마크 버튼이 비활성화되었습니다.");
+        return; // 더 이상 요청을 진행하지 않음
+    }
+
     if (!currentStoryId || !isAuthenticated) {
-        console.error('Story ID is undefined or user is not authenticated');
+        console.error('스토리 ID가 없거나 사용자가 인증되지 않았습니다.');
         return;
     }
 
@@ -233,27 +292,52 @@ function toggleBookmark() {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => {
-            if (response.ok) {
+        .then(response => response.json()) // JSON 응답을 받음
+        .then(data => {
+            if (data.bookmarked !== undefined) {
                 const bookmarksElement = document.getElementById("popupBookmarks");
                 let currentBookmarks = parseInt(bookmarksElement.textContent.replace('북마크 ', '').replace('개', ''), 10);
 
-                if (isBookmarked) {
-                    bookmarksElement.textContent = `북마크 ${currentBookmarks - 1}개`;
+                if (data.bookmarked) {
+                    bookmarksElement.textContent = currentBookmarks + 1;
                 } else {
-                    bookmarksElement.textContent = `북마크 ${currentBookmarks + 1}개`;
+                    bookmarksElement.textContent = currentBookmarks - 1;
                 }
 
-                isBookmarked = !isBookmarked; // 상태 반전
-                updateBookmarkButton(); // UI 업데이트
+                isBookmarked = data.bookmarked; // 북마크 상태를 UI에 반영
+                updateBookmarkButton();
             }
         })
-        .catch(error => console.error('Error toggling bookmark:', error));
+        .catch(error => console.error('북마크 상태 변경 중 오류 발생:', error));
+}
+// 삭제 확인 팝업을 띄우고 storyId를 전역 변수에 저장
+function toggleDelete(storyId) {
+    document.getElementById('bg_gray19').style.display = 'block';  // 삭제 확인 팝업 표시
+    window.currentStoryId = storyId;  // 선택된 스토리 ID를 전역 변수에 저장
+}
+// 스토리 삭제 처리
+function submitDeleteForm(storyId) {
+    if (!storyId) return;
+
+    fetch(`/api/stories/${storyId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                throw new Error('스토리 삭제 실패');
+            }
+        })
+        .catch(error => console.error('스토리 삭제 중 오류:', error));
 }
 
+// 검색 실행
 function searchByTitle() {
     const query = document.getElementById("popupTitle").textContent;
     window.location.href = `/search?query=${encodeURIComponent(query)}`;
 }
 
+// 창 크기 조정 시 이미지 크기 조정
 window.onresize = adjustImageSize;

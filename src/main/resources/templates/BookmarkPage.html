@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/nav.css}" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <link rel="stylesheet" th:href="@{/css/Home.css}" />
+    <link rel="stylesheet" th:href="@{/css/storyPopup.css}" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -108,6 +109,7 @@
 <div th:replace="~{fragments/terms_footer_popup :: terms_footer}"></div>
 <div th:replace="~{fragments/pwfind_popup :: pwFindPopup}"></div>
 <div th:replace="~{fragments/changepw_popup :: changePwPopup}"></div>
+<div th:replace="~{fragments/storyPopup.html}"></div>
 <div
         th:replace="~{fragments/pwfindsendnotice_popup :: pwFindSendNoticePopup}"
 ></div>
@@ -128,7 +130,9 @@
         <div id="BookmarkBack">
             <div class="Bookmark-container">
                 <div th:each="story : ${bookmarkedStories}" class="Bookmark">
+                    <div class="story" th:onclick="'showStoryPopup(' + ${story.storyId} + ')'">
                     <img th:src="${story.image_url}"  class="Bookmark-img">
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,6 +154,7 @@
 </div>
 <!-- 푸터 끝 -->
 <script th:src="@{/js/Home.js}"></script>
+<script th:src="@{/js/StoryPopup.js}"></script>
 <script th:src="@{/js/upload.js}"></script>
 </body>
 </html>

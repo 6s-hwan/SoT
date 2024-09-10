@@ -1,0 +1,33 @@
+<body>
+<div id="bg_gray19" style="display: none" th:fragment="storyDeletePopUp">
+    <div id="storyDeletePopUp">
+        <div id="deleteTitle">
+            <p id="deleteTitleText">스토리 삭제</p>
+            <div id="close">
+                <img
+                        th:src="@{/images/X.png}"
+                        alt="X"
+                        width="28px"
+                        height="28px"
+                        onclick="document.getElementById('bg_gray19').style.display='none';"
+                />
+            </div>
+        </div>
+        <div id="deleteContent">정말로 이 스토리를 삭제하시겠습니까?</div>
+
+        <div id="deleteButtons">
+            <button
+                    id="cancelDeleteBtn"
+                    type="button"
+                    onclick="document.getElementById('bg_gray19').style.display='none';"
+            >
+                닫기
+            </button>
+            <!-- 삭제하기 버튼 클릭 시 스토리 삭제 -->
+            <button id="confirmDeleteBtn" type="button" onclick="submitDeleteForm(currentStoryId)">
+                삭제하기
+            </button>
+        </div>
+    </div>
+</div>
+</body>

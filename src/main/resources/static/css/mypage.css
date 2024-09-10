@@ -100,10 +100,11 @@ hr {
 }
 #mypagefollower {
   display: flex;
-  width: 97px;
+  width: 110px;
   height: 20px;
   padding: 6px 17px;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   border-radius: 32px;
   background: #fff;
@@ -293,10 +294,9 @@ hr {
   line-height: 26px;
 }
 
-
 #back {
-  width: 100%; /* 전체 너비를 사용하도록 변경 */
-  max-width: 1240px; /* 최대 너비를 설정 */
+  width: 1240px;
+  /* height: 1684px; */ /* 이 코드를 없애면 스토리 사이즈 맞게 조절된다*/
   flex-shrink: 0;
   border-radius: 12px;
   background: #f8f8f8;
@@ -304,18 +304,19 @@ hr {
   margin-bottom: 150px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(285px, 1fr)
-  ); /* 반응형으로 변경 */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px; /* Increased gap for better spacing */
 }
 #storyimage {
+  cursor: pointer;
   width: 100%;
   height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
   background: #d9d9d9;
+  background-size: cover; /* 이미지를 컨테이너에 꽉 차게 함 */
+  background-position: center; /* 중앙에 이미지를 위치시킴 */
+  background-repeat: no-repeat;
   margin-bottom: 8px;
   object-fit: cover; /* 비율을 유지하면서 이미지가 잘리도록 함 */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 추가 */
@@ -412,13 +413,7 @@ hr {
     align-items: center;
   }
 
-  #back {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(200px, 1fr)
-    ); /* 모바일에 맞게 조정 */
-    gap: 15px;
-  }
+
 
   #mypageprofilefull {
     flex-direction: column;

@@ -227,6 +227,10 @@ input.imagebtn {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+/* 색상 반전 클래스 */
+.invert {
+  filter: invert(1);
+}
 #join {
   display: none;
   width: 112px;

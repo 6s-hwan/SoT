@@ -135,31 +135,29 @@
                 display: block;
                 border-radius: 14px;
                 box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+                object-fit: cover; /* 이미지 비율을 유지하면서 영역에 맞춤 */
               "
             />
-            <label for="changeprofile"
-              ><img
-                th:src="@{/images/changeprofile.png}"
-                id="changeprofileimg"
-                alt="프로필 편집버튼"
-                width="38px"
-                height="38px"
-                style="cursor: pointer"
-            /></label>
+            <!-- 프로필 이미지와 편집 버튼 -->
+            <label for="changeprofile">
+              <img
+                      th:src="@{/images/changeprofile.png}"
+                      id="changeprofileimg"
+                      alt="프로필 편집버튼"
+                      width="38px"
+                      height="38px"
+                      style="cursor: pointer"
+              />
+            </label>
             <input
-              type="file"
-              class="changeprofile"
-              id="changeprofile"
-              width="200px"
-              height="200px"
-              style="
-                border: 0px;
-                display: none;
-                border-radius: 14px;
-                border: 3px solid #fff;
-              "
-              accept="image/*"
-              onchange="uploadProfileImage(this)"
+                    type="file"
+                    class="changeprofile"
+                    id="changeprofile"
+                    width="200px"
+                    height="200px"
+                    style="border: 0px; display: none; border-radius: 14px; border: 3px solid #fff;"
+                    accept="image/*"
+                    onchange="uploadProfileImage(this)"
             />
           </div>
           <div id="mypagedetail">
@@ -280,31 +278,36 @@
       });
 
       // 프로필 편집 버튼
+      // 프로필 이미지 업로드 함수
       function uploadProfileImage(input) {
         if (input.files && input.files[0]) {
           var formData = new FormData();
           formData.append("file", input.files[0]);
 
+          // 파일 업로드 요청 보내기
           fetch("/update-profile-image", {
             method: "POST",
             body: formData,
           })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error("프로필 이미지 업로드 중 오류가 발생했습니다.");
-              }
-              return response.text();
-            })
-            .then((data) => {
-              window.location.reload();
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
+                  .then((response) => {
+                    if (!response.ok) {
+                      throw new Error("프로필 이미지 업로드 중 오류가 발생했습니다.");
+                    }
+                    return response.text();
+                  })
+                  .then((data) => {
+                    // 페이지를 새로고침하여 변경 사항 반영
+                    window.location.reload();
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
+                  });
         }
       }
 
-      document.getElementById("changeprofileimg").onclick = function () {
+      // 프로필 편집 버튼의 클릭 이벤트 제거
+      document.getElementById("changeprofileimg").onclick = function (e) {
+        e.preventDefault();
         document.getElementById("changeprofile").click();
       };
     </script>

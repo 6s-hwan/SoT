@@ -133,7 +133,7 @@
         <p class="RegionStoryNum" th:text="${resultCount} + '개의 스토리'">0개의 스토리</p>
         <!-- 정렬 기준 선택 -->
         <div id="RegionStoryList">
-          <input type="hidden" id="location" th:value="${location}" />
+          <input type="hidden" id="locationf" th:value="${location}" />
           <form>
             <select name="story_select" id="story_select" onchange="sortStories()">
               <option value="" class="select_disabled" disabled selected>정렬기준</option>
@@ -190,17 +190,24 @@
   function sortStories() {
     var select = document.getElementById("story_select");
     var sort = select.value;
-    var location = document.getElementById("location").value;
-    window.location.href = "/localDetailPage?location=" + location + "&sort=" + sort;
+    var locationf = document.getElementById("locationf").value;
+
+    // 현재 URL에서 limit 값을 가져옴
+    var params = new URLSearchParams(window.location.search);
+    var limit = params.get("limit");
+
+    // 로그로 location 값 출력
+    console.log("Location value:", locationf);
+
+    // location, sort 값을 URL에 사용 (limit 값이 있을 때만 추가)
+    var url = "/localDetailPage?location=" + encodeURIComponent(locationf) + "&sort=" + sort;
+    if (limit && limit !== '24') { // limit이 존재하고 24가 아닐 때만 추가
+      url += "&limit=" + limit;
+    }
+
+    window.location.href = url;
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var params = new URLSearchParams(window.location.search);
-    var sort = params.get("sort");
-    if (sort) {
-      document.getElementById("story_select").value = sort;
-    }
-  });
 </script>
 </body>
 </html>

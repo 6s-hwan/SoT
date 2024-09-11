@@ -1,3 +1,13 @@
+// 현재 페이지 URL이 "/bookmark"이면 imagebtn에 invert 클래스 추가
+if (window.location.pathname === '/bookmark') {
+  document.querySelector('.imagebtn').classList.add('invert');
+}
+
+// 현재 페이지 URL이 "/follows"이면 followingbtn에 invert 클래스 추가
+if (window.location.pathname === '/follows') {
+  document.querySelector('.followingbtn').classList.add('invert');
+}
+
 // 엔터키를 눌렀을 때 로그인 버튼 클릭을 트리거하는 함수
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("loginForm");

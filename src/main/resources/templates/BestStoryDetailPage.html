@@ -162,9 +162,10 @@
         <button
                 type="button"
                 id="bestmorebtn"
-                th:if="${limit < 72}"
+                th:if="${stories.size() >= limit and limit < 72}"
                 th:onclick="|location.href='@{/best(limit=${limit + 24})}';|"
-        ></button>
+        >
+        </button>
       </label>
     </div>
   </div>

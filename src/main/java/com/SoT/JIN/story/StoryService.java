@@ -71,20 +71,31 @@ public class StoryService {
     public Map<String, List<Story>> getGroupedStories() {
         List<Story> stories = getAllStories();
 
+        // 스토리 필터링 및 그룹화
         Map<String, List<Story>> groupedStories = stories.stream()
-                .filter(story -> !"test".equalsIgnoreCase(story.getLocation()))
-                .collect(Collectors.groupingBy(Story::getLocation))
+                .filter(story -> !"test".equalsIgnoreCase(story.getLocation())) // "test" 위치 제외
+                .collect(Collectors.groupingBy(Story::getLocation))             // 위치별 그룹화
                 .entrySet().stream()
-                .filter(entry -> entry.getValue().size() >= 3)
+                .filter(entry -> entry.getValue().size() >= 3)                  // 최소 3개 이상의 그룹만 유지
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().subList(0, Math.min(3, entry.getValue().size()))));
 
+        // 그룹 생성 및 저장
         groupedStories.keySet().forEach(groupName -> {
             if (!storyGroupRepository.existsByGroupName(groupName)) {
-                StoryGroup newGroup = new StoryGroup(groupName, null, null);
+                // groupImage URL을 그룹 이름에 기반하여 생성
+                String groupImage = generateGroupImageURL(groupName);
+                StoryGroup newGroup = new StoryGroup(groupName, null, groupImage); // 그룹명만 사용하고, 영문명과 이미지는 자동 설정
                 storyGroupRepository.save(newGroup);
             }
         });
+
         return groupedStories;
+    }
+
+    // 그룹 이미지 URL 생성 메소드
+    private String generateGroupImageURL(String groupName) {
+        // 그룹 이름을 기반으로 URL 생성 (예: 그룹 이름에 따른 이미지 URL 생성)
+        return "https://soteulji.s3.ap-northeast-2.amazonaws.com/test/regionmain.png";
     }
 
     private List<Story> getAllStories() {

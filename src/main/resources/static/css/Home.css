@@ -3162,8 +3162,8 @@ input:focus {
   margin-bottom: 48px;
 }
 .riseimg {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   padding-right: 16px;
   padding-left: 20px;
   flex-shrink: 0;
@@ -3325,8 +3325,8 @@ button:disabled {
   margin-bottom: 57.9px;
 }
 .popularimg {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   padding-right: 16px;
   padding-left: 20px;
 }
@@ -3419,7 +3419,7 @@ button:disabled {
   border: none;
 }
 .popular-item-count {
-  color: #727272;
+  color: #333333;
   font-family: "Noto Sans KR";
   font-size: 15px;
   font-style: normal;
@@ -3429,7 +3429,7 @@ button:disabled {
   padding-top: 1px;
 }
 .popular-item-count1 {
-  color: #727272;
+  color: #333333;
   font-family: "Noto Sans KR";
   font-size: 15px;
   font-style: normal;

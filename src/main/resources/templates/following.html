@@ -230,8 +230,8 @@
 <script>
   let currentForm = null;  // 현재 제출될 폼을 저장
 
-  // 폼 제출 이벤트를 가로채고 팝업 띄우기
-  document.querySelectorAll('form').forEach(form => {
+  // 팔로우 취소 버튼을 가진 폼만 선택하여 이벤트 리스너 추가
+  document.querySelectorAll('form[action*="/unfollow"]').forEach(form => {
     form.addEventListener('submit', function (event) {
       event.preventDefault();  // 폼 제출 중단
       currentForm = this;  // 현재 폼 저장

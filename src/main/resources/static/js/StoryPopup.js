@@ -103,7 +103,17 @@ function updateBookmarkButton() {
         bookmarkButton.src = "/images/StoryDetailbtn2.png";
     }
 }
+window.onload = function() {
+    // URL에서 storyId 쿼리 파라미터를 가져옴
+    const urlParams = new URLSearchParams(window.location.search);
+    const storyId = urlParams.get('storyId');
 
+    // storyId가 존재하면 팝업을 띄움
+    if (storyId) {
+        showStoryPopup(storyId);
+
+    }
+}
 
 // 스토리 세부 정보 팝업 표시
 function showStoryPopup(storyId) {
@@ -141,11 +151,15 @@ function showStoryPopup(storyId) {
             isBookmarked = data.bookmarkedByUser;
             isOwnStory = data.ownStory;
 
-
-            disableButtonsIfNotAuthenticated(isAuthenticated);
-            disableButtonsIfOwnStory(isOwnStory);
-            updateLikeButton();
-            updateBookmarkButton();
+            // 인증되지 않은 경우
+            if (!isAuthenticated) {
+                disableButtonsIfNotAuthenticated(isAuthenticated);
+            } else {
+                // 인증된 경우 자신의 스토리 여부 체크
+                disableButtonsIfOwnStory(isOwnStory);
+                updateLikeButton();
+                updateBookmarkButton();
+            }
 
             // 태그 초기화 및 추가
             const tagsContainer = document.getElementById("popupTagsContainer");
@@ -186,6 +200,17 @@ function adjustImageSize() {
     const bg_gray9 = document.querySelector('.bg_gray9');
     const related = document.querySelector('.related');
 
+    // 이미지가 로드된 후 크기 조정
+    if (image.complete) {
+        resizeImage(image, container, bg_gray9, related);
+    } else {
+        image.onload = () => {
+            resizeImage(image, container, bg_gray9, related);
+        };
+    }
+}
+
+function resizeImage(image, container, bg_gray9, related) {
     const imageWidth = image.naturalWidth;
     const imageHeight = image.naturalHeight;
 
@@ -220,11 +245,16 @@ function closePopup9() {
     if (popup) popup.style.display = "none";
     if (background) background.style.display = "none";
 
+    // 현재 URL에서 storyId 파라미터 제거
+    const url = new URL(window.location);
+    url.searchParams.delete('storyId');  // storyId 파라미터 제거
+    window.history.replaceState(null, '', url);  // URL 업데이트
+
     // 현재 경로가 /bookmark이면 페이지 새로고침
     if (window.location.pathname === '/bookmark') {
         window.location.reload();
     }
-    // 현재 경로가 /bookmark이면 페이지 새로고침
+    // 현재 경로가 /best이면 페이지 새로고침
     if (window.location.pathname === '/best') {
         window.location.reload();
     }

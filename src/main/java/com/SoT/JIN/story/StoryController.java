@@ -259,53 +259,64 @@ public class StoryController {
         return "test";
     }
 */
-    @PostMapping("/upload")
-    public String addStory(@RequestParam("image_url") String imageUrl,
-                           @RequestParam("title") String title,
-                           @RequestParam("date_year") String dateYear,
-                           @RequestParam("date_month") String dateMonth,
-                           @RequestParam("date_day") String dateDay,
-                           @RequestParam("location") String location,
-                           @RequestParam("tags") String tags,
-                           @RequestParam("description") String description,
-                           Principal principal) {
+@PostMapping("/upload")
+public String addStory(@RequestParam("image_url") String imageUrl,
+                       @RequestParam("title") String title,
+                       @RequestParam("date_year") String dateYear,
+                       @RequestParam("date_month") String dateMonth,
+                       @RequestParam("date_day") String dateDay,
+                       @RequestParam("location") String location,
+                       @RequestParam("tags") String tags,
+                       @RequestParam("description") String description,
+                       Principal principal, @RequestHeader(value = "Referer", required = false) String referer) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || !authentication.isAuthenticated()) {
-            throw new RuntimeException("User not authenticated");
-        }
-
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-        Story story = new Story();
-        story.setImage_url(imageUrl);
-        story.setTitle(title);
-        String date = dateYear + "-" + dateMonth + "-" + dateDay;
-        story.setDate(date);
-        story.setLocation(location);
-        story.setTags(tags);
-        story.setDescription(description);
-        story.setUsername(userDetails.getUsername());
-
-        // OpenAI를 통해 여러 테마 예측
-        List<String> themes = new ArrayList<>(openAIService.predictThemes(title, location, description, tags));
-
-        // 유효한 테마들만 필터링
-        String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
-        themes.removeIf(theme -> !isValidTheme(theme, validThemes));
-
-        // 유효한 테마가 없으면 기본 테마 "기타"를 설정
-        if (themes.isEmpty()) {
-            themes.add("기타");
-        }
-
-        // 선택된 테마들을 콤마로 연결하여 저장
-        story.setTheme(String.join(", ", themes));
-
-        storyRepository.save(story);
-        Long storyId = story.getStoryId();
-        return "redirect:/story/" + storyId;
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    if (authentication == null || !authentication.isAuthenticated()) {
+        throw new RuntimeException("User not authenticated");
     }
+
+    UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+    Story story = new Story();
+    story.setImage_url(imageUrl);
+    story.setTitle(title);
+    String date = dateYear + "-" + dateMonth + "-" + dateDay;
+    story.setDate(date);
+    story.setLocation(location);
+    story.setTags(tags);
+    story.setDescription(description);
+    story.setUsername(userDetails.getUsername());
+
+    // OpenAI를 통해 여러 테마 예측
+    List<String> themes = new ArrayList<>(openAIService.predictThemes(title, location, description, tags));
+
+    // 유효한 테마들만 필터링
+    String[] validThemes = {"자연 속 여행", "역사와 문화", "식도락 여행", "축제", "예술 및 체험", "산악 여행", "도심 속 여행", "바다와 해변", "테마파크"};
+    themes.removeIf(theme -> !isValidTheme(theme, validThemes));
+
+    // 유효한 테마가 없으면 기본 테마 "기타"를 설정
+    if (themes.isEmpty()) {
+        themes.add("기타");
+    }
+
+    // 선택된 테마들을 콤마로 연결하여 저장
+    story.setTheme(String.join(", ", themes));
+
+    storyRepository.save(story);
+    Long storyId = story.getStoryId();
+
+// 리다이렉트할 URL 설정
+    String redirectUrl = (referer != null) ? referer : "/home";
+
+// 이전 URL에 '?'가 있으면 '&'로, 없으면 '?'로 storyId 추가
+    if (redirectUrl.contains("?")) {
+        redirectUrl += "&storyId=" + storyId;
+    } else {
+        redirectUrl += "?storyId=" + storyId;
+    }
+// 최종 리다이렉트
+    return "redirect:" + redirectUrl;
+}
 
     @PostMapping("/batch/updateThemes")
     @ResponseBody

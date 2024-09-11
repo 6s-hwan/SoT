@@ -99,7 +99,7 @@ public class BookmarkController {
         model.addAttribute("totalStories", bookmarkedStories.size()); // 총 북마크된 스토리 수
         model.addAttribute("limit", limit);
 
-        return "bookmarkPage"; // 북마크 페이지로 이동
+        return "BookmarkPage"; // 북마크 페이지로 이동
     }
 
 }

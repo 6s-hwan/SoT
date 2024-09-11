@@ -69,6 +69,7 @@ public class StoryController {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+    /*
     @GetMapping("/story/{id}")
     public String showStoryDetails(@PathVariable Long id, Model model) {
         Story story = storyService.getStoryAndIncrementViewCount(id);
@@ -76,6 +77,7 @@ public class StoryController {
         return "StoryDetailS";
     }
 
+*/
     @GetMapping("/season")
     public String season(@RequestParam(value = "season", required = false) String season,
                          @RequestParam(value = "sort", required = false) String sortCriteria,

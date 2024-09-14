@@ -47,9 +47,14 @@ public class VerificationController {
             phoneNumber = "+82" + phoneNumber.substring(1);
         }
 
-        // 이미 등록된 전화번호인지 확인 (User 테이블에서 확인)
-        if (userRepository.existsByPhoneNumber(phoneNumber)) {
-            return ResponseEntity.badRequest().body("이미 가입된 전화번호입니다.");
+        // 이미 등록된 전화번호와 username 확인 (User 테이블에서 확인)
+        Optional<User> existingUser = userRepository.findByPhoneNumber(phoneNumber);
+
+        if (existingUser.isPresent()) {
+            // username이 이미 있으면 회원가입 완료된 상태
+            if (existingUser.get().getUsername() != null && !existingUser.get().getUsername().isEmpty()) {
+                return ResponseEntity.badRequest().body("이미 가입된 전화번호입니다.");
+            }
         }
 
         String verificationCode = generateVerificationCode(); // 인증번호 생성
@@ -66,7 +71,7 @@ public class VerificationController {
             System.out.println("SMS sent: " + message.getSid());
 
             // User 테이블에 인증번호와 생성 시간 저장 (기존 유저가 없으면 새로 생성)
-            User user = userRepository.findByPhoneNumber(phoneNumber).orElse(new User());
+            User user = existingUser.orElse(new User());
             user.setPhoneNumber(phoneNumber);
             user.setVerificationCode(verificationCode);  // 인증번호 저장
             user.setVerificationCodeCreatedAt(LocalDateTime.now());  // 인증번호 생성 시간 저장

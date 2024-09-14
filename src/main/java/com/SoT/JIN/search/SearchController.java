@@ -37,7 +37,7 @@ public class SearchController {
         searchService.saveSearchKeyword(query);
 
         // 검색어에 따른 스토리 검색
-        List<Story> stories = storyRepository.findByTitleContainingIgnoreCaseOrderByStoryIdDesc(query);
+        List<Story> stories = storyRepository.findByTitleContainingIgnoreCaseOrLocationContainingIgnoreCaseOrderByStoryIdDesc(query, query);
         List<Story> limitedStories = stories.stream().limit(limit).collect(Collectors.toList());
 
         // 모델에 검색 결과 추가
@@ -78,7 +78,7 @@ public class SearchController {
     @ResponseBody
     public Map<String, Object> getSearchCount(@RequestParam("query") String query) {
         // 검색어에 따른 스토리 검색
-        List<Story> stories = storyRepository.findByTitleContainingIgnoreCaseOrderByStoryIdDesc(query);
+        List<Story> stories = storyRepository.findByTitleContainingIgnoreCaseOrLocationContainingIgnoreCaseOrderByStoryIdDesc(query, query);
 
         // 결과를 JSON 형식으로 반환
         Map<String, Object> response = new HashMap<>();

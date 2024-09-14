@@ -28,7 +28,7 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
     // 사용자별 게시글 수를 세는 메서드
     long countByUsername(String username);
 
-    List<Story> findByTitleContainingIgnoreCaseOrderByStoryIdDesc(String query);
+    List<Story> findByTitleContainingIgnoreCaseOrLocationContainingIgnoreCaseOrderByStoryIdDesc(String title, String location);
 
 
     // 특정 키워드가 포함된 스토리 ID 중 가장 큰 ID 조회

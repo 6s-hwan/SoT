@@ -95,7 +95,7 @@ public class PasswordController {
     // 비밀번호 재설정 링크 생성 메서드
     private String generatePasswordResetLink(String token) {
         // 실제 애플리케이션의 도메인으로 변경
-        String appUrl = "http://storyoftravel.ap-northeast-2.elasticbeanstalk.com";
+        String appUrl = "https://storyoftravel.site";
         return appUrl + "/reset-password?token=" + token; // 토큰을 쿼리 파라미터로 포함
     }
 

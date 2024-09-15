@@ -1,3 +1,9 @@
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('dragstart', (event) => {
+    event.preventDefault();
+  });
+});
+
 // 현재 페이지 URL이 "/bookmark"이면 imagebtn에 invert 클래스 추가
 if (window.location.pathname === '/bookmark') {
   document.querySelector('.imagebtn').classList.add('invert');

@@ -152,7 +152,19 @@
     <p class="email">Contact. Story.of.Travel.official@gmail.com</p>
     <p class="SoT_2024">© 2024 SoT. All rights reserved.</p>
 </div>
-<!-- 푸터 끝 -->
+<!-- 푸터 끝 --><script>
+    window.addEventListener('scroll', () => {
+        localStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    window.addEventListener('load', () => {
+        const scrollPosition = localStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition, 10));
+        }
+    });
+</script>
+
 <script th:src="@{/js/Home.js}"></script>
 <script th:src="@{/js/StoryPopup.js}"></script>
 <script th:src="@{/js/upload.js}"></script>

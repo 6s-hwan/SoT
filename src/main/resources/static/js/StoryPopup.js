@@ -139,7 +139,7 @@ function showStoryPopup(storyId) {
             document.getElementById("popupProfileFollowers").textContent = `팔로워 ${data.followersCount}명`;
             document.getElementById("popupLikes").textContent = data.likesCount;
             document.getElementById("popupBookmarks").textContent = data.bookmarksCount;
-            document.getElementById('popupTitle2').textContent = `'${data.title}'`;
+            document.getElementById('popupAddress2').textContent = `'${data.location}'`;
 
             // 날짜 포맷팅
             const date = new Date(data.date);
@@ -173,7 +173,7 @@ function showStoryPopup(storyId) {
             });
 
             // 검색 결과 개수 가져오기
-            fetch(`/api/search-count?query=${encodeURIComponent(data.title)}`, {
+            fetch(`/api/search-count?query=${encodeURIComponent(data.location)}`, {
                 headers: { 'Accept': 'application/json' }
             })
                 .then(response => response.json())
@@ -365,7 +365,7 @@ function submitDeleteForm(storyId) {
 
 // 검색 실행
 function searchByTitle() {
-    const query = document.getElementById("popupTitle").textContent;
+    const query = document.getElementById("popupAddress").textContent;
     window.location.href = `/search?query=${encodeURIComponent(query)}`;
 }
 

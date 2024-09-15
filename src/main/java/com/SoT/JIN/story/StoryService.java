@@ -73,7 +73,8 @@ public class StoryService {
 
         // 스토리 필터링 및 그룹화
         Map<String, List<Story>> groupedStories = stories.stream()
-                .filter(story -> !"test".equalsIgnoreCase(story.getLocation())) // "test" 위치 제외
+                .filter(story -> !"test".equalsIgnoreCase(story.getLocation())   // "test" 위치 제외
+                        && !"어딘가".equalsIgnoreCase(story.getLocation())) // "어딘가" 위치 제외
                 .collect(Collectors.groupingBy(Story::getLocation))             // 위치별 그룹화
                 .entrySet().stream()
                 .filter(entry -> entry.getValue().size() >= 3)                  // 최소 3개 이상의 그룹만 유지

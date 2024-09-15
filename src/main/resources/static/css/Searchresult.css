@@ -175,4 +175,8 @@ hr {
   margin-left: 556px;
   margin-top: 62px;
   cursor: pointer;
+  transition: filter 0.3s ease; /* 부드러운 전환 효과 */
+}
+#searchresultmorebtn:hover {
+  filter: brightness(0.9); /* 호버 시 이미지 밝기를 90%로 줄여 살짝 어두워지게 */
 }

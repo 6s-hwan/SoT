@@ -1,3 +1,16 @@
+/* 스크롤바 전체 */
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+/* 스크롤바의 핸들 */
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+
+
 .myButton.selected {
   color: #000; /* 선택된 버튼의 글씨 색상을 검정색으로 강제 변경 */
 }

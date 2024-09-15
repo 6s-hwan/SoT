@@ -24,6 +24,8 @@ public class Story {
     private String date;
     private String location;
     private String tags;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
     private int viewCount;
 

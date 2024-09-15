@@ -237,6 +237,13 @@ public class StoryController {
 
         return "Home";
     }
+
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/home";
+    }
+
+
 /*
     @GetMapping("/test")
     public String test(Model model) {

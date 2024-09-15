@@ -50,7 +50,7 @@
         </div>
         <!-- 검색바 -->
         <form action="/search" method="get" id="search">
-          <input type="text" name="query" class="search" />
+          <input type="text" name="query" class="search" th:value="${query}" />
           <button
                   type="submit"
                   id="searchBtn"

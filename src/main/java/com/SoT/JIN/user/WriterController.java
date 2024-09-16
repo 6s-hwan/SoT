@@ -139,6 +139,7 @@ public class WriterController {
     // fetchPopularWriters 메서드 추가
     public List<WriterInfo> fetchPopularWriters(int limit) {
         List<WriterInfo> writerInfos = userRepository.findAll().stream()
+                .filter(user -> user.getUsername() != null && user.getEmail() != null && user.getPassword() != null) // 필수 필드가 null이 아닌 유저만 필터링
                 .map(user -> {
                     List<Story> userStories = storyRepository.findByUsername(user.getEmail());
                     int totalLikes = userStories.stream().mapToInt(Story::getLikesCount).sum();

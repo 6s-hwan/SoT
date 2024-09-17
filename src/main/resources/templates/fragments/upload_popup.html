@@ -101,8 +101,9 @@
                     id="description"
                     name="description"
                     rows="4"
-                    style="resize: none; overflow-y: scroll; word-wrap: break-word;"
+                    style="resize: none; overflow-y: hidden; word-wrap: break-word;"
                     placeholder="사진에 대해 다른 이용자들에게 간단한 설명을 해주세요!"
+                    onwheel="this.scrollTop += event.deltaY"
             ></textarea>
           </div>
           <button type="submit" class="upload-button">업로드</button>

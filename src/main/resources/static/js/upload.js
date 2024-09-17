@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var UploadBtn = document.getElementById("uploadbtn");
   var StoryUploadPopup = document.getElementById("bg_gray1");
   UploadBtn.addEventListener("click", function () {
+    document.body.style.overflow = 'hidden'; // 백그라운드 스크롤 잠금
     StoryUploadPopup.style.display = "block";
-    document.body.style.overflow = ""; // 스크롤 허용
     resetForm();
   });
 

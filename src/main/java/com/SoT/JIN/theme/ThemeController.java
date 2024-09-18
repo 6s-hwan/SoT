@@ -52,8 +52,6 @@ public class ThemeController {
         // 정렬 기준에 따라 스토리를 정렬
         sortStories(storyList, sortCriteria);
 
-        List<WriterController.WriterInfo> popularWriters = writerController.fetchPopularWriters(6);
-
         model.addAttribute("stories", storyList);
         model.addAttribute("selectedTheme", themeIds != null ? "선택된 테마" : "모든 테마");
         model.addAttribute("sortCriteria", sortCriteria);

@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Comparator;
 
 @Controller
 public class WriterController {
@@ -140,8 +137,12 @@ public class WriterController {
     public List<WriterInfo> fetchPopularWriters(int limit) {
         List<WriterInfo> writerInfos = userRepository.findAll().stream()
                 .filter(user -> user.getUsername() != null && user.getEmail() != null && user.getPassword() != null) // 필수 필드가 null이 아닌 유저만 필터링
+                .filter(user -> !user.getUsername().equals("test")) // username이 "test"인 사용자는 제외
                 .map(user -> {
                     List<Story> userStories = storyRepository.findByUsername(user.getEmail());
+                    if (userStories.isEmpty()) {
+                        return null; // 스토리가 없는 사용자는 null 반환
+                    }
                     int totalLikes = userStories.stream().mapToInt(Story::getLikesCount).sum();
                     int totalViews = userStories.stream().mapToInt(Story::getViewCount).sum();
                     int totalStories = userStories.size();
@@ -177,6 +178,7 @@ public class WriterController {
 
                     return new WriterInfo(user.getUsername(), user.getProfileImageUrl(), totalStories, totalLikes, totalViews, topTheme, secondTheme, 0);
                 })
+                .filter(Objects::nonNull) // null 값을 필터링 (스토리가 없는 유저 제외)
                 .sorted(Comparator.comparingInt(WriterInfo::getTotalLikes)
                         .thenComparingInt(WriterInfo::getTotalViews).reversed()
                         .thenComparingInt(WriterInfo::getTotalStories))

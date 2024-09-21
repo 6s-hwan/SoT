@@ -1870,6 +1870,13 @@ input:focus {
   line-height: 140%;
   letter-spacing: -0.36px;
   margin-right: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
+}
+
+#joinfinishbtn:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 */
+  color: #333; /* 호버 시 글자색 */
+  border-color: #888; /* 호버 시 테두리색 */
 }
 #gotologinbtn {
   width: 192px;
@@ -1888,6 +1895,13 @@ input:focus {
   line-height: 140%; /* 25.2px */
   letter-spacing: -0.36px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 */
+}
+
+#gotologinbtn:hover {
+  background-color: #333; /* 호버 시 배경색을 좀 더 밝은 회색으로 */
+  color: #fff; /* 호버 시 글자색 유지 */
+  border-color: #444; /* 호버 시 테두리색을 좀 더 밝은 색으로 */
 }
 /* 회원가입 완료 팝업창 끝 */
 

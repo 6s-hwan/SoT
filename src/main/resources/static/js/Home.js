@@ -53,47 +53,7 @@ function openPwFindPopup() {
   document.getElementById("bg_gray8").style.display = "block"; // 비밀번호 찾기 팝업 열기
   document.getElementById("bg_gray").style.display = "none"; // 로그인 팝업 닫기
 }
-
-let debounceTimeout;
-
-// 이메일 유효성 및 중복 검사 함수
-function checkEmail() {
-  var email = document.getElementById("email_input1").value;
-  var emailCheckMessage = document.getElementById("emailCheckMessage");
-
-  clearTimeout(debounceTimeout); // 기존 타임아웃을 초기화
-
-  // 입력이 멈춘 후 500ms 후에 유효성 검사 진행
-  debounceTimeout = setTimeout(() => {
-    const emailPattern = /.+@.+/; // 간단한 이메일 정규식
-
-    if (emailPattern.test(email)) {
-      // 이메일 유효성 통과 후, 중복 체크를 위한 서버 요청 추가
-      fetch(`/check-email?email=${email}`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.isDuplicate) {
-            emailCheckMessage.textContent = "중복된 이메일입니다.";
-            emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
-            emailCheckMessage.style.display = "block";
-          } else {
-            emailCheckMessage.textContent = "사용 가능한 이메일입니다.";
-            emailCheckMessage.style.color = "#448fff"; // 파란색
-            emailCheckMessage.style.display = "block";
-          }
-        });
-    } else {
-      emailCheckMessage.textContent = "유효하지 않은 이메일 형식입니다.";
-      emailCheckMessage.style.color = "#FF4F4F"; // 빨간색
-      emailCheckMessage.style.display = "block";
-    }
-  }, 750); // 500ms (0.5초) 후에 유효성 검사 실행
-}
-
-// 이메일 입력 필드에 이벤트 리스너 추가
-document.getElementById("email_input1").addEventListener("input", checkEmail);
-
-// 이메일 파트
+// 이메일 형식 확인 함수
 const input = document.querySelector("#email_input1");
 const p = document.querySelector(".emailcheck-content");
 let value;
@@ -105,11 +65,13 @@ input.addEventListener("keyup", (event) => {
   value = event.currentTarget.value;
 
   if (isEmail(value)) {
-    p.textContent = `사용 가능한 이메일입니다.`;
-    p.style.display = "block"; // 또는 "inline"
+    // 이메일이 유효할 때, 파란색으로 변경
+    p.textContent = "사용 가능한 이메일입니다.";
+    p.style.display = "block";
+    p.style.color = "#448fff";  // 색상을 파란색으로 변경
   } else {
-    p.textContent = ``;
-    p.style.display = "none"; // 또는 "inline"
+    p.textContent = "";
+    p.style.display = "none";  // 이메일이 유효하지 않을 때 메시지 숨김
   }
 });
 // 비밀번호 유효성 검사 함수
@@ -189,23 +151,11 @@ function checkUsername() {
   var namePattern = /^[a-zA-Z가-힣]{2,8}$/; // 2~8자 한글, 영문
 
   if (namePattern.test(username)) {
-    // 서버에서 닉네임 중복 체크
-    fetch(`/check-username?username=${username}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.isDuplicate) {
-          nameCheckContent.textContent = "중복된 닉네임입니다.";
-          nameCheckContent.style.color = "#FF4F4F"; // 빨간색
-          nameCheckContent.style.display = "block";
-        } else {
-          nameCheckContent.textContent = "사용 가능한 닉네임입니다.";
-          nameCheckContent.style.color = "#448fff"; // 파란색
-          nameCheckContent.style.display = "block";
-        }
-      });
+    nameCheckContent.textContent = "사용 가능한 닉네임입니다.";
+    nameCheckContent.style.color = "#448fff"; // 파란색
+    nameCheckContent.style.display = "block";
   } else {
-    nameCheckContent.textContent =
-      "닉네임은 2~8자의 한글 또는 영문이어야 합니다.";
+    nameCheckContent.textContent = "닉네임은 2~8자의 한글 또는 영문이어야 합니다.";
     nameCheckContent.style.color = "#FF4F4F"; // 빨간색
     nameCheckContent.style.display = "block";
   }
@@ -321,46 +271,29 @@ function submitSignUpForm() {
     method: "POST",
     body: formData,
   })
-      .then(response => {
-        if (!response.ok) {
-          // 상태 코드가 400, 500 등의 오류일 경우 처리
-          return response.json().then(err => {
-            throw new Error(err.message);
-          });
+      .then(response => response.json())
+      .then((data) => {
+        if (data.status === "error" && data.message === "이미 사용 중인 이메일입니다.") {
+          // 이메일 중복 오류 처리
+          emailCheckMessage.textContent = "중복된 이메일입니다.";
+          emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+          emailCheckMessage.style.display = "block";
+          alert("중복된 이메일입니다."); // 중복된 이메일 팝업 알림
+        } else if (data.status === "error" && data.message === "이미 사용 중인 닉네임입니다.") {
+          // 닉네임 중복 오류 처리
+          var nameCheckMessage = document.querySelector(".namecheck-content");
+          nameCheckMessage.textContent = "중복된 닉네임입니다.";
+          nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+          nameCheckMessage.style.display = "block";
+          alert("중복된 닉네임입니다."); // 중복된 닉네임 팝업 알림
+        } else if (data.status === "success") {
+          // 성공 메시지 처리
+          showSignupCompletePopup(); // 회원가입 완료 팝업
         }
-        return response.json();
       })
-    .then((data) => {
-      // 이메일 중복
-      if (
-        data.status === "error" &&
-        data.message === "이미 사용 중인 이메일입니다."
-      ) {
-        var emailCheckMessage = document.getElementById("emailCheckMessage");
-        emailCheckMessage.textContent = "중복된 이메일입니다.";
-        emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
-        emailCheckMessage.style.display = "block";
-      }
-
-      // 닉네임 중복
-      if (
-        data.status === "error" &&
-        data.message === "이미 사용 중인 닉네임입니다."
-      ) {
-        var nameCheckMessage = document.getElementById("nameCheckMessage");
-        nameCheckMessage.textContent = "중복된 닉네임입니다.";
-        nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
-        nameCheckMessage.style.display = "block";
-      }
-
-      // 성공 메시지 처리
-      if (data.status === "success") {
-        showSignupCompletePopup();
-      }
-    })
-    .catch((error) => {
-      alert(error.message);  // 상태 코드 제외한 메시지만 표시
-    });
+      .catch((error) => {
+        alert("오류가 발생했습니다. 다시 시도해 주세요."); // 오류 발생 시 팝업 알림
+      });
 }
 
 document.addEventListener("DOMContentLoaded", function () {

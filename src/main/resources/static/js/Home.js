@@ -271,28 +271,48 @@ function submitSignUpForm() {
     method: "POST",
     body: formData,
   })
-      .then(response => response.json())
-      .then((data) => {
-        if (data.status === "error" && data.message === "이미 사용 중인 이메일입니다.") {
-          // 이메일 중복 오류 처리
-          emailCheckMessage.textContent = "중복된 이메일입니다.";
-          emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
-          emailCheckMessage.style.display = "block";
-          alert("중복된 이메일입니다."); // 중복된 이메일 팝업 알림
-        } else if (data.status === "error" && data.message === "이미 사용 중인 닉네임입니다.") {
-          // 닉네임 중복 오류 처리
-          var nameCheckMessage = document.querySelector(".namecheck-content");
-          nameCheckMessage.textContent = "중복된 닉네임입니다.";
-          nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
-          nameCheckMessage.style.display = "block";
-          alert("중복된 닉네임입니다."); // 중복된 닉네임 팝업 알림
-        } else if (data.status === "success") {
+      .then(response => {
+        if (!response.ok) {
+          // 400 응답일 경우 JSON으로 파싱하고 처리
+          return response.json().then(data => {
+            if (data.status === "error" && data.message === "인증번호가 올바르지 않습니다.") {
+              throw new Error("인증번호가 올바르지 않습니다.");
+            } else if (data.status === "error" && data.message === "이미 사용 중인 이메일입니다.") {
+              throw new Error("이미 사용 중인 이메일입니다.");
+            } else if (data.status === "error" && data.message === "이미 사용 중인 닉네임입니다.") {
+              throw new Error("이미 사용 중인 닉네임입니다.");
+            } else {
+              throw new Error("알 수 없는 오류가 발생했습니다.");
+            }
+          });
+        }
+        return response.json(); // 정상 응답일 때 처리
+      })
+      .then(data => {
+        if (data.status === "success") {
           // 성공 메시지 처리
           showSignupCompletePopup(); // 회원가입 완료 팝업
         }
       })
-      .catch((error) => {
-        alert("오류가 발생했습니다. 다시 시도해 주세요."); // 오류 발생 시 팝업 알림
+      .catch(error => {
+        // 여기서 모든 에러 메시지를 처리
+        if (error.message === "인증번호가 올바르지 않습니다.") {
+          alert("인증번호가 올바르지 않습니다.");
+        } else if (error.message === "이미 사용 중인 이메일입니다.") {
+          var emailCheckMessage = document.querySelector(".emailcheck-content");
+          emailCheckMessage.textContent = "중복된 이메일입니다.";
+          emailCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+          emailCheckMessage.style.display = "block";
+          alert("중복된 이메일입니다.");
+        } else if (error.message === "이미 사용 중인 닉네임입니다.") {
+          var nameCheckMessage = document.querySelector(".namecheck-content");
+          nameCheckMessage.textContent = "중복된 닉네임입니다.";
+          nameCheckMessage.style.color = "#FF4F4F"; // 빨간색으로 표시
+          nameCheckMessage.style.display = "block";
+          alert("중복된 닉네임입니다.");
+        } else {
+          alert(error.message); // 서버 응답에 포함된 에러 메시지 표시
+        }
       });
 }
 

@@ -90,6 +90,8 @@ public class FollowsController {
                     })
                     .collect(Collectors.toList());
 
+            // 리스트를 역순으로 정렬
+            Collections.reverse(followsInfos);
             model.addAttribute("followsInfos", followsInfos);
             return "following"; // following.html 뷰로 이동
         }

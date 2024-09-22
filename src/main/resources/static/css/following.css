@@ -1,3 +1,37 @@
+/* 팔로우 테마 스타일 */
+.followTags {
+  display: flex;
+  flex-wrap: wrap; /* 줄바꿈 허용 */
+  box-sizing: border-box;
+  max-width: 200px; /* 태그들이 일정 너비를 넘으면 줄바꿈 발생 */
+  transition: padding-top 0.3s ease;
+}
+
+.followTag {
+  display: inline-flex;
+  height: 24px;
+  padding: 3px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1px solid #f4f4f4;
+  background: #fff;
+  z-index: 1;
+  margin-right: 4px;
+  margin-bottom: 4px; /* 두 번째 줄 간격 추가 */
+}
+
+.followTagName {
+  color: #767676;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.26px;
+}
+
 * {
   /* All */
   margin: 0;

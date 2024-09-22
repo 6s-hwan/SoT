@@ -169,17 +169,11 @@
                 <p id="writerlike" th:text="${writer.totalLikes}"></p>
               </div>
               <div class="writerTags">
-                <div class="writertag">
-                  <p
-                    class="writertagname"
-                    th:text="'#' + ${writer.topTheme}"
-                  ></p>
+                <div class="writertag" th:if="${writer.topTheme != null && !#strings.isEmpty(writer.topTheme)}">
+                  <p class="writertagname" th:text="'#' + ${writer.topTheme}"></p>
                 </div>
-                <div class="writertag">
-                  <p
-                    class="writertagname"
-                    th:text="'#' + ${writer.secondTheme}"
-                  ></p>
+                <div class="writertag" th:if="${writer.secondTheme != null && !#strings.isEmpty(writer.secondTheme)}">
+                  <p class="writertagname" th:text="'#' + ${writer.secondTheme}"></p>
                 </div>
               </div>
             </div>

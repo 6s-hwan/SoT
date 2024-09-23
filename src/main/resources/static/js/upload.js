@@ -528,6 +528,8 @@ function addTag() {
     let label = document.querySelector('label[for="tagInput"]');
     label.parentNode.insertBefore(newTag, label.nextSibling);
     tagInput.value = "";
+    // placeholder 숨기기 (빈 문자열로 설정)
+    tagInput.placeholder = "";
     // 추가된 태그를 hidden input에 추가
     let tagsInput = document.getElementById("tags");
     tagsInput.value += (tagsInput.value ? "," : "") + tagValue;

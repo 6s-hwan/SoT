@@ -184,7 +184,7 @@
           <button
                   type="button"
                   id="Popularmorebtn"
-                  th:if="${popularWriters.size() >= limit and limit < 72}"
+                  th:if="${popularWriters.size() > limit and limit < 72}"
                   th:onclick="|location.href='@{/popular(limit=${limit + 24})}';|"
           >
 

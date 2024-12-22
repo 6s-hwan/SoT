@@ -14,7 +14,7 @@ if (window.location.pathname === '/follows') {
   document.querySelector('.followingbtn').classList.add('invert');
 }
 
-// 엔터키를 눌렀을 때 로그인 버튼 클릭을 트리거하는 함수
+// 엔터키를 눌렀을 때 로그인 버튼 클릭을 트리거 하는 함수
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("loginForm");
   form.addEventListener("keydown", function (event) {
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 로그인 버튼에 대한 이벤트 리스너 (만약 필요한 경우)
+  // 로그인 버튼에 대한 이벤트 리스너(만약 필요한 경우)
   const goToLoginBtn2 = document.getElementById("gotologinbtn2");
   const loginPopup = document.getElementById("bg_gray");
 
